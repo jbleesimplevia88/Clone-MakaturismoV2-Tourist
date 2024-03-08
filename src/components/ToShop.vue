@@ -159,7 +159,7 @@
 
 
 <script>
-import item1 from '@/assets/images/CategoryView/ToDo/omni.jpg';
+import item1 from '@/assets/images/CategoryView/ToShop/kultura.jpeg';
 import item2 from '@/assets/images/CategoryView/ToDo/hop.jpg';
 import item3 from '@/assets/images/CategoryView/ToDo/zitro.jpg';
 import item4 from '@/assets/images/CategoryView/ToDo/zeria.jpg';
@@ -185,52 +185,40 @@ export default {
                     image: item2,
                 },
                 {
-                    name: 'Zitro Massage and Spa',
-                    description: "Indulge in ultimate relaxation and rejuvenation at Zitro Massage and Spa. This serene oasis offers a variety of therapeutic treatments, from traditional massages to modern wellness therapies. Surrender to the skilled hands of expert therapists and let your stress melt away. With a tranquil ambiance and a range of pampering options, Zitro Massage and Spa provides the perfect escape from the bustling city life.",
-                    category: 'Spa and Wellness',
+                    name: 'Greenbelt Mall',
+                    description: "Explore a world of high-end shopping and dining at Greenbelt Mall. This iconic lifestyle hub offers an elegant mix of luxury boutiques, designer brands, and award-winning restaurants. With its lush gardens and serene ambiance, Greenbelt Mall is a haven for shoppers and diners alike.",
+                    category: 'Shopping Mall',
                     image: item3,
                 },
                 {
-                    name: 'Zeria',
+                    name: 'Balikbayan Handicrafts',
                     description: "Get ready for an immersive and thrilling experience at Zeria, Makati's premier escape room destination. Gather your friends, family, or colleagues and put your problem-solving skills to the test in a series of mind-bending puzzles and challenges. Each escape room presents a unique storyline, making Zeria an ideal place for team building, bonding, or simply having a blast with your loved ones.",
-                    category: 'Entertainment/Gaming',
+                    category: 'Souvenirs/Gifts Shop',
                     image: item4,
                 },
                 {
-                    name: 'Two Seasons Spa',
-                    description: "Treat yourself to a tranquil escape at Two Seasons Spa. With a selection of massages, facials, and body treatments, this spa offers a rejuvenating experience that caters to your specific needs. Let the stress fade away as you unwind in the serene atmosphere of Two Seasons Spa, leaving you feeling invigorated and revitalized.",
-                    category: 'Spa and Wellness',
+                    name: 'Circuit Makati',
+                    description: "Discover a vibrant lifestyle destination at Circuit Makati. This dynamic entertainment and retail complex offer a mix of shops, restaurants, and recreational facilities. From retail therapy to dining and entertainment, Circuit Makati promises a one-stop destination for leisure and enjoyment.",
+                    category: 'Shopping Mall',
                     image: item5,
                 },
                 {
-                    name: 'White Palace Spa',
-                    description: "Experience pure bliss and luxury at White Palace Spa. Indulge in their extensive menu of spa services, including invigorating massages, facials, and body treatments. Step into an ambiance of serenity and let the experienced therapists take care of your well-being. White Palace Spa offers a sanctuary of tranquility, making it the perfect escape from the hustle and bustle of city life.",
-                    category: 'Spa and Wellness',
+                    name: 'Century Mall',
+                    description: "Uncover a delightful shopping experience at Century Mall. This modern retail destination features an array of boutiques and specialty stores, catering to a diverse range of tastes and preferences. Whether you're hunting for fashion pieces or unique finds, Century Mall has something to suit every shopper.",
+                    category: 'Shopping Mall',
                     image: item6,
                 },
                 {
-                    name: 'Urband Break Wellness',
-                    description: 'Escape the daily grind and discover a holistic approach to wellness at Urban Break Wellness. From yoga and meditation classes to natural healing therapies, this wellness center is dedicated to promoting mind-body harmony. Reconnect with your inner self and find rejuvenation amidst the urban landscape of Makati at Urban Break Wellness.',
-                    category: 'Spa and Wellness',
+                    name: 'Glorietta',
+                    description: "Experience the ultimate shopping and entertainment extravaganza at Glorietta. This expansive retail complex boasts a diverse mix of shops, dining options, and entertainment facilities. Whether you're in search of fashion, gadgets, or indulgent treats, Glorietta is the go-to destination for an exciting day out.",
+                    category: 'Shopping Mall',
                     image: item7,
                 },
                 {
-                    name: 'Touch of Hands Spa',
-                    description: 'Pamper yourself with a blissful retreat at Touch of Hands Spa. With a range of massage therapies and spa treatments, this haven of relaxation will leave you feeling refreshed and renewed. Surrender to the healing touch of their skilled therapists and experience the ultimate pampering session at Touch of Hands Spa.',
-                    category: 'Spa and Wellness',
+                    name: 'Bangkal Thrift Market',
+                    description: 'Discover hidden gems and budget-friendly finds at Bangkal Thrift Market. This bustling market is a treasure trove of pre-loved items, antiques, vintage clothing, and unique collectibles. Get ready to embark on a delightful treasure hunt at Bangkal Thrift Market.',
+                    category: 'Thrift Market',
                     image: item8,
-                },
-                {
-                    name: 'Product 9',
-                    description: 'Description of Product 9',
-                    category: 'Museum',
-                    image: 'https://via.placeholder.com/300',
-                },
-                {
-                    name: 'Product 10',
-                    description: 'Description of Product 10',
-                    category: 'Museum',
-                    image: 'https://via.placeholder.com/300',
                 },
             ],
             currentPage: 0,

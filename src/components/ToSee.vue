@@ -161,67 +161,68 @@
 
 
 <script>
-import item1 from '@/assets/images/CategoryView/ToShop/kultura.jpeg';
-import item2 from '@/assets/images/CategoryView/ToShop/powerplant.jpeg';
-import item3 from '@/assets/images/CategoryView/ToShop/greenbelt.jpeg';
-import item4 from '@/assets/images/CategoryView/ToShop/balikbayan.jpeg';
-import item5 from '@/assets/images/CategoryView/ToShop/circuit.jpeg';
-import item6 from '@/assets/images/CategoryView/ToShop/century.jpeg';
-import item7 from '@/assets/images/CategoryView/ToShop/glorietta.jpeg';
-import item8 from '@/assets/images/CategoryView/ToShop/bangkal.jpeg';
+import item1 from '@/assets/images/CategoryView/ToSee/glorietta.jpeg';
+import item2 from '@/assets/images/CategoryView/ToSee/leon.jpeg';
+import item3 from '@/assets/images/CategoryView/ToSee/nicolas.jpeg';
+import item4 from '@/assets/images/CategoryView/ToSee/victory.jpeg';
+import item5 from '@/assets/images/CategoryView/ToSee/happy.jpeg';
+import item6 from '@/assets/images/CategoryView/ToSee/heritage.jpeg';
+import item7 from '@/assets/images/CategoryView/ToSee/eskinita.png';
+import item8 from '@/assets/images/CategoryView/ToSee/alto.png';
 
 export default {
     data() {
         return {
             items: [
                 {
-                    name: 'Makati Shop',
-                    description: "Immerse yourself in the rich tapestry of Filipino culture at Makati Shop. This boutique showcases an array of locally made products, including intricately woven textiles, handcrafted souvenirs, and Filipino-inspired fashion. Discover unique treasures that embody the spirit of the Philippines at Kultura.",
-                    category: 'Souvenirs/Gifts Shop',
+                    name: 'Glorietta',
+                    description: "Experience the ultimate shopping and entertainment extravaganza at Glorietta. This expansive retail complex boasts a diverse mix of shops, dining options, and entertainment facilities. Whether you're in search of fashion, gadgets, or indulgent treats, Glorietta is the go-to destination for an exciting day out.",
+                    category: 'Mall',
                     image: item1,
                 },
                 {
-                    name: 'Powerplant Mall',
-                    description: "Experience luxury shopping and fine dining at Powerplant Mall. This upscale shopping center houses a curated selection of renowned international and local brands, as well as a variety of dining options. Enjoy a premium shopping experience in the heart of Makati at Powerplant Mall.",
-                    category: 'Shopping Mall',
+                    name: 'Leon Gallery Fine Art',
+                    description: "Delve into the rich heritage of Philippine art at Leon Gallery Fine Art. With an impressive collection of historical and contemporary masterpieces, this gallery provides a glimpse into the cultural tapestry of the Philippines. Admire the artistic expression of generations of Filipino artists and immerse yourself in the country's artistic journey.",
+                    category: 'Art Gallery',
                     image: item2,
                 },
                 {
-                    name: 'Greenbelt Mall',
-                    description: "Explore a world of high-end shopping and dining at Greenbelt Mall. This iconic lifestyle hub offers an elegant mix of luxury boutiques, designer brands, and award-winning restaurants. With its lush gardens and serene ambiance, Greenbelt Mall is a haven for shoppers and diners alike.",
-                    category: 'Shopping Mall',
+                    name: 'Galleria Nicolas',
+                    description: 'Discover hidden gems and budget-friendly finds at Bangkal Thrift Market. This bustling market is a treasure trove of pre-loved items, antiques, vintage clothing, and unique collectibles. Get ready to embark on a delightful treasure hunt at Bangkal Thrift Market.',
+                    category: 'Art Gallery',
                     image: item3,
                 },
                 {
-                    name: 'Balikbayan Handicrafts',
-                    description: "Get ready for an immersive and thrilling experience at Zeria, Makati's premier escape room destination. Gather your friends, family, or colleagues and put your problem-solving skills to the test in a series of mind-bending puzzles and challenges. Each escape room presents a unique storyline, making Zeria an ideal place for team building, bonding, or simply having a blast with your loved ones.",
-                    category: 'Souvenirs/Gifts Shop',
+                    name: 'Victory Makati',
+                    description: "Explore the realm of visual storytelling at Victory Makati. Immerse yourself in powerful images that tell stories of the city and its people at Victory Makati.",
+                    category: 'Church',
                     image: item4,
                 },
                 {
-                    name: 'Circuit Makati',
-                    description: "Discover a vibrant lifestyle destination at Circuit Makati. This dynamic entertainment and retail complex offer a mix of shops, restaurants, and recreational facilities. From retail therapy to dining and entertainment, Circuit Makati promises a one-stop destination for leisure and enjoyment.",
-                    category: 'Shopping Mall',
+                    name: 'The Happy Gallery, Inc.',
+                    description: "Experience joy and creativity through a diverse collection of art at The Happy Gallery, Inc. Showcasing a blend of paintings, sculptures, and multimedia artworks, this gallery celebrates the beauty of life and the power of imagination. Step into a realm of happiness and inspiration as you explore the artistry of renowned and up-and-coming artists.",
+                    category: 'Art Gallery',
                     image: item5,
                 },
                 {
-                    name: 'Century Mall',
-                    description: "Uncover a delightful shopping experience at Century Mall. This modern retail destination features an array of boutiques and specialty stores, catering to a diverse range of tastes and preferences. Whether you're hunting for fashion pieces or unique finds, Century Mall has something to suit every shopper.",
-                    category: 'Shopping Mall',
+                    name: 'Heritage Art Center',
+                    description: "Celebrate the beauty of Philippine heritage at Heritage Art Center. This cultural haven features an array of traditional artworks, crafts, and artifacts that showcase the country's diverse cultural roots. From intricate tribal crafts to Filipino folk art, this center is a treasure trove of historical and cultural significance.",
+                    category: 'Art Gallery',
                     image: item6,
                 },
                 {
-                    name: 'Glorietta',
-                    description: "Experience the ultimate shopping and entertainment extravaganza at Glorietta. This expansive retail complex boasts a diverse mix of shops, dining options, and entertainment facilities. Whether you're in search of fashion, gadgets, or indulgent treats, Glorietta is the go-to destination for an exciting day out.",
-                    category: 'Shopping Mall',
+                    name: 'Eskinita Art Gallery',
+                    description: "Experience the vibrant and eclectic spirit of Filipino urban art at Eskinita Art Gallery. Celebrating street art and graffiti culture, this gallery showcases works that reflect the dynamic urban landscape of the Philippines. Get inspired by the bold and colorful expressions of Filipino street artists at Eskinita Art Gallery.",
+                    category: 'Art Gallery',
                     image: item7,
                 },
                 {
-                    name: 'Bangkal Thrift Market',
-                    description: 'Discover hidden gems and budget-friendly finds at Bangkal Thrift Market. This bustling market is a treasure trove of pre-loved items, antiques, vintage clothing, and unique collectibles. Get ready to embark on a delightful treasure hunt at Bangkal Thrift Market.',
-                    category: 'Thrift Market',
+                    name: 'Alto Mondo Corp.',
+                    description: "Journey into the world of contemporary art at Altro Mondo Corp. This gallery showcases a diverse range of contemporary works, from paintings and sculptures to mixed-media art. Immerse yourself in the artistry of talented contemporary artists from the Philippines and around the globe at Altro Mondo Corp.",
+                    category: 'Art Gallery',
                     image: item8,
                 },
+
             ],
             currentPage: 0,
             pageSize: 8,

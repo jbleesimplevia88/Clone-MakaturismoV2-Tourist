@@ -7,15 +7,14 @@
             <img class="w-full" src="@/assets/images/CategoryView/ToDo/ToDo.jpeg" alt="" />
             <div class="absolute top-20 z-[1]">
                 <p class="text-[#102E61] sm:text-4xl font-bold bg-white p-5 pl-7 pr-7 rounded-r-xl">
-                    WHAT TO DO
+                    WHERE TO SHOP
                 </p>
             </div>
             <div
                 class="relative sm:absolute inset-0 sm:top-56 md:top-80 flex text-center lg:text-left justify-center items-center z-[1]">
-                <p class="text-[12px] sm:text-sm md:text-xl lg:text-xl text-wrap text-white">
-                    Makati is a cosmopolitan city that offers a variety of activities that people of all ages
-                    can enjoy.<br />Whether you love to stay indoors or outdoors, day or night, the city
-                    surely has something to offer.
+                <p class="text-[12px] sm:text-sm md:text-xl lg:text-xl text-wrap md:w-[80%] text-white">
+                    Being known for its shopping centers, Makati is a fun place to shop. From thrift stores to luxury
+                    shops, you can find something to buy for your friends or family.
                 </p>
             </div>
         </div>

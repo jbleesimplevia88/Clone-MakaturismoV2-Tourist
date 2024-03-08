@@ -27,11 +27,22 @@ const router = createRouter({
       component: TopPlace
     },
     {
-      path: '/todo',
-      name: 'todo',
-      component: () => import('../views/GuestView.vue')
+      path: '/category',
+      name: 'category',
+      component: () => import('../views/CategoryView.vue'),
+      children: [
+        {
+          path: 'do',
+          name: 'do',
+          component: () => import('../components/ToDo.vue')
+        },
+        {
+          path: 'shop',
+          name: 'shop',
+          component: () => import('../components/ToShop.vue')
+        }
+      ]
     }
-    
   ]
 })
 

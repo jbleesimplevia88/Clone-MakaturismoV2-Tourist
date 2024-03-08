@@ -45,6 +45,11 @@ const router = createRouter({
           path: 'see',
           name: 'see',
           component: () => import('../components/ToSee.vue')
+        },
+        {
+          path: 'eat',
+          name: 'eat',
+          component: () => import('../components/ToEat.vue')
         }
       ]
     }

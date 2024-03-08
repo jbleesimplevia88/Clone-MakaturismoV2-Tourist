@@ -50,6 +50,11 @@ const router = createRouter({
           path: 'eat',
           name: 'eat',
           component: () => import('../components/ToEat.vue')
+        },
+        {
+          path: 'stay',
+          name: 'stay',
+          component: () => import('../components/ToStay.vue')
         }
       ]
     }

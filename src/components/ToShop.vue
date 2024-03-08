@@ -7,7 +7,7 @@
             <img class="w-full" src="@/assets/images/GuestView/ToDo/ToDo.jpeg" alt="" />
             <div class="absolute top-20 z-[1]">
                 <p class="text-[#102E61] sm:text-4xl font-bold bg-white p-5 pl-7 pr-7 rounded-r-xl">
-                    WHAT TO DO
+                    WHERE TO SHOP
                 </p>
             </div>
             <div

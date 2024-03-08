@@ -55,6 +55,11 @@ const router = createRouter({
           path: 'stay',
           name: 'stay',
           component: () => import('../components/ToStay.vue')
+        },
+        {
+          path: 'tour',
+          name: 'tour',
+          component: () => import('../components/ToTour.vue')
         }
       ]
     }

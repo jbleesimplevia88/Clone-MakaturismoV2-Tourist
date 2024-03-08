@@ -90,7 +90,11 @@
                     class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
                     <div class="relative">
                         <img class="w-full h-[250px] object-cover rounded-t" :src="item.image" alt="">
-                        <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{ item.name }}
+                        <div
+                            class="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-[#102E61] to-transparent">
+                        </div>
+                        <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{
+                            item.name }}
                         </p>
                         <p class="absolute bottom-2 left-2 text-white text-xs">{{ item.category }}</p>
                     </div>
@@ -169,15 +173,15 @@ export default {
         return {
             items: [
                 {
-                    name: 'Omniverse Museum',
-                    description: "Discover a fusion of art and technology at the Omniverse Museum in Makati. Step into a world of interactive exhibits, mind-bending installations, and awe-inspiring virtual reality experiences. This unique museum promises a captivating journey through the realms of creativity and innovation. Whether you're an art enthusiast or a tech-savvy explorer, the Omniverse Museum is a must-visit destination for an extraordinary adventure.",
-                    category: 'Museum',
+                    name: 'Makati Shop',
+                    description: "Immerse yourself in the rich tapestry of Filipino culture at Makati Shop. This boutique showcases an array of locally made products, including intricately woven textiles, handcrafted souvenirs, and Filipino-inspired fashion. Discover unique treasures that embody the spirit of the Philippines at Kultura.",
+                    category: 'Souvenirs/Gifts Shop',
                     image: item1,
                 },
                 {
-                    name: 'Hop-On, Hop-Off Tour',
-                    description: "Embark on a convenient and flexible sightseeing adventure with the Hop-On, Hop-Off Tour in Makati. Climb aboard an open-top double-decker bus and enjoy panoramic views as you explore the city's iconic landmarks and vibrant neighborhoods. Hop off at any stop that catches your interest, and hop back on when you're ready to move on to the next exciting destination. This tour offers the freedom to create your itinerary and make the most of your time in Makati.",
-                    category: 'Sightseeing Tour',
+                    name: 'Powerplant Mall',
+                    description: "Experience luxury shopping and fine dining at Powerplant Mall. This upscale shopping center houses a curated selection of renowned international and local brands, as well as a variety of dining options. Enjoy a premium shopping experience in the heart of Makati at Powerplant Mall.",
+                    category: 'Shopping Mall',
                     image: item2,
                 },
                 {

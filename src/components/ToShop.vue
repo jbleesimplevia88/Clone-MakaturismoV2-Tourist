@@ -4,7 +4,7 @@
             <div
                 style="position: absolute; top: 0; left: 0; height: 101%; width: 100%; background: linear-gradient(to bottom, transparent, #102E61 85%, #102E61 50%);">
             </div>
-            <img class="w-full" src="@/assets/images/GuestView/ToDo/ToDo.jpeg" alt="" />
+            <img class="w-full" src="@/assets/images/CategoryView/ToDo/ToDo.jpeg" alt="" />
             <div class="absolute top-20 z-[1]">
                 <p class="text-[#102E61] sm:text-4xl font-bold bg-white p-5 pl-7 pr-7 rounded-r-xl">
                     WHERE TO SHOP
@@ -12,10 +12,9 @@
             </div>
             <div
                 class="relative sm:absolute inset-0 sm:top-56 md:top-80 flex text-center lg:text-left justify-center items-center z-[1]">
-                <p class="text-[12px] sm:text-sm md:text-xl lg:text-xl text-wrap text-white">
-                    Makati is a cosmopolitan city that offers a variety of activities that people of all ages
-                    can enjoy.<br />Whether you love to stay indoors or outdoors, day or night, the city
-                    surely has something to offer.
+                <p class="text-[12px] sm:text-sm md:text-xl lg:text-xl text-wrap md:w-[80%] text-white">
+                    Being known for its shopping centers, Makati is a fun place to shop. From thrift stores to luxury
+                    shops, you can find something to buy for your friends or family.
                 </p>
             </div>
         </div>
@@ -156,14 +155,14 @@
 
 
 <script>
-import item1 from '@/assets/images/GuestView/ToDo/omni.jpg';
-import item2 from '@/assets/images/GuestView/ToDo/hop.jpg';
-import item3 from '@/assets/images/GuestView/ToDo/zitro.jpg';
-import item4 from '@/assets/images/GuestView/ToDo/zeria.jpg';
-import item5 from '@/assets/images/GuestView/ToDo/two.jpg';
-import item6 from '@/assets/images/GuestView/ToDo/white.png';
-import item7 from '@/assets/images/GuestView/ToDo/urban.jpg';
-import item8 from '@/assets/images/GuestView/ToDo/touch.png';
+import item1 from '@/assets/images/CategoryView/ToDo/omni.jpg';
+import item2 from '@/assets/images/CategoryView/ToDo/hop.jpg';
+import item3 from '@/assets/images/CategoryView/ToDo/zitro.jpg';
+import item4 from '@/assets/images/CategoryView/ToDo/zeria.jpg';
+import item5 from '@/assets/images/CategoryView/ToDo/two.jpg';
+import item6 from '@/assets/images/CategoryView/ToDo/white.png';
+import item7 from '@/assets/images/CategoryView/ToDo/urban.jpg';
+import item8 from '@/assets/images/CategoryView/ToDo/touch.png';
 
 export default {
     data() {

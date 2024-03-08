@@ -160,13 +160,13 @@
 
 <script>
 import item1 from '@/assets/images/CategoryView/ToShop/kultura.jpeg';
-import item2 from '@/assets/images/CategoryView/ToDo/hop.jpg';
-import item3 from '@/assets/images/CategoryView/ToDo/zitro.jpg';
-import item4 from '@/assets/images/CategoryView/ToDo/zeria.jpg';
-import item5 from '@/assets/images/CategoryView/ToDo/two.jpg';
-import item6 from '@/assets/images/CategoryView/ToDo/white.png';
-import item7 from '@/assets/images/CategoryView/ToDo/urban.jpg';
-import item8 from '@/assets/images/CategoryView/ToDo/touch.png';
+import item2 from '@/assets/images/CategoryView/ToShop/powerplant.jpeg';
+import item3 from '@/assets/images/CategoryView/ToShop/greenbelt.jpeg';
+import item4 from '@/assets/images/CategoryView/ToShop/balikbayan.jpeg';
+import item5 from '@/assets/images/CategoryView/ToShop/circuit.jpeg';
+import item6 from '@/assets/images/CategoryView/ToShop/century.jpeg';
+import item7 from '@/assets/images/CategoryView/ToShop/glorietta.jpeg';
+import item8 from '@/assets/images/CategoryView/ToShop/bangkal.jpeg';
 
 export default {
     data() {

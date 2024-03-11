@@ -12,11 +12,6 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/login',
-      name: 'login',
-      component: () => import('../views/LoginPage.vue')
-    },
-    {
       path: '/calendar',
       name: 'calendar',
       component: CalendarModal
@@ -27,11 +22,42 @@ const router = createRouter({
       component: TopPlace
     },
     {
-      path: '/todo',
-      name: 'todo',
-      component: () => import('../views/GuestView.vue')
+      path: '/category',
+      name: 'category',
+      component: () => import('../views/CategoryView.vue'),
+      children: [
+        {
+          path: 'do',
+          name: 'do',
+          component: () => import('../components/ToDo.vue')
+        },
+        {
+          path: 'shop',
+          name: 'shop',
+          component: () => import('../components/ToShop.vue')
+        },
+        {
+          path: 'see',
+          name: 'see',
+          component: () => import('../components/ToSee.vue')
+        },
+        {
+          path: 'eat',
+          name: 'eat',
+          component: () => import('../components/ToEat.vue')
+        },
+        {
+          path: 'stay',
+          name: 'stay',
+          component: () => import('../components/ToStay.vue')
+        },
+        {
+          path: 'tour',
+          name: 'tour',
+          component: () => import('../components/ToTour.vue')
+        }
+      ]
     }
-    
   ]
 })
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="lg:absolute fixed inset-x-0 bottom-0 flex items-end justify-center lg:m-20 lg:mb-10 space-x-6 text-black bg-white lg:rounded-lg"
+    <div class="lg:absolute fixed inset-x-0 bottom-0 flex items-end justify-center lg:abssolute lg:m-20 lg:mb-10 space-x-6 text-black bg-white lg:rounded-lg"
         style="z-index: 2;">
         <div v-for="(item, index) in locations" :key="index"
             class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card"

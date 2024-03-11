@@ -40,6 +40,26 @@ const router = createRouter({
           path: 'shop',
           name: 'shop',
           component: () => import('../components/ToShop.vue')
+        },
+        {
+          path: 'see',
+          name: 'see',
+          component: () => import('../components/ToSee.vue')
+        },
+        {
+          path: 'eat',
+          name: 'eat',
+          component: () => import('../components/ToEat.vue')
+        },
+        {
+          path: 'stay',
+          name: 'stay',
+          component: () => import('../components/ToStay.vue')
+        },
+        {
+          path: 'tour',
+          name: 'tour',
+          component: () => import('../components/ToTour.vue')
         }
       ]
     }

@@ -1,19 +1,14 @@
 <template>
-    <div class="lg:absolute fixed inset-x-0 bottom-0 flex items-end justify-center lg:abssolute lg:m-20 lg:mb-10 space-x-6 text-black bg-white lg:rounded-lg"
-        style="z-index: 2;">
-        <div v-for="(item, index) in locations" :key="index"
-            class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card"
-            :class="`location-card ${item.attrib}`" style="margin: 0; width: 100%; height: auto;">
-            <RouterLink :to="item.link">
-                <!-- Adjust height as needed -->
-                <img :src="item.imgSrc" :alt="item.alt"
-                    class="w-[50%] lg:h-[30px] lg:w-[30px] h-auto lg:px-[1.5rem] lg:pt-5 lh-auto p-1 mx-auto">
-                <!-- Adjust height as needed -->
-                <h6 class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{ item.mobile }}
-                </h6>
-                <h6 class="text-center my-3 font-bold text-1xl lg:my-0 lg:font-bold lg:text-xl lg:block hidden">{{
-            item.title }}</h6>
-            </RouterLink>
+    <div class="" :class="containerClasses" style="z-index: 2;">
+        <div v-for="(item, index) in locations" :key="index" :class="`location-card ${cardClasses, item.attrib}`"
+            style="margin: 0; width: 100%; height: auto;">
+            <div :class="inlineClasses" class="inline-block">
+                <img :src="item.imgSrc" :alt="item.alt" class="imgClasses inline-block">
+                <h6 :class="hideClasses">{{ item.mobile }}</h6>
+                <h6 :class="mobileClasses">{{ item.mobile }}</h6>
+            </div>
+
+            <h6 :class="webClasses">{{ item.title }}</h6>
         </div>
     </div>
 </template>
@@ -25,44 +20,80 @@ import house from '@/assets/images/MainNav/house.png';
 import food from '@/assets/images/MainNav/food.png';
 import grocery from '@/assets/images/MainNav/grocery-store.png';
 import locationImg from '@/assets/images/MainNav/location.png';
-// Import Swiper core and required modules
 
 export default {
     data() {
         return {
             locations: [
-                { imgSrc: run, alt: 'location1', attrib: 'hover:rounded-l-lg', title: 'What to DO', mobile: 'Do', link: 'do' },
+                { imgSrc: run, alt: 'location1', attrib: 'lg:hover:rounded-l-lg', title: 'What to DO', mobile: 'Do', link: 'do' },
                 { imgSrc: grocery, alt: 'location2', attrib: '', title: 'Where to SHOP', mobile: 'Shop', link: 'shop' },
                 { imgSrc: binoculars, alt: 'location3', attrib: '', title: 'What to SEE', mobile: 'See', link: 'see' },
                 { imgSrc: food, alt: 'location4', attrib: '', title: 'Where to EAT', mobile: 'Eat', link: 'eat' },
                 { imgSrc: house, alt: 'location5', attrib: '', title: 'Where to STAY', mobile: 'Stay', link: 'stay' },
-                { imgSrc: locationImg, alt: 'location6', attrib: 'hover:rounded-r-lg', title: 'Make TOUR', mobile: 'Tour', link: 'tour' }
-                // Add more locations as needed
+                { imgSrc: locationImg, alt: 'location6', attrib: 'lg:hover:rounded-r-lg', title: 'Make TOUR', mobile: 'Tour', link: 'tour' }
             ],
-            isMobile: window.innerWidth <= 768, // Adjust the breakpoint as needed
+            currentUrl: window.location.pathname
         };
     },
-    components: {
+    computed: {
+        containerClasses() {
+            return {
+                'lg:absolute fixed inset-x-0 bottom-0 flex items-end justify-center lg:m-20 lg:mb-10 space-x-6 text-black bg-white lg:rounded-lg': true,
+                'lg:sticky lg:top-0 lg:p': this.currentUrl.startsWith('/category')
+            };
+        },
+        cardClasses() {
+            return {
+                'm-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card': true,
+                'inline-block': this.currentUrl.startsWith('/category')
+            };
+        },
+        inlineClasses() {
+            return {
+                'hidden': true,
+                'inline-block': this.currentUrl.startsWith('/category')
+            };
+        },
+        imgClasses() {
+            return {
+                'w-[50%] lg:h-[30px] lg:w-[30px] h-auto lg:px-[1.5rem] lg:pt-5 lh-auto p-0 mx-auto': true,
+                'lg:sticky lg:top-0': this.currentUrl.startsWith('/category'),
+            };
+        },
+        mobileClasses() {
+            return {
+                'text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden': true,
+                'block lg:block': this.currentUrl.startsWith('/category')
+            };
 
+        },
+        hideClasses() {
+            return {
+                'text-center my-3 font-bold text-1xl lg:my-0 lg:font-bold lg:text-xl lg:block hidden': true,
+                ' inline-block': this.currentUrl.startsWith('/category')
+            };
+
+        },
+        webClasses() {
+            return {
+                'text-center my-3 font-bold text-1xl lg:my-0 lg:font-bold lg:text-xl lg:block hidden': true,
+                'lg:hidden': this.currentUrl.startsWith('/category')
+            };
+        }
     },
     mounted() {
-        // Update isMobile on window resize
         window.addEventListener('resize', this.updateIsMobile);
     },
     beforeUnmount() {
-        // Remove event listener on component destroy
         window.removeEventListener('resize', this.updateIsMobile);
     },
     methods: {
         updateIsMobile() {
-            this.isMobile = window.innerWidth <= 768; // Adjust the breakpoint as needed
+            this.isMobile = window.innerWidth <= 768;
         },
     },
 };
-
 </script>
-
-
 
 <style scoped>
 .swiper-container {
@@ -82,7 +113,6 @@ export default {
 
 .location-card:hover {
     background-color: #008EE4;
-    /* Set your desired background color on hover */
     transition: filter 0.3s ease;
 }
 
@@ -96,15 +126,12 @@ export default {
     font-weight: bold;
     font-size: 14px;
     color: black;
-    /* Set your desired text color */
 }
 
 .location-card:hover h6 {
     color: white;
-    /* Set your desired text color on hover */
     transition: filter 0.3s ease;
 }
-
 
 .m-location-card {
     width: auto;
@@ -120,7 +147,6 @@ export default {
 
 .m-location-card:hover {
     background-color: #008EE4;
-    /* Set your desired background color on hover */
     transition: filter 0.3s ease;
 }
 
@@ -132,18 +158,14 @@ export default {
 .m-location-card h6 {
     font-size: 12px;
     color: black;
-    /* Set your desired text color */
 }
 
 .m-location-card:hover h6 {
     color: white;
-    /* Set your desired text color on hover */
     transition: filter 0.3s ease;
 }
 
 .z-neg-1 {
     z-index: -1;
 }
-
-/* Add any additional styles if needed */
 </style>

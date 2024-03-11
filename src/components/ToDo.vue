@@ -4,9 +4,10 @@
             <div
                 style="position: absolute; top: 0; left: 0; height: 101%; width: 100%; background: linear-gradient(to bottom, transparent, #102E61 85%, #102E61 50%);">
             </div>
-            <img class="w-full" src="@/assets/images/CategoryView/ToDo/ToDo.jpeg" alt="" />
-            <div class="absolute top-20 z-[1]">
-                <p class="text-[#102E61] sm:text-4xl font-bold bg-white p-5 pl-7 pr-7 rounded-r-xl">
+            <img class="w-full h-[200px] md:h-[700px]" src="@/assets/images/CategoryView/ToDo/ToDo.jpeg" alt="" />
+            <div class="absolute top-5 md:top-20 z-[1]">
+                <p
+                    class="text-[#102E61] text-sm sm:text-4xl font-bold bg-white p-3 pl-4 pr-4 md:p-5 md:pl-7 md:pr-7 rounded-r-xl">
                     WHAT TO DO
                 </p>
             </div>
@@ -91,6 +92,9 @@
                     class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
                     <div class="relative">
                         <img class="w-full h-[250px] object-cover rounded-t" :src="item.image" alt="">
+                        <div
+                            class="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-[#102E61] to-transparent">
+                        </div>
                         <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{ item.name }}
                         </p>
                         <p class="absolute bottom-2 left-2 text-white text-xs">{{ item.category }}</p>

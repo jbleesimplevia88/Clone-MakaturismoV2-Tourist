@@ -4,9 +4,10 @@
             <div
                 style="position: absolute; top: 0; left: 0; height: 101%; width: 100%; background: linear-gradient(to bottom, transparent, #102E61 85%, #102E61 50%);">
             </div>
-            <img class="w-full" src="@/assets/images/CategoryView/ToDo/ToDo.jpeg" alt="" />
-            <div class="absolute top-20 z-[1]">
-                <p class="text-[#102E61] sm:text-4xl font-bold bg-white p-5 pl-7 pr-7 rounded-r-xl">
+            <img class="w-full h-[200px] md:h-[700px]" src="@/assets/images/CategoryView/ToShop/banner.jpeg" alt="" />
+            <div class="absolute top-5 md:top-20 z-[1]">
+                <p
+                    class="text-[#102E61] text-sm sm:text-4xl font-bold bg-white p-3 pl-4 pr-4 md:p-5 md:pl-7 md:pr-7 rounded-r-xl">
                     WHERE TO SHOP
                 </p>
             </div>
@@ -90,7 +91,11 @@
                     class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
                     <div class="relative">
                         <img class="w-full h-[250px] object-cover rounded-t" :src="item.image" alt="">
-                        <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{ item.name }}
+                        <div
+                            class="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-[#102E61] to-transparent">
+                        </div>
+                        <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{
+                            item.name }}
                         </p>
                         <p class="absolute bottom-2 left-2 text-white text-xs">{{ item.category }}</p>
                     </div>
@@ -155,78 +160,66 @@
 
 
 <script>
-import item1 from '@/assets/images/CategoryView/ToDo/omni.jpg';
-import item2 from '@/assets/images/CategoryView/ToDo/hop.jpg';
-import item3 from '@/assets/images/CategoryView/ToDo/zitro.jpg';
-import item4 from '@/assets/images/CategoryView/ToDo/zeria.jpg';
-import item5 from '@/assets/images/CategoryView/ToDo/two.jpg';
-import item6 from '@/assets/images/CategoryView/ToDo/white.png';
-import item7 from '@/assets/images/CategoryView/ToDo/urban.jpg';
-import item8 from '@/assets/images/CategoryView/ToDo/touch.png';
+import item1 from '@/assets/images/CategoryView/ToShop/kultura.jpeg';
+import item2 from '@/assets/images/CategoryView/ToShop/powerplant.jpeg';
+import item3 from '@/assets/images/CategoryView/ToShop/greenbelt.jpeg';
+import item4 from '@/assets/images/CategoryView/ToShop/balikbayan.jpeg';
+import item5 from '@/assets/images/CategoryView/ToShop/circuit.jpeg';
+import item6 from '@/assets/images/CategoryView/ToShop/century.jpeg';
+import item7 from '@/assets/images/CategoryView/ToShop/glorietta.jpeg';
+import item8 from '@/assets/images/CategoryView/ToShop/bangkal.jpeg';
 
 export default {
     data() {
         return {
             items: [
                 {
-                    name: 'Omniverse Museum',
-                    description: "Discover a fusion of art and technology at the Omniverse Museum in Makati. Step into a world of interactive exhibits, mind-bending installations, and awe-inspiring virtual reality experiences. This unique museum promises a captivating journey through the realms of creativity and innovation. Whether you're an art enthusiast or a tech-savvy explorer, the Omniverse Museum is a must-visit destination for an extraordinary adventure.",
-                    category: 'Museum',
+                    name: 'Makati Shop',
+                    description: "Immerse yourself in the rich tapestry of Filipino culture at Makati Shop. This boutique showcases an array of locally made products, including intricately woven textiles, handcrafted souvenirs, and Filipino-inspired fashion. Discover unique treasures that embody the spirit of the Philippines at Kultura.",
+                    category: 'Souvenirs/Gifts Shop',
                     image: item1,
                 },
                 {
-                    name: 'Hop-On, Hop-Off Tour',
-                    description: "Embark on a convenient and flexible sightseeing adventure with the Hop-On, Hop-Off Tour in Makati. Climb aboard an open-top double-decker bus and enjoy panoramic views as you explore the city's iconic landmarks and vibrant neighborhoods. Hop off at any stop that catches your interest, and hop back on when you're ready to move on to the next exciting destination. This tour offers the freedom to create your itinerary and make the most of your time in Makati.",
-                    category: 'Sightseeing Tour',
+                    name: 'Powerplant Mall',
+                    description: "Experience luxury shopping and fine dining at Powerplant Mall. This upscale shopping center houses a curated selection of renowned international and local brands, as well as a variety of dining options. Enjoy a premium shopping experience in the heart of Makati at Powerplant Mall.",
+                    category: 'Shopping Mall',
                     image: item2,
                 },
                 {
-                    name: 'Zitro Massage and Spa',
-                    description: "Indulge in ultimate relaxation and rejuvenation at Zitro Massage and Spa. This serene oasis offers a variety of therapeutic treatments, from traditional massages to modern wellness therapies. Surrender to the skilled hands of expert therapists and let your stress melt away. With a tranquil ambiance and a range of pampering options, Zitro Massage and Spa provides the perfect escape from the bustling city life.",
-                    category: 'Spa and Wellness',
+                    name: 'Greenbelt Mall',
+                    description: "Explore a world of high-end shopping and dining at Greenbelt Mall. This iconic lifestyle hub offers an elegant mix of luxury boutiques, designer brands, and award-winning restaurants. With its lush gardens and serene ambiance, Greenbelt Mall is a haven for shoppers and diners alike.",
+                    category: 'Shopping Mall',
                     image: item3,
                 },
                 {
-                    name: 'Zeria',
+                    name: 'Balikbayan Handicrafts',
                     description: "Get ready for an immersive and thrilling experience at Zeria, Makati's premier escape room destination. Gather your friends, family, or colleagues and put your problem-solving skills to the test in a series of mind-bending puzzles and challenges. Each escape room presents a unique storyline, making Zeria an ideal place for team building, bonding, or simply having a blast with your loved ones.",
-                    category: 'Entertainment/Gaming',
+                    category: 'Souvenirs/Gifts Shop',
                     image: item4,
                 },
                 {
-                    name: 'Two Seasons Spa',
-                    description: "Treat yourself to a tranquil escape at Two Seasons Spa. With a selection of massages, facials, and body treatments, this spa offers a rejuvenating experience that caters to your specific needs. Let the stress fade away as you unwind in the serene atmosphere of Two Seasons Spa, leaving you feeling invigorated and revitalized.",
-                    category: 'Spa and Wellness',
+                    name: 'Circuit Makati',
+                    description: "Discover a vibrant lifestyle destination at Circuit Makati. This dynamic entertainment and retail complex offer a mix of shops, restaurants, and recreational facilities. From retail therapy to dining and entertainment, Circuit Makati promises a one-stop destination for leisure and enjoyment.",
+                    category: 'Shopping Mall',
                     image: item5,
                 },
                 {
-                    name: 'White Palace Spa',
-                    description: "Experience pure bliss and luxury at White Palace Spa. Indulge in their extensive menu of spa services, including invigorating massages, facials, and body treatments. Step into an ambiance of serenity and let the experienced therapists take care of your well-being. White Palace Spa offers a sanctuary of tranquility, making it the perfect escape from the hustle and bustle of city life.",
-                    category: 'Spa and Wellness',
+                    name: 'Century Mall',
+                    description: "Uncover a delightful shopping experience at Century Mall. This modern retail destination features an array of boutiques and specialty stores, catering to a diverse range of tastes and preferences. Whether you're hunting for fashion pieces or unique finds, Century Mall has something to suit every shopper.",
+                    category: 'Shopping Mall',
                     image: item6,
                 },
                 {
-                    name: 'Urband Break Wellness',
-                    description: 'Escape the daily grind and discover a holistic approach to wellness at Urban Break Wellness. From yoga and meditation classes to natural healing therapies, this wellness center is dedicated to promoting mind-body harmony. Reconnect with your inner self and find rejuvenation amidst the urban landscape of Makati at Urban Break Wellness.',
-                    category: 'Spa and Wellness',
+                    name: 'Glorietta',
+                    description: "Experience the ultimate shopping and entertainment extravaganza at Glorietta. This expansive retail complex boasts a diverse mix of shops, dining options, and entertainment facilities. Whether you're in search of fashion, gadgets, or indulgent treats, Glorietta is the go-to destination for an exciting day out.",
+                    category: 'Shopping Mall',
                     image: item7,
                 },
                 {
-                    name: 'Touch of Hands Spa',
-                    description: 'Pamper yourself with a blissful retreat at Touch of Hands Spa. With a range of massage therapies and spa treatments, this haven of relaxation will leave you feeling refreshed and renewed. Surrender to the healing touch of their skilled therapists and experience the ultimate pampering session at Touch of Hands Spa.',
-                    category: 'Spa and Wellness',
+                    name: 'Bangkal Thrift Market',
+                    description: 'Discover hidden gems and budget-friendly finds at Bangkal Thrift Market. This bustling market is a treasure trove of pre-loved items, antiques, vintage clothing, and unique collectibles. Get ready to embark on a delightful treasure hunt at Bangkal Thrift Market.',
+                    category: 'Thrift Market',
                     image: item8,
-                },
-                {
-                    name: 'Product 9',
-                    description: 'Description of Product 9',
-                    category: 'Museum',
-                    image: 'https://via.placeholder.com/300',
-                },
-                {
-                    name: 'Product 10',
-                    description: 'Description of Product 10',
-                    category: 'Museum',
-                    image: 'https://via.placeholder.com/300',
                 },
             ],
             currentPage: 0,

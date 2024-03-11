@@ -4,16 +4,13 @@
         <div v-for="(item, index) in locations" :key="index"
             class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card"
             :class="`location-card ${item.attrib}`" style="margin: 0; width: 100%; height: auto;">
-            <RouterLink :to="item.link">
-                <!-- Adjust height as needed -->
-                <img :src="item.imgSrc" :alt="item.alt"
-                    class="w-[50%] lg:h-[30px] lg:w-[30px] h-auto lg:px-[1.5rem] lg:pt-5 lh-auto p-1 mx-auto">
-                <!-- Adjust height as needed -->
-                <h6 class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{ item.mobile }}
-                </h6>
-                <h6 class="text-center my-3 font-bold text-1xl lg:my-0 lg:font-bold lg:text-xl lg:block hidden">{{
+            <!-- Adjust height as needed -->
+            <img :src="item.imgSrc" :alt="item.alt"
+                class="w-[50%] lg:h-[30px] lg:w-[30px] h-auto lg:px-[1.5rem] lg:pt-5 lh-auto p-1 mx-auto">
+            <!-- Adjust height as needed -->
+            <h6 class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{ item.mobile }}</h6>
+            <h6 class="text-center my-3 font-bold text-1xl lg:my-0 lg:font-bold lg:text-xl lg:block hidden">{{
             item.title }}</h6>
-            </RouterLink>
         </div>
     </div>
 </template>
@@ -31,12 +28,12 @@ export default {
     data() {
         return {
             locations: [
-                { imgSrc: run, alt: 'location1', attrib: 'hover:rounded-l-lg', title: 'What to DO', mobile: 'Do', link: 'do' },
-                { imgSrc: grocery, alt: 'location2', attrib: '', title: 'Where to SHOP', mobile: 'Shop', link: 'shop' },
-                { imgSrc: binoculars, alt: 'location3', attrib: '', title: 'What to SEE', mobile: 'See', link: 'see' },
-                { imgSrc: food, alt: 'location4', attrib: '', title: 'Where to EAT', mobile: 'Eat', link: 'eat' },
-                { imgSrc: house, alt: 'location5', attrib: '', title: 'Where to STAY', mobile: 'Stay', link: 'stay' },
-                { imgSrc: locationImg, alt: 'location6', attrib: 'hover:rounded-r-lg', title: 'Make TOUR', mobile: 'Tour', link: 'tour' }
+                { imgSrc: run, alt: 'location1', attrib: 'hover:rounded-l-lg', title: 'What to DO', mobile: 'Do' },
+                { imgSrc: grocery, alt: 'location2', attrib: '', title: 'Where to SHOP', mobile: 'Shop' },
+                { imgSrc: binoculars, alt: 'location3', attrib: '', title: 'What to SEE', mobile: 'See' },
+                { imgSrc: food, alt: 'location4', attrib: '', title: 'Where to EAT', mobile: 'Eat' },
+                { imgSrc: house, alt: 'location5', attrib: '', title: 'Where to STAY', mobile: 'Stay' },
+                { imgSrc: locationImg, alt: 'location6', attrib: 'hover:rounded-r-lg', title: 'Make TOUR', mobile: 'Tour' }
                 // Add more locations as needed
             ],
             isMobile: window.innerWidth <= 768, // Adjust the breakpoint as needed

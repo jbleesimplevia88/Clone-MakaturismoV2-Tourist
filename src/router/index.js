@@ -12,11 +12,6 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/login',
-      name: 'login',
-      component: () => import('../views/LoginPage.vue')
-    },
-    {
       path: '/calendar',
       name: 'calendar',
       component: CalendarModal

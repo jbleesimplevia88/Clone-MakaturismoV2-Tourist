@@ -4,19 +4,19 @@
             <div
                 style="position: absolute; top: 0; left: 0; height: 101%; width: 100%; background: linear-gradient(to bottom, transparent, #102E61 85%, #102E61 50%);">
             </div>
-            <img class="w-full h-[200px] md:h-[700px]" src="@/assets/images/CategoryView/ToSee/banner.jpeg" alt="" />
+            <img class="w-full h-[200px] md:h-[700px]" src="@/assets/images/CategoryView/ToTour/banner.jpeg" alt="" />
             <div class="absolute top-5 md:top-20 z-[1]">
                 <p
                     class="text-[#102E61] text-sm sm:text-4xl font-bold bg-white p-3 pl-4 pr-4 md:p-5 md:pl-7 md:pr-7 rounded-r-xl">
-                    WHAT TO SEE
+                    MAKATOUR
                 </p>
             </div>
             <div
                 class="relative sm:absolute inset-0 sm:top-56 md:top-80 flex text-center lg:text-left justify-center items-center z-[1]">
                 <p class="text-[12px] sm:text-sm md:text-xl lg:text-xl text-wrap md:w-[80%] text-white">
-                    Makati city is a walkable art gallery that showcases interesting sculptures, statues, architectures,
-                    murals and many other art forms. It is not just something that the visitor can feast his/her eyes
-                    on, but it also tells the story of the city beyond skyscrapers.
+                    Join the Makati Free Walking Tours and marvel around the art pieces splattered across the city. It’s
+                    one of the best ways to explore the city as it beats the infamous traffic while giving your body a
+                    little exercise.
                 </p>
             </div>
         </div>
@@ -87,7 +87,7 @@
                 </div>
                 <!-- End of Filter dropdown -->
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 <div v-for="(item, index) in paginatedItems" :key="index"
                     class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
                     <div class="relative">
@@ -95,29 +95,26 @@
                         <div
                             class="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-[#102E61] to-transparent">
                         </div>
-                        <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{
+                        <p class="absolute bottom-5 pl-2 pr-2 text-white text-lg xl:text-xl font-semibold">{{
                             item.name }}
                         </p>
-                        <p class="absolute bottom-2 left-2 text-white text-xs">{{ item.category }}</p>
+                        <p class="absolute bottom-2 pl-2 pr-2 text-white text-xs">{{ item.category }}</p>
                     </div>
                     <div class="p-2 w-full">
                         <p class="text-white text-xs line-clamp-3">{{ item.description }}</p>
                     </div>
                     <div class="p-1 flex justify-end items-center">
-                        <router-link :to="item.link">
-
-                            <button @click="seeMore(item)"
-                                class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
-                                <span>See More</span>
-                                <span class="ml-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                                    </svg>
-                                </span>
-                            </button>
-                        </router-link>
+                        <button @click="seeMore(item)"
+                            class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
+                            <span>See More</span>
+                            <span class="ml-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                </svg>
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -164,79 +161,57 @@
 
 
 <script>
-import item1 from '@/assets/images/CategoryView/ToSee/glorietta.jpeg';
-import item2 from '@/assets/images/CategoryView/ToSee/leon.jpeg';
-import item3 from '@/assets/images/CategoryView/ToSee/nicolas.jpeg';
-import item4 from '@/assets/images/CategoryView/ToSee/victory.jpeg';
-import item5 from '@/assets/images/CategoryView/ToSee/happy.jpeg';
-import item6 from '@/assets/images/CategoryView/ToSee/heritage.jpeg';
-import item7 from '@/assets/images/CategoryView/ToSee/eskinita.png';
-import item8 from '@/assets/images/CategoryView/ToSee/alto.png';
+import item1 from '@/assets/images/CategoryView/ToTour/legazpi.png';
+import item2 from '@/assets/images/CategoryView/ToTour/salcedo.jpeg';
+import item3 from '@/assets/images/CategoryView/ToTour/poblacion.jpeg';
+import item4 from '@/assets/images/CategoryView/ToTour/heritage.jpeg';
+import item5 from '@/assets/images/CategoryView/ToTour/central.jpeg';
+import item6 from '@/assets/images/CategoryView/ToTour/garden.jpeg';
+
 
 export default {
     data() {
         return {
             items: [
                 {
-                    name: 'Glorietta',
-                    description: "Experience the ultimate shopping and entertainment extravaganza at Glorietta. This expansive retail complex boasts a diverse mix of shops, dining options, and entertainment facilities. Whether you're in search of fashion, gadgets, or indulgent treats, Glorietta is the go-to destination for an exciting day out.",
-                    category: 'Mall',
+                    name: 'Walkway Tour with Legazpi Market',
+                    description: "Embark on a gastronomic journey and cultural immersion with the Walkway Tour featuring Legazpi Market. Explore the vibrant Legazpi Market, a popular weekend market offering a diverse selection of local products and mouthwatering treats. This guided tour will take you through a culinary adventure, introducing you to the rich flavors and aromas of Philippine cuisine.",
+                    category: 'Guided Tour',
                     image: item1,
-                    link: "/category/see/glorietta"
                 },
                 {
-                    name: 'Leon Gallery Fine Art',
-                    description: "Delve into the rich heritage of Philippine art at Leon Gallery Fine Art. With an impressive collection of historical and contemporary masterpieces, this gallery provides a glimpse into the cultural tapestry of the Philippines. Admire the artistic expression of generations of Filipino artists and immerse yourself in the country's artistic journey.",
-                    category: 'Art Gallery',
+                    name: 'Walkway Tour with Salcedo Market',
+                    description: "Experience the best of Salcedo Market through a captivating Walkway Tour. Wander through the bustling market stalls filled with fresh produce, artisanal goods, and delectable street food. Discover the local flavors and culinary delights that make Salcedo Market a must-visit destination for foodies and culture enthusiasts.",
+                    category: 'Guided Tour',
                     image: item2,
-                    link: ""
                 },
                 {
-                    name: 'Galleria Nicolas',
-                    description: 'Discover hidden gems and budget-friendly finds at Bangkal Thrift Market. This bustling market is a treasure trove of pre-loved items, antiques, vintage clothing, and unique collectibles. Get ready to embark on a delightful treasure hunt at Bangkal Thrift Market.',
-                    category: 'Art Gallery',
+                    name: "Poblacion Walk Tour",
+                    description: "Embark on an unforgettable adventure through the vibrant streets of Poblacion with our Poblacion Walk Tour. Immerse yourself in the bohemian atmosphere of Makati's hip and artistic neighborhood as you explore trendy cafes, bars, and galleries. Engage with the friendly locals, discover the local art scene, and indulge in diverse culinary delights. As the sun sets, experience the lively nightlife and dance the night away. Let the energy of Poblacion ignite your senses and leave you with cherished memories.",
+                    category: 'Guided Tour',
                     image: item3,
-                    link: ""
                 },
                 {
-                    name: 'Victory Makati',
-                    description: "Explore the realm of visual storytelling at Victory Makati. Immerse yourself in powerful images that tell stories of the city and its people at Victory Makati.",
-                    category: 'Church',
+                    name: "Poblacion Heritage Tour",
+                    description: "Travel back in time with our Poblacion Heritage Tour and unravel the historical treasures of Makati's oldest district. Explore well-preserved ancestral houses, iconic churches, and colonial landmarks that narrate the city's storied past. Walk along cobbled streets and immerse yourself in the nostalgic charm of bygone eras. Connect with the local community and gain insights into the traditions that have endured through generations. Discover the roots of Makati's cultural identity and witness the enduring legacy of Poblacion's history and heritage.",
+                    category: 'Guided Tour',
                     image: item4,
-                    link: ""
                 },
                 {
-                    name: 'The Happy Gallery, Inc.',
-                    description: "Experience joy and creativity through a diverse collection of art at The Happy Gallery, Inc. Showcasing a blend of paintings, sculptures, and multimedia artworks, this gallery celebrates the beauty of life and the power of imagination. Step into a realm of happiness and inspiration as you explore the artistry of renowned and up-and-coming artists.",
-                    category: 'Art Gallery',
+                    name: "Central Business District Tour",
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                    category: 'Guided Tour',
                     image: item5,
-                    link: ""
                 },
                 {
-                    name: 'Heritage Art Center',
-                    description: "Celebrate the beauty of Philippine heritage at Heritage Art Center. This cultural haven features an array of traditional artworks, crafts, and artifacts that showcase the country's diverse cultural roots. From intricate tribal crafts to Filipino folk art, this center is a treasure trove of historical and cultural significance.",
-                    category: 'Art Gallery',
+                    name: "The Garden Way of the Cross of St. Alphonsus Mary de Liguori Church Tour",
+                    description: "Discover the spiritual side of Makati with The Garden Way of the Cross of St. Alphonsus Mary de Liguori Church Tour. This unique tour takes you through the serene and contemplative garden, featuring life-sized sculptures depicting the Passion of Christ.",
+                    category: 'Guided Tour',
                     image: item6,
-                    link: ""
-                },
-                {
-                    name: 'Eskinita Art Gallery',
-                    description: "Experience the vibrant and eclectic spirit of Filipino urban art at Eskinita Art Gallery. Celebrating street art and graffiti culture, this gallery showcases works that reflect the dynamic urban landscape of the Philippines. Get inspired by the bold and colorful expressions of Filipino street artists at Eskinita Art Gallery.",
-                    category: 'Art Gallery',
-                    image: item7,
-                    link: ""
-                },
-                {
-                    name: 'Alto Mondo Corp.',
-                    description: "Journey into the world of contemporary art at Altro Mondo Corp. This gallery showcases a diverse range of contemporary works, from paintings and sculptures to mixed-media art. Immerse yourself in the artistry of talented contemporary artists from the Philippines and around the globe at Altro Mondo Corp.",
-                    category: 'Art Gallery',
-                    image: item8,
-                    link: ""
-                },
-
+                }
             ],
             currentPage: 0,
-            pageSize: 8,
+            pageSize: 6,
             showDropdown: false,
             categories: ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'],
             locations: ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'],

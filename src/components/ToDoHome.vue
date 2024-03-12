@@ -4,19 +4,19 @@
             <div
                 style="position: absolute; top: 0; left: 0; height: 101%; width: 100%; background: linear-gradient(to bottom, transparent, #102E61 85%, #102E61 50%);">
             </div>
-            <img class="w-full h-[200px] md:h-[700px]" src="@/assets/images/CategoryView/ToSee/banner.jpeg" alt="" />
+            <img class="w-full h-[200px] md:h-[700px]" src="@/assets/images/CategoryView/ToDo/ToDo.jpeg" alt="" />
             <div class="absolute top-5 md:top-20 z-[1]">
                 <p
                     class="text-[#102E61] text-sm sm:text-4xl font-bold bg-white p-3 pl-4 pr-4 md:p-5 md:pl-7 md:pr-7 rounded-r-xl">
-                    WHAT TO SEE
+                    WHAT TO DO
                 </p>
             </div>
             <div
                 class="relative sm:absolute inset-0 sm:top-56 md:top-80 flex text-center lg:text-left justify-center items-center z-[1]">
-                <p class="text-[12px] sm:text-sm md:text-xl lg:text-xl text-wrap md:w-[80%] text-white">
-                    Makati city is a walkable art gallery that showcases interesting sculptures, statues, architectures,
-                    murals and many other art forms. It is not just something that the visitor can feast his/her eyes
-                    on, but it also tells the story of the city beyond skyscrapers.
+                <p class="text-[12px] sm:text-sm md:text-xl lg:text-xl text-wrap text-white">
+                    Makati is a cosmopolitan city that offers a variety of activities that people of all ages
+                    can enjoy.<br />Whether you love to stay indoors or outdoors, day or night, the city
+                    surely has something to offer.
                 </p>
             </div>
         </div>
@@ -95,8 +95,7 @@
                         <div
                             class="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-[#102E61] to-transparent">
                         </div>
-                        <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{
-                            item.name }}
+                        <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{ item.name }}
                         </p>
                         <p class="absolute bottom-2 left-2 text-white text-xs">{{ item.category }}</p>
                     </div>
@@ -104,20 +103,17 @@
                         <p class="text-white text-xs line-clamp-3">{{ item.description }}</p>
                     </div>
                     <div class="p-1 flex justify-end items-center">
-                        <router-link :to="item.link">
-
-                            <button @click="seeMore(item)"
-                                class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
-                                <span>See More</span>
-                                <span class="ml-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                                    </svg>
-                                </span>
-                            </button>
-                        </router-link>
+                        <button @click="seeMore(item)"
+                            class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
+                            <span>See More</span>
+                            <span class="ml-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                </svg>
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -164,76 +160,79 @@
 
 
 <script>
-import item1 from '@/assets/images/CategoryView/ToSee/glorietta.jpeg';
-import item2 from '@/assets/images/CategoryView/ToSee/leon.jpeg';
-import item3 from '@/assets/images/CategoryView/ToSee/nicolas.jpeg';
-import item4 from '@/assets/images/CategoryView/ToSee/victory.jpeg';
-import item5 from '@/assets/images/CategoryView/ToSee/happy.jpeg';
-import item6 from '@/assets/images/CategoryView/ToSee/heritage.jpeg';
-import item7 from '@/assets/images/CategoryView/ToSee/eskinita.png';
-import item8 from '@/assets/images/CategoryView/ToSee/alto.png';
+import item1 from '@/assets/images/CategoryView/ToDo/omni.jpg';
+import item2 from '@/assets/images/CategoryView/ToDo/hop.jpg';
+import item3 from '@/assets/images/CategoryView/ToDo/zitro.jpg';
+import item4 from '@/assets/images/CategoryView/ToDo/zeria.jpg';
+import item5 from '@/assets/images/CategoryView/ToDo/two.jpg';
+import item6 from '@/assets/images/CategoryView/ToDo/white.png';
+import item7 from '@/assets/images/CategoryView/ToDo/urban.jpg';
+import item8 from '@/assets/images/CategoryView/ToDo/touch.png';
 
 export default {
     data() {
         return {
             items: [
                 {
-                    name: 'Glorietta',
-                    description: "Experience the ultimate shopping and entertainment extravaganza at Glorietta. This expansive retail complex boasts a diverse mix of shops, dining options, and entertainment facilities. Whether you're in search of fashion, gadgets, or indulgent treats, Glorietta is the go-to destination for an exciting day out.",
-                    category: 'Mall',
+                    name: 'Omniverse Museum',
+                    description: "Discover a fusion of art and technology at the Omniverse Museum in Makati. Step into a world of interactive exhibits, mind-bending installations, and awe-inspiring virtual reality experiences. This unique museum promises a captivating journey through the realms of creativity and innovation. Whether you're an art enthusiast or a tech-savvy explorer, the Omniverse Museum is a must-visit destination for an extraordinary adventure.",
+                    category: 'Museum',
                     image: item1,
-                    link: "/category/see/glorietta"
                 },
                 {
-                    name: 'Leon Gallery Fine Art',
-                    description: "Delve into the rich heritage of Philippine art at Leon Gallery Fine Art. With an impressive collection of historical and contemporary masterpieces, this gallery provides a glimpse into the cultural tapestry of the Philippines. Admire the artistic expression of generations of Filipino artists and immerse yourself in the country's artistic journey.",
-                    category: 'Art Gallery',
+                    name: 'Hop-On, Hop-Off Tour',
+                    description: "Embark on a convenient and flexible sightseeing adventure with the Hop-On, Hop-Off Tour in Makati. Climb aboard an open-top double-decker bus and enjoy panoramic views as you explore the city's iconic landmarks and vibrant neighborhoods. Hop off at any stop that catches your interest, and hop back on when you're ready to move on to the next exciting destination. This tour offers the freedom to create your itinerary and make the most of your time in Makati.",
+                    category: 'Sightseeing Tour',
                     image: item2,
-                    link: ""
                 },
                 {
-                    name: 'Galleria Nicolas',
-                    description: 'Discover hidden gems and budget-friendly finds at Bangkal Thrift Market. This bustling market is a treasure trove of pre-loved items, antiques, vintage clothing, and unique collectibles. Get ready to embark on a delightful treasure hunt at Bangkal Thrift Market.',
-                    category: 'Art Gallery',
+                    name: 'Zitro Massage and Spa',
+                    description: "Indulge in ultimate relaxation and rejuvenation at Zitro Massage and Spa. This serene oasis offers a variety of therapeutic treatments, from traditional massages to modern wellness therapies. Surrender to the skilled hands of expert therapists and let your stress melt away. With a tranquil ambiance and a range of pampering options, Zitro Massage and Spa provides the perfect escape from the bustling city life.",
+                    category: 'Spa and Wellness',
                     image: item3,
-                    link: ""
                 },
                 {
-                    name: 'Victory Makati',
-                    description: "Explore the realm of visual storytelling at Victory Makati. Immerse yourself in powerful images that tell stories of the city and its people at Victory Makati.",
-                    category: 'Church',
+                    name: 'Zeria',
+                    description: "Get ready for an immersive and thrilling experience at Zeria, Makati's premier escape room destination. Gather your friends, family, or colleagues and put your problem-solving skills to the test in a series of mind-bending puzzles and challenges. Each escape room presents a unique storyline, making Zeria an ideal place for team building, bonding, or simply having a blast with your loved ones.",
+                    category: 'Entertainment/Gaming',
                     image: item4,
-                    link: ""
                 },
                 {
-                    name: 'The Happy Gallery, Inc.',
-                    description: "Experience joy and creativity through a diverse collection of art at The Happy Gallery, Inc. Showcasing a blend of paintings, sculptures, and multimedia artworks, this gallery celebrates the beauty of life and the power of imagination. Step into a realm of happiness and inspiration as you explore the artistry of renowned and up-and-coming artists.",
-                    category: 'Art Gallery',
+                    name: 'Two Seasons Spa',
+                    description: "Treat yourself to a tranquil escape at Two Seasons Spa. With a selection of massages, facials, and body treatments, this spa offers a rejuvenating experience that caters to your specific needs. Let the stress fade away as you unwind in the serene atmosphere of Two Seasons Spa, leaving you feeling invigorated and revitalized.",
+                    category: 'Spa and Wellness',
                     image: item5,
-                    link: ""
                 },
                 {
-                    name: 'Heritage Art Center',
-                    description: "Celebrate the beauty of Philippine heritage at Heritage Art Center. This cultural haven features an array of traditional artworks, crafts, and artifacts that showcase the country's diverse cultural roots. From intricate tribal crafts to Filipino folk art, this center is a treasure trove of historical and cultural significance.",
-                    category: 'Art Gallery',
+                    name: 'White Palace Spa',
+                    description: "Experience pure bliss and luxury at White Palace Spa. Indulge in their extensive menu of spa services, including invigorating massages, facials, and body treatments. Step into an ambiance of serenity and let the experienced therapists take care of your well-being. White Palace Spa offers a sanctuary of tranquility, making it the perfect escape from the hustle and bustle of city life.",
+                    category: 'Spa and Wellness',
                     image: item6,
-                    link: ""
                 },
                 {
-                    name: 'Eskinita Art Gallery',
-                    description: "Experience the vibrant and eclectic spirit of Filipino urban art at Eskinita Art Gallery. Celebrating street art and graffiti culture, this gallery showcases works that reflect the dynamic urban landscape of the Philippines. Get inspired by the bold and colorful expressions of Filipino street artists at Eskinita Art Gallery.",
-                    category: 'Art Gallery',
+                    name: 'Urband Break Wellness',
+                    description: 'Escape the daily grind and discover a holistic approach to wellness at Urban Break Wellness. From yoga and meditation classes to natural healing therapies, this wellness center is dedicated to promoting mind-body harmony. Reconnect with your inner self and find rejuvenation amidst the urban landscape of Makati at Urban Break Wellness.',
+                    category: 'Spa and Wellness',
                     image: item7,
-                    link: ""
                 },
                 {
-                    name: 'Alto Mondo Corp.',
-                    description: "Journey into the world of contemporary art at Altro Mondo Corp. This gallery showcases a diverse range of contemporary works, from paintings and sculptures to mixed-media art. Immerse yourself in the artistry of talented contemporary artists from the Philippines and around the globe at Altro Mondo Corp.",
-                    category: 'Art Gallery',
+                    name: 'Touch of Hands Spa',
+                    description: 'Pamper yourself with a blissful retreat at Touch of Hands Spa. With a range of massage therapies and spa treatments, this haven of relaxation will leave you feeling refreshed and renewed. Surrender to the healing touch of their skilled therapists and experience the ultimate pampering session at Touch of Hands Spa.',
+                    category: 'Spa and Wellness',
                     image: item8,
-                    link: ""
                 },
-
+                {
+                    name: 'Product 9',
+                    description: 'Description of Product 9',
+                    category: 'Museum',
+                    image: 'https://via.placeholder.com/300',
+                },
+                {
+                    name: 'Product 10',
+                    description: 'Description of Product 10',
+                    category: 'Museum',
+                    image: 'https://via.placeholder.com/300',
+                },
             ],
             currentPage: 0,
             pageSize: 8,

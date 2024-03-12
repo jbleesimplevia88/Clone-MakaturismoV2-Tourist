@@ -1,5 +1,5 @@
 <template>
-    <div class="flex relative pt-[57px] md:pt-[80px] justify-center">
+    <div class="flex relative pt-[57px] md:pt-[130px] justify-center">
         <div class="relative">
             <div class="bg-[#102E61] h-[101%] lg:h-[110%]" style="position: absolute; top: 0; left: 0; width: 100%; ">
             </div>

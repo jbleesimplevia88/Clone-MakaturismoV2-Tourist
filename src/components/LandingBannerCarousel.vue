@@ -1,19 +1,14 @@
 <template>
   <div class="relative min-h-screen">
     <div>
-      <swiper
-        :modules="modules"
-        :effect="'fade'"
-        :slides-per-view="1"
-        :autoplay="{ delay: 3000, disableOnInteraction: false }"
-        loop
-      >
+      <swiper :modules="modules" :effect="'fade'" :slides-per-view="1"
+        :autoplay="{ delay: 3000, disableOnInteraction: false }" loop>
         <swiper-slide v-for="(image, index) in images" :key="index">
           <img :src="image.src" alt="" class="object-cover w-screen h-screen">
         </swiper-slide>
       </swiper>
     </div>
-  </div>    
+  </div>
 </template>
 
 <script>
@@ -58,7 +53,6 @@ export default {
   },
 };
 </script>
-
 
 <style scoped>
 /* Add any additional styles if needed */

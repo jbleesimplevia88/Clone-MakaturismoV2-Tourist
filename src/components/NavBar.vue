@@ -524,12 +524,12 @@ export default {
       imageUrl: imageUrl,
       imageUrl2: imageUrl2,
       locations: [
-        { imgSrc: run, alt: 'location1', attrib: 'hover:rounded-l-lg', title: 'What to DO', mobile: 'Do', link: 'do' },
-        { imgSrc: grocery, alt: 'location2', attrib: '', title: 'Where to SHOP', mobile: 'Shop', link: 'shop' },
-        { imgSrc: binoculars, alt: 'location3', attrib: '', title: 'What to SEE', mobile: 'See', link: 'see' },
-        { imgSrc: food, alt: 'location4', attrib: '', title: 'Where to EAT', mobile: 'Eat', link: 'eat' },
-        { imgSrc: house, alt: 'location5', attrib: '', title: 'Where to STAY', mobile: 'Stay', link: 'stay' },
-        { imgSrc: locationImg, alt: 'location6', attrib: 'hover:rounded-r-lg', title: 'Make TOUR', mobile: 'Tour', link: 'tour' }
+        { imgSrc: run, alt: 'location1', attrib: 'hover:rounded-l-lg', title: 'What to DO', mobile: 'Do', link: '/category/do' },
+        { imgSrc: grocery, alt: 'location2', attrib: '', title: 'Where to SHOP', mobile: 'Shop', link: '/category/shop' },
+        { imgSrc: binoculars, alt: 'location3', attrib: '', title: 'What to SEE', mobile: 'See', link: '/category/see' },
+        { imgSrc: food, alt: 'location4', attrib: '', title: 'Where to EAT', mobile: 'Eat', link: '/category/eat' },
+        { imgSrc: house, alt: 'location5', attrib: '', title: 'Where to STAY', mobile: 'Stay', link: '/category/stay' },
+        { imgSrc: locationImg, alt: 'location6', attrib: 'hover:rounded-r-lg', title: 'Make TOUR', mobile: 'Tour', link: '/category/tour' }
         // Add more locations as needed
       ],
     };

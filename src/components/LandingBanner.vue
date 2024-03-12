@@ -42,12 +42,6 @@
 
 
 <script>
-import run from '@/assets/images/MainNav/run.png';
-import binoculars from '@/assets/images/MainNav/binoculars.png';
-import house from '@/assets/images/MainNav/house.png';
-import food from '@/assets/images/MainNav/food.png';
-import grocery from '@/assets/images/MainNav/grocery-store.png';
-import locationImg from '@/assets/images/MainNav/location.png';
 import LandingBannerCarousel from './LandingBannerCarousel.vue';
 import CategoryContent from './CategoryContent.vue';
 
@@ -56,15 +50,7 @@ import CategoryContent from './CategoryContent.vue';
 export default {
   data() {
     return {
-      locations: [
-        { imgSrc: run, alt: 'location1', attrib: 'hover:rounded-l-lg', title: 'What to DO', mobile: 'Do' },
-        { imgSrc: grocery, alt: 'location2', attrib: '', title: 'Where to SHOP', mobile: 'Shop' },
-        { imgSrc: binoculars, alt: 'location3', attrib: '', title: 'What to SEE', mobile: 'See' },
-        { imgSrc: food, alt: 'location4', attrib: '', title: 'Where to EAT', mobile: 'Eat' },
-        { imgSrc: house, alt: 'location5', attrib: '', title: 'Where to STAY', mobile: 'Stay' },
-        { imgSrc: locationImg, alt: 'location6', attrib: 'hover:rounded-r-lg', title: 'Make TOUR', mobile: 'Tour' }
-        // Add more locations as needed
-      ],
+
       isMobile: window.innerWidth <= 768, // Adjust the breakpoint as needed
     };
   },

@@ -5,6 +5,15 @@ import TopPlace from '@/components/TopPlace.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
+  scrollBehavior(to, from, savedPosition) {
+    // If a saved position is available, return it to scroll to that position
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      // Scroll to the top of the page
+      return { top: 0 };
+    }
+  },
   routes: [
     {
       path: '/',
@@ -39,7 +48,14 @@ const router = createRouter({
         {
           path: 'see',
           name: 'see',
-          component: () => import('../components/ToSee.vue')
+          component: () => import('../components/ToSee.vue'),
+          children: [
+            {
+              path: 'glorietta',
+              name: 'glorietta',
+              component: () => import('../components/SeeGlorietta.vue')
+            },
+          ]
         },
         {
           path: 'eat',
@@ -58,7 +74,7 @@ const router = createRouter({
         }
       ]
     }
-  ]
-})
+  ],
+});
 
 export default router

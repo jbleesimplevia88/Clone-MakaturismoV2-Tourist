@@ -8,12 +8,10 @@ import FooterPage from '@/components/FooterPage.vue';
 </script>
 
 <template>
-  <NavBar/>
-  <LandingBanner/>
-  <TopPlace/>
-  <FooterPage/>
+  <NavBar />
+  <LandingBanner />
+  <TopPlace />
+  <FooterPage />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

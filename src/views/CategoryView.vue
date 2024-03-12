@@ -6,7 +6,9 @@ import CategoryContent from '@/components/CategoryContent.vue';
 
 <template>
     <NavBar />
-    <CategoryContent />
+    <div class="lg:hidden">
+        <CategoryContent />
+    </div>
     <RouterView />
     <FooterPage />
 </template>

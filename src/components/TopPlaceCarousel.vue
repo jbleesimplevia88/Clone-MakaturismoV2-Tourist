@@ -9,12 +9,12 @@
             <img :src="slide.imgSrc" alt="" class="object-cover w-full h-full">
             <!-- Name and Location text -->
             <div class="absolute bottom-0 left-0 right-0 p-2 text-white"
-              style="background: linear-gradient(to bottom, transparent, #102E61 100%, #102E61 90%); height: 300px;">
+              style="background: linear-gradient(to bottom, transparent, #102E61 100%, #102E61 90%); height: 120px;">
               <!-- Name -->
-              <h1 class="absolute right-0 text-xl bottom-14 left-5">{{ slide.name }}</h1>
+              <h1 class="absolute right-0 font-bold text-xl bottom-14 left-5 mb-5">{{ slide.name }}</h1>
               <!-- Location -->
-              <div class="flex items-center mt-1 location-info">
-                <img class="absolute right-0 text-xl bottom-8 left-5"
+              <div class="flex items-center  location-info">
+                <img class="absolute right-0 text-xl bottom-9 left-5"
                   style="filter: invert(1); width:auto; height:20px;" src="@/assets/images/Carousel/pin.png" alt="">
                 <span class="absolute right-0 text-sm bottom-8 left-11">{{ slide.location }}</span>
               </div>
@@ -35,6 +35,9 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+import card1 from '@/assets/images/Top 10/Card 1.png';
+import card2 from '@/assets/images/Top 10/Card 2.png';
+import card3 from '@/assets/images/Top 10/Card 3.png';
 import card4 from '@/assets/images/Top 10/Card 4.png';
 import card5 from '@/assets/images/Top 10/Card 5.png';
 import card6 from '@/assets/images/Top 10/Card 6.png';
@@ -42,8 +45,6 @@ import card7 from '@/assets/images/Top 10/Card 7.png';
 import card8 from '@/assets/images/Top 10/Card 8.png';
 import card9 from '@/assets/images/Top 10/Card 9.png';
 import card10 from '@/assets/images/Top 10/Card 10.png';
-import card11 from '@/assets/images/Top 10/Card 11.png';
-import card12 from '@/assets/images/Top 10/Card 12.png';
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
@@ -51,15 +52,16 @@ export default {
   data() {
     return {
       slides: [
-        { imgSrc: card4, name: "Slide 1", location: "Test", link: "/category/see/glorietta" },
-        { imgSrc: card5, name: "Slide 2", location: "Test", link: "" },
-        { imgSrc: card6, name: "Slide 3", location: "Test", link: "" },
-        { imgSrc: card7, name: "Slide 4", location: "Test", link: "" },
-        { imgSrc: card8, name: "Slide 5", location: "Test", link: "" },
-        { imgSrc: card9, name: "Slide 6", location: "Test", link: "" },
-        { imgSrc: card10, name: "Slide 7", location: "Test", link: "" },
-        { imgSrc: card11, name: "Slide 8", location: "Test", link: "" },
-        { imgSrc: card12, name: "Slide 9", location: "Test", link: "" },
+        { imgSrc: card1, name: "Glorietta", location: "Glorietta, Ayala Center, Makati City", link: "/category/see/glorietta" },
+        { imgSrc: card2, name: "Ayala Museum", location: "3rd flr,Circuit Lane, AP Reyes St., Makati, Metro Manila", link: "" },
+        { imgSrc: card3, name: "Greenbelt", location: "Esperanza St. corner Makati Ave., Ayala Center, Makati, Metro Manila", link: "" },
+        { imgSrc: card4, name: "Poblacion", location: "Poblacion 1210, Makati, Metro Manila", link: "" },
+        { imgSrc: card5, name: "Ayala Triangle", location: "Paseo De Roxas St Cor Makati Ave, Cor Ayala Ave, Makati, 1209 Metro Manila", link: "" },
+        { imgSrc: card6, name: "Guadalupe Church", location: "Guadalupe Commerical Complex, Makati, Metro Manila", link: "" },
+        { imgSrc: card7, name: "Salcedo Saturday Market", location: "Salcedo Village, Jaime C. Velasquez Park, Makati, Metro Manila", link: "" },
+        { imgSrc: card8, name: "Washington Sycip Park", location: "Legazpi Street, Legazpi Village, Makati, 1229 Metro Maynila", link: "" },
+        { imgSrc: card9, name: "New World Makati ", location: "Esperanza STreet corner Makati Avenue, Ayala Center, Makati, Metro Manila", link: "" },
+        { imgSrc: card10, name: "Makati Diamond Residences", location: "118 Legazpi Street, Legazpi Village, Makati, Metro Manila", link: "" },
       ],
       isMobile: window.innerWidth <= 768, // Adjust the breakpoint as needed
     };

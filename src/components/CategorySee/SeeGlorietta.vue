@@ -1,5 +1,5 @@
 <template>
-    <div class="flex relative pt-[57px] md:pt-[80px] justify-center">
+    <div class="flex relative pt-[57px] md:pt-[140px] justify-center">
         <div class="relative">
             <div class="bg-[#102E61] h-[101%] lg:h-[110%]" style="position: absolute; top: 0; left: 0; width: 100%; ">
             </div>
@@ -98,7 +98,7 @@
             <p class="text-lg md:text-black text-left pl-2.5 pb-5">(02) 7795 9595</p>
         </div>
 
-        <h1 class="font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SPOT IN HERE IN OMNIVERSE</h1>
+        <h1 class="font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SPOT IN HERE IN GLORIETTA</h1>
 
         <ContentCarousel class="mb-10" />
 

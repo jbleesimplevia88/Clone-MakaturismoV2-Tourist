@@ -5,6 +5,15 @@ import TopPlace from '@/components/TopPlace.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
+  scrollBehavior(to, from, savedPosition) {
+    // If a saved position is available, return it to scroll to that position
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      // Scroll to the top of the page
+      return { top: 0 };
+    }
+  },
   routes: [
     {
       path: '/',
@@ -29,14 +38,7 @@ const router = createRouter({
         {
           path: 'do',
           name: 'do',
-          component: () => import('../components/ToDo.vue'),
-          children: [
-            {
-              path: 'omniverse',
-              name: 'omniverse',
-              component: () => import('../components/CategoryDo/DoOmniverseMuseum.vue')
-            },
-          ]
+          component: () => import('../components/ToDo.vue')
         },
         {
           path: 'shop',
@@ -49,49 +51,9 @@ const router = createRouter({
           component: () => import('../components/ToSee.vue'),
           children: [
             {
-              path: 'see',
-              name: 'SeeHome',
-              component: () => import('../components/ToSeeHome.vue')
-            },
-            {
               path: 'glorietta',
               name: 'glorietta',
-              component: () => import('../components/CategorySee/SeeGlorietta.vue')
-            },
-            {
-              path: 'leongallery',
-              name: 'leongallery',
-              component: () => import('../components/CategorySee/SeeLeonGallery.vue')
-            },
-            {
-              path: 'gallerianicolas',
-              name: 'gallerianicolas',
-              component: () => import('../components/CategorySee/SeeGalleriaNicolas.vue')
-            },
-            {
-              path: 'victorymakati',
-              name: 'victorymakati',
-              component: () => import('../components/CategorySee/SeeVictoryMakati.vue')
-            },
-            {
-              path: 'happygallery',
-              name: 'happygallery',
-              component: () => import('../components/CategorySee/SeeHappyGallery.vue')
-            },
-            {
-              path: 'artcenter',
-              name: 'artcenter',
-              component: () => import('../components/CategorySee/SeeArtCenter.vue')
-            },
-            {
-              path: 'eskinitagallery',
-              name: 'eskinitagallery',
-              component: () => import('../components/CategorySee/SeeEskinitaGallery.vue')
-            },
-            {
-              path: 'altomondo',
-              name: 'altomondo',
-              component: () => import('../components/CategorySee/SeeAltoMondo.vue')
+              component: () => import('../components/SeeGlorietta.vue')
             },
           ]
         },
@@ -108,18 +70,11 @@ const router = createRouter({
         {
           path: 'tour',
           name: 'tour',
-          component: () => import('../components/ToTour.vue'),
-          children:[
-            {
-              path: 'central',
-              name: 'central',
-              component: () => import('../components/CategoryTour/TourCentralBusiness.vue')
-            },
-          ]
+          component: () => import('../components/ToTour.vue')
         }
       ]
     }
-  ]
-})
+  ],
+});
 
 export default router

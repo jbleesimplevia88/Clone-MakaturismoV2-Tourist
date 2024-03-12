@@ -1,5 +1,5 @@
 <template>
-    <div class="flex relative pt-[57px] md:pt-[80px] justify-center">
+    <div class="flex relative pt-[57px] md:pt-[140px] justify-center">
         <div class="relative">
             <div class="bg-[#102E61] h-[101%] lg:h-[110%]" style="position: absolute; top: 0; left: 0; width: 100%; ">
             </div>
@@ -14,19 +14,27 @@
                     </div>
                     <div class="relative flex flex-col items-center">
                         <div class="lg:pl-9 grid grid-cols-1 lg:grid-cols-5 lg:pr-[7rem]">
-                            <img src="@/assets/images/Content/Glorietta/Poblacion 1.png" alt=""
-                                class="col-span-3 w-[100%] h-full lg:w-[98%] lg:h-[100%] rounded-l-lg">
+                            <img src="@/assets/images/CategoryView/ToSee/Poblacion 1.png" alt=""
+                                class="col-span-3 w-[100%] h-full lg:w-[98%] lg:h-[100%] rounded-l-3xl">
                             <div class="hidden col-span-2 md:grid md:grid-cols-2 gap-4">
-                                <img src="@/assets/images/Content/Glorietta/Glorietta Pink.png" alt=""
+                                <img src="@/assets/images/CategoryView/ToSee/Glorietta Pink.png" alt=""
                                     class="size-full">
-                                <img src="@/assets/images/Content/Glorietta/Glorietta Inside.png" alt=""
-                                    class="size-full rounded-tr-lg">
-                                <img src="@/assets/images/Content/Glorietta/Glorietta Ceiling.png" alt=""
+                                <img src="@/assets/images/CategoryView/ToSee/Glorietta Inside.png" alt=""
+                                    class="size-full rounded-tr-3xl">
+                                <img src="@/assets/images/CategoryView/ToSee/Glorietta Ceiling.png" alt=""
                                     class="size-full">
-                                <img src="@/assets/images/Content/Glorietta/Poblacion 1.png" alt=""
-                                    class="size-full rounded-br-lg">
+                                <img src="@/assets/images/CategoryView/ToSee/Poblacion 1.png" alt=""
+                                    class="size-full rounded-br-3xl">
                             </div>
                         </div>
+                        <!-- <div class="absolute bottom-2 right-[8rem] z-20 w-100">
+
+                            <button class="hidden lg:block p-2 bg-white rounded-lg shadow outline outline-2 text-md">
+                                <img src="@/assets/images/Content/9dots.png" alt="" class="w-10 h-10">
+                                Show
+                                All
+                                Photos</button>
+                        </div> -->
                     </div>
 
 
@@ -58,12 +66,7 @@
                         d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                 </svg>
             </div>
-<<<<<<<< HEAD:src/components/ContentModal.vue
             <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">Glorietta, Ayala Center, Makati City</p>
-========
-            <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">Omniverse Museum Japan Town 4/F Glorietta 2,
-                Ayala Center Makati Palm Dr, Makati Ave, Makati, 1224 Metro Manila </p>
->>>>>>>> parent of d4c3ebc (MakaTour (Central Business Page)):src/components/SeeOmniverseMuseum.vue
         </div>
 
         <div class="flex flex-row">
@@ -76,15 +79,10 @@
 
             </div>
             <div class="flex flex-col pl-2.5">
-<<<<<<<< HEAD:src/components/ContentModal.vue
                 <p class="text-lg md:text-black text-left">Monday to Thursday</p>
                 <p class="text-lg md:text-black text-left">10:00 AM to 9:00 PM</p>
                 <p class="text-lg md:text-black text-left">Friday to Sunday </p>
                 <p class="text-lg md:text-black text-left pb-5">10:00 AM to 10:00 PM</p>
-========
-                <p class="text-lg md:text-black text-left">Tuesday to Sunday </p>
-                <p class="text-lg md:text-black text-left">12:00 PM to 8:00 PM</p>
->>>>>>>> parent of d4c3ebc (MakaTour (Central Business Page)):src/components/SeeOmniverseMuseum.vue
             </div>
         </div>
 
@@ -100,7 +98,7 @@
             <p class="text-lg md:text-black text-left pl-2.5 pb-5">(02) 7795 9595</p>
         </div>
 
-        <h1 class="font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SPOT IN HERE IN OMNIVERSE</h1>
+        <h1 class="font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SPOT IN HERE IN GLORIETTA</h1>
 
         <ContentCarousel class="mb-10" />
 
@@ -153,9 +151,10 @@
         <div class="relative mx-6 px-3 lg:px-32 pb-5 pt-5">
             <div>
                 <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
-                <img src="@/assets/images/Content/Glorietta/Glorietta Map.jpg" alt="" class="pb-12 block lg:hidden">
+                <img src="@/assets/images/CategoryView/ToSee/Glorietta Map.jpg" alt="" class="pb-12 block lg:hidden">
                 <div class="hidden lg:block lg:pb-10">
-                    <img src="@/assets/images/Content/Glorietta/Glorietta Map Web.png" alt="" class="w-[100%] h-[100%]">
+                    <img src="@/assets/images/CategoryView/ToSee/Glorietta Map Web.png" alt=""
+                        class="w-[100%] h-[100%]">
                 </div>
             </div>
             <hr style="border-top: 1px solid black">

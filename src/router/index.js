@@ -39,7 +39,19 @@ const router = createRouter({
         {
           path: 'see',
           name: 'see',
-          component: () => import('../components/ToSee.vue')
+          component: () => import('../views/ToSee.vue'),
+          children: [
+            {
+              path: 'see',
+              name: 'SeeHome',
+              component: () => import('../components/ToSeeHome.vue')
+            },
+            {
+              path: 'glorietta',
+              name: 'glorietta',
+              component: () => import('../components/SeeGlorietta.vue')
+            },
+          ]
         },
         {
           path: 'eat',

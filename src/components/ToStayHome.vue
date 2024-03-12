@@ -4,19 +4,19 @@
             <div
                 style="position: absolute; top: 0; left: 0; height: 101%; width: 100%; background: linear-gradient(to bottom, transparent, #102E61 85%, #102E61 50%);">
             </div>
-            <img class="w-full h-[200px] md:h-[700px]" src="@/assets/images/CategoryView/ToSee/banner.jpeg" alt="" />
+            <img class="w-full h-[200px] md:h-[700px]" src="@/assets/images/CategoryView/ToStay/banner.jpeg" alt="" />
             <div class="absolute top-5 md:top-20 z-[1]">
                 <p
                     class="text-[#102E61] text-sm sm:text-4xl font-bold bg-white p-3 pl-4 pr-4 md:p-5 md:pl-7 md:pr-7 rounded-r-xl">
-                    WHAT TO SEE
+                    WHERE TO STAY
                 </p>
             </div>
             <div
                 class="relative sm:absolute inset-0 sm:top-56 md:top-80 flex text-center lg:text-left justify-center items-center z-[1]">
                 <p class="text-[12px] sm:text-sm md:text-xl lg:text-xl text-wrap md:w-[80%] text-white">
-                    Makati city is a walkable art gallery that showcases interesting sculptures, statues, architectures,
-                    murals and many other art forms. It is not just something that the visitor can feast his/her eyes
-                    on, but it also tells the story of the city beyond skyscrapers.
+                    Are you planning to travel but don’t know where to stay? Fret no more, Makati has a wide range of
+                    accommodation establishments that caters to all kinds of travelers. From budget friendly hostels to
+                    luxury hotels, you’ll definitely find a place to stay in the city.
                 </p>
             </div>
         </div>
@@ -104,20 +104,17 @@
                         <p class="text-white text-xs line-clamp-3">{{ item.description }}</p>
                     </div>
                     <div class="p-1 flex justify-end items-center">
-                        <router-link :to="item.link">
-
-                            <button @click="seeMore(item)"
-                                class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
-                                <span>See More</span>
-                                <span class="ml-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                                    </svg>
-                                </span>
-                            </button>
-                        </router-link>
+                        <button @click="seeMore(item)"
+                            class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
+                            <span>See More</span>
+                            <span class="ml-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                </svg>
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -164,74 +161,66 @@
 
 
 <script>
-import item1 from '@/assets/images/CategoryView/ToSee/glorietta.jpeg';
-import item2 from '@/assets/images/CategoryView/ToSee/leon.jpeg';
-import item3 from '@/assets/images/CategoryView/ToSee/nicolas.jpeg';
-import item4 from '@/assets/images/CategoryView/ToSee/victory.jpeg';
-import item5 from '@/assets/images/CategoryView/ToSee/happy.jpeg';
-import item6 from '@/assets/images/CategoryView/ToSee/heritage.jpeg';
-import item7 from '@/assets/images/CategoryView/ToSee/eskinita.png';
-import item8 from '@/assets/images/CategoryView/ToSee/alto.png';
+import item1 from '@/assets/images/CategoryView/ToStay/casino.jpeg';
+import item2 from '@/assets/images/CategoryView/ToStay/xyz.png';
+import item3 from '@/assets/images/CategoryView/ToStay/durban.jpeg';
+import item4 from '@/assets/images/CategoryView/ToStay/astoria.jpeg';
+import item5 from '@/assets/images/CategoryView/ToStay/carlmig.jpeg';
+import item6 from '@/assets/images/CategoryView/ToStay/gomez.jpeg';
+import item7 from '@/assets/images/CategoryView/ToStay/prince.jpeg';
+import item8 from '@/assets/images/CategoryView/ToStay/howzat.jpeg';
 
 export default {
     data() {
         return {
             items: [
                 {
-                    name: 'Glorietta',
-                    description: "Experience the ultimate shopping and entertainment extravaganza at Glorietta. This expansive retail complex boasts a diverse mix of shops, dining options, and entertainment facilities. Whether you're in search of fashion, gadgets, or indulgent treats, Glorietta is the go-to destination for an exciting day out.",
-                    category: 'Mall',
+                    name: 'Casino Suites',
+                    description: "Experience comfort and convenience at Casino Suites, where modern amenities and personalized service await you. Located in the heart of Makati, this hotel provides easy access to the city's vibrant attractions and business district. Unwind in well-appointed rooms and enjoy a memorable stay at Casino Suites.",
+                    category: 'Accommodation/Hotel',
                     image: item1,
-                    link: "/category/see/glorietta"
                 },
                 {
-                    name: 'Leon Gallery Fine Art',
-                    description: "Delve into the rich heritage of Philippine art at Leon Gallery Fine Art. With an impressive collection of historical and contemporary masterpieces, this gallery provides a glimpse into the cultural tapestry of the Philippines. Admire the artistic expression of generations of Filipino artists and immerse yourself in the country's artistic journey.",
-                    category: 'Art Gallery',
+                    name: 'XYZ Hotel',
+                    description: "Immerse yourself in the modern elegance of U Hotels Makati. With contemporary designs and thoughtful amenities, this hotel offers a delightful stay in the heart of the city. Enjoy personalized service and easy access to Makati's attractions at U Hotels Makati.                    ",
+                    category: 'Accommodation/Hotel',
                     image: item2,
-                    link: ""
                 },
                 {
-                    name: 'Galleria Nicolas',
-                    description: 'Discover hidden gems and budget-friendly finds at Bangkal Thrift Market. This bustling market is a treasure trove of pre-loved items, antiques, vintage clothing, and unique collectibles. Get ready to embark on a delightful treasure hunt at Bangkal Thrift Market.',
-                    category: 'Art Gallery',
+                    name: 'Hotel Durban',
+                    description: "Experience urban comfort and chic accommodations at Hotel Durban. With its stylish interiors and top-notch amenities, this hotel is a favorite among modern travelers. Whether you're in town for business or leisure, Hotel Durban ensures a pleasant and memorable stay in Makati.",
+                    category: 'Accommodation/Hotel',
                     image: item3,
-                    link: ""
                 },
                 {
-                    name: 'Victory Makati',
-                    description: "Explore the realm of visual storytelling at Victory Makati. Immerse yourself in powerful images that tell stories of the city and its people at Victory Makati.",
-                    category: 'Church',
+                    name: 'Astoria Greenbelt',
+                    description: "Experience luxury and sophistication at Astoria Greenbelt. This upscale hotel boasts well-appointed rooms, first-class amenities, and top-notch service. Located near Greenbelt Mall, Astoria Greenbelt offers a convenient base for exploring the city while enjoying the finest accommodations.",
+                    category: 'Accommodation/Hotel',
                     image: item4,
-                    link: ""
                 },
                 {
-                    name: 'The Happy Gallery, Inc.',
-                    description: "Experience joy and creativity through a diverse collection of art at The Happy Gallery, Inc. Showcasing a blend of paintings, sculptures, and multimedia artworks, this gallery celebrates the beauty of life and the power of imagination. Step into a realm of happiness and inspiration as you explore the artistry of renowned and up-and-coming artists.",
-                    category: 'Art Gallery',
+                    name: 'Carlmig Homes',
+                    description: "Discover a home away from home at Carlmig Homes. This cozy boutique hotel offers warm hospitality and comfortable accommodations for travelers seeking a peaceful retreat. Whether you're visiting for business or leisure, Carlmig Homes ensures a relaxed and pleasant stay in Makati.",
+                    category: 'Accommodation/Guest House',
                     image: item5,
-                    link: ""
                 },
                 {
-                    name: 'Heritage Art Center',
-                    description: "Celebrate the beauty of Philippine heritage at Heritage Art Center. This cultural haven features an array of traditional artworks, crafts, and artifacts that showcase the country's diverse cultural roots. From intricate tribal crafts to Filipino folk art, this center is a treasure trove of historical and cultural significance.",
-                    category: 'Art Gallery',
+                    name: 'Gomez House',
+                    description: "Step into a world of heritage and nostalgia at Gomez House. This charming guesthouse, with its restored vintage interiors, offers a unique experience that transports you back in time. Enjoy a blend of old-world charm and modern comforts at Gomez House.",
+                    category: 'Accommodation/Guest House',
                     image: item6,
-                    link: ""
                 },
                 {
-                    name: 'Eskinita Art Gallery',
-                    description: "Experience the vibrant and eclectic spirit of Filipino urban art at Eskinita Art Gallery. Celebrating street art and graffiti culture, this gallery showcases works that reflect the dynamic urban landscape of the Philippines. Get inspired by the bold and colorful expressions of Filipino street artists at Eskinita Art Gallery.",
-                    category: 'Art Gallery',
+                    name: 'Prince Plaza Hotel',
+                    description: "Indulge in spacious suites and exceptional service at Prince Plaza Hotel. Located in the heart of Makati's business district, this hotel offers a homey ambiance with all the amenities you need for a comfortable stay. Enjoy the convenience of its prime location and a warm welcome at Prince Plaza Hotel.",
+                    category: 'Accommodation/Hotel',
                     image: item7,
-                    link: ""
                 },
                 {
-                    name: 'Alto Mondo Corp.',
-                    description: "Journey into the world of contemporary art at Altro Mondo Corp. This gallery showcases a diverse range of contemporary works, from paintings and sculptures to mixed-media art. Immerse yourself in the artistry of talented contemporary artists from the Philippines and around the globe at Altro Mondo Corp.",
-                    category: 'Art Gallery',
+                    name: 'Howzat Inn',
+                    description: "Discover a budget-friendly and cozy stay at Howzat Inn. This charming inn provides comfortable accommodations without breaking the bank. With its strategic location and warm hospitality, Howzat Inn ensures a memorable and enjoyable stay in Makati.",
+                    category: 'Accommodation/Inn',
                     image: item8,
-                    link: ""
                 },
 
             ],

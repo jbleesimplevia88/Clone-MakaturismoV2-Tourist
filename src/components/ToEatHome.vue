@@ -4,19 +4,19 @@
             <div
                 style="position: absolute; top: 0; left: 0; height: 101%; width: 100%; background: linear-gradient(to bottom, transparent, #102E61 85%, #102E61 50%);">
             </div>
-            <img class="w-full h-[200px] md:h-[700px]" src="@/assets/images/CategoryView/ToSee/banner.jpeg" alt="" />
+            <img class="w-full h-[200px] md:h-[700px]" src="@/assets/images/CategoryView/ToEat/banner.jpeg" alt="" />
             <div class="absolute top-5 md:top-20 z-[1]">
                 <p
                     class="text-[#102E61] text-sm sm:text-4xl font-bold bg-white p-3 pl-4 pr-4 md:p-5 md:pl-7 md:pr-7 rounded-r-xl">
-                    WHAT TO SEE
+                    WHERE TO EAT
                 </p>
             </div>
             <div
                 class="relative sm:absolute inset-0 sm:top-56 md:top-80 flex text-center lg:text-left justify-center items-center z-[1]">
                 <p class="text-[12px] sm:text-sm md:text-xl lg:text-xl text-wrap md:w-[80%] text-white">
-                    Makati city is a walkable art gallery that showcases interesting sculptures, statues, architectures,
-                    murals and many other art forms. It is not just something that the visitor can feast his/her eyes
-                    on, but it also tells the story of the city beyond skyscrapers.
+                    Street food, coffee shops, fast food, fine dining restaurants - what ever you are craving for you
+                    will find it here in Makati. Gear up, go on a food crawl, and savor the flavorful treats that Makati
+                    has in store for you.
                 </p>
             </div>
         </div>
@@ -104,20 +104,17 @@
                         <p class="text-white text-xs line-clamp-3">{{ item.description }}</p>
                     </div>
                     <div class="p-1 flex justify-end items-center">
-                        <router-link :to="item.link">
-
-                            <button @click="seeMore(item)"
-                                class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
-                                <span>See More</span>
-                                <span class="ml-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                                    </svg>
-                                </span>
-                            </button>
-                        </router-link>
+                        <button @click="seeMore(item)"
+                            class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
+                            <span>See More</span>
+                            <span class="ml-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                </svg>
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -164,74 +161,66 @@
 
 
 <script>
-import item1 from '@/assets/images/CategoryView/ToSee/glorietta.jpeg';
-import item2 from '@/assets/images/CategoryView/ToSee/leon.jpeg';
-import item3 from '@/assets/images/CategoryView/ToSee/nicolas.jpeg';
-import item4 from '@/assets/images/CategoryView/ToSee/victory.jpeg';
-import item5 from '@/assets/images/CategoryView/ToSee/happy.jpeg';
-import item6 from '@/assets/images/CategoryView/ToSee/heritage.jpeg';
-import item7 from '@/assets/images/CategoryView/ToSee/eskinita.png';
-import item8 from '@/assets/images/CategoryView/ToSee/alto.png';
+import item1 from '@/assets/images/CategoryView/ToEat/little.png';
+import item2 from '@/assets/images/CategoryView/ToEat/lanuova.jpeg';
+import item3 from '@/assets/images/CategoryView/ToEat/tapenade.jpeg';
+import item4 from '@/assets/images/CategoryView/ToEat/salon.jpeg';
+import item5 from '@/assets/images/CategoryView/ToEat/maple.jpeg';
+import item6 from '@/assets/images/CategoryView/ToEat/thebar.jpeg';
+import item7 from '@/assets/images/CategoryView/ToEat/oldmanila.jpeg';
+import item8 from '@/assets/images/CategoryView/ToEat/brera.jpeg';
 
 export default {
     data() {
         return {
             items: [
                 {
-                    name: 'Glorietta',
-                    description: "Experience the ultimate shopping and entertainment extravaganza at Glorietta. This expansive retail complex boasts a diverse mix of shops, dining options, and entertainment facilities. Whether you're in search of fashion, gadgets, or indulgent treats, Glorietta is the go-to destination for an exciting day out.",
-                    category: 'Mall',
+                    name: 'Little Tokyo',
+                    description: "Savor the authentic flavors of Japan in the heart of Makati at Little Tokyo. This culinary enclave offers a delightful array of Japanese restaurants and eateries, serving up delicious sushi, ramen, tempura, and more. Whether you're a sushi aficionado or a ramen lover, Little Tokyo promises a delectable dining experience in a charming Japanese setting.",
+                    category: 'Restaurant/Food District',
                     image: item1,
-                    link: "/category/see/glorietta"
                 },
                 {
-                    name: 'Leon Gallery Fine Art',
-                    description: "Delve into the rich heritage of Philippine art at Leon Gallery Fine Art. With an impressive collection of historical and contemporary masterpieces, this gallery provides a glimpse into the cultural tapestry of the Philippines. Admire the artistic expression of generations of Filipino artists and immerse yourself in the country's artistic journey.",
-                    category: 'Art Gallery',
+                    name: 'La Nuova Pastelaria',
+                    description: "Transport your taste buds to Italy at La Nouva Pastelaria. This charming Italian cafe and bakery offers a delectable selection of pastries, pasta, and pizza, all made with authentic Italian flair. Sip on freshly brewed coffee while savoring the delightful flavors of Italy at La Nouva Pastelaria.",
+                    category: 'Restaurant/Bakery',
                     image: item2,
-                    link: ""
                 },
                 {
-                    name: 'Galleria Nicolas',
-                    description: 'Discover hidden gems and budget-friendly finds at Bangkal Thrift Market. This bustling market is a treasure trove of pre-loved items, antiques, vintage clothing, and unique collectibles. Get ready to embark on a delightful treasure hunt at Bangkal Thrift Market.',
-                    category: 'Art Gallery',
+                    name: 'Tapenade',
+                    description: 'Embark on a culinary journey through Mediterranean flavors at Tapenade. This vibrant restaurant showcases a buffet of Mediterranean-inspired dishes, from fresh salads and seafood to succulent meats and delectable desserts. With a lively ambiance and an array of flavorful options, Tapenade is a favorite among food enthusiasts.',
+                    category: 'Restaurant',
                     image: item3,
-                    link: ""
                 },
                 {
-                    name: 'Victory Makati',
-                    description: "Explore the realm of visual storytelling at Victory Makati. Immerse yourself in powerful images that tell stories of the city and its people at Victory Makati.",
-                    category: 'Church',
+                    name: 'Salon De Ning',
+                    description: "Transport yourself to a bygone era of opulence and luxury at Salon De Ning. This glamorous restaurant pays homage to the elegance of the 1930s Shanghai, with a menu inspired by Asian and Western cuisines. Experience the nostalgia of a bygone era while enjoying a sumptuous meal at Salon De Ning.",
+                    category: 'Restaurant',
                     image: item4,
-                    link: ""
                 },
                 {
-                    name: 'The Happy Gallery, Inc.',
-                    description: "Experience joy and creativity through a diverse collection of art at The Happy Gallery, Inc. Showcasing a blend of paintings, sculptures, and multimedia artworks, this gallery celebrates the beauty of life and the power of imagination. Step into a realm of happiness and inspiration as you explore the artistry of renowned and up-and-coming artists.",
-                    category: 'Art Gallery',
+                    name: 'Maple',
+                    description: "Indulge in a delightful fusion of flavors at Maple. This contemporary restaurant boasts a menu inspired by global cuisines, featuring creative dishes made with locally sourced ingredients. From scrumptious breakfast options to savory mains and delectable desserts, Maple is the perfect spot for a memorable dining experience.",
+                    category: 'Restaurant',
                     image: item5,
-                    link: ""
                 },
                 {
-                    name: 'Heritage Art Center',
-                    description: "Celebrate the beauty of Philippine heritage at Heritage Art Center. This cultural haven features an array of traditional artworks, crafts, and artifacts that showcase the country's diverse cultural roots. From intricate tribal crafts to Filipino folk art, this center is a treasure trove of historical and cultural significance.",
-                    category: 'Art Gallery',
+                    name: 'The Bar',
+                    description: "Experience sophistication and elegance at The Bar. This upscale dining venue offers a refined menu of international and Filipino cuisines, complemented by an extensive selection of fine wines and spirits. Whether it's a romantic dinner or a celebratory meal, The Bar ensures a delightful culinary experience in a luxurious setting.",
+                    category: 'Restaurant',
                     image: item6,
-                    link: ""
                 },
                 {
-                    name: 'Eskinita Art Gallery',
-                    description: "Experience the vibrant and eclectic spirit of Filipino urban art at Eskinita Art Gallery. Celebrating street art and graffiti culture, this gallery showcases works that reflect the dynamic urban landscape of the Philippines. Get inspired by the bold and colorful expressions of Filipino street artists at Eskinita Art Gallery.",
-                    category: 'Art Gallery',
+                    name: 'Old Manila',
+                    description: "Elevate your dining experience at Old Manila, a culinary gem that celebrates modern European cuisine. With a focus on premium ingredients and artful presentation, each dish is a masterpiece that delights both the palate and the eye. Indulge in a gastronomic adventure at Old Manila and experience the art of fine dining.",
+                    category: 'Restaurant',
                     image: item7,
-                    link: ""
                 },
                 {
-                    name: 'Alto Mondo Corp.',
-                    description: "Journey into the world of contemporary art at Altro Mondo Corp. This gallery showcases a diverse range of contemporary works, from paintings and sculptures to mixed-media art. Immerse yourself in the artistry of talented contemporary artists from the Philippines and around the globe at Altro Mondo Corp.",
-                    category: 'Art Gallery',
+                    name: 'Brera Delicatessen',
+                    description: "Satisfy your cravings for authentic Italian delicacies at Brera Delicatessen. This cozy trattoria serves up an array of traditional Italian dishes, from wood-fired pizzas to handcrafted pasta. With warm Italian hospitality and an inviting ambiance, Brera Delicatessen promises an unforgettable dining experience in Makati.",
+                    category: 'Restaurant',
                     image: item8,
-                    link: ""
                 },
 
             ],

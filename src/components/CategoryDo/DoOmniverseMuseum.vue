@@ -1,7 +1,7 @@
 <template>
     <div class="flex relative pt-[57px] md:pt-[140px] justify-center">
         <div class="relative">
-            <div class="bg-[#102E61] h-[101%] lg:h-[110%]" style="position: absolute; top: 0; left: 0; width: 100%; ">
+            <div class="bg-[#102E61] h-[101%] lg:h-[105%]" style="position: absolute; top: 0; left: 0; width: 100%; ">
             </div>
             <div class="relative inset-0 sm:top-56 md:top-2 pl-0 md:pl-10 flex items-center z-[1]">
                 <div class="relative flex flex-col pl-0 lg:pl-10">
@@ -14,19 +14,27 @@
                     </div>
                     <div class="relative flex flex-col items-center">
                         <div class="lg:pl-9 grid grid-cols-1 lg:grid-cols-5 lg:pr-[7rem]">
-                            <img src="@/assets/images/Content/Glorietta/Poblacion 1.png" alt=""
-                                class="col-span-3 w-[100%] h-full lg:w-[98%] lg:h-[100%] rounded-l-lg">
-                            <div class="hidden col-span-2 md:grid md:grid-cols-2 gap-4">
-                                <img src="@/assets/images/Content/Glorietta/Glorietta Pink.png" alt=""
-                                    class="size-full">
-                                <img src="@/assets/images/Content/Glorietta/Glorietta Inside.png" alt=""
-                                    class="size-full rounded-tr-lg">
-                                <img src="@/assets/images/Content/Glorietta/Glorietta Ceiling.png" alt=""
-                                    class="size-full">
-                                <img src="@/assets/images/Content/Glorietta/Poblacion 1.png" alt=""
-                                    class="size-full rounded-br-lg">
+                            <img src="@/assets/images/CategoryView/ToDo/omni.jpg" alt=""
+                                class="col-span-3 w-[100%] h-full lg:w-[97%] lg:h-[95%] rounded-l-3xl">
+                            <div class="hidden col-span-2 md:grid md:grid-cols-2 gap-4 ">
+                                <img src="@/assets/images/CategoryView/ToDo/Wonder Woman.png" alt=""
+                                    class="lg:w-[100%] lg:h-[90%]">
+                                <img src="@/assets/images/CategoryView/ToDo/Avengers.png" alt=""
+                                    class="lg:w-[100%] lg:h-[90%] rounded-tr-3xl">
+                                <img src="@/assets/images/CategoryView/ToDo/Iron Man Set.png" alt=""
+                                    class="lg:w-[100%] lg:h-[90%]">
+                                <img src="@/assets/images/CategoryView/ToDo/Iron Man Set.png" alt=""
+                                    class="lg:w-[100%] lg:h-[90%] rounded-br-3xl">
                             </div>
                         </div>
+                        <!-- <div class="absolute bottom-2 right-[8rem] z-20 w-100">
+
+                            <button class="hidden lg:block p-2 bg-white rounded-lg shadow outline outline-2 text-md">
+                                <img src="@/assets/images/Content/9dots.png" alt="" class="w-10 h-10">
+                                Show
+                                All
+                                Photos</button>
+                        </div> -->
                     </div>
 
 
@@ -60,7 +68,7 @@
                 </svg>
             </div>
             <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">Omniverse Museum Japan Town 4/F Glorietta 2,
-                Ayala Center Makati Palm Dr, Makati Ave, Makati, 1224 Metro Manila </p>
+                Ayala Center Makati Palm Dr, Makati Ave, Makati, 1224 Metro Manila</p>
         </div>
 
         <div class="flex flex-row">
@@ -73,8 +81,8 @@
 
             </div>
             <div class="flex flex-col pl-2.5">
-                <p class="text-lg md:text-black text-left">Tuesday to Sunday </p>
-                <p class="text-lg md:text-black text-left">12:00 PM to 8:00 PM</p>
+                <p class="text-lg md:text-black text-left pb-5">Tuesday to Sunday | 12:00 PM to 8:00 PM</p>
+
             </div>
         </div>
 
@@ -87,7 +95,7 @@
                 </svg>
 
             </div>
-            <p class="text-lg md:text-black text-left pl-2.5 pb-5">(02) 7795 9595</p>
+            <p class="text-lg md:text-black text-left pl-2.5 pb-5">0915 009 1034</p>
         </div>
 
         <h1 class="font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SPOT IN HERE IN GLORIETTA</h1>
@@ -143,9 +151,9 @@
         <div class="relative mx-6 px-3 lg:px-32 pb-5 pt-5">
             <div>
                 <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
-                <img src="@/assets/images/Content/Glorietta/Glorietta Map.jpg" alt="" class="pb-12 block lg:hidden">
+                <img src="@/assets/images/CategoryView/ToSee/Glorietta Map.jpg" alt="" class="pb-12 block lg:hidden">
                 <div class="hidden lg:block lg:pb-10">
-                    <img src="@/assets/images/Content/Glorietta/Glorietta Map Web.png" alt="" class="w-[100%] h-[100%]">
+                    <img src="@/assets/images/CategoryView/ToDo/Omniverse Web Map.png" alt="" class="w-[100%] h-[100%]">
                 </div>
             </div>
             <hr style="border-top: 1px solid black">

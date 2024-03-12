@@ -5,15 +5,6 @@ import TopPlace from '@/components/TopPlace.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  scrollBehavior(to, from, savedPosition) {
-    // If a saved position is available, return it to scroll to that position
-    if (savedPosition) {
-      return savedPosition;
-    } else {
-      // Scroll to the top of the page
-      return { top: 0 };
-    }
-  },
   routes: [
     {
       path: '/',
@@ -38,7 +29,14 @@ const router = createRouter({
         {
           path: 'do',
           name: 'do',
-          component: () => import('../components/ToDo.vue')
+          component: () => import('../components/ToDo.vue'),
+          children: [
+            {
+              path: 'omniverse',
+              name: 'omniverse',
+              component: () => import('../components/CategoryDo/DoOmniverseMuseum.vue')
+            },
+          ]
         },
         {
           path: 'shop',
@@ -50,6 +48,11 @@ const router = createRouter({
           name: 'see',
           component: () => import('../components/ToSee.vue'),
           children: [
+            {
+              path: 'see',
+              name: 'SeeHome',
+              component: () => import('../components/ToSeeHome.vue')
+            },
             {
               path: 'glorietta',
               name: 'glorietta',
@@ -105,11 +108,18 @@ const router = createRouter({
         {
           path: 'tour',
           name: 'tour',
-          component: () => import('../components/ToTour.vue')
+          component: () => import('../components/ToTour.vue'),
+          children:[
+            {
+              path: 'central',
+              name: 'central',
+              component: () => import('../components/CategoryTour/TourCentralBusiness.vue')
+            },
+          ]
         }
       ]
     }
-  ],
-});
+  ]
+})
 
 export default router

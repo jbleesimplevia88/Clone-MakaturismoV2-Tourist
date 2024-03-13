@@ -5,7 +5,7 @@
       <div class="flex items-center">
         <RouterLink to="/" class="flex items-center">
           <img src="@/assets/images/Header/makati_logo.png" alt="banner"
-            class="hidden w-8 h-auto mr-3 md:block md:w-16 md:h-auto">
+            class="w-8 h-auto mr-3 md:block md:w-16 md:h-auto">
           <img src="@/assets/images/Header/makaturismo.png" alt="logo" class="w-auto h-10 md:w-24 md:h-auto">
         </RouterLink>
       </div>
@@ -16,13 +16,17 @@
         <RouterLink to="/calendar" class="hidden text-white md:inline-block"><img
             src="@/assets/images/Header/calendar.png" alt="logo" class="w-auto h-6 mx-2"></RouterLink>
         <button @click="openLoginModal" class="text-blue-600">Login</button>
+        <RouterLink to="/calendar" class="hidden text-white md:inline-block"></RouterLink>
+        <a class="hidden lg:block lg:bg-blue-500 lg:hover:bg-blue-700 lg:text-white lg:font-bold lg:py-2 lg:px-4 lg:border lg:border-blue-700 lg:rounded-lg"
+          href="#">Become a partner</a>
       </div>
+
       <!-- Login Modal -->
       <div v-if="showLoginModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
         <div class="relative p-8 bg-white"
           :style="{ width: '75%', height: '65%', borderRadius: '20px', backgroundImage: 'url(' + imageUrl + ')', backgroundSize: 'cover', backgroundPosition: 'center bottom' }">
           <!-- Modal Content -->
-          <div class="relative z-10 flex flex-col items-start justify-center h-full">
+          <div class="relative z-10 flex flex-col items-start justify-center h-full m-10">
             <div class="mb-5">
               <h2 class="text-2xl font-bold">Welcome!</h2>
               <p>Please log in to your account.</p>
@@ -50,12 +54,10 @@
                 </div>
               </div>
               <div class="flex justify-between mb-4">
-                <p>Don't have an account? <button @click="openSignUpModal" class="text-blue-600">Sign Up</button></p>
+                <!-- <p>Don't have an account? <button @click="openSignUpModal" class="text-blue-600">Sign Up</button></p> -->
+                <p>Don't have an account? <button @click="openPrivacyModal" class="text-blue-600">Sign Up</button></p>
                 <button @click="openForgotModal" class="text-blue-600">Forgot Password?</button>
               </div>
-              <label class="">
-                <input type="radio" name="partnerType" value="regular"> Become a partner
-              </label>
               <div class="mt-10 text-center">
                 <button type="submit" class="px-4 py-2 text-white bg-blue-600 rounded-md">Login</button>
               </div>
@@ -63,6 +65,89 @@
           </div>
         </div>
       </div>
+      <div v-if="showPrivacyModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+        <div class="relative p-8 bg-white" :style="{ width: '75%', height: '65%', borderRadius: '20px' }">
+          <!-- Modal Content -->
+          <div class="flex justify-center items-center">
+            <img src="@/assets/images/Header/makati_logo.png" alt="banner"
+              class="w-8 h-auto mr-3 md:block md:w-16 md:h-auto">
+            <img src="@/assets/images/Header/makaturismo.png" alt="logo" class="w-auto h-10 md:w-24 md:h-auto">
+          </div>
+          <div class="flex items-center">
+            <button @click="openLoginModal" class="text-blue-600">
+              <img src="@/assets/images/Modal/back.png" style="width: 20px; height: 20px;" alt="" class="my-2 mr-2">
+            </button>
+          </div>
+          <div class="relative z-10 flex flex-col items-start h-full">
+            <form @submit.prevent="signup" class="w-[100%] px-10">
+              <div class="mb-5">
+
+              </div>
+              <!-- make it scrollable -->
+              <div class="flex justify-start overflow-y-auto h-[200px] w-[100%] hidden-scrollbar mb-2">
+                <div class="flex flex-col ">
+                  <p class="font-bold text-center font text-3xl mb-5">Privacy Policy</p>
+                  <p class="font-bold mb-5">Collection of Personal Information:</p>
+                  <p class="mb-5">We may collect personal information from you when you interact with our website,
+                    products,
+                    or services. This information may include but is not limited to your name, email address, mailing
+                    address, phone number, and payment details. We collect this information to provide you with our
+                    services and to improve and customize your experience with us.</p>
+                  <p class="font-bold mb-5">Use of Personal Information:</p>
+                  <p class="mb-5">We use the personal information we collect for various purposes, including:</p>
+                  <p class="mb-5">1. Providing and personalizing our services <br>
+                    2. Processing transactions <br>
+                    3. Communicating with you <br>
+                    4. Improving our products and services <br>
+                    5. Marketing and promotional purposes <br>
+                    6. Complying with legal obligations</p>
+
+                  <p class="mb-5">Protection of Personal Information:</p>
+
+
+                  <p class="mb-5">We take the security of your personal information seriously and have implemented
+                    appropriate measures
+                    to protect it from unauthorized access, disclosure, alteration, or destruction. However, please note
+                    that no method of transmission over the internet or electronic storage is 100% secure, and we cannot
+                    guarantee absolute security.</p>
+
+                  <p class="font-bold mb-5">Sharing of Personal Information:</p>
+
+                  <p class="mb-5">We may share your personal information with third-party service providers who assist
+                    us in providing
+                    our services, conducting our business, or servicing you. We may also share your information when
+                    required by law or to protect our rights, property, or safety.</p>
+
+                  <p class="font-bold mb-5">Your Rights:</p>
+
+                  <p class="mb-5">You have the right to access, update, or delete your personal information. You may
+                    also have the right
+                    to object to or restrict certain types of processing. If you would like to exercise any of these
+                    rights, please contact us using the information provided below.</p>
+
+                  <p class="font-bold mb-5">Changes to this Privacy Policy:</p>
+
+                  <p class="mb-5">We reserve the right to update or modify this Privacy Policy at any time. Any changes
+                    will be
+                    effective immediately upon posting the updated Privacy Policy on our website.</p>
+                  <!-- contents -->
+                </div>
+              </div>
+              <div class="flex items-center mt-10">
+                <input type="checkbox" id="myCheckbox" class="form-checkbox h-5 w-5 text-blue-600 mr-2"
+                  @change="toggleContinueButton">
+                <label for="myCheckbox" class="mar">I have read and agreed to the above Privacy Policy Agreement</label>
+              </div>
+
+              <div class="text-center mt-5">
+                <button type="submit" class="disabled:bg-gray-600 px-4 py-2 text-white bg-blue-600 rounded-md"
+                  @click="openSignUpModal" :disabled="!checkboxChecked">Continue</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
       <!-- Sign Up Modal -->
       <div v-if="showSignUpModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
         <div class="relative p-8 bg-white"
@@ -161,8 +246,8 @@
                       style="width: 20px; height: 20px;" alt="" class="my-2 mr-2"></button>
                   <h2 class="text-2xl font-bold">Change Password</h2>
                 </div>
-                <p class="mb-20">Enter your email to receive an OTP for access to changing passoword</p>
-                <div class="relative mb-4">
+                <p class="mb-5">Enter your email to receive an OTP for access to changing passoword</p>
+                <div class="relative mb-2">
                   <div class="relative">
                     <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-3 my-3"
                       style="width: 15px;" alt="Username Icon" />
@@ -171,38 +256,86 @@
                   </div>
                 </div>
               </div>
-              <div class="mt-10 text-center">
-                <button @click="openOtpModal" class="px-4 py-2 text-white bg-blue-600 rounded-lg">Receive OTP</button>
+              <div class="text-center">
+                <button @click="toggleshowOTP" class="px-4 py-2 text-white bg-blue-600 rounded-lg">Receive OTP</button>
               </div>
             </form>
           </div>
         </div>
       </div>
-      <!-- OTP Modal -->
-      <div v-if="showForgotModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-        <div class="relative p-8 bg-white"
-          :style="{ width: '75%', height: '65%', borderRadius: '20px', backgroundImage: 'url(' + imageUrl2 + ')', backgroundSize: 'cover' }">
-          <!-- Modal Content -->
-          <div class="relative z-10 flex flex-col items-start justify-center h-full">
-            <form @submit.prevent="forgot" style="width: 60%;">
-              <div class="mb-5">
-                <div class="flex items-center mb-10">
-                  <button @click="openLoginModal" class="text-blue-600"><img src="@/assets/images/Modal/back.png"
-                      style="width: 20px; height: 20px;" alt="" class="my-2 mr-2"></button>
-                  <h2 class="text-2xl font-bold">Enter One-Time Password to verify your account</h2>
-                </div>
-                <p class="">An OTP has been sent to your email for changing your password</p>
-                <div class="relative mb-4">
-                  <div class="relative">
-                    <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-3 my-3"
-                      style="width: 15px;" alt="Username Icon" />
-                    <input type="text" id="email" v-model="email"
-                      class="w-full h-10 pl-10 border border-black rounded-lg" placeholder="Email">
+    </div>
+
+    <div v-if="showOTP" class="fixed inset-0 z-[10] flex items-center justify-center bg-gray-800 bg-opacity-30"
+      @click="closeOTP">
+      <!-- Modal Content -->
+      <div class="relative bg-white px-6 pb-9 shadow-xl mx-auto w-full max-w-3xl rounded-2xl">
+        <div class="mx-auto flex w-full max-w-3xl flex-col">
+          <button class="relative flex pr-4 pt-10 justify-end">
+            <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="5"
+              stroke="black" class="w-7 h-7">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <div class="flex flex-col items-center justify-center text-center pt-5">
+            <div class="font-semibold text-3xl">
+              <p>Enter One-Time Password to verify your account</p>
+            </div>
+            <div class="flex flex-row text-lg font-medium text-black pb-12">
+              <p>An OTP has been sent to your email for changing your password</p>
+            </div>
+          </div>
+
+          <div>
+            <form action="" method="post">
+              <div class="flex flex-col space-y-10">
+                <div class="flex flex-row items-center justify-between mx-auto w-full max-w-md">
+                  <div class="w-16 h-20 outline outline-2 rounded-xl">
+                    <input
+                      class="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
+                      type="text" name="" id="">
+                  </div>
+                  <div class="w-16 h-20 outline outline-2 rounded-xl">
+                    <input
+                      class="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
+                      type="text" name="" id="">
+                  </div>
+                  <div class="w-16 h-20 outline outline-2 rounded-xl">
+                    <input
+                      class="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
+                      type="text" name="" id="">
+                  </div>
+                  <div class="w-16 h-20 outline outline-2 rounded-xl">
+                    <input
+                      class="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
+                      type="text" name="" id="">
+                  </div>
+                  <div class="w-16 h-20 outline outline-2 rounded-xl">
+                    <input
+                      class="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
+                      type="text" name="" id="">
+                  </div>
+                  <div class="w-16 h-20 outline outline-2 rounded-xl">
+                    <input
+                      class="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
+                      type="text" name="" id="">
                   </div>
                 </div>
-              </div>
-              <div class="mt-10 text-center">
-                <button @click="openOtpModal" class="px-4 py-2 text-white bg-blue-600 rounded-lg">Receive OTP</button>
+
+                <div class="flex flex-col space-y-4 items-center justify-center">
+                  <div>
+                    <button
+                      class="flex items-center justify-center font-semibold text-xl text-center w-[28rem] border rounded-xl outline-none py-3 bg-blue-700 border-none text-white"
+                      @click="closeOTP">
+                      Verify
+                    </button>
+                  </div>
+
+                  <div
+                    class="flex flex-row items-center justify-center text-center text-sm font-medium space-x-1 text-black">
+                    <p>Didn't receive code?</p> <a class="flex flex-row items-center font-medium text-blue-600"
+                      href="http://" target="_blank" rel="noopener noreferrer">Resend code</a>
+                  </div>
+                </div>
               </div>
             </form>
           </div>
@@ -254,6 +387,9 @@ export default {
       showSignUpModal: false,
       showForgotModal: false,
       showOtpModal: false,
+      showOTP: false,
+      showPrivacyModal: false,
+      checkboxChecked: false,
       username: '',
       password: '',
       imageUrl: imageUrl,
@@ -270,17 +406,31 @@ export default {
     };
   },
   methods: {
+    toggleContinueButton(event) {
+      this.checkboxChecked = event.target.checked;
+    },
     openLoginModal() {
       this.showLoginModal = true;
     },
     openSignUpModal() {
       this.showSignUpModal = true;
+      this.showPrivacyModal = false;
     },
     openForgotModal() {
       this.showForgotModal = true;
     },
+    openPrivacyModal() {
+      this.showPrivacyModal = true;
+    },
     openOtpModal() {
       this.showOtpModal = true;
+    },
+    toggleshowOTP() {
+      this.showForgotModal = true;
+      this.showOTP = true;
+    },
+    closeOTP() {
+      this.showOTP = false;
     },
     login() {
       // Your login logic here
@@ -320,7 +470,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .bg-img {
   background-size: 300px 500px;
 }
@@ -403,5 +553,23 @@ export default {
 
 .z-neg-1 {
   z-index: -1;
+}
+
+.hidden-scrollbar {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+}
+
+.hidden-scrollbar::-webkit-scrollbar {
+  width: 0;
+  /* WebKit */
+  height: 0;
+}
+
+.hidden-scrollbar::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  /* WebKit */
 }
 </style>

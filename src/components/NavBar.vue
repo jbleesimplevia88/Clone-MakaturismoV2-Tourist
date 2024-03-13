@@ -347,8 +347,7 @@
       class="hidden lg:inset-x-0 lg:bottom-0 lg:grid lg:grid-cols-6 lg:pl-10 lg:pr-10 lg:pt-2 lg:pb-2 lg:justify-center lg:text-black lg:bg-white lg:border-t ">
       <!-- Location 1 -->
       <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center rounded-l-lg"
-        :class="['location-card', locations[0].attrib, { 'active-effect': isActive(locations[0].link) }]"
-        style="margin: 0; width: 100%; height: auto;">
+        :class="['location-card', locations[0].attrib, { 'active-effect': isActive(locations[0].link) }]">
         <RouterLink :to="locations[0].link">
           <!-- Adjust height as needed -->
           <div class="flex items-center justify-center h-10">
@@ -459,7 +458,6 @@ import house from '@/assets/images/MainNav/house.png';
 import food from '@/assets/images/MainNav/food.png';
 import grocery from '@/assets/images/MainNav/grocery-store.png';
 import locationImg from '@/assets/images/MainNav/location.png';
-import { useRoute } from "vue-router";
 
 
 export default {
@@ -489,12 +487,22 @@ export default {
         { imgSrc: locationImg, alt: 'location6', attrib: 'hover:rounded-r-lg active:rounded-r-lg', title: 'Make TOUR', mobile: 'Tour', link: '/category/tour' }
         // Add more locations as needed
       ],
+      currentRoute: ''
     };
   },
+  created() {
+    // Watch for route changes
+    this.$watch(
+      () => this.$route.path,
+      newPath => {
+        this.currentRoute = newPath;
+      }
+    );
+  },
   methods: {
-    isActive(url) {
-      const route = useRoute();
-      return route.path === url;
+    isActive(link) {
+      // Check if the current route contains the provided link
+      return this.currentRoute.includes(link);
     },
     toggleContinueButton(event) {
       this.checkboxChecked = event.target.checked;

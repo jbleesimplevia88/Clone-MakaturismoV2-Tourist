@@ -50,7 +50,14 @@ const router = createRouter({
         {
           path: 'shop',
           name: 'shop',
-          component: () => import('../components/ToShop.vue')
+          component: () => import('../components/ToShop.vue'),
+          children: [
+            {
+              path: 'makati',
+              name: 'makati',
+              component: () => import('../components/CategoryShop/ShopMakati.vue')
+            },
+          ]
         },
         {
           path: 'see',
@@ -112,7 +119,14 @@ const router = createRouter({
         {
           path: 'stay',
           name: 'stay',
-          component: () => import('../components/ToStay.vue')
+          component: () => import('../components/ToStay.vue'),
+          children: [
+            {
+              path: 'xyz',
+              name: 'xyz',
+              component: () => import('../components/CategoryStay/StayXyz.vue')
+            },
+          ]
         },
         {
           path: 'tour',

@@ -1,9 +1,14 @@
 <template>
     <div class="lg:absolute fixed inset-x-0 bottom-0 flex items-end justify-center lg:m-20 lg:mb-10 space-x-6 text-black bg-white lg:rounded-lg"
         style="z-index: 2;">
+        <!-- <div v-for="(item, index) in locations" :key="index"
+            class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card"
+            :class="`location-card ${item.attrib}`" :class="{ 'active-effect': isActive(item.link) }"
+             style="margin: 0; width: 100%; height: auto;"> -->
         <div v-for="(item, index) in locations" :key="index"
             class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card"
-            :class="`location-card ${item.attrib}`" style="margin: 0; width: 100%; height: auto;">
+            :class="['location-card', item.attrib, { 'active-effect': isActive(item.link) }]"
+            style="margin: 0; width: 100%; height: auto;">
             <RouterLink :to="item.link">
                 <!-- Adjust height as needed -->
                 <img :src="item.imgSrc" :alt="item.alt"
@@ -26,6 +31,8 @@ import house from '@/assets/images/MainNav/house.png';
 import food from '@/assets/images/MainNav/food.png';
 import grocery from '@/assets/images/MainNav/grocery-store.png';
 import locationImg from '@/assets/images/MainNav/location.png';
+import { useRoute } from "vue-router";
+
 // Import Swiper core and required modules
 
 export default {
@@ -58,6 +65,10 @@ export default {
         updateIsMobile() {
             this.isMobile = window.innerWidth <= 768; // Adjust the breakpoint as needed
         },
+        isActive(url) {
+            const route = useRoute();
+            return route.path === url;
+        }
     },
 };
 
@@ -68,6 +79,20 @@ export default {
 <style scoped>
 .swiper-container {
     height: 100%;
+}
+
+.active-effect img {
+    filter: invert(1);
+    transition: filter 0.3s ease;
+}
+
+.active-effect span {
+    color: #008EE4;
+}
+
+.active-effect {
+    background-color: white;
+    color: #008EE4;
 }
 
 .location-card {

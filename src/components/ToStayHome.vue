@@ -104,17 +104,19 @@
                         <p class="text-white text-xs line-clamp-3">{{ item.description }}</p>
                     </div>
                     <div class="p-1 flex justify-end items-center">
-                        <button @click="seeMore(item)"
-                            class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
-                            <span>See More</span>
-                            <span class="ml-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                                </svg>
-                            </span>
-                        </button>
+                        <router-link :to="item.link">
+                            <button @click="seeMore(item)"
+                                class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
+                                <span>See More</span>
+                                <span class="ml-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                    </svg>
+                                </span>
+                            </button>
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -179,48 +181,56 @@ export default {
                     description: "Experience comfort and convenience at Casino Suites, where modern amenities and personalized service await you. Located in the heart of Makati, this hotel provides easy access to the city's vibrant attractions and business district. Unwind in well-appointed rooms and enjoy a memorable stay at Casino Suites.",
                     category: 'Accommodation/Hotel',
                     image: item1,
+                    link: ''
                 },
                 {
                     name: 'XYZ Hotel',
                     description: "Immerse yourself in the modern elegance of U Hotels Makati. With contemporary designs and thoughtful amenities, this hotel offers a delightful stay in the heart of the city. Enjoy personalized service and easy access to Makati's attractions at U Hotels Makati.                    ",
                     category: 'Accommodation/Hotel',
                     image: item2,
+                    link: "/category/stay/xyz"
                 },
                 {
                     name: 'Hotel Durban',
                     description: "Experience urban comfort and chic accommodations at Hotel Durban. With its stylish interiors and top-notch amenities, this hotel is a favorite among modern travelers. Whether you're in town for business or leisure, Hotel Durban ensures a pleasant and memorable stay in Makati.",
                     category: 'Accommodation/Hotel',
                     image: item3,
+                    link: ''
                 },
                 {
                     name: 'Astoria Greenbelt',
                     description: "Experience luxury and sophistication at Astoria Greenbelt. This upscale hotel boasts well-appointed rooms, first-class amenities, and top-notch service. Located near Greenbelt Mall, Astoria Greenbelt offers a convenient base for exploring the city while enjoying the finest accommodations.",
                     category: 'Accommodation/Hotel',
                     image: item4,
+                    link: ''
                 },
                 {
                     name: 'Carlmig Homes',
                     description: "Discover a home away from home at Carlmig Homes. This cozy boutique hotel offers warm hospitality and comfortable accommodations for travelers seeking a peaceful retreat. Whether you're visiting for business or leisure, Carlmig Homes ensures a relaxed and pleasant stay in Makati.",
                     category: 'Accommodation/Guest House',
                     image: item5,
+                    link: ''
                 },
                 {
                     name: 'Gomez House',
                     description: "Step into a world of heritage and nostalgia at Gomez House. This charming guesthouse, with its restored vintage interiors, offers a unique experience that transports you back in time. Enjoy a blend of old-world charm and modern comforts at Gomez House.",
                     category: 'Accommodation/Guest House',
                     image: item6,
+                    link: ''
                 },
                 {
                     name: 'Prince Plaza Hotel',
                     description: "Indulge in spacious suites and exceptional service at Prince Plaza Hotel. Located in the heart of Makati's business district, this hotel offers a homey ambiance with all the amenities you need for a comfortable stay. Enjoy the convenience of its prime location and a warm welcome at Prince Plaza Hotel.",
                     category: 'Accommodation/Hotel',
                     image: item7,
+                    link: ''
                 },
                 {
                     name: 'Howzat Inn',
                     description: "Discover a budget-friendly and cozy stay at Howzat Inn. This charming inn provides comfortable accommodations without breaking the bank. With its strategic location and warm hospitality, Howzat Inn ensures a memorable and enjoyable stay in Makati.",
                     category: 'Accommodation/Inn',
                     image: item8,
+                    link: ''
                 },
 
             ],

@@ -344,21 +344,105 @@
     </div>
 
     <div v-if="$route.path.startsWith('/category')"
-      class="hidden lg:inset-x-0 lg:bottom-0 lg:grid lg:grid-cols-6 lg:pl-10 lg:pr-10 lg:pt-2 lg:pb-2 lg:justify-center lg:text-black lg:bg-white lg:border-t">
-      <div v-for="(item, index) in locations" :key="index"
-        class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center"
-        :class="`location-card ${item.attrib}`" style="margin: 0; width: 100%; height: auto;">
-        <RouterLink :to="item.link">
+      class="hidden lg:inset-x-0 lg:bottom-0 lg:grid lg:grid-cols-6 lg:pl-10 lg:pr-10 lg:pt-2 lg:pb-2 lg:justify-center lg:text-black lg:bg-white lg:border-t ">
+      <!-- Location 1 -->
+      <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center rounded-l-lg"
+        :class="['location-card', locations[0].attrib, { 'active-effect': isActive(locations[0].link) }]">
+        <RouterLink :to="locations[0].link">
           <!-- Adjust height as needed -->
           <div class="flex items-center justify-center h-10">
-            <img :src="item.imgSrc" :alt="item.alt" class="p-[26px]">
+            <img :src="locations[0].imgSrc" :alt="locations[0].alt" class="p-[26px]">
             <!-- Adjust height as needed -->
-            <h6 class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{ item.mobile }}</h6>
-            <h6 class="font-bold text-1xl">{{ item.mobile }}</h6>
+            <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
+          locations[0].mobile }}</span>
+            <span class="font-bold text-1xl">{{ locations[0].mobile }}</span>
           </div>
         </RouterLink>
       </div>
+
+      <!-- Location 2 -->
+      <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center"
+        :class="['location-card', locations[1].attrib, { 'active-effect': isActive(locations[1].link) }]"
+        style="margin: 0; width: 100%; height: auto;">
+        <RouterLink :to="locations[1].link">
+          <!-- Adjust height as needed -->
+          <div class="flex items-center justify-center h-10">
+            <img :src="locations[1].imgSrc" :alt="locations[1].alt" class="p-[26px]">
+            <!-- Adjust height as needed -->
+            <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
+          locations[1].mobile }}</span>
+            <span class="font-bold text-1xl">{{ locations[1].mobile }}</span>
+          </div>
+        </RouterLink>
+      </div>
+
+      <!-- Location 3 -->
+      <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center"
+        :class="['location-card', locations[2].attrib, { 'active-effect': isActive(locations[2].link) }]"
+        style="margin: 0; width: 100%; height: auto;">
+        <RouterLink :to="locations[2].link">
+          <!-- Adjust height as needed -->
+          <div class="flex items-center justify-center h-10">
+            <img :src="locations[2].imgSrc" :alt="locations[2].alt" class="p-[26px]">
+            <!-- Adjust height as needed -->
+            <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
+          locations[2].mobile }}</span>
+            <span class="font-bold text-1xl">{{ locations[2].mobile }}</span>
+          </div>
+        </RouterLink>
+      </div>
+
+      <!-- Location 4 -->
+      <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center"
+        :class="['location-card', locations[3].attrib, { 'active-effect': isActive(locations[3].link) }]"
+        style="margin: 0; width: 100%; height: auto;">
+        <RouterLink :to="locations[3].link">
+          <!-- Adjust height as needed -->
+          <div class="flex items-center justify-center h-10">
+            <img :src="locations[3].imgSrc" :alt="locations[3].alt" class="p-[26px]">
+            <!-- Adjust height as needed -->
+            <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
+          locations[3].mobile }}</span>
+            <span class="font-bold text-1xl">{{ locations[3].mobile }}</span>
+          </div>
+        </RouterLink>
+      </div>
+
+      <!-- Location 5 -->
+      <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center"
+        :class="['location-card', locations[4].attrib, { 'active-effect': isActive(locations[4].link) }]"
+        style="margin: 0; width: 100%; height: auto;">
+        <RouterLink :to="locations[4].link">
+          <!-- Adjust height as needed -->
+          <div class="flex items-center justify-center h-10">
+            <img :src="locations[4].imgSrc" :alt="locations[4].alt" class="p-[26px]">
+            <!-- Adjust height as needed -->
+            <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
+          locations[4].mobile }}</span>
+            <span class="font-bold text-1xl">{{ locations[4].mobile }}</span>
+          </div>
+        </RouterLink>
+      </div>
+
+      <!-- Location 6 -->
+      <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center rounded-r-lg"
+        :class="['location-card', locations[5].attrib, { 'active-effect': isActive(locations[5].link) }]"
+        style="margin: 0; width: 100%; height: auto;">
+        <RouterLink :to="locations[5].link">
+          <!-- Adjust height as needed -->
+          <div class="flex items-center justify-center h-10">
+            <img :src="locations[5].imgSrc" :alt="locations[5].alt" class="p-[26px]">
+            <!-- Adjust height as needed -->
+            <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
+          locations[5].mobile }}</span>
+            <span class="font-bold text-1xl">{{ locations[5].mobile }}</span>
+          </div>
+        </RouterLink>
+      </div>
+
+      <!-- Repeat the above structure for each location, changing the indices accordingly -->
     </div>
+
   </nav>
 
 
@@ -395,17 +479,31 @@ export default {
       imageUrl: imageUrl,
       imageUrl2: imageUrl2,
       locations: [
-        { imgSrc: run, alt: 'location1', attrib: 'hover:rounded-l-lg', title: 'What to DO', mobile: 'Do', link: '/category/do' },
+        { imgSrc: run, alt: 'location1', attrib: 'hover:rounded-l-lg active:rounded-l-lg', title: 'What to DO', mobile: 'Do', link: '/category/do' },
         { imgSrc: grocery, alt: 'location2', attrib: '', title: 'Where to SHOP', mobile: 'Shop', link: '/category/shop' },
         { imgSrc: binoculars, alt: 'location3', attrib: '', title: 'What to SEE', mobile: 'See', link: '/category/see' },
         { imgSrc: food, alt: 'location4', attrib: '', title: 'Where to EAT', mobile: 'Eat', link: '/category/eat' },
         { imgSrc: house, alt: 'location5', attrib: '', title: 'Where to STAY', mobile: 'Stay', link: '/category/stay' },
-        { imgSrc: locationImg, alt: 'location6', attrib: 'hover:rounded-r-lg', title: 'Make TOUR', mobile: 'Tour', link: '/category/tour' }
+        { imgSrc: locationImg, alt: 'location6', attrib: 'hover:rounded-r-lg active:rounded-r-lg', title: 'Make TOUR', mobile: 'Tour', link: '/category/tour' }
         // Add more locations as needed
       ],
+      currentRoute: ''
     };
   },
+  created() {
+    // Watch for route changes
+    this.$watch(
+      () => this.$route.path,
+      newPath => {
+        this.currentRoute = newPath;
+      }
+    );
+  },
   methods: {
+    isActive(link) {
+      // Check if the current route contains the provided link
+      return this.currentRoute.includes(link);
+    },
     toggleContinueButton(event) {
       this.checkboxChecked = event.target.checked;
     },
@@ -479,6 +577,27 @@ export default {
   height: 100%;
 }
 
+.active-effect img {
+  filter: invert(1);
+  transition: filter 0.3s ease;
+}
+
+.active-effect span {
+  color: white;
+}
+
+.active-effect {
+  background-color: #008EE4;
+  color: white;
+}
+
+.active-effect-left {
+  background-color: #008EE4;
+  color: white;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
 .location-card {
   padding: 2px;
   margin: 0;
@@ -509,7 +628,7 @@ export default {
   /* Set your desired text color */
 }
 
-.location-card:hover h6 {
+.location-card:hover span {
   color: white;
   /* Set your desired text color on hover */
   transition: filter 0.3s ease;

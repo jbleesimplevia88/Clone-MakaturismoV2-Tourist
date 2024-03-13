@@ -16,16 +16,16 @@
                     </div>
                     <div class="relative flex flex-col items-center">
                         <div class="lg:pl-9 grid grid-cols-1 lg:grid-cols-5 lg:pr-[7rem]">
-                            <img src="@/assets/images/CategoryView/ToDo/omni.jpg" alt=""
+                            <img src="@/assets/images/CategoryView/ToStay/xyz1.png" alt=""
                                 class="col-span-3 w-[100%] h-full lg:w-[97%] lg:h-[95%] rounded-l-3xl">
                             <div class="hidden col-span-2 md:grid md:grid-cols-2 gap-4 ">
-                                <img src="@/assets/images/CategoryView/ToDo/Wonder Woman.png" alt=""
+                                <img src="@/assets/images/CategoryView/ToStay/xyz2.png" alt=""
                                     class="lg:w-[100%] lg:h-[90%]">
-                                <img src="@/assets/images/CategoryView/ToDo/Avengers.png" alt=""
+                                <img src="@/assets/images/CategoryView/ToStay/xyz3.png" alt=""
                                     class="lg:w-[100%] lg:h-[90%] rounded-tr-3xl">
-                                <img src="@/assets/images/CategoryView/ToDo/Iron Man Set.png" alt=""
+                                <img src="@/assets/images/CategoryView/ToStay/xyz4.png" alt=""
                                     class="lg:w-[100%] lg:h-[90%]">
-                                <img src="@/assets/images/CategoryView/ToDo/Iron Man Set.png" alt=""
+                                <img src="@/assets/images/CategoryView/ToStay/xyz5.png" alt=""
                                     class="lg:w-[100%] lg:h-[90%] rounded-br-3xl">
                             </div>
                         </div>
@@ -53,11 +53,7 @@
 
 
         <p class="font-bold text-lg text-black text-left pb-5 pt-3 lg:pt-[5rem]">About this place</p>
-        <p class="text-lg text-justify text-black pb-5">Discover a fusion of art and technology at the Omniverse Museum
-            in Makati. Step into a world of interactive exhibits, mind-bending installations, and awe-inspiring virtual
-            reality experiences. This unique museum promises a captivating journey through the realms of creativity and
-            innovation. Whether you're an art enthusiast or a tech-savvy explorer, the Omniverse Museum is a must-visit
-            destination for an extraordinary adventure.</p>
+        <p class="text-lg text-justify text-black pb-5">Stay and relax in the amazing rooms of U Hotels Makati. Find your peace and enjoy the services this place can offer.</p>
 
 
         <div class="flex flex-row">
@@ -69,8 +65,7 @@
                         d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                 </svg>
             </div>
-            <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">Omniverse Museum Japan Town 4/F Glorietta 2,
-                Ayala Center Makati Palm Dr, Makati Ave, Makati, 1224 Metro Manila</p>
+            <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">5091 P.Burgos, Makati, Metro Manila</p>
         </div>
 
         <div class="flex flex-row">
@@ -83,7 +78,8 @@
 
             </div>
             <div class="flex flex-col pl-2.5">
-                <p class="text-lg md:text-black text-left pb-5">Tuesday to Sunday | 12:00 PM to 8:00 PM</p>
+                <p class="text-lg md:text-black text-left">Monday to Sunday</p>
+                <p class="text-lg md:text-black text-left">11:00 AM to 7:30 PM</p>
 
             </div>
         </div>
@@ -97,13 +93,19 @@
                 </svg>
 
             </div>
-            <p class="text-lg md:text-black text-left pl-2.5 pb-5">0915 009 1034</p>
+            <p class="text-lg md:text-black text-left pl-2.5 pb-5">(02) 8820 1000</p>
         </div>
 
-        <h1 class="font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SPOT IN HERE IN GLORIETTA</h1>
+        <h1 class="font-bold text-lg text-black text-left pb-2 lg:pt-5">Rooms to offer</h1>
 
-        <ContentCarousel class="mb-10" />
+        <!-- <ContentCarousel class="mb-10" /> -->
 
+        <p class="text-lg text-justify text-black pb-5">Rooms</p> 
+        <p class="text-lg text-justify text-black pb-5">Regular room</p>
+        <p class="text-lg text-justify text-black pb-5">Double room</p>
+        <p class="text-lg text-justify text-black pb-5">Suite room</p>
+        <p class="text-lg text-justify text-black pb-5">Deluxe room</p>
+        <p class="text-lg text-justify text-black pb-5">Double Deluxe room</p>
 
     </div>
 
@@ -153,9 +155,9 @@
         <div class="relative mx-6 px-3 lg:px-32 pb-5 pt-5">
             <div>
                 <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
-                <img src="@/assets/images/CategoryView/ToSee/Glorietta Map.jpg" alt="" class="pb-12 block lg:hidden">
+                <img src="@/assets/images/CategoryView/ToStay/webmap.png" alt="" class="pb-12 block lg:hidden">
                 <div class="hidden lg:block lg:pb-10">
-                    <img src="@/assets/images/CategoryView/ToDo/Omniverse Web Map.png" alt="" class="w-[100%] h-[100%]">
+                    <img src="@/assets/images/CategoryView/ToStay/webmap.png" alt="" class="w-[100%] h-[100%]">
                 </div>
             </div>
             <hr style="border-top: 1px solid black">
@@ -237,26 +239,26 @@
 
 
 <script>
-import ContentCarousel from '@/components/ContentModalCarousel.vue';
+// import ContentCarousel from '@/components/ContentModalCarousel.vue';
 
 
 
 export default {
-    components: {
-        ContentCarousel
-    },
+    // components: {
+        // ContentCarousel
+    // },
     data() {
         return {
             items: [
                 {
                     name: 'Juan Dela Cruz',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                    description: "Immerse yourself in the modern elegance of U Hotels Makati. With contemporary designs and thoughtful amenities, this hotel offers a delightful stay in the heart of the city. Enjoy personalized service and easy access to Makati's attractions at U Hotels Makati.",
                     date: 'December 2023',
 
                 },
                 {
-                    name: 'Luis Paolo',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                    name: 'Juan Dela Cruz',
+                    description: "Immerse yourself in the modern elegance of U Hotels Makati. With contemporary designs and thoughtful amenities, this hotel offers a delightful stay in the heart of the city. Enjoy personalized service and easy access to Makati's attractions at U Hotels Makati.",
                     date: 'December 2023',
 
                 },

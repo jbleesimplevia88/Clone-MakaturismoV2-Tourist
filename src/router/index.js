@@ -114,7 +114,14 @@ const router = createRouter({
         {
           path: 'eat',
           name: 'eat',
-          component: () => import('../components/ToEat.vue')
+          component: () => import('../components/ToEat.vue'),
+          children: [
+            {
+              path: 'LittleTokyo',
+              name: 'Little Tokyo',
+              component: () => import('../components/CategoryEat/EatLittleTokyo.vue')
+            },
+          ]
         },
         {
           path: 'stay',

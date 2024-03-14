@@ -16,16 +16,16 @@
                     </div>
                     <div class="relative flex flex-col items-center">
                         <div class="lg:pl-9 grid grid-cols-1 lg:grid-cols-5 lg:pr-[7rem]">
-                            <img src="@/assets/images/CategoryView/ToShop/shop1.png" alt=""
+                            <img src="@/assets/images/CategoryView/ToEat/eat1.png" alt=""
                                 class="col-span-3 w-[100%] h-full lg:w-[97%] lg:h-[95%] rounded-l-3xl">
                             <div class="hidden col-span-2 md:grid md:grid-cols-2 gap-4 ">
-                                <img src="@/assets/images/CategoryView/ToShop/shop2.png" alt=""
+                                <img src="@/assets/images/CategoryView/ToEat/eat2.png" alt=""
                                     class="lg:w-[100%] lg:h-[90%]">
-                                <img src="@/assets/images/CategoryView/ToShop/shop3.png" alt=""
+                                <img src="@/assets/images/CategoryView/ToEat/eat3.png" alt=""
                                     class="lg:w-[100%] lg:h-[90%] rounded-tr-3xl">
-                                <img src="@/assets/images/CategoryView/ToShop/shop4.png" alt=""
+                                <img src="@/assets/images/CategoryView/ToEat/eat4.png" alt=""
                                     class="lg:w-[100%] lg:h-[90%]">
-                                <img src="@/assets/images/CategoryView/ToShop/shop4.png" alt=""
+                                <img src="@/assets/images/CategoryView/ToEat/eat5.jpg" alt=""
                                     class="lg:w-[100%] lg:h-[90%] rounded-br-3xl">
                             </div>
                         </div>
@@ -41,8 +41,8 @@
 
 
                     <div class="flex flex-col pl-8 lg:pl-8 lg:order-first">
-                        <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">Makati Shop</h1>
-                        <p class="text-md text-white text-left pb-5">Souvenirs/Gifts Shop</p>
+                        <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">Little Tokyo</h1>
+                        <p class="text-md text-white text-left pb-5">Restaurant/Food District</p>
                     </div>
                 </div>
             </div>
@@ -55,10 +55,11 @@
 
 
                 <p class="font-bold text-lg text-black text-left pb-5 pt-3 lg:pt-[5rem]">About this place</p>
-                <p class="text-lg text-justify text-black pb-5">From handmade souvenirs, eco-friendly Barongs and
-                    fashionable Filipiniana to artisanal chocolates and more, Makati Shop continues its mission to
-                    embrace our heritage and keep them relevant; support communities and help grow small businesses;
-                    protect the environment and elevate pride in our identity.</p>
+                <p class="text-lg text-justify text-black pb-5">Savor the authentic flavors of Japan in the heart of
+                    Makati at Little Tokyo. This culinary enclave offers a delightful array of Japanese restaurants and
+                    eateries, serving up delicious sushi, ramen, tempura, and more. Whether you're a sushi aficionado or
+                    a ramen lover, Little Tokyo promises a delectable dining experience in a charming Japanese setting.
+                </p>
 
                 <div class="hidden border border-gray-400 lg:w-[]">
                     <p class="text-center font-bold">Number of items</p>
@@ -76,7 +77,7 @@
                                 d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                         </svg>
                     </div>
-                    <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">123 Palm Dr, Makati, Metro Manila</p>
+                    <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">N/A</p>
                 </div>
 
                 <div class="flex flex-row">
@@ -103,7 +104,7 @@
                         </svg>
 
                     </div>
-                    <p class="text-lg md:text-black text-left pl-2.5 pb-5">(02) 8892 1024</p>
+                    <p class="text-lg md:text-black text-left pl-2.5 pb-5">N/A</p>
                 </div>
 
                 <div class="my-4 lg:w-[100%]">
@@ -113,10 +114,10 @@
                             class="lg:w-auto lg:flex-auto bg-blue-950 lg:h-[15rem] w-[47%] h-[190px] m-1 p-2 lg:p-3 rounded-xl relative flex flex-col justify-between">
                             <p class="rounded-xl lg:text-sm text-xs absolute top-0 left-0 text-white p-2 w-full"
                                 style="background-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);">
-                                Multi handle Tote bag with Embroided Philippine Kalesa Scenery
+                                spicy Maguro
                             </p>
-                            <img class="rounded-md lg:h-[80%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="100%">
+                            <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToEat/best1.png" alt=""
+                                width="100%">
                             <button
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
@@ -125,10 +126,10 @@
                             class="lg:w-auto lg:flex-auto bg-blue-950 lg:h-[15rem] w-[47%] h-[190px] m-1 p-2 lg:p-3 rounded-xl relative flex flex-col justify-between">
                             <p class="rounded-xl lg:text-sm text-xs absolute top-0 left-0 text-white p-2 w-full"
                                 style="background-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);">
-                                Multi handle Tote bag with Embroided Philippine Kalesa Scenery
+                                Modern Ika Tama
                             </p>
-                            <img class="rounded-md lg:h-[80%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="100%">
+                            <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToEat/best2.png" alt=""
+                                width="100%">
                             <button
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
@@ -137,10 +138,9 @@
                             class="hidden lg:block lg:w-auto lg:flex-auto bg-blue-950 lg:h-[15rem] w-[100%] h-[190px] m-1 p-2 lg:p-3 rounded-xl relative flex-col justify-between">
                             <p class="rounded-xl lg:text-sm text-xs absolute top-0 left-0 text-white p-2 w-full"
                                 style="background-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);">
-                                Multi handle Tote bag with Embroided Philippine Kalesa Scenery
-                            </p>
-                            <img class="rounded-md lg:h-[80%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="100%">
+                                Udon </p>
+                            <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToEat/best3.jpg" alt=""
+                                width="100%">
                             <button
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
@@ -156,11 +156,11 @@
                         <div
                             class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
                             <p class="text-xs absolute top-3 right-0 text-white p-2 w-[55%]">
-                                Multi handle Tote bag with Embroided Philippine Kalesa Scenery</p>
+                                Takoyaki</p>
                             <p class="text-xs absolute bottom-12 right-0 text-white p-2 w-[55%]">
                                 ₱ 200.00</p>
-                            <img class="rounded-md mt-2 lg:h-[70%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="40%">
+                            <img class="rounded-md mt-2 lg:h-[70%]" src="@/assets/images/CategoryView/ToEat/other1.jpg"
+                                alt="" width="40%">
                             <div class="flex flex-wrap justify-between items-center mb-2">
                                 <button class="text-xs bg-blue-900 rounded-md py-1 px-3 w-[40%]">See More</button>
                                 <button class="text-xs bg-blue-600 rounded-md py-1 px-3 w-[57%]">Add to Cart</button>
@@ -169,11 +169,11 @@
                         <div
                             class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
                             <p class="text-xs absolute top-3 right-0 text-white p-2 w-[55%]">
-                                Multi handle Tote bag with Embroided Philippine Kalesa Scenery</p>
+                                Oyako Don</p>
                             <p class="text-xs absolute bottom-12 right-0 text-white p-2 w-[55%]">
                                 ₱ 200.00</p>
-                            <img class="rounded-md mt-2 lg:h-[70%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="40%">
+                            <img class="rounded-md mt-2 lg:h-[70%]" src="@/assets/images/CategoryView/ToEat/other2.png"
+                                alt="" width="40%">
                             <div class="flex flex-wrap justify-between items-center mb-2">
                                 <button class="text-xs bg-blue-900 rounded-md py-1 px-3 w-[40%]">See More</button>
                                 <button class="text-xs bg-blue-600 rounded-md py-1 px-3 w-[57%]">Add to Cart</button>
@@ -182,11 +182,11 @@
                         <div
                             class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
                             <p class="text-xs absolute top-3 right-0 text-white p-2 w-[55%]">
-                                Multi handle Tote bag with Embroided Philippine Kalesa Scenery</p>
+                                7 Kinds Chirashi</p>
                             <p class="text-xs absolute bottom-12 right-0 text-white p-2 w-[55%]">
                                 ₱ 200.00</p>
-                            <img class="rounded-md mt-2 lg:h-[70%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="40%">
+                            <img class="rounded-md mt-2 lg:h-[70%]" src="@/assets/images/CategoryView/ToEat/other3.png"
+                                alt="" width="40%">
                             <div class="flex flex-wrap justify-between items-center mb-2">
                                 <button class="text-xs bg-blue-900 rounded-md py-1 px-3 w-[40%]">See More</button>
                                 <button class="text-xs bg-blue-600 rounded-md py-1 px-3 w-[57%]">Add to Cart</button>
@@ -198,11 +198,11 @@
                         <div
                             class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
                             <p class="text-xs absolute top-3 right-0 text-white p-2 w-[55%]">
-                                Multi handle Tote bag with Embroided Philippine Kalesa Scenery</p>
+                                San Ten Mori</p>
                             <p class="text-xs absolute bottom-12 right-0 text-white p-2 w-[55%]">
                                 ₱ 100.00</p>
-                            <img class="rounded-md mt-2 lg:h-[70%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="40%">
+                            <img class="rounded-md mt-2 lg:h-[70%]" src="@/assets/images/CategoryView/ToEat/other4.jpg"
+                                alt="" width="40%">
                             <div class="flex flex-wrap justify-between items-center mb-2">
                                 <button class="text-xs bg-blue-900 rounded-md py-1 px-3 w-[40%]">See More</button>
                                 <button class="text-xs bg-blue-600 rounded-md py-1 px-3 w-[57%]">Add to Cart</button>
@@ -211,11 +211,11 @@
                         <div
                             class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
                             <p class="text-xs absolute top-3 right-0 text-white p-2 w-[55%]">
-                                Multi handle Tote bag with Embroided Philippine Kalesa Scenery</p>
+                                Makunouchi Bento</p>
                             <p class="text-xs absolute bottom-12 right-0 text-white p-2 w-[55%]">
                                 ₱ 100.00</p>
-                            <img class="rounded-md mt-2 lg:h-[70%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="40%">
+                            <img class="rounded-md mt-2 lg:h-[70%]" src="@/assets/images/CategoryView/ToEat/other5.png"
+                                alt="" width="40%">
                             <div class="flex flex-wrap justify-between items-center mb-2">
                                 <button class="text-xs bg-blue-900 rounded-md py-1 px-3 w-[40%]">See More</button>
                                 <button class="text-xs bg-blue-600 rounded-md py-1 px-3 w-[57%]">Add to Cart</button>
@@ -224,11 +224,11 @@
                         <div
                             class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
                             <p class="text-xs absolute top-3 right-0 text-white p-2 w-[55%]">
-                                Multi handle Tote bag with Embroided Philippine Kalesa Scenery</p>
+                                Chasyu Men</p>
                             <p class="text-xs absolute bottom-12 right-0 text-white p-2 w-[55%]">
                                 ₱ 100.00</p>
-                            <img class="rounded-md mt-2 lg:h-[70%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="40%">
+                            <img class="rounded-md mt-2 lg:h-[70%]" src="@/assets/images/CategoryView/ToEat/other6.png"
+                                alt="" width="40%">
                             <div class="flex flex-wrap justify-between items-center mb-2">
                                 <button class="text-xs bg-blue-900 rounded-md py-1 px-3 w-[40%]">See More</button>
                                 <button class="text-xs bg-blue-600 rounded-md py-1 px-3 w-[57%]">Add to Cart</button>
@@ -242,28 +242,24 @@
             <div class="my-4 lg:w-[30%] lg:h-[30%] right-10 absolute top-[8rem]">
                 <div class="lg:w-[75%] border border-gray-300 p-4 rounded-lg shadow"> <!-- center this div -->
                     <p class="text-center font-bold">Number of items</p>
-                    <p class="text-center font-bold text-3xl">9</p>
+                    <p class="text-center font-bold text-3xl">4</p>
                     <div class="mb-5">
                         <p class="font-bold">List of items</p>
                         <div class="flex justify-between mb-2">
-                            <p class="w-[70%]">Multi handed Tote Bag with embroidered Philippines Kalesa Scenery</p>
+                            <p class="w-[70%]">Spicy Maguro</p>
                             <p>x1</p>
                         </div>
                         <div class="flex justify-between mb-2">
-                            <p class="w-[70%]">Multi handed Tote Bag with embroidered Philippines Jeepney</p>
-                            <p>x3</p>
-                        </div>
-                        <div class="flex justify-between mb-2">
-                            <p class="w-[70%]">Beat the Heat Graphic Tee in blush</p>
+                            <p class="w-[70%]">Takoyaki</p>
                             <p>x1</p>
                         </div>
                         <div class="flex justify-between mb-2">
-                            <p class="w-[70%]">Never Stop Exploring Graphic Tee in Gray</p>
-                            <p>x2</p>
+                            <p class="w-[70%]">Udon</p>
+                            <p>x1</p>
                         </div>
                         <div class="flex justify-between mb-2">
-                            <p class="w-[70%]">Ethnic Stripes Book Tote Bag</p>
-                            <p>x2</p>
+                            <p class="w-[70%]">Oyako Don</p>
+                            <p>x1</p>
                         </div>
 
                     </div>

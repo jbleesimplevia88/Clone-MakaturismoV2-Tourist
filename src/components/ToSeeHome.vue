@@ -105,7 +105,6 @@
                     </div>
                     <div class="p-1 flex justify-end items-center">
                         <router-link :to="item.link">
-
                             <button @click="seeMore(item)"
                                 class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
                                 <span>See More</span>

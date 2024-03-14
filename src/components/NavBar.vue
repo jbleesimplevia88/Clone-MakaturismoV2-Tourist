@@ -343,7 +343,7 @@
       </div>
     </div>
 
-    <div v-if="$route.path.startsWith('/category')"
+    <div v-if="isCategoryPath($route.path)"
       class="hidden lg:inset-x-0 lg:bottom-0 lg:grid lg:grid-cols-6 lg:pl-10 lg:pr-10 lg:pt-2 lg:pb-2 lg:justify-center lg:text-black lg:bg-white lg:border-t ">
       <!-- Location 1 -->
       <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center rounded-l-lg"
@@ -495,11 +495,18 @@ export default {
     this.$watch(
       () => this.$route.path,
       newPath => {
-        this.currentRoute = newPath;
+        // Check if the new path starts with '/category/' and has exactly two segments
+        if (newPath.startsWith('/category/') && newPath.split('/').length === 3) {
+          this.currentRoute = newPath;
+        }
       }
     );
   },
+
   methods: {
+    isCategoryPath(path) {
+      return path.startsWith('/category/') && path.split('/').length === 3;
+    },
     isActive(link) {
       // Check if the current route contains the provided link
       return this.currentRoute.includes(link);

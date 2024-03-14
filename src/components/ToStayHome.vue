@@ -177,19 +177,20 @@ export default {
         return {
             items: [
                 {
-                    name: 'Casino Suites',
-                    description: "Experience comfort and convenience at Casino Suites, where modern amenities and personalized service await you. Located in the heart of Makati, this hotel provides easy access to the city's vibrant attractions and business district. Unwind in well-appointed rooms and enjoy a memorable stay at Casino Suites.",
-                    category: 'Accommodation/Hotel',
-                    image: item1,
-                    link: ''
-                },
-                {
                     name: 'XYZ Hotel',
                     description: "Immerse yourself in the modern elegance of U Hotels Makati. With contemporary designs and thoughtful amenities, this hotel offers a delightful stay in the heart of the city. Enjoy personalized service and easy access to Makati's attractions at U Hotels Makati.                    ",
                     category: 'Accommodation/Hotel',
                     image: item2,
                     link: "/category/stay/xyz"
                 },
+                {
+                    name: 'Casino Suites',
+                    description: "Experience comfort and convenience at Casino Suites, where modern amenities and personalized service await you. Located in the heart of Makati, this hotel provides easy access to the city's vibrant attractions and business district. Unwind in well-appointed rooms and enjoy a memorable stay at Casino Suites.",
+                    category: 'Accommodation/Hotel',
+                    image: item1,
+                    link: ''
+                },
+
                 {
                     name: 'Hotel Durban',
                     description: "Experience urban comfort and chic accommodations at Hotel Durban. With its stylish interiors and top-notch amenities, this hotel is a favorite among modern travelers. Whether you're in town for business or leisure, Hotel Durban ensures a pleasant and memorable stay in Makati.",

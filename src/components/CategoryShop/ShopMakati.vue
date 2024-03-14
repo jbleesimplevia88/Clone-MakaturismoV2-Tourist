@@ -29,16 +29,22 @@
                                     class="lg:w-[100%] lg:h-[90%] rounded-br-3xl">
                             </div>
                         </div>
-                        <!-- <div class="absolute bottom-2 right-[8rem] z-20 w-100">
-
-                            <button class="hidden lg:block p-2 bg-white rounded-lg shadow outline outline-2 text-md">
-                                <img src="@/assets/images/Content/9dots.png" alt="" class="w-10 h-10">
-                                Show
-                                All
-                                Photos</button>
-                        </div> -->
                     </div>
+                    <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 p-5 shadow-lg">
+                        <div class="flex justify-between">
+                            <div>
+                                <p class="text-md">Unbeatable Deals</p>
+                                <p class="text-lg font-bold">Shop with ease</p>
+                            </div>
+                            <div>
+                                <button @click="openCartModal"
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg">
+                                    Shop Now
+                                </button>
+                            </div>
 
+                        </div>
+                    </div>
 
                     <div class="flex flex-col pl-8 lg:pl-8 lg:order-first">
                         <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">Makati Shop</h1>
@@ -274,6 +280,56 @@
             </div>
         </div>
 
+        <div v-if="showCartModal"
+            class="lg:hidden fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
+            @click.self="closeModal">
+            <div class="bg-white rounded-lg shadow-md p-2 max-w-md mx-5" @click.stop>
+                <div class="lg:w-[100%] p-4 rounded-lg">
+                    <div class="flex justify-between mb-2">
+                        <div class="w-[50%]">
+                            <p class="text-center font-bold">Number of items</p>
+                            <p class="text-center font-bold text-3xl">9</p>
+                        </div>
+
+                        <div class="w-[50%]">
+                            <button
+                                class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Edit
+                                Cart</button>
+                        </div>
+                    </div>
+                    <div class="mb-5">
+                        <p class="font-bold">List of items</p>
+                        <div class="flex justify-between mb-2">
+                            <p class="w-[70%]">Multi handed Tote Bag with embroidered Philippines Kalesa Scenery</p>
+                            <p>x1</p>
+                        </div>
+                        <div class="flex justify-between mb-2">
+                            <p class="w-[70%]">Multi handed Tote Bag with embroidered Philippines Jeepney</p>
+                            <p>x3</p>
+                        </div>
+                        <div class="flex justify-between mb-2">
+                            <p class="w-[70%]">Beat the Heat Graphic Tee in blush</p>
+                            <p>x1</p>
+                        </div>
+                        <div class="flex justify-between mb-2">
+                            <p class="w-[70%]">Never Stop Exploring Graphic Tee in Gray</p>
+                            <p>x2</p>
+                        </div>
+                        <div class="flex justify-between mb-2">
+                            <p class="w-[70%]">Ethnic Stripes Book Tote Bag</p>
+                            <p>x2</p>
+                        </div>
+
+                    </div>
+
+                    <button class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Check
+                        Out</button>
+                </div>
+            </div>
+        </div>
+
+
+
 
     </div>
 
@@ -432,6 +488,7 @@ export default {
 
 
             ],
+            showCartModal: false,
             currentPage: 0,
             pageSize: 8,
             showDropdown: false,
@@ -446,6 +503,12 @@ export default {
         },
     },
     methods: {
+        openCartModal() {
+            this.showCartModal = true;
+        },
+        closeModal() {
+            this.showCartModal = false;
+        }
     },
 };
 </script>

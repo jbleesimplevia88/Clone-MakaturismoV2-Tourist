@@ -19,6 +19,7 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView
+      
     },
     {
       path: '/calendar',
@@ -29,6 +30,11 @@ const router = createRouter({
       path: '/topPlace',
       name: 'topPlace',
       component: TopPlace
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: () => import('../views/CartView.vue')
     },
     {
       path: '/category',
@@ -73,41 +79,6 @@ const router = createRouter({
               path: 'glorietta',
               name: 'glorietta',
               component: () => import('../components/CategorySee/SeeGlorietta.vue')
-            },
-            {
-              path: 'leongallery',
-              name: 'leongallery',
-              component: () => import('../components/CategorySee/SeeLeonGallery.vue')
-            },
-            {
-              path: 'gallerianicolas',
-              name: 'gallerianicolas',
-              component: () => import('../components/CategorySee/SeeGalleriaNicolas.vue')
-            },
-            {
-              path: 'victorymakati',
-              name: 'victorymakati',
-              component: () => import('../components/CategorySee/SeeVictoryMakati.vue')
-            },
-            {
-              path: 'happygallery',
-              name: 'happygallery',
-              component: () => import('../components/CategorySee/SeeHappyGallery.vue')
-            },
-            {
-              path: 'artcenter',
-              name: 'artcenter',
-              component: () => import('../components/CategorySee/SeeArtCenter.vue')
-            },
-            {
-              path: 'eskinitagallery',
-              name: 'eskinitagallery',
-              component: () => import('../components/CategorySee/SeeEskinitaGallery.vue')
-            },
-            {
-              path: 'altomondo',
-              name: 'altomondo',
-              component: () => import('../components/CategorySee/SeeAltoMondo.vue')
             },
           ]
         },

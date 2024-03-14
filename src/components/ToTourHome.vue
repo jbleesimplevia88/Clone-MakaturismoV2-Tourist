@@ -176,6 +176,13 @@ export default {
         return {
             items: [
                 {
+                    name: "Central Business District Tour",
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                    category: 'Guided Tour',
+                    image: item5,
+                    link: "/category/tour/central"
+                },
+                {
                     name: 'Walkway Tour with Legazpi Market',
                     description: "Embark on a gastronomic journey and cultural immersion with the Walkway Tour featuring Legazpi Market. Explore the vibrant Legazpi Market, a popular weekend market offering a diverse selection of local products and mouthwatering treats. This guided tour will take you through a culinary adventure, introducing you to the rich flavors and aromas of Philippine cuisine.",
                     category: 'Guided Tour',
@@ -203,13 +210,7 @@ export default {
                     image: item4,
                     link: ""
                 },
-                {
-                    name: "Central Business District Tour",
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                    category: 'Guided Tour',
-                    image: item5,
-                    link: "/category/tour/central"
-                },
+
                 {
                     name: "The Garden Way of the Cross of St. Alphonsus Mary de Liguori Church Tour",
                     description: "Discover the spiritual side of Makati with The Garden Way of the Cross of St. Alphonsus Mary de Liguori Church Tour. This unique tour takes you through the serene and contemplative garden, featuring life-sized sculptures depicting the Passion of Christ.",

@@ -160,7 +160,6 @@
                   <button @click="openLoginModal" class="text-blue-600"><img src="@/assets/images/Modal/back.png"
                       style="width: 20px; height: 20px;" alt="" class="my-2 mr-2"></button>
                   <h2 class="text-2xl font-bold">Sign Up(Tourist)</h2>
-                  <input type="radio" name="partnerType" value="regular" class="m-2"> Become a partner
                 </div>
               </div>
               <!-- Firstname -->

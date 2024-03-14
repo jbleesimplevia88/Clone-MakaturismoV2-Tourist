@@ -108,7 +108,7 @@
                 <div class="my-4 lg:w-[100%] relative">
                     <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">Rooms to offer</h1>
                     <div class="flex flex-wrap justify-between items-center mb-2 lg:w-[70%] ">
-                        <div>
+                        <div class="lg:block hidden">
                             <h1 class="font-bold mb-1">Rooms</h1>
                             <div class="flex flex-col">
                                 <div>
@@ -129,7 +129,43 @@
                             </div>
                         </div>
 
-                        <div class="absolute top-[4.8rem] right-40">
+                        <div class="hidden lg:absolute lg:top-[4.8rem] lg:right-40">
+                            <h1 class="font-bold">Rooms</h1>
+                            <div>
+                                <p class="flex items-center">
+                                    <svg class="w-4 h-auto mr-2 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <circle cx="10" cy="10" r="3" />
+                                    </svg>
+                                    Regular room
+                                </p>
+                                <p class="flex items-center">
+                                    <svg class="w-4 h-auto mr-2 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <circle cx="10" cy="10" r="3" />
+                                    </svg>
+                                    Double room
+                                </p>
+                                <p class="flex items-center">
+                                    <svg class="w-4 h-auto mr-2 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <circle cx="10" cy="10" r="3" />
+                                    </svg>
+                                    Suite room
+                                </p>
+                                <p class="flex items-center">
+                                    <svg class="w-4 h-auto mr-2 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <circle cx="10" cy="10" r="3" />
+                                    </svg>
+                                    Deluxe room
+                                </p>
+                                <p class="flex items-center">
+                                    <svg class="w-4 h-auto mr-2 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <circle cx="10" cy="10" r="3" />
+                                    </svg>
+                                    Double Deluxe room
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="lg:absolute lg:top-[4.8rem] lg:right-40">
                             <h1 class="font-bold">Amenities</h1>
                             <div>
                                 <p class="flex items-center">

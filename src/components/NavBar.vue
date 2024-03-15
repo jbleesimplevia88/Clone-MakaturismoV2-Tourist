@@ -26,6 +26,14 @@
         <div class="relative p-8 bg-white"
           :style="{ width: '75%', height: '65%', borderRadius: '20px', backgroundImage: 'url(' + imageUrl + ')', backgroundSize: 'cover', backgroundPosition: 'center bottom' }">
           <!-- Modal Content -->
+          <div class="relative flex justify-end">
+            <button class=" pr-4 pt-21 ">
+              <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="5"
+                stroke="black" class="w-7 h-7">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
           <div class="relative z-10 flex flex-col items-start justify-center h-full m-10">
             <div class="mb-5">
               <h2 class="text-2xl font-bold">Welcome!</h2>
@@ -68,6 +76,14 @@
       <div v-if="showPrivacyModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
         <div class="relative p-8 bg-white" :style="{ width: '75%', height: '65%', borderRadius: '20px' }">
           <!-- Modal Content -->
+          <div class="relative flex justify-end">
+            <button class=" pr-4 pt-21 ">
+              <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="5"
+                stroke="black" class="w-7 h-7">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
           <div class="flex justify-center items-center">
             <img src="@/assets/images/Header/makati_logo.png" alt="banner"
               class="w-8 h-auto mr-3 md:block md:w-16 md:h-auto">
@@ -153,6 +169,14 @@
         <div class="relative p-8 bg-white"
           :style="{ width: '75%', height: '65%', borderRadius: '20px', backgroundImage: 'url(' + imageUrl2 + ')', backgroundSize: 'cover' }">
           <!-- Modal Content -->
+          <div class="relative flex justify-end">
+            <button class=" pr-4 pt-21 ">
+              <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="5"
+                stroke="black" class="w-7 h-7">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
           <div class="relative z-10 flex flex-col items-start justify-center h-full">
             <form @submit.prevent="signup" style="width: 60%;">
               <div class="mb-5">
@@ -237,6 +261,14 @@
         <div class="relative p-8 bg-white"
           :style="{ width: '75%', height: '65%', borderRadius: '20px', backgroundImage: 'url(' + imageUrl2 + ')', backgroundSize: 'cover' }">
           <!-- Modal Content -->
+          <div class="relative flex justify-end">
+            <button class=" pr-4 pt-21 ">
+              <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="5"
+                stroke="black" class="w-7 h-7">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
           <div class="relative z-10 flex flex-col items-start justify-center h-full">
             <form @submit.prevent="forgot" style="width: 30%;">
               <div class="mb-5">
@@ -267,6 +299,14 @@
     <div v-if="showOTP" class="fixed inset-0 z-[10] flex items-center justify-center bg-gray-800 bg-opacity-30"
       @click="closeOTP">
       <!-- Modal Content -->
+      <div class="relative flex justify-end">
+        <button class=" pr-4 pt-21 ">
+          <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="5"
+            stroke="black" class="w-7 h-7">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
       <div class="relative bg-white px-6 pb-9 shadow-xl mx-auto w-full max-w-3xl rounded-2xl">
         <div class="mx-auto flex w-full max-w-3xl flex-col">
           <button class="relative flex pr-4 pt-10 justify-end">
@@ -535,6 +575,11 @@ export default {
     },
     closeOTP() {
       this.showOTP = false;
+      this.showLoginModal = false;
+      this.showSignUpModal = false;
+      this.showPrivacyModal = false;
+      this.showForgotModal = false;
+      this.showOtpModal = false;
     },
     login() {
       // Your login logic here

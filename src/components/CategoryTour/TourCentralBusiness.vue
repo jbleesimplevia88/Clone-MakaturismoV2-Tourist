@@ -75,7 +75,7 @@
                                 d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                         </svg>
                     </div>
-                    <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">5091 P. Burgos, Makati, Metro Manila
+                    <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">986 Dr Jose P. Rizal Ave, Makati, 1210 Metro Manila
                     </p>
                 </div>
 
@@ -89,9 +89,9 @@
 
                     </div>
                     <div class="flex flex-col pl-2.5">
-                        <p class="text-lg md:text-black text-left pb-5">N/A</p>
-
-                    </div>
+                <p class="text-lg md:text-black text-left">Wednesday to Sunday</p>
+                <p class="text-lg md:text-black text-left">11:00 AM to 7:30 PM</p>
+            </div>
                 </div>
 
                 <div class="flex flex-row">
@@ -103,7 +103,7 @@
                         </svg>
 
                     </div>
-                    <p class="text-lg md:text-black text-left pl-2.5 pb-5">(02) 8820 1000</p>
+                    <p class="text-lg md:text-black text-left pl-2.5 pb-5">8-7000</p>
                 </div>
 
                 <div class="my-4 lg:w-[100%] relative">
@@ -112,7 +112,7 @@
                         <img src="@/assets/images/CategoryView/ToSee/Glorietta Map.jpg" alt=""
                             class="pb-12 block lg:hidden">
                         <div class="hidden lg:block lg:pb-10">
-                            <img src="@/assets/images/CategoryView/ToDo/Omniverse Web Map.png" alt=""
+                            <img src="@/assets/images/CategoryView/ToTour/centralbusiness webmap.png" alt=""
                                 class="w-[100%] h-[100%]">
                         </div>
                     </div>

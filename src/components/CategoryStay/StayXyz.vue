@@ -88,7 +88,8 @@
 
                     </div>
                     <div class="flex flex-col pl-2.5">
-                        <p class="text-lg md:text-black text-left pb-5">N/A</p>
+                        <p class="text-lg md:text-black text-left pb-5">Monday - Sunday</p>
+                        <p class="text-lg md:text-black text-left pb-5">11:00 AM - 7:30 PM</p>
 
                     </div>
                 </div>
@@ -290,9 +291,9 @@
         <div class="relative mx-6 px-3 lg:px-32 pb-5 pt-5">
             <div>
                 <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
-                <img src="@/assets/images/CategoryView/ToStay/webmap.png" alt="" class="pb-12 block lg:hidden">
+                <img src="@/assets/images/CategoryView/ToStay/xyz webmap.png" alt="" class="pb-12 block lg:hidden">
                 <div class="hidden lg:block lg:pb-10">
-                    <img src="@/assets/images/CategoryView/ToStay/webmap.png" alt="" class="w-[100%] h-[100%]">
+                    <img src="@/assets/images/CategoryView/ToStay/xyz webmap.png" alt="" class="w-[100%] h-[100%]">
                 </div>
             </div>
             <hr style="border-top: 1px solid black">

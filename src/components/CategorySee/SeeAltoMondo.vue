@@ -1,5 +1,5 @@
 <template>
-    <div class="flex relative pt-[57px] md:pt-[140px] justify-center">
+    <div class="flex relative pt-[57px] md:pt-[80px] justify-center">
         <div class="relative">
             <div class="bg-[#102E61] h-[101%] lg:h-[110%]" style="position: absolute; top: 0; left: 0; width: 100%; ">
             </div>
@@ -27,6 +27,14 @@
                                     class="size-full rounded-br-lg">
                             </div>
                         </div>
+                        <!-- <div class="absolute bottom-2 right-[8rem] z-20 w-100">
+
+                            <button class="hidden lg:block p-2 bg-white rounded-lg shadow outline outline-2 text-md">
+                                <img src="@/assets/images/Content/9dots.png" alt="" class="w-10 h-10">
+                                Show
+                                All
+                                Photos</button>
+                        </div> -->
                     </div>
 
 
@@ -58,12 +66,7 @@
                         d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                 </svg>
             </div>
-<<<<<<<< HEAD:src/components/ContentModal.vue
             <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">Glorietta, Ayala Center, Makati City</p>
-========
-            <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">Omniverse Museum Japan Town 4/F Glorietta 2,
-                Ayala Center Makati Palm Dr, Makati Ave, Makati, 1224 Metro Manila </p>
->>>>>>>> parent of d4c3ebc (MakaTour (Central Business Page)):src/components/SeeOmniverseMuseum.vue
         </div>
 
         <div class="flex flex-row">
@@ -76,15 +79,10 @@
 
             </div>
             <div class="flex flex-col pl-2.5">
-<<<<<<<< HEAD:src/components/ContentModal.vue
                 <p class="text-lg md:text-black text-left">Monday to Thursday</p>
                 <p class="text-lg md:text-black text-left">10:00 AM to 9:00 PM</p>
                 <p class="text-lg md:text-black text-left">Friday to Sunday </p>
                 <p class="text-lg md:text-black text-left pb-5">10:00 AM to 10:00 PM</p>
-========
-                <p class="text-lg md:text-black text-left">Tuesday to Sunday </p>
-                <p class="text-lg md:text-black text-left">12:00 PM to 8:00 PM</p>
->>>>>>>> parent of d4c3ebc (MakaTour (Central Business Page)):src/components/SeeOmniverseMuseum.vue
             </div>
         </div>
 

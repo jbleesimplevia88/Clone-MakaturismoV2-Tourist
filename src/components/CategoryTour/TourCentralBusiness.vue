@@ -1,12 +1,12 @@
 <template>
-    <div class="flex relative pt-[57px] md:pt-[140px] justify-center">
+    <div class="flex relative pt-[57px] md:pt-[80px] justify-center">
         <div class="relative">
-            <div class="bg-[#102E61] h-[101%] lg:h-[110%]" style="position: absolute; top: 0; left: 0; width: 100%; ">
+            <div class="bg-[#102E61] h-[101%] lg:h-[105%]" style="position: absolute; top: 0; left: 0; width: 100%; ">
             </div>
             <div class="relative inset-0 sm:top-56 md:top-2 pl-0 md:pl-10 flex items-center z-[1]">
                 <div class="relative flex flex-col pl-0 lg:pl-10">
                     <div class="absolute top-4 left-3">
-                        <router-link to="/category/tour">
+                        <router-link to="/category/do">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
                                 stroke="white" class="w-7 lg:w-10 h-7 lg:h-10">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -16,15 +16,17 @@
                     </div>
                     <div class="relative flex flex-col items-center">
                         <div class="lg:pl-9 grid grid-cols-1 lg:grid-cols-5 lg:pr-[7rem]">
-                            <img src="@/assets/images/CategoryView/ToTour/Poblacion 1.png" alt=""
-                                class="col-span-3 w-[100%] h-full lg:w-[98%] lg:h-[100%] rounded-l-3xl">
-                            <div class="hidden col-span-2 md:grid md:grid-cols-2 gap-4">
-                                <img src="@/assets/images/CategoryView/ToTour/central.jpeg" alt="" class="size-full">
-                                <img src="@/assets/images/CategoryView/ToTour/Poblacion 2.png" alt=""
-                                    class="size-full rounded-tr-3xl">
-                                <img src="@/assets/images/CategoryView/ToTour/Poblacion 3.png" alt="" class="size-full">
-                                <img src="@/assets/images/CategoryView/ToSee/Poblacion 1.png" alt=""
-                                    class="size-full rounded-br-3xl">
+                            <img src="@/assets/images/CategoryView/ToTour/tour1.png" alt=""
+                                class="col-span-3 w-[100%] h-full lg:w-[97%] lg:h-[95%] rounded-l-3xl">
+                            <div class="hidden col-span-2 md:grid md:grid-cols-2 gap-4 ">
+                                <img src="@/assets/images/CategoryView/ToTour/tour2.png" alt=""
+                                    class="lg:w-[100%] lg:h-[90%]">
+                                <img src="@/assets/images/CategoryView/ToTour/tour3.png" alt=""
+                                    class="lg:w-[100%] lg:h-[90%] rounded-tr-3xl">
+                                <img src="@/assets/images/CategoryView/ToTour/tour4.png" alt=""
+                                    class="lg:w-[100%] lg:h-[90%]">
+                                <img src="@/assets/images/CategoryView/ToTour/tour5.jpg" alt=""
+                                    class="lg:w-[100%] lg:h-[90%] rounded-br-3xl">
                             </div>
                         </div>
                         <!-- <div class="absolute bottom-2 right-[8rem] z-20 w-100">
@@ -39,148 +41,125 @@
 
 
                     <div class="flex flex-col pl-8 lg:pl-8 lg:order-first">
-                        <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">Glorietta</h1>
-                        <p class="text-md text-white text-left pb-5">Mall</p>
+                        <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">Central Business District
+                            Tour</h1>
+                        <p class="text-md text-white text-left pb-5">Guided Tour</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-
-    <div class="grid grid-cols-3">
-        <div class="relative mb-[2rem] lg:pl-[10rem] col-span-2 pt-5">
-            <p class="font-bold text-lg text-black text-left pb-5 pt-3 lg:pt-[5rem]">About this place</p>
-            <p class="text-lg text-justify text-black pb-5">Discover places in Central Business District that offer rest
-                and
-                relaxation for the weary soul and avenues for entertainment and recreation.</p>
+    <div class="flex flex-wrap justify-between items-center mb-2 relative">
+        <div class="my-4 lg:p-0 lg:w-[75%]">
+            <div class="relative mx-6 px-3 lg:px-32 pt-5">
 
 
-            <div class="flex flex-row">
-                <div class="pt-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-                    </svg>
+                <p class="font-bold text-lg text-black text-left pb-5 pt-3 lg:pt-[5rem]">About this place</p>
+                <p class="text-lg text-justify text-black pb-5">Stay and relax in the amazing rooms of U Hotels Makati.
+                    Find your peace and enjoy the services this place can offer.</p>
+
+                <div class="hidden border border-gray-400 lg:w-[]">
+                    <p class="text-center font-bold">Number of items</p>
                 </div>
-                <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">986 Dr Jose P. Rizal Ave, Makati, 1210
-                    Metro
-                    Manila</p>
+
+
+
+                <div class="flex flex-row">
+                    <div class="pt-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                        </svg>
+                    </div>
+                    <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">5091 P. Burgos, Makati, Metro Manila
+                    </p>
+                </div>
+
+                <div class="flex flex-row">
+                    <div class="pt-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+
+                    </div>
+                    <div class="flex flex-col pl-2.5">
+                        <p class="text-lg md:text-black text-left pb-5">N/A</p>
+
+                    </div>
+                </div>
+
+                <div class="flex flex-row">
+                    <div class="pt-0.25">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                        </svg>
+
+                    </div>
+                    <p class="text-lg md:text-black text-left pl-2.5 pb-5">(02) 8820 1000</p>
+                </div>
+
+                <div class="my-4 lg:w-[100%] relative">
+                    <div>
+                        <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
+                        <img src="@/assets/images/CategoryView/ToSee/Glorietta Map.jpg" alt=""
+                            class="pb-12 block lg:hidden">
+                        <div class="hidden lg:block lg:pb-10">
+                            <img src="@/assets/images/CategoryView/ToDo/Omniverse Web Map.png" alt=""
+                                class="w-[100%] h-[100%]">
+                        </div>
+                    </div>
+
+
+                </div>
+
             </div>
-
-            <div class="flex flex-row">
-                <div class="pt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    </svg>
-
-                </div>
-                <div class="flex flex-col pl-2.5">
-                    <p class="text-lg md:text-black text-left">Wednesday - Sunday</p>
-                    <p class="text-lg md:text-black text-left ">11:00 AM - 7:30 PM</p>
-                </div>
-            </div>
-
-            <div class="flex flex-row">
-                <div class="pt-0.25">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
-                    </svg>
-
-                </div>
-                <p class="text-lg md:text-black text-left pl-2.5 pb-5">(02) 7795 9595</p>
-            </div>
-
-            <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
-            <img src="@/assets/images/CategoryView/ToTour/Map.png" alt="" class="pb-12 lg:w-[100%] lg:h-[60%]">
-
         </div>
-        <div class="max-w-md p-20 mx-8 rounded-lg ">
-            <div class="flex justify-between space-x-10">
-                <div class="flex flex-col items-center">
-                    <form>
-                        <div class="space-y-12">
+        <div class="hidden lg:block">
+            <div class="my-4 lg:w-[30%] lg:h-[30%] right-10 absolute top-[8rem]">
+                <div class="lg:w-[75%] border border-gray-300 p-4 rounded-lg shadow"> <!-- center this div -->
 
-
-                            <div class="border-b border-gray-900/10 pb-12">
-
-
-                                <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-
-
-
-
-                                    <div class="sm:col-span-4">
-                                        <label for="email"
-                                            class="block text-sm font-medium leading-6 text-gray-900">Email
-                                            address</label>
-                                        <div class="mt-2">
-                                            <input id="email" name="email" type="email" autocomplete="email"
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                        </div>
-
-                                        <label for="email"
-                                            class="block text-sm font-medium leading-6 text-gray-900">Email
-                                            address</label>
-                                        <div class="mt-2">
-                                            <input id="email" name="email" type="email" autocomplete="email"
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                        </div>
-
-                                        <label for="email"
-                                            class="block text-sm font-medium leading-6 text-gray-900">Email
-                                            address</label>
-                                        <div class="mt-2">
-                                            <input id="email" name="email" type="email" autocomplete="email"
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                        </div>
-
-
-                                        <label for="email"
-                                            class="block text-sm font-medium leading-6 text-gray-900">Email
-                                            address</label>
-                                        <div class="mt-2">
-                                            <input id="email" name="email" type="email" autocomplete="email"
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                        </div>
-
-                                        <label for="email"
-                                            class="block text-sm font-medium leading-6 text-gray-900">Email
-                                            address</label>
-                                        <div class="mt-2">
-                                            <input id="email" name="email" type="email" autocomplete="email"
-                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                        </div>
-                                    </div>
-
-
-
-
-
-                                </div>
-                            </div>
-
-
+                    <div class="mb-5">
+                        <div class="flex flex-col m-2">
+                            <label for="Date" class=" mb-2 font-bold">Date of Tour</label>
+                            <input type="date" class="border border-gray-300 rounded-md p-1">
                         </div>
 
+                        <div class="flex flex-col m-2">
+                            <label for="" class=" mb-2 font-bold">Time of Tour</label>
+                            <input type="time" class="border border-gray-300 rounded-md p-1">
+                        </div>
 
+                        <div class="flex flex-col m-2">
+                            <label for="" class=" mb-2 font-bold">Number of Person</label>
+                            <input type="text" class="border border-gray-300 rounded-md p-1">
+                        </div>
 
-                        <button type="submit"
-                            class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
+                        <div class="flex flex-col m-2">
+                            <label for="" class=" mb-2 font-bold">Services</label>
+                            <input type="text" class="border border-gray-300 rounded-md p-1" value="Tour">
+                        </div>
 
-                    </form>
+                        <div class="flex flex-col m-2">
+                            <label for="" class=" mb-2 font-bold">Other Services</label>
+                            <input type="text" class="border border-gray-300 rounded-md p-1" placeholder="Note here">
+                        </div>
+                    </div>
+
+                    <button
+                        class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Reserve</button>
                 </div>
-
             </div>
-
         </div>
+
+
     </div>
 
 
@@ -228,12 +207,14 @@
         </div>
 
         <div class="relative mx-6 px-3 lg:px-32 pb-5 pt-5">
-
             <hr style="border-top: 1px solid black">
             <div>
 
                 <h1 class="font-bold text-lg text-black text-left pt-10 pb-4">5.0 Ratings (500 Reviews)</h1>
                 <div class="grid lg:grid-cols-2">
+
+
+
                     <div class="flex justify-evenly">
                         <p class=" ext-lgmdext-black text-left pb-5">Factor 1</p>
                         <div class="my-2 mx-2 flex font-bold">
@@ -306,8 +287,11 @@
 
 <script>
 
-export default {
 
+
+export default {
+    components: {
+    },
     data() {
         return {
             items: [

@@ -372,7 +372,8 @@
             <div>
 
                 <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
-                <div id="map" class="h-[400px]"></div>
+                <MapRenderer :latitude="latitude" :longitude="longitude" :name="name" />
+
                 <!-- <img src="@/assets/images/CategoryView/ToSee/Glorietta Map.jpg" alt="" class="pb-12 block lg:hidden"> -->
                 <div class="hidden lg:block lg:pb-10">
                     <!-- <img src="@/assets/images/CategoryView/ToDo/Omniverse Web Map.png" alt="" class="w-[100%] h-[100%]"> -->
@@ -455,8 +456,7 @@
 
 
 <script>
-import "leaflet/dist/leaflet.css";
-import L from "leaflet";
+import MapRenderer from "@/components/MapRenderer.vue";
 
 export default {
     props: {
@@ -464,7 +464,9 @@ export default {
         longitude: Number,
         name: String
     },
-
+    components: {
+        MapRenderer
+    },
     data() {
         return {
 
@@ -504,53 +506,6 @@ export default {
         closeModal() {
             this.showCartModal = false;
         },
-        initMap() {
-            // Create the map instance
-            const map = L.map("map").setView([this.latitude, this.longitude], 18); // Use passed latitude and longitude
-
-            // Add a tile layer (OpenStreetMap)
-            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
-
-            // Add a marker to the map at the specified latitude and longitude
-            const marker = L.marker([this.latitude, this.longitude]).addTo(map);
-
-            // Optionally, you can add a popup to the marker
-            marker.bindPopup(`<b>${this.name}</b>`).openPopup();
-        }
-
-        ,
-
-        // Define extractLatLong function within the component
-        extractLatLong(mapLocation) {
-            const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
-            const match = mapLocation.match(regex);
-            if (match && match.length >= 3) {
-                const latitude = parseFloat(match[1]);
-                const longitude = parseFloat(match[2]);
-                return { latitude, longitude };
-            }
-            // Try another regex pattern for different URL formats
-            const altRegex = /!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/;
-            const altMatch = mapLocation.match(altRegex);
-            if (altMatch && altMatch.length >= 3) {
-                const latitude = parseFloat(altMatch[1]);
-                const longitude = parseFloat(altMatch[2]);
-                return { latitude, longitude };
-            }
-            // If no match is found, return null values
-            return { latitude: null, longitude: null };
-        }
-    },
-    mounted() {
-        if (this.latitude !== undefined && this.longitude !== undefined) {
-            console.log("Received Latitude:", this.latitude);
-            console.log("Received Longitude:", this.longitude);
-            console.log("Selected Item Name:", this.name);
-            this.initMap();
-        }
-    },
+    }
 };
 </script>

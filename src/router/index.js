@@ -49,7 +49,13 @@ const router = createRouter({
             {
               path: 'omniverse',
               name: 'omniverse',
-              component: () => import('../components/CategoryDo/DoOmniverseMuseum.vue')
+              component: () => import('../components/CategoryDo/DoOmniverseMuseum.vue'),
+              props: route => ({
+                latitude: parseFloat(route.query.latitude),
+                longitude: parseFloat(route.query.longitude),
+                name: route.query.name, 
+
+              })
             },
           ]
         },
@@ -85,7 +91,12 @@ const router = createRouter({
             {
               path: 'glorietta',
               name: 'glorietta',
-              component: () => import('../components/CategorySee/SeeGlorietta.vue')
+              component: () => import('../components/CategorySee/SeeGlorietta.vue'),
+              props: route => ({
+                latitude: parseFloat(route.query.latitude),
+                longitude: parseFloat(route.query.longitude),
+                name: route.query.name, 
+              })
             },
           ]
         },
@@ -97,7 +108,12 @@ const router = createRouter({
             {
               path: 'LittleTokyo',
               name: 'Little Tokyo',
-              component: () => import('../components/CategoryEat/EatLittleTokyo.vue')
+              component: () => import('../components/CategoryEat/EatLittleTokyo.vue'),
+              props: route => ({
+                latitude: parseFloat(route.query.latitude),
+                longitude: parseFloat(route.query.longitude),
+                name: route.query.name, 
+              })
             },
           ]
         },
@@ -109,7 +125,12 @@ const router = createRouter({
             {
               path: 'xyz',
               name: 'xyz',
-              component: () => import('../components/CategoryStay/StayXyz.vue')
+              component: () => import('../components/CategoryStay/StayXyz.vue'),
+              props: route => ({
+                latitude: parseFloat(route.query.latitude),
+                longitude: parseFloat(route.query.longitude),
+                name: route.query.name, 
+              })
             },
           ]
         },
@@ -121,7 +142,12 @@ const router = createRouter({
             {
               path: 'central',
               name: 'central',
-              component: () => import('../components/CategoryTour/TourCentralBusiness.vue')
+              component: () => import('../components/CategoryTour/TourCentralBusiness.vue'),
+              props: route => ({
+                latitude: parseFloat(route.query.latitude),
+                longitude: parseFloat(route.query.longitude),
+                name: route.query.name, 
+              })
             },
           ]
         }

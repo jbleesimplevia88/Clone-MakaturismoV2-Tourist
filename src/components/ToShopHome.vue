@@ -103,7 +103,7 @@
                         <p class="text-white text-xs line-clamp-3">{{ item.description }}</p>
                     </div>
                     <div class="p-1 flex justify-end items-center">
-                        <button @click="seeMap(item)"
+                        <button @click="seeMore(item)"
                             class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
                             <span>See More</span>
                             <span class="ml-1">
@@ -188,15 +188,15 @@ export default {
                     category: 'Shopping Mall',
                     image: item2,
                     link: "", // Change the link to the route path
-                    mapLocation: "https://www.google.com/maps/dir//Power+Plant+Mall,+Rockwell+Drive,+Makati,+Metro+Manila/@14.5579643,121.042702,14.73z/data=!4m9!4m8!1m0!1m5!1m1!1s0x3397c8545885d363:0x43576a7aaa642e33!2m2!1d121.0364352!2d14.5646479!3e0?entry=ttu",
+                    // mapLocation: "https://www.google.com/maps/dir//Power+Plant+Mall,+Rockwell+Drive,+Makati,+Metro+Manila/@14.5579643,121.042702,14.73z/data=!4m9!4m8!1m0!1m5!1m1!1s0x3397c8545885d363:0x43576a7aaa642e33!2m2!1d121.0364352!2d14.5646479!3e0?entry=ttu",
                 },
                 {
                     name: 'Greenbelt Mall',
                     description: "Explore a world of high-end shopping and dining at Greenbelt Mall. This iconic lifestyle hub offers an elegant mix of luxury boutiques, designer brands, and award-winning restaurants. With its lush gardens and serene ambiance, Greenbelt Mall is a haven for shoppers and diners alike.",
                     category: 'Shopping Mall',
                     image: item3,
-                    link: "/category/shop/makati", // Change the link to the route path
-                    mapLocation: "https://www.google.com/maps/dir//Greenbelt+Mall,+Legazpi+Street,+Legazpi+Village,+Makati,+Metro+Manila/@14.5536848,121.0230732,15z/data=!4m9!4m8!1m0!1m5!1m1!1s0x3397c90e326fed61:0xfe05b1b630f67427!2m2!1d121.0218714!2d14.5527664!3e0?entry=ttu"
+                    // link: "/category/shop/makati", // Change the link to the route path
+                    // mapLocation: "https://www.google.com/maps/dir//Greenbelt+Mall,+Legazpi+Street,+Legazpi+Village,+Makati,+Metro+Manila/@14.5536848,121.0230732,15z/data=!4m9!4m8!1m0!1m5!1m1!1s0x3397c90e326fed61:0xfe05b1b630f67427!2m2!1d121.0218714!2d14.5527664!3e0?entry=ttu"
 
                 },
                 {
@@ -204,8 +204,8 @@ export default {
                     description: "Get ready for an immersive and thrilling experience at Zeria, Makati's premier escape room destination. Gather your friends, family, or colleagues and put your problem-solving skills to the test in a series of mind-bending puzzles and challenges. Each escape room presents a unique storyline, making Zeria an ideal place for team building, bonding, or simply having a blast with your loved ones.",
                     category: 'Souvenirs/Gifts Shop',
                     image: item4,
-                    link: "/category/shop/makati", // Change the link to the route path
-                    mapLocation: "https://www.google.com/maps/dir//Balikbayan+Handicrafts+-+The+Landmark,+Makati+Avenue,+Makati,+Metro+Manila/@14.5522354,120.9824642,13z/data=!4m9!4m8!1m0!1m5!1m1!1s0x3397c91ac862a26f:0xa8e3cab621dfe8a6!2m2!1d121.0237498!2d14.552239!3e0?entry=ttu"
+                    // link: "/category/shop/makati", // Change the link to the route path
+                    // mapLocation: "https://www.google.com/maps/dir//Balikbayan+Handicrafts+-+The+Landmark,+Makati+Avenue,+Makati,+Metro+Manila/@14.5522354,120.9824642,13z/data=!4m9!4m8!1m0!1m5!1m1!1s0x3397c91ac862a26f:0xa8e3cab621dfe8a6!2m2!1d121.0237498!2d14.552239!3e0?entry=ttu"
 
                 },
                 {
@@ -213,8 +213,8 @@ export default {
                     description: "Discover a vibrant lifestyle destination at Circuit Makati. This dynamic entertainment and retail complex offer a mix of shops, restaurants, and recreational facilities. From retail therapy to dining and entertainment, Circuit Makati promises a one-stop destination for leisure and enjoyment.",
                     category: 'Shopping Mall',
                     image: item5,
-                    link: "/category/shop/makati", // Change the link to the route path
-                    mapLocation: "https://www.google.com/maps/dir//Circuit+Makati,+Makati,+Metro+Manila/@14.5738471,121.0168903,16z/data=!4m9!4m8!1m0!1m5!1m1!1s0x3397c9a4e5de57a7:0xfd37ce391a8ebad7!2m2!1d121.0178421!2d14.572427!3e0?entry=ttu"
+                    // link: "/category/shop/makati", // Change the link to the route path
+                    // mapLocation: "https://www.google.com/maps/dir//Circuit+Makati,+Makati,+Metro+Manila/@14.5738471,121.0168903,16z/data=!4m9!4m8!1m0!1m5!1m1!1s0x3397c9a4e5de57a7:0xfd37ce391a8ebad7!2m2!1d121.0178421!2d14.572427!3e0?entry=ttu"
 
                 },
                 {
@@ -222,8 +222,8 @@ export default {
                     description: "Uncover a delightful shopping experience at Century Mall. This modern retail destination features an array of boutiques and specialty stores, catering to a diverse range of tastes and preferences. Whether you're hunting for fashion pieces or unique finds, Century Mall has something to suit every shopper.",
                     category: 'Shopping Mall',
                     image: item6,
-                    link: "/category/shop/makati", // Change the link to the route path
-                    mapLocation: "https://www.google.com/maps/dir/Aguida+Street,+Malate,+Manila,+1004+Metro+Manila/Century+City+Mall,+Century+City,+Kalayaan+Avenue,+Makati,+Metro+Manila/@14.56558606619895,121.02766250830976,17.73z/data=!4m14!4m13!1m5!1m1!1s0x3397cbd5991e4011:0xd7a64ff5ae86f019!2m2!1d120.9863637!2d14.5655168!1m5!1m1!1s0x3397c9073750cc15:0xc3a53c8ba2ae6cc0!2m2!1d121.0276651!2d14.565466!3e0?entry=ttu"
+                    // link: "/category/shop/makati", // Change the link to the route path
+                    // mapLocation: "https://www.google.com/maps/dir/Aguida+Street,+Malate,+Manila,+1004+Metro+Manila/Century+City+Mall,+Century+City,+Kalayaan+Avenue,+Makati,+Metro+Manila/@14.56558606619895,121.02766250830976,17.73z/data=!4m14!4m13!1m5!1m1!1s0x3397cbd5991e4011:0xd7a64ff5ae86f019!2m2!1d120.9863637!2d14.5655168!1m5!1m1!1s0x3397c9073750cc15:0xc3a53c8ba2ae6cc0!2m2!1d121.0276651!2d14.565466!3e0?entry=ttu"
 
                 },
                 {
@@ -231,8 +231,8 @@ export default {
                     description: "Experience the ultimate shopping and entertainment extravaganza at Glorietta. This expansive retail complex boasts a diverse mix of shops, dining options, and entertainment facilities. Whether you're in search of fashion, gadgets, or indulgent treats, Glorietta is the go-to destination for an exciting day out.",
                     category: 'Shopping Mall',
                     image: item7,
-                    link: "/category/shop/makati", // Change the link to the route path
-                    mapLocation: "https://www.google.com/maps/dir/14.5510815,121.0255359/Glorietta+by+Ayala+Malls,+Ayala+Center,+Makati,+1226+Metro+Manila/@14.5510458,121.0253129,21z/data=!4m9!4m8!1m0!1m5!1m1!1s0x3397c91b3ef40b79:0x23de027bdc503800!2m2!1d121.0255029!2d14.5510812!3e0?entry=ttu"
+                    // link: "/category/shop/makati", // Change the link to the route path
+                    // mapLocation: "https://www.google.com/maps/dir/14.5510815,121.0255359/Glorietta+by+Ayala+Malls,+Ayala+Center,+Makati,+1226+Metro+Manila/@14.5510458,121.0253129,21z/data=!4m9!4m8!1m0!1m5!1m1!1s0x3397c91b3ef40b79:0x23de027bdc503800!2m2!1d121.0255029!2d14.5510812!3e0?entry=ttu"
 
                 },
                 {
@@ -240,8 +240,8 @@ export default {
                     description: 'Discover hidden gems and budget-friendly finds at Bangkal Thrift Market. This bustling market is a treasure trove of pre-loved items, antiques, vintage clothing, and unique collectibles. Get ready to embark on a delightful treasure hunt at Bangkal Thrift Market.',
                     category: 'Thrift Market',
                     image: item8,
-                    link: "/category/shop/makati", // Change the link to the route path
-                    mapLocation: "https://www.google.com/maps/dir//532-C+Gen.+M.+Hizon,+Makati,+1233+Metro+Manila/@14.5429672,121.0127257,21z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9007d90d0c5:0x9fe2a1087ad72ff4!2m2!1d121.0127104!2d14.5428967?entry=ttuWWI"
+                    // link: "/category/shop/makati", // Change the link to the route path
+                    // mapLocation: "https://www.google.com/maps/dir//532-C+Gen.+M.+Hizon,+Makati,+1233+Metro+Manila/@14.5429672,121.0127257,21z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9007d90d0c5:0x9fe2a1087ad72ff4!2m2!1d121.0127104!2d14.5428967?entry=ttuWWI"
 
                 },
             ],
@@ -291,7 +291,7 @@ export default {
             // Implement filtering logic based on selected category
             console.log('Selected category:', category);
         },
-        seeMap(item) {
+        seeMore(item) {
             const { latitude, longitude } = this.extractLatLong(item.mapLocation);
             if (latitude !== null && longitude !== null) {
                 // Pass the name parameter in the query object
@@ -300,9 +300,6 @@ export default {
                 console.error('Latitude or longitude not available');
             }
         },
-
-
-
         extractLatLong(mapLocation) {
             const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
             const match = mapLocation.match(regex);

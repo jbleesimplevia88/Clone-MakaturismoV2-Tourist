@@ -459,12 +459,12 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
 export default {
-    props: ['latitude', 'longitude'],
-    mounted() {
-        if (this.latitude !== undefined && this.longitude !== undefined) {
-            this.initMap();
-        }
+    props: {
+        latitude: Number,
+        longitude: Number,
+        name: String
     },
+
     data() {
         return {
 
@@ -505,7 +505,6 @@ export default {
             this.showCartModal = false;
         },
         initMap() {
-
             // Create the map instance
             const map = L.map("map").setView([this.latitude, this.longitude], 18); // Use passed latitude and longitude
 
@@ -515,22 +514,43 @@ export default {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
 
-            // Add a marker to the map
-            L.marker([this.latitude, this.longitude]).addTo(map)
-                .bindPopup("Makati Shop")
-                .openPopup();
-        },
+            // Add a marker to the map at the specified latitude and longitude
+            const marker = L.marker([this.latitude, this.longitude]).addTo(map);
 
+            // Optionally, you can add a popup to the marker
+            marker.bindPopup(`<b>${this.name}</b>`).openPopup();
+        }
 
+        ,
+
+        // Define extractLatLong function within the component
+        extractLatLong(mapLocation) {
+            const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
+            const match = mapLocation.match(regex);
+            if (match && match.length >= 3) {
+                const latitude = parseFloat(match[1]);
+                const longitude = parseFloat(match[2]);
+                return { latitude, longitude };
+            }
+            // Try another regex pattern for different URL formats
+            const altRegex = /!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/;
+            const altMatch = mapLocation.match(altRegex);
+            if (altMatch && altMatch.length >= 3) {
+                const latitude = parseFloat(altMatch[1]);
+                const longitude = parseFloat(altMatch[2]);
+                return { latitude, longitude };
+            }
+            // If no match is found, return null values
+            return { latitude: null, longitude: null };
+        }
     },
-
-    // ShopMakati.vue
     mounted() {
-        console.log("Received Latitude:", this.latitude);
-        console.log("Received Longitude:", this.longitude);
-        this.initMap();
+        if (this.latitude !== undefined && this.longitude !== undefined) {
+            console.log("Received Latitude:", this.latitude);
+            console.log("Received Longitude:", this.longitude);
+            console.log("Selected Item Name:", this.name);
+            this.initMap();
+        }
     },
-
-
 };
 </script>

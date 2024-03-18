@@ -64,7 +64,9 @@ const router = createRouter({
               component: () => import('../components/CategoryShop/ShopMakati.vue'),
               props: route => ({
                 latitude: parseFloat(route.query.latitude),
-                longitude: parseFloat(route.query.longitude)
+                longitude: parseFloat(route.query.longitude),
+                name: route.query.name, 
+
               })
             },
           ]

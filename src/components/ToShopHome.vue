@@ -294,11 +294,15 @@ export default {
         seeMap(item) {
             const { latitude, longitude } = this.extractLatLong(item.mapLocation);
             if (latitude !== null && longitude !== null) {
-                this.$router.push({ name: 'makati', query: { latitude, longitude } });
+                // Pass the name parameter in the query object
+                this.$router.push({ name: 'makati', query: { latitude, longitude, name: item.name } });
             } else {
                 console.error('Latitude or longitude not available');
             }
         },
+
+
+
         extractLatLong(mapLocation) {
             const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
             const match = mapLocation.match(regex);

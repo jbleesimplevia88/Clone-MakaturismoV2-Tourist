@@ -19,8 +19,7 @@
                             <img src="@/assets/images/CategoryView/ToSee/Poblacion 1.png" alt=""
                                 class="col-span-3 w-[100%] h-full lg:w-[98%] lg:h-[100%] rounded-l-3xl">
                             <div class="hidden col-span-2 md:grid md:grid-cols-2 gap-4">
-                                <img src="@/assets/images/CategoryView/ToSee/Glorietta Pink.png" alt=""
-                                    class="size-full">
+                                <img src="@/assets/images/CategoryView/ToSee/Glorietta Pink.png" alt="" class="size-full">
                                 <img src="@/assets/images/CategoryView/ToSee/Glorietta Inside.png" alt=""
                                     class="size-full rounded-tr-3xl">
                                 <img src="@/assets/images/CategoryView/ToSee/Glorietta Ceiling.png" alt=""
@@ -153,11 +152,13 @@
         <div class="relative mx-6 px-3 lg:px-32 pb-5 pt-5">
             <div>
                 <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
-                <img src="@/assets/images/CategoryView/ToSee/Glorietta Map.jpg" alt="" class="pb-12 block lg:hidden">
+                <MapRenderer :latitude="latitude" :longitude="longitude" :name="name" />
+
+                <!-- <img src="@/assets/images/CategoryView/ToSee/Glorietta Map.jpg" alt="" class="pb-12 block lg:hidden">
                 <div class="hidden lg:block lg:pb-10">
                     <img src="@/assets/images/CategoryView/ToSee/Glorietta Map Web.png" alt=""
                         class="w-[100%] h-[100%]">
-                </div>
+                </div> -->
             </div>
             <hr style="border-top: 1px solid black">
             <div>
@@ -239,12 +240,20 @@
 
 <script>
 import ContentCarousel from '@/components/ContentModalCarousel.vue';
+import MapRenderer from "@/components/MapRenderer.vue";
 
 
 
 export default {
+    props: {
+        latitude: Number,
+        longitude: Number,
+        name: String
+    },
     components: {
-        ContentCarousel
+        ContentCarousel,
+        MapRenderer
+
     },
     data() {
         return {

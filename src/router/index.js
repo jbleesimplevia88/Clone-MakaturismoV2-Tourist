@@ -61,10 +61,15 @@ const router = createRouter({
             {
               path: 'makati',
               name: 'makati',
-              component: () => import('../components/CategoryShop/ShopMakati.vue')
+              component: () => import('../components/CategoryShop/ShopMakati.vue'),
+              props: route => ({
+                latitude: parseFloat(route.query.latitude),
+                longitude: parseFloat(route.query.longitude)
+              })
             },
           ]
         },
+        
         {
           path: 'see',
           name: 'see',

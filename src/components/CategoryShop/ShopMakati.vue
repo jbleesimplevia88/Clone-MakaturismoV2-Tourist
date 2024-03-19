@@ -287,7 +287,6 @@
                 </div>
             </div>
         </div>
-
         <div v-if="showCartModal"
             class="lg:hidden fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
             @click.self="closeModal">
@@ -329,9 +328,7 @@
                             <p class="w-[70%]">Ethnic Stripes Book Tote Bag</p>
                             <p>x2</p>
                         </div>
-
                     </div>
-
 
 
 
@@ -347,7 +344,6 @@
 
 
     </div>
-
 
     <div class="flex flex-col lg:flex-col-reverse">
         <div class="grid lg:grid-cols-2 lg:gap-[10rem] relative mx-6 px-3 lg:px-32 pb-5 pt-5 ">
@@ -394,10 +390,13 @@
 
         <div class="relative mx-6 px-3 lg:px-32 pb-5 pt-5">
             <div>
+
                 <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
-                <img src="@/assets/images/CategoryView/ToSee/Glorietta Map.jpg" alt="" class="pb-12 block lg:hidden">
+                <MapRenderer :latitude="latitude" :longitude="longitude" :name="name" />
+
+                <!-- <img src="@/assets/images/CategoryView/ToSee/Glorietta Map.jpg" alt="" class="pb-12 block lg:hidden"> -->
                 <div class="hidden lg:block lg:pb-10">
-                    <img src="@/assets/images/CategoryView/ToDo/Omniverse Web Map.png" alt="" class="w-[100%] h-[100%]">
+                    <!-- <img src="@/assets/images/CategoryView/ToDo/Omniverse Web Map.png" alt="" class="w-[100%] h-[100%]"> -->
                 </div>
             </div>
             <hr style="border-top: 1px solid black">
@@ -475,27 +474,32 @@
 </template>
 
 
-<style scoped></style>
-
 
 <script>
+import MapRenderer from "@/components/MapRenderer.vue";
+
 export default {
+    props: {
+        latitude: Number,
+        longitude: Number,
+        name: String
+    },
     components: {
+        MapRenderer
     },
     data() {
         return {
+
             items: [
                 {
                     name: 'Juan Dela Cruz',
                     description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
                     date: 'December 2023',
-
                 },
                 {
                     name: 'Luis Paolo',
                     description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
                     date: 'December 2023',
-
                 },
 
 
@@ -513,6 +517,7 @@ export default {
             const startIndex = this.currentPage * this.pageSize;
             return this.items.slice(startIndex, startIndex + this.pageSize);
         },
+
     },
     methods: {
         openCartModal() {
@@ -520,7 +525,7 @@ export default {
         },
         closeModal() {
             this.showCartModal = false;
-        }
-    },
+        },
+    }
 };
 </script>

@@ -232,10 +232,17 @@
                             <label for="" class=" mb-2 font-bold">Other Services</label>
                             <input type="text" class="border border-gray-300 rounded-md p-1">
                         </div>
-                    </div>
+                        <router-link to="/checkoutbook">
+                            <div class="w-[100%]">
+                                <button
+                                    class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Book
+                                    Now</button>
 
-                    <button class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Book
-                        Now</button>
+
+                            </div>
+                        </router-link>
+
+                    </div>
                 </div>
             </div>
         </div>

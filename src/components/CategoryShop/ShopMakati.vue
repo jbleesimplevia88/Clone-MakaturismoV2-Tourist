@@ -274,7 +274,7 @@
 
                     </div>
 
-                    <router-link to="/checkout">
+                    <router-link to="/checkoutshop">
                         <div class="w-[100%]">
 
 

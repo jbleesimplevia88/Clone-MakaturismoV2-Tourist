@@ -10,12 +10,15 @@
                     class="text-[#102E61] text-sm sm:text-4xl font-bold bg-white p-3 pl-4 pr-4 md:p-5 md:pl-7 md:pr-7 rounded-r-xl">
                     WHERE TO SHOP
                 </p>
+
             </div>
+
             <div
                 class="relative sm:absolute inset-0 sm:top-56 md:top-80 flex text-center lg:text-left justify-center items-center z-[1]">
                 <p class="text-[12px] sm:text-sm md:text-xl lg:text-xl text-wrap md:w-[80%] text-white">
                     Being known for its shopping centers, Makati is a fun place to shop. From thrift stores to luxury
                     shops, you can find something to buy for your friends or family.
+
                 </p>
             </div>
         </div>
@@ -70,8 +73,8 @@
                                         class="grid grid-rows-12 grid-flow-row-dense lg:grid-rows-8 md:grid-flow-col gap-4 mr-4 p-2">
                                         <div v-for="(location, index) in locations" :key="'location-' + index">
                                             <label :for="'locationCheckbox-' + index" class="flex items-center">
-                                                <input type="checkbox" :id="'locationCheckbox-' + index"
-                                                    :value="location" @change="toggleLocation(location)">
+                                                <input type="checkbox" :id="'locationCheckbox-' + index" :value="location"
+                                                    @change="toggleLocation(location)">
                                                 <span class="ml-2 uppercase font-bold">{{ location }}</span>
                                             </label>
                                         </div>
@@ -87,35 +90,29 @@
                 <!-- End of Filter dropdown -->
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div v-for="(item, index) in paginatedItems" :key="index"
-                    class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
+                <div v-for="(item, index) in items" :key="index" class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
                     <div class="relative">
                         <img class="w-full h-[250px] object-cover rounded-t" :src="item.image" alt="">
                         <div
                             class="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-[#102E61] to-transparent">
                         </div>
-                        <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{
-                            item.name }}
-                        </p>
+                        <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{ item.name }}</p>
                         <p class="absolute bottom-2 left-2 text-white text-xs">{{ item.category }}</p>
                     </div>
                     <div class="p-2 w-full">
                         <p class="text-white text-xs line-clamp-3">{{ item.description }}</p>
                     </div>
                     <div class="p-1 flex justify-end items-center">
-                        <router-link :to="item.link">
-                            <button @click="seeMore(item)"
-                                class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
-                                <span>See More</span>
-                                <span class="ml-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                                    </svg>
-                                </span>
-                            </button>
-                        </router-link>
+                        <button @click="seeMore(item)"
+                            class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
+                            <span>See More</span>
+                            <span class="ml-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                                    stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                </svg>
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -124,8 +121,8 @@
                 <div class="flex justify-start items-center">
                     <p class="text-center text-white">Showing <span class="text-[#29BFD6]">{{ paginationStartIndex }} -
                             {{
-                            paginationEndIndex }}</span> results from <span class="text-[#29BFD6]">{{ totalRecords
-                            }}</span> records
+                                paginationEndIndex }}</span> results from <span class="text-[#29BFD6]">{{ totalRecords
+    }}</span> records
                     </p>
                 </div>
                 <div class="flex justify-end items-center mt-4">
@@ -174,65 +171,82 @@ import item8 from '@/assets/images/CategoryView/ToShop/bangkal.jpeg';
 export default {
     data() {
         return {
+
             items: [
                 {
                     name: 'Makati Shop',
                     description: "Immerse yourself in the rich tapestry of Filipino culture at Makati Shop. This boutique showcases an array of locally made products, including intricately woven textiles, handcrafted souvenirs, and Filipino-inspired fashion. Discover unique treasures that embody the spirit of the Philippines at Kultura.",
                     category: 'Souvenirs/Gifts Shop',
                     image: item1,
-                    link: "/category/shop/makati"
-
+                    link: "/category/shop/makati", // Change the link to the route path
+                    mapLocation: "https://www.google.com/maps/dir//Palm+Dr,+Makati,+Metro+Manila/@14.5502921,121.0197843,16z/data=!3m1!4b1!4m9!4m8!1m0!1m5!1m1!1s0x3397c91ba50a79d3:0x1cc92403f541e5d4!2m2!1d121.0249449!2d14.5502922!3e0?entry=ttu"
                 },
+
                 {
                     name: 'Powerplant Mall',
                     description: "Experience luxury shopping and fine dining at Powerplant Mall. This upscale shopping center houses a curated selection of renowned international and local brands, as well as a variety of dining options. Enjoy a premium shopping experience in the heart of Makati at Powerplant Mall.",
                     category: 'Shopping Mall',
                     image: item2,
-                    link: ''
+                    link: "", // Change the link to the route path
+                    // mapLocation: "https://www.google.com/maps/dir//Power+Plant+Mall,+Rockwell+Drive,+Makati,+Metro+Manila/@14.5579643,121.042702,14.73z/data=!4m9!4m8!1m0!1m5!1m1!1s0x3397c8545885d363:0x43576a7aaa642e33!2m2!1d121.0364352!2d14.5646479!3e0?entry=ttu",
                 },
                 {
                     name: 'Greenbelt Mall',
                     description: "Explore a world of high-end shopping and dining at Greenbelt Mall. This iconic lifestyle hub offers an elegant mix of luxury boutiques, designer brands, and award-winning restaurants. With its lush gardens and serene ambiance, Greenbelt Mall is a haven for shoppers and diners alike.",
                     category: 'Shopping Mall',
                     image: item3,
-                    link: ''
+                    // link: "/category/shop/makati", // Change the link to the route path
+                    // mapLocation: "https://www.google.com/maps/dir//Greenbelt+Mall,+Legazpi+Street,+Legazpi+Village,+Makati,+Metro+Manila/@14.5536848,121.0230732,15z/data=!4m9!4m8!1m0!1m5!1m1!1s0x3397c90e326fed61:0xfe05b1b630f67427!2m2!1d121.0218714!2d14.5527664!3e0?entry=ttu"
+
                 },
                 {
                     name: 'Balikbayan Handicrafts',
                     description: "Get ready for an immersive and thrilling experience at Zeria, Makati's premier escape room destination. Gather your friends, family, or colleagues and put your problem-solving skills to the test in a series of mind-bending puzzles and challenges. Each escape room presents a unique storyline, making Zeria an ideal place for team building, bonding, or simply having a blast with your loved ones.",
                     category: 'Souvenirs/Gifts Shop',
                     image: item4,
-                    link: ''
+                    // link: "/category/shop/makati", // Change the link to the route path
+                    // mapLocation: "https://www.google.com/maps/dir//Balikbayan+Handicrafts+-+The+Landmark,+Makati+Avenue,+Makati,+Metro+Manila/@14.5522354,120.9824642,13z/data=!4m9!4m8!1m0!1m5!1m1!1s0x3397c91ac862a26f:0xa8e3cab621dfe8a6!2m2!1d121.0237498!2d14.552239!3e0?entry=ttu"
+
                 },
                 {
                     name: 'Circuit Makati',
                     description: "Discover a vibrant lifestyle destination at Circuit Makati. This dynamic entertainment and retail complex offer a mix of shops, restaurants, and recreational facilities. From retail therapy to dining and entertainment, Circuit Makati promises a one-stop destination for leisure and enjoyment.",
                     category: 'Shopping Mall',
                     image: item5,
-                    link: ''
+                    // link: "/category/shop/makati", // Change the link to the route path
+                    // mapLocation: "https://www.google.com/maps/dir//Circuit+Makati,+Makati,+Metro+Manila/@14.5738471,121.0168903,16z/data=!4m9!4m8!1m0!1m5!1m1!1s0x3397c9a4e5de57a7:0xfd37ce391a8ebad7!2m2!1d121.0178421!2d14.572427!3e0?entry=ttu"
+
                 },
                 {
                     name: 'Century Mall',
                     description: "Uncover a delightful shopping experience at Century Mall. This modern retail destination features an array of boutiques and specialty stores, catering to a diverse range of tastes and preferences. Whether you're hunting for fashion pieces or unique finds, Century Mall has something to suit every shopper.",
                     category: 'Shopping Mall',
                     image: item6,
-                    link: ''
+                    // link: "/category/shop/makati", // Change the link to the route path
+                    // mapLocation: "https://www.google.com/maps/dir/Aguida+Street,+Malate,+Manila,+1004+Metro+Manila/Century+City+Mall,+Century+City,+Kalayaan+Avenue,+Makati,+Metro+Manila/@14.56558606619895,121.02766250830976,17.73z/data=!4m14!4m13!1m5!1m1!1s0x3397cbd5991e4011:0xd7a64ff5ae86f019!2m2!1d120.9863637!2d14.5655168!1m5!1m1!1s0x3397c9073750cc15:0xc3a53c8ba2ae6cc0!2m2!1d121.0276651!2d14.565466!3e0?entry=ttu"
+
                 },
                 {
                     name: 'Glorietta',
                     description: "Experience the ultimate shopping and entertainment extravaganza at Glorietta. This expansive retail complex boasts a diverse mix of shops, dining options, and entertainment facilities. Whether you're in search of fashion, gadgets, or indulgent treats, Glorietta is the go-to destination for an exciting day out.",
                     category: 'Shopping Mall',
                     image: item7,
-                    link: ''
+                    // link: "/category/shop/makati", // Change the link to the route path
+                    // mapLocation: "https://www.google.com/maps/dir/14.5510815,121.0255359/Glorietta+by+Ayala+Malls,+Ayala+Center,+Makati,+1226+Metro+Manila/@14.5510458,121.0253129,21z/data=!4m9!4m8!1m0!1m5!1m1!1s0x3397c91b3ef40b79:0x23de027bdc503800!2m2!1d121.0255029!2d14.5510812!3e0?entry=ttu"
+
                 },
                 {
                     name: 'Bangkal Thrift Market',
                     description: 'Discover hidden gems and budget-friendly finds at Bangkal Thrift Market. This bustling market is a treasure trove of pre-loved items, antiques, vintage clothing, and unique collectibles. Get ready to embark on a delightful treasure hunt at Bangkal Thrift Market.',
                     category: 'Thrift Market',
                     image: item8,
-                    link: ''
+                    // link: "/category/shop/makati", // Change the link to the route path
+                    // mapLocation: "https://www.google.com/maps/dir//532-C+Gen.+M.+Hizon,+Makati,+1233+Metro+Manila/@14.5429672,121.0127257,21z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9007d90d0c5:0x9fe2a1087ad72ff4!2m2!1d121.0127104!2d14.5428967?entry=ttuWWI"
+
                 },
             ],
+            latitude: null,
+            longitude: null,
             currentPage: 0,
             pageSize: 8,
             showDropdown: false,
@@ -259,6 +273,7 @@ export default {
             return this.items.length;
         },
     },
+
     methods: {
         nextPage() {
             this.currentPage++;
@@ -276,6 +291,37 @@ export default {
             // Implement filtering logic based on selected category
             console.log('Selected category:', category);
         },
+        seeMore(item) {
+            const { latitude, longitude } = this.extractLatLong(item.mapLocation);
+            if (latitude !== null && longitude !== null) {
+                // Pass the name parameter in the query object
+                this.$router.push({ name: 'makati', query: { latitude, longitude, name: item.name } });
+            } else {
+                console.error('Latitude or longitude not available');
+            }
+        },
+        extractLatLong(mapLocation) {
+            const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
+            const match = mapLocation.match(regex);
+            if (match && match.length >= 3) {
+                const latitude = parseFloat(match[1]);
+                const longitude = parseFloat(match[2]);
+                return { latitude, longitude };
+            }
+
+            // Try another regex pattern for different URL formats
+            const altRegex = /!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/;
+            const altMatch = mapLocation.match(altRegex);
+            if (altMatch && altMatch.length >= 3) {
+                const latitude = parseFloat(altMatch[1]);
+                const longitude = parseFloat(altMatch[2]);
+                return { latitude, longitude };
+            }
+
+            // If no match is found, return null values
+            return { latitude: null, longitude: null };
+        }
+
     },
 };
 </script>

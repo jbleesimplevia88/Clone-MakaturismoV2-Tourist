@@ -71,8 +71,8 @@
                                         class="grid grid-rows-12 grid-flow-row-dense lg:grid-rows-8 md:grid-flow-col gap-4 mr-4 p-2">
                                         <div v-for="(location, index) in locations" :key="'location-' + index">
                                             <label :for="'locationCheckbox-' + index" class="flex items-center">
-                                                <input type="checkbox" :id="'locationCheckbox-' + index"
-                                                    :value="location" @change="toggleLocation(location)">
+                                                <input type="checkbox" :id="'locationCheckbox-' + index" :value="location"
+                                                    @change="toggleLocation(location)">
                                                 <span class="ml-2 uppercase font-bold">{{ location }}</span>
                                             </label>
                                         </div>
@@ -88,8 +88,7 @@
                 <!-- End of Filter dropdown -->
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div v-for="(item, index) in paginatedItems" :key="index"
-                    class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
+                <div v-for="(item, index) in items" :key="index" class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
                     <div class="relative">
                         <img class="w-full h-[250px] object-cover rounded-t" :src="item.image" alt="">
                         <div
@@ -104,19 +103,16 @@
                         <p class="text-white text-xs line-clamp-3">{{ item.description }}</p>
                     </div>
                     <div class="p-1 flex justify-end items-center">
-                        <router-link :to="item.link">
-                            <button @click="seeMore(item)"
-                                class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
-                                <span>See More</span>
-                                <span class="ml-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                                    </svg>
-                                </span>
-                            </button>
-                        </router-link>
+                        <button @click="seeMore(item)"
+                            class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
+                            <span>See More</span>
+                            <span class="ml-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                                    stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                </svg>
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -125,8 +121,8 @@
                 <div class="flex justify-start items-center">
                     <p class="text-center text-white">Showing <span class="text-[#29BFD6]">{{ paginationStartIndex }} -
                             {{
-                            paginationEndIndex }}</span> results from <span class="text-[#29BFD6]">{{ totalRecords
-                            }}</span> records
+                                paginationEndIndex }}</span> results from <span class="text-[#29BFD6]">{{ totalRecords
+    }}</span> records
                     </p>
                 </div>
                 <div class="flex justify-end items-center mt-4">
@@ -181,56 +177,64 @@ export default {
                     description: "Experience the ultimate shopping and entertainment extravaganza at Glorietta. This expansive retail complex boasts a diverse mix of shops, dining options, and entertainment facilities. Whether you're in search of fashion, gadgets, or indulgent treats, Glorietta is the go-to destination for an exciting day out.",
                     category: 'Mall',
                     image: item1,
-                    link: "/category/see/glorietta"
+                    link: "/category/see/glorietta",
+                    mapLocation: "https://www.google.com/maps/dir//Glorietta,+Palm+Drive,+Makati,+Metro+Manila/@14.5529213,121.0184921,16z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9f912a3727f:0xc4541051d1e0072!2m2!1d121.0246671!2d14.5508815?entry=ttu"
                 },
                 {
                     name: 'Leon Gallery Fine Art',
                     description: "Delve into the rich heritage of Philippine art at Leon Gallery Fine Art. With an impressive collection of historical and contemporary masterpieces, this gallery provides a glimpse into the cultural tapestry of the Philippines. Admire the artistic expression of generations of Filipino artists and immerse yourself in the country's artistic journey.",
                     category: 'Art Gallery',
                     image: item2,
-                    link: ""
+                    link: "",
+                    mapLocation: ""
                 },
                 {
                     name: 'Galleria Nicolas',
                     description: 'Discover hidden gems and budget-friendly finds at Bangkal Thrift Market. This bustling market is a treasure trove of pre-loved items, antiques, vintage clothing, and unique collectibles. Get ready to embark on a delightful treasure hunt at Bangkal Thrift Market.',
                     category: 'Art Gallery',
                     image: item3,
-                    link: ""
+                    link: "",
+                    mapLocation: ""
                 },
                 {
                     name: 'Victory Makati',
                     description: "Explore the realm of visual storytelling at Victory Makati. Immerse yourself in powerful images that tell stories of the city and its people at Victory Makati.",
                     category: 'Church',
                     image: item4,
-                    link: ""
+                    link: "",
+                    mapLocation: ""
                 },
                 {
                     name: 'The Happy Gallery, Inc.',
                     description: "Experience joy and creativity through a diverse collection of art at The Happy Gallery, Inc. Showcasing a blend of paintings, sculptures, and multimedia artworks, this gallery celebrates the beauty of life and the power of imagination. Step into a realm of happiness and inspiration as you explore the artistry of renowned and up-and-coming artists.",
                     category: 'Art Gallery',
                     image: item5,
-                    link: ""
+                    link: "",
+                    mapLocation: ""
                 },
                 {
                     name: 'Heritage Art Center',
                     description: "Celebrate the beauty of Philippine heritage at Heritage Art Center. This cultural haven features an array of traditional artworks, crafts, and artifacts that showcase the country's diverse cultural roots. From intricate tribal crafts to Filipino folk art, this center is a treasure trove of historical and cultural significance.",
                     category: 'Art Gallery',
                     image: item6,
-                    link: ""
+                    link: "",
+                    mapLocation: ""
                 },
                 {
                     name: 'Eskinita Art Gallery',
                     description: "Experience the vibrant and eclectic spirit of Filipino urban art at Eskinita Art Gallery. Celebrating street art and graffiti culture, this gallery showcases works that reflect the dynamic urban landscape of the Philippines. Get inspired by the bold and colorful expressions of Filipino street artists at Eskinita Art Gallery.",
                     category: 'Art Gallery',
                     image: item7,
-                    link: ""
+                    link: "",
+                    mapLocation: ""
                 },
                 {
                     name: 'Alto Mondo Corp.',
                     description: "Journey into the world of contemporary art at Altro Mondo Corp. This gallery showcases a diverse range of contemporary works, from paintings and sculptures to mixed-media art. Immerse yourself in the artistry of talented contemporary artists from the Philippines and around the globe at Altro Mondo Corp.",
                     category: 'Art Gallery',
                     image: item8,
-                    link: ""
+                    link: "",
+                    mapLocation: ""
                 },
 
             ],
@@ -277,6 +281,37 @@ export default {
             // Implement filtering logic based on selected category
             console.log('Selected category:', category);
         },
+        seeMore(item) {
+            const { latitude, longitude } = this.extractLatLong(item.mapLocation);
+            if (latitude !== null && longitude !== null) {
+                // Pass the name parameter in the query object
+                this.$router.push({ name: 'glorietta', query: { latitude, longitude, name: item.name } });
+            } else {
+                console.error('Latitude or longitude not available');
+            }
+        },
+        extractLatLong(mapLocation) {
+            const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
+            const match = mapLocation.match(regex);
+            if (match && match.length >= 3) {
+                const latitude = parseFloat(match[1]);
+                const longitude = parseFloat(match[2]);
+                return { latitude, longitude };
+            }
+
+            // Try another regex pattern for different URL formats
+            const altRegex = /!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/;
+            const altMatch = mapLocation.match(altRegex);
+            if (altMatch && altMatch.length >= 3) {
+                const latitude = parseFloat(altMatch[1]);
+                const longitude = parseFloat(altMatch[2]);
+                return { latitude, longitude };
+            }
+
+            // If no match is found, return null values
+            return { latitude: null, longitude: null };
+        }
+
     },
 };
 </script>

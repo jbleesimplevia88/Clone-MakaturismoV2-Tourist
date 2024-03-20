@@ -275,7 +275,7 @@
                     </div>
 
                     <router-link to="/checkout">
-                        <div class="w-[120%]">
+                        <div class="w-[100%]">
 
 
                             <button

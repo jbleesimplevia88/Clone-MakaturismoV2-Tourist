@@ -41,10 +41,22 @@ const router = createRouter({
               component: () => import('../components/CartHome.vue')
             },
             {
-              path: '/checkout',
-              name: 'cartcheckout',
-              component: () => import('../components/CartCheckout.vue')
+              path: '/checkoutshop',
+              name: 'cartcheckoutshop',
+              component: () => import('../components/CartCheckoutShop.vue')
             },
+            {
+              path: '/checkouteat',
+              name: 'cartcheckouteat',
+              component: () => import('../components/CartCheckoutEat.vue')
+            },
+            {
+              path: '/checkoutbook',
+              name: 'cartcheckoutbook',
+              component: () => import('../components/CartCheckoutBook.vue')
+            },
+
+            
           ]
 
 

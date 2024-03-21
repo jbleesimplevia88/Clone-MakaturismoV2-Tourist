@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import CalendarModal from '@/components/CalendarModal.vue'
 import TopPlace from '@/components/TopPlace.vue'
 
 const router = createRouter({
@@ -24,7 +23,7 @@ const router = createRouter({
     {
       path: '/calendar',
       name: 'calendar',
-      component: CalendarModal
+      component: () => import('../components/CalendarView.vue')
     },
     {
       path: '/topPlace',

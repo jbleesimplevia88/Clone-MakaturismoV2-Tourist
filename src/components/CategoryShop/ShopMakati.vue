@@ -124,14 +124,14 @@
                             </p>
                             <img class="rounded-md lg:h-[80%]"
                                 src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="100%">
-                            <button
+                            <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
                         </div>
                         <div v-if="showCart"
                             class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
                             @click.self="closeModal">
-                            <div class="bg-white overflow-y-auto h-[500px] w-[700px] overflow-hidden scrollbar-hide rounded-lg shadow-md p-2 mx-5"
+                            <div class="bg-white overflow-y-auto h-[680px] w-[900px] overflow-hidden scrollbar-hide rounded-lg shadow-md p-2 mx-5"
                                 @click.stop>
                                 <div class="lg:w-[100%] p-4 rounded-lg">
                                     <div class="relative flex justify-end">
@@ -145,19 +145,44 @@
                                     </div>
 
                                     <div class="flex justify-between w-[100%]">
-                                        <div class="w-[40%] border border-gray-200">
+                                        <div class="w-[40%]">
 
-                                            <div class="flex justify-right items-center">
+                                            <div class="flex justify-center items-center mb-3">
                                                 <img src="@/assets/images/CategoryView/ToShop/shop-product1.png"
-                                                    class="w-auto h-24 md:w-[200px] md:h-auto">
+                                                    class="w-auto h-24 md:w-[500px] md:h-auto">
+                                            </div>
+
+                                            <div class="flex justify-between">
+
+
+                                                <div class="flex justify-between items-center">
+                                                    <img src="@/assets/images/CategoryView/ToShop/shop-product2.png"
+                                                        class="h-24 md:w-[80px] md:h-auto">
+                                                </div>
+
+                                                <div class="flex justify-center items-center">
+                                                    <img src="@/assets/images/CategoryView/ToShop/shop-product3.png"
+                                                        class="h-24 md:w-[80px] md:h-auto">
+                                                </div>
+
+                                                <div class="flex justify-center items-center">
+                                                    <img src="@/assets/images/CategoryView/ToShop/shop-product4.png"
+                                                        class="h-24 md:w-[80px] md:h-auto">
+                                                </div>
+
+                                                <div class="flex justify-center items-center mx-5">
+                                                    <img src="@/assets/images/CategoryView/ToShop/button.png"
+                                                        class="h-24 md:w-[40px] md:h-auto">
+                                                </div>
+
                                             </div>
 
                                         </div>
 
-                                        <div class="w-[60%] border border-gray-200">
+                                        <div class="w-[60%] px-3">
 
                                             <div class="flex flex-col text-black">
-                                                <p class="font-bold text-left text-2xl mb-2">Multi Handle Tote Bag with
+                                                <p class="font-bold text-left text-1xl mb-2">Multi Handle Tote Bag with
                                                     Embroidered Philippines Kalesa Scenery</p>
                                             </div>
 
@@ -165,9 +190,21 @@
                                                 <p class="font-bold">Makati Shop</p>
                                                 <div class="flex justify-between mb-2">
                                                     <p class="w-[100%] ">₱399.00</p>
-                                                    <p>Quantity</p>
 
+                                                    <div class="flex justify-end">
+                                                        <div class="flex justify-between">
+                                                            <p class="mr-5">Quantity</p>
+                                                            <div class="flex border border-black">
+                                                                <button class="border border-black px-3">+</button>
+                                                                <p class="border border-black px-3">1</p>
+                                                                <button class="border border-black px-3">-</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
+
+                                                <div class="border border-gray-200 my-5"></div>
+
                                                 <div class="flex justify-between mb-2">
                                                     <p class="w-[100%] text-xs">• Made from canvas material</p>
 
@@ -203,13 +240,13 @@
                                                 <div
                                                     class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                                     <div class="inline-block w-[100%]">
-                                                        <label class="w-[100%] text-md font-bold">juandelacruz
+                                                        <label class="w-[100%] text-sm font-bold">juandelacruz
                                                             ⭐️⭐️⭐️⭐️⭐</label>
                                                         <p class="text-sm">03-10-2024 11:30</p>
                                                     </div>
 
                                                     <div class="flex justify-between mb-2">
-                                                        <p class="w-[100%] text-sm">I will buy again. The seller is kind
+                                                        <p class="w-[100%] text-xs">I will buy again. The seller is kind
                                                             and
                                                             accommodating with my requests. Transaction is smooth. ❤️
                                                         </p>
@@ -219,13 +256,13 @@
                                                 <div
                                                     class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                                     <div class="inline-block w-[100%]">
-                                                        <label class="w-[100%] text-md font-bold">faithstamaria
+                                                        <label class="w-[100%] text-sm font-bold">faithstamaria
                                                             ⭐️⭐️⭐️⭐️⭐</label>
                                                         <p class="text-sm">09-03-2024 08:30</p>
                                                     </div>
 
                                                     <div class="flex justify-between mb-2">
-                                                        <p class="w-[100%] text-sm">I will buy again. The seller is kind
+                                                        <p class="w-[100%] text-xs">I will buy again. The seller is kind
                                                             and
                                                             accommodating with my requests. Transaction is smooth. ❤️
                                                         </p>
@@ -238,12 +275,14 @@
 
                                     <div class="flex justify-between">
 
-                                        <div class="w-[100%] flex justify-start border border-gray-200">
-                                            <button class="text-white bg-blue-600 rounded-lg py-2 w-[80%]">Edit
+                                        <div class="w-[100%] flex justify-start">
+                                            <button
+                                                class="text-blue-600 border-blue-500 border-2 rounded-lg py-2 w-[80%]">Add
+                                                to
                                                 Cart</button>
                                         </div>
 
-                                        <div class="w-[100%] flex justify-end border border-gray-200">
+                                        <div class="w-[100%] flex justify-end">
                                             <button class="text-white bg-blue-600 rounded-lg py-2 w-[80%]">Edit
                                                 Cart</button>
                                         </div>

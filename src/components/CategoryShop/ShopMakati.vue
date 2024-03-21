@@ -124,7 +124,7 @@
                             </p>
                             <img class="rounded-md lg:h-[80%]"
                                 src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="100%">
-                            <button @click="toggleshowCart"
+                            <button
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
                         </div>
@@ -400,8 +400,16 @@
 
                     </div>
 
-                    <button class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Check
-                        Cart</button>
+                    <router-link to="/checkout">
+                        <div class="w-[100%]">
+
+
+                            <button
+                                class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Check
+                                Cart</button>
+                        </div>
+                    </router-link>
+
                 </div>
             </div>
         </div>
@@ -416,12 +424,14 @@
                             <p class="text-center font-bold">Number of items</p>
                             <p class="text-center font-bold text-3xl">9</p>
                         </div>
+                        <router-link to="/cart">
+                            <div class="w-[120%]">
+                                <button
+                                    class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Edit
+                                    Cart</button>
+                            </div>
+                        </router-link>
 
-                        <div class="w-[50%]">
-                            <button
-                                class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Edit
-                                Cart</button>
-                        </div>
                     </div>
                     <div class="mb-5">
                         <p class="font-bold">List of items</p>
@@ -448,8 +458,12 @@
 
                     </div>
 
+
+
                     <button class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Check
                         Out</button>
+
+
                 </div>
             </div>
         </div>

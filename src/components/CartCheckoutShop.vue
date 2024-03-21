@@ -43,7 +43,7 @@
 
                 </div>
 
-                <div class="lg:mt-5 bg-gray-200 h-0.5"></div>
+                <div class="mt-5 bg-gray-200 h-0.5"></div>
 
 
                 <div class="flex flex-col pt-6">

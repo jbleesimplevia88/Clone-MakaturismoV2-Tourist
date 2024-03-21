@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import CalendarModal from '@/components/CalendarModal.vue'
 import TopPlace from '@/components/TopPlace.vue'
 
 const router = createRouter({
@@ -24,7 +23,7 @@ const router = createRouter({
     {
       path: '/calendar',
       name: 'calendar',
-      component: CalendarModal
+      component: () => import('../components/CalendarView.vue')
     },
     {
       path: '/topPlace',
@@ -37,11 +36,34 @@ const router = createRouter({
       component: () => import('../views/CartView.vue'),
           children: [
             {
-              path: 'home',
+              path: '/cart',
               name: 'carthome',
               component: () => import('../components/CartHome.vue')
             },
+            {
+              path: '/checkoutshop',
+              name: 'cartcheckoutshop',
+              component: () => import('../components/CartCheckoutShop.vue')
+            },
+            {
+              path: '/checkouteat',
+              name: 'cartcheckouteat',
+              component: () => import('../components/CartCheckoutEat.vue')
+            },
+            {
+              path: '/checkoutbook',
+              name: 'cartcheckoutbook',
+              component: () => import('../components/CartCheckoutBook.vue')
+            },
+            {
+              path: '/checkouttour',
+              name: 'cartcheckouttour',
+              component: () => import('../components/CartCheckoutTour.vue')
+            },
+            
           ]
+
+
     },
     {
       path: '/category',

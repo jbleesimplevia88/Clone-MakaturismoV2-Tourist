@@ -263,9 +263,14 @@
                         </div>
 
                     </div>
+                    <router-link to="/checkouteat">
+                        <div class="w-[100%]">
+                            <button
+                                class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Check
+                                Cart</button>
 
-                    <button class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Check
-                        Cart</button>
+                        </div>
+                    </router-link>
                 </div>
             </div>
         </div>

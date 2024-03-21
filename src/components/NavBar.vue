@@ -40,18 +40,20 @@
               <p>Please log in to your account.</p>
             </div>
             <form @submit.prevent="login" style="width: 40%;">
-              <div class="relative mb-4">
+
+           <div class="relative mb-4 w-full md:w-365">
                 <label for="username" class="block text-gray-700">Enter Username</label>
                 <div class="relative">
-                  <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-3 my-2"
+                  <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-5 my-2"
                     style="width: 15px;" alt="Username Icon" />
                   <input type="text" id="username" v-model="username"
-                    class="w-full h-8 pl-10 border border-black rounded-md" placeholder="Username">
+                    class="w-full h-8 pl-10 border border-black rounded md:rounded-lg" placeholder="Username">
                 </div>
               </div>
-              <div class="relative mb-4">
+              <div class="relative mb-4 w-full md:w-365">
                 <label for="username" class="block text-gray-700">Enter Password</label>
                 <div class="relative">
+
                   <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-3 my-2"
                     style="width: 15px;" alt="Username Icon" />
                   <img src="@/assets/images/Modal/view.png" class="absolute inset-y-0 right-0 mx-3 my-2"

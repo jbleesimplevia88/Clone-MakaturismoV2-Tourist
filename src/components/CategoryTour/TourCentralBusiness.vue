@@ -155,8 +155,16 @@
                         </div>
                     </div>
 
-                    <button
-                        class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Reserve</button>
+
+                    <router-link to="/checkouttour">
+                        <div class="w-[100%]">
+
+                            <button
+                                class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Reserve</button>
+                        </div>
+                    </router-link>
+
+
                 </div>
             </div>
         </div>

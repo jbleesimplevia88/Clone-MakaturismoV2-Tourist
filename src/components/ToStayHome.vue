@@ -71,8 +71,8 @@
                                         class="grid grid-rows-12 grid-flow-row-dense lg:grid-rows-8 md:grid-flow-col gap-4 mr-4 p-2">
                                         <div v-for="(location, index) in locations" :key="'location-' + index">
                                             <label :for="'locationCheckbox-' + index" class="flex items-center">
-                                                <input type="checkbox" :id="'locationCheckbox-' + index"
-                                                    :value="location" @change="toggleLocation(location)">
+                                                <input type="checkbox" :id="'locationCheckbox-' + index" :value="location"
+                                                    @change="toggleLocation(location)">
                                                 <span class="ml-2 uppercase font-bold">{{ location }}</span>
                                             </label>
                                         </div>
@@ -104,19 +104,16 @@
                         <p class="text-white text-xs line-clamp-3">{{ item.description }}</p>
                     </div>
                     <div class="p-1 flex justify-end items-center">
-                        <router-link :to="item.link">
-                            <button @click="seeMore(item)"
-                                class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
-                                <span>See More</span>
-                                <span class="ml-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                                    </svg>
-                                </span>
-                            </button>
-                        </router-link>
+                        <button @click="seeMore(item)"
+                            class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
+                            <span>See More</span>
+                            <span class="ml-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                                    stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                </svg>
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -125,8 +122,8 @@
                 <div class="flex justify-start items-center">
                     <p class="text-center text-white">Showing <span class="text-[#29BFD6]">{{ paginationStartIndex }} -
                             {{
-                            paginationEndIndex }}</span> results from <span class="text-[#29BFD6]">{{ totalRecords
-                            }}</span> records
+                                paginationEndIndex }}</span> results from <span class="text-[#29BFD6]">{{ totalRecords
+    }}</span> records
                     </p>
                 </div>
                 <div class="flex justify-end items-center mt-4">
@@ -177,60 +174,69 @@ export default {
         return {
             items: [
                 {
-                    name: 'Casino Suites',
-                    description: "Experience comfort and convenience at Casino Suites, where modern amenities and personalized service await you. Located in the heart of Makati, this hotel provides easy access to the city's vibrant attractions and business district. Unwind in well-appointed rooms and enjoy a memorable stay at Casino Suites.",
-                    category: 'Accommodation/Hotel',
-                    image: item1,
-                    link: ''
-                },
-                {
                     name: 'XYZ Hotel',
                     description: "Immerse yourself in the modern elegance of U Hotels Makati. With contemporary designs and thoughtful amenities, this hotel offers a delightful stay in the heart of the city. Enjoy personalized service and easy access to Makati's attractions at U Hotels Makati.                    ",
                     category: 'Accommodation/Hotel',
                     image: item2,
-                    link: "/category/stay/xyz"
+                    link: "/category/stay/xyz",
+                    mapLocation: "https://www.google.com/maps/dir//5091+P+Burgos,+Makati,+Metro+Manila/@14.5670312,121.0309181,19.36z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9ab7c183931:0xaee4b3ae67f7f4d7!2m2!1d121.0310417!2d14.5668763?entry=ttu"
                 },
+                {
+                    name: 'Casino Suites',
+                    description: "Experience comfort and convenience at Casino Suites, where modern amenities and personalized service await you. Located in the heart of Makati, this hotel provides easy access to the city's vibrant attractions and business district. Unwind in well-appointed rooms and enjoy a memorable stay at Casino Suites.",
+                    category: 'Accommodation/Hotel',
+                    image: item1,
+                    link: "",
+                    mapLocation: ""
+                },
+
                 {
                     name: 'Hotel Durban',
                     description: "Experience urban comfort and chic accommodations at Hotel Durban. With its stylish interiors and top-notch amenities, this hotel is a favorite among modern travelers. Whether you're in town for business or leisure, Hotel Durban ensures a pleasant and memorable stay in Makati.",
                     category: 'Accommodation/Hotel',
                     image: item3,
-                    link: ''
+                    link: "",
+                    mapLocation: ""
                 },
                 {
                     name: 'Astoria Greenbelt',
                     description: "Experience luxury and sophistication at Astoria Greenbelt. This upscale hotel boasts well-appointed rooms, first-class amenities, and top-notch service. Located near Greenbelt Mall, Astoria Greenbelt offers a convenient base for exploring the city while enjoying the finest accommodations.",
                     category: 'Accommodation/Hotel',
                     image: item4,
-                    link: ''
+                    link: "",
+                    mapLocation: ""
                 },
                 {
                     name: 'Carlmig Homes',
                     description: "Discover a home away from home at Carlmig Homes. This cozy boutique hotel offers warm hospitality and comfortable accommodations for travelers seeking a peaceful retreat. Whether you're visiting for business or leisure, Carlmig Homes ensures a relaxed and pleasant stay in Makati.",
                     category: 'Accommodation/Guest House',
                     image: item5,
-                    link: ''
+                    link: "",
+                    mapLocation: ""
                 },
                 {
                     name: 'Gomez House',
                     description: "Step into a world of heritage and nostalgia at Gomez House. This charming guesthouse, with its restored vintage interiors, offers a unique experience that transports you back in time. Enjoy a blend of old-world charm and modern comforts at Gomez House.",
                     category: 'Accommodation/Guest House',
                     image: item6,
-                    link: ''
+                    link: "",
+                    mapLocation: ""
                 },
                 {
                     name: 'Prince Plaza Hotel',
                     description: "Indulge in spacious suites and exceptional service at Prince Plaza Hotel. Located in the heart of Makati's business district, this hotel offers a homey ambiance with all the amenities you need for a comfortable stay. Enjoy the convenience of its prime location and a warm welcome at Prince Plaza Hotel.",
                     category: 'Accommodation/Hotel',
                     image: item7,
-                    link: ''
+                    link: "",
+                    mapLocation: ""
                 },
                 {
                     name: 'Howzat Inn',
                     description: "Discover a budget-friendly and cozy stay at Howzat Inn. This charming inn provides comfortable accommodations without breaking the bank. With its strategic location and warm hospitality, Howzat Inn ensures a memorable and enjoyable stay in Makati.",
                     category: 'Accommodation/Inn',
                     image: item8,
-                    link: ''
+                    link: "",
+                    mapLocation: ""
                 },
 
             ],
@@ -274,8 +280,34 @@ export default {
             this.showDropdown = !this.showDropdown;
         },
         applyFilter(category) {
-            // Implement filtering logic based on selected category
             console.log('Selected category:', category);
+        },
+        seeMore(item) {
+            const { latitude, longitude } = this.extractLatLong(item.mapLocation);
+            if (latitude !== null && longitude !== null) {
+                this.$router.push({ name: 'xyz', query: { latitude, longitude, name: item.name } });
+            } else {
+                console.error('Latitude or longitude not available');
+            }
+        },
+        extractLatLong(mapLocation) {
+            const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
+            const match = mapLocation.match(regex);
+            if (match && match.length >= 3) {
+                const latitude = parseFloat(match[1]);
+                const longitude = parseFloat(match[2]);
+                return { latitude, longitude };
+            }
+
+            const altRegex = /!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/;
+            const altMatch = mapLocation.match(altRegex);
+            if (altMatch && altMatch.length >= 3) {
+                const latitude = parseFloat(altMatch[1]);
+                const longitude = parseFloat(altMatch[2]);
+                return { latitude, longitude };
+            }
+
+            return { latitude: null, longitude: null };
         },
     },
 };

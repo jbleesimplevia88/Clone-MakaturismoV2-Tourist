@@ -16,6 +16,7 @@
 import HomeView from '@/components/ToSeeHome.vue';
 
 export default {
+   
     components: {
         HomeView,
     },

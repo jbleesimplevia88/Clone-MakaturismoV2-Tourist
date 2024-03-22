@@ -10,7 +10,7 @@
   <TopPlaceCarousel />
 
   <div class="flex items-center justify-center m-10">
-    <router-link to="/calendar">
+    <router-link to="/viewAll">
       <button class="flex items-center justify-center px-5 py-2 font-bold text-white bg-blue-800 rounded-lg shadow">View
         All</button>
     </router-link>

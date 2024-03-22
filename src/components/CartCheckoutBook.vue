@@ -14,24 +14,24 @@
         <div class="flex justify-between">
             <div class="lg:w-[60%]">
 
-                <p class="mb-4 font-bold text-3xl">Your Trip</p>
+                <p class="lg:mb-4 lg:font-bold lg:text-3xl">Your Trip</p>
 
 
                 <div class="">
 
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="lg:grid lg:grid-cols-2 lg:gap-4">
                         <div>
-                            <p class="lg:mr-9 mb-1 font-bold">Date of Tour</p>
+                            <p class="lg:mr-9 lg:mb-1 lg:font-bold">Date of Tour</p>
                             <p class="font-normal mb-2 text-gray-400">07/24/2023</p>
 
 
                         </div>
                         <div>
-                            <p class="lg:mr-9 mb-1 font-bold">Time of Tour</p>
+                            <p class="lg:mr-9 lg:mb-1 lg:font-bold">Time of Tour</p>
                             <p class="font-normal mb-2 text-gray-400">1:00 PM - 3:00 PM</p>
                         </div>
                         <div>
-                            <p class="lg:mr-9 mb-1 font-bold">Number of Person</p>
+                            <p class="lg:mr-9 lg:mb-1 lg:font-bold">Number of Person</p>
                             <p class="font-normal mb-2 text-gray-400">3</p>
                         </div>
 
@@ -40,8 +40,8 @@
 
 
                         <div>
-                            <p class="lg:mr-9 mb-1 font-bold">Services Included</p>
-                            <p class="font-normal mb-2 text-gray-400 overflow-hidden whitespace-nowrap"
+                            <p class="lg:mr-9 lg:mb-1 lg:font-bold">Services Included</p>
+                            <p class="font-normal mb-2 text-gray-400 overflow-hidden whitespace-nowrap lg:overflow-visible lg:whitespace-normal"
                                 style="text-overflow: ellipsis;">Service 1</p>
 
 
@@ -68,30 +68,30 @@
 
                     <div>
 
-                        <p class="mb-4 font-bold text-3m">Your Information</p>
+                        <p class="lg:mb-4 lg:font-bold lg:text-3m">Your Information</p>
 
 
                         <div class="">
 
-                            <div class="grid grid-cols-2 gap-4">
+                            <div class="lg:grid lg:grid-cols-2 lg:gap-4">
                                 <div>
-                                    <p class="lg:mr-9 mb-1 font-bold">Full Name</p>
+                                    <p class="lg:mr-9 lg:mb-1 lg:font-bold">Full Name</p>
                                     <p class="font-normal mb-2 text-gray-400">John Doe</p>
                                 </div>
                                 <div>
-                                    <p class="lg:mr-9 mb-1 font-bold">E-mail Address</p>
+                                    <p class="lg:mr-9 lg:mb-1 lg:font-bold">E-mail Address</p>
                                     <p class="font-normal mb-2 text-gray-400">juandelecruz@gmail.com</p>
                                 </div>
                                 <div>
-                                    <p class="lg:mr-9 mb-1 font-bold">Phone Number</p>
+                                    <p class="lg:mr-9 lg:mb-1 lg:font-bold">Phone Number</p>
                                     <p class="font-normal mb-2 text-gray-400">09569103856</p>
                                 </div>
                                 <div>
-                                    <p class="lg:mr-9 mb-1 font-bold">Gender</p>
+                                    <p class="lg:mr-9 lg:mb-1 lg:font-bold">Gender</p>
                                     <p class="font-normal mb-2 text-gray-400">Male</p>
                                 </div>
                                 <div>
-                                    <p class="lg:mr-9 mb-1 font-bold">Citizen of Makati</p>
+                                    <p class="lg:mr-9 lg:mb-1 lg:font-bold">Citizen of Makati</p>
                                     <p class="font-normal mb-2 text-gray-400">Yes</p>
                                 </div>
                             </div>
@@ -100,7 +100,7 @@
                     </div>
 
                     <div class="">
-                        <p class="font-bold text-3xl mb-4">Payment</p>
+                        <p class="lg:font-bold lg:text-3xl lg:mb-4">Payment</p>
 
 
                         <div class="border border-gray-200 py-5 pl-6">
@@ -139,10 +139,10 @@
                     <div class="bg-gray-200 h-0.5"></div>
 
 
-                    <p class="mr-9 mt-2 font-bold font-sans  text-3xl">Your Total</p>
+                    <p class="lg:mr-9 lg:mt-2 lg:font-bold lg:font-sans  lg:text-3xl">Your Total</p>
 
                     <div class="items-center mb-5">
-                        <div class="flex justify-between mb-2 w-[100%]">
+                        <div class="flex justify-between mb-2 lg:w-[100%]">
                             <p class="w-[70%]">Deluxe Room
                             </p>
                             <p class="text-gray-400">₱ 7000.00</p>

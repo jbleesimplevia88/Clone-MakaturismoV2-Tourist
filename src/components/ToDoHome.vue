@@ -71,8 +71,8 @@
                                         class="grid grid-rows-12 grid-flow-row-dense lg:grid-rows-8 md:grid-flow-col gap-4 mr-4 p-2">
                                         <div v-for="(location, index) in locations" :key="'location-' + index">
                                             <label :for="'locationCheckbox-' + index" class="flex items-center">
-                                                <input type="checkbox" :id="'locationCheckbox-' + index"
-                                                    :value="location" @change="toggleLocation(location)">
+                                                <input type="checkbox" :id="'locationCheckbox-' + index" :value="location"
+                                                    @change="toggleLocation(location)">
                                                 <span class="ml-2 uppercase font-bold">{{ location }}</span>
                                             </label>
                                         </div>
@@ -88,8 +88,8 @@
                 <!-- End of Filter dropdown -->
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div v-for="(item, index) in paginatedItems" :key="index"
-                    class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
+                <div v-for="(item, index) in items" :key="index" class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
+
                     <div class="relative">
                         <img class="w-full h-[250px] object-cover rounded-t" :src="item.image" alt="">
                         <div
@@ -103,20 +103,16 @@
                         <p class="text-white text-xs line-clamp-3">{{ item.description }}</p>
                     </div>
                     <div class="p-1 flex justify-end items-center">
-                        <router-link :to="item.link">
-
-                            <button @click="seeMore(item)"
-                                class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
-                                <span>See More</span>
-                                <span class="ml-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                                    </svg>
-                                </span>
-                            </button>
-                        </router-link>
+                        <button @click="seeMore(item)"
+                            class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
+                            <span>See More</span>
+                            <span class="ml-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                                    stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                </svg>
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -125,8 +121,8 @@
                 <div class="flex justify-start items-center">
                     <p class="text-center text-white">Showing <span class="text-[#29BFD6]">{{ paginationStartIndex }} -
                             {{
-                            paginationEndIndex }}</span> results from <span class="text-[#29BFD6]">{{ totalRecords
-                            }}</span> records
+                                paginationEndIndex }}</span> results from <span class="text-[#29BFD6]">{{ totalRecords
+    }}</span> records
                     </p>
                 </div>
                 <div class="flex justify-end items-center mt-4">
@@ -181,70 +177,80 @@ export default {
                     description: "Discover a fusion of art and technology at the Omniverse Museum in Makati. Step into a world of interactive exhibits, mind-bending installations, and awe-inspiring virtual reality experiences. This unique museum promises a captivating journey through the realms of creativity and innovation. Whether you're an art enthusiast or a tech-savvy explorer, the Omniverse Museum is a must-visit destination for an extraordinary adventure.",
                     category: 'Museum',
                     image: item1,
-                    link: "/category/do/omniverse"
+                    link: "/category/do/omniverse",
+                    mapLocation: "https://www.google.com/maps/dir//Omniverse+Museum+Japan+Town+4%2FF+Glorietta+2,+Ayala+Center+Makati+Palm+Dr,+Makati+Ave,+Makati,+1224+Metro+Manila/@14.5509998,121.0236327,17.09z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c97f24c8a707:0x936b4a8c37308563!2m2!1d121.0254416!2d14.5509171?entry=ttu"
                 },
                 {
                     name: 'Hop-On, Hop-Off Tour',
                     description: "Embark on a convenient and flexible sightseeing adventure with the Hop-On, Hop-Off Tour in Makati. Climb aboard an open-top double-decker bus and enjoy panoramic views as you explore the city's iconic landmarks and vibrant neighborhoods. Hop off at any stop that catches your interest, and hop back on when you're ready to move on to the next exciting destination. This tour offers the freedom to create your itinerary and make the most of your time in Makati.",
                     category: 'Sightseeing Tour',
                     image: item2,
-                    link: ""
+                    link: "",
+                    mapLocation: ""
                 },
                 {
                     name: 'Zitro Massage and Spa',
                     description: "Indulge in ultimate relaxation and rejuvenation at Zitro Massage and Spa. This serene oasis offers a variety of therapeutic treatments, from traditional massages to modern wellness therapies. Surrender to the skilled hands of expert therapists and let your stress melt away. With a tranquil ambiance and a range of pampering options, Zitro Massage and Spa provides the perfect escape from the bustling city life.",
                     category: 'Spa and Wellness',
                     image: item3,
-                    link: ""
+                    link: "",
+                    mapLocation: ""
                 },
                 {
                     name: 'Zeria',
                     description: "Get ready for an immersive and thrilling experience at Zeria, Makati's premier escape room destination. Gather your friends, family, or colleagues and put your problem-solving skills to the test in a series of mind-bending puzzles and challenges. Each escape room presents a unique storyline, making Zeria an ideal place for team building, bonding, or simply having a blast with your loved ones.",
                     category: 'Entertainment/Gaming',
                     image: item4,
-                    link: ""
+                    link: "",
+                    mapLocation: ""
                 },
                 {
                     name: 'Two Seasons Spa',
                     description: "Treat yourself to a tranquil escape at Two Seasons Spa. With a selection of massages, facials, and body treatments, this spa offers a rejuvenating experience that caters to your specific needs. Let the stress fade away as you unwind in the serene atmosphere of Two Seasons Spa, leaving you feeling invigorated and revitalized.",
                     category: 'Spa and Wellness',
                     image: item5,
-                    link: ""
+                    link: "",
+                    mapLocation: ""
                 },
                 {
                     name: 'White Palace Spa',
                     description: "Experience pure bliss and luxury at White Palace Spa. Indulge in their extensive menu of spa services, including invigorating massages, facials, and body treatments. Step into an ambiance of serenity and let the experienced therapists take care of your well-being. White Palace Spa offers a sanctuary of tranquility, making it the perfect escape from the hustle and bustle of city life.",
                     category: 'Spa and Wellness',
                     image: item6,
-                    link: ""
+                    link: "",
+                    mapLocation: ""
                 },
                 {
                     name: 'Urband Break Wellness',
                     description: 'Escape the daily grind and discover a holistic approach to wellness at Urban Break Wellness. From yoga and meditation classes to natural healing therapies, this wellness center is dedicated to promoting mind-body harmony. Reconnect with your inner self and find rejuvenation amidst the urban landscape of Makati at Urban Break Wellness.',
                     category: 'Spa and Wellness',
                     image: item7,
-                    link: ""
+                    link: "",
+                    mapLocation: ""
                 },
                 {
                     name: 'Touch of Hands Spa',
                     description: 'Pamper yourself with a blissful retreat at Touch of Hands Spa. With a range of massage therapies and spa treatments, this haven of relaxation will leave you feeling refreshed and renewed. Surrender to the healing touch of their skilled therapists and experience the ultimate pampering session at Touch of Hands Spa.',
                     category: 'Spa and Wellness',
                     image: item8,
-                    link: ""
+                    link: "",
+                    mapLocation: ""
                 },
                 {
                     name: 'Product 9',
                     description: 'Description of Product 9',
                     category: 'Museum',
                     image: 'https://via.placeholder.com/300',
-                    link: ""
+                    link: "",
+                    mapLocation: ""
                 },
                 {
                     name: 'Product 10',
                     description: 'Description of Product 10',
                     category: 'Museum',
                     image: 'https://via.placeholder.com/300',
-                    link: ""
+                    link: "",
+                    mapLocation: ""
                 },
             ],
             currentPage: 0,
@@ -290,6 +296,36 @@ export default {
             // Implement filtering logic based on selected category
             console.log('Selected category:', category);
         },
+        seeMore(item) {
+            const { latitude, longitude } = this.extractLatLong(item.mapLocation);
+            if (latitude !== null && longitude !== null) {
+                // Pass the name parameter in the query object
+                this.$router.push({ name: 'omniverse', query: { latitude, longitude, name: item.name } });
+            } else {
+                console.error('Latitude or longitude not available');
+            }
+        },
+        extractLatLong(mapLocation) {
+            const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
+            const match = mapLocation.match(regex);
+            if (match && match.length >= 3) {
+                const latitude = parseFloat(match[1]);
+                const longitude = parseFloat(match[2]);
+                return { latitude, longitude };
+            }
+
+            // Try another regex pattern for different URL formats
+            const altRegex = /!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/;
+            const altMatch = mapLocation.match(altRegex);
+            if (altMatch && altMatch.length >= 3) {
+                const latitude = parseFloat(altMatch[1]);
+                const longitude = parseFloat(altMatch[2]);
+                return { latitude, longitude };
+            }
+
+            // If no match is found, return null values
+            return { latitude: null, longitude: null };
+        }
     },
 };
 </script>

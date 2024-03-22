@@ -88,7 +88,8 @@
 
                     </div>
                     <div class="flex flex-col pl-2.5">
-                        <p class="text-lg md:text-black text-left pb-5">N/A</p>
+                        <p class="text-lg md:text-black text-left pb-5">Monday - Sunday</p>
+                        <p class="text-lg md:text-black text-left pb-5">11:00 AM - 7:30 PM</p>
 
                     </div>
                 </div>
@@ -232,10 +233,17 @@
                             <label for="" class=" mb-2 font-bold">Other Services</label>
                             <input type="text" class="border border-gray-300 rounded-md p-1">
                         </div>
-                    </div>
+                        <router-link to="/checkoutbook">
+                            <div class="w-[100%]">
+                                <button
+                                    class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Book
+                                    Now</button>
 
-                    <button class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Book
-                        Now</button>
+
+                            </div>
+                        </router-link>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -290,10 +298,12 @@
         <div class="relative mx-6 px-3 lg:px-32 pb-5 pt-5">
             <div>
                 <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
-                <img src="@/assets/images/CategoryView/ToSee/Glorietta Map.jpg" alt="" class="pb-12 block lg:hidden">
+                <MapRenderer :latitude="latitude" :longitude="longitude" :name="name" />
+
+                <!-- <img src="@/assets/images/CategoryView/ToSee/Glorietta Map.jpg" alt="" class="pb-12 block lg:hidden">
                 <div class="hidden lg:block lg:pb-10">
                     <img src="@/assets/images/CategoryView/ToDo/Omniverse Web Map.png" alt="" class="w-[100%] h-[100%]">
-                </div>
+                </div> -->
             </div>
             <hr style="border-top: 1px solid black">
             <div>
@@ -374,24 +384,32 @@
 
 
 <script>
+import MapRenderer from "@/components/MapRenderer.vue";
 
 
 
 export default {
+    props: {
+        latitude: Number,
+        longitude: Number,
+        name: String
+    },
     components: {
+        MapRenderer
+
     },
     data() {
         return {
             items: [
                 {
                     name: 'Juan Dela Cruz',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                    description: "Immerse yourself in the modern elegance of U Hotels Makati. With contemporary designs and thoughtful amenities, this hotel offers a delightful stay in the heart of the city. Enjoy personalized service and easy access to Makati's attractions at U Hotels Makati.",
                     date: 'December 2023',
 
                 },
                 {
-                    name: 'Luis Paolo',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                    name: 'Juan Dela Cruz',
+                    description: "Immerse yourself in the modern elegance of U Hotels Makati. With contemporary designs and thoughtful amenities, this hotel offers a delightful stay in the heart of the city. Enjoy personalized service and easy access to Makati's attractions at U Hotels Makati.",
                     date: 'December 2023',
 
                 },

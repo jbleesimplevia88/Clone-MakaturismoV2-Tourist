@@ -88,6 +88,8 @@
             </div>
         </div>
 
+        
+
         <div class="flex flex-row">
             <div class="pt-0.25">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -100,7 +102,7 @@
             <p class="text-lg md:text-black text-left pl-2.5 pb-5">0915 009 1034</p>
         </div>
 
-        <h1 class="font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SPOT IN HERE IN GLORIETTA</h1>
+        <h1 class="font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SPOT IN HERE IN OMNIVERSE MUSEUM</h1>
 
         <ContentCarousel class="mb-10" />
 
@@ -153,10 +155,12 @@
         <div class="relative mx-6 px-3 lg:px-32 pb-5 pt-5">
             <div>
                 <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
-                <img src="@/assets/images/CategoryView/ToSee/Glorietta Map.jpg" alt="" class="pb-12 block lg:hidden">
+                <MapRenderer :latitude="latitude" :longitude="longitude" :name="name" />
+
+                <!-- <img src="@/assets/images/CategoryView/ToSee/Glorietta Map.jpg" alt="" class="pb-12 block lg:hidden">
                 <div class="hidden lg:block lg:pb-10">
                     <img src="@/assets/images/CategoryView/ToDo/Omniverse Web Map.png" alt="" class="w-[100%] h-[100%]">
-                </div>
+                </div> -->
             </div>
             <hr style="border-top: 1px solid black">
             <div>
@@ -238,12 +242,19 @@
 
 <script>
 import ContentCarousel from '@/components/ContentModalCarousel.vue';
+import MapRenderer from "@/components/MapRenderer.vue";
 
 
 
 export default {
+    props: {
+        latitude: Number,
+        longitude: Number,
+        name: String
+    },
     components: {
-        ContentCarousel
+        ContentCarousel,
+        MapRenderer
     },
     data() {
         return {

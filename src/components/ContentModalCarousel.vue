@@ -14,7 +14,7 @@
 
     <div dir="rtl">
       <button @click="next"
-        class="absolute opacity-60 rounded-s-lg top-1/2 transform -translate-y-1/2 bg-white text-gray-800 text-xl font-bold px-3 py-1 rounded-full focus:outline-none w-10">&#10095;</button>
+        class="absolute opacity-60 rounded-s-lg top-1/2 transform -translate-y-1/2 bg-white text-gray-800 text-xl font-bold px-3 py-1 rounded-full focus:outline-none w-10">&#10094;</button>
     </div>
   </div>
 </template>

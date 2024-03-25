@@ -2,14 +2,14 @@
   <div class="inline-block mt-10 ml-0 text-white bg-[#2969D6] min-w-min"
     style="border-top-right-radius: 15px; border-bottom-right-radius: 15px;">
     <!-- Apply 'text-5xl' for small screens and 'text-3xl' for medium screens and above -->
-    <h1 :class="{ 'p-2 mx-5 ml-10 text-1xl font-bold': isMobile, 'p-2 mx-10 ml-10 text-2xl font-bold': !isMobile }">
+    <h1 :class="{ 'p-2 mx-5 ml-3 text-1xl font-bold': isMobile, 'p-2 mx-10 ml-4 text-2xl font-bold': !isMobile }">
       Events for this Month
     </h1>
   </div>
 
   <CalendarMonthCarousel />
 
-  <div class="flex items-center justify-center m-10">
+  <div class="flex items-center justify-center m-3">
     <!-- <router-link to="/calendar"> -->
     <button class="flex items-center justify-center px-5 py-2 text-white bg-[#2969D6] rounded-lg shadow">View
       All</button>
@@ -19,14 +19,15 @@
   <div class="inline-block mt-10 ml-0 text-white bg-[#2969D6] min-w-min"
     style="border-top-right-radius: 15px; border-bottom-right-radius: 15px;">
     <!-- Apply 'text-5xl' for small screens and 'text-3xl' for medium screens and above -->
-    <h1 :class="{ 'p-2 mx-5 ml-10 text-1xl font-bold': isMobile, 'p-2 mx-10 ml-10 text-2xl font-bold': !isMobile }">
+    <h1 :class="{ 'p-2 mx-5 ml-3 text-1xl font-bold': isMobile, 'p-2 mx-10 ml-4  text-2xl font-bold': !isMobile }">
       Past Events
     </h1>
   </div>
 
   <CalendarPastCarousel />
 
-  <div class="flex items-center justify-center m-10">
+  <div
+    :class="{ 'flex items-center justify-center m-3 pb-5': isMobile, 'flex items-center justify-center m-3': !isMobile }">
     <!-- <router-link to="/calendar"> -->
     <button class="flex items-center justify-center px-5 py-2  text-white bg-[#2969D6] rounded-lg shadow">View
       All</button>

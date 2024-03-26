@@ -22,59 +22,65 @@
       </div>
 
       <!-- Login Modal -->
-      <div v-if="showLoginModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-        <div class="relative p-8 bg-white"
-          :style="{ width: '75%', height: '65%', borderRadius: '20px', backgroundImage: 'url(' + imageUrl + ')', backgroundSize: 'cover', backgroundPosition: 'center bottom' }">
+      <div v-if="showLoginModal" class=" fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+        <div class="lg:relative p-8 bg-white lg:w-3/4 lg:h-4/5 h-3/5 rounded-3xl lg:bg-cover bg-no-repeat bg-w-[20px] " 
+        :style="{ backgroundImage: 'url(' + imageUrl + ')' }">
+       
           <!-- Modal Content -->
           <div class="relative flex justify-end">
-            <button class=" pr-4 pt-21 ">
+            <button class="lg:pr-4 lg:pt-21 ">
               <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="5"
                 stroke="black" class="w-7 h-7">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
-          <div class="relative z-10 flex flex-col items-start justify-center h-full m-10">
+          <div class="relative z-10 flex flex-col items-start justify-center h-full lg:m-10">
             <div class="mb-5">
               <h2 class="text-2xl font-bold">Welcome!</h2>
-              <p>Please log in to your account.</p>
+              <p class="text-xs lg:text-lg">Please log in to your account.</p>
             </div>
-            <form @submit.prevent="login" style="width: 40%;">
+
+            <form @submit.prevent="login" class="lg:w-[50%]">
 
            <div class="relative mb-4 w-full md:w-365">
                 <label for="username" class="block text-gray-700">Enter Username</label>
-                <div class="relative">
-                  <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-5 my-2"
+                <div class="relative ">
+                  <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-5 my-3"
                     style="width: 15px;" alt="Username Icon" />
                   <input type="text" id="username" v-model="username"
-                    class="w-full h-8 pl-10 border border-black rounded md:rounded-lg" placeholder="Username">
+                    class="lg:w-full h-8 py-5 pl-10 border border-black rounded-xl" placeholder="Username">
                 </div>
               </div>
-              <div class="relative mb-4 w-full md:w-365">
-                <label for="username" class="block text-gray-700">Enter Password</label>
-                <div class="relative">
-
-                  <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-3 my-2"
-                    style="width: 15px;" alt="Username Icon" />
-                  <img src="@/assets/images/Modal/view.png" class="absolute inset-y-0 right-0 mx-3 my-2"
-                    style="width: 15px;" alt="Eye Icon" />
-                  <!-- <img src="@/assets/images/Modal/hidden.png" class="absolute inset-y-0 right-0 mx-3 my-2" style="width: 15px;" alt="Eye Icon" /> -->
+              <div class="relative mb-4 md:w-365">
+                <label for="username" class="w-full text-gray-700">Enter Password</label>
+                <div class="relative w-full">
+                  <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-5 my-3"
+                  style="width: 15px;" alt="Username Icon" />
+                  <img src="@/assets/images/Modal/view.png" class="absolute inset-y-0 right-0 mx-3 my-3"
+                  style="width: 15px;" alt="Eye Icon" />
                   <input type="password" id="password" v-model="password"
-                    class="w-full h-8 pl-10 border border-black rounded-md" placeholder="Password">
+                    class="lg:w-full h-8 py-5 pl-10 border border-black rounded-xl" placeholder="Password">
                 </div>
               </div>
-              <div class="flex justify-between mb-4">
-                <!-- <p>Don't have an account? <button @click="openSignUpModal" class="text-blue-600">Sign Up</button></p> -->
-                <p>Don't have an account? <button @click="openPrivacyModal" class="text-blue-600">Sign Up</button></p>
-                <button @click="openForgotModal" class="text-blue-600">Forgot Password?</button>
+              <div class="hidden lg:block lg:flex items-center justify-between mb-4">
+                <p class="text-xs">Don't have an account? <span @click="openPrivacyModal" class="text-xs font-bold text-blue-600">Sign Up</span></p>
+                <p @click="openForgotModal" class="text-xs text-blue-600 font-bold">Forgot Password?</p>
               </div>
-              <div class="mt-10 text-center">
-                <button type="submit" class="px-4 py-2 text-white bg-blue-600 rounded-md">Login</button>
+              <div class="hidden lg:block lg:mt-10 text-center">
+                <button type="submit" class="lg:w-[8rem] w-full lg:px-4 py-2 lg:mb-10 text-white bg-blue-600 rounded-md">Login</button>
+              </div>
+              <div class="lg:hidden lg:mt-10 text-center">
+                <button type="submit" class="lg:w-[8rem] w-full lg:px-4 py-2 lg:mb-10 text-white bg-blue-600 rounded-md">Login</button>
+                <p @click="openForgotModal" class="text-xs text-blue-600 mt-1">Forgot Password?</p>
+                <button @click="openPrivacyModal" class="w-full mt-8 py-2 border border-blue-400 text-blue-600 bg-white rounded-md">Sign Up</button>
               </div>
             </form>
           </div>
         </div>
       </div>
+
+      
       <div v-if="showPrivacyModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
         <div class="relative p-8 bg-white" :style="{ width: '75%', height: '65%', borderRadius: '20px' }">
           <!-- Modal Content -->

@@ -11,14 +11,27 @@
       </div>
       <!-- Right side - Calendar and Login -->
       <div class="flex items-center space-x-4">
-        <div class="relative flex " ref="searchContainer">
+        <RouterLink to="/searchfilter" class=" lg:hidden flex items-center">
+          <span
+            class=" flex items-center whitespace-nowrap px-3 py-[0.25rem] text-surface [&>svg]:h-5 [&>svg]:w-5"
+            id="button-addon2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+          </span>
+        </RouterLink>
+
+        <div class=" hidden lg:block relative  " ref="searchContainer">
           <input v-if="showInput" type="search"
             class=" relative m-0 block flex-auto rounded border border-solid border-neutral-200 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none"
             placeholder="Search" aria-label="Search" id="exampleFormControlInput2" aria-describedby="button-addon2"
             ref="searchInput" />
           <span @click="toggleInputVisibility"
-            class="flex items-center whitespace-nowrap px-3 py-[0.25rem] text-surface dark:border-neutral-400 dark:text-white [&>svg]:h-5 [&>svg]:w-5"
+            class="flex items-center whitespace-nowrap px-3 py-[0.25rem] text-surface [&>svg]:h-5 [&>svg]:w-5"
             id="button-addon2">
+
             <svg class="" v-show="!showInput" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
               stroke-width="3" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round"
@@ -26,7 +39,6 @@
             </svg>
           </span>
         </div>
-
 
         <RouterLink to="/calendar" class="hidden text-white md:inline-block"><img
             src="@/assets/images/Header/calendar.png" alt="logo" class="w-auto h-6 mr-2"></RouterLink>

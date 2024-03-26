@@ -26,6 +26,11 @@ const router = createRouter({
       component: () => import('../views/CalendarView.vue')
     },
     {
+      path: '/searchfilter',
+      name: 'searchfilter',
+      component: () => import('../views/SearchFilter.vue')
+    },
+    {
       path: '/topPlace',
       name: 'topPlace',
       component: TopPlace

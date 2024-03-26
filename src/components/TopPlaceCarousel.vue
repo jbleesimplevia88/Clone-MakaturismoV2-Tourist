@@ -52,6 +52,7 @@ export default {
 
   data() {
     return {
+
       slides: [
         {
           imgSrc: card1, name: "Glorietta", location: "Glorietta, Ayala Center, Makati City", link: "/category/see/glorietta",

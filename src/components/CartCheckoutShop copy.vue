@@ -24,54 +24,118 @@
                 <p class="mb-4 font-bold text-3m">Number Of Items</p>
                 <p class="mb-4 font-bold text-3m">9</p>
 
-                <div class="w-[100%]">
+                <div class="">
 
-                    <div class="flex justify-between">
-                        <p class="text-sm w-[50%]">List of items</p>
-                        <p class="">Quantity</p>
-                        <p class="">Cost</p>
-                        <p class="">Total</p>
-                    </div>
-                    <div class="flex justify-between">
-                        <p class="text-xs w-[50%]">Multi Handle Tote Bag with
-                            Embroidered Philippines
-                            Kalesa Scenery</p>
-                        <p class="w-[10%] flex justify-center">1</p>
-                        <p class="">399</p>
-                        <p class="">399</p>
+                    <div class="grid grid-cols-4 gap-4">
+                        <div>
+                            <p class="lg:mr-9 mb-1 font-bold">List Of Items</p>
+                            <p class="font-normal mb-2 text-normal-400">Multi Handle Tote Bag with
+                                Embroidered Philippines
+                                Kalesa Scenery</p>
+
+
+                        </div>
+                        <div>
+                            <p class="lg:mr-9 mb-1 lg:ml-20 font-bold  ">Quantity</p>
+                            <p class="font-normal mb-2 lg:mt-2 mt-8 lg:ml-20   text-normal-400">1</p>
+                        </div>
+                        <div>
+                            <p class="lg:mr-9 mb-1 font-bold lg:ml-20">Cost</p>
+                            <p class="font-normal mb-2 lg:mt-2 mt-8 lg:ml-20 text-normal-400">399</p>
+                        </div>
+                        <div>
+                            <p class="lg:mr-9 mb-1 font-bold">Total</p>
+                            <p class="font-normal mb-2 lg:mt-2 mt-8 text-normal-400">399</p>
+                        </div>
+
+
+
+
+                        <div>
+                            <p class="font-normal mb-2 text-normal-400">Multi Handle Tote Bag with
+                                Embroidered Philippine
+                                Jeepney</p>
+
+
+
+                        </div>
+                        <div>
+                            <p class="font-normal mb-2 lg:ml-20   text-normal-400">3</p>
+
+                        </div>
+                        <div>
+                            <p class="font-normal mb-2 lg:ml-20 text-normal-400">399</p>
+
+                        </div>
+                        <div>
+
+                            <p class="font-normal mb-2 text-normal-400">1197</p>
+                        </div>
+
+
+                        <div>
+
+                            <p class="font-normal mb-2 text-normal-400">Beat the Heat Graphic Tee in Blush</p>
+
+
+                        </div>
+                        <div>
+
+                            <p class="font-normal mb-2 lg:ml-20  text-normal-400">1</p>
+                        </div>
+                        <div>
+
+                            <p class="font-normal mb-2 lg:ml-20 text-normal400">249</p>
+                        </div>
+                        <div>
+
+                            <p class="font-normal mb-2 text-normal-400">249</p>
+                        </div>
+
+
+                        <div>
+
+                            <p class="font-normal mb-2 text-normal-400">Never Stop Exploring Graphic Tee in Gray</p>
+
+
+                        </div>
+                        <div>
+                            <p class="font-normal mb-2 lg:ml-20  text-normal-400">2</p>
+                        </div>
+                        <div>
+
+                            <p class="font-normal mb-2 lg:ml-20 text-normal-400">299</p>
+                        </div>
+
+
+                        <div>
+
+                            <p class="font-normal mb-2 text-normal-400">598</p>
+                        </div>
+
+
+                        <div>
+
+                            <p class="font-normal mb-2 text-normal-400">Ethnic Stripes Book Tote Bag</p>
+
+
+                        </div>
+                        <div>
+                            <p class="font-normal lg:ml-20  mb-2 text-normal-400">2</p>
+                        </div>
+                        <div>
+
+                            <p class="font-normal mb-2 lg:ml-20 text-normal-400">700</p>
+                        </div>
+
+
+                        <div>
+
+                            <p class="font-normal mb-2 text-normal-400">1400</p>
+                        </div>
+
                     </div>
 
-                    <div class="flex justify-between ">
-                        <p class="text-xs w-[50%]">Multi Handle Tote Bag with
-                            Embroidered Philippine
-                            Jeepney
-                            Kalesa Scenery</p>
-                        <p class="w-[10%] flex justify-center">3</p>
-                        <p class="">399</p>
-                        <p class="">1197</p>
-                    </div>
-
-                    <div class="flex justify-between ">
-                        <p class="text-xs w-[50%]">Beat the Heat Graphic Tee in Blush
-                            Kalesa Scenery</p>
-                        <p class="w-[10%] flex justify-center">1</p>
-                        <p class="">249</p>
-                        <p class="">249</p>
-                    </div>
-                    <div class="flex justify-between">
-                        <p class="text-xs w-[50%]">Never Stop Exploring Graphic Tee in Gray
-                        </p>
-                        <p class="w-[10%] flex justify-center">2</p>
-                        <p class="">299</p>
-                        <p class="">598</p>
-                    </div>
-                    <div class="flex justify-between ">
-                        <p class="text-xs w-[50%]">Ethnic Stripes Book Tote Bag
-                            Kalesa Scenery</p>
-                        <p class="w-[10%] flex justify-center">2</p>
-                        <p class="">700</p>
-                        <p class="">1400</p>
-                    </div>
 
 
 
@@ -87,7 +151,7 @@
 
                     <div>
 
-                        <p class="mb-4 font-bold text-3xl">Your Information</p>
+                        <p class="mb-4 font-bold text-3m">Your Information</p>
 
 
                         <div class="">
@@ -142,7 +206,7 @@
                 </div>
                 <div class="flex flex-col block mt-3 lg:hidden">
 
-                    <div class="border border-gray-200 rounded-xl p-5">
+                    <div class="border border-gray-200 mr-5 rounded-xl p-5">
                         <div class="flex items-center mt-2 mb-5">
                             <img src="@/assets/images/CategoryView/ToShop/kultura.png" class="w-[400%]  rounded-lg">
 
@@ -218,7 +282,7 @@
                         </div>
 
 
-                        <div class="flex justify-center mt-0 ">
+                        <div class="flex justify-center mt-0">
                             <button class="text-white bg-blue-500 rounded-xl w-[100%] py-5"
                                 @click="toggleConfirmation">Proceed to Payment</button>
                         </div>
@@ -426,7 +490,7 @@
                     </div>
 
 
-                    <div class=" block flex justify-center mt-4">
+                    <div class="flex justify-center mt-4">
                         <button class="text-white bg-blue-500 rounded-xl w-[100%] py-5"
                             @click="toggleConfirmation">Proceed to Payment</button>
                     </div>

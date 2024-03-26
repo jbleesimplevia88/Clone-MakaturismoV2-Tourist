@@ -1,5 +1,5 @@
 <template>
-  <div class="inline-block mt-10 ml-0 text-white bg-blue-800 min-w-min"
+  <div class="inline-block mt-10 ml-0 text-white bg-[#2969D6] min-w-min"
     style="border-top-right-radius: 15px; border-bottom-right-radius: 15px;">
     <!-- Apply 'text-5xl' for small screens and 'text-3xl' for medium screens and above -->
     <h1 :class="{ 'p-2 mx-5 ml-10 text-1xl font-bold': isMobile, 'p-2 mx-10 ml-10 text-2xl font-bold': !isMobile }">
@@ -9,9 +9,10 @@
 
   <TopPlaceCarousel />
 
-  <div class="flex items-center justify-center m-10">
-    <router-link to="/calendar">
-      <button class="flex items-center justify-center px-5 py-2 font-bold text-white bg-blue-800 rounded-lg shadow">View
+  <div class="flex items-center justify-center m-5 mb-10">
+    <router-link to="/viewAll">
+      <button
+        class="flex items-center justify-center px-5 py-2 font-bold text-white bg-[#2969D6] rounded-lg shadow-lg shadow-gray-500/50">View
         All</button>
     </router-link>
   </div>

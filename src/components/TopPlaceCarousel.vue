@@ -4,8 +4,10 @@
     <template v-for="(slide, index) in slides" :key="index">
       <swiper-slide class="">
         <!-- Image container -->
+
         <RouterLink :to="getLinkWithCoordinates(slide)">
           <div class="relative my-20 w-350 h-350">
+
             <img :src="slide.imgSrc" alt="" class="object-cover w-full h-full">
             <!-- Name and Location text -->
             <div class="absolute bottom-0 left-0 right-0 p-2 text-white"

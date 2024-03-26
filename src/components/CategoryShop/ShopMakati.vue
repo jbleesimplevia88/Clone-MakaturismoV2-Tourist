@@ -118,16 +118,27 @@
                     <div class="flex flex-wrap justify-start items-center text-white lg:w-[100%]">
                         <div
                             class="lg:w-auto lg:flex-auto bg-blue-950 lg:h-[15rem] w-[47%] h-[190px] m-1 p-2 lg:p-3 rounded-xl relative flex flex-col justify-between">
-                            <p class="rounded-xl lg:text-sm text-xs absolute top-0 left-0 text-white p-2 w-full"
-                                style="background-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);">
+                            <p class="rounded-lg lg:text-sm text-xs lg:px-2 pt-2 absolute top-2.5 left-3 right-3 text-white p-2 w-71"
+                                style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 Multi handle Tote bag with Embroided Philippine Kalesa Scenery
                             </p>
+
                             <img class="rounded-md lg:h-[80%]"
                                 src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="100%">
                             <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
+
+                            <div class="flex justify-end absolute bottom-[65px] right-[18px]">
+                                <div class="flex justify-between">
+                                    <div class="flex bg-blue-950 border-1 rounded-lg border-white">
+                                        <p class="text-xs border rounded-lg border-white p-1">₱ 100.00</p>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
+
                         <div v-if="showCart"
                             class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
                             @click.self="closeModal">
@@ -156,17 +167,17 @@
 
 
                                                 <div class="flex justify-between items-center">
-                                                    <img src="@/assets/images/CategoryView/ToShop/shop-product2.png"
+                                                    <img src="@/assets/images/CategoryView/ToShop/shop-product1.2.png"
                                                         class="h-24 md:w-[80px] md:h-auto">
                                                 </div>
 
                                                 <div class="flex justify-center items-center">
-                                                    <img src="@/assets/images/CategoryView/ToShop/shop-product3.png"
+                                                    <img src="@/assets/images/CategoryView/ToShop/shop-product1.3.png"
                                                         class="h-24 md:w-[80px] md:h-auto">
                                                 </div>
 
                                                 <div class="flex justify-center items-center">
-                                                    <img src="@/assets/images/CategoryView/ToShop/shop-product4.png"
+                                                    <img src="@/assets/images/CategoryView/ToShop/shop-product1.4.png"
                                                         class="h-24 md:w-[80px] md:h-auto">
                                                 </div>
 
@@ -237,37 +248,43 @@
 
                                                 <p class="font-bold">Reviews</p>
 
-                                                <div
-                                                    class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
-                                                    <div class="inline-block w-[100%]">
-                                                        <label class="w-[100%] text-sm font-bold">juandelacruz
-                                                            ⭐️⭐️⭐️⭐️⭐</label>
-                                                        <p class="text-sm">03-10-2024 11:30</p>
-                                                    </div>
+                                                <button @click="toggleshowReviews">
 
-                                                    <div class="flex justify-between mb-2">
-                                                        <p class="w-[100%] text-xs">I will buy again. The seller is kind
-                                                            and
-                                                            accommodating with my requests. Transaction is smooth. ❤️
-                                                        </p>
-                                                    </div>
-                                                </div>
+                                                    <div>
+                                                        <div
+                                                            class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                                            <div class="inline-block w-[100%]">
+                                                                <label
+                                                                    class="flex w-[100%] text-sm font-bold">juandelacruz
+                                                                    ⭐️⭐️⭐️⭐️⭐</label>
+                                                                <p class="flex text-sm">03-10-2024 11:30</p>
+                                                            </div>
 
-                                                <div
-                                                    class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
-                                                    <div class="inline-block w-[100%]">
-                                                        <label class="w-[100%] text-sm font-bold">faithstamaria
-                                                            ⭐️⭐️⭐️⭐️⭐</label>
-                                                        <p class="text-sm">09-03-2024 08:30</p>
-                                                    </div>
+                                                            <div class="flex justify-between mb-2">
+                                                                <p class="w-[100%] text-xs text-left">I will buy again.
+                                                                    The seller is kind and accommodating with my
+                                                                    requests. Transaction is smooth. ❤️</p>
+                                                            </div>
 
-                                                    <div class="flex justify-between mb-2">
-                                                        <p class="w-[100%] text-xs">I will buy again. The seller is kind
-                                                            and
-                                                            accommodating with my requests. Transaction is smooth. ❤️
-                                                        </p>
+                                                        </div>
+
+                                                        <div
+                                                            class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                                            <div class="inline-block w-[100%]">
+                                                                <label
+                                                                    class="flex w-[100%] text-sm font-bold">faithstamaria
+                                                                    ⭐️⭐️⭐️⭐️⭐</label>
+                                                                <p class="flex text-sm">09-03-2024 08:30</p>
+                                                            </div>
+
+                                                            <div class="flex justify-between mb-2">
+                                                                <p class="w-[100%] text-xs text-left">I will buy again.
+                                                                    The seller is kind and accommodating with my
+                                                                    requests. Transaction is smooth. ❤️</p>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </button>
                                             </div>
 
                                         </div>
@@ -277,14 +294,19 @@
 
                                         <div class="w-[100%] flex justify-start">
                                             <button
-                                                class="text-blue-600 border-blue-500 border-2 rounded-lg py-2 w-[80%]">Add
+                                                class="text-blue-600 border-blue-500 border-2 rounded-lg py-2 w-[90%]">Add
                                                 to
                                                 Cart</button>
                                         </div>
 
                                         <div class="w-[100%] flex justify-end">
-                                            <button class="text-white bg-blue-600 rounded-lg py-2 w-[80%]">Edit
-                                                Cart</button>
+
+                                            <router-link to="/checkoutshop" class="w-full">
+                                                <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]">Buy
+                                                    Now</button>
+                                            </router-link>
+
+
                                         </div>
 
                                     </div>
@@ -292,29 +314,192 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div v-if="showReviews"
+                            class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
+                            @click.self="closeModal">
+                            <div class="bg-white overflow-y-auto h-[680px] w-[900px] overflow-hidden scrollbar-hide rounded-lg shadow-md p-2 mx-5"
+                                @click.stop>
+                                <div class="lg:w-[100%] p-4 rounded-lg">
+                                    <div class="relative flex justify-end">
+                                        <button class=" pr-1 pt-23 ">
+                                            <svg @click="closeReviews" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 20 30" stroke-width="5" stroke="black" class="w-9 h-9">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M6 18 18 6M6 6l12 12" />
+                                            </svg>
+                                        </button>
+                                    </div>
+
+                                    <h1 class="mb-5 font-bold text-xl text-black text-left pb-2 lg:pt-3">REVIEWS</h1>
+
+                                    <div class="overflow-y-auto h-[500px] scrollbar-hide mb-2">
+                                        <div
+                                            class="flex w-[100%]  text-black flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                            <div class="inline-block w-[100%]">
+                                                <label class="flex w-[100%] text-md font-bold">juandelacruz
+                                                    ⭐️⭐️⭐️⭐️⭐</label>
+                                                <p class="flex text-xs">03-10-2024 11:30</p>
+                                            </div>
+
+                                            <div class="flex justify-between mb-2">
+                                                <p class="w-[100%] text-md">I will buy
+                                                    again. The
+                                                    seller is
+                                                    kind
+                                                    and
+                                                    accommodating with my requests. Transaction is smooth.
+                                                    ❤️
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="flex w-[100%]  text-black flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                            <div class="inline-block w-[100%]">
+                                                <label class="flex w-[100%] text-mb font-bold">faithstamaria
+                                                    ⭐️⭐️⭐️⭐️⭐</label>
+                                                <p class="flex text-xs">03-10-2024 11:30</p>
+                                            </div>
+
+                                            <div class="flex justify-between mb-2">
+                                                <p class="w-[100%] text-mb">I will buy
+                                                    again. The
+                                                    seller is
+                                                    kind
+                                                    and
+                                                    accommodating with my requests. Transaction is smooth.
+                                                    ❤️
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="flex w-[100%]  text-black  flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                            <div class="inline-block w-[100%]">
+                                                <label class="flex w-[100%] text-mb font-bold">clendafaith
+                                                    ⭐️⭐️⭐️⭐️⭐</label>
+                                                <p class="flex text-xs">03-10-2024 11:30</p>
+                                            </div>
+
+                                            <div class="flex justify-between mb-2">
+                                                <p class="w-[100%] text-mb">I will buy
+                                                    again. The
+                                                    seller is
+                                                    kind
+                                                    and
+                                                    accommodating with my requests. Transaction is smooth.
+                                                    ❤️
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="flex w-[100%]  text-black flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                            <div class="inline-block w-[100%]">
+                                                <label class="flex w-[100%] text-mb font-bold">juhannamarie
+                                                    ⭐️⭐️⭐️⭐️⭐</label>
+                                                <p class="flex text-xs">03-10-2024 11:30</p>
+                                            </div>
+
+                                            <div class="flex justify-between mb-2">
+                                                <p class="w-[100%] text-mb">I will buy
+                                                    again. The
+                                                    seller is
+                                                    kind
+                                                    and
+                                                    accommodating with my requests. Transaction is smooth.
+                                                    ❤️
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="flex w-[100%]  text-black  flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                            <div class="inline-block w-[100%]">
+                                                <label class="flex w-[100%] text-mb font-bold">jobellenina
+                                                    ⭐️⭐️⭐️⭐️⭐</label>
+                                                <p class="flex text-xs">03-10-2024 11:30</p>
+                                            </div>
+
+                                            <div class="flex justify-between mb-2">
+                                                <p class="w-[100%] text-mb">I will buy
+                                                    again. The
+                                                    seller is
+                                                    kind
+                                                    and
+                                                    accommodating with my requests. Transaction is smooth.
+                                                    ❤️
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="flex w-[100%]  text-black flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                            <div class="inline-block w-[100%]">
+                                                <label class="flex w-[100%] text-mb font-bold">chezterfaith
+                                                    ⭐️⭐️⭐️⭐️⭐</label>
+                                                <p class="flex text-xs">03-10-2024 11:30</p>
+                                            </div>
+
+                                            <div class="flex justify-between mb-2">
+                                                <p class="w-[100%] text-mb">I will buy
+                                                    again. The
+                                                    seller is
+                                                    kind
+                                                    and
+                                                    accommodating with my requests. Transaction is smooth.
+                                                    ❤️
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                         <div
                             class="lg:w-auto lg:flex-auto bg-blue-950 lg:h-[15rem] w-[47%] h-[190px] m-1 p-2 lg:p-3 rounded-xl relative flex flex-col justify-between">
-                            <p class="rounded-xl lg:text-sm text-xs absolute top-0 left-0 text-white p-2 w-full"
-                                style="background-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);">
+                            <p class="rounded-lg lg:text-sm text-xs lg:px-2 pt-2 absolute top-2.5 left-3 right-3 text-white p-2 w-71"
+                                style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 Multi handle Tote bag with Embroided Philippine Kalesa Scenery
                             </p>
                             <img class="rounded-md lg:h-[80%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="100%">
-                            <button
+                                src="@/assets/images/CategoryView/ToShop/shop-product2.png" alt="" width="100%">
+                            <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
+
+                            <div class="flex justify-end absolute bottom-[65px] right-[18px]">
+                                <div class="flex justify-between">
+                                    <div class="flex bg-blue-950 border-1 rounded-lg border-white">
+                                        <p class="text-xs border rounded-lg border-white p-1">₱ 100.00</p>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <div
                             class="hidden lg:block lg:w-auto lg:flex-auto bg-blue-950 lg:h-[15rem] w-[100%] h-[190px] m-1 p-2 lg:p-3 rounded-xl relative flex-col justify-between">
-                            <p class="rounded-xl lg:text-sm text-xs absolute top-0 left-0 text-white p-2 w-full"
-                                style="background-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);">
+                            <p class="rounded-lg lg:text-sm text-xs lg:px-2 pt-2 absolute top-2.5 left-3 right-3 text-white p-2 w-71"
+                                style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 Multi handle Tote bag with Embroided Philippine Kalesa Scenery
                             </p>
                             <img class="rounded-md lg:h-[80%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="100%">
-                            <button
+                                src="@/assets/images/CategoryView/ToShop/shop-product3.png" alt="" width="100%">
+                            <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
+
+                            <div class="flex justify-end absolute bottom-[65px] right-[18px]">
+                                <div class="flex justify-between">
+                                    <div class="flex bg-blue-950 border-1 rounded-lg border-white">
+                                        <p class="text-xs border rounded-lg border-white p-1">₱ 100.00</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -325,84 +510,143 @@
                 <div class="flex flex-wrap justify-between items-center mb-2 ">
                     <div class="lg:block flex flex-wrap items-center lg:w-[49%] text-white">
                         <div
-                            class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
-                            <p class="text-xs absolute top-3 right-0 text-white p-2 w-[55%]">
-                                Multi handle Tote bag with Embroided Philippine Kalesa Scenery</p>
-                            <p class="text-xs absolute bottom-12 right-0 text-white p-2 w-[55%]">
-                                ₱ 200.00</p>
-                            <img class="rounded-md mt-2 lg:h-[70%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="40%">
-                            <div class="flex flex-wrap justify-between items-center mb-2">
-                                <button class="text-xs bg-blue-900 rounded-md py-1 px-3 w-[40%]">See More</button>
-                                <button class="text-xs bg-blue-600 rounded-md py-1 px-3 w-[57%]">Add to Cart</button>
+                            class="bg-blue-950 w-[100%] border-2 h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
+                            <div class="flex justify-between  w-[100%]">
+                                <div class="w-[40%]">
+                                    <img class="rounded-md mt-2 lg:h-[89%]"
+                                        src="@/assets/images/CategoryView/ToShop/shop-product4.png" alt="" width="100%">
+                                </div>
+                                <div class="w-[60%]">
+                                    <p class="text-xs text-white p-2 w-[60%] mb-4">
+                                        Multi handle Tote bag with Embroided Philippine Kalesa Scenery</p>
+                                    <p class="text-xs text-white p-2 w-[55%]">
+                                        ₱ 100.00</p>
+                                    <div class="flex justify-between items-center mt-3 mb-2">
+                                        <button class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%]">See
+                                            More</button>
+                                        <button @click="toggleshowCart"
+                                            class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%]">Add to
+                                            Cart</button>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                         <div
                             class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
-                            <p class="text-xs absolute top-3 right-0 text-white p-2 w-[55%]">
-                                Multi handle Tote bag with Embroided Philippine Kalesa Scenery</p>
-                            <p class="text-xs absolute bottom-12 right-0 text-white p-2 w-[55%]">
-                                ₱ 200.00</p>
-                            <img class="rounded-md mt-2 lg:h-[70%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="40%">
-                            <div class="flex flex-wrap justify-between items-center mb-2">
-                                <button class="text-xs bg-blue-900 rounded-md py-1 px-3 w-[40%]">See More</button>
-                                <button class="text-xs bg-blue-600 rounded-md py-1 px-3 w-[57%]">Add to Cart</button>
+                            <div class="flex justify-between  w-[100%]">
+                                <div class="w-[40%]">
+                                    <img class="rounded-md mt-2 lg:h-[89%]"
+                                        src="@/assets/images/CategoryView/ToShop/shop-product5.png" alt="" width="100%">
+                                </div>
+                                <div class="w-[60%]">
+                                    <p class="text-xs text-white p-2 w-[60%] mb-7">
+                                        Mini Gold Tin with Wooden Base Calesa</p>
+                                    <p class="text-xs text-white p-2 w-[55%]">
+                                        ₱ 100.00</p>
+                                    <div class="flex justify-between items-center mt-4 mb-2">
+                                        <button class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%]">See
+                                            More</button>
+                                        <button @click="toggleshowCart"
+                                            class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%]">Add to
+                                            Cart</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                         <div
                             class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
-                            <p class="text-xs absolute top-3 right-0 text-white p-2 w-[55%]">
-                                Multi handle Tote bag with Embroided Philippine Kalesa Scenery</p>
-                            <p class="text-xs absolute bottom-12 right-0 text-white p-2 w-[55%]">
-                                ₱ 200.00</p>
-                            <img class="rounded-md mt-2 lg:h-[70%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="40%">
-                            <div class="flex flex-wrap justify-between items-center mb-2">
-                                <button class="text-xs bg-blue-900 rounded-md py-1 px-3 w-[40%]">See More</button>
-                                <button class="text-xs bg-blue-600 rounded-md py-1 px-3 w-[57%]">Add to Cart</button>
+                            <div class="flex justify-between  w-[100%]">
+                                <div class="w-[40%]">
+                                    <img class="rounded-md mt-2 lg:h-[89%]"
+                                        src="@/assets/images/CategoryView/ToShop/shop-product6.png" alt="" width="100%">
+                                </div>
+                                <div class="w-[60%]">
+                                    <p class="text-xs text-white p-2 w-[60%] mb-11">
+                                        Mini Gold Tin with Wooden Base Vinta</p>
+                                    <p class="text-xs text-white p-2 w-[55%]">
+                                        ₱ 100.00</p>
+                                    <div class="flex justify-between items-center mt-4 mb-2">
+                                        <button class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%]">See
+                                            More</button>
+                                        <button @click="toggleshowCart"
+                                            class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%]">Add to
+                                            Cart</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="hidden lg:block flex-wrap items-center lg:w-[49%] text-white">
+
                         <div
                             class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
-                            <p class="text-xs absolute top-3 right-0 text-white p-2 w-[55%]">
-                                Multi handle Tote bag with Embroided Philippine Kalesa Scenery</p>
-                            <p class="text-xs absolute bottom-12 right-0 text-white p-2 w-[55%]">
-                                ₱ 100.00</p>
-                            <img class="rounded-md mt-2 lg:h-[70%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="40%">
-                            <div class="flex flex-wrap justify-between items-center mb-2">
-                                <button class="text-xs bg-blue-900 rounded-md py-1 px-3 w-[40%]">See More</button>
-                                <button class="text-xs bg-blue-600 rounded-md py-1 px-3 w-[57%]">Add to Cart</button>
+                            <div class="flex justify-between  w-[100%]">
+                                <div class="w-[40%]">
+                                    <img class="rounded-md mt-2 lg:h-[89%]"
+                                        src="@/assets/images/CategoryView/ToShop/shop-product7.png" alt="" width="100%">
+                                </div>
+                                <div class="w-[60%]">
+                                    <p class="text-xs text-white p-2 w-[60%] mb-7">
+                                        Never Stop Exploring Graphic Tee in Gray</p>
+                                    <p class="text-xs text-white p-2 w-[55%]">
+                                        ₱ 100.00</p>
+                                    <div class="flex justify-between items-center mt-4 mb-2">
+                                        <button class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%]">See
+                                            More</button>
+                                        <button @click="toggleshowCart"
+                                            class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%]">Add to
+                                            Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
+                            <div class="flex justify-between  w-[100%]">
+                                <div class="w-[40%]">
+                                    <img class="rounded-md mt-2 lg:h-[89%]"
+                                        src="@/assets/images/CategoryView/ToShop/shop-product8.png" alt="" width="100%">
+                                </div>
+                                <div class="w-[60%]">
+                                    <p class="text-xs text-white p-2 w-[60%] mb-7">
+                                        Mini Gold Tin with Wooden Base Nipa Hut Coconut Tree</p>
+                                    <p class="text-xs text-white p-2 w-[55%]">
+                                        ₱ 100.00</p>
+                                    <div class="flex justify-between items-center mt-4 mb-2">
+                                        <button class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%]">See
+                                            More</button>
+                                        <button @click="toggleshowCart"
+                                            class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%]">Add to
+                                            Cart</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div
                             class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
-                            <p class="text-xs absolute top-3 right-0 text-white p-2 w-[55%]">
-                                Multi handle Tote bag with Embroided Philippine Kalesa Scenery</p>
-                            <p class="text-xs absolute bottom-12 right-0 text-white p-2 w-[55%]">
-                                ₱ 100.00</p>
-                            <img class="rounded-md mt-2 lg:h-[70%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="40%">
-                            <div class="flex flex-wrap justify-between items-center mb-2">
-                                <button class="text-xs bg-blue-900 rounded-md py-1 px-3 w-[40%]">See More</button>
-                                <button class="text-xs bg-blue-600 rounded-md py-1 px-3 w-[57%]">Add to Cart</button>
-                            </div>
-                        </div>
-                        <div
-                            class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
-                            <p class="text-xs absolute top-3 right-0 text-white p-2 w-[55%]">
-                                Multi handle Tote bag with Embroided Philippine Kalesa Scenery</p>
-                            <p class="text-xs absolute bottom-12 right-0 text-white p-2 w-[55%]">
-                                ₱ 100.00</p>
-                            <img class="rounded-md mt-2 lg:h-[70%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="40%">
-                            <div class="flex flex-wrap justify-between items-center mb-2">
-                                <button class="text-xs bg-blue-900 rounded-md py-1 px-3 w-[40%]">See More</button>
-                                <button class="text-xs bg-blue-600 rounded-md py-1 px-3 w-[57%]">Add to Cart</button>
+                            <div class="flex justify-between  w-[100%]">
+                                <div class="w-[40%]">
+                                    <img class="rounded-md mt-2 lg:h-[89%]"
+                                        src="@/assets/images/CategoryView/ToShop/shop-product9.png" alt="" width="100%">
+                                </div>
+                                <div class="w-[60%]">
+                                    <p class="text-xs text-white p-2 w-[60%] mb-7">
+                                        Mini Gold Tin with Wooden Base Tricycle</p>
+                                    <p class="text-xs text-white p-2 w-[55%]">
+                                        ₱ 100.00</p>
+                                    <div class="flex justify-between items-center mt-4 mb-2">
+                                        <button class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%]">See
+                                            More</button>
+                                        <button @click="toggleshowCart"
+                                            class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%]">Add to
+                                            Cart</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -662,6 +906,7 @@ export default {
     data() {
         return {
             showCart: false,
+            showReviews: false,
             items: [
                 {
                     name: 'Juan Dela Cruz',
@@ -703,8 +948,18 @@ export default {
             this.showAddtoCart = false;
             this.showCart = true;
         },
+        toggleshowReviews() {
+            this.showReviews = true;
+            this.showCart = false;
+        },
         closeCart() {
             this.showCart = false;
+
+
+        },
+        closeReviews() {
+            this.showReviews = false;
+            this.showCart = true;
 
         },
     },

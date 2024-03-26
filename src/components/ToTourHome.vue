@@ -48,8 +48,14 @@
                                 <div>
                                     <h2>What to do</h2>
                                 </div>
-                                <div class="col-span-2">
-                                    <h1>Locations</h1>
+                                <div>
+                                    <h1>Barangays</h1>
+                                </div>
+                                <div class="flex justify-end">
+                                    <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                    </svg>
                                 </div>
                             </div>
                             <div class="grid grid-cols-3 grid-row-3 mt-5">
@@ -63,7 +69,7 @@
                                                 <input class="accent-[#102E61]" type="checkbox"
                                                     :id="'categoryCheckbox-' + index" :value="category"
                                                     @change="toggleCategory(category)">
-                                                <span class="ml-3 uppercase font-bold">{{ category }}</span>
+                                                <span class="ml-3 uppercase text-sm font-bold">{{ category }}</span>
                                             </label>
                                         </div>
                                     </div>
@@ -73,9 +79,9 @@
                                         class="grid grid-rows-12 grid-flow-row-dense lg:grid-rows-8 md:grid-flow-col gap-4 mr-4 p-2">
                                         <div v-for="(location, index) in locations" :key="'location-' + index">
                                             <label :for="'locationCheckbox-' + index" class="flex items-center">
-                                                <input type="checkbox" :id="'locationCheckbox-' + index" :value="location"
-                                                    @change="toggleLocation(location)">
-                                                <span class="ml-2 uppercase font-bold">{{ location }}</span>
+                                                <input type="checkbox" :id="'locationCheckbox-' + index"
+                                                    :value="location" @change="toggleLocation(location)">
+                                                <span class="ml-2 uppercase text-sm font-bold">{{ location }}</span>
                                             </label>
                                         </div>
                                     </div>
@@ -110,9 +116,10 @@
                             class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
                             <span>See More</span>
                             <span class="ml-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
-                                    stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                                 </svg>
                             </span>
                         </button>
@@ -124,8 +131,8 @@
                 <div class="flex justify-start items-center">
                     <p class="text-center text-white">Showing <span class="text-[#29BFD6]">{{ paginationStartIndex }} -
                             {{
-                                paginationEndIndex }}</span> results from <span class="text-[#29BFD6]">{{ totalRecords
-    }}</span> records
+                            paginationEndIndex }}</span> results from <span class="text-[#29BFD6]">{{ totalRecords
+                            }}</span> records
                     </p>
                 </div>
                 <div class="flex justify-end items-center mt-4">
@@ -227,8 +234,8 @@ export default {
             currentPage: 0,
             pageSize: 6,
             showDropdown: false,
-            categories: ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'],
-            locations: ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'],
+            categories: ['District Tour', 'Church Tour', 'Museum Tour', 'City Tour', 'Market Tour'],
+            locations: ['Bangkal', 'Bel-Air', 'Carmona', 'Dasmariñas', 'Forbes Park', 'Guadalupe Nuevo', 'Guadalupe Viejo', 'Kasilawan', 'La Paz', 'Magallanes', 'olympia', 'Palanan', 'Pinagkaisahan', 'Pio Del Pilar', 'Poblacion', 'San Antonio', 'San Isidro', 'San Lorenzo', 'Santa Cruz', 'Singkamas', 'Tejeros', 'Urdaneta', 'Valenzuela'],
         };
     },
     computed: {

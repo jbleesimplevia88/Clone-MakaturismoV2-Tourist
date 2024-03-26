@@ -2,13 +2,14 @@
 import NavBar from '@/components/NavBar.vue';
 import CalendarContent from '@/components/CalendarContent.vue';
 import FooterPage from '@/components/FooterPage.vue';
+
 </script>
 
 <template>
     <NavBar />
     <div class="bg-[#102E61] w-[100%] h-50">
 
-        <div class="pt-[7rem] pb-[1.8rem]">
+        <div :class="{ 'pt-[5rem] pb-[1.5rem]': isMobile, 'pt-[6.7rem] pb-[1.8rem]': !isMobile }">
             <router-link to="/">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="absolute w-6 h-6 mt-4 ml-4 ">
@@ -24,5 +25,30 @@ import FooterPage from '@/components/FooterPage.vue';
     <CalendarContent />
     <FooterPage />
 </template>
+
+<script scoped>
+
+
+export default {
+    data() {
+        return {
+            isMobile: window.innerWidth <= 768, // Adjust the breakpoint as needed
+        };
+    },
+    mounted() {
+        // Update isMobile on window resize
+        window.addEventListener('resize', this.updateIsMobile);
+    },
+    beforeUnmount() {
+        // Remove event listener on component destroy
+        window.removeEventListener('resize', this.updateIsMobile);
+    },
+    methods: {
+        updateIsMobile() {
+            this.isMobile = window.innerWidth <= 768; // Adjust the breakpoint as needed
+        },
+    },
+};
+</script>
 
 <style scoped></style>

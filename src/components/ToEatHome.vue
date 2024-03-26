@@ -46,36 +46,41 @@
                         <div role="menu" aria-orientation="horizontal" aria-labelledby="options-menu">
                             <div class="grid grid-cols-3 border-b-2 p-3 font-bold ml-5 mr-5">
                                 <div>
-                                    <h2>What to do</h2>
+                                    <h2>Where to eat</h2>
                                 </div>
-                                <div class="col-span-2">
-                                    <h1>Locations</h1>
+                                <div>
+                                    <h1>Barangays</h1>
+                                </div>
+                                <div class="flex justify-end">
+                                    <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                    </svg>
                                 </div>
                             </div>
-                            <div class="grid grid-cols-3 grid-row-3 mt-5">
-                                <div class="relative px-2">
+                            <div class="grid grid-cols-6 mt-5">
+                                <div class="relative col-span-3 px-2">
                                     <div class="absolute"
                                         style="border-right: 1px solid #0000004D; top: 15%; bottom: 15%; right: 0;">
                                     </div>
-                                    <div class="grid grid-rows-8 grid-flow-col gap-4 ml-4 p-2">
+                                    <div class="grid grid-rows-8 grid-flow-col gap-3 ml-4 p-2">
                                         <div v-for="(category, index) in categories" :key="'category-' + index">
                                             <label :for="'categoryCheckbox-' + index" class="flex items-center">
                                                 <input class="accent-[#102E61]" type="checkbox"
                                                     :id="'categoryCheckbox-' + index" :value="category"
                                                     @change="toggleCategory(category)">
-                                                <span class="ml-3 uppercase font-bold">{{ category }}</span>
+                                                <span class="ml-3 uppercase text-sm font-bold">{{ category }}</span>
                                             </label>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-span-2 px-2">
-                                    <div
-                                        class="grid grid-rows-12 grid-flow-row-dense lg:grid-rows-8 md:grid-flow-col gap-4 mr-4 p-2">
+                                <div class=" col-span-3 px-2">
+                                    <div class="grid grid-rows-8 grid-flow-col gap-3 ml-4 p-2">
                                         <div v-for="(location, index) in locations" :key="'location-' + index">
                                             <label :for="'locationCheckbox-' + index" class="flex items-center">
-                                                <input type="checkbox" :id="'locationCheckbox-' + index" :value="location"
-                                                    @change="toggleLocation(location)">
-                                                <span class="ml-2 uppercase font-bold">{{ location }}</span>
+                                                <input type="checkbox" :id="'locationCheckbox-' + index"
+                                                    :value="location" @change="toggleLocation(location)">
+                                                <span class="ml-2 uppercase text-sm font-bold">{{ location }}</span>
                                             </label>
                                         </div>
                                     </div>
@@ -90,7 +95,8 @@
                 <!-- End of Filter dropdown -->
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div v-for="(item, index) in items" :key="index" class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
+                <div v-for="(item, index) in items" :key="index"
+                    class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
 
                     <div class="relative">
                         <img class="w-full h-[250px] object-cover rounded-t" :src="item.image" alt="">
@@ -109,9 +115,10 @@
                             class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
                             <span>See More</span>
                             <span class="ml-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
-                                    stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                                 </svg>
                             </span>
                         </button>
@@ -123,8 +130,8 @@
                 <div class="flex justify-start items-center">
                     <p class="text-center text-white">Showing <span class="text-[#29BFD6]">{{ paginationStartIndex }} -
                             {{
-                                paginationEndIndex }}</span> results from <span class="text-[#29BFD6]">{{ totalRecords
-    }}</span> records
+                            paginationEndIndex }}</span> results from <span class="text-[#29BFD6]">{{ totalRecords
+                            }}</span> records
                     </p>
                 </div>
                 <div class="flex justify-end items-center mt-4">
@@ -244,8 +251,8 @@ export default {
             currentPage: 0,
             pageSize: 8,
             showDropdown: false,
-            categories: ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'],
-            locations: ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'],
+            categories: ['American', 'Argentine', 'Asian', 'Australian', 'Chinese', 'European', 'Filipino', 'French', 'German', 'Halal', 'Indian', 'Irish', 'Italian', 'Argentine', 'Japanese', 'Korean', 'Mediterranean', 'Mexican', 'Singapore', 'Spanish', 'Swiss', 'Thai', 'Vietnamese'],
+            locations: ['Bangkal', 'Bel-Air', 'Carmona', 'Dasmariñas', 'Forbes Park', 'Guadalupe Nuevo', 'Guadalupe Viejo', 'Kasilawan', 'La Paz', 'Magallanes', 'olympia', 'Palanan', 'Pinagkaisahan', 'Pio Del Pilar', 'Poblacion', 'San Antonio', 'San Isidro', 'San Lorenzo', 'Santa Cruz', 'Singkamas', 'Tejeros', 'Urdaneta', 'Valenzuela'],
         };
     },
     computed: {

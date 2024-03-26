@@ -88,7 +88,8 @@
 
                     </div>
                     <div class="flex flex-col pl-2.5">
-                        <p class="text-lg md:text-black text-left pb-5">N/A</p>
+                        <p class="text-lg md:text-black text-left pb-5">Monday - Sunday</p>
+                        <p class="text-lg md:text-black text-left pb-5">11:00 AM - 7:30 PM</p>
 
                     </div>
                 </div>
@@ -402,13 +403,13 @@ export default {
             items: [
                 {
                     name: 'Juan Dela Cruz',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                    description: "Immerse yourself in the modern elegance of U Hotels Makati. With contemporary designs and thoughtful amenities, this hotel offers a delightful stay in the heart of the city. Enjoy personalized service and easy access to Makati's attractions at U Hotels Makati.",
                     date: 'December 2023',
 
                 },
                 {
-                    name: 'Luis Paolo',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                    name: 'Juan Dela Cruz',
+                    description: "Immerse yourself in the modern elegance of U Hotels Makati. With contemporary designs and thoughtful amenities, this hotel offers a delightful stay in the heart of the city. Enjoy personalized service and easy access to Makati's attractions at U Hotels Makati.",
                     date: 'December 2023',
 
                 },

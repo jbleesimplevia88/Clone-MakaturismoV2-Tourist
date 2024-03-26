@@ -19,7 +19,8 @@
                             <img src="@/assets/images/CategoryView/ToSee/Poblacion 1.png" alt=""
                                 class="col-span-3 w-[100%] h-full lg:w-[98%] lg:h-[100%] rounded-l-3xl">
                             <div class="hidden col-span-2 md:grid md:grid-cols-2 gap-4">
-                                <img src="@/assets/images/CategoryView/ToSee/Glorietta Pink.png" alt="" class="size-full">
+                                <img src="@/assets/images/CategoryView/ToSee/Glorietta Pink.png" alt=""
+                                    class="size-full">
                                 <img src="@/assets/images/CategoryView/ToSee/Glorietta Inside.png" alt=""
                                     class="size-full rounded-tr-3xl">
                                 <img src="@/assets/images/CategoryView/ToSee/Glorietta Ceiling.png" alt=""
@@ -156,7 +157,7 @@
 
                 <!-- <img src="@/assets/images/CategoryView/ToSee/Glorietta Map.jpg" alt="" class="pb-12 block lg:hidden">
                 <div class="hidden lg:block lg:pb-10">
-                    <img src="@/assets/images/CategoryView/ToSee/Glorietta Map Web.png" alt=""
+                    <img src="@/assets/images/CategoryView/ToSee/glorietta webmap.png" alt=""
                         class="w-[100%] h-[100%]">
                 </div> -->
             </div>

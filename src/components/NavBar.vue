@@ -123,7 +123,8 @@
                   <p class="mb-5">We may collect personal information from you when you interact with our website,
                     products, or services. This information may include but is not limited to your name, email address,
                     mailing address, phone number, and payment details. We
-                    collect this information to provide you with our services and to improve and customize your experience
+                    collect this information to provide you with our services and to improve and customize your
+                    experience
                     with us.</p>
                   <p class="font-bold mb-5">Use of Personal Information:</p>
                   <p class="mb-5">We use the personal information we collect for various purposes, including:</p>
@@ -136,13 +137,16 @@
                     However, please note that no method of transmission over
                     the internet or electronic storage is 100% secure, and we cannot guarantee absolute security.</p>
                   <p class="font-bold mb-5">Sharing of Personal Information:</p>
-                  <p class="mb-5">We may share your personal information with third-party service providers who assist us
+                  <p class="mb-5">We may share your personal information with third-party service providers who assist
+                    us
                     in providing our services, conducting our business, or servicing you. We may also share your
                     information when required by law or to protect our rights,
                     property, or safety.</p>
                   <p class="font-bold mb-5">Your Rights:</p>
-                  <p class="mb-5">You have the right to access, update, or delete your personal information. You may also
-                    have the right to object to or restrict certain types of processing. If you would like to exercise any
+                  <p class="mb-5">You have the right to access, update, or delete your personal information. You may
+                    also
+                    have the right to object to or restrict certain types of processing. If you would like to exercise
+                    any
                     of these rights, please contact us using the
                     information provided below.</p>
                   <p class="font-bold mb-5">Changes to this Privacy Policy:</p>
@@ -282,8 +286,8 @@
                   <div class="relative">
                     <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-3 my-3"
                       style="width: 15px;" alt="Username Icon" />
-                    <input type="text" id="email" v-model="email" class="w-full h-10 pl-10 border border-black rounded-lg"
-                      placeholder="Email">
+                    <input type="text" id="email" v-model="email"
+                      class="w-full h-10 pl-10 border border-black rounded-lg" placeholder="Email">
                   </div>
                 </div>
               </div>
@@ -392,7 +396,7 @@
               <img :src="locations[0].imgSrc" :alt="locations[0].alt" class="p-[26px]">
               <!-- Adjust height as needed -->
               <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-                locations[0].mobile }}</span>
+            locations[0].mobile }}</span>
               <span class="font-bold text-1xl">{{ locations[0].mobile }}</span>
             </div>
           </RouterLink>
@@ -408,7 +412,7 @@
               <img :src="locations[1].imgSrc" :alt="locations[1].alt" class="p-[26px]">
               <!-- Adjust height as needed -->
               <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-                locations[1].mobile }}</span>
+            locations[1].mobile }}</span>
               <span class="font-bold text-1xl">{{ locations[1].mobile }}</span>
             </div>
           </RouterLink>
@@ -424,7 +428,7 @@
               <img :src="locations[2].imgSrc" :alt="locations[2].alt" class="p-[26px]">
               <!-- Adjust height as needed -->
               <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-                locations[2].mobile }}</span>
+            locations[2].mobile }}</span>
               <span class="font-bold text-1xl">{{ locations[2].mobile }}</span>
             </div>
           </RouterLink>
@@ -440,7 +444,7 @@
               <img :src="locations[3].imgSrc" :alt="locations[3].alt" class="p-[26px]">
               <!-- Adjust height as needed -->
               <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-                locations[3].mobile }}</span>
+            locations[3].mobile }}</span>
               <span class="font-bold text-1xl">{{ locations[3].mobile }}</span>
             </div>
           </RouterLink>
@@ -456,7 +460,7 @@
               <img :src="locations[4].imgSrc" :alt="locations[4].alt" class="p-[26px]">
               <!-- Adjust height as needed -->
               <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-                locations[4].mobile }}</span>
+            locations[4].mobile }}</span>
               <span class="font-bold text-1xl">{{ locations[4].mobile }}</span>
             </div>
           </RouterLink>
@@ -472,7 +476,7 @@
               <img :src="locations[5].imgSrc" :alt="locations[5].alt" class="p-[26px]">
               <!-- Adjust height as needed -->
               <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-                locations[5].mobile }}</span>
+            locations[5].mobile }}</span>
               <span class="font-bold text-1xl">{{ locations[5].mobile }}</span>
             </div>
           </RouterLink>
@@ -745,8 +749,8 @@
                   <div class="relative">
                     <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-3 my-3"
                       style="width: 15px;" alt="Username Icon" />
-                    <input type="text" id="email" v-model="email" class="w-full h-10 pl-10 border border-black rounded-lg"
-                      placeholder="Email">
+                    <input type="text" id="email" v-model="email"
+                      class="w-full h-10 pl-10 border border-black rounded-lg" placeholder="Email">
                   </div>
                 </div>
               </div>
@@ -855,7 +859,7 @@
               <img :src="locations[0].imgSrc" :alt="locations[0].alt" class="p-[26px]">
               <!-- Adjust height as needed -->
               <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-                locations[0].mobile }}</span>
+            locations[0].mobile }}</span>
               <span class="font-bold text-1xl">{{ locations[0].mobile }}</span>
             </div>
           </RouterLink>
@@ -871,7 +875,7 @@
               <img :src="locations[1].imgSrc" :alt="locations[1].alt" class="p-[26px]">
               <!-- Adjust height as needed -->
               <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-                locations[1].mobile }}</span>
+            locations[1].mobile }}</span>
               <span class="font-bold text-1xl">{{ locations[1].mobile }}</span>
             </div>
           </RouterLink>
@@ -887,7 +891,7 @@
               <img :src="locations[2].imgSrc" :alt="locations[2].alt" class="p-[26px]">
               <!-- Adjust height as needed -->
               <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-                locations[2].mobile }}</span>
+            locations[2].mobile }}</span>
               <span class="font-bold text-1xl">{{ locations[2].mobile }}</span>
             </div>
           </RouterLink>
@@ -903,7 +907,7 @@
               <img :src="locations[3].imgSrc" :alt="locations[3].alt" class="p-[26px]">
               <!-- Adjust height as needed -->
               <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-                locations[3].mobile }}</span>
+            locations[3].mobile }}</span>
               <span class="font-bold text-1xl">{{ locations[3].mobile }}</span>
             </div>
           </RouterLink>
@@ -919,7 +923,7 @@
               <img :src="locations[4].imgSrc" :alt="locations[4].alt" class="p-[26px]">
               <!-- Adjust height as needed -->
               <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-                locations[4].mobile }}</span>
+            locations[4].mobile }}</span>
               <span class="font-bold text-1xl">{{ locations[4].mobile }}</span>
             </div>
           </RouterLink>
@@ -935,7 +939,7 @@
               <img :src="locations[5].imgSrc" :alt="locations[5].alt" class="p-[26px]">
               <!-- Adjust height as needed -->
               <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-                locations[5].mobile }}</span>
+            locations[5].mobile }}</span>
               <span class="font-bold text-1xl">{{ locations[5].mobile }}</span>
             </div>
           </RouterLink>
@@ -1136,7 +1140,7 @@ export default {
   mounted() {
     document.addEventListener('click', this.closeInputField);
   },
-  beforeDestroy() {
+  beforeUnmount() {
     document.removeEventListener('click', this.closeInputField);
   }
 };

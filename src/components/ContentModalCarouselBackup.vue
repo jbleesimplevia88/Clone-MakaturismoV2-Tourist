@@ -1,9 +1,10 @@
+
 <template>
   <div class="relative">
     <div class="overflow-hidden">
       <div class="flex transition-transform duration-300" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
         <div v-for="(image, index) in images" :key="index" class="w-full flex-shrink-0">
-          <img :src="image" alt="carousel image" class="w-full h-[15rem] lg:h-[30rem]" />
+          <img :src="image.src" alt="carousel image" class="w-full h-[15rem] lg:h-[30rem]" />
         </div>
       </div>
     </div>
@@ -33,11 +34,7 @@ export default {
   data() {
     return {
       images: [
-        landingPageImage1,
-        landingPageImage2,
-        landingPageImage3,
-        landingPageImage4,
-        landingPageImage5
+
       ],
       currentIndex: 0
     };
@@ -48,7 +45,31 @@ export default {
     },
     next() {
       this.currentIndex = (this.currentIndex + 1) % this.images.length;
+    },
+
+    loadImagesFromURL() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const categoryName = urlParams.get('name');
+
+      if (categoryName) {
+        // Extract category name and convert it to lowercase
+        const category = categoryName.replace(/\s+/g, '_').toLowerCase();
+        // Construct image URLs based on category
+        const categoryImages = [];
+        for (let i = 1; i <= 7; i++) { // number of images
+          const imageName = `${category}_banner${i}.png`; // Generating image name na kukunin based on the url
+          const imageUrl = `/carousel/${imageName}`; // Constructing image URL
+          categoryImages.push({ src: imageUrl }); // Adding image URL to array
+        }
+
+        console.log('Category Images:', categoryImages);
+
+        this.images = categoryImages;
+      }
     }
+  },
+  mounted() {
+    this.loadImagesFromURL();
   }
 };
 </script>
@@ -56,6 +77,3 @@ export default {
 <style scoped>
 /* Styles can be adjusted based on your preference */
 </style>
-
-
-

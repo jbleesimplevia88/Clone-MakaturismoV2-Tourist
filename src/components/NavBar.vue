@@ -11,10 +11,25 @@
       </div>
       <!-- Right side - Calendar and Login -->
       <div class="flex items-center space-x-4">
-        <RouterLink to="/" class="hidden text-white md:inline-block"><img src="@/assets/images/Header/search.png"
-            alt="logo" class="w-auto h-5 ml-2"></RouterLink>
+        <div class="relative flex " ref="searchContainer">
+          <input v-if="showInput" type="search"
+            class=" relative m-0 block flex-auto rounded border border-solid border-neutral-200 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none dark:border-white/10 dark:text-white dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary"
+            placeholder="Search" aria-label="Search" id="exampleFormControlInput2" aria-describedby="button-addon2"
+            ref="searchInput" />
+          <span @click="toggleInputVisibility"
+            class="flex items-center whitespace-nowrap px-3 py-[0.25rem] text-surface dark:border-neutral-400 dark:text-white [&>svg]:h-5 [&>svg]:w-5"
+            id="button-addon2">
+            <svg class="" v-show="!showInput" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke-width="3" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+          </span>
+        </div>
+
+
         <RouterLink to="/calendar" class="hidden text-white md:inline-block"><img
-            src="@/assets/images/Header/calendar.png" alt="logo" class="w-auto h-6 mx-2"></RouterLink>
+            src="@/assets/images/Header/calendar.png" alt="logo" class="w-auto h-6 mr-2"></RouterLink>
         <button @click="openLoginModal" class="text-blue-600">Login</button>
         <RouterLink to="/calendar" class="hidden text-white md:inline-block"></RouterLink>
         <a class="hidden lg:block lg:bg-blue-500 lg:hover:bg-blue-700 lg:text-white lg:font-bold lg:py-2 lg:px-4 lg:border lg:border-blue-700 lg:rounded-lg"
@@ -42,7 +57,6 @@
               <p>Please log in to your account.</p>
             </div>
             <form @submit.prevent="login" style="width: 40%;">
-
               <div class="relative mb-4 w-full md:w-365">
                 <label for="username" class="block text-gray-700">Enter Username</label>
                 <div class="relative">
@@ -55,7 +69,6 @@
               <div class="relative mb-4 w-full md:w-365">
                 <label for="username" class="block text-gray-700">Enter Password</label>
                 <div class="relative">
-
                   <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-3 my-2"
                     style="width: 15px;" alt="Username Icon" />
                   <img src="@/assets/images/Modal/view.png" class="absolute inset-y-0 right-0 mx-3 my-2"
@@ -101,7 +114,6 @@
           <div class="relative z-10 flex flex-col items-start h-full">
             <form @submit.prevent="signup" class="w-[100%] px-10">
               <div class="mb-5">
-
               </div>
               <!-- make it scrollable -->
               <div class="flex justify-start overflow-y-auto h-[200px] w-[100%] hidden-scrollbar mb-2">
@@ -109,47 +121,33 @@
                   <p class="font-bold text-center font text-3xl mb-5">Privacy Policy</p>
                   <p class="font-bold mb-5">Collection of Personal Information:</p>
                   <p class="mb-5">We may collect personal information from you when you interact with our website,
-                    products,
-                    or services. This information may include but is not limited to your name, email address, mailing
-                    address, phone number, and payment details. We collect this information to provide you with our
-                    services and to improve and customize your experience with us.</p>
+                    products, or services. This information may include but is not limited to your name, email address,
+                    mailing address, phone number, and payment details. We
+                    collect this information to provide you with our services and to improve and customize your experience
+                    with us.</p>
                   <p class="font-bold mb-5">Use of Personal Information:</p>
                   <p class="mb-5">We use the personal information we collect for various purposes, including:</p>
-                  <p class="mb-5">1. Providing and personalizing our services <br>
-                    2. Processing transactions <br>
-                    3. Communicating with you <br>
-                    4. Improving our products and services <br>
-                    5. Marketing and promotional purposes <br>
-                    6. Complying with legal obligations</p>
-
+                  <p class="mb-5">1. Providing and personalizing our services <br> 2. Processing transactions <br> 3.
+                    Communicating with you <br> 4. Improving our products and services <br> 5. Marketing and promotional
+                    purposes <br> 6. Complying with legal obligations</p>
                   <p class="mb-5">Protection of Personal Information:</p>
-
-
                   <p class="mb-5">We take the security of your personal information seriously and have implemented
-                    appropriate measures
-                    to protect it from unauthorized access, disclosure, alteration, or destruction. However, please note
-                    that no method of transmission over the internet or electronic storage is 100% secure, and we cannot
-                    guarantee absolute security.</p>
-
+                    appropriate measures to protect it from unauthorized access, disclosure, alteration, or destruction.
+                    However, please note that no method of transmission over
+                    the internet or electronic storage is 100% secure, and we cannot guarantee absolute security.</p>
                   <p class="font-bold mb-5">Sharing of Personal Information:</p>
-
-                  <p class="mb-5">We may share your personal information with third-party service providers who assist
-                    us in providing
-                    our services, conducting our business, or servicing you. We may also share your information when
-                    required by law or to protect our rights, property, or safety.</p>
-
+                  <p class="mb-5">We may share your personal information with third-party service providers who assist us
+                    in providing our services, conducting our business, or servicing you. We may also share your
+                    information when required by law or to protect our rights,
+                    property, or safety.</p>
                   <p class="font-bold mb-5">Your Rights:</p>
-
-                  <p class="mb-5">You have the right to access, update, or delete your personal information. You may
-                    also have the right
-                    to object to or restrict certain types of processing. If you would like to exercise any of these
-                    rights, please contact us using the information provided below.</p>
-
+                  <p class="mb-5">You have the right to access, update, or delete your personal information. You may also
+                    have the right to object to or restrict certain types of processing. If you would like to exercise any
+                    of these rights, please contact us using the
+                    information provided below.</p>
                   <p class="font-bold mb-5">Changes to this Privacy Policy:</p>
-
                   <p class="mb-5">We reserve the right to update or modify this Privacy Policy at any time. Any changes
-                    will be
-                    effective immediately upon posting the updated Privacy Policy on our website.</p>
+                    will be effective immediately upon posting the updated Privacy Policy on our website.</p>
                   <!-- contents -->
                 </div>
               </div>
@@ -158,7 +156,6 @@
                   @change="toggleContinueButton">
                 <label for="myCheckbox" class="mar">I have read and agreed to the above Privacy Policy Agreement</label>
               </div>
-
               <div class="text-center mt-5">
                 <button type="submit" class="disabled:bg-gray-600 px-4 py-2 text-white bg-blue-600 rounded-md"
                   @click="openSignUpModal" :disabled="!checkboxChecked">Continue</button>
@@ -167,7 +164,6 @@
           </div>
         </div>
       </div>
-
       <!-- Sign Up Modal -->
       <div v-if="showSignUpModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
         <div class="relative p-8 bg-white"
@@ -286,8 +282,8 @@
                   <div class="relative">
                     <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-3 my-3"
                       style="width: 15px;" alt="Username Icon" />
-                    <input type="text" id="email" v-model="email"
-                      class="w-full h-10 pl-10 border border-black rounded-lg" placeholder="Email">
+                    <input type="text" id="email" v-model="email" class="w-full h-10 pl-10 border border-black rounded-lg"
+                      placeholder="Email">
                   </div>
                 </div>
               </div>
@@ -396,7 +392,7 @@
               <img :src="locations[0].imgSrc" :alt="locations[0].alt" class="p-[26px]">
               <!-- Adjust height as needed -->
               <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-          locations[0].mobile }}</span>
+                locations[0].mobile }}</span>
               <span class="font-bold text-1xl">{{ locations[0].mobile }}</span>
             </div>
           </RouterLink>
@@ -412,7 +408,7 @@
               <img :src="locations[1].imgSrc" :alt="locations[1].alt" class="p-[26px]">
               <!-- Adjust height as needed -->
               <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-          locations[1].mobile }}</span>
+                locations[1].mobile }}</span>
               <span class="font-bold text-1xl">{{ locations[1].mobile }}</span>
             </div>
           </RouterLink>
@@ -428,7 +424,7 @@
               <img :src="locations[2].imgSrc" :alt="locations[2].alt" class="p-[26px]">
               <!-- Adjust height as needed -->
               <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-          locations[2].mobile }}</span>
+                locations[2].mobile }}</span>
               <span class="font-bold text-1xl">{{ locations[2].mobile }}</span>
             </div>
           </RouterLink>
@@ -444,7 +440,7 @@
               <img :src="locations[3].imgSrc" :alt="locations[3].alt" class="p-[26px]">
               <!-- Adjust height as needed -->
               <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-          locations[3].mobile }}</span>
+                locations[3].mobile }}</span>
               <span class="font-bold text-1xl">{{ locations[3].mobile }}</span>
             </div>
           </RouterLink>
@@ -460,7 +456,7 @@
               <img :src="locations[4].imgSrc" :alt="locations[4].alt" class="p-[26px]">
               <!-- Adjust height as needed -->
               <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-          locations[4].mobile }}</span>
+                locations[4].mobile }}</span>
               <span class="font-bold text-1xl">{{ locations[4].mobile }}</span>
             </div>
           </RouterLink>
@@ -476,7 +472,7 @@
               <img :src="locations[5].imgSrc" :alt="locations[5].alt" class="p-[26px]">
               <!-- Adjust height as needed -->
               <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-          locations[5].mobile }}</span>
+                locations[5].mobile }}</span>
               <span class="font-bold text-1xl">{{ locations[5].mobile }}</span>
             </div>
           </RouterLink>
@@ -749,8 +745,8 @@
                   <div class="relative">
                     <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-3 my-3"
                       style="width: 15px;" alt="Username Icon" />
-                    <input type="text" id="email" v-model="email"
-                      class="w-full h-10 pl-10 border border-black rounded-lg" placeholder="Email">
+                    <input type="text" id="email" v-model="email" class="w-full h-10 pl-10 border border-black rounded-lg"
+                      placeholder="Email">
                   </div>
                 </div>
               </div>
@@ -859,7 +855,7 @@
               <img :src="locations[0].imgSrc" :alt="locations[0].alt" class="p-[26px]">
               <!-- Adjust height as needed -->
               <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-          locations[0].mobile }}</span>
+                locations[0].mobile }}</span>
               <span class="font-bold text-1xl">{{ locations[0].mobile }}</span>
             </div>
           </RouterLink>
@@ -875,7 +871,7 @@
               <img :src="locations[1].imgSrc" :alt="locations[1].alt" class="p-[26px]">
               <!-- Adjust height as needed -->
               <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-          locations[1].mobile }}</span>
+                locations[1].mobile }}</span>
               <span class="font-bold text-1xl">{{ locations[1].mobile }}</span>
             </div>
           </RouterLink>
@@ -891,7 +887,7 @@
               <img :src="locations[2].imgSrc" :alt="locations[2].alt" class="p-[26px]">
               <!-- Adjust height as needed -->
               <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-          locations[2].mobile }}</span>
+                locations[2].mobile }}</span>
               <span class="font-bold text-1xl">{{ locations[2].mobile }}</span>
             </div>
           </RouterLink>
@@ -907,7 +903,7 @@
               <img :src="locations[3].imgSrc" :alt="locations[3].alt" class="p-[26px]">
               <!-- Adjust height as needed -->
               <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-          locations[3].mobile }}</span>
+                locations[3].mobile }}</span>
               <span class="font-bold text-1xl">{{ locations[3].mobile }}</span>
             </div>
           </RouterLink>
@@ -923,7 +919,7 @@
               <img :src="locations[4].imgSrc" :alt="locations[4].alt" class="p-[26px]">
               <!-- Adjust height as needed -->
               <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-          locations[4].mobile }}</span>
+                locations[4].mobile }}</span>
               <span class="font-bold text-1xl">{{ locations[4].mobile }}</span>
             </div>
           </RouterLink>
@@ -951,12 +947,12 @@
 
 
   </nav>
-
-
 </template>
 
 <script>
-import { RouterLink } from 'vue-router';
+import {
+  RouterLink
+} from 'vue-router';
 import imageUrl from '@/assets/images/Modal/Intersect.png';
 import imageUrl2 from '@/assets/images/Modal/bg2.png';
 import run from '@/assets/images/MainNav/run.png';
@@ -965,8 +961,6 @@ import house from '@/assets/images/MainNav/house.png';
 import food from '@/assets/images/MainNav/food.png';
 import grocery from '@/assets/images/MainNav/grocery-store.png';
 import locationImg from '@/assets/images/MainNav/location.png';
-
-
 export default {
   name: 'NavBar',
   components: {
@@ -974,6 +968,7 @@ export default {
   },
   data() {
     return {
+      showInput: false,
       showLoginModal: false,
       showSignUpModal: false,
       showForgotModal: false,
@@ -985,13 +980,54 @@ export default {
       password: '',
       imageUrl: imageUrl,
       imageUrl2: imageUrl2,
-      locations: [
-        { imgSrc: run, alt: 'location1', attrib: 'hover:rounded-l-lg active:rounded-l-lg', title: 'What to DO', mobile: 'Do', link: '/category/do' },
-        { imgSrc: grocery, alt: 'location2', attrib: '', title: 'Where to SHOP', mobile: 'Shop', link: '/category/shop' },
-        { imgSrc: binoculars, alt: 'location3', attrib: '', title: 'What to SEE', mobile: 'See', link: '/category/see' },
-        { imgSrc: food, alt: 'location4', attrib: '', title: 'Where to EAT', mobile: 'Eat', link: '/category/eat' },
-        { imgSrc: house, alt: 'location5', attrib: '', title: 'Where to STAY', mobile: 'Stay', link: '/category/stay' },
-        { imgSrc: locationImg, alt: 'location6', attrib: 'hover:rounded-r-lg active:rounded-r-lg', title: 'Make TOUR', mobile: 'Tour', link: '/category/tour' }
+      locations: [{
+        imgSrc: run,
+        alt: 'location1',
+        attrib: 'hover:rounded-l-lg active:rounded-l-lg',
+        title: 'What to DO',
+        mobile: 'Do',
+        link: '/category/do'
+      },
+      {
+        imgSrc: grocery,
+        alt: 'location2',
+        attrib: '',
+        title: 'Where to SHOP',
+        mobile: 'Shop',
+        link: '/category/shop'
+      },
+      {
+        imgSrc: binoculars,
+        alt: 'location3',
+        attrib: '',
+        title: 'What to SEE',
+        mobile: 'See',
+        link: '/category/see'
+      },
+      {
+        imgSrc: food,
+        alt: 'location4',
+        attrib: '',
+        title: 'Where to EAT',
+        mobile: 'Eat',
+        link: '/category/eat'
+      },
+      {
+        imgSrc: house,
+        alt: 'location5',
+        attrib: '',
+        title: 'Where to STAY',
+        mobile: 'Stay',
+        link: '/category/stay'
+      },
+      {
+        imgSrc: locationImg,
+        alt: 'location6',
+        attrib: 'hover:rounded-r-lg active:rounded-r-lg',
+        title: 'Make TOUR',
+        mobile: 'Tour',
+        link: '/category/tour'
+      }
         // Add more locations as needed
       ],
       currentRoute: ''
@@ -1009,7 +1045,6 @@ export default {
       }
     );
   },
-
   methods: {
     isCategoryPath(path) {
       return path.startsWith('/category/') && path.split('/').length === 3;
@@ -1037,6 +1072,20 @@ export default {
     openOtpModal() {
       this.showOtpModal = true;
     },
+    toggleInputVisibility() {
+      this.showInput = !this.showInput;
+      if (this.showInput) {
+        this.$nextTick(() => {
+          this.$refs.searchInput.focus();
+        });
+      }
+    },
+    closeInputField(event) {
+      if (!this.$refs.searchContainer.contains(event.target)) {
+        this.showInput = false;
+      }
+    }
+    ,
     toggleshowOTP() {
       this.showForgotModal = true;
       this.showOTP = true;
@@ -1083,6 +1132,12 @@ export default {
       // Reset form fields and close modal
       this.showOtpModal = false;
     }
+  },
+  mounted() {
+    document.addEventListener('click', this.closeInputField);
+  },
+  beforeDestroy() {
+    document.removeEventListener('click', this.closeInputField);
   }
 };
 </script>
@@ -1152,7 +1207,6 @@ export default {
   /* Set your desired text color on hover */
   transition: filter 0.3s ease;
 }
-
 
 .m-location-card {
   width: auto;

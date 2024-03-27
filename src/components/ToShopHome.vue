@@ -2,7 +2,10 @@
     <div class="relative pt-[57px] md:pt-[80px]">
         <div class="relative">
             <div
-                style="position: absolute; top: 0; left: 0; height: 101%; width: 100%; background: linear-gradient(to bottom, transparent, #102E61 85%, #102E61 50%);">
+                style="position: absolute; top: 0; left: 0; height: 101%; width: 100%; background: linear-gradient(to left, transparent, #102E61 96%, #102E61 70%);">
+            </div>
+            <div
+                style="position: absolute; top: 0; left: 0; height: 101%; width: 100%; background: linear-gradient(to bottom, transparent 75%, #102E61 87%, #102E61 40%);">
             </div>
             <img class="w-full h-[200px] md:h-[700px]" src="@/assets/images/CategoryView/ToShop/banner.jpeg" alt="" />
             <div
@@ -14,8 +17,9 @@
 
             </div>
             <div
-                class="relative sm:absolute inset-0 sm:top-56 md:top-80 flex text-center lg:text-left justify-center items-center z-[1]">
-                <p class="text-[12px] sm:text-sm md:text-xl lg:text-xl text-wrap md:w-[80%] text-white">
+                class="relative sm:absolute inset-0 sm:top-56 md:top-[23rem] flex text-center lg:text-left justify-center items-center z-[1]">
+                <p
+                    class="pt-[6rem] text-[17px] sm:text-sm md:text-xl lg:text-[1.7rem] px-0 lg:px-[8rem] text-wrap leading lg:leading-10 text-white">
                     Being known for its shopping centers, Makati is a fun place to shop. From thrift stores to luxury
                     shops,
                     you can find something to buy for your friends or family.
@@ -23,7 +27,7 @@
             </div>
         </div>
     </div>
-    <div class="mx-auto px-3 lg:px-32 pb-5 pt-5" style="background-color: #102E61;">
+    <div class="mx-auto px-3 lg:px-32 pb-5" style="background-color: #102E61;">
         <div>
             <div class="pb-10">
                 <!-- Filter dropdown -->

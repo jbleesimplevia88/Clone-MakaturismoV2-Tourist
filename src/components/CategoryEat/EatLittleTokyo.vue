@@ -7,11 +7,15 @@
                 <div class="relative flex flex-col pl-0 lg:pl-10">
                     <div class="absolute top-4 left-3">
                         <router-link to="/category/do">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="white" class="w-7 lg:w-10 h-7 lg:h-10">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-                            </svg>
+                            <div
+                                class="hover:bg-white hover:rounded-md hover:transition-all hover:delay-200 hover:bg-opacity-85">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                    stroke="white" class="w-7 lg:w-10 h-7 lg:h-10">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                                </svg>
+                            </div>
+
                         </router-link>
                     </div>
                     <div class="relative flex flex-col items-center">

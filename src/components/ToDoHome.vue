@@ -1,20 +1,23 @@
 <template>
-    <div class="relative pt-[57px] md:pt-[80px]">
+    <div class="relative pt-[57px] md:pt-[80px] lg:pt-20">
         <div class="relative">
             <div
-                style="position: absolute; top: 0; left: 0; height: 101%; width: 100%; background: linear-gradient(to bottom, transparent, #102E61 85%, #102E61 50%);">
+                style="position: absolute; top: 100; left: 0; height: 101%; width: 100%; background: linear-gradient(to left, transparent, #102E61 96%, #102E61 70%);">
+            </div>
+            <div
+                style="position: absolute; top: 0; left: 0; height: 101%; width: 100%; background: linear-gradient(to bottom, transparent 75%, #102E61 87%, #102E61 40%);">
             </div>
             <img class="w-full h-[200px] md:h-[700px]" src="@/assets/images/CategoryView/ToDo/ToDo.jpeg" alt="" />
-            <div class="absolute top-5 md:top-20 z-[1]">
+            <div class="absolute top-5 md:top-[4.9rem] z-[1]">
                 <p
                     class="text-[#102E61] text-sm sm:text-4xl font-bold bg-white p-3 pl-4 pr-4 md:p-5 md:pl-7 md:pr-7 rounded-r-xl">
                     WHAT TO DO
                 </p>
             </div>
             <div
-                class="relative sm:absolute inset-0 sm:top-56 md:top-[23rem] flex text-center lg:text-left justify-center items-center z-[1]">
+                class=" sm:absolute inset-0 sm:top-56 md:top-[23rem] flex text-center lg:text-left justify-center items-center z-[1]">
                 <p
-                    class="pt-[10rem] text-[17px] sm:text-sm md:text-xl lg:text-[1.7rem] text-wrap leading lg:leading-10 text-white">
+                    class="pt-[6rem] text-[17px] sm:text-sm md:text-xl lg:text-[1.7rem] text-wrap leading lg:leading-10 text-white">
                     Makati is a cosmopolitan city that offers a variety of activities that people of all ages
                     can enjoy.<br />Whether you love to stay indoors or outdoors, day or night, the city
                     surely has something to offer.
@@ -94,7 +97,7 @@
                 </div>
                 <!-- End of Filter dropdown -->
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5" >
                 <div v-for="(item, index) in items" :key="index"
                     class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
 

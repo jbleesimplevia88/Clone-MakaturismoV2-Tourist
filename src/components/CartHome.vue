@@ -2,10 +2,22 @@
     <div class="bg-cover bg-center w-screen  h-[750px]"
         style="background-image: url('src/assets/images/CategoryView/ToShop/bgoverlay.png');">
         <div class="p-5 overflow-y-auto h-[690px] ">
-            <div class="mt-20 items-center w-331 h-14 bg-white rounded-tl-lg  rounded-tr-lg mb-3">
-                <input type="checkbox" name="Items" id="Items" class="ml-3 mt-4 w-5 h-5 border">
-                <span class="mt-1 ml-1 text-xl font-semibold"> Items</span>
+
+            <div className="grid grid-cols- grid-rows-1 gap-4 mt-20  w-331 h-14 bg-white rounded-tl-lg  rounded-tr-lg mb-3">
+                <div>
+                    <input type="checkbox" name="Items" id="Items" class="ml-3 mt-4 w-5 h-5 border">
+                    <span class="mt-1 ml-1 text-xl font-semibold text-left "> Items</span>
+                </div>
+
+                <router-link to="/category/shop" class="justify-end flex mb-10 ">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.9"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+
+                </router-link>
             </div>
+
 
             <div class=" bg-white-200 mb-5 bg-white rounded-bl-lg rounded-br-lg">
                 <div class="flex items-center gap-4 mb-2 ">

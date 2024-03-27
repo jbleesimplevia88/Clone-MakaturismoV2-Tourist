@@ -5,17 +5,16 @@
             </div>
             <div class="relative inset-0 sm:top-56 md:top-2 pl-0 md:pl-10 flex items-center z-[1]">
                 <div class="relative flex flex-col pl-0 lg:pl-10">
-                    <div class="absolute top-4 left-3">
-                        <router-link to="/category/do">
-                            <div
-                                class="hover:bg-white hover:rounded-md hover:transition-all hover:delay-200 hover:bg-opacity-85">
+                    <div class="absolute lg:top-4 lg:left-3 top-4 z-[1]">
+                        <router-link to="/category/shop">
+                            <a class=" flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                    stroke="white" class="w-7 lg:w-10 h-7 lg:h-10">
+                                    style="filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));" stroke="currentColor"
+                                    class="w-8 ml-5 lg:ml-0 lg:w-10 h-12 lg:h-10 hover:bg-gray-300 rounded-md p-1 cursor-pointer text-white">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
                                 </svg>
-                            </div>
-
+                            </a>
                         </router-link>
                     </div>
                     <div class="relative flex flex-col items-center">
@@ -62,8 +61,9 @@
             <div class="relative mx-6 px-3 lg:px-32 pt-5">
                 <p class="font-bold text-lg text-black text-left pb-5 pt-3 lg:pt-[5rem]">About this place</p>
                 <p class="text-lg text-justify text-black pb-5">From handmade souvenirs, eco-friendly Barongs and
-                    fashionable Filipiniana to artisanal chocolates and more, Makati Shop continues its mission to
-                    embrace our heritage and keep them relevant; support communities and help grow small businesses;
+                    fashionable Filipiniana to artisanal chocolates and more, Makati Shop continues its mission to embrace
+                    our heritage and keep them relevant; support communities and help grow small businesses;
+
                     protect the environment and elevate pride in our identity.</p>
                 <div class="hidden border border-gray-400 lg:w-[]">
                     <p class="text-center font-bold">Number of items</p>
@@ -105,20 +105,17 @@
                 <div class="my-4 lg:w-[100%]">
                     <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SELLERS</h1>
                     <div class="flex flex-wrap justify-start items-center text-white lg:w-[100%]">
-
                         <div
                             class="lg:w-auto lg:flex-auto bg-blue-950 lg:h-[15rem] w-[47%] h-[190px] m-1 p-2 lg:p-3 rounded-xl relative flex flex-col justify-between">
                             <p class="rounded-lg lg:text-sm text-xs lg:px-2 pt-2 absolute top-2.5 left-3 right-3 text-white p-2 w-71"
                                 style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 Multi handle Tote bag with Embroided Philippine Kalesa Scenery
                             </p>
-
-                            <img class="rounded-md lg:h-[80%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="100%">
+                            <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToShop/shop-product1.png"
+                                alt="" width="100%">
                             <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
-
                             <div class="flex justify-end absolute bottom-[65px] right-[18px]">
                                 <div class="flex justify-between">
                                     <div class="flex bg-blue-950 border-1 rounded-lg border-white">
@@ -126,9 +123,7 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-
                         <div v-if="showCart"
                             class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
                             @click.self="closeModal">
@@ -208,45 +203,36 @@
                                                     <p class="w-[100%] text-xs">• Multi handle feature</p>
                                                 </div>
                                                 <div class="flex justify-between mb-2">
-                                                    <p class="w-[100%] text-xs">• Can be used as a handbag or tote
-                                                        shoulder bag
-                                                    </p>
+                                                    <p class="w-[100%] text-xs">• Can be used as a handbag or tote shoulder
+                                                        bag
+                                      </p>
                                                 </div>
                                                 <div class="flex justify-between mb-2">
                                                     <p class="w-[70%] text-xs">• Color: White</p>
                                                 </div>
                                                 <p class="font-bold">Reviews</p>
-
-
                                                 <button @click="toggleshowReviews">
-
                                                     <div>
                                                         <div
                                                             class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                                             <div class="inline-block w-[100%]">
-                                                                <label
-                                                                    class="flex w-[100%] text-sm font-bold">juandelacruz
+                                                                <label class="flex w-[100%] text-sm font-bold">juandelacruz
                                                                     ⭐️⭐️⭐️⭐️⭐</label>
                                                                 <p class="flex text-sm">03-10-2024 11:30</p>
                                                             </div>
-
                                                             <div class="flex justify-between mb-2">
                                                                 <p class="w-[100%] text-xs text-left">I will buy again.
                                                                     The seller is kind and accommodating with my
                                                                     requests. Transaction is smooth. ❤️</p>
                                                             </div>
-
                                                         </div>
-
                                                         <div
                                                             class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                                             <div class="inline-block w-[100%]">
-                                                                <label
-                                                                    class="flex w-[100%] text-sm font-bold">faithstamaria
+                                                                <label class="flex w-[100%] text-sm font-bold">faithstamaria
                                                                     ⭐️⭐️⭐️⭐️⭐</label>
                                                                 <p class="flex text-sm">09-03-2024 08:30</p>
                                                             </div>
-
                                                             <div class="flex justify-between mb-2">
                                                                 <p class="w-[100%] text-xs text-left">I will buy again.
                                                                     The seller is kind and accommodating with my
@@ -260,28 +246,21 @@
                                     </div>
                                     <div class="flex justify-between">
                                         <div class="w-[100%] flex justify-start">
-
                                             <button
                                                 class="text-blue-600 border-blue-500 border-2 rounded-lg py-2 w-[90%]">Add
                                                 to
                                                 Cart</button>
                                         </div>
                                         <div class="w-[100%] flex justify-end">
-
-
                                             <router-link to="/checkoutshop" class="w-full">
                                                 <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]">Buy
                                                     Now</button>
                                             </router-link>
-
-
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
                         <div v-if="showReviews"
                             class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
                             @click.self="closeModal">
@@ -297,9 +276,7 @@
                                             </svg>
                                         </button>
                                     </div>
-
                                     <h1 class="mb-5 font-bold text-xl text-black text-left pb-2 lg:pt-3">REVIEWS</h1>
-
                                     <div class="overflow-y-auto h-[500px] scrollbar-hide mb-2">
                                         <div
                                             class="flex w-[100%]  text-black flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
@@ -308,19 +285,12 @@
                                                     ⭐️⭐️⭐️⭐️⭐</label>
                                                 <p class="flex text-xs">03-10-2024 11:30</p>
                                             </div>
-
                                             <div class="flex justify-between mb-2">
-                                                <p class="w-[100%] text-md">I will buy
-                                                    again. The
-                                                    seller is
-                                                    kind
-                                                    and
-                                                    accommodating with my requests. Transaction is smooth.
-                                                    ❤️
+                                                <p class="w-[100%] text-md">I will buy again. The seller is kind and
+                                                    accommodating with my requests. Transaction is smooth. ❤️
                                                 </p>
                                             </div>
                                         </div>
-
                                         <div
                                             class="flex w-[100%]  text-black flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                             <div class="inline-block w-[100%]">
@@ -328,19 +298,12 @@
                                                     ⭐️⭐️⭐️⭐️⭐</label>
                                                 <p class="flex text-xs">03-10-2024 11:30</p>
                                             </div>
-
                                             <div class="flex justify-between mb-2">
-                                                <p class="w-[100%] text-mb">I will buy
-                                                    again. The
-                                                    seller is
-                                                    kind
-                                                    and
-                                                    accommodating with my requests. Transaction is smooth.
-                                                    ❤️
+                                                <p class="w-[100%] text-mb">I will buy again. The seller is kind and
+                                                    accommodating with my requests. Transaction is smooth. ❤️
                                                 </p>
                                             </div>
                                         </div>
-
                                         <div
                                             class="flex w-[100%]  text-black  flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                             <div class="inline-block w-[100%]">
@@ -348,19 +311,12 @@
                                                     ⭐️⭐️⭐️⭐️⭐</label>
                                                 <p class="flex text-xs">03-10-2024 11:30</p>
                                             </div>
-
                                             <div class="flex justify-between mb-2">
-                                                <p class="w-[100%] text-mb">I will buy
-                                                    again. The
-                                                    seller is
-                                                    kind
-                                                    and
-                                                    accommodating with my requests. Transaction is smooth.
-                                                    ❤️
+                                                <p class="w-[100%] text-mb">I will buy again. The seller is kind and
+                                                    accommodating with my requests. Transaction is smooth. ❤️
                                                 </p>
                                             </div>
                                         </div>
-
                                         <div
                                             class="flex w-[100%]  text-black flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                             <div class="inline-block w-[100%]">
@@ -368,19 +324,12 @@
                                                     ⭐️⭐️⭐️⭐️⭐</label>
                                                 <p class="flex text-xs">03-10-2024 11:30</p>
                                             </div>
-
                                             <div class="flex justify-between mb-2">
-                                                <p class="w-[100%] text-mb">I will buy
-                                                    again. The
-                                                    seller is
-                                                    kind
-                                                    and
-                                                    accommodating with my requests. Transaction is smooth.
-                                                    ❤️
+                                                <p class="w-[100%] text-mb">I will buy again. The seller is kind and
+                                                    accommodating with my requests. Transaction is smooth. ❤️
                                                 </p>
                                             </div>
                                         </div>
-
                                         <div
                                             class="flex w-[100%]  text-black  flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                             <div class="inline-block w-[100%]">
@@ -388,19 +337,12 @@
                                                     ⭐️⭐️⭐️⭐️⭐</label>
                                                 <p class="flex text-xs">03-10-2024 11:30</p>
                                             </div>
-
                                             <div class="flex justify-between mb-2">
-                                                <p class="w-[100%] text-mb">I will buy
-                                                    again. The
-                                                    seller is
-                                                    kind
-                                                    and
-                                                    accommodating with my requests. Transaction is smooth.
-                                                    ❤️
+                                                <p class="w-[100%] text-mb">I will buy again. The seller is kind and
+                                                    accommodating with my requests. Transaction is smooth. ❤️
                                                 </p>
                                             </div>
                                         </div>
-
                                         <div
                                             class="flex w-[100%]  text-black flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                             <div class="inline-block w-[100%]">
@@ -408,20 +350,13 @@
                                                     ⭐️⭐️⭐️⭐️⭐</label>
                                                 <p class="flex text-xs">03-10-2024 11:30</p>
                                             </div>
-
                                             <div class="flex justify-between mb-2">
-                                                <p class="w-[100%] text-mb">I will buy
-                                                    again. The
-                                                    seller is
-                                                    kind
-                                                    and
-                                                    accommodating with my requests. Transaction is smooth.
-                                                    ❤️
+                                                <p class="w-[100%] text-mb">I will buy again. The seller is kind and
+                                                    accommodating with my requests. Transaction is smooth. ❤️
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -431,12 +366,11 @@
                                 style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 Multi handle Tote bag with Embroided Philippine Kalesa Scenery
                             </p>
-                            <img class="rounded-md lg:h-[80%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product2.png" alt="" width="100%">
+                            <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToShop/shop-product2.png"
+                                alt="" width="100%">
                             <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
-
                             <div class="flex justify-end absolute bottom-[65px] right-[18px]">
                                 <div class="flex justify-between">
                                     <div class="flex bg-blue-950 border-1 rounded-lg border-white">
@@ -444,7 +378,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div
                             class="hidden lg:block lg:w-auto lg:flex-auto bg-blue-950 lg:h-[15rem] w-[100%] h-[190px] m-1 p-2 lg:p-3 rounded-xl relative flex-col justify-between">
@@ -452,12 +385,11 @@
                                 style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 Multi handle Tote bag with Embroided Philippine Kalesa Scenery
                             </p>
-                            <img class="rounded-md lg:h-[80%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product3.png" alt="" width="100%">
+                            <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToShop/shop-product3.png"
+                                alt="" width="100%">
                             <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
-
                             <div class="flex justify-end absolute bottom-[65px] right-[18px]">
                                 <div class="flex justify-between">
                                     <div class="flex bg-blue-950 border-1 rounded-lg border-white">
@@ -465,15 +397,12 @@
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
                 <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">OTHER ITEMS</h1>
                 <div class="flex flex-wrap justify-between items-center mb-2 ">
                     <div class="lg:block flex flex-wrap items-center lg:w-[49%] text-white">
-
                         <div
                             class="bg-blue-950 w-[100%] border-2 h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
                             <div class="flex justify-between  w-[100%]">
@@ -492,12 +421,10 @@
                                         <button @click="toggleshowCart"
                                             class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%]">Add to
                                             Cart</button>
-
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         <div
                             class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
                             <div class="flex justify-between  w-[100%]">
@@ -520,7 +447,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div
                             class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
                             <div class="flex justify-between  w-[100%]">
@@ -545,8 +471,6 @@
                         </div>
                     </div>
                     <div class="hidden lg:block flex-wrap items-center lg:w-[49%] text-white">
-
-
                         <div
                             class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
                             <div class="flex justify-between  w-[100%]">
@@ -569,7 +493,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div
                             class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
                             <div class="flex justify-between  w-[100%]">
@@ -820,11 +743,7 @@
 
 
 <script>
-
 import MapRenderer from "@/components/MapRenderer.vue";
-
-
-
 export default {
     props: {
         latitude: Number,
@@ -838,21 +757,16 @@ export default {
         return {
             showCart: false,
             showReviews: false,
-            items: [
-                {
-                    name: 'Juan Dela Cruz',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                    date: 'December 2023',
-
-                },
-                {
-                    name: 'Luis Paolo',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                    date: 'December 2023',
-
-                },
-
-
+            items: [{
+                name: 'Juan Dela Cruz',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                date: 'December 2023',
+            },
+            {
+                name: 'Luis Paolo',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                date: 'December 2023',
+            },
             ],
             showCartModal: false,
             currentPage: 0,
@@ -867,66 +781,34 @@ export default {
             const startIndex = this.currentPage * this.pageSize;
             return this.items.slice(startIndex, startIndex + this.pageSize);
         },
-        components: {
-            MapRenderer
+    },
+    methods: {
+        openCartModal() {
+            this.showCartModal = true;
         },
-        data() {
-            return {
-                showCart: false,
-                items: [{
-                    name: 'Juan Dela Cruz',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                    date: 'December 2023',
-                },
-                {
-                    name: 'Luis Paolo',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                    date: 'December 2023',
-                },
-                ],
-                showCartModal: false,
-                currentPage: 0,
-                pageSize: 8,
-                showDropdown: false,
-                categories: ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'],
-                locations: ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'],
-            };
+        closeModal() {
+            this.showCartModal = false;
+
         },
-        computed: {
-            paginatedItems() {
-                const startIndex = this.currentPage * this.pageSize;
-                return this.items.slice(startIndex, startIndex + this.pageSize);
-            },
+        toggleshowCart() {
+            this.showAddtoCart = false;
+            this.showCart = true;
         },
+        closeCart() {
+            this.showCart = false;
+        },
+        toggleshowReviews() {
+            this.showReviews = true;
+            this.showCart = false;
+        },
+        closeCart() {
+            this.showCart = false;
+        },
+        closeReviews() {
+            this.showReviews = false;
+            this.showCart = true;
+        },
+    }
+};
 
-        methods: {
-            openCartModal() {
-                this.showCartModal = true;
-            },
-            closeModal() {
-                this.showCartModal = false;
-            },
-            toggleshowCart() {
-                this.showAddtoCart = false;
-                this.showCart = true;
-            },
-            closeCart() {
-                this.showCart = false;
-            },
-
-            toggleshowReviews() {
-                this.showReviews = true;
-                this.showCart = false;
-            },
-            closeCart() {
-                this.showCart = false;
-
-
-            },
-            closeReviews() {
-                this.showReviews = false;
-                this.showCart = true;
-
-            },
-        };
 </script>

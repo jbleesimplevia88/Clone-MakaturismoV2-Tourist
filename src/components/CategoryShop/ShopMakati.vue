@@ -63,6 +63,7 @@
                 <p class="text-lg text-justify text-black pb-5">From handmade souvenirs, eco-friendly Barongs and
                     fashionable Filipiniana to artisanal chocolates and more, Makati Shop continues its mission to embrace
                     our heritage and keep them relevant; support communities and help grow small businesses;
+
                     protect the environment and elevate pride in our identity.</p>
                 <div class="hidden border border-gray-400 lg:w-[]">
                     <p class="text-center font-bold">Number of items</p>
@@ -148,14 +149,17 @@
                                                 <div class="lg:flex lg:justify-between items-center">
                                                     <img src="@/assets/images/CategoryView/ToShop/shop-product2.png"
                                                         class="h-24 md:w-[80px] md:h-auto">
+
                                                 </div>
                                                 <div class="lg:flex lg:justify-center items-center">
                                                     <img src="@/assets/images/CategoryView/ToShop/shop-product3.png"
                                                         class="h-24 md:w-[80px] md:h-auto">
+
                                                 </div>
                                                 <div class="lg:flex lg:justify-center items-center">
                                                     <img src="@/assets/images/CategoryView/ToShop/shop-product4.png"
                                                         class="h-24 md:w-[80px] md:h-auto">
+
                                                 </div>
                                                 <div class="lg:flex lg:justify-center items-center mx-5">
                                                     <img src="@/assets/images/CategoryView/ToShop/button.png"
@@ -212,7 +216,8 @@
                                                     <p class="w-[100%] text-xs">• Durable and lightweight bag</p>
                                                 </div>
                                                 <div class="flex justify-between mb-2">
-                                                    <p class="w-[100%] text-xs">• Can be washed by hand or washing machine
+                                                    <p class="w-[100%] text-xs">• Can be washed by hand or washing
+                                                        machine
                                                     </p>
                                                 </div>
                                                 <div class="flex justify-between mb-2">
@@ -221,7 +226,7 @@
                                                 <div class="flex justify-between mb-2">
                                                     <p class="w-[100%] text-xs">• Can be used as a handbag or tote shoulder
                                                         bag
-                                                    </p>
+                                      </p>
                                                 </div>
                                                 <div class="flex justify-between mb-2">
                                                     <p class="w-[70%] text-xs">• Color: White</p>
@@ -816,6 +821,7 @@ export default {
         },
         closeModal() {
             this.showCartModal = false;
+
         },
         toggleshowCart() {
             this.showAddtoCart = false;
@@ -845,4 +851,5 @@ export default {
         }
     }
 };
+
 </script>

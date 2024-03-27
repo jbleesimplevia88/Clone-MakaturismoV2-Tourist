@@ -1,25 +1,27 @@
 <template>
-    <div class="relative pt-[57px] md:pt-[80px]">
+    <div class="relative pt-[57px] md:pt-[80px] lg:pt-20">
         <div class="relative">
             <div
-                style="position: absolute; top: 0; left: 0; height: 101%; width: 100%; background: linear-gradient(to bottom, transparent, #102E61 85%, #102E61 50%);">
-            </div>
-            <img class="w-full h-[200px] md:h-[700px]" src="@/assets/images/CategoryView/ToDo/ToDo.jpeg" alt="" />
-            <div class="flex items-center justify-center absolute top-5 md:top-20 z-[1] bg-white pl-3 lg:pl-5 rounded-r-xl">
-                <p
-                    class="text-[#102E61] text-sm sm:text-4xl font-bold p-3 pr-4 md:p-5 md:pr-7 ">
-                    WHAT TO DO
-                </p>
-                 
-                
+                style="position: absolute; top: 100; left: 0; height: 101%; width: 100%; background: linear-gradient(to left, transparent, #102E61 96%, #102E61 70%);">
             </div>
             <div
-                class="relative sm:absolute inset-0 sm:top-56 md:top-[23rem] flex text-center lg:text-left justify-center items-center z-[1]">
+                style="position: absolute; top: 0; left: 0; height: 101%; width: 100%; background: linear-gradient(to bottom, transparent 75%, #102E61 87%, #102E61 40%);">
+            </div>
+            <img class="w-full h-[200px] md:h-[700px]" src="@/assets/images/CategoryView/ToDo/ToDo.jpeg" alt="" />
+            <div class="absolute top-5 md:top-20 z-[1]">
+                <p class="text-[#102E61] text-sm sm:text-4xl font-bold p-3 pr-4 md:p-5 md:pr-7 ">
+                    WHAT TO DO
+                </p>
+
+
+            </div>
+            <div
+                class=" sm:absolute inset-0 sm:top-56 md:top-[23rem] flex text-center lg:text-left justify-center items-center z-[1]">
                 <p
-                    class="pt-[10rem] text-[17px] sm:text-sm md:text-xl lg:text-[1.7rem] text-wrap leading lg:leading-10 text-white">
-                    Makati is a cosmopolitan city that offers a variety of activities that people of all ages can
-                    enjoy.<br />Whether you love to stay indoors or outdoors, day or night, the city surely has something to
-                    offer.
+                    class="pt-[6rem] text-[17px] sm:text-sm md:text-xl lg:text-[1.7rem] text-wrap leading lg:leading-10 text-white">
+                    Makati is a cosmopolitan city that offers a variety of activities that people of all ages
+                    can enjoy.<br />Whether you love to stay indoors or outdoors, day or night, the city
+                    surely has something to offer.
                 </p>
             </div>
         </div>
@@ -80,8 +82,8 @@
                                         class="grid grid-rows-12 grid-flow-row-dense lg:grid-rows-8 md:grid-flow-col gap-4 mr-4 p-2">
                                         <div v-for="(location, index) in locations" :key="'location-' + index">
                                             <label :for="'locationCheckbox-' + index" class="flex items-center">
-                                                <input type="checkbox" :id="'locationCheckbox-' + index" :value="location"
-                                                    @change="toggleLocation(location)">
+                                                <input type="checkbox" :id="'locationCheckbox-' + index"
+                                                    :value="location" @change="toggleLocation(location)">
                                                 <span class="ml-2 uppercase text-sm font-bold">{{ location }}</span>
                                             </label>
                                         </div>
@@ -120,8 +122,9 @@
                                             <h2 class="ml-5">Filters</h2>
                                         </div>
                                         <div class="flex justify-end">
-                                            <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                                            <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                class="w-6 h-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                     d="M6 18 18 6M6 6l12 12" />
                                             </svg>
@@ -136,7 +139,7 @@
                                                             :id="'categoryCheckbox-' + index" :value="category"
                                                             @change="category(category)">
                                                         <span class="ml-3 uppercase text-sm font-bold">{{ category
-                                                        }}</span>
+                                                            }}</span>
                                                     </label>
                                                 </div>
                                             </div>
@@ -155,7 +158,9 @@
                 <!-- End of Filter dropdown -->
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div v-for="(item, index) in items" :key="index" class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
+                <div v-for="(item, index) in items" :key="index"
+                    class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
+
                     <div class="relative">
                         <img class="w-full h-[250px] object-cover rounded-t" :src="item.image" alt="">
                         <div
@@ -173,9 +178,10 @@
                             class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
                             <span>See More</span>
                             <span class="ml-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
-                                    stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                                 </svg>
                             </span>
                         </button>
@@ -187,8 +193,8 @@
                 <div class="flex justify-start items-center">
                     <p class="text-center text-white">Showing <span class="text-[#29BFD6]">{{ paginationStartIndex }} -
                             {{
-                                paginationEndIndex }}</span> results from <span class="text-[#29BFD6]">{{ totalRecords
-    }}</span> records
+                            paginationEndIndex }}</span> results from <span class="text-[#29BFD6]">{{ totalRecords
+                            }}</span> records
                     </p>
                 </div>
                 <div class="flex justify-end items-center mt-4">

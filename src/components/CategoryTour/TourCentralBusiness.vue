@@ -7,11 +7,15 @@
                 <div class="relative flex flex-col pl-0 lg:pl-10">
                     <div class="absolute top-4 left-3">
                         <router-link to="/category/do">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="white" class="w-7 lg:w-10 h-7 lg:h-10">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-                            </svg>
+                            <div
+                                class="hover:bg-white hover:rounded-md hover:transition-all hover:delay-200 hover:bg-opacity-85">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                    stroke="white" class="w-7 lg:w-10 h-7 lg:h-10">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                                </svg>
+                            </div>
+
                         </router-link>
                     </div>
                     <div class="relative flex flex-col items-center">
@@ -75,7 +79,8 @@
                                 d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                         </svg>
                     </div>
-                    <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">986 Dr Jose P. Rizal Ave, Makati, 1210 Metro Manila
+                    <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">986 Dr Jose P. Rizal Ave, Makati, 1210
+                        Metro Manila
                     </p>
                 </div>
 
@@ -89,9 +94,9 @@
 
                     </div>
                     <div class="flex flex-col pl-2.5">
-                <p class="text-lg md:text-black text-left">Wednesday to Sunday</p>
-                <p class="text-lg md:text-black text-left">11:00 AM to 7:30 PM</p>
-            </div>
+                        <p class="text-lg md:text-black text-left">Wednesday to Sunday</p>
+                        <p class="text-lg md:text-black text-left">11:00 AM to 7:30 PM</p>
+                    </div>
                 </div>
 
                 <div class="flex flex-row">
@@ -110,13 +115,6 @@
                     <div>
                         <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
                         <MapRenderer :latitude="latitude" :longitude="longitude" :name="name" />
-
-                        <!-- <img src="@/assets/images/CategoryView/ToSee/Glorietta Map.jpg" alt=""
-                            class="pb-12 block lg:hidden">
-                        <div class="hidden lg:block lg:pb-10">
-                            <img src="@/assets/images/CategoryView/ToTour/centralbusiness webmap.png" alt=""
-                                class="w-[100%] h-[100%]">
-                        </div> -->
                     </div>
 
 
@@ -131,27 +129,27 @@
                     <div class="mb-5">
                         <div class="flex flex-col m-2">
                             <label for="Date" class=" mb-2 font-bold">Date of Tour</label>
-                            <input type="date" class="border border-gray-300 rounded-md p-1">
+                            <input type="date" class="border-2 border-black rounded-md p-2.5">
                         </div>
 
                         <div class="flex flex-col m-2">
                             <label for="" class=" mb-2 font-bold">Time of Tour</label>
-                            <input type="time" class="border border-gray-300 rounded-md p-1">
+                            <input type="time" class="border-2 border-black rounded-md p-2.5">
                         </div>
 
                         <div class="flex flex-col m-2">
                             <label for="" class=" mb-2 font-bold">Number of Person</label>
-                            <input type="text" class="border border-gray-300 rounded-md p-1">
+                            <input type="text" class="border-2 border-black rounded-md p-2.5">
                         </div>
 
                         <div class="flex flex-col m-2">
                             <label for="" class=" mb-2 font-bold">Services</label>
-                            <input type="text" class="border border-gray-300 rounded-md p-1" value="Tour">
+                            <input type="text" class="border-2 border-black rounded-md p-2.5" value="Tour">
                         </div>
 
                         <div class="flex flex-col m-2">
                             <label for="" class=" mb-2 font-bold">Other Services</label>
-                            <input type="text" class="border border-gray-300 rounded-md p-1" placeholder="Note here">
+                            <input type="text" class="border-2 border-black rounded-md p-2.5" placeholder="Note here">
                         </div>
                     </div>
 

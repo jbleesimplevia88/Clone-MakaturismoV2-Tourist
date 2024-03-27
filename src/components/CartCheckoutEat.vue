@@ -1,14 +1,14 @@
 <template>
-    <div class="w-full">
-        <nav
-            class=" h-28 pt-16 pl-5  bg-[#132540] text-white text-xl font-semibold flex items-center  cursor-pointer lg:px-[100px] lg:h-20 lg:mt-[80px] lg:text-4xl lg:pt-0 ">
-            <svg @click="navigateBack" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                stroke-width="3" stroke="white" class="h-5 pr-2 lg:mr-7 lg:w-10 lg:h-14">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"></path>
-            </svg> {{ navButtonText }}
-        </nav>
-
-        <div v-if="showPayment">
+    <div :key="showPayment ? 'payment' : 'booking'">
+        <template v-if="showPayment">
+            <nav
+                class=" h-28 pt-16 pl-5  bg-[#132540] text-white text-xl font-semibold flex items-center  cursor-pointer lg:px-[100px] lg:h-20 lg:mt-[80px] lg:text-4xl lg:pt-0 ">
+                <svg @click="navigateBack" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke-width="3" stroke="white" class="h-5 pr-2 lg:mr-7 lg:w-10 lg:h-14">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18">
+                    </path>
+                </svg> {{ navButtonText }}
+            </nav>
             <div class="justify-center my-5 mr-5 relative lg:mb-[20rem] ">
                 <div class="lg:block relative lg:w-[60%] lg:top-[3rem] top-5">
                     <div class="relative mx-6 px-3 lg:pl-32 mb-[30px]">
@@ -246,8 +246,16 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div v-else>
+        </template>
+        <template v-else>
+            <nav
+                class=" h-28 pt-16 pl-5  bg-[#132540] text-white text-xl font-semibold flex items-center  cursor-pointer lg:px-[100px] lg:h-20 lg:mt-[80px] lg:text-4xl lg:pt-0 ">
+                <svg @click="navigateBack" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke-width="3" stroke="white" class="h-5 pr-2 lg:mr-7 lg:w-10 lg:h-14">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18">
+                    </path>
+                </svg> {{ navButtonText }}
+            </nav>
             <div class="mt-[0rem] w-full h-full p-8">
                 <div className="grid grid-cols-1 grid-rows-4 gap-0">
                     <div class="flex border rounded p-8 h-24" @click="activateRadioButton('gcash')">
@@ -290,10 +298,11 @@
                     </div>
                 </div>
             </div>
-        </div>
-
+        </template>
     </div>
+
 </template>
+
 
 <style scoped>
 .slide-up-enter-active,
@@ -329,7 +338,18 @@ export default {
             navButtonText: 'Request to Order'
         };
     },
+    watch: {
+        showPayment(newValue) {
+            if (!newValue) {
+                // If the condition is false (else block is rendered), scroll to the top of the page
+                this.scrollToTop();
+            }
+        }
+    },
     methods: {
+        scrollToTop() {
+            window.scrollTo(0, 0);
+        },
         toggleConfirmation() {
             this.showConfirmation = true;
             this.showInformation = false;
@@ -358,9 +378,6 @@ export default {
                 // Redirect to '/category/do' when in the booking section
                 this.$router.push('/category/eat');
             }
-        },
-        scrollToTop() {
-            window.scrollTo(0, 0);
         },
         activateRadioButton(id) {
             const radioBtn = document.getElementById(id);

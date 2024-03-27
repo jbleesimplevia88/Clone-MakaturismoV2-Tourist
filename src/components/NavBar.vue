@@ -390,7 +390,7 @@
           <img src="@/assets/images/Modal/Intersect.png" alt="" class="w-full absolute rounded-t-xl">
 
           <!-- Modal Content -->
-           <div class="relative z-20 top-0 flex justify-end">
+           <div class="relative z-10 top-0 flex justify-end">
             <button class="absolute  pr-4 pt-4">
               <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="5"
                 stroke="black" class="w-7 h-7">
@@ -399,7 +399,7 @@
             </button>
           </div>
 
-          <div class="relative z-10 flex flex-col items-start justify-center h-full lg:ml-12">
+          <div class="relative z-5 flex flex-col items-start justify-center h-full lg:ml-12">
             <form @submit.prevent="forgot" class="lg:w-[35%] lg:mt-[10%] mt-[20%] mx-8 lg:mx-0 flex flex-col justify-between h-full">
               <div class="mb-5">
                 <div class="flex items-center mb-12 w-[50%]">
@@ -417,17 +417,15 @@
                   </div>
                 </div>
               </div>
-              <div class="text-center mb-[10%]">
-                <button @click="openOTPModal" class="lg:w-fit w-full px-4 py-2 text-white bg-blue-600 rounded-lg ">Receive OTP</button>
+              <div class="flex items-center justify-center text-center mb-[10%]">
+                <!-- <button @click="openOTPModal" class="lg:w-fit w-full px-4 py-2 text-white bg-blue-600 rounded-lg ">Receive OTP</button> -->
+                <p @click="openOTPModal" class="lg:w-fit w-full px-4 py-2 text-white bg-blue-600 rounded-lg  cursor-pointer ">Receive OTP</p>
               </div>
             </form>
           </div>
         </div>
 
-       
-
       </div>
-
     
 
      <!-- OTP -->
@@ -772,12 +770,14 @@ export default {
     },
     openForgotModal() {
       this.showForgotModal = true;
-      // this.showSignUpModal = true;
+      // this.showOTPModal = false;
     },
     openOTPModal() {
-      // this.showLoginModal = true;
-      this.showForgotModal = true;
       this.showOTPModal = true;
+      // this.showForgotModal = true;
+
+
+      this.showLoginModal = true;
 
       },
 

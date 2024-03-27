@@ -1,20 +1,14 @@
 <template>
-  <swiper
-    :slides-per-view="4"
-    :space-between="50"
-    @swiper="onSwiper"
-    @slideChange="onSlideChange"
-    ref="mySwiper"
-  >
-  <swiper-slide><img src="@/assets/images/run.png" alt="">Slide 1</swiper-slide>
-  <swiper-slide><img src="@/assets/images/run.png" alt="">Slide 2</swiper-slide>
-  <swiper-slide><img src="@/assets/images/run.png" alt="">Slide 3</swiper-slide>
-  <swiper-slide><img src="@/assets/images/run.png" alt="">Slide 1</swiper-slide>
-  <swiper-slide><img src="@/assets/images/run.png" alt="">Slide 2</swiper-slide>
-  <swiper-slide><img src="@/assets/images/run.png" alt="">Slide 3</swiper-slide>
-  <swiper-slide><img src="@/assets/images/run.png" alt="">Slide 1</swiper-slide>
-  <swiper-slide><img src="@/assets/images/run.png" alt="">Slide 2</swiper-slide>
-  <swiper-slide><img src="@/assets/images/run.png" alt="">Slide 3</swiper-slide>
+  <swiper :slides-per-view="4" :space-between="50" @swiper="onSwiper" @slideChange="onSlideChange" ref="mySwiper">
+    <swiper-slide><img src="@/assets/images/run.png" alt="">Slide 1</swiper-slide>
+    <swiper-slide><img src="@/assets/images/run.png" alt="">Slide 2</swiper-slide>
+    <swiper-slide><img src="@/assets/images/run.png" alt="">Slide 3</swiper-slide>
+    <swiper-slide><img src="@/assets/images/run.png" alt="">Slide 1</swiper-slide>
+    <swiper-slide><img src="@/assets/images/run.png" alt="">Slide 2</swiper-slide>
+    <swiper-slide><img src="@/assets/images/run.png" alt="">Slide 3</swiper-slide>
+    <swiper-slide><img src="@/assets/images/run.png" alt="">Slide 1</swiper-slide>
+    <swiper-slide><img src="@/assets/images/run.png" alt="">Slide 2</swiper-slide>
+    <swiper-slide><img src="@/assets/images/run.png" alt="">Slide 3</swiper-slide>
   </swiper>
 </template>
 
@@ -43,5 +37,3 @@ export default {
   }
 };
 </script>
-
-

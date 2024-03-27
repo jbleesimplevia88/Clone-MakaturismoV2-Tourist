@@ -1004,6 +1004,7 @@ export default {
       newPath => {
         // Check if the new path starts with '/category/' and has exactly two segments
         if (newPath.startsWith('/category/') && newPath.split('/').length === 3) {
+          console.log('active');
           this.currentRoute = newPath;
         }
       }
@@ -1016,6 +1017,7 @@ export default {
     },
     isActive(link) {
       // Check if the current route contains the provided link
+
       return this.currentRoute.includes(link);
     },
     toggleContinueButton(event) {

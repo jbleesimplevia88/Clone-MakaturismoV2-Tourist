@@ -6,7 +6,6 @@ import FooterPage from '@/components/FooterPage.vue';
 <template>
     <div class="flex flex-col min-h-screen">
         <NavBar />
-
         <div class="pt-[57px] flex-grow">
             <div class="flex mt-3 space-x-3 relative items-center justify-center" ref="searchContainer">
                 <Router-link to="/">

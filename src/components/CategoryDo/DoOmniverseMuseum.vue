@@ -5,15 +5,19 @@
             </div>
             <div class="relative inset-0 sm:top-56 md:top-2 pl-0 md:pl-10 flex items-center z-[1]">
                 <div class="relative flex flex-col pl-0 lg:pl-10">
-                    <div class="absolute top-4 left-3">
+                    <div class="absolute lg:top-4 lg:left-3 top-4 z-[1]">
                         <router-link to="/category/do">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="white" class="w-7 lg:w-10 h-7 lg:h-10">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-                            </svg>
+                            <a class=" flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                    style="filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));" stroke="currentColor"
+                                    class="w-8 ml-5 lg:ml-0 lg:w-10 h-12 lg:h-10 hover:bg-gray-300 rounded-md p-1 cursor-pointer text-white">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                                </svg>
+                            </a>
                         </router-link>
                     </div>
+
                     <div class="relative flex flex-col items-center">
                         <div class="lg:pl-9 grid grid-cols-1 lg:grid-cols-5 lg:pr-[7rem]">
                             <img src="@/assets/images/CategoryView/ToDo/omni.jpg" alt=""
@@ -88,7 +92,7 @@
             </div>
         </div>
 
-        
+
 
         <div class="flex flex-row">
             <div class="pt-0.25">

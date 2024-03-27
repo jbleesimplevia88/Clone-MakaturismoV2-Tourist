@@ -5,7 +5,7 @@
             </div>
             <div class="relative inset-0 sm:top-56 md:top-2 pl-0 md:pl-10 flex items-center z-[1]">
                 <div class="relative flex flex-col pl-0 lg:pl-10">
-                    <div class="absolute top-4 left-3">
+                    <div class="absolute lg:top-4 lg:left-3 top-4 z-[1]">
                         <router-link to="/category/do">
                             <div
                                 class="hover:bg-white hover:rounded-md hover:transition-all hover:delay-200 hover:bg-opacity-85">
@@ -18,6 +18,7 @@
 
                         </router-link>
                     </div>
+
                     <div class="relative flex flex-col items-center">
                         <div class="lg:pl-9 grid grid-cols-1 lg:grid-cols-5 lg:pr-[7rem]">
                             <img src="@/assets/images/CategoryView/ToDo/omni.jpg" alt=""

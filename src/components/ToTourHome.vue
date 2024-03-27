@@ -8,11 +8,13 @@
                 style="position: absolute; top: 0; left: 0; height: 101%; width: 100%; background: linear-gradient(to bottom, transparent 75%, #102E61 87%, #102E61 40%);">
             </div>
             <img class="w-full h-[200px] md:h-[700px]" src="@/assets/images/CategoryView/ToTour/banner.jpeg" alt="" />
-            <div class="absolute top-5 md:top-20 z-[1]">
+            <div class="flex items-center justify-center absolute top-5 md:top-20 z-[1] bg-white pl-3 lg:pl-5 rounded-r-xl">
                 <p
-                    class="text-[#102E61] text-sm sm:text-4xl font-bold bg-white p-3 pl-4 pr-4 md:p-5 md:pl-7 md:pr-7 rounded-r-xl">
-                    MAKATOUR
+                    class="text-[#102E61] text-sm sm:text-4xl font-bold p-3 pr-4 md:p-5 md:pr-7 ">
+                   MAKATOUR
                 </p>
+                 
+                
             </div>
             <div
                 class="relative sm:absolute inset-0 sm:top-56 md:top-[23rem] flex text-center lg:text-left justify-center items-center z-[1]">
@@ -29,7 +31,7 @@
         <div>
             <div class="pb-10">
                 <!-- Filter dropdown -->
-                <div class="relative inline-block text-left">
+                <div class="relative hidden lg:block text-left">
                     <button
                         class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
                         @click="toggleDropdown">
@@ -81,8 +83,8 @@
                                         class="grid grid-rows-12 grid-flow-row-dense lg:grid-rows-8 md:grid-flow-col gap-4 mr-4 p-2">
                                         <div v-for="(location, index) in locations" :key="'location-' + index">
                                             <label :for="'locationCheckbox-' + index" class="flex items-center">
-                                                <input type="checkbox" :id="'locationCheckbox-' + index"
-                                                    :value="location" @change="toggleLocation(location)">
+                                                <input type="checkbox" :id="'locationCheckbox-' + index" :value="location"
+                                                    @change="toggleLocation(location)">
                                                 <span class="ml-2 uppercase text-sm font-bold">{{ location }}</span>
                                             </label>
                                         </div>
@@ -96,6 +98,63 @@
                     </div>
                 </div>
                 <!-- End of Filter dropdown -->
+                <!-- Filter dropdown MOBILE-->
+                <div class="relative text-left lg:hidden">
+                    <button
+                        class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
+                        @click="toggleDropdown">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+                            </svg>
+                        </span>
+                        <span class="text-sm pl-2">Filters</span>
+                    </button>
+                    <!-- Dropdown menu MOBILE -->
+                    <transition name="dropdown">
+                        <div v-if="showDropdown" class="fixed inset-0 z-50 flex items-center justify-center">
+                            <div
+                                class="relative z-50 overflow-hidden rounded-2xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                <div role="menu" aria-orientation="horizontal" aria-labelledby="options-menu">
+                                    <div class="grid grid-cols-2 border-b-2 p-3 font-bold ml-5 mr-5">
+                                        <div>
+                                            <h2 class="ml-5">Filters</h2>
+                                        </div>
+                                        <div class="flex justify-end">
+                                            <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M6 18 18 6M6 6l12 12" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="overflow-y-auto max-h-[350px] ml-5 mr-5 mt-5 custom-scrollbar">
+                                        <div class="relative px-2">
+                                            <div class="grid gap-4 ml-4 p-2">
+                                                <div v-for="(category, index) in categories" :key="'category-' + index">
+                                                    <label :for="'categoryCheckbox-' + index" class="flex items-center">
+                                                        <input class="accent-[#102E61]" type="checkbox"
+                                                            :id="'categoryCheckbox-' + index" :value="category"
+                                                            @change="category(category)">
+                                                        <span class="ml-3 uppercase text-sm font-bold">{{ category
+                                                        }}</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center justify-center border-t-2 ml-5 mr-5 mt-5">
+                                        <button @click="toggleDropdown()"
+                                            class="m-4 p-1 text-white bg-[#102E61] w-72 rounded-xl">Apply</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </transition>
+                </div>
+                <!-- End  Filter dropdown MOBILE  -->
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 <div v-for="(item, index) in paginatedItems" :key="index"
@@ -118,10 +177,9 @@
                             class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
                             <span>See More</span>
                             <span class="ml-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                                    stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                                 </svg>
                             </span>
                         </button>
@@ -133,8 +191,8 @@
                 <div class="flex justify-start items-center">
                     <p class="text-center text-white">Showing <span class="text-[#29BFD6]">{{ paginationStartIndex }} -
                             {{
-                            paginationEndIndex }}</span> results from <span class="text-[#29BFD6]">{{ totalRecords
-                            }}</span> records
+                                paginationEndIndex }}</span> results from <span class="text-[#29BFD6]">{{ totalRecords
+    }}</span> records
                     </p>
                 </div>
                 <div class="flex justify-end items-center mt-4">
@@ -167,8 +225,42 @@
 </template>
 
 
-<style scoped></style>
 
+
+<style scoped>
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 15px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background-color: #b3afaf89;
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #102E61;
+    border-radius: 10px;
+}
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+    transition: transform .5s ease;
+}
+
+.dropdown-enter-active,
+.dropdown-leave-active {
+    transition: transform 0.5s;
+}
+
+.dropdown-enter {
+    transform: translateY(-100%);
+}
+
+.dropdown-leave-to {
+    transform: translateY(100%);
+}
+</style>
 
 <script>
 import item1 from '@/assets/images/CategoryView/ToTour/legazpi.png';
@@ -236,7 +328,7 @@ export default {
             currentPage: 0,
             pageSize: 6,
             showDropdown: false,
-            categories: ['District Tour', 'Church Tour', 'Museum Tour', 'City Tour', 'Market Tour'],
+            categories: ['All', 'District Tour', 'Church Tour', 'Museum Tour', 'City Tour', 'Market Tour'],
             locations: ['Bangkal', 'Bel-Air', 'Carmona', 'Dasmariñas', 'Forbes Park', 'Guadalupe Nuevo', 'Guadalupe Viejo', 'Kasilawan', 'La Paz', 'Magallanes', 'olympia', 'Palanan', 'Pinagkaisahan', 'Pio Del Pilar', 'Poblacion', 'San Antonio', 'San Isidro', 'San Lorenzo', 'Santa Cruz', 'Singkamas', 'Tejeros', 'Urdaneta', 'Valenzuela'],
         };
     },

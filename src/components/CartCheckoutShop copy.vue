@@ -6,76 +6,86 @@
             class="lg:mr-7 w-7 lg:w-8 h-7 lg:h-10">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"></path>
         </svg>
-        Request to Order
+        Request to Book
     </nav>
 
     <div class="lg:px-[180px] p-10 relative">
 
-        <div class="flex justify-between">
+        <div class="flex justify-between ">
             <div class="lg:w-[60%]">
+
+                <div>
+
+
+
+                </div>
 
                 <p class="mb-4 font-bold text-3xl">Your Order</p>
                 <p class="mb-4 font-bold text-3m">Number Of Items</p>
-                <p class="mb-4 font-bold text-3m">4</p>
+                <p class="mb-4 font-bold text-3m">9</p>
 
                 <div class="">
 
                     <div class="grid grid-cols-4 gap-4">
                         <div>
                             <p class="lg:mr-9 mb-1 font-bold">List Of Items</p>
-                            <p class="font-normal mb-2 text-normal-400">Spicy Maguro</p>
+                            <p class="font-normal mb-2 text-normal-400">Multi Handle Tote Bag with
+                                Embroidered Philippines
+                                Kalesa Scenery</p>
 
 
                         </div>
                         <div>
-                            <p class="lg:mr-9 mb-1 font-bold lg:ml-40 ">Quantity</p>
-                            <p class="font-normal lg:ml-40   mb-2 lg:mt-2 mt-8 text-normal-400">1</p>
+                            <p class="lg:mr-9 mb-1 lg:ml-20 font-bold  ">Quantity</p>
+                            <p class="font-normal mb-2 lg:mt-2 mt-8 lg:ml-20   text-normal-400">1</p>
                         </div>
                         <div>
-                            <p class="lg:mr-9 mb-1 lg:ml-20 font-bold">Cost</p>
-                            <p class="font-normal mb-2 lg:mt-2 lg:ml-20  mt-8 text-normal-400">299</p>
+                            <p class="lg:mr-9 mb-1 font-bold lg:ml-20">Cost</p>
+                            <p class="font-normal mb-2 lg:mt-2 mt-8 lg:ml-20 text-normal-400">399</p>
                         </div>
                         <div>
                             <p class="lg:mr-9 mb-1 font-bold">Total</p>
-                            <p class="font-normal mb-2 lg:mt-2 mt-8 text-normal-400">299</p>
+                            <p class="font-normal mb-2 lg:mt-2 mt-8 text-normal-400">399</p>
                         </div>
 
 
 
 
                         <div>
-                            <p class="font-normal mb-2 text-normal-400">Takoyaki</p>
+                            <p class="font-normal mb-2 text-normal-400">Multi Handle Tote Bag with
+                                Embroidered Philippine
+                                Jeepney</p>
 
 
 
                         </div>
                         <div>
-                            <p class="font-normal lg:ml-40   mb-2 text-normal400">1</p>
+                            <p class="font-normal mb-2 lg:ml-20   text-normal-400">3</p>
 
                         </div>
                         <div>
-                            <p class="font-normal mb-2 lg:ml-20 text-normal-400">150</p>
-
-                        </div>
-                        <div>
-
-                            <p class="font-normal mb-2 text-normal-400">150</p>
-                        </div>
-
-
-                        <div>
-
-                            <p class="font-normal mb-2 text-normal-400">Udon</p>
-
+                            <p class="font-normal mb-2 lg:ml-20 text-normal-400">399</p>
 
                         </div>
                         <div>
 
-                            <p class="font-normal lg:ml-40 mb-2 text-normaly-400">1</p>
+                            <p class="font-normal mb-2 text-normal-400">1197</p>
+                        </div>
+
+
+                        <div>
+
+                            <p class="font-normal mb-2 text-normal-400">Beat the Heat Graphic Tee in Blush</p>
+
+
                         </div>
                         <div>
 
-                            <p class="font-normal lg:ml-20   mb-2 text-normal-400">249</p>
+                            <p class="font-normal mb-2 lg:ml-20  text-normal-400">1</p>
+                        </div>
+                        <div>
+
+                            <p class="font-normal mb-2 lg:ml-20 text-normal400">249</p>
                         </div>
                         <div>
 
@@ -85,25 +95,47 @@
 
                         <div>
 
-                            <p class="font-normal mb-2 text-normal-400">Oyako Don</p>
+                            <p class="font-normal mb-2 text-normal-400">Never Stop Exploring Graphic Tee in Gray</p>
 
 
                         </div>
                         <div>
-                            <p class="font-normal lg:ml-40 mb-2 text-normal-400">2</p>
+                            <p class="font-normal mb-2 lg:ml-20  text-normal-400">2</p>
                         </div>
                         <div>
 
-                            <p class="font-normal lg:ml-20   mb-2 text-normal-400">299</p>
+                            <p class="font-normal mb-2 lg:ml-20 text-normal-400">299</p>
+                        </div>
+
+
+                        <div>
+
+                            <p class="font-normal mb-2 text-normal-400">598</p>
+                        </div>
+
+
+                        <div>
+
+                            <p class="font-normal mb-2 text-normal-400">Ethnic Stripes Book Tote Bag</p>
+
+
+                        </div>
+                        <div>
+                            <p class="font-normal lg:ml-20  mb-2 text-normal-400">2</p>
                         </div>
                         <div>
 
-                            <p class="font-normal mb-2 text-normal-400">299</p>
+                            <p class="font-normal mb-2 lg:ml-20 text-normal-400">700</p>
                         </div>
 
 
+                        <div>
+
+                            <p class="font-normal mb-2 text-normal-400">1400</p>
+                        </div>
 
                     </div>
+
 
 
 
@@ -119,7 +151,7 @@
 
                     <div>
 
-                        <p class="mb-4 font-bold lg:text-3xl text-2xl ">Your Information</p>
+                        <p class="mb-4 font-bold text-3m">Your Information</p>
 
 
                         <div class="">
@@ -176,22 +208,24 @@
 
                     <div class="border border-gray-200 mr-5 rounded-xl p-5">
                         <div class="flex items-center mt-2 mb-5">
-                            <img src="@/assets/images/CategoryView/ToEat/tokyo1.png" class="w-[400%]  rounded-lg">
-
+                            <img src="@/assets/images/CategoryView/ToShop/kultura.png" class="w-[400%]  rounded-lg">
 
                         </div>
                         <div class="p-1 lg:flex flex-col">
                             <div>
-                                <p class="font-bold">Little Tokyo</p>
+                                <p class="font-bold">Kultura</p>
                             </div>
                             <div>
-                                <p class="mb-2 lg:mb-8 text-gray-400">Restaurant</p>
+                                <p class="mb-2 lg:mb-8 text-gray-400">Shop</p>
                             </div>
                             <div class="flex">
                                 <p class="font-semibold text-sm mr-1">5.0 Ratings</p>
                                 <p class="text-sm text-gray-400">(500 Review)</p>
                             </div>
                         </div>
+
+
+
                         <div class="bg-gray-200 h-0.5"></div>
 
 
@@ -199,25 +233,33 @@
 
                         <div class="items-center mb-5">
                             <div class="flex justify-between mb-2 w-[100%]">
-                                <p class="w-[70%]">Spicy Maguro
+                                <p class="w-[70%]">Multi handed Tote Bag with embroidered Philippines Kalesa
+                                    Scenery
                                 </p>
-                                <p class="text-gray-400">₱299.00</p>
+                                <p class="text-gray-400">₱ 399.00</p>
                             </div>
                             <div class="flex justify-between mb-2 w-[100%]">
-                                <p class="w-[70%]">Takoyaki
+                                <p class="w-[70%]">Multi Handle Tote Bag With Embroidered
+                                    Jeepney
 
                                 </p>
-                                <p class="text-gray-400">₱150.00</p>
+                                <p class="text-gray-400">₱1197.00</p>
                             </div>
                             <div class="flex justify-between mb-2 w-[100%]">
-                                <p class="w-[70%]">Udon
+                                <p class="w-[70%]">Beat the Heat Graphic Tee in Blush
                                 </p>
                                 <p class="text-gray-400">₱249.00</p>
                             </div>
                             <div class="flex justify-between mb-2 w-[100%]">
-                                <p class="w-[70%]">Oyaki Don
+                                <p class="w-[70%]">Never Stop Exploring Graphic Tee in Gray
                                 </p>
                                 <p class="text-gray-400">₱598.00</p>
+                            </div>
+
+                            <div class="flex justify-between mb-2 w-[100%]">
+                                <p class="w-[70%]">Ethnic Stripes Book Tote Bag
+                                </p>
+                                <p class="text-gray-400">₱1400.00</p>
                             </div>
 
 
@@ -227,20 +269,20 @@
 
 
 
-                        <div class="flex items-center my-7">
+                        <div class="flex items-center my-7 mr-6 mt-2">
                             <img src="@/assets/images/CategoryView/ToShop/voucher.png" class="lg:w-8 w-[40%] h-8 mr-2">
-                            <p class="font-poppins font-sans text-base text-blue-500 mr-1">Use Voucher</p>
-                            <input type="text" id="" name="" value="" class="h-[50px] border border-gray-200 pl-5 mr-6"
+                            <p class="font-poppins font-sans text-base text-blue-500 mr-4">Use Voucher</p>
+                            <input type="text" id="" name="" value="" class="h-[50px] border border-gray-200 pl-5"
                                 placeholder="Voucher Code">
                         </div>
 
-                        <div class="flex justify-between">
+                        <div class="flex justify-between mt-6 mb-2">
                             <p class="font-poppins font-sans font-bold text-1xl">Your Total (Php)</p>
-                            <p class="font-poppins font-sans text-base font-bold">₱ 1,296.00</p>
+                            <p class="font-poppins font-sans text-base font-bold">₱ 3,843.00</p>
                         </div>
 
 
-                        <div class="flex justify-center mt-4">
+                        <div class="flex justify-center mt-0">
                             <button class="text-white bg-blue-500 rounded-xl w-[100%] py-5"
                                 @click="toggleConfirmation">Proceed to Payment</button>
                         </div>
@@ -377,17 +419,16 @@
 
                 <div class="border border-gray-200 mr-5 rounded-xl p-5">
                     <div class="flex items-center mb-5">
-
-                        <img src="@/assets/images/CategoryView/ToEat/tokyo.png" class="w-[40%]  rounded-lg">
+                        <img src="@/assets/images/CategoryView/ToShop/shop1.png" class="w-[50%] rounded-lg">
                         <div class="ml-1 flex flex-col">
                             <div>
-                                <p class="font-bold">Little Tokyo</p>
+                                <p class="font-bold">Little Toyo</p>
                             </div>
                             <div>
-                                <p class="mb-8 text-gray-400">Restaurant</p>
+                                <p class="mb-5 mt-2 text-gray-400">Restaurant</p>
                             </div>
                             <div class="flex">
-                                <p class="font-semibold text-sm mr-1">5.0 Ratings</p>
+                                <p class="font-semibold text-sm  mt-0">5.0 Ratings</p>
                                 <p class="text-sm text-gray-400">(500 Review)</p>
                             </div>
                         </div>
@@ -400,25 +441,33 @@
 
                     <div class="items-center mb-5">
                         <div class="flex justify-between mb-2 w-[100%]">
-                            <p class="w-[70%]">Spicy Maguro
+                            <p class="w-[70%]">Multi handed Tote Bag with embroidered Philippines Kalesa
+                                Scenery
                             </p>
-                            <p class="text-gray-400">₱ 299.00</p>
+                            <p class="text-gray-400">₱ 399.00</p>
                         </div>
                         <div class="flex justify-between mb-2 w-[100%]">
-                            <p class="w-[70%]">Takoyaki
+                            <p class="w-[70%]">Multi Handle Tote Bag With Embroidered
+                                Jeepney
 
                             </p>
-                            <p class="text-gray-400">₱150.00</p>
+                            <p class="text-gray-400">₱1197.00</p>
                         </div>
                         <div class="flex justify-between mb-2 w-[100%]">
-                            <p class="w-[70%]">Udon
+                            <p class="w-[70%]">Beat the Heat Graphic Tee in Blush
                             </p>
                             <p class="text-gray-400">₱249.00</p>
                         </div>
                         <div class="flex justify-between mb-2 w-[100%]">
-                            <p class="w-[70%]">Oyaki Don
+                            <p class="w-[70%]">Never Stop Exploring Graphic Tee in Gray
                             </p>
                             <p class="text-gray-400">₱598.00</p>
+                        </div>
+
+                        <div class="flex justify-between mb-2 w-[100%]">
+                            <p class="w-[70%]">Ethnic Stripes Book Tote Bag
+                            </p>
+                            <p class="text-gray-400">₱1400.00</p>
                         </div>
 
 
@@ -437,7 +486,7 @@
 
                     <div class="flex justify-between">
                         <p class="font-poppins font-sans font-bold text-1xl">Your Total (Php)</p>
-                        <p class="font-poppins font-sans text-base font-bold">₱ 1,296.00</p>
+                        <p class="font-poppins font-sans text-base font-bold">₱ 3,843.00</p>
                     </div>
 
 

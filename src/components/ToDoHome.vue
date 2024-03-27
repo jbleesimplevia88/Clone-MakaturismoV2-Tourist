@@ -8,11 +8,12 @@
                 style="position: absolute; top: 0; left: 0; height: 101%; width: 100%; background: linear-gradient(to bottom, transparent 75%, #102E61 87%, #102E61 40%);">
             </div>
             <img class="w-full h-[200px] md:h-[700px]" src="@/assets/images/CategoryView/ToDo/ToDo.jpeg" alt="" />
-            <div class="absolute top-5 md:top-[4.9rem] z-[1]">
-                <p
-                    class="text-[#102E61] text-sm sm:text-4xl font-bold bg-white p-3 pl-4 pr-4 md:p-5 md:pl-7 md:pr-7 rounded-r-xl">
+            <div class="absolute top-5 md:top-20 z-[1]">
+                <p class="text-[#102E61] text-sm sm:text-4xl font-bold p-3 pr-4 md:p-5 md:pr-7 ">
                     WHAT TO DO
                 </p>
+
+
             </div>
             <div
                 class=" sm:absolute inset-0 sm:top-56 md:top-[23rem] flex text-center lg:text-left justify-center items-center z-[1]">
@@ -28,8 +29,8 @@
     <div class="mx-auto px-3 lg:px-32 pb-5" style="background-color: #102E61;">
         <div>
             <div class="pb-10">
-                <!-- Filter dropdown -->
-                <div class="relative inline-block text-left">
+                <!-- Filter dropdown WEB-->
+                <div class="relative text-left  hidden lg:block">
                     <button
                         class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
                         @click="toggleDropdown">
@@ -44,7 +45,7 @@
                     </button>
                     <!-- Dropdown menu -->
                     <div v-if="showDropdown"
-                        class="z-[1] origin-top-left relative md:absolute left-0 mt-2 w-[400x] md:w-[768px] xl:w-[1000px] 2xl:w-[1093px] rounded-2xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        class=" z-[1] origin-top-left relative md:absolute left-0 mt-2 w-[400x] md:w-[768px] xl:w-[1000px] 2xl:w-[1093px] rounded-2xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                         <div role="menu" aria-orientation="horizontal" aria-labelledby="options-menu">
                             <div class="grid grid-cols-3 border-b-2 p-3 font-bold ml-5 mr-5">
                                 <div>
@@ -96,8 +97,67 @@
                     </div>
                 </div>
                 <!-- End of Filter dropdown -->
+                <!-- Filter dropdown MOBILE-->
+                <div class="relative text-left lg:hidden">
+                    <button
+                        class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
+                        @click="toggleDropdown">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+                            </svg>
+                        </span>
+                        <span class="text-sm pl-2">Filters</span>
+                    </button>
+                    <!-- Dropdown menu MOBILE -->
+                    <transition name="dropdown">
+                        <div v-if="showDropdown" class="fixed inset-0 z-50 flex items-center justify-center">
+                            <div
+                                class="relative z-50 overflow-hidden rounded-2xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                <div role="menu" aria-orientation="horizontal" aria-labelledby="options-menu">
+                                    <div class="grid grid-cols-2 border-b-2 p-3 font-bold ml-5 mr-5">
+                                        <div>
+                                            <h2 class="ml-5">Filters</h2>
+                                        </div>
+                                        <div class="flex justify-end">
+                                            <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M6 18 18 6M6 6l12 12" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="overflow-y-auto max-h-[350px] ml-5 mr-5 mt-5 custom-scrollbar">
+                                        <div class="relative px-2">
+                                            <div class="grid gap-4 ml-4 p-2">
+                                                <div v-for="(category, index) in categories" :key="'category-' + index">
+                                                    <label :for="'categoryCheckbox-' + index" class="flex items-center">
+                                                        <input class="accent-[#102E61]" type="checkbox"
+                                                            :id="'categoryCheckbox-' + index" :value="category"
+                                                            @change="category(category)">
+                                                        <span class="ml-3 uppercase text-sm font-bold">{{ category
+                                                            }}</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center justify-center border-t-2 ml-5 mr-5 mt-5">
+                                        <button @click="toggleDropdown()"
+                                            class="m-4 p-1 text-white bg-[#102E61] w-72 rounded-xl">Apply</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </transition>
+                </div>
+                <!-- End  Filter dropdown MOBILE  -->
+                <!-- End of Filter dropdown -->
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5" >
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
                 <div v-for="(item, index) in items" :key="index"
                     class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
 
@@ -161,14 +221,43 @@
                     </button>
                 </div>
             </div>
-
         </div>
     </div>
 </template>
+<style scoped>
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 15px;
+}
 
+.custom-scrollbar::-webkit-scrollbar-track {
+    background-color: #b3afaf89;
+    border-radius: 10px;
+}
 
-<style scoped></style>
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #102E61;
+    border-radius: 10px;
+}
 
+.slide-up-enter-active,
+.slide-up-leave-active {
+    transition: transform .5s ease;
+}
+
+.dropdown-enter-active,
+.dropdown-leave-active {
+    transition: transform 0.5s;
+}
+
+.dropdown-enter {
+    transform: translateY(-100%);
+}
+
+.dropdown-leave-to {
+    transform: translateY(100%);
+}
+</style>
 
 <script>
 import item1 from '@/assets/images/CategoryView/ToDo/omni.jpg';
@@ -179,96 +268,94 @@ import item5 from '@/assets/images/CategoryView/ToDo/two.jpg';
 import item6 from '@/assets/images/CategoryView/ToDo/white.png';
 import item7 from '@/assets/images/CategoryView/ToDo/urban.jpg';
 import item8 from '@/assets/images/CategoryView/ToDo/touch.png';
-
 export default {
     data() {
         return {
-            items: [
-                {
-                    name: 'Omniverse Museum',
-                    description: "Discover a fusion of art and technology at the Omniverse Museum in Makati. Step into a world of interactive exhibits, mind-bending installations, and awe-inspiring virtual reality experiences. This unique museum promises a captivating journey through the realms of creativity and innovation. Whether you're an art enthusiast or a tech-savvy explorer, the Omniverse Museum is a must-visit destination for an extraordinary adventure.",
-                    category: 'Museum',
-                    image: item1,
-                    link: "/category/do/omniverse",
-                    mapLocation: "https://www.google.com/maps/dir//Omniverse+Museum+Japan+Town+4%2FF+Glorietta+2,+Ayala+Center+Makati+Palm+Dr,+Makati+Ave,+Makati,+1224+Metro+Manila/@14.5509998,121.0236327,17.09z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c97f24c8a707:0x936b4a8c37308563!2m2!1d121.0254416!2d14.5509171?entry=ttu"
-                },
-                {
-                    name: 'Hop-On, Hop-Off Tour',
-                    description: "Embark on a convenient and flexible sightseeing adventure with the Hop-On, Hop-Off Tour in Makati. Climb aboard an open-top double-decker bus and enjoy panoramic views as you explore the city's iconic landmarks and vibrant neighborhoods. Hop off at any stop that catches your interest, and hop back on when you're ready to move on to the next exciting destination. This tour offers the freedom to create your itinerary and make the most of your time in Makati.",
-                    category: 'Sightseeing Tour',
-                    image: item2,
-                    link: "",
-                    mapLocation: ""
-                },
-                {
-                    name: 'Zitro Massage and Spa',
-                    description: "Indulge in ultimate relaxation and rejuvenation at Zitro Massage and Spa. This serene oasis offers a variety of therapeutic treatments, from traditional massages to modern wellness therapies. Surrender to the skilled hands of expert therapists and let your stress melt away. With a tranquil ambiance and a range of pampering options, Zitro Massage and Spa provides the perfect escape from the bustling city life.",
-                    category: 'Spa and Wellness',
-                    image: item3,
-                    link: "",
-                    mapLocation: ""
-                },
-                {
-                    name: 'Zeria',
-                    description: "Get ready for an immersive and thrilling experience at Zeria, Makati's premier escape room destination. Gather your friends, family, or colleagues and put your problem-solving skills to the test in a series of mind-bending puzzles and challenges. Each escape room presents a unique storyline, making Zeria an ideal place for team building, bonding, or simply having a blast with your loved ones.",
-                    category: 'Entertainment/Gaming',
-                    image: item4,
-                    link: "",
-                    mapLocation: ""
-                },
-                {
-                    name: 'Two Seasons Spa',
-                    description: "Treat yourself to a tranquil escape at Two Seasons Spa. With a selection of massages, facials, and body treatments, this spa offers a rejuvenating experience that caters to your specific needs. Let the stress fade away as you unwind in the serene atmosphere of Two Seasons Spa, leaving you feeling invigorated and revitalized.",
-                    category: 'Spa and Wellness',
-                    image: item5,
-                    link: "",
-                    mapLocation: ""
-                },
-                {
-                    name: 'White Palace Spa',
-                    description: "Experience pure bliss and luxury at White Palace Spa. Indulge in their extensive menu of spa services, including invigorating massages, facials, and body treatments. Step into an ambiance of serenity and let the experienced therapists take care of your well-being. White Palace Spa offers a sanctuary of tranquility, making it the perfect escape from the hustle and bustle of city life.",
-                    category: 'Spa and Wellness',
-                    image: item6,
-                    link: "",
-                    mapLocation: ""
-                },
-                {
-                    name: 'Urband Break Wellness',
-                    description: 'Escape the daily grind and discover a holistic approach to wellness at Urban Break Wellness. From yoga and meditation classes to natural healing therapies, this wellness center is dedicated to promoting mind-body harmony. Reconnect with your inner self and find rejuvenation amidst the urban landscape of Makati at Urban Break Wellness.',
-                    category: 'Spa and Wellness',
-                    image: item7,
-                    link: "",
-                    mapLocation: ""
-                },
-                {
-                    name: 'Touch of Hands Spa',
-                    description: 'Pamper yourself with a blissful retreat at Touch of Hands Spa. With a range of massage therapies and spa treatments, this haven of relaxation will leave you feeling refreshed and renewed. Surrender to the healing touch of their skilled therapists and experience the ultimate pampering session at Touch of Hands Spa.',
-                    category: 'Spa and Wellness',
-                    image: item8,
-                    link: "",
-                    mapLocation: ""
-                },
-                {
-                    name: 'Product 9',
-                    description: 'Description of Product 9',
-                    category: 'Museum',
-                    image: 'https://via.placeholder.com/300',
-                    link: "",
-                    mapLocation: ""
-                },
-                {
-                    name: 'Product 10',
-                    description: 'Description of Product 10',
-                    category: 'Museum',
-                    image: 'https://via.placeholder.com/300',
-                    link: "",
-                    mapLocation: ""
-                },
+            items: [{
+                name: 'Omniverse Museum',
+                description: "Discover a fusion of art and technology at the Omniverse Museum in Makati. Step into a world of interactive exhibits, mind-bending installations, and awe-inspiring virtual reality experiences. This unique museum promises a captivating journey through the realms of creativity and innovation. Whether you're an art enthusiast or a tech-savvy explorer, the Omniverse Museum is a must-visit destination for an extraordinary adventure.",
+                category: 'Museum',
+                image: item1,
+                link: "/category/do/omniverse",
+                mapLocation: "https://www.google.com/maps/dir//Omniverse+Museum+Japan+Town+4%2FF+Glorietta+2,+Ayala+Center+Makati+Palm+Dr,+Makati+Ave,+Makati,+1224+Metro+Manila/@14.5509998,121.0236327,17.09z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c97f24c8a707:0x936b4a8c37308563!2m2!1d121.0254416!2d14.5509171?entry=ttu"
+            },
+            {
+                name: 'Hop-On, Hop-Off Tour',
+                description: "Embark on a convenient and flexible sightseeing adventure with the Hop-On, Hop-Off Tour in Makati. Climb aboard an open-top double-decker bus and enjoy panoramic views as you explore the city's iconic landmarks and vibrant neighborhoods. Hop off at any stop that catches your interest, and hop back on when you're ready to move on to the next exciting destination. This tour offers the freedom to create your itinerary and make the most of your time in Makati.",
+                category: 'Sightseeing Tour',
+                image: item2,
+                link: "",
+                mapLocation: ""
+            },
+            {
+                name: 'Zitro Massage and Spa',
+                description: "Indulge in ultimate relaxation and rejuvenation at Zitro Massage and Spa. This serene oasis offers a variety of therapeutic treatments, from traditional massages to modern wellness therapies. Surrender to the skilled hands of expert therapists and let your stress melt away. With a tranquil ambiance and a range of pampering options, Zitro Massage and Spa provides the perfect escape from the bustling city life.",
+                category: 'Spa and Wellness',
+                image: item3,
+                link: "",
+                mapLocation: ""
+            },
+            {
+                name: 'Zeria',
+                description: "Get ready for an immersive and thrilling experience at Zeria, Makati's premier escape room destination. Gather your friends, family, or colleagues and put your problem-solving skills to the test in a series of mind-bending puzzles and challenges. Each escape room presents a unique storyline, making Zeria an ideal place for team building, bonding, or simply having a blast with your loved ones.",
+                category: 'Entertainment/Gaming',
+                image: item4,
+                link: "",
+                mapLocation: ""
+            },
+            {
+                name: 'Two Seasons Spa',
+                description: "Treat yourself to a tranquil escape at Two Seasons Spa. With a selection of massages, facials, and body treatments, this spa offers a rejuvenating experience that caters to your specific needs. Let the stress fade away as you unwind in the serene atmosphere of Two Seasons Spa, leaving you feeling invigorated and revitalized.",
+                category: 'Spa and Wellness',
+                image: item5,
+                link: "",
+                mapLocation: ""
+            },
+            {
+                name: 'White Palace Spa',
+                description: "Experience pure bliss and luxury at White Palace Spa. Indulge in their extensive menu of spa services, including invigorating massages, facials, and body treatments. Step into an ambiance of serenity and let the experienced therapists take care of your well-being. White Palace Spa offers a sanctuary of tranquility, making it the perfect escape from the hustle and bustle of city life.",
+                category: 'Spa and Wellness',
+                image: item6,
+                link: "",
+                mapLocation: ""
+            },
+            {
+                name: 'Urband Break Wellness',
+                description: 'Escape the daily grind and discover a holistic approach to wellness at Urban Break Wellness. From yoga and meditation classes to natural healing therapies, this wellness center is dedicated to promoting mind-body harmony. Reconnect with your inner self and find rejuvenation amidst the urban landscape of Makati at Urban Break Wellness.',
+                category: 'Spa and Wellness',
+                image: item7,
+                link: "",
+                mapLocation: ""
+            },
+            {
+                name: 'Touch of Hands Spa',
+                description: 'Pamper yourself with a blissful retreat at Touch of Hands Spa. With a range of massage therapies and spa treatments, this haven of relaxation will leave you feeling refreshed and renewed. Surrender to the healing touch of their skilled therapists and experience the ultimate pampering session at Touch of Hands Spa.',
+                category: 'Spa and Wellness',
+                image: item8,
+                link: "",
+                mapLocation: ""
+            },
+            {
+                name: 'Product 9',
+                description: 'Description of Product 9',
+                category: 'Museum',
+                image: 'https://via.placeholder.com/300',
+                link: "",
+                mapLocation: ""
+            },
+            {
+                name: 'Product 10',
+                description: 'Description of Product 10',
+                category: 'Museum',
+                image: 'https://via.placeholder.com/300',
+                link: "",
+                mapLocation: ""
+            },
             ],
             currentPage: 0,
             pageSize: 8,
             showDropdown: false,
-            categories: ['Entertainment', 'Fitness', 'Spa', 'Musuem', 'Spa & Wellness', 'Gym', 'Cinema', 'Sports Arena', 'Theater', 'Game', 'Library', 'Gallery'],
+            categories: ['All', 'Entertainment', 'Fitness', 'Spa', 'Musuem', 'Spa & Wellness', 'Gym', 'Cinema', 'Sports Arena', 'Theater', 'Game', 'Library', 'Gallery'],
             locations: ['Bangkal', 'Bel-Air', 'Carmona', 'Dasmariñas', 'Forbes Park', 'Guadalupe Nuevo', 'Guadalupe Viejo', 'Kasilawan', 'La Paz', 'Magallanes', 'olympia', 'Palanan', 'Pinagkaisahan', 'Pio Del Pilar', 'Poblacion', 'San Antonio', 'San Isidro', 'San Lorenzo', 'Santa Cruz', 'Singkamas', 'Tejeros', 'Urdaneta', 'Valenzuela'],
         };
     },
@@ -309,10 +396,20 @@ export default {
             console.log('Selected category:', category);
         },
         seeMore(item) {
-            const { latitude, longitude } = this.extractLatLong(item.mapLocation);
+            const {
+                latitude,
+                longitude
+            } = this.extractLatLong(item.mapLocation);
             if (latitude !== null && longitude !== null) {
                 // Pass the name parameter in the query object
-                this.$router.push({ name: 'omniverse', query: { latitude, longitude, name: item.name } });
+                this.$router.push({
+                    name: 'omniverse',
+                    query: {
+                        latitude,
+                        longitude,
+                        name: item.name
+                    }
+                });
             } else {
                 console.error('Latitude or longitude not available');
             }
@@ -323,20 +420,27 @@ export default {
             if (match && match.length >= 3) {
                 const latitude = parseFloat(match[1]);
                 const longitude = parseFloat(match[2]);
-                return { latitude, longitude };
+                return {
+                    latitude,
+                    longitude
+                };
             }
-
             // Try another regex pattern for different URL formats
             const altRegex = /!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/;
             const altMatch = mapLocation.match(altRegex);
             if (altMatch && altMatch.length >= 3) {
                 const latitude = parseFloat(altMatch[1]);
                 const longitude = parseFloat(altMatch[2]);
-                return { latitude, longitude };
+                return {
+                    latitude,
+                    longitude
+                };
             }
-
             // If no match is found, return null values
-            return { latitude: null, longitude: null };
+            return {
+                latitude: null,
+                longitude: null
+            };
         }
     },
 };

@@ -1,11 +1,11 @@
 <template>
-    <div class="flex relative pt-[57px] md:pt-[80px] justify-center">
-        <div class="relative">
-            <div class="bg-[#102E61] h-[101%] lg:h-[110%]" style="position: absolute; top: 0; left: 0; width: 100%; ">
+    <div class="flex relative pt-[57px] md:pt-[80px] justify-center ">
+        <div class="relative ">
+            <div class="bg-[#102E61] h-[101%] lg:h-[110%]" style="position: absolute; top: 0; left: 0px; width: 100%; ">
             </div>
             <div class="relative inset-0 sm:top-56 md:top-2 pl-0 md:pl-10 flex items-center z-[1]">
                 <div class="relative flex flex-col pl-0 lg:pl-10">
-                    <div class="absolute top-4 left-3">
+                    <div class="absolute lg:top-4 lg:left-3 top-4 z-[1]">
                         <router-link to="/category/see">
                             <div
                                 class="hover:bg-white hover:rounded-md hover:transition-all hover:delay-200 hover:bg-opacity-85">

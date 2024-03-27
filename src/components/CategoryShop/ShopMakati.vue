@@ -61,7 +61,8 @@
             <div class="relative mx-6 px-3 lg:px-32 pt-5">
                 <p class="font-bold text-lg text-black text-left pb-5 pt-3 lg:pt-[5rem]">About this place</p>
                 <p class="text-lg text-justify text-black pb-5">From handmade souvenirs, eco-friendly Barongs and
-                    fashionable Filipiniana to artisanal chocolates and more, Makati Shop continues its mission to embrace
+                    fashionable Filipiniana to artisanal chocolates and more, Makati Shop continues its mission to
+                    embrace
                     our heritage and keep them relevant; support communities and help grow small businesses;
 
                     protect the environment and elevate pride in our identity.</p>
@@ -111,8 +112,8 @@
                                 style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 Multi handle Tote bag with Embroided Philippine Kalesa Scenery
                             </p>
-                            <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToShop/shop-product1.png"
-                                alt="" width="100%">
+                            <img class="rounded-md lg:h-[80%]"
+                                src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="100%">
                             <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
@@ -203,9 +204,10 @@
                                                     <p class="w-[100%] text-xs">• Multi handle feature</p>
                                                 </div>
                                                 <div class="flex justify-between mb-2">
-                                                    <p class="w-[100%] text-xs">• Can be used as a handbag or tote shoulder
+                                                    <p class="w-[100%] text-xs">• Can be used as a handbag or tote
+                                                        shoulder
                                                         bag
-                                      </p>
+                                                    </p>
                                                 </div>
                                                 <div class="flex justify-between mb-2">
                                                     <p class="w-[70%] text-xs">• Color: White</p>
@@ -216,7 +218,8 @@
                                                         <div
                                                             class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                                             <div class="inline-block w-[100%]">
-                                                                <label class="flex w-[100%] text-sm font-bold">juandelacruz
+                                                                <label
+                                                                    class="flex w-[100%] text-sm font-bold">juandelacruz
                                                                     ⭐️⭐️⭐️⭐️⭐</label>
                                                                 <p class="flex text-sm">03-10-2024 11:30</p>
                                                             </div>
@@ -229,7 +232,8 @@
                                                         <div
                                                             class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                                             <div class="inline-block w-[100%]">
-                                                                <label class="flex w-[100%] text-sm font-bold">faithstamaria
+                                                                <label
+                                                                    class="flex w-[100%] text-sm font-bold">faithstamaria
                                                                     ⭐️⭐️⭐️⭐️⭐</label>
                                                                 <p class="flex text-sm">09-03-2024 08:30</p>
                                                             </div>
@@ -366,8 +370,8 @@
                                 style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 Multi handle Tote bag with Embroided Philippine Kalesa Scenery
                             </p>
-                            <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToShop/shop-product2.png"
-                                alt="" width="100%">
+                            <img class="rounded-md lg:h-[80%]"
+                                src="@/assets/images/CategoryView/ToShop/shop-product2.png" alt="" width="100%">
                             <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
@@ -385,8 +389,8 @@
                                 style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 Multi handle Tote bag with Embroided Philippine Kalesa Scenery
                             </p>
-                            <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToShop/shop-product3.png"
-                                alt="" width="100%">
+                            <img class="rounded-md lg:h-[80%]"
+                                src="@/assets/images/CategoryView/ToShop/shop-product3.png" alt="" width="100%">
                             <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
@@ -799,9 +803,6 @@ export default {
         },
         toggleshowReviews() {
             this.showReviews = true;
-            this.showCart = false;
-        },
-        closeCart() {
             this.showCart = false;
         },
         closeReviews() {

@@ -15,12 +15,12 @@
     </div>
 
 
-    <div class="absolute inset-0 flex flex-col justify-center px-10 pb-40 text-white top-40 lg:top-0 lg:ml-[150px]">
+    <div class="absolute inset-0 flex flex-col justify-center px-10 pb-40 text-white top-40 lg:top-0 lg:ml-[120px]">
       <p class="text-2xl text-yellow-500 poppins">Come visit</p>
-      <h1 class="mt-10 lg:mt-0 mb-2 text-5xl font-bold">My City,</h1>
-      <h1 class="mb-4 text-5xl font-bold">My Makati</h1>
-      <p class="mb-4 text-sm">Whoever you are, wherever you are from,<br>there is a little bit of Makati in you!</p>
-      <p class="mb-4 text-sm">Come and experience my Makati, our <a href="https://www.makati.gov.ph" target="_blank"
+      <h1 class="mt-10 lg:mt-0 mb-2 text-6xl font-bold">My City,</h1>
+      <h1 class="mb-4 text-6xl font-bold">My Makati</h1>
+      <p class="mb-4 text-md">Whoever you are, wherever you are from,<br>there is a little bit of Makati in you!</p>
+      <p class="mb-4 text-md">Come and experience my Makati, our <a href="https://www.makati.gov.ph" target="_blank"
           class="text-blue-400 text-decoration-none">Makati</a></p>
     </div>
 

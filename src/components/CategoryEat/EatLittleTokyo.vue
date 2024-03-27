@@ -7,11 +7,15 @@
                 <div class="relative flex flex-col pl-0 lg:pl-10">
                     <div class="absolute top-4 left-3">
                         <router-link to="/category/do">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="white" class="w-7 lg:w-10 h-7 lg:h-10">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-                            </svg>
+                            <div
+                                class="hover:bg-white hover:rounded-md hover:transition-all hover:delay-200 hover:bg-opacity-85">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                    stroke="white" class="w-7 lg:w-10 h-7 lg:h-10">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                                </svg>
+                            </div>
+
                         </router-link>
                     </div>
                     <div class="relative flex flex-col items-center">
@@ -112,38 +116,441 @@
                     <div class="flex flex-wrap justify-start items-center text-white lg:w-[100%]">
                         <div
                             class="lg:w-auto lg:flex-auto bg-blue-950 lg:h-[15rem] w-[47%] h-[190px] m-1 p-2 lg:p-3 rounded-xl relative flex flex-col justify-between">
-                            <p class="rounded-xl lg:text-sm text-xs absolute top-0 left-0 text-white p-2 w-full"
-                                style="background-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);">
-                                spicy Maguro
+                            <p class="rounded-lg lg:text-sm text-xs lg:px-2 pt-2 absolute top-2.5 left-3 right-3 text-white p-2 w-71"
+                                style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
+                                Spicy Maguro
                             </p>
+
                             <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToEat/best1.png" alt=""
                                 width="100%">
-                            <button
+                            <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
+
+                            <div class="flex justify-end absolute bottom-[65px] right-[18px]">
+                                <div class="flex justify-between">
+                                    <div class="flex bg-blue-950 border-1 rounded-lg border-white">
+                                        <p class="text-xs border rounded-lg border-white p-1">₱ 100.00</p>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <div
                             class="lg:w-auto lg:flex-auto bg-blue-950 lg:h-[15rem] w-[47%] h-[190px] m-1 p-2 lg:p-3 rounded-xl relative flex flex-col justify-between">
-                            <p class="rounded-xl lg:text-sm text-xs absolute top-0 left-0 text-white p-2 w-full"
-                                style="background-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);">
+                            <p class="rounded-lg lg:text-sm text-xs lg:px-2 pt-2 absolute top-2.5 left-3 right-3 text-white p-2 w-71"
+                                style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 Modern Ika Tama
                             </p>
+
                             <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToEat/best2.png" alt=""
                                 width="100%">
-                            <button
+                            <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
+
+                            <div class="flex justify-end absolute bottom-[65px] right-[18px]">
+                                <div class="flex justify-between">
+                                    <div class="flex bg-blue-950 border-1 rounded-lg border-white">
+                                        <p class="text-xs border rounded-lg border-white p-1">₱ 100.00</p>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <div
-                            class="hidden lg:block lg:w-auto lg:flex-auto bg-blue-950 lg:h-[15rem] w-[100%] h-[190px] m-1 p-2 lg:p-3 rounded-xl relative flex-col justify-between">
-                            <p class="rounded-xl lg:text-sm text-xs absolute top-0 left-0 text-white p-2 w-full"
-                                style="background-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);">
-                                Udon </p>
-                            <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToEat/best3.jpg" alt=""
+                            class="lg:w-auto lg:flex-auto bg-blue-950 lg:h-[15rem] w-[47%] h-[190px] m-1 p-2 lg:p-3 rounded-xl relative flex flex-col justify-between">
+                            <p class="rounded-lg lg:text-sm text-xs lg:px-2 pt-2 absolute top-2.5 left-3 right-3 text-white p-2 w-71"
+                                style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
+                                Udon
+                            </p>
+
+                            <img class="rounded-md lg:h-[70%]" src="@/assets/images/CategoryView/ToEat/best3.jpg" alt=""
                                 width="100%">
-                            <button
+                            <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
+
+                            <div class="flex justify-end absolute bottom-[65px] right-[18px]">
+                                <div class="flex justify-between">
+                                    <div class="flex bg-blue-950 border-1 rounded-lg border-white">
+                                        <p class="text-xs border rounded-lg border-white p-1">₱ 100.00</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="showCart"
+                    class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
+                    @click.self="closeModal">
+                    <div class="bg-white overflow-y-auto h-[680px] w-[900px] overflow-hidden scrollbar-hide rounded-lg shadow-md p-2 mx-5"
+                        @click.stop>
+                        <div class="lg:w-[100%] p-4 rounded-lg">
+                            <div class="relative flex justify-end">
+                                <button class=" pr-4 pt-21 ">
+                                    <svg @click="closeCart" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 20 30" stroke-width="5" stroke="black" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div class="flex justify-between w-[100%]">
+                                <div class="w-[40%]">
+
+                                    <div class="flex justify-center items-center mb-3">
+                                        <img src="@/assets/images/CategoryView/ToEat/best1.png"
+                                            class="w-auto h-24 md:w-[500px] md:h-auto">
+                                    </div>
+
+                                    <div class="flex justify-between">
+
+
+                                        <div class="flex justify-between items-center">
+                                            <img src="@/assets/images/CategoryView/ToEat/best2.png"
+                                                class="h-24 md:w-[80px] md:h-auto">
+                                        </div>
+
+                                        <div class="flex justify-center items-center">
+                                            <img src="@/assets/images/CategoryView/ToEat/best3.jpg"
+                                                class="h-24 md:w-[80px] md:h-auto">
+                                        </div>
+
+                                        <div class="flex justify-center items-center">
+                                            <img src="@/assets/images/CategoryView/ToEat/other1.jpg"
+                                                class="h-24 md:w-[80px] md:h-auto">
+                                        </div>
+
+                                        <div class="flex justify-center items-center mx-5">
+                                            <img src="@/assets/images/CategoryView/ToShop/button.png"
+                                                class="h-24 md:w-[40px] md:h-auto">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="w-[60%] px-3">
+
+                                    <div class="flex flex-col text-black">
+                                        <p class="font-bold text-left text-1xl mb-2"> This culinary enclave offers a
+                                            delightful array of Japanese restaurants and eateries, serving up delicious
+                                            sushi, ramen, tempura, and more.</p>
+                                    </div>
+
+                                    <div class="text-black mb-5">
+                                        <p class="font-bold">Little Tokyo</p>
+                                        <div class="flex justify-between mb-2">
+                                            <p class="w-[100%] ">₱100.00</p>
+
+                                            <div class="flex justify-end">
+                                                <div class="flex justify-between">
+                                                    <p class="mr-5">Quantity</p>
+                                                    <div class="flex border border-black">
+                                                        <button class="border border-black px-3">+</button>
+                                                        <p class="border border-black px-3">1</p>
+                                                        <button class="border border-black px-3">-</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="border border-gray-200 my-5"></div>
+
+                                        <div class="flex justify-between mb-2">
+                                            <p class="w-[100%] text-xs">• Spicy Maguro</p>
+
+                                        </div>
+                                        <div class="flex justify-between mb-2">
+                                            <p class="w-[100%] text-xs">• Modern Ika Tama</p>
+
+                                        </div>
+                                        <div class="flex justify-between mb-2">
+                                            <p class="w-[100%] text-xs">• Udon</p>
+
+                                        </div>
+                                        <div class="flex justify-between mb-2">
+                                            <p class="w-[100%] text-xs">• Takoyaki</p>
+
+                                        </div>
+
+                                        <div class="flex justify-between mb-2">
+                                            <p class="w-[100%] text-xs">• San Ten Mori
+                                            </p>
+
+                                        </div>
+
+                                        <div class="flex justify-between mb-2">
+                                            <p class="w-[70%] text-xs">• Oyako Don</p>
+
+                                        </div>
+
+                                        <p class="font-bold">Reviews</p>
+
+                                        <button @click="toggleshowReviews">
+
+                                            <div>
+                                                <div
+                                                    class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                                    <div class="inline-block w-[100%]">
+                                                        <label class="flex w-[100%] text-sm font-bold">juandelacruz
+                                                            ⭐️⭐️⭐️⭐️⭐</label>
+                                                        <p class="flex text-sm">03-10-2024 11:30</p>
+                                                    </div>
+
+                                                    <div class="flex justify-between mb-2">
+                                                        <p class="w-[100%] text-xs text-left">I will buy again.
+                                                            The seller is kind and accommodating with my
+                                                            requests. Transaction is smooth. ❤️</p>
+                                                    </div>
+
+                                                </div>
+
+                                                <div
+                                                    class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                                    <div class="inline-block w-[100%]">
+                                                        <label class="flex w-[100%] text-sm font-bold">faithstamaria
+                                                            ⭐️⭐️⭐️⭐️⭐</label>
+                                                        <p class="flex text-sm">09-03-2024 08:30</p>
+                                                    </div>
+
+                                                    <div class="flex justify-between mb-2">
+                                                        <p class="w-[100%] text-xs text-left">I will buy again.
+                                                            The seller is kind and accommodating with my
+                                                            requests. Transaction is smooth. ❤️</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between">
+
+                                <div class="w-[100%] flex justify-start">
+                                    <button class="text-blue-600 border-blue-500 border-2 rounded-lg py-2 w-[90%]">Add
+                                        to
+                                        Cart</button>
+                                </div>
+
+                                <div class="w-[100%] flex justify-end">
+
+                                    <router-link to="/checkoutshop" class="w-full">
+                                        <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]">Buy
+                                            Now</button>
+                                    </router-link>
+
+
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="showReviews"
+                    class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
+                    @click.self="closeModal">
+                    <div class="bg-white overflow-y-auto h-[680px] w-[900px] overflow-hidden scrollbar-hide rounded-lg shadow-md p-2 mx-5"
+                        @click.stop>
+                        <div class="lg:w-[100%] p-4 rounded-lg">
+                            <div class="relative flex justify-end">
+                                <button class=" pr-1 pt-23 ">
+                                    <svg @click="closeReviews" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 20 30" stroke-width="5" stroke="black" class="w-9 h-9">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <h1 class="mb-5 font-bold text-xl text-black text-left pb-2 lg:pt-3">REVIEWS</h1>
+
+                            <div class="overflow-y-auto h-[500px] scrollbar-hide mb-2">
+                                <div
+                                    class="flex w-[100%]  text-black flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                    <div class="inline-block w-[100%]">
+                                        <label class="flex w-[100%] text-md font-bold">juandelacruz
+                                            ⭐️⭐️⭐️⭐️⭐</label>
+                                        <p class="flex text-xs">03-10-2024 11:30</p>
+                                    </div>
+
+                                    <div class="flex justify-between mb-2">
+                                        <p class="w-[100%] text-md">I will buy
+                                            again. The
+                                            seller is
+                                            kind
+                                            and
+                                            accommodating with my requests. Transaction is smooth.
+                                            ❤️
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="flex w-[100%]  text-black flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                    <div class="inline-block w-[100%]">
+                                        <label class="flex w-[100%] text-mb font-bold">faithstamaria
+                                            ⭐️⭐️⭐️⭐️⭐</label>
+                                        <p class="flex text-xs">03-10-2024 11:30</p>
+                                    </div>
+
+                                    <div class="flex justify-between mb-2">
+                                        <p class="w-[100%] text-mb">I will buy
+                                            again. The
+                                            seller is
+                                            kind
+                                            and
+                                            accommodating with my requests. Transaction is smooth.
+                                            ❤️
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="flex w-[100%]  text-black  flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                    <div class="inline-block w-[100%]">
+                                        <label class="flex w-[100%] text-mb font-bold">clendafaith
+                                            ⭐️⭐️⭐️⭐️⭐</label>
+                                        <p class="flex text-xs">03-10-2024 11:30</p>
+                                    </div>
+
+                                    <div class="flex justify-between mb-2">
+                                        <p class="w-[100%] text-mb">I will buy
+                                            again. The
+                                            seller is
+                                            kind
+                                            and
+                                            accommodating with my requests. Transaction is smooth.
+                                            ❤️
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="flex w-[100%]  text-black flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                    <div class="inline-block w-[100%]">
+                                        <label class="flex w-[100%] text-mb font-bold">juhannamarie
+                                            ⭐️⭐️⭐️⭐️⭐</label>
+                                        <p class="flex text-xs">03-10-2024 11:30</p>
+                                    </div>
+
+                                    <div class="flex justify-between mb-2">
+                                        <p class="w-[100%] text-mb">I will buy
+                                            again. The
+                                            seller is
+                                            kind
+                                            and
+                                            accommodating with my requests. Transaction is smooth.
+                                            ❤️
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="flex w-[100%]  text-black  flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                    <div class="inline-block w-[100%]">
+                                        <label class="flex w-[100%] text-mb font-bold">jobellenina
+                                            ⭐️⭐️⭐️⭐️⭐</label>
+                                        <p class="flex text-xs">03-10-2024 11:30</p>
+                                    </div>
+
+                                    <div class="flex justify-between mb-2">
+                                        <p class="w-[100%] text-mb">I will buy
+                                            again. The
+                                            seller is
+                                            kind
+                                            and
+                                            accommodating with my requests. Transaction is smooth.
+                                            ❤️
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="flex w-[100%]  text-black flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                    <div class="inline-block w-[100%]">
+                                        <label class="flex w-[100%] text-mb font-bold">chezterfaith
+                                            ⭐️⭐️⭐️⭐️⭐</label>
+                                        <p class="flex text-xs">03-10-2024 11:30</p>
+                                    </div>
+
+                                    <div class="flex justify-between mb-2">
+                                        <p class="w-[100%] text-mb">I will buy
+                                            again. The
+                                            seller is
+                                            kind
+                                            and
+                                            accommodating with my requests. Transaction is smooth.
+                                            ❤️
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="showCartModal"
+                    class="lg:hidden fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
+                    @click.self="closeModal">
+                    <div class="bg-white rounded-lg shadow-md p-2 max-w-md mx-5" @click.stop>
+                        <div class="lg:w-[100%] p-4 rounded-lg">
+                            <div class="flex justify-between mb-2">
+                                <div class="w-[50%]">
+                                    <p class="text-center font-bold">Number of items</p>
+                                    <p class="text-center font-bold text-3xl">9</p>
+                                </div>
+                                <router-link to="/cart">
+                                    <div class="w-[120%]">
+                                        <button
+                                            class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Edit
+                                            Cart</button>
+                                    </div>
+                                </router-link>
+
+                            </div>
+                            <div class="mb-5">
+                                <p class="font-bold">List of items</p>
+                                <div class="flex justify-between mb-2">
+                                    <p class="w-[70%]">Multi handed Tote Bag with embroidered Philippines Kalesa Scenery
+                                    </p>
+                                    <p>x1</p>
+                                </div>
+                                <div class="flex justify-between mb-2">
+                                    <p class="w-[70%]">Multi handed Tote Bag with embroidered Philippines Jeepney</p>
+                                    <p>x3</p>
+                                </div>
+                                <div class="flex justify-between mb-2">
+                                    <p class="w-[70%]">Beat the Heat Graphic Tee in blush</p>
+                                    <p>x1</p>
+                                </div>
+                                <div class="flex justify-between mb-2">
+                                    <p class="w-[70%]">Never Stop Exploring Graphic Tee in Gray</p>
+                                    <p>x2</p>
+                                </div>
+                                <div class="flex justify-between mb-2">
+                                    <p class="w-[70%]">Ethnic Stripes Book Tote Bag</p>
+                                    <p>x2</p>
+                                </div>
+
+                            </div>
+
+
+
+                            <button
+                                class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Check
+                                Out</button>
+
+
                         </div>
                     </div>
                 </div>
@@ -154,84 +561,143 @@
                 <div class="flex flex-wrap justify-between items-center mb-2 ">
                     <div class="lg:block flex flex-wrap items-center lg:w-[49%] text-white">
                         <div
-                            class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
-                            <p class="text-xs absolute top-3 right-0 text-white p-2 w-[55%]">
-                                Takoyaki</p>
-                            <p class="text-xs absolute bottom-12 right-0 text-white p-2 w-[55%]">
-                                ₱ 200.00</p>
-                            <img class="rounded-md mt-2 lg:h-[70%]" src="@/assets/images/CategoryView/ToEat/other1.jpg"
-                                alt="" width="40%">
-                            <div class="flex flex-wrap justify-between items-center mb-2">
-                                <button class="text-xs bg-blue-900 rounded-md py-1 px-3 w-[40%]">See More</button>
-                                <button class="text-xs bg-blue-600 rounded-md py-1 px-3 w-[57%]">Add to Cart</button>
+                            class="bg-blue-950 w-[100%] border-2 h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
+                            <div class="flex justify-between w-[100%]">
+                                <div class="w-[40%]">
+                                    <img class="rounded-md mt-2 lg:h-[89%]"
+                                        src="@/assets/images/CategoryView/ToEat/other1.jpg" alt="" width="100%">
+                                </div>
+                                <div class="w-[60%]">
+                                    <p class="text-xs text-white p-2 w-[60%] mb-12">
+                                        Takoyaki</p>
+                                    <p class="text-xs text-white p-2 w-[55%]">
+                                        ₱ 100.00</p>
+                                    <div class="flex justify-between items-center mt-3 mb-2">
+                                        <button class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%]">See
+                                            More</button>
+                                        <button @click="toggleshowCart"
+                                            class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%]">Add to
+                                            Cart</button>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                         <div
                             class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
-                            <p class="text-xs absolute top-3 right-0 text-white p-2 w-[55%]">
-                                Oyako Don</p>
-                            <p class="text-xs absolute bottom-12 right-0 text-white p-2 w-[55%]">
-                                ₱ 200.00</p>
-                            <img class="rounded-md mt-2 lg:h-[70%]" src="@/assets/images/CategoryView/ToEat/other2.png"
-                                alt="" width="40%">
-                            <div class="flex flex-wrap justify-between items-center mb-2">
-                                <button class="text-xs bg-blue-900 rounded-md py-1 px-3 w-[40%]">See More</button>
-                                <button class="text-xs bg-blue-600 rounded-md py-1 px-3 w-[57%]">Add to Cart</button>
+                            <div class="flex justify-between  w-[100%]">
+                                <div class="w-[40%]">
+                                    <img class="rounded-md mt-2 lg:h-[89%]"
+                                        src="@/assets/images/CategoryView/ToEat/other2.png" alt="" width="100%">
+                                </div>
+                                <div class="w-[60%]">
+                                    <p class="text-xs text-white p-2 w-[60%] mb-12">
+                                        Oyako Don</p>
+                                    <p class="text-xs text-white p-2 w-[55%]">
+                                        ₱ 100.00</p>
+                                    <div class="flex justify-between items-center mt-4 mb-2">
+                                        <button class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%]">See
+                                            More</button>
+                                        <button @click="toggleshowCart"
+                                            class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%]">Add to
+                                            Cart</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                         <div
                             class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
-                            <p class="text-xs absolute top-3 right-0 text-white p-2 w-[55%]">
-                                7 Kinds Chirashi</p>
-                            <p class="text-xs absolute bottom-12 right-0 text-white p-2 w-[55%]">
-                                ₱ 200.00</p>
-                            <img class="rounded-md mt-2 lg:h-[70%]" src="@/assets/images/CategoryView/ToEat/other3.png"
-                                alt="" width="40%">
-                            <div class="flex flex-wrap justify-between items-center mb-2">
-                                <button class="text-xs bg-blue-900 rounded-md py-1 px-3 w-[40%]">See More</button>
-                                <button class="text-xs bg-blue-600 rounded-md py-1 px-3 w-[57%]">Add to Cart</button>
+                            <div class="flex justify-between  w-[100%]">
+                                <div class="w-[40%]">
+                                    <img class="rounded-md mt-2 lg:h-[89%]"
+                                        src="@/assets/images/CategoryView/ToEat/other3.png" alt="" width="100%">
+                                </div>
+                                <div class="w-[60%]">
+                                    <p class="text-xs text-white p-2 w-[60%] mb-12">
+                                        7 Kinds Chirashi</p>
+                                    <p class="text-xs text-white p-2 w-[55%]">
+                                        ₱ 100.00</p>
+                                    <div class="flex justify-between items-center mt-4 mb-2">
+                                        <button class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%]">See
+                                            More</button>
+                                        <button @click="toggleshowCart"
+                                            class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%]">Add to
+                                            Cart</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="hidden lg:block flex-wrap items-center lg:w-[49%] text-white">
+
                         <div
                             class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
-                            <p class="text-xs absolute top-3 right-0 text-white p-2 w-[55%]">
-                                San Ten Mori</p>
-                            <p class="text-xs absolute bottom-12 right-0 text-white p-2 w-[55%]">
-                                ₱ 100.00</p>
-                            <img class="rounded-md mt-2 lg:h-[70%]" src="@/assets/images/CategoryView/ToEat/other4.jpg"
-                                alt="" width="40%">
-                            <div class="flex flex-wrap justify-between items-center mb-2">
-                                <button class="text-xs bg-blue-900 rounded-md py-1 px-3 w-[40%]">See More</button>
-                                <button class="text-xs bg-blue-600 rounded-md py-1 px-3 w-[57%]">Add to Cart</button>
+                            <div class="flex justify-between  w-[100%]">
+                                <div class="w-[40%]">
+                                    <img class="rounded-md mt-2 lg:h-[89%]"
+                                        src="@/assets/images/CategoryView/ToEat/other4.jpg" alt="" width="100%">
+                                </div>
+                                <div class="w-[60%]">
+                                    <p class="text-xs text-white p-2 w-[60%] mb-12">
+                                        San Ten Mori</p>
+                                    <p class="text-xs text-white p-2 w-[55%]">
+                                        ₱ 100.00</p>
+                                    <div class="flex justify-between items-center mt-4 mb-2">
+                                        <button class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%]">See
+                                            More</button>
+                                        <button @click="toggleshowCart"
+                                            class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%]">Add to
+                                            Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
+                            <div class="flex justify-between  w-[100%]">
+                                <div class="w-[40%]">
+                                    <img class="rounded-md mt-2 lg:h-[89%]"
+                                        src="@/assets/images/CategoryView/ToEat/other5.png" alt="" width="100%">
+                                </div>
+                                <div class="w-[60%]">
+                                    <p class="text-xs text-white p-2 w-[60%] mb-12">
+                                        Makunouchi Bento</p>
+                                    <p class="text-xs text-white p-2 w-[55%]">
+                                        ₱ 100.00</p>
+                                    <div class="flex justify-between items-center mt-4 mb-2">
+                                        <button class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%]">See
+                                            More</button>
+                                        <button @click="toggleshowCart"
+                                            class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%]">Add to
+                                            Cart</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div
                             class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
-                            <p class="text-xs absolute top-3 right-0 text-white p-2 w-[55%]">
-                                Makunouchi Bento</p>
-                            <p class="text-xs absolute bottom-12 right-0 text-white p-2 w-[55%]">
-                                ₱ 100.00</p>
-                            <img class="rounded-md mt-2 lg:h-[70%]" src="@/assets/images/CategoryView/ToEat/other5.png"
-                                alt="" width="40%">
-                            <div class="flex flex-wrap justify-between items-center mb-2">
-                                <button class="text-xs bg-blue-900 rounded-md py-1 px-3 w-[40%]">See More</button>
-                                <button class="text-xs bg-blue-600 rounded-md py-1 px-3 w-[57%]">Add to Cart</button>
-                            </div>
-                        </div>
-                        <div
-                            class="bg-blue-950 w-[100%] h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
-                            <p class="text-xs absolute top-3 right-0 text-white p-2 w-[55%]">
-                                Chasyu Men</p>
-                            <p class="text-xs absolute bottom-12 right-0 text-white p-2 w-[55%]">
-                                ₱ 100.00</p>
-                            <img class="rounded-md mt-2 lg:h-[70%]" src="@/assets/images/CategoryView/ToEat/other6.png"
-                                alt="" width="40%">
-                            <div class="flex flex-wrap justify-between items-center mb-2">
-                                <button class="text-xs bg-blue-900 rounded-md py-1 px-3 w-[40%]">See More</button>
-                                <button class="text-xs bg-blue-600 rounded-md py-1 px-3 w-[57%]">Add to Cart</button>
+                            <div class="flex justify-between  w-[100%]">
+                                <div class="w-[40%]">
+                                    <img class="rounded-md mt-2 lg:h-[89%]"
+                                        src="@/assets/images/CategoryView/ToEat/other6.png" alt="" width="100%">
+                                </div>
+                                <div class="w-[60%]">
+                                    <p class="text-xs text-white p-2 w-[60%] mb-12">
+                                        Chasyu Men</p>
+                                    <p class="text-xs text-white p-2 w-[55%]">
+                                        ₱ 100.00</p>
+                                    <div class="flex justify-between items-center mt-4 mb-2">
+                                        <button class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%]">See
+                                            More</button>
+                                        <button @click="toggleshowCart"
+                                            class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%]">Add to
+                                            Cart</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -407,7 +873,12 @@
 </template>
 
 
-<style scoped></style>
+<style scoped>
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+    /* Hide scrollbar for WebKit (Chrome, Safari) */
+}
+</style>
 
 
 <script>
@@ -442,6 +913,9 @@ export default {
 
 
             ],
+            showCartModal: false,
+            showCart: false,
+            showReviews: false,
             currentPage: 0,
             pageSize: 8,
             showDropdown: false,
@@ -456,6 +930,25 @@ export default {
         },
     },
     methods: {
+        toggleshowCart() {
+            this.showAddtoCart = false;
+            this.showCart = true;
+        },
+        closeCart() {
+            this.showCart = false;
+        },
+        closeModal() {
+            this.showCartModal = false;
+        },
+        toggleshowReviews() {
+            this.showReviews = true;
+            this.showCart = false;
+        },
+        closeReviews() {
+            this.showReviews = false;
+            this.showCart = true;
+        },
+
     },
 };
 </script>

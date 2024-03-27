@@ -48,6 +48,8 @@
           href="#">Become a partner</a>
       </div>
 
+    </div>
+
       <!-- Login Modal -->
       <div v-if="showLoginModal" class=" fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
         <div class="relative bg-white lg:w-[70vw] w-[90vw] h-[30rem] rounded-3xl">
@@ -421,10 +423,14 @@
             </form>
           </div>
         </div>
-      </div>
-    </div>
 
-      <!-- OTP -->
+       
+
+      </div>
+
+    
+
+     <!-- OTP -->
       <div v-if="showOTPModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
       <!-- Modal Content -->
       <div class="relative flex justify-end">
@@ -507,6 +513,10 @@
         </div>
       </div>
       </div>
+
+    
+
+     
 
     
 

@@ -5,16 +5,17 @@
             </div>
             <div class="relative inset-0 sm:top-56 md:top-2 pl-0 md:pl-10 flex items-center z-[1]">
                 <div class="relative flex flex-col pl-0 lg:pl-10">
-                    <div class="absolute lg:top-4 lg:left-3 top-4 z-[1]">
-                        <router-link to="/category/tour">
-                            <a class=" flex items-center">
+                    <div class="absolute top-4 left-3">
+                        <router-link to="/category/do">
+                            <div
+                                class="hover:bg-white hover:rounded-md hover:transition-all hover:delay-200 hover:bg-opacity-85">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                    style="filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));" stroke="currentColor"
-                                    class="w-8 ml-5 lg:ml-0 lg:w-10 h-12 lg:h-10 hover:bg-gray-300 rounded-md p-1 cursor-pointer text-white ">
+                                    stroke="white" class="w-7 lg:w-10 h-7 lg:h-10">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
                                 </svg>
-                            </a>
+                            </div>
+
                         </router-link>
                     </div>
                     <div class="relative flex flex-col items-center">
@@ -114,13 +115,6 @@
                     <div>
                         <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
                         <MapRenderer :latitude="latitude" :longitude="longitude" :name="name" />
-
-                        <!-- <img src="@/assets/images/CategoryView/ToSee/Glorietta Map.jpg" alt=""
-                            class="pb-12 block lg:hidden">
-                        <div class="hidden lg:block lg:pb-10">
-                            <img src="@/assets/images/CategoryView/ToTour/centralbusiness webmap.png" alt=""
-                                class="w-[100%] h-[100%]">
-                        </div> -->
                     </div>
 
 
@@ -135,27 +129,27 @@
                     <div class="mb-5">
                         <div class="flex flex-col m-2">
                             <label for="Date" class=" mb-2 font-bold">Date of Tour</label>
-                            <input type="date" class="border border-gray-300 rounded-md p-1">
+                            <input type="date" class="border-2 border-black rounded-md p-2.5">
                         </div>
 
                         <div class="flex flex-col m-2">
                             <label for="" class=" mb-2 font-bold">Time of Tour</label>
-                            <input type="time" class="border border-gray-300 rounded-md p-1">
+                            <input type="time" class="border-2 border-black rounded-md p-2.5">
                         </div>
 
                         <div class="flex flex-col m-2">
                             <label for="" class=" mb-2 font-bold">Number of Person</label>
-                            <input type="text" class="border border-gray-300 rounded-md p-1">
+                            <input type="text" class="border-2 border-black rounded-md p-2.5">
                         </div>
 
                         <div class="flex flex-col m-2">
                             <label for="" class=" mb-2 font-bold">Services</label>
-                            <input type="text" class="border border-gray-300 rounded-md p-1" value="Tour">
+                            <input type="text" class="border-2 border-black rounded-md p-2.5" value="Tour">
                         </div>
 
                         <div class="flex flex-col m-2">
                             <label for="" class=" mb-2 font-bold">Other Services</label>
-                            <input type="text" class="border border-gray-300 rounded-md p-1" placeholder="Note here">
+                            <input type="text" class="border-2 border-black rounded-md p-2.5" placeholder="Note here">
                         </div>
                     </div>
 

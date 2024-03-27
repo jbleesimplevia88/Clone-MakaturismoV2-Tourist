@@ -138,33 +138,54 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    <div class="flex justify-between w-[100%]">
-                                        <div class="w-[40%]">
-                                            <div class="flex justify-center items-center mb-3">
+                                    <div class="lg:flex lg:justify-between w-[100%]">
+                                        <div class=" hidden lg:block lg:w-[40%]">
+                                            <div class="lg:flex justify-center items-center mb-3">
                                                 <img src="@/assets/images/CategoryView/ToShop/shop-product1.png"
                                                     class="w-auto h-24 md:w-[500px] md:h-auto">
                                             </div>
-                                            <div class="flex justify-between">
-                                                <div class="flex justify-between items-center">
+                                            <div class="lg:flex lg:justify-between grid grid-cols-1 grid-rows-3 gap-4">
+                                                <div class="lg:flex lg:justify-between items-center">
                                                     <img src="@/assets/images/CategoryView/ToShop/shop-product2.png"
                                                         class="h-24 md:w-[80px] md:h-auto">
                                                 </div>
-                                                <div class="flex justify-center items-center">
+                                                <div class="lg:flex lg:justify-center items-center">
                                                     <img src="@/assets/images/CategoryView/ToShop/shop-product3.png"
                                                         class="h-24 md:w-[80px] md:h-auto">
                                                 </div>
-                                                <div class="flex justify-center items-center">
+                                                <div class="lg:flex lg:justify-center items-center">
                                                     <img src="@/assets/images/CategoryView/ToShop/shop-product4.png"
                                                         class="h-24 md:w-[80px] md:h-auto">
                                                 </div>
-                                                <div class="flex justify-center items-center mx-5">
+                                                <div class="lg:flex lg:justify-center items-center mx-5">
                                                     <img src="@/assets/images/CategoryView/ToShop/button.png"
                                                         class="h-24 md:w-[40px] md:h-auto">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="w-[60%] px-3">
-                                            <div class="flex flex-col text-black">
+
+                                        <div class=" lg:hidden grid grid-cols-2 grid-rows-1 gap-4">
+                                            <div class="w-60 ">
+                                                <img src="@/assets/images/CategoryView/ToShop/shop-product1.png">
+                                            </div>
+                                            <div class="grid-cols-1 ml-20 ">
+                                                <img src="@/assets/images/CategoryView/ToShop/shop-product2.png"
+                                                    class="h-14 w-[66px] mb-2">
+                                                <img src="@/assets/images/CategoryView/ToShop/shop-product3.png"
+                                                    class="h-14 w-[66px] mb-2">
+                                                <img src="@/assets/images/CategoryView/ToShop/shop-product4.png"
+                                                    class="h-14 w-[66px] mb-2">
+
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke-width="1.5" stroke="black" class="w-10 h-8 ml-3 mt-2">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+
+                                        <div class="lg:w-[60%] px-3 mt-3">
+                                            <div class="lg:flex lg:flex-col text-black">
                                                 <p class="font-bold text-left text-1xl mb-2">Multi Handle Tote Bag with
                                                     Embroidered Philippines Kalesa Scenery</p>
                                             </div>
@@ -173,7 +194,7 @@
                                                 <div class="flex justify-between mb-2">
                                                     <p class="w-[100%] ">₱399.00</p>
                                                     <div class="flex justify-end">
-                                                        <div class="flex justify-between">
+                                                        <div class="justify-between hidden lg:block">
                                                             <p class="mr-5">Quantity</p>
                                                             <div class="flex border border-black">
                                                                 <button class="border border-black px-3">+</button>
@@ -205,8 +226,8 @@
                                                 <div class="flex justify-between mb-2">
                                                     <p class="w-[70%] text-xs">• Color: White</p>
                                                 </div>
-                                                <p class="font-bold">Reviews</p>
-                                                <button @click="toggleshowReviews">
+                                                <p class="lg:block hidden font-bold">Reviews</p>
+                                                <button class="lg:block hidden" @click="toggleshowReviews">
                                                     <div>
                                                         <div
                                                             class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
@@ -239,6 +260,17 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class=" lg:hidden flex items-center text-black mb-4">
+                                        Quantity 
+                                        <button @click="decrement"
+                                            class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
+                                        <input type="text" class="px-4 py-2 bg-gray-100 text-center w-16 text-black" v-model="count"
+                                            readonly>
+                                        <button @click="increment"
+                                            class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">+</button>
+                                    </div>
+
                                     <div class="flex justify-between">
                                         <div class="w-[100%] flex justify-start">
                                             <button
@@ -763,6 +795,7 @@ export default {
                 date: 'December 2023',
             },
             ],
+            count: 0,
             showCartModal: false,
             currentPage: 0,
             pageSize: 8,
@@ -802,6 +835,14 @@ export default {
             this.showReviews = false;
             this.showCart = true;
         },
+        increment() {
+            this.count++;
+        },
+        decrement() {
+            if (this.count > 0) {
+                this.count--;
+            }
+        }
     }
 };
 </script>

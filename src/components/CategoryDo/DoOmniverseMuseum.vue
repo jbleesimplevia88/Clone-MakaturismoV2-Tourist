@@ -223,8 +223,6 @@
             </div>
         </div>
 
-
-
         <div v-if="showSeeMoreButton || showSeeLessButton"
             class="flex items-center justify-center pr-[5rem] mt-5 mb-10">
             <div v-if="showSeeMoreButton">
@@ -254,10 +252,6 @@
 
 
         </div>
-
-
-
-
 
     </div>
 </template>

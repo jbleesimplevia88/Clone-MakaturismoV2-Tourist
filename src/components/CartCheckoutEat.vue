@@ -69,7 +69,7 @@
                             </div>
                             <div class="flex lg:flex-col lg:items-start">
                                 <p class="mr-[30px] w-10vw lg:pr-0 lg:mr-9 lg:mb-1 font-bold">E-mail Address</p>
-                                <p class="lg:ml-0 font-normal mb-3 text-gray-600">Juandelecruz@gmail.com</p>
+                                <p class="font-normal mb-2 text-base text-gray-600 text-sm">Juandelecruz@gmail.com</p>
                             </div>
                             <div class="flex lg:flex-col lg:items-start justify-start">
                                 <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Phone Number</p>
@@ -117,7 +117,7 @@
                             <p class=" text-base font-bold">E-mail Address</p>
                         </div>
                         <div>
-                            <p class="font-normal mb-2 text-base text-gray-600">Juandelecruz@gmail.com</p>
+                            <p class="font-normal mb-2 text-base text-gray-600">Juandelacruz@gmail.com</p>
                         </div>
                         <div>
                             <p class=" text-base font-bold">Phone Number</p>

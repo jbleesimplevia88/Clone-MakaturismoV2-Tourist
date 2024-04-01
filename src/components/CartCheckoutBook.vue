@@ -341,7 +341,8 @@ export default {
         this.navButtonText = 'Request to Order';
       } else {
         // Redirect to '/category/do' when in the booking section
-        this.$router.push('/category/eat');
+        this.$router.push('/category/shop');
+
       }
     },
     activateRadioButton(id) {

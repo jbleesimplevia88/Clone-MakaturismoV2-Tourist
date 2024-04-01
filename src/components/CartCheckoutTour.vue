@@ -327,7 +327,6 @@ export default {
                 this.showPayment = true;
                 this.navButtonText = 'Request to Book';
             } else {
-                // Redirect to '/category/do' when in the booking section
                 this.$router.push('/category/tour');
             }
         },

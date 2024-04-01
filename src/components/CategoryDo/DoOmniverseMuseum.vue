@@ -114,53 +114,9 @@
 
     </div>
 
-    <div class="relative flex flex-col lg:flex-col-reverse">
+    <div class="relative flex flex-col">
 
-        <div class="border-4 border-gray-200 w-[100%]">
-            <div class="grid lg:grid-cols-2 lg:gap-[2rem] relative mx-6 px-3 lg:px-32 pt-5 pb-2">
-                <!-- Feedback Content -->
-
-
-                <div class="relative border-2 border-gray-200 rounded-md px-3 py-3"
-                    v-for="(item, index) in paginatedItems" :key="index">
-
-                    <div class="flex flex-row">
-                        <div class="pt-[0.125rem]">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-12 h-12">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                            </svg>
-                        </div>
-                        <div class="flex flex-col">
-                            <p class="relative left-2 text-black text-lg xl:text-xl font-medium pb-3">
-                                {{ item.name }}
-                            </p>
-                            <p class="relative bottom-4 left-2 text-gray-600 text-lg">{{ item.date }}
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="p-2 w-full">
-                        <p class="text-justify text-black text-md leading-7">{{ item.description }}</p>
-                    </div>
-                </div>
-            </div>
-            <div v-if="showSeeMoreButton || showSeeLessButton" class="flex justify-center mt-5 mb-10 mx-[9.5rem]">
-                <button v-if="showSeeMoreButton" @click="seeMore"
-                    class="flex items-center justify-center px-3 py-3 border-2 border-black text-black  rounded-md hover:bg-black hover:text-white transition-colors duration-300 text-nowrap text-xs">
-                    <span>See More</span>
-                </button>
-                <button v-if="showSeeLessButton" @click="seeLess"
-                    class="flex items-center justify-center px-3 py-3 border-2 border-black text-black  rounded-md hover:bg-black hover:text-white transition-colors duration-300 text-nowrap text-xs">
-                    <span>See Less</span>
-                </button>
-            </div>
-        </div>
-
-
-
-        <div class="relative mx-6 px-3 lg:px-32 pb-5 pt-5">
+        <div class="relative mx-6 px-3 lg:px-32 pb-2 pt-5">
             <div>
                 <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
                 <MapRenderer :latitude="latitude" :longitude="longitude" :name="name" />
@@ -236,6 +192,73 @@
                 </div>
             </div>
         </div>
+
+        <div class="grid lg:grid-cols-2 lg:gap-[2rem] relative mx-6 px-3 lg:px-32 pt-5">
+            <!-- Feedback Content -->
+
+
+            <div class="relative border-2 border-gray-200 rounded-md px-3 py-3" v-for="(item, index) in paginatedItems"
+                :key="index">
+
+                <div class="flex flex-row">
+                    <div class="pt-[0.125rem]">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-12 h-12">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="relative left-2 text-black text-lg xl:text-xl font-medium pb-3">
+                            {{ item.name }}
+                        </p>
+                        <p class="relative bottom-4 left-2 text-gray-600 text-lg">{{ item.date }}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="p-2 w-full">
+                    <p class="text-justify text-black text-md leading-7">{{ item.description }}</p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div v-if="showSeeMoreButton || showSeeLessButton"
+            class="flex items-center justify-center pr-[5rem] mt-5 mb-10">
+            <div v-if="showSeeMoreButton">
+                <div>
+                    <div
+                        style="position: absolute; bottom: 0; left: 0; height: 24%; width: 100%; background: linear-gradient(to bottom, transparent 30%, #FFFFFF 79%, #FFFFFF 50%);">
+                    </div>
+                </div>
+                <div class="absolute bottom-3">
+                    <button @click="seeMore"
+                        class="left-0 right-0 px-3 py-3 border-2 border-black text-black  rounded-md hover:bg-black hover:text-white transition-colors duration-300 text-nowrap text-xs">
+                        <span>See More</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <div v-if="showSeeLessButton" class="mb-10">
+                <div class="absolute bottom-8">
+                    <button @click="seeLess"
+                        class=" px-3 py-3 border-2 border-black text-black  rounded-md hover:bg-black hover:text-white transition-colors duration-300 text-nowrap text-xs">
+                        <span>See Less</span>
+                    </button>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+
+
     </div>
 </template>
 

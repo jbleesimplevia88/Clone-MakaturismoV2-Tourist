@@ -32,14 +32,7 @@
                                     class="lg:w-[100%] lg:h-[90%] rounded-br-3xl">
                             </div>
                         </div>
-                        <!-- <div class="absolute bottom-2 right-[8rem] z-20 w-100">
 
-                            <button class="hidden lg:block p-2 bg-white rounded-lg shadow outline outline-2 text-md">
-                                <img src="@/assets/images/Content/9dots.png" alt="" class="w-10 h-10">
-                                Show
-                                All
-                                Photos</button>
-                        </div> -->
                     </div>
                     <!-- mobile -->
                      <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 lg:p-5 px-5 py-3 shadow-lg">

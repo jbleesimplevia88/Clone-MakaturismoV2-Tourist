@@ -327,7 +327,7 @@ export default {
                 this.showPayment = true;
                 this.navButtonText = 'Request to Book';
             } else {
-                this.$router.push('/category/tour');
+                this.$router.push('/category/tour/central');
             }
         },
         scrollToTop() {

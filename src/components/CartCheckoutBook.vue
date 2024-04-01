@@ -323,7 +323,7 @@ export default {
         this.navButtonText = 'Request to Book';
       } else {
         // Redirect to '/category/do' when in the booking section
-        this.$router.push('/category/stay');
+        this.$router.push('/category/stay/xyz');
       }
     },
     scrollToTop() {

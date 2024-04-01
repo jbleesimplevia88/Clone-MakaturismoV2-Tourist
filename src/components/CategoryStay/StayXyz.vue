@@ -42,6 +42,22 @@
                                 Photos</button>
                         </div> -->
                     </div>
+                     <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 lg:p-5 px-5 py-3 shadow-lg">
+                        <div class="flex justify-between">
+                            <div>
+                                <p class="text-md">Unbeatable Deals</p>
+                                <p class="text-lg font-bold">Shop with ease</p>
+                            </div>
+                         
+                            <router-link to="/checkoutbook">
+                                <div class="w-[100%] px-2 mt-5">
+                                    <button
+                                        class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg p-4 w-[100%]">Book
+                                        Now</button>
+                                </div>
+                            </router-link>
+                        </div>
+                    </div>
 
 
                     <div class="flex flex-col pl-8 lg:pl-8 lg:order-first">
@@ -247,8 +263,6 @@
                                 <button
                                     class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Book
                                     Now</button>
-
-
                             </div>
                         </router-link>
 

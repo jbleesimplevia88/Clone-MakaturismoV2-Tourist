@@ -13,5 +13,3 @@ import FooterPage from '@/components/FooterPage.vue';
   <TopPlace />
   <FooterPage />
 </template>
-
-<style scoped></style>

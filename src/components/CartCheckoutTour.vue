@@ -1,9 +1,9 @@
 <template>
-    <div class="w-screen">
+    <div class="w-full">
         <nav
             class=" h-28 pt-16 pl-5  bg-[#132540] text-white text-xl font-semibold flex items-center  cursor-pointer lg:px-[100px] lg:h-20 lg:mt-[80px] lg:text-4xl lg:pt-0 ">
-            <svg @click="navigateBack" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                stroke="white" class="h-5 pr-2 lg:mr-7 lg:w-10 lg:h-14">
+            <svg @click="navigateBack" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke-width="3" stroke="white" class="h-5 pr-2 lg:mr-7 lg:w-10 lg:h-14">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"></path>
             </svg> {{ navButtonText }}
         </nav>
@@ -19,7 +19,8 @@
                                     <p class="font-normal mb-3 ">07/24/2023</p>
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start justify-start">
-                                    <p class=" lg:mb-1 font-bold " style="margin-right: min(max(88px), 119px);">Time of Tour
+                                    <p class=" lg:mb-1 font-bold " style="margin-right: min(max(88px), 119px);">Time of
+                                        Tour
                                     </p>
                                     <p class="font-normal mb-3">1:00 PM - 3:00 PM</p>
                                 </div>
@@ -56,6 +57,20 @@
                                 <div class="flex lg:flex-col lg:items-start justify-start">
                                     <p class="mr-[55px] lg:mr-9 lg:mb-1 font-bold">Citizen of Makati</p>
                                     <p class="font-normal mb-3 text-gray-600">Yes</p>
+                                </div>
+                            </div>
+                            <div class="hidden lg:block">
+                                <p class="font-bold text-3xl mb-4">Payment</p>
+
+
+                                <div class="border border-gray-200 py-5 pl-6">
+
+                                    <input type="radio" id="payment_ibayad" name="payment_method" value="ibayad"
+                                        class="mr-2" checked>
+                                    <label for="payment_ibayad">Ibayad</label>
+
+
+
                                 </div>
                             </div>
                         </div>
@@ -120,8 +135,12 @@
                             <div>
                                 <p class="font-normal mb-2 text-gray-600 text-base">Yes</p>
                             </div>
+
                         </div>
+
+
                     </div>
+
                     <!-- Start of Central Business District Tour -->
                     <div class="my-4 lg:w-[32%] lg:h-[30%] lg:right-10 lg:absolute relative lg:top-[3rem] w-screen">
                         <div class="border border-gray-400 rounded-xl p-5 ml-5 w-[90%]  h-fit">
@@ -176,7 +195,8 @@
                                     <div class="lg:w-[100%] p-4 rounded-lg text-center flex flex-col items-center">
                                         <img src="@/assets/images/CategoryView/ToShop/check.png" class="mb-6">
                                         <p class="font-bold text-2xl mb-6">Redirecting you...</p>
-                                        <p class="font-normal text-2xl mb-6">Your booking transaction is being processed.
+                                        <p class="font-normal text-2xl mb-6">Your booking transaction is being
+                                            processed.
                                             Please wait for the confirmation in your notification</p>
                                         <button class="text-white bg-blue-500 rounded-xl w-[100%] py-5"
                                             @click="toggleComplete">Okay</button>
@@ -201,75 +221,28 @@
                 </div>
             </div>
             <div v-else>
-                <div class="w-full h-full p-8">
-                    <div className="grid grid-cols-1 grid-rows-4 gap-4">
-                        <div class="flex border rounded p-4 h-24" @click="activateRadioButton('gcash')">
+                <div class="mt-[0rem] w-full h-full p-8">
+                    <div className="grid grid-cols-1 grid-rows-4 gap-0">
+                        <div class="flex border rounded p-8 h-24" @click="activateRadioButton('gcash')">
                             <div class="flex items-center pr-3">
                                 <input id="gcash" aria-describedby="helper-radio-text" type="radio" value="gcash"
                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             </div>
                             <div class="ms-2 text-sm">
-                                <label for="helper-radio" class="font-semibold text-sm text-gray-700">GCash (Alipay +
-                                    Partner)</label>
-                                <img src="@/assets/images/Modal/gcash.png" class="mb-6 w-10 h-7 rounded border">
+                                <label for="helper-radio" class="font-semibold text-xl text-gray-700">
+                                    Ibayad</label>
                             </div>
+
+
+
                         </div>
-                        <div class="flex border rounded p-4 h-24" @click="activateRadioButton('credit')">
-                            <div class="flex items-center pr-3">
-                                <input id="credit" aria-describedby="helper-radio-text" type="radio" value="credit"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            </div>
-                            <div class="ms-2 text-sm">
-                                <label for="helper-radio" class="font-semibold text-sm text-gray-700">Credit/ Debit
-                                    Card</label>
-                                <div class="flex gap-1">
-                                    <img src="@/assets/images/Modal/amex.png" class="mb-6 w-10 h-7 rounded border">
-                                    <img src="@/assets/images/Modal/jcb.png" class="mb-6 w-10 h-7 rounded border">
-                                    <img src="@/assets/images/Modal/maestro.png" class="mb-6 w-10 h-7 rounded border">
-                                    <img src="@/assets/images/Modal/mastercard.png" class="mb-6 w-10 h-7 rounded border">
-                                    <img src="@/assets/images/Modal/visa.png" class="mb-6 w-10 h-7 rounded border">
-                                </div>
-                            </div>
+                        <div class="flex pt-4">
+                            <img src="@/assets/images/Modal/voucher.svg" class="mb-6 w-6 h-6">
+                            <button
+                                class="text-xs font-semibold cursor-pointer dark:text-gray-300 text-blue-500 -mt-12 pl-2">
+                                Use
+                                voucher</button>
                         </div>
-                        <div class="flex border rounded p-4 h-24" @click="activateRadioButton('link')">
-                            <div class="flex items-center pr-3">
-                                <input id="link" aria-describedby="helper-radio-text" type="radio" value="link"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            </div>
-                            <div class="ms-2 text-sm">
-                                <label for="helper-radio" class="font-semibold text-sm text-gray-700">Link bank
-                                    account</label>
-                                <div class="flex gap-1">
-                                    <img src="@/assets/images/Modal/unionbank.png" class="mb-6 w-10 h-7 rounded border">
-                                    <img src="@/assets/images/Modal/rcbc.png" class="mb-6 w-10 h-7 rounded border">
-                                    <img src="@/assets/images/Modal/chinabank.png" class="mb-6 w-10 h-7 rounded border">
-                                    <img src="@/assets/images/Modal/bpi.png"
-                                        class="mb-6 w-10 h-7 rounded border object-fill p-1 py-[5px]">
-                                </div>
-                            </div>
-                        </div>
-                        <div class=" border rounded p-4 h-24" @click="activateRadioButton('cod')">
-                            <div class="flex">
-                                <div class="flex items-center pr-3">
-                                    <input id="cod" aria-describedby="helper-radio-text" type="radio" value="cod"
-                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                </div>
-                                <div class="ms-2 text-sm">
-                                    <label for="helper-radio" class="font-semibold text-sm text-gray-700">Cash on
-                                        Delivery</label>
-                                </div>
-                            </div>
-                            <div class="py-2">
-                                <p class=" pb-1 text-xs font-semibold text-gray-700 dark:text-gray-300">Pay by cash</p>
-                                <p class="text-xs text-gray-700 dark:text-gray-300">Pay cash upon delivery.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex pt-4">
-                        <img src="@/assets/images/Modal/voucher.svg" class="mb-6 w-6 h-6">
-                        <button class="text-xs font-semibold cursor-pointer dark:text-gray-300 text-blue-500 -mt-4 pl-2">
-                            Use
-                            voucher</button>
                     </div>
                     <div class="justify-center pt-3">
                         <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"

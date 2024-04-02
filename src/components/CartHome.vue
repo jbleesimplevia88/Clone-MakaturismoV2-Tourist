@@ -3,7 +3,8 @@
         style="background-image: url('src/assets/images/CategoryView/ToShop/bgoverlay.png');">
         <div class="p-5 overflow-y-auto h-[690px] ">
 
-            <div className="grid grid-cols- grid-rows-1 gap-4 mt-20  w-331 h-14 bg-white rounded-tl-lg  rounded-tr-lg mb-3">
+            <div
+                className="grid grid-cols- grid-rows-1 gap-4 mt-20  w-331 h-14 bg-white rounded-tl-lg  rounded-tr-lg mb-3">
                 <div>
                     <input type="checkbox" name="Items" id="Items" class="ml-3 mt-4 w-5 h-5 border">
                     <span class="mt-1 ml-1 text-xl font-semibold text-left "> Items</span>
@@ -176,9 +177,10 @@
             <span class="pt-3">Select All (5)</span>
 
             <p>Total (9 Items): <br><span class="text-lg font-semibold ">3843</span></p>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg">
-                Check Out
-            </button>
+            <router-link to="/checkoutshop"> <button
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg">
+                    Check Out
+                </button></router-link>
         </div>
     </div>
 </template>

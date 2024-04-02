@@ -112,8 +112,8 @@
                                 style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 Multi handle Tote bag with Embroided Philippine Kalesa Scenery
                             </p>
-                            <img class="rounded-md lg:h-[80%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="100%">
+                            <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToShop/shop-product1.png"
+                                alt="" width="100%">
                             <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
@@ -128,13 +128,13 @@
                         <div v-if="showCart"
                             class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
                             @click.self="closeModal">
-                            <div class="bg-white overflow-y-auto h-[680px] w-[900px] overflow-hidden scrollbar-hide rounded-lg shadow-md p-2 mx-5"
+                            <div class="bg-white lg:h-[760px] h-[640px] w-[900px]  rounded-lg shadow-md p-2 mx-5"
                                 @click.stop>
                                 <div class="lg:w-[100%] p-4 rounded-lg">
                                     <div class="relative flex justify-end">
                                         <button class=" pr-4 pt-21 ">
                                             <svg @click="closeCart" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                viewBox="0 0 20 30" stroke-width="5" stroke="black" class="w-5 h-5">
+                                                viewBox="0 0 20 30" stroke-width="5" stroke="black" class="w-6 h-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                     d="M6 18 18 6M6 6l12 12" />
                                             </svg>
@@ -150,17 +150,14 @@
                                                 <div class="lg:flex lg:justify-between items-center">
                                                     <img src="@/assets/images/CategoryView/ToShop/shop-product2.png"
                                                         class="h-24 md:w-[80px] md:h-auto">
-
                                                 </div>
                                                 <div class="lg:flex lg:justify-center items-center">
                                                     <img src="@/assets/images/CategoryView/ToShop/shop-product3.png"
                                                         class="h-24 md:w-[80px] md:h-auto">
-
                                                 </div>
                                                 <div class="lg:flex lg:justify-center items-center">
                                                     <img src="@/assets/images/CategoryView/ToShop/shop-product4.png"
                                                         class="h-24 md:w-[80px] md:h-auto">
-
                                                 </div>
                                                 <div class="lg:flex lg:justify-center items-center mx-5">
                                                     <img src="@/assets/images/CategoryView/ToShop/button.png"
@@ -168,27 +165,22 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class=" lg:hidden grid grid-cols-2 grid-rows-1 gap-4">
-                                            <div class="w-60 ">
-                                                <img src="@/assets/images/CategoryView/ToShop/shop-product1.png">
+                                        <div class="lg:hidden grid grid-cols-2 grid-rows-1 gap-4">
+                                            <div class="w-[200px] ml-4">
+                                                <img :src="currentImage" class="h-52 w-full" />
                                             </div>
-                                            <div class="grid-cols-1 ml-20 ">
-                                                <img src="@/assets/images/CategoryView/ToShop/shop-product2.png"
-                                                    class="h-14 w-[66px] mb-2">
-                                                <img src="@/assets/images/CategoryView/ToShop/shop-product3.png"
-                                                    class="h-14 w-[66px] mb-2">
-                                                <img src="@/assets/images/CategoryView/ToShop/shop-product4.png"
-                                                    class="h-14 w-[66px] mb-2">
+                                            <div class="grid-cols-1 ml-16">
+                                                <img v-for="(image, index) in images" :key="index" :src="image"
+                                                    class="h-9 w-10 mb-2" @click="updateCurrentImage(index)" />
 
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.5" stroke="black" class="w-10 h-8 ml-3 mt-2">
+                                                    stroke-width="1.5" stroke="black" class="w-10 h-8 mt-2 cursor-pointer"
+                                                    @click="changeImage">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                                 </svg>
                                             </div>
                                         </div>
-
                                         <div class="lg:w-[60%] px-3 mt-3">
                                             <div class="lg:flex lg:flex-col text-black">
                                                 <p class="font-bold text-left text-1xl mb-2">Multi Handle Tote Bag with
@@ -196,7 +188,7 @@
                                             </div>
                                             <div class="text-black mb-5">
                                                 <p class="font-bold">Makati Shop</p>
-                                                <div class="flex justify-between mb-2">
+                                                <div class="lg:block hidden  justify-between mb-2">
                                                     <p class="w-[100%] ">₱399.00</p>
                                                     <div class="flex justify-end">
                                                         <div class="justify-between hidden lg:block">
@@ -209,29 +201,22 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="border border-gray-200 my-5"></div>
-                                                <div class="flex justify-between mb-2">
-                                                    <p class="w-[100%] text-xs">• Made from canvas material</p>
-                                                </div>
-                                                <div class="flex justify-between mb-2">
-                                                    <p class="w-[100%] text-xs">• Durable and lightweight bag</p>
-                                                </div>
-                                                <div class="flex justify-between mb-2">
-                                                    <p class="w-[100%] text-xs">• Can be washed by hand or washing
-                                                        machine
-                                                    </p>
-                                                </div>
-                                                <div class="flex justify-between mb-2">
-                                                    <p class="w-[100%] text-xs">• Multi handle feature</p>
-                                                </div>
-                                                <div class="flex justify-between mb-2">
-                                                    <p class="w-[100%] text-xs">• Can be used as a handbag or tote
-                                                        shoulder
-                                                        bag
-                                                    </p>
-                                                </div>
-                                                <div class="flex justify-between mb-2">
-                                                    <p class="w-[70%] text-xs">• Color: White</p>
+                                                <div class="border border-gray-200 lg:my-5"></div>
+                                                <div class="overflow-y-auto lg:overflow-y-visible h-[110px] lg:h-auto">
+                                                    <div class="justify-between mb-2 grid gap-2 mt-2">
+
+                                                        <p class="w-[100%] text-xs">• Made from canvas material</p>
+                                                        <p class="w-[100%] text-xs">• Durable and lightweight bag</p>
+                                                        <p class="w-[100%] text-xs">• Can be washed by hand or washing
+                                                            machine
+                                                        </p>
+                                                        <p class="w-[100%] text-xs">• Multi handle feature</p>
+                                                        <p class="w-[100%] text-xs">• Can be used as a handbag or tote
+                                                            shoulder
+                                                            bag
+                                                        </p>
+                                                        <p class="w-[70%] text-xs">• Color: White</p>
+                                                    </div>
                                                 </div>
                                                 <p class="lg:block hidden font-bold">Reviews</p>
                                                 <button class="lg:block hidden" @click="toggleshowReviews">
@@ -239,8 +224,7 @@
                                                         <div
                                                             class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                                             <div class="inline-block w-[100%]">
-                                                                <label
-                                                                    class="flex w-[100%] text-sm font-bold">juandelacruz
+                                                                <label class="flex w-[100%] text-sm font-bold">juandelacruz
                                                                     ⭐️⭐️⭐️⭐️⭐</label>
                                                                 <p class="flex text-sm">03-10-2024 11:30</p>
                                                             </div>
@@ -253,8 +237,7 @@
                                                         <div
                                                             class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                                             <div class="inline-block w-[100%]">
-                                                                <label
-                                                                    class="flex w-[100%] text-sm font-bold">faithstamaria
+                                                                <label class="flex w-[100%] text-sm font-bold">faithstamaria
                                                                     ⭐️⭐️⭐️⭐️⭐</label>
                                                                 <p class="flex text-sm">09-03-2024 08:30</p>
                                                             </div>
@@ -269,17 +252,16 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class=" lg:hidden flex items-center text-black mb-4">
                                         Quantity
                                         <button @click="decrement"
                                             class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
+
                                         <input type="text" class="px-4 py-2 bg-gray-100 text-center w-16 text-black"
                                             v-model="count" readonly>
                                         <button @click="increment"
                                             class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">+</button>
                                     </div>
-
                                     <div class="flex justify-between">
                                         <div class="w-[100%] flex justify-start">
                                             <button
@@ -402,8 +384,8 @@
                                 style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 Multi handle Tote bag with Embroided Philippine Kalesa Scenery
                             </p>
-                            <img class="rounded-md lg:h-[80%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product2.png" alt="" width="100%">
+                            <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToShop/shop-product2.png"
+                                alt="" width="100%">
                             <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
@@ -421,8 +403,8 @@
                                 style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 Multi handle Tote bag with Embroided Philippine Kalesa Scenery
                             </p>
-                            <img class="rounded-md lg:h-[80%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product3.png" alt="" width="100%">
+                            <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToShop/shop-product3.png"
+                                alt="" width="100%">
                             <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
@@ -657,8 +639,12 @@
                             <p>x2</p>
                         </div>
                     </div>
-                    <button class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Check
-                        Out</button>
+
+                    <router-link to="/checkoutshop" class="w-full">
+                        <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]">Buy
+                            Now</button>
+                    </router-link>
+
                 </div>
             </div>
         </div>
@@ -759,8 +745,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="showSeeMoreButton || showSeeLessButton"
-            class="flex items-center justify-center pr-[5rem] mt-5 mb-10">
+        <div v-if="showSeeMoreButton || showSeeLessButton" class="flex items-center justify-center pr-[5rem] mt-5 mb-10">
             <div v-if="showSeeMoreButton">
                 <div>
                     <div
@@ -803,6 +788,10 @@
 
 <script>
 import MapRenderer from "@/components/MapRenderer.vue";
+import shopProduct1 from '@/assets/images/CategoryView/ToShop/shop-product1.png';
+import shopProduct2 from '@/assets/images/CategoryView/ToShop/shop-product2.png';
+import shopProduct3 from '@/assets/images/CategoryView/ToShop/shop-product3.png';
+import shopProduct4 from '@/assets/images/CategoryView/ToShop/shop-product4.png';
 export default {
     props: {
         latitude: Number,
@@ -866,6 +855,13 @@ export default {
 
                 },
             ],
+            images: [
+                shopProduct1,
+                shopProduct2,
+                shopProduct3,
+                shopProduct4
+            ],
+            currentIndex: 0,
             count: 0,
             showCartModal: false,
             currentPage: 0,
@@ -883,11 +879,20 @@ export default {
             // Return first 2 items initially and add additional items based on numFeedbackShown
             return this.items.slice(0, 2 + this.numFeedbackShown);
         },
+        currentImage() {
+            return this.images[this.currentIndex];
+        },
         showSeeMoreButton() {
             return this.numFeedbackShown < this.items.length - 2;
         }
     },
     methods: {
+        updateCurrentImage(index) {
+            this.currentIndex = index;
+        },
+        changeImage() {
+            this.currentIndex = (this.currentIndex + 1) % this.images.length;
+        },
         openCartModal() {
             this.showCartModal = true;
         },

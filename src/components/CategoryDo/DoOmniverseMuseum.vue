@@ -6,7 +6,8 @@
             <div class="relative inset-0 sm:top-56 md:top-2 pl-0 md:pl-10 flex items-center z-[1]">
                 <div class="relative flex flex-col pl-0 lg:pl-10">
                     <div class="absolute lg:top-4 lg:left-3 top-4 z-[1]">
-                        <router-link to="/category/eat">
+                        <router-link to="/category/do">
+
                             <a class=" flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
                                     style="filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));" stroke="currentColor"
@@ -17,7 +18,6 @@
                             </a>
                         </router-link>
                     </div>
-
                     <div class="relative flex flex-col items-center">
                         <div class="lg:pl-9 grid grid-cols-1 lg:grid-cols-5 lg:pr-[7rem]">
                             <img src="@/assets/images/CategoryView/ToDo/omni.jpg" alt=""
@@ -222,8 +222,9 @@
             </div>
         </div>
 
-        <div v-if="showSeeMoreButton || showSeeLessButton"
-            class="flex items-center justify-center pr-[5rem] mt-5 mb-10">
+
+
+        <div v-if="showSeeMoreButton || showSeeLessButton" class="flex items-center justify-center pr-[5rem] mt-5 mb-10">
             <div v-if="showSeeMoreButton">
                 <div>
                     <div

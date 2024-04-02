@@ -96,8 +96,8 @@
 
                             <div class="border border-gray-200 py-5 pl-6">
 
-                                <input type="radio" id="payment_ibayad" name="payment_method" value="ibayad"
-                                    class="mr-2" checked>
+                                <input type="radio" id="payment_ibayad" name="payment_method" value="ibayad" class="mr-2"
+                                    checked>
                                 <label for="payment_ibayad">Ibayad</label>
 
 
@@ -221,8 +221,7 @@
                         </div>
                         <!-- For Web -->
                         <div class="justify-center lg:block hidden pt-6">
-                            <button
-                                class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
+                            <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
                                 @click="toggleConfirmation">Proceed to Payment</button>
                         </div>
                         <div v-if="showConfirmation"
@@ -258,59 +257,69 @@
             </div>
         </template>
         <template v-else>
-            <nav
-                class=" h-28 pt-16 pl-5  bg-[#132540] text-white text-xl font-semibold flex items-center  cursor-pointer lg:px-[100px] lg:h-20 lg:mt-[80px] lg:text-4xl lg:pt-0 ">
-                <svg @click="navigateBack" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                    stroke-width="3" stroke="white" class="h-5 pr-2 lg:mr-7 lg:w-10 lg:h-14">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18">
-                    </path>
-                </svg> {{ navButtonText }}
-            </nav>
-            <div class="mt-[0rem] w-full h-full p-8">
-                <div className="grid grid-cols-1 grid-rows-4 gap-0">
-                    <div class="flex border rounded p-8 h-24" @click="activateRadioButton('gcash')">
-                        <div class="flex items-center pr-3">
-                            <input id="gcash" aria-describedby="helper-radio-text" type="radio" value="gcash"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <div class="lg:hidden">
+                <nav
+                    class=" h-28 pt-16 pl-5  bg-[#132540] text-white text-xl font-semibold flex items-center  cursor-pointer lg:px-[100px] lg:h-20 lg:mt-[80px] lg:text-4xl lg:pt-0 ">
+                    <svg @click="navigateBack" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="3" stroke="white" class="h-5 pr-2 lg:mr-7 lg:w-10 lg:h-14">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18">
+                        </path>
+                    </svg> {{ navButtonText }}
+                </nav>
+                <div class="mt-[0rem] w-full h-full p-8">
+                    <div className="grid grid-cols-1 grid-rows-4 gap-0">
+                        <div class="flex border rounded p-8 h-24" @click="activateRadioButton('gcash')">
+                            <div class="flex items-center pr-3">
+                                <input id="gcash" aria-describedby="helper-radio-text" type="radio" value="gcash"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            </div>
+                            <div class="ms-2 text-sm">
+                                <label for="helper-radio" class="font-semibold text-xl text-gray-700">
+                                    Ibayad</label>
+                            </div>
+
+
+
                         </div>
-                        <div class="ms-2 text-sm">
-                            <label for="helper-radio" class="font-semibold text-xl text-gray-700">
-                                Ibayad</label>
+                        <div class="flex pt-4">
+                            <img src="@/assets/images/Modal/voucher.svg" class="mb-6 w-6 h-6">
+                            <button
+                                class="text-xs font-semibold cursor-pointer dark:text-gray-300 text-blue-500 -mt-12 pl-2">
+                                Use
+                                voucher</button>
                         </div>
-
-
-
                     </div>
                     <div class="flex pt-4">
                         <img src="@/assets/images/Modal/voucher.svg" class="mb-6 w-6 h-6">
-                        <button
-                            class="text-xs font-semibold cursor-pointer dark:text-gray-300 text-blue-500 -mt-12 pl-2">
+                        <button class="text-xs font-semibold cursor-pointer dark:text-gray-300 text-blue-500 -mt-12 pl-2">
                             Use
                             voucher</button>
                     </div>
                 </div>
 
-                <div class="justify-center pt-3">
-                    <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
-                        @click="toggleComplete">Confirm Booking</button>
-                    <div v-if="showComplete"
-                        class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
-                        @click.self="closeModal">
-                        <div class="bg-white rounded-lg shadow-md p-2 lg:max-w-2xl h-2p-[20px]" @click.stop>
-                            <div class="lg:w-[100%] p-4 rounded-lg text-center flex flex-col items-center">
-                                <img src="@/assets/images/CategoryView/ToShop/check.png" class="mb-6">
-                                <p class="font-bold text-2xl mb-6">Transaction Complete</p>
-                                <router-link to="/category/eat"><button
-                                        class="text-white h-16 w-60 bg-blue-500 rounded-xl py-5"
-                                        @click="closeModal">Okay</button></router-link>
+
+                    <div class="justify-center pt-3">
+                        <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
+                            @click="toggleComplete">Confirm Booking</button>
+                        <div v-if="showComplete"
+                            class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
+                            @click.self="closeModal">
+                            <div class="bg-white rounded-lg shadow-md p-2 lg:max-w-2xl h-2p-[20px]" @click.stop>
+                                <div class="lg:w-[100%] p-4 rounded-lg text-center flex flex-col items-center">
+                                    <img src="@/assets/images/CategoryView/ToShop/check.png" class="mb-6">
+                                    <p class="font-bold text-2xl mb-6">Transaction Complete</p>
+                                    <router-link to="/category/eat"><button
+                                            class="text-white h-16 w-60 bg-blue-500 rounded-xl py-5"
+                                            @click="closeModal">Okay</button></router-link>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </template>
     </div>
-
 </template>
 
 

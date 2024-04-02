@@ -657,8 +657,11 @@
                             <p>x2</p>
                         </div>
                     </div>
-                    <button class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Check
-                        Out</button>
+
+                    <router-link to="/checkoutshop" class="w-full">
+                                                <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]">Buy
+                                                    Now</button>
+                                            </router-link>
                 </div>
             </div>
         </div>

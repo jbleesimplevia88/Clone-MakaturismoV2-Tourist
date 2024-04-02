@@ -235,7 +235,8 @@
                                     </div>
                                     <div class="grid-cols-1 ml-16">
                                         <img v-for="(image, index) in images" :key="index" :src="image"
-                                            class="h-9 w-10 mb-2" />
+                                            class="h-9 w-10 mb-2" @click="updateCurrentImage(index)" />
+
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke-width="1.5" stroke="black" class="w-10 h-8 mt-2 cursor-pointer"
                                             @click="changeImage">
@@ -984,6 +985,9 @@ export default {
     methods: {
         changeImage() {
             this.currentIndex = (this.currentIndex + 1) % this.images.length;
+        },
+        updateCurrentImage(index) {
+            this.currentIndex = index;
         },
         increment() {
             this.count++;

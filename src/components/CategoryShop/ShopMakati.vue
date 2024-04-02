@@ -64,6 +64,7 @@
                     fashionable Filipiniana to artisanal chocolates and more, Makati Shop continues its mission to
                     embrace
                     our heritage and keep them relevant; support communities and help grow small businesses;
+
                     protect the environment and elevate pride in our identity.</p>
                 <div class="hidden border border-gray-400 lg:w-[]">
                     <p class="text-center font-bold">Number of items</p>
@@ -170,7 +171,7 @@
                                             </div>
                                             <div class="grid-cols-1 ml-16">
                                                 <img v-for="(image, index) in images" :key="index" :src="image"
-                                                    class="h-9 w-10 mb-2" />
+                                                    class="h-9 w-10 mb-2" @click="updateCurrentImage(index)" />
 
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                     stroke-width="1.5" stroke="black" class="w-10 h-8 mt-2 cursor-pointer"
@@ -638,8 +639,11 @@
                             <p>x2</p>
                         </div>
                     </div>
-                    <button class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Check
-                        Out</button>
+
+                    <router-link to="/checkoutshop" class="w-full">
+                        <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]">Buy
+                            Now</button>
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -798,16 +802,57 @@ export default {
     },
     data() {
         return {
-            items: [{
-                name: 'Juan Dela Cruz',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                date: 'December 2023',
-            },
-            {
-                name: 'Luis Paolo',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                date: 'December 2023',
-            },
+            showCart: false,
+            showReviews: false,
+            items: [
+                {
+                    name: 'Juan Dela Cruz',
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                    date: 'December 2023',
+
+                },
+                {
+                    name: 'Luis Paolo',
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                    date: 'December 2023',
+
+                },
+                {
+                    name: 'Luis Paolo',
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                    date: 'December 2023',
+
+                },
+                {
+                    name: 'Juan Dela Cruz',
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                    date: 'December 2023',
+
+                },
+                {
+                    name: 'Juan Dela Cruz',
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                    date: 'December 2023',
+
+                },
+                {
+                    name: 'Luis Paolo',
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                    date: 'December 2023',
+
+                },
+                {
+                    name: 'Luis Paolo',
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                    date: 'December 2023',
+
+                },
+                {
+                    name: 'Juan Dela Cruz',
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                    date: 'December 2023',
+
+                },
             ],
             images: [
                 shopProduct1,
@@ -816,8 +861,6 @@ export default {
                 shopProduct4
             ],
             currentIndex: 0,
-            showCart: false,
-            showReviews: false,
             count: 0,
             showCartModal: false,
             currentPage: 0,
@@ -837,9 +880,15 @@ export default {
         },
         currentImage() {
             return this.images[this.currentIndex];
+        },
+        showSeeMoreButton() {
+            return this.numFeedbackShown < this.items.length - 2;
         }
     },
     methods: {
+        updateCurrentImage(index) {
+            this.currentIndex = index;
+        },
         changeImage() {
             this.currentIndex = (this.currentIndex + 1) % this.images.length;
         },
@@ -848,6 +897,7 @@ export default {
         },
         closeModal() {
             this.showCartModal = false;
+
         },
         toggleshowCart() {
             this.showAddtoCart = false;
@@ -890,4 +940,5 @@ export default {
         }
     }
 };
+
 </script>

@@ -12,6 +12,8 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
                                     style="filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));" stroke="currentColor"
                                     class="w-8 ml-5 lg:ml-0 lg:w-10 h-12 lg:h-10 hover:bg-gray-300 rounded-md p-1 cursor-pointer text-white">
+                                    style="filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));" stroke="currentColor"
+                                    class="w-8 ml-5 lg:ml-0 lg:w-10 h-12 lg:h-10 hover:bg-gray-300 rounded-md p-1 cursor-pointer text-white">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
                                 </svg>
@@ -41,6 +43,22 @@
                                 All
                                 Photos</button>
                         </div> -->
+                    </div>
+                     <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 lg:p-5 px-5 py-3 shadow-lg">
+                        <div class="flex justify-between">
+                            <div>
+                                <p class="text-md">Secure your stay</p>
+                                <p class="text-lg font-bold">Start here</p>
+                            </div>
+                         
+                            <router-link to="/checkoutbook">
+                                <div class="w-[100%] px-2 mt-5">
+                                    <button
+                                        class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg p-4 w-[100%]">Book
+                                        Now</button>
+                                </div>
+                            </router-link>
+                        </div>
                     </div>
 
 
@@ -247,8 +265,6 @@
                                 <button
                                     class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Book
                                     Now</button>
-
-
                             </div>
                         </router-link>
 
@@ -261,49 +277,7 @@
     </div>
 
 
-    <div class="flex flex-col lg:flex-col-reverse">
-        <div class="grid lg:grid-cols-2 lg:gap-[10rem] relative mx-6 px-3 lg:px-32 pb-5 pt-5 ">
-            <!-- Feedback Content -->
-            <div class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A]" v-for="(item, index) in paginatedItems" :key="index">
-
-                <div class="flex flex-row">
-                    <div class="pt-[0.125rem]">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-12 h-12">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                        </svg>
-                    </div>
-                    <div class="flex flex-col">
-                        <p class="relative left-2 text-black text-lg xl:text-xl font-medium pb-3">
-                            {{ item.name }}
-                        </p>
-                        <p class="relative bottom-4 left-2 text-gray-600 text-lg">{{ item.date }}
-                        </p>
-                    </div>
-                </div>
-
-                <div class="p-2 w-full">
-                    <p class="text-black text-md line-clamp-3">{{ item.description }}</p>
-                </div>
-                <div class="p-1 flex justify-end items-center mr-10">
-
-                    <button @click="seeMore(item)"
-                        class="flex items-center px-1 py-1.5 border-2 border-black text-black m-1 rounded-md hover:bg-black hover:text-white transition-colors duration-300 text-nowrap text-xs">
-                        <span>See More</span>
-                        <span class="ml-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
-                                stroke="currentColor" class="w-4 h-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                            </svg>
-                        </span>
-                    </button>
-                </div>
-            </div>
-
-
-        </div>
-
+    <div class="relative flex flex-col">
         <div class="relative mx-6 px-3 lg:px-32 pb-5 pt-5">
             <div>
                 <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
@@ -385,6 +359,66 @@
                 </div>
             </div>
         </div>
+
+        <div class="grid lg:grid-cols-2 lg:gap-[2rem] relative mx-6 px-3 lg:px-32 pt-5 pb-5">
+            <!-- Feedback Content -->
+
+
+            <div class="relative border-2 border-gray-200 rounded-md px-3 py-3" v-for="(item, index) in paginatedItems"
+                :key="index">
+
+                <div class="flex flex-row">
+                    <div class="pt-[0.125rem]">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-12 h-12">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="relative left-2 text-black text-lg xl:text-xl font-medium pb-3">
+                            {{ item.name }}
+                        </p>
+                        <p class="relative bottom-4 left-2 text-gray-600 text-lg">{{ item.date }}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="p-2 w-full">
+                    <p class="text-justify text-black text-md leading-7">{{ item.description }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div v-if="showSeeMoreButton || showSeeLessButton"
+            class="flex items-center justify-center pr-[5rem] mt-5 mb-10">
+            <div v-if="showSeeMoreButton">
+                <div>
+                    <div
+                        style="position: absolute; bottom: 0; left: 0; height: 24%; width: 100%; background: linear-gradient(to bottom, transparent 30%, #FFFFFF 79%, #FFFFFF 50%);">
+                    </div>
+                </div>
+                <div class="absolute bottom-3">
+                    <button @click="seeMore"
+                        class="left-0 right-0 px-3 py-3 border-2 border-black text-black  rounded-md hover:bg-black hover:text-white transition-colors duration-300 text-nowrap text-xs">
+                        <span>See More</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <div v-if="showSeeLessButton" class="mb-10">
+                <div class="absolute bottom-8">
+                    <button @click="seeLess"
+                        class=" px-3 py-3 border-2 border-black text-black  rounded-md hover:bg-black hover:text-white transition-colors duration-300 text-nowrap text-xs">
+                        <span>See Less</span>
+                    </button>
+                </div>
+
+            </div>
+
+
+        </div>
     </div>
 </template>
 
@@ -412,33 +446,89 @@ export default {
             items: [
                 {
                     name: 'Juan Dela Cruz',
-                    description: "Immerse yourself in the modern elegance of U Hotels Makati. With contemporary designs and thoughtful amenities, this hotel offers a delightful stay in the heart of the city. Enjoy personalized service and easy access to Makati's attractions at U Hotels Makati.",
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                    date: 'December 2023',
+
+                },
+                {
+                    name: 'Luis Paolo',
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                    date: 'December 2023',
+
+                },
+                {
+                    name: 'Luis Paolo',
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
                     date: 'December 2023',
 
                 },
                 {
                     name: 'Juan Dela Cruz',
-                    description: "Immerse yourself in the modern elegance of U Hotels Makati. With contemporary designs and thoughtful amenities, this hotel offers a delightful stay in the heart of the city. Enjoy personalized service and easy access to Makati's attractions at U Hotels Makati.",
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
                     date: 'December 2023',
 
                 },
+                {
+                    name: 'Juan Dela Cruz',
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                    date: 'December 2023',
 
+                },
+                {
+                    name: 'Luis Paolo',
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                    date: 'December 2023',
 
+                },
+                {
+                    name: 'Luis Paolo',
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                    date: 'December 2023',
+
+                },
+                {
+                    name: 'Juan Dela Cruz',
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                    date: 'December 2023',
+
+                },
             ],
             currentPage: 0,
             pageSize: 8,
             showDropdown: false,
+            numFeedbackShown: 0,
+            showSeeLessButton: false,
             categories: ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'],
             locations: ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'],
         };
     },
     computed: {
         paginatedItems() {
-            const startIndex = this.currentPage * this.pageSize;
-            return this.items.slice(startIndex, startIndex + this.pageSize);
+            // Return first 2 items initially and add additional items based on numFeedbackShown
+            return this.items.slice(0, 2 + this.numFeedbackShown);
         },
+        // Check if there are more feedback items to show
+        showSeeMoreButton() {
+            return this.numFeedbackShown < this.items.length - 2;
+        }
     },
     methods: {
-    },
+        // Method to handle "See More" button click
+        seeMore() {
+            // Increment the number of feedback items to show
+            this.numFeedbackShown += 2; // Change this value as per your requirement
+            // Show See Less button if all items are shown
+            if (!this.showSeeMoreButton) {
+                this.showSeeLessButton = true;
+            }
+        },
+        // Method to handle "See Less" button click
+        seeLess() {
+            // Reset the number of feedback items shown to initial value
+            this.numFeedbackShown = 0;
+            // Hide See Less button
+            this.showSeeLessButton = false;
+        }
+    }
 };
 </script>

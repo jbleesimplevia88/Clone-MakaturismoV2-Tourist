@@ -61,7 +61,8 @@
             <div class="relative mx-6 px-3 lg:px-32 pt-5">
                 <p class="font-bold text-lg text-black text-left pb-5 pt-3 lg:pt-[5rem]">About this place</p>
                 <p class="text-lg text-justify text-black pb-5">From handmade souvenirs, eco-friendly Barongs and
-                    fashionable Filipiniana to artisanal chocolates and more, Makati Shop continues its mission to embrace
+                    fashionable Filipiniana to artisanal chocolates and more, Makati Shop continues its mission to
+                    embrace
                     our heritage and keep them relevant; support communities and help grow small businesses;
                     protect the environment and elevate pride in our identity.</p>
                 <div class="hidden border border-gray-400 lg:w-[]">
@@ -110,8 +111,8 @@
                                 style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 Multi handle Tote bag with Embroided Philippine Kalesa Scenery
                             </p>
-                            <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToShop/shop-product1.png"
-                                alt="" width="100%">
+                            <img class="rounded-md lg:h-[80%]"
+                                src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="100%">
                             <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
@@ -222,7 +223,8 @@
                                                         <div
                                                             class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                                             <div class="inline-block w-[100%]">
-                                                                <label class="flex w-[100%] text-sm font-bold">juandelacruz
+                                                                <label
+                                                                    class="flex w-[100%] text-sm font-bold">juandelacruz
                                                                     ⭐️⭐️⭐️⭐️⭐</label>
                                                                 <p class="flex text-sm">03-10-2024 11:30</p>
                                                             </div>
@@ -235,7 +237,8 @@
                                                         <div
                                                             class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                                             <div class="inline-block w-[100%]">
-                                                                <label class="flex w-[100%] text-sm font-bold">faithstamaria
+                                                                <label
+                                                                    class="flex w-[100%] text-sm font-bold">faithstamaria
                                                                     ⭐️⭐️⭐️⭐️⭐</label>
                                                                 <p class="flex text-sm">09-03-2024 08:30</p>
                                                             </div>
@@ -252,8 +255,11 @@
                                     </div>
                                     <div class=" lg:hidden flex items-center text-black mb-4">
                                         Quantity
+                                        Quantity
                                         <button @click="decrement"
                                             class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
+                                        <input type="text" class="px-4 py-2 bg-gray-100 text-center w-16 text-black"
+                                            v-model="count" readonly>
                                         <input type="text" class="px-4 py-2 bg-gray-100 text-center w-16 text-black"
                                             v-model="count" readonly>
                                         <button @click="increment"
@@ -381,8 +387,8 @@
                                 style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 Multi handle Tote bag with Embroided Philippine Kalesa Scenery
                             </p>
-                            <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToShop/shop-product2.png"
-                                alt="" width="100%">
+                            <img class="rounded-md lg:h-[80%]"
+                                src="@/assets/images/CategoryView/ToShop/shop-product2.png" alt="" width="100%">
                             <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
@@ -400,8 +406,8 @@
                                 style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 Multi handle Tote bag with Embroided Philippine Kalesa Scenery
                             </p>
-                            <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToShop/shop-product3.png"
-                                alt="" width="100%">
+                            <img class="rounded-md lg:h-[80%]"
+                                src="@/assets/images/CategoryView/ToShop/shop-product3.png" alt="" width="100%">
                             <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
@@ -642,43 +648,8 @@
             </div>
         </div>
     </div>
-    <div class="flex flex-col lg:flex-col-reverse">
-        <div class="grid lg:grid-cols-2 lg:gap-[10rem] relative mx-6 px-3 lg:px-32 pb-5 pt-5 ">
-            <!-- Feedback Content -->
-            <div class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A]" v-for="(item, index) in paginatedItems" :key="index">
-                <div class="flex flex-row">
-                    <div class="pt-[0.125rem]">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-12 h-12">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                        </svg>
-                    </div>
-                    <div class="flex flex-col">
-                        <p class="relative left-2 text-black text-lg xl:text-xl font-medium pb-3">
-                            {{ item.name }}
-                        </p>
-                        <p class="relative bottom-4 left-2 text-gray-600 text-lg">{{ item.date }}
-                        </p>
-                    </div>
-                </div>
-                <div class="p-2 w-full">
-                    <p class="text-black text-md line-clamp-3">{{ item.description }}</p>
-                </div>
-                <div class="p-1 flex justify-end items-center mr-10">
-                    <button @click="seeMore(item)"
-                        class="flex items-center px-1 py-1.5 border-2 border-black text-black m-1 rounded-md hover:bg-black hover:text-white transition-colors duration-300 text-nowrap text-xs">
-                        <span>See More</span>
-                        <span class="ml-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
-                                stroke="currentColor" class="w-4 h-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                            </svg>
-                        </span>
-                    </button>
-                </div>
-            </div>
-        </div>
+    <div class="relative flex flex-col">
+
         <div class="relative mx-6 px-3 lg:px-32 pb-5 pt-5">
             <div>
                 <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
@@ -745,6 +716,64 @@
                 </div>
             </div>
         </div>
+
+        <div class="grid lg:grid-cols-2 lg:gap-[2rem] relative mx-6 px-3 lg:px-32 pt-5">
+            <!-- Feedback Content -->
+            <div class="relative border-2 border-gray-200 rounded-md px-3 py-3" v-for="(item, index) in paginatedItems"
+                :key="index">
+
+                <div class="flex flex-row">
+                    <div class="pt-[0.125rem]">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-12 h-12">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="relative left-2 text-black text-lg xl:text-xl font-medium pb-3">
+                            {{ item.name }}
+                        </p>
+                        <p class="relative bottom-4 left-2 text-gray-600 text-lg">{{ item.date }}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="p-2 w-full">
+                    <p class="text-justify text-black text-md leading-7">{{ item.description }}</p>
+                </div>
+            </div>
+        </div>
+        <div v-if="showSeeMoreButton || showSeeLessButton"
+            class="flex items-center justify-center pr-[5rem] mt-5 mb-10">
+            <div v-if="showSeeMoreButton">
+                <div>
+                    <div
+                        style="position: absolute; bottom :0; left: 0; height: 24%; width: 100%; background: linear-gradient(to bottom, transparent 30%, #FFFFFF 79%, #FFFFFF 50%);">
+                    </div>
+                </div>
+                <div class="absolute bottom-3">
+                    <button @click="seeMore"
+                        class="left-0 right-0 px-3 py-3 border-2 border-black text-black  rounded-md hover:bg-black hover:text-white transition-colors duration-300 text-nowrap text-xs">
+                        <span>See More</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <div v-if="showSeeLessButton" class="mb-10">
+                <div class="absolute bottom-8">
+                    <button @click="seeLess"
+                        class=" px-3 py-3 border-2 border-black text-black  rounded-md hover:bg-black hover:text-white transition-colors duration-300 text-nowrap text-xs">
+                        <span>See Less</span>
+                    </button>
+                </div>
+
+            </div>
+
+
+        </div>
+
     </div>
 </template>
 
@@ -801,12 +830,15 @@ export default {
             showDropdown: false,
             categories: ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'],
             locations: ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'],
+            numFeedbackShown: 0,
+            showSeeLessButton: false
+
         };
     },
     computed: {
         paginatedItems() {
-            const startIndex = this.currentPage * this.pageSize;
-            return this.items.slice(startIndex, startIndex + this.pageSize);
+            // Return first 2 items initially and add additional items based on numFeedbackShown
+            return this.items.slice(0, 2 + this.numFeedbackShown);
         },
         currentImage() {
             return this.images[this.currentIndex];
@@ -833,9 +865,6 @@ export default {
             this.showReviews = true;
             this.showCart = false;
         },
-        closeCart() {
-            this.showCart = false;
-        },
         closeReviews() {
             this.showReviews = false;
             this.showCart = true;
@@ -847,6 +876,22 @@ export default {
             if (this.count > 0) {
                 this.count--;
             }
+        },
+        // Method to handle "See More" button click
+        seeMore() {
+            // Increment the number of feedback items to show
+            this.numFeedbackShown += 2; // Change this value as per your requirement
+            // Show See Less button if all items are shown
+            if (!this.showSeeMoreButton) {
+                this.showSeeLessButton = true;
+            }
+        },
+        // Method to handle "See Less" button click
+        seeLess() {
+            // Reset the number of feedback items shown to initial value
+            this.numFeedbackShown = 0;
+            // Hide See Less button
+            this.showSeeLessButton = false;
         }
     }
 };

@@ -96,8 +96,8 @@
 
                             <div class="border border-gray-200 py-5 pl-6">
 
-                                <input type="radio" id="payment_ibayad" name="payment_method" value="ibayad"
-                                    class="mr-2" checked>
+                                <input type="radio" id="payment_ibayad" name="payment_method" value="ibayad" class="mr-2"
+                                    checked>
                                 <label for="payment_ibayad">Ibayad</label>
 
 
@@ -221,8 +221,7 @@
                         </div>
                         <!-- For Web -->
                         <div class="justify-center lg:block hidden pt-6">
-                            <button
-                                class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
+                            <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
                                 @click="toggleConfirmation">Proceed to Payment</button>
                         </div>
                         <div v-if="showConfirmation"
@@ -290,6 +289,14 @@
                                 voucher</button>
                         </div>
                     </div>
+                    <div class="flex pt-4">
+                        <img src="@/assets/images/Modal/voucher.svg" class="mb-6 w-6 h-6">
+                        <button class="text-xs font-semibold cursor-pointer dark:text-gray-300 text-blue-500 -mt-12 pl-2">
+                            Use
+                            voucher</button>
+                    </div>
+                </div>
+
 
                     <div class="justify-center pt-3">
                         <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
@@ -313,7 +320,6 @@
 
         </template>
     </div>
-
 </template>
 
 

@@ -199,8 +199,7 @@
                 </div>
               </div>
             </div>
-            <div v-if="showComplete"
-              class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
+            <div v-if="showComplete" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
               @click.self="closeModal">
               <div class="bg-white rounded-lg shadow-md p-2 lg:max-w-2xl h-2p-[20px]" @click.stop>
                 <div class="lg:w-[100%] p-4 rounded-lg text-center flex flex-col items-center">
@@ -270,7 +269,6 @@
 
     </template>
   </div>
-
 </template>
 
 

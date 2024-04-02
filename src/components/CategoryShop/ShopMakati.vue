@@ -63,7 +63,6 @@
                 <p class="text-lg text-justify text-black pb-5">From handmade souvenirs, eco-friendly Barongs and
                     fashionable Filipiniana to artisanal chocolates and more, Makati Shop continues its mission to embrace
                     our heritage and keep them relevant; support communities and help grow small businesses;
-
                     protect the environment and elevate pride in our identity.</p>
                 <div class="hidden border border-gray-400 lg:w-[]">
                     <p class="text-center font-bold">Number of items</p>
@@ -127,13 +126,13 @@
                         <div v-if="showCart"
                             class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
                             @click.self="closeModal">
-                            <div class="bg-white overflow-y-auto h-[680px] w-[900px] overflow-hidden scrollbar-hide rounded-lg shadow-md p-2 mx-5"
+                            <div class="bg-white lg:h-[730px] h-[640px] w-[900px]  rounded-lg shadow-md p-2 mx-5"
                                 @click.stop>
                                 <div class="lg:w-[100%] p-4 rounded-lg">
                                     <div class="relative flex justify-end">
                                         <button class=" pr-4 pt-21 ">
                                             <svg @click="closeCart" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                viewBox="0 0 20 30" stroke-width="5" stroke="black" class="w-5 h-5">
+                                                viewBox="0 0 20 30" stroke-width="5" stroke="black" class="w-6 h-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                     d="M6 18 18 6M6 6l12 12" />
                                             </svg>
@@ -149,17 +148,14 @@
                                                 <div class="lg:flex lg:justify-between items-center">
                                                     <img src="@/assets/images/CategoryView/ToShop/shop-product2.png"
                                                         class="h-24 md:w-[80px] md:h-auto">
-
                                                 </div>
                                                 <div class="lg:flex lg:justify-center items-center">
                                                     <img src="@/assets/images/CategoryView/ToShop/shop-product3.png"
                                                         class="h-24 md:w-[80px] md:h-auto">
-
                                                 </div>
                                                 <div class="lg:flex lg:justify-center items-center">
                                                     <img src="@/assets/images/CategoryView/ToShop/shop-product4.png"
                                                         class="h-24 md:w-[80px] md:h-auto">
-
                                                 </div>
                                                 <div class="lg:flex lg:justify-center items-center mx-5">
                                                     <img src="@/assets/images/CategoryView/ToShop/button.png"
@@ -167,27 +163,22 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class=" lg:hidden grid grid-cols-2 grid-rows-1 gap-4">
-                                            <div class="w-60 ">
-                                                <img src="@/assets/images/CategoryView/ToShop/shop-product1.png">
+                                        <div class="lg:hidden grid grid-cols-2 grid-rows-1 gap-4">
+                                            <div class="w-[200px] ml-4">
+                                                <img :src="currentImage" class="h-52 w-full" />
                                             </div>
-                                            <div class="grid-cols-1 ml-20 ">
-                                                <img src="@/assets/images/CategoryView/ToShop/shop-product2.png"
-                                                    class="h-14 w-[66px] mb-2">
-                                                <img src="@/assets/images/CategoryView/ToShop/shop-product3.png"
-                                                    class="h-14 w-[66px] mb-2">
-                                                <img src="@/assets/images/CategoryView/ToShop/shop-product4.png"
-                                                    class="h-14 w-[66px] mb-2">
+                                            <div class="grid-cols-1 ml-16">
+                                                <img v-for="(image, index) in images" :key="index" :src="image"
+                                                    class="h-9 w-10 mb-2" />
 
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.5" stroke="black" class="w-10 h-8 ml-3 mt-2">
+                                                    stroke-width="1.5" stroke="black" class="w-10 h-8 mt-2 cursor-pointer"
+                                                    @click="changeImage">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                                 </svg>
                                             </div>
                                         </div>
-
                                         <div class="lg:w-[60%] px-3 mt-3">
                                             <div class="lg:flex lg:flex-col text-black">
                                                 <p class="font-bold text-left text-1xl mb-2">Multi Handle Tote Bag with
@@ -208,28 +199,22 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="border border-gray-200 my-5"></div>
-                                                <div class="flex justify-between mb-2">
-                                                    <p class="w-[100%] text-xs">• Made from canvas material</p>
-                                                </div>
-                                                <div class="flex justify-between mb-2">
-                                                    <p class="w-[100%] text-xs">• Durable and lightweight bag</p>
-                                                </div>
-                                                <div class="flex justify-between mb-2">
-                                                    <p class="w-[100%] text-xs">• Can be washed by hand or washing
-                                                        machine
-                                                    </p>
-                                                </div>
-                                                <div class="flex justify-between mb-2">
-                                                    <p class="w-[100%] text-xs">• Multi handle feature</p>
-                                                </div>
-                                                <div class="flex justify-between mb-2">
-                                                    <p class="w-[100%] text-xs">• Can be used as a handbag or tote shoulder
-                                                        bag
-                                      </p>
-                                                </div>
-                                                <div class="flex justify-between mb-2">
-                                                    <p class="w-[70%] text-xs">• Color: White</p>
+                                                <div class="border border-gray-200 lg:my-5"></div>
+                                                <div class="overflow-y-auto lg:overflow-y-visible h-[110px] lg:h-auto">
+                                                    <div class="justify-between mb-2 grid gap-2 mt-2">
+
+                                                        <p class="w-[100%] text-xs">• Made from canvas material</p>
+                                                        <p class="w-[100%] text-xs">• Durable and lightweight bag</p>
+                                                        <p class="w-[100%] text-xs">• Can be washed by hand or washing
+                                                            machine
+                                                        </p>
+                                                        <p class="w-[100%] text-xs">• Multi handle feature</p>
+                                                        <p class="w-[100%] text-xs">• Can be used as a handbag or tote
+                                                            shoulder
+                                                            bag
+                                                        </p>
+                                                        <p class="w-[70%] text-xs">• Color: White</p>
+                                                    </div>
                                                 </div>
                                                 <p class="lg:block hidden font-bold">Reviews</p>
                                                 <button class="lg:block hidden" @click="toggleshowReviews">
@@ -265,17 +250,15 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class=" lg:hidden flex items-center text-black mb-4">
-                                        Quantity 
+                                        Quantity
                                         <button @click="decrement"
                                             class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
-                                        <input type="text" class="px-4 py-2 bg-gray-100 text-center w-16 text-black" v-model="count"
-                                            readonly>
+                                        <input type="text" class="px-4 py-2 bg-gray-100 text-center w-16 text-black"
+                                            v-model="count" readonly>
                                         <button @click="increment"
                                             class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">+</button>
                                     </div>
-
                                     <div class="flex justify-between">
                                         <div class="w-[100%] flex justify-start">
                                             <button
@@ -776,6 +759,10 @@
 
 <script>
 import MapRenderer from "@/components/MapRenderer.vue";
+import shopProduct1 from '@/assets/images/CategoryView/ToShop/shop-product1.png';
+import shopProduct2 from '@/assets/images/CategoryView/ToShop/shop-product2.png';
+import shopProduct3 from '@/assets/images/CategoryView/ToShop/shop-product3.png';
+import shopProduct4 from '@/assets/images/CategoryView/ToShop/shop-product4.png';
 export default {
     props: {
         latitude: Number,
@@ -787,8 +774,6 @@ export default {
     },
     data() {
         return {
-            showCart: false,
-            showReviews: false,
             items: [{
                 name: 'Juan Dela Cruz',
                 description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
@@ -800,6 +785,15 @@ export default {
                 date: 'December 2023',
             },
             ],
+            images: [
+                shopProduct1,
+                shopProduct2,
+                shopProduct3,
+                shopProduct4
+            ],
+            currentIndex: 0,
+            showCart: false,
+            showReviews: false,
             count: 0,
             showCartModal: false,
             currentPage: 0,
@@ -814,14 +808,19 @@ export default {
             const startIndex = this.currentPage * this.pageSize;
             return this.items.slice(startIndex, startIndex + this.pageSize);
         },
+        currentImage() {
+            return this.images[this.currentIndex];
+        }
     },
     methods: {
+        changeImage() {
+            this.currentIndex = (this.currentIndex + 1) % this.images.length;
+        },
         openCartModal() {
             this.showCartModal = true;
         },
         closeModal() {
             this.showCartModal = false;
-
         },
         toggleshowCart() {
             this.showAddtoCart = false;
@@ -851,5 +850,4 @@ export default {
         }
     }
 };
-
 </script>

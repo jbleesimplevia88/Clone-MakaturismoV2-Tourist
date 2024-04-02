@@ -7,8 +7,8 @@
         </svg> Request to Book
     </nav>
     <div class="lg:px-[180px] p-10 relative">
-        <div class="flex justify-between ">
-            <div class="lg:w-[60%]">
+        <div class="lg:flex justify-between ">
+            <div class="lg:w-[60%] w-auto">
                 <p class="mb-4 font-bold text-3xl">Your Order</p>
                 <p class="mb-4 font-bold text-3m">Number Of Items</p>
                 <p class="mb-4 font-bold text-3m">9</p>
@@ -145,7 +145,7 @@
                         <div class="flex items-center my-7 mr-6 mt-2">
                             <img src="@/assets/images/CategoryView/ToShop/voucher.png" class="lg:w-8 w-[40%] h-8 mr-2">
                             <p class="font-poppins font-sans text-base text-blue-500 mr-4">Use Voucher</p>
-                            <input type="text" id="" name="" value="" class="h-[50px] border border-gray-200 pl-5"
+                            <input type="text" id="" name="" value="" class="h-[50px] w-[180px] border border-gray-200 pl-5"
                                 placeholder="Voucher Code">
                         </div>
                         <div class="flex justify-between mt-6 mb-2">
@@ -395,7 +395,8 @@
                 </div>
             </div>
         </div>
-    </div></template>
+    </div>
+</template>
 <style scoped></style>
 
 <script>

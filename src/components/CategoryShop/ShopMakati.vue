@@ -447,7 +447,7 @@
                                         src="@/assets/images/CategoryView/ToShop/shop-product4.png" alt="" width="100%">
                                 </div>
                                 <div class="w-[60%]">
-                                    <p class="text-xs text-white p-2 w-[60%] mb-4">
+                                    <p class="text-xs text-white p-2 w-[75%] mb-4">
                                         Multi handle Tote bag with Embroided Philippine Kalesa Scenery</p>
                                     <p class="text-xs text-white p-2 w-[55%]">
                                         ₱ 100.00</p>
@@ -491,7 +491,7 @@
                                         src="@/assets/images/CategoryView/ToShop/shop-product6.png" alt="" width="100%">
                                 </div>
                                 <div class="w-[60%]">
-                                    <p class="text-xs text-white p-2 w-[60%] mb-11">
+                                    <p class="text-xs text-white p-2 w-[60%] lg:mb-11 mb-5">
                                         Mini Gold Tin with Wooden Base Vinta</p>
                                     <p class="text-xs text-white p-2 w-[55%]">
                                         ₱ 100.00</p>

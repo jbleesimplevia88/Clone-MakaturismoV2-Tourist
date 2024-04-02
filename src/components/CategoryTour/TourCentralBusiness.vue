@@ -43,7 +43,7 @@
                     </div>
                     
                     
-                    <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 lg:p-5 px-5 py-3 shadow-lg">
+                    <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 lg:p-5 px-5 py-3 shadow-lg z-[10]">
                         <div class="flex justify-between">
                             <div>
                                 <p class="text-md">Plan your adventure</p>

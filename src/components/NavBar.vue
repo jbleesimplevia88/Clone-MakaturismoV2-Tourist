@@ -1,8 +1,8 @@
 <template>
   <nav class="fixed top-0 z-10 w-full">
-    <div class="flex items-center justify-between w-full px-4 py-2 bg-white shadow md:px-20">
+    <div class="flex items-center justify-between w-full py-2 bg-white shadow md:px-20">
       <!-- Left side - Logo -->
-      <div class="flex items-center">
+      <div class="flex items-center pl-4">
         <RouterLink to="/" class="flex items-center">
           <img src="@/assets/images/Header/makati_logo.png" alt="banner"
             class="w-8 h-auto mr-3 md:block md:w-16 md:h-auto">
@@ -42,10 +42,51 @@
 
         <RouterLink to="/calendar" class="hidden text-white md:inline-block"><img
             src="@/assets/images/Header/calendar.png" alt="logo" class="w-auto h-6 mx-2"></RouterLink>
-        <button @click="openLoginModal" class="text-blue-600">Login</button>
+        <button @click="openLoginModal" class="hidden lg:inline-block text-blue-600">Login</button>
         <RouterLink to="/calendar" class="hidden text-white md:inline-block"></RouterLink>
         <a class="hidden lg:block lg:bg-blue-500 lg:hover:bg-blue-700 lg:text-white lg:font-bold lg:py-2 lg:px-4 lg:border lg:border-blue-700 lg:rounded-lg"
           href="#">Become a partner</a>
+
+        <!-- SIDEBAR NAVIGATION -->
+        <div class="relative lg:hidden">
+          <!-- Hamburger Icon for Mobile View -->
+          <div @click="toggleSidebar" class="lg:hidden pr-4">
+            <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 6.19995H23" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M5 16.2H23" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M5 11.2H23" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <!-- Sidebar Navigation -->
+          <transition name="slide">
+
+            <div v-if="isSidebarOpen" class="absolute bg-white top-0 right-0 lg:hidden h-[100vh] w-[15rem]">
+            <div>
+              <!-- Close button -->
+              <button @click="toggleSidebar" class="absolute top-0 left-0 m-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+
+              <!-- Sidebar content goes here -->
+            <div class="mx-4 mt-[4rem] flex flex-col justify-between h-full">
+              <ul>
+                <li><router-link to="/calendar" class="font-bold">Calendar</router-link></li>
+              </ul>
+
+              <div class="absolute bottom-5 left-0 w-full p-4 flex flex-col justify-between">
+                <button @click="openLoginModal" class="text-blue-600 py-2">Login</button>
+                <a class="bg-blue-500 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg text-center " href="#">Become a Partner</a>
+              </div>
+            </div>
+
+            </div>
+            </div>
+          </transition>
+        </div>
+
       </div>
 
     </div>
@@ -654,6 +695,7 @@ export default {
   },
   data() {
     return {
+      isSidebarOpen: false,
       showInput: false,
       showLoginModal: false,
       showSignUpModal: false,
@@ -740,6 +782,10 @@ export default {
     );
   },
   methods: {
+    toggleSidebar() {
+      this.isSidebarOpen = !this.isSidebarOpen;
+    },
+
     isCategoryPath(path) {
       return path.startsWith('/category/') && path.split('/').length === 3;
     },
@@ -858,6 +904,26 @@ export default {
 .bg-img {
   background-size: 300px 500px;
 }
+
+
+
+.sidebar {
+  height: 100vh; /* Set height to 100% of viewport height */
+  width: 250px; /* Set desired width of sidebar */
+  background-color: #fff; /* Set background color */
+  position: fixed; /* Fix the position of sidebar */
+  top: 0; /* Align to top */
+  right: -250px; /* Initially position outside the viewport */
+  transition: right 0.3s ease; /* Add transition effect */
+  padding: 20px; /* Add padding */
+}
+
+.sidebar.open {
+  right: 0; /* Move sidebar into view */
+
+}
+
+
 
 .swiper-container {
   height: 100%;
@@ -981,4 +1047,42 @@ export default {
 ::-webkit-scrollbar {
   display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
 }
+
+/* .slide-enter-active,
+.slide-leave-active {
+  transition: transform 0.3s ease-in-out;
+}
+
+.slide-enter,
+.slide-leave-to {
+  transform: translateX(100%);
+}
+
+.slide-enter-to {
+  transform: translateX(-10%);
+} */
+
+/*  */
+.slide-enter-active,
+.slide-leave-active {
+  transition: 0.3s linear;
+}
+
+.slide-enter,
+.slide-leave-to {
+  transform: translateX(100%);
+}
+
+.slide-enter-to,
+.slide-leave {
+  transform: translateX(0);
+
+}
+
+
+
+
+
+
+
 </style>

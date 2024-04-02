@@ -111,8 +111,8 @@
                                 style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 Multi handle Tote bag with Embroided Philippine Kalesa Scenery
                             </p>
-                            <img class="rounded-md lg:h-[80%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="100%">
+                            <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToShop/shop-product1.png"
+                                alt="" width="100%">
                             <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
@@ -127,7 +127,7 @@
                         <div v-if="showCart"
                             class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
                             @click.self="closeModal">
-                            <div class="bg-white lg:h-[730px] h-[640px] w-[900px]  rounded-lg shadow-md p-2 mx-5"
+                            <div class="bg-white lg:h-[760px] h-[640px] w-[900px]  rounded-lg shadow-md p-2 mx-5"
                                 @click.stop>
                                 <div class="lg:w-[100%] p-4 rounded-lg">
                                     <div class="relative flex justify-end">
@@ -187,7 +187,7 @@
                                             </div>
                                             <div class="text-black mb-5">
                                                 <p class="font-bold">Makati Shop</p>
-                                                <div class="flex justify-between mb-2">
+                                                <div class="lg:block hidden  justify-between mb-2">
                                                     <p class="w-[100%] ">₱399.00</p>
                                                     <div class="flex justify-end">
                                                         <div class="justify-between hidden lg:block">
@@ -223,8 +223,7 @@
                                                         <div
                                                             class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                                             <div class="inline-block w-[100%]">
-                                                                <label
-                                                                    class="flex w-[100%] text-sm font-bold">juandelacruz
+                                                                <label class="flex w-[100%] text-sm font-bold">juandelacruz
                                                                     ⭐️⭐️⭐️⭐️⭐</label>
                                                                 <p class="flex text-sm">03-10-2024 11:30</p>
                                                             </div>
@@ -237,8 +236,7 @@
                                                         <div
                                                             class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                                             <div class="inline-block w-[100%]">
-                                                                <label
-                                                                    class="flex w-[100%] text-sm font-bold">faithstamaria
+                                                                <label class="flex w-[100%] text-sm font-bold">faithstamaria
                                                                     ⭐️⭐️⭐️⭐️⭐</label>
                                                                 <p class="flex text-sm">09-03-2024 08:30</p>
                                                             </div>
@@ -255,11 +253,9 @@
                                     </div>
                                     <div class=" lg:hidden flex items-center text-black mb-4">
                                         Quantity
-                                        Quantity
                                         <button @click="decrement"
                                             class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
-                                        <input type="text" class="px-4 py-2 bg-gray-100 text-center w-16 text-black"
-                                            v-model="count" readonly>
+
                                         <input type="text" class="px-4 py-2 bg-gray-100 text-center w-16 text-black"
                                             v-model="count" readonly>
                                         <button @click="increment"
@@ -387,8 +383,8 @@
                                 style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 Multi handle Tote bag with Embroided Philippine Kalesa Scenery
                             </p>
-                            <img class="rounded-md lg:h-[80%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product2.png" alt="" width="100%">
+                            <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToShop/shop-product2.png"
+                                alt="" width="100%">
                             <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
@@ -406,8 +402,8 @@
                                 style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 Multi handle Tote bag with Embroided Philippine Kalesa Scenery
                             </p>
-                            <img class="rounded-md lg:h-[80%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product3.png" alt="" width="100%">
+                            <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToShop/shop-product3.png"
+                                alt="" width="100%">
                             <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
@@ -744,8 +740,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="showSeeMoreButton || showSeeLessButton"
-            class="flex items-center justify-center pr-[5rem] mt-5 mb-10">
+        <div v-if="showSeeMoreButton || showSeeLessButton" class="flex items-center justify-center pr-[5rem] mt-5 mb-10">
             <div v-if="showSeeMoreButton">
                 <div>
                     <div

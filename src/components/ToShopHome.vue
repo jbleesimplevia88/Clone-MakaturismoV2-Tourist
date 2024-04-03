@@ -167,7 +167,8 @@
                         </div>
                         <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{ item.name }}
                         </p>
-                        <p class="absolute bottom-2 left-2 text-white text-xs">{{ item.category }}</p>
+                        <p class="absolute bottom-2 left-2 text-white text-xs">{{ Array.isArray(item.category) ?
+                            item.category.join(', ') : item.category }}</p>
                     </div>
                     <div class="p-2 w-full">
                         <p class="text-white text-xs line-clamp-3">{{ item.description }}</p>

@@ -183,6 +183,10 @@
                     </div>
                 </div>
             </div>
+            <div v-if="filteredItems.length === 0" class="text-white text-center font p-14">
+                <p>We're sorry, but we couldn't find a place that matches your selected filter. Try adjusting your filter
+                    or explore other options.</p>
+            </div>
             <!-- Pagination controls -->
             <div class="grid grid-cols-2">
                 <div class="flex justify-start items-center">

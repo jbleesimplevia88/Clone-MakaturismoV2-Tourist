@@ -30,7 +30,7 @@
         <div>
             <div class="pb-10">
                 <!-- Filter dropdown -->
-                <div class="relative hidden lg:block text-left">
+                <div class="relative hidden lg:block text-left" @click.stop ref="dropdown">
                     <button
                         class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
                         @click="toggleDropdown">
@@ -444,13 +444,21 @@ export default {
             return this.items.length;
         },
     },
+    mounted() {
+        document.addEventListener('click', this.handleGlobalClick);
+    },
+    beforeDestroy() {
+        document.removeEventListener('click', this.handleGlobalClick);
+    },
     methods: {
         handleApplyFilter() {
             this.applyButtonClicked = true;
             console.log('Apply button clicked');
-            console.log('Selected category:', this.selectedCategory); // Log selected location
-            console.log('Selected location:', this.selectedLocation); // Log selected location
+            console.log('Selected category:', this.selectedCategory);
+            console.log('Selected location:', this.selectedLocation);
             this.currentPage = 0; // Reset currentPage when filter is applied
+            this.showDropdown = false;
+
         },
         nextPage() {
             this.currentPage++;
@@ -463,6 +471,11 @@ export default {
         },
         toggleDropdown() {
             this.showDropdown = !this.showDropdown;
+        },
+        handleGlobalClick(event) {
+            if (!this.$refs.dropdown.contains(event.target)) {
+                this.showDropdown = false;
+            }
         },
         applyFilter(category) {
             // Implement filtering logic based on selected category

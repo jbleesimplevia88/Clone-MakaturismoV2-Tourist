@@ -28,7 +28,7 @@
         <div>
             <div class="pb-10">
                 <!-- Filter dropdown -->
-                <div class="relative hidden lg:block text-left">
+                <div class="relative hidden lg:block text-left"  @click.stop ref="dropdown">
                     <button
                         class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
                         @click="toggleDropdown">
@@ -414,6 +414,12 @@ export default {
             }
         },
     },
+    mounted() {
+        document.addEventListener('click', this.handleGlobalClick);
+    },
+    beforeDestroy() {
+        document.removeEventListener('click', this.handleGlobalClick);
+    },
     computed: {
         filteredItems() {
             let filteredItems = this.items.slice(); // Create a shallow copy of items
@@ -467,9 +473,11 @@ export default {
         handleApplyFilter() {
             this.applyButtonClicked = true;
             console.log('Apply button clicked');
-            console.log('Selected cuisine:', this.selectedCuisine); // Log selected location
-            console.log('Selected location:', this.selectedLocation); // Log selected location
+            console.log('Selected cuisine:', this.selectedCuisine); 
+            console.log('Selected location:', this.selectedLocation); 
             this.currentPage = 0; // Reset currentPage when filter is applied
+            this.showDropdown = false; 
+
         },
         nextPage() {
             this.currentPage++;
@@ -482,6 +490,11 @@ export default {
         },
         toggleDropdown() {
             this.showDropdown = !this.showDropdown;
+        },
+        handleGlobalClick(event) {
+            if (!this.$refs.dropdown.contains(event.target)) {
+                this.showDropdown = false;
+            }
         },
         applyFilter(cuisine) {
             // Implement filtering logic based on selected cuisine

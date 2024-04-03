@@ -30,7 +30,7 @@
         <div>
             <div class="pb-10">
                 <!-- Filter dropdown -->
-                <div class="relative hidden lg:block text-left"  @click.stop ref="dropdown">
+                <div class="relative hidden lg:block text-left" @click.stop ref="dropdown">
                     <button
                         class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
                         @click="toggleDropdown">
@@ -187,6 +187,10 @@
                         </button>
                     </div>
                 </div>
+            </div>
+            <div v-if="filteredItems.length === 0" class="text-white text-center font p-14">
+                <p>We're sorry, but we couldn't find any activity that matches your selected filter. Try adjusting your filter
+                    or explore other options.</p>
             </div>
             <!-- Pagination controls -->
             <div class="grid grid-cols-2">
@@ -476,10 +480,10 @@ export default {
         handleApplyFilter() {
             this.applyButtonClicked = true;
             console.log('Apply button clicked');
-            console.log('Selected category:', this.selectedCategory); 
-            console.log('Selected location:', this.selectedLocation); 
+            console.log('Selected category:', this.selectedCategory);
+            console.log('Selected location:', this.selectedLocation);
             this.currentPage = 0; // Reset currentPage when filter is applied
-            this.showDropdown = false; 
+            this.showDropdown = false;
 
         },
         nextPage() {

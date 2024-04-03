@@ -12,12 +12,14 @@
           <div class="flex items-center mb-2 mr-">
             <img src="@/assets/images/Footer/makati_logo.png" alt="makati logo"
               class="inline w-6 h-auto mr-2 align-middle">
-            <h6 class="text-sm md:text-base">Makaturismo</h6>
+            <h6 class="mb-2 text-sm md:text-base" style="font-size: 18px;">Makaturismo</h6>
+
           </div>
 
 
           <router-link to="/" class="mb-2 text-sm md:text-base">
-            <button class="text-white-500 hover:underline">Home</button>
+            <h6 class="mb-2 text-xl md:text-base">Home</h6>
+
           </router-link>
 
           <div>
@@ -65,18 +67,43 @@
         <div class="footer-section sm:w-1/4 " id="section3">
           <!-- Contact Us -->
           <div>
-            <h6 class="mb-2 text-sm md:text-base">Contact Us</h6>
-            <p class="mb-2 text-sm md:text-base">Makati City</p>
-            <p class="mb-2 text-sm md:text-base">Makaturismo.sample@gmail.com</p>
-            <p class="mb-2 text-sm md:text-base">8-7000</p>
+
+
+
+            <h6 class="mb-2 text-xl md:text-base">Contact Us</h6>
+
+
+            <div class="flex items-center">
+              <img src="@/assets/images/Footer/Location.png" alt="Makati City" class="inline-block mr-2 mb-2">
+              <p class="mb-2 text-sm md:text-base">Makati City</p>
+            </div>
+            <div class="flex items-center">
+              <img src="@/assets/images/Footer/email.png" alt="Makaturismo.sample@gmail.com"
+                class="inline-block mr-2 mb-2">
+              <p class="mb-2 text-sm md:text-base">Makaturismo.sample@gmail.com</p>
+            </div>
+
+            <div class="flex items-center">
+              <img src="@/assets/images/Footer/Vector.png" alt="(632) 8870-1000" class="inline-block mr-2 mb-2">
+              <p class="mb-2 text-sm md:text-base">(632) 8870-1000</p>
+            </div>
           </div>
         </div>
         <div class="footer-section sm:w-1/4  justify-center" id="section2">
           <!-- Other Related Sites -->
           <div>
-            <h6 class="mb-2 text-sm md:text-base">Other Related Site</h6>
-            <p class="mb-2 text-sm md:text-base"> <a href="https://www.makati.gov.ph/" target="_blank"
-                rel="noopener noreferrer"> makati.gov.ph</a></p>
+            <h6 class="mb-2 text-xl md:text-base">Other Related Site</h6>
+
+
+
+            <div>
+              <p class="mb-2 text-sm md:text-base">
+                <img src="@/assets/images/Footer/makati.png" alt="(makati.gov.ph)" class="inline-block mr-2 mb-2">
+                <a href="https://www.makati.gov.ph/" target="_blank" rel="noopener noreferrer">makati.gov.ph</a>
+              </p>
+
+            </div>
+
           </div>
         </div>
         <!-- Section 4 -->
@@ -126,18 +153,42 @@
         </div>
 
         <!-- Section 2 to 4 (Displayed in a column on mobile) -->
-        <div class="footer-section w-1/2 pl-4 md:pl-0 mt-4">
-          <div class="flex flex-col">
+        <div
+          class="whitespace-normal lg:whitespace-nowrap overflow-wrap-normal lg:overflow-wrap-normal leading footer-section w-1/2 pl-4 md:pl-0 mt-4">
+          <div
+            class=" whitespace-normal lg:whitespace-nowrap overflow-wrap-normal lg:overflow-wrap-normal leading flex flex-col">
             <!-- Section 2 -->
-            <div class="w-full sm:w-1/2 mb-4 sm:mb-0">
-              <h6 class="mb-2 text-sm md:text-base">Contact Us</h6>
-              <p class="mb-2 text-sm md:text-base">Makati City</p>
-              <p class="mb-2 text-sm md:text-base">Makaturismo.sample@gmail.com</p>
-              <p class="mb-2 text-sm md:text-base">8-7000</p>
+            <div
+              class=" whitespace-normal lg:whitespace-nowrap overflow-wrap-normal lg:overflow-wrap-normal leading w-full sm:w-1/2 mb-4 sm:mb-0">
+              <h6 class="mb-2 text-xl md:text-base">Contact Us</h6>
+
+              <div class="flex items-center">
+                <img src="@/assets/images/Footer/Location.png" alt="Makati City" class="inline-block mr-2 mb-2">
+                <p class="mb-2 text-sm md:text-base">Makati City</p>
+              </div>
+
+              <div class="flex items-center " style="max-width: 200px;">
+
+                <img src="@/assets/images/Footer/email.png" alt="Makaturismo.sample@gmail.com"
+                  class="inline-block mr-2 mb-2">
+                <p class="mb-2 text-xs md:text-base text-custom-size whitespace-nowrap">
+
+                  Makaturismo.sample@gmail.com
+                </p>
+              </div>
+
+
+              <div class="flex items-center">
+                <img src="@/assets/images/Footer/Vector.png" alt="(632) 8870-1000" class="inline-block mr-2 mb-2">
+                <p class="mb-2 text-sm md:text-base">(632) 8870-1000</p>
+              </div>
             </div>
             <div class="w-full sm:w-1/2 mb-4 sm:mb-0">
               <h6 class="mb-2 text-sm md:text-base">Other Related Site</h6>
-              <p class="mb-2 text-sm md:text-base">makati.gov.ph</p>
+              <p class="mb-2 text-sm md:text-base">
+                <img src="@/assets/images/Footer/makati.png" alt="(makati.gov.ph)" class="inline-block mr-2 mb-2">
+                <a href="https://www.makati.gov.ph/" target="_blank" rel="noopener noreferrer">makati.gov.ph</a>
+              </p>
             </div>
             <!-- Section 3 -->
 

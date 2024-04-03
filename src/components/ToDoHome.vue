@@ -27,7 +27,7 @@
         <div>
             <div class="pb-10">
                 <!-- Filter dropdown WEB-->
-                <div class="relative text-left  hidden lg:block">
+                <div class="relative text-left  hidden lg:block" @click.stop ref="dropdown">
                     <button
                         class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
                         @click="toggleDropdown">
@@ -42,8 +42,10 @@
                     </button>
                     <!-- Dropdown menu -->
                     <div v-if="showDropdown"
-                        class=" z-[1] origin-top-left relative md:absolute left-0 mt-2 w-[400x] md:w-[868px] lg:w-[1150px] rounded-2xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <div role="menu" aria-orientation="horizontal" aria-labelledby="options-menu">
+                        class="z-[1] origin-top-left relative md:absolute left-0 mt-2 w-[400x] md:w-[868px] lg:w-[1150px] rounded-2xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+
+
+                        <div role="menu" aria-orientation="horizontal" aria-labelledby="options-menu" @click.stop>
                             <div class="grid grid-cols-3 border-b-2 p-3 font-bold ml-5 mr-5">
                                 <div>
                                     <h2>What to do</h2>
@@ -473,14 +475,23 @@ export default {
             }
         },
     },
+    mounted() {
+        document.addEventListener('click', this.handleGlobalClick);
+    },
+    beforeDestroy() {
+        document.removeEventListener('click', this.handleGlobalClick);
+    },
     methods: {
         handleApplyFilter() {
             this.applyButtonClicked = true;
             console.log('Apply button clicked');
-            console.log('Selected category:', this.selectedCategory); // Log selected location
-            console.log('Selected location:', this.selectedLocation); // Log selected location
+            console.log('Selected category:', this.selectedCategory); 
+            console.log('Selected location:', this.selectedLocation); 
             this.currentPage = 0; // Reset currentPage when filter is applied
+            this.showDropdown = false; 
+
         },
+
         nextPage() {
             this.currentPage++;
         },
@@ -492,6 +503,11 @@ export default {
         },
         toggleDropdown() {
             this.showDropdown = !this.showDropdown;
+        },
+        handleGlobalClick(event) {
+            if (!this.$refs.dropdown.contains(event.target)) {
+                this.showDropdown = false;
+            }
         },
         seeMore(item) {
             const {

@@ -1,11 +1,11 @@
 <template>
-    <div class="relative pt-[57px] md:pt-[80px] lg:pt-20">
+    <div class="relative pt-[57px] md:pt-[80px]">
         <div class="relative">
-            <div
-                style="position: absolute; top: 100; left: 0; height: 101%; width: 100%; background: linear-gradient(to left, transparent, #102E61 96%, #102E61 70%);">
+            <div class="absolute top-100 left-0 h-[101%] w-[100%]"
+                style="background: linear-gradient(to left, transparent, #102E61 96%, #102E61 70%);">
             </div>
-            <div
-                style="position: absolute; top: 0; left: 0; height: 101%; width: 100%; background: linear-gradient(to bottom, transparent 75%, #102E61 87%, #102E61 40%);">
+            <div class="absolute top-0 left-0 h-[101%] w-[100%] md:"
+                style="background: linear-gradient(to bottom, transparent 75%, #102E61 87%, #102E61 40%);">
             </div>
             <img class="w-full h-[200px] md:h-[700px]" src="@/assets/images/CategoryView/ToDo/ToDo.jpeg" alt="" />
             <div class="flex items-center justify-center absolute top-5 md:top-20 z-[1] bg-white pl-3 lg:pl-5 rounded-r-xl">
@@ -13,8 +13,7 @@
                     WHAT TO DO
                 </p>
             </div>
-            <div
-                class=" sm:absolute inset-0 sm:top-56 md:top-[23rem] flex text-center lg:text-left justify-center items-center z-[1]">
+            <div class=" sm:absolute inset-0 sm:top-56 md:top-[23rem] flex text-center lg:justify-center items-center">
                 <p
                     class="pt-[6rem] text-[17px] sm:text-sm md:text-xl lg:text-[1.7rem] text-wrap leading lg:leading-10 text-white">
                     Makati is a cosmopolitan city that offers a variety of activities that people of all ages can

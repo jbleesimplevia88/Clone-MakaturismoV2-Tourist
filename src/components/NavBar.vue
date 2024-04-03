@@ -43,13 +43,65 @@
         </div>
 
         <!-- Calendar -->
-        <RouterLink to="/calendar" class="hidden text-white md:inline-block"><img
+        <RouterLink to="/calendar" class="hidden pr-4 text-white md:inline-block"><img
             src="@/assets/images/Header/calendar.png" alt="logo" class="w-auto h-6 mx-2"></RouterLink>
-        <button @click="openLoginModal" class="hidden lg:inline-block text-blue-600">Login</button>
-        <RouterLink to="/calendar" class="hidden text-white md:inline-block"></RouterLink>
-        <a class="hidden lg:block lg:bg-blue-500 lg:hover:bg-blue-700 lg:text-white lg:font-bold lg:py-2 lg:px-4 lg:border lg:border-blue-700 lg:rounded-lg"
-          href="#">Become a partner</a>
+        <template v-if="showIcons">
+          <!-- Original Login Button -->
+          <button @click="openLoginModal" class="text-blue-600">Login</button>
+          <!-- Become a partner button -->
+          <a class="hidden lg:block lg:bg-blue-500 lg:hover:bg-blue-700 lg:text-white lg:font-bold lg:py-2 lg:px-4 lg:border lg:border-blue-700 lg:rounded-lg"
+            href="#">Become a partner</a>
+        </template>
 
+        <template v-else>
+          <div class="flex items-center space-x-7">
+            <!-- Notification Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+              <path fill-rule="evenodd"
+                d="M5.25 9a6.75 6.75 0 0 1 13.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 0 1-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 1 1-7.48 0 24.585 24.585 0 0 1-4.831-1.244.75.75 0 0 1-.298-1.205A8.217 8.217 0 0 0 5.25 9.75V9Zm4.502 8.9a2.25 2.25 0 1 0 4.496 0 25.057 25.057 0 0 1-4.496 0Z"
+                clip-rule="evenodd" />
+            </svg>
+
+            <!-- Person Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+              <path fill-rule="evenodd"
+                d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                clip-rule="evenodd" />
+            </svg>
+
+          </div>
+
+          <div v-if="toggleProfileIcon"
+            class="absolute top-10 right-0 bg-gray-100 shadow text-black rounded-lg w-[360px]">
+            <div class="p-4" role="none">
+              <p class="pb-3 text-xl font-bold">Account</p>
+              <div class="pb-2 text-center">
+                <RouterLink to="/information">
+                  <button class="flex items-center w-full p-3 bg-white rounded-xl" @click="toggleDropdown(null)">
+                    <span>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
+                        <path fill-rule="evenodd"
+                          d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                          clip-rule="evenodd" />
+                      </svg>
+                    </span>
+                    <span class="ml-2">Profile</span>
+                  </button>
+                </RouterLink>
+              </div>
+              <RouterLink to="/">
+                <div class="pt-4 pb-2 text-center">
+                  <button class="bg-[#102E61] w-full rounded-xl flex justify-center items-center p-2">
+                    <span class="ml-2 text-white">Logout</span>
+                  </button>
+                </div>
+              </RouterLink>
+            </div>
+          </div>
+
+
+
+        </template>
         <!-- SIDEBAR NAVIGATION -->
         <div class="relative lg:hidden">
           <!-- Hamburger Icon for Mobile View -->

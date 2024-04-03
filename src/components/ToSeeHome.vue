@@ -9,12 +9,11 @@
             </div>
             <img class="w-full h-[200px] md:h-[700px]" src="@/assets/images/CategoryView/ToSee/banner.jpeg" alt="" />
             <div class="flex items-center justify-center absolute top-5 md:top-20 z-[1] bg-white pl-3 lg:pl-5 rounded-r-xl">
-                <p
-                    class="text-[#102E61] text-sm sm:text-4xl font-bold p-3 pr-4 md:p-5 md:pr-7 ">
+                <p class="text-[#102E61] text-sm sm:text-4xl font-bold p-3 pr-4 md:p-5 md:pr-7 ">
                     WHAT TO SEE
                 </p>
-                 
-                
+
+
             </div>
             <div
                 class="relative sm:absolute inset-0 sm:top-56 md:top-[23rem] flex text-center lg:text-left justify-center items-center z-[1]">
@@ -70,10 +69,10 @@
                                     <div class="grid grid-rows-8 grid-flow-col gap-4 ml-4 p-2">
                                         <div v-for="(category, index) in categories" :key="'category-' + index">
                                             <label :for="'categoryCheckbox-' + index" class="flex items-center">
-                                                <input class="accent-[#102E61]" type="checkbox"
-                                                    :id="'categoryCheckbox-' + index" :value="category"
-                                                    @change="toggleCategory(category)">
-                                                <span class="ml-3 uppercase text-sm font-bold">{{ category }}</span>
+                                                <input type="checkbox" :id="'categoryCheckbox-' + index" :value="category"
+                                                    v-model="selectedCategory">
+                                                <span class="ml-2 m-0 p-0 uppercase text-[12px] font-bold">{{ category
+                                                }}</span>
                                             </label>
                                         </div>
                                     </div>
@@ -82,17 +81,19 @@
                                     <div
                                         class="grid grid-rows-12 grid-flow-row-dense lg:grid-rows-8 md:grid-flow-col gap-4 mr-4 p-2">
                                         <div v-for="(location, index) in locations" :key="'location-' + index">
-                                            <label :for="'locationCheckbox-' + index" class="flex items-center">
+                                            <label :for="'locationCheckbox-' + index" class="flex items-left">
                                                 <input type="checkbox" :id="'locationCheckbox-' + index" :value="location"
-                                                    @change="toggleLocation(location)">
-                                                <span class="ml-2 uppercase text-sm font-bold">{{ location }}</span>
+                                                    v-model="selectedLocation" class="-mt-12">
+                                                <span class="ml-2  -mt-2 uppercase text-[12px] font-bold h-16 w-24">{{
+                                                    location }}</span>
                                             </label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center justify-center border-t-2 ml-5 mr-5 mt-5">
-                                <button class="m-4 p-1 text-white bg-[#102E61] w-72 rounded-xl">Apply</button>
+                                <button @click="handleApplyFilter"
+                                    class="m-4 p-1 text-white bg-[#102E61] w-72 rounded-xl">Apply</button>
                             </div>
                         </div>
                     </div>
@@ -157,7 +158,8 @@
                 <!-- End  Filter dropdown MOBILE  -->
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div v-for="(item, index) in items" :key="index" class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
+                <div v-for="(item, index) in filteredItems" :key="index"
+                    class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
                     <div class="relative">
                         <img class="w-full h-[250px] object-cover rounded-t" :src="item.image" alt="">
                         <div
@@ -166,7 +168,8 @@
                         <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{
                             item.name }}
                         </p>
-                        <p class="absolute bottom-2 left-2 text-white text-xs">{{ item.category }}</p>
+                        <p class="absolute bottom-2 left-2 text-white text-xs">{{ Array.isArray(item.category) ?
+                            item.category.join(', ') : item.category }}</p>
                     </div>
                     <div class="p-2 w-full">
                         <p class="text-white text-xs line-clamp-3">{{ item.description }}</p>
@@ -278,6 +281,7 @@ export default {
                     name: 'Glorietta',
                     description: "Experience the ultimate shopping and entertainment extravaganza at Glorietta. This expansive retail complex boasts a diverse mix of shops, dining options, and entertainment facilities. Whether you're in search of fashion, gadgets, or indulgent treats, Glorietta is the go-to destination for an exciting day out.",
                     category: 'Mall',
+                    location: 'Ayala-Paseo de Roxas',
                     image: item1,
                     link: "/category/see/glorietta",
                     mapLocation: "https://www.google.com/maps/dir//Glorietta,+Palm+Drive,+Makati,+Metro+Manila/@14.5529213,121.0184921,16z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9f912a3727f:0xc4541051d1e0072!2m2!1d121.0246671!2d14.5508815?entry=ttu"
@@ -286,6 +290,7 @@ export default {
                     name: 'Leon Gallery Fine Art',
                     description: "Delve into the rich heritage of Philippine art at Leon Gallery Fine Art. With an impressive collection of historical and contemporary masterpieces, this gallery provides a glimpse into the cultural tapestry of the Philippines. Admire the artistic expression of generations of Filipino artists and immerse yourself in the country's artistic journey.",
                     category: 'Art Gallery',
+                    location: 'Legaspi Village',
                     image: item2,
                     link: "",
                     mapLocation: ""
@@ -294,6 +299,7 @@ export default {
                     name: 'Galleria Nicolas',
                     description: 'Discover hidden gems and budget-friendly finds at Bangkal Thrift Market. This bustling market is a treasure trove of pre-loved items, antiques, vintage clothing, and unique collectibles. Get ready to embark on a delightful treasure hunt at Bangkal Thrift Market.',
                     category: 'Art Gallery',
+                    location: 'Makati CPO + Buendia Ave',
                     image: item3,
                     link: "",
                     mapLocation: ""
@@ -302,6 +308,7 @@ export default {
                     name: 'Victory Makati',
                     description: "Explore the realm of visual storytelling at Victory Makati. Immerse yourself in powerful images that tell stories of the city and its people at Victory Makati.",
                     category: 'Church',
+                    location: 'Ayala-Paseo de Roxas',
                     image: item4,
                     link: "",
                     mapLocation: ""
@@ -310,6 +317,8 @@ export default {
                     name: 'The Happy Gallery, Inc.',
                     description: "Experience joy and creativity through a diverse collection of art at The Happy Gallery, Inc. Showcasing a blend of paintings, sculptures, and multimedia artworks, this gallery celebrates the beauty of life and the power of imagination. Step into a realm of happiness and inspiration as you explore the artistry of renowned and up-and-coming artists.",
                     category: 'Art Gallery',
+                    // cant find happy gallery, inc under google
+                    location: 'Makati Commercial Center',
                     image: item5,
                     link: "",
                     mapLocation: ""
@@ -318,6 +327,7 @@ export default {
                     name: 'Heritage Art Center',
                     description: "Celebrate the beauty of Philippine heritage at Heritage Art Center. This cultural haven features an array of traditional artworks, crafts, and artifacts that showcase the country's diverse cultural roots. From intricate tribal crafts to Filipino folk art, this center is a treasure trove of historical and cultural significance.",
                     category: 'Art Gallery',
+                    location: 'Makati Commercial Center',
                     image: item6,
                     link: "",
                     mapLocation: ""
@@ -326,28 +336,118 @@ export default {
                     name: 'Eskinita Art Gallery',
                     description: "Experience the vibrant and eclectic spirit of Filipino urban art at Eskinita Art Gallery. Celebrating street art and graffiti culture, this gallery showcases works that reflect the dynamic urban landscape of the Philippines. Get inspired by the bold and colorful expressions of Filipino street artists at Eskinita Art Gallery.",
                     category: 'Art Gallery',
+                    location: 'Ayala-Paseo de Roxas',
                     image: item7,
                     link: "",
                     mapLocation: ""
                 },
                 {
-                    name: 'Alto Mondo Corp.',
+                    name: 'Altro Mondo Corp.',
                     description: "Journey into the world of contemporary art at Altro Mondo Corp. This gallery showcases a diverse range of contemporary works, from paintings and sculptures to mixed-media art. Immerse yourself in the artistry of talented contemporary artists from the Philippines and around the globe at Altro Mondo Corp.",
                     category: 'Art Gallery',
+                    location: 'Salcedo Village',
                     image: item8,
                     link: "",
                     mapLocation: ""
                 },
 
             ],
+            categories: ['All', 'Mall', 'Monument', 'Church', 'Park', 'Walkway', 'Heritage House', 'Art Gallery', 'Market'],
+            locations: [
+                'All',
+                'Ayala-Paseo de Roxas',
+                'Bangkal',
+                'Bel-air',
+                'Cembo',
+                'Comembo',
+                'Dasmarinas Village North',
+                'Dasmarinas Village South',
+                'Forbes Park North',
+                'Forbes Park South',
+                'Fort Bonifacio Naval Station',
+                'Fort Bonifacio (Camp)',
+                'Greenbelt',
+                'Guadalupe Nuevo',
+                'Guadalupe Viejo',
+                'Kasilawan',
+                'La Paz -Singkamas -Tejeros',
+                'Legaspi Village',
+                'Magallanes Village',
+                'Makati Commercial Center',
+                'Makati CPO + Buendia Ave',
+                'Olympia & Carmona',
+                'Palanan',
+                'Pasong Tamo & Ecology Village',
+                'Pembo',
+                'Pinagkaisahan-Pitogo',
+                'Pio del Pilar',
+                'Poblacion',
+                'Rembo (East)',
+                'Rembo (West)',
+                'Salcedo Village',
+                'San Antonio Village',
+                'San Isidro',
+                'San Lorenzo Village',
+                'Sta. Cruz',
+                'Urdaneta Village',
+                'Valenzuela, Santiago, Rizal'
+            ],
             currentPage: 0,
             pageSize: 8,
             showDropdown: false,
-            categories: ['All', 'Monument', 'Church', 'Park', 'Walkway', 'Heritage House', 'Gallery', 'Market'],
-            locations: ['Bangkal', 'Bel-Air', 'Carmona', 'Dasmariñas', 'Forbes Park', 'Guadalupe Nuevo', 'Guadalupe Viejo', 'Kasilawan', 'La Paz', 'Magallanes', 'olympia', 'Palanan', 'Pinagkaisahan', 'Pio Del Pilar', 'Poblacion', 'San Antonio', 'San Isidro', 'San Lorenzo', 'Santa Cruz', 'Singkamas', 'Tejeros', 'Urdaneta', 'Valenzuela'],
+            selectedCategory: [],
+            selectedLocation: [],
+            applyButtonClicked: false,
+
         };
     },
+    watch: {
+        selectedCategory(newValue, oldValue) {
+            // Update applyButtonClicked when category changes
+            if (newValue !== oldValue) {
+                this.applyButtonClicked = false;
+            }
+        },
+        selectedLocation(newValue, oldValue) {
+            // Update applyButtonClicked when location changes
+            if (newValue !== oldValue) {
+                console.log('Location radio button clicked');
+                this.applyButtonClicked = false;
+            }
+        },
+    },
     computed: {
+        filteredItems() {
+            let filteredItems = this.items.slice(); // Create a shallow copy of items
+
+            // Apply filters only if the Apply button is clicked
+            if (this.applyButtonClicked) {
+                // Filter by category
+                if (this.selectedCategory && this.selectedCategory.length > 0 && this.selectedCategory[0] !== 'All') {
+                    filteredItems = filteredItems.filter(item => {
+                        if (Array.isArray(item.category)) {
+                            return this.selectedCategory.some(cat => item.category.includes(cat));
+                        } else {
+                            return this.selectedCategory.includes(item.category);
+                        }
+                    });
+                }
+
+                // Filter by location
+                if (this.selectedLocation && this.selectedLocation.length > 0 && this.selectedLocation[0] !== 'All') {
+                    filteredItems = filteredItems.filter(item => {
+                        if (Array.isArray(item.location)) {
+                            return this.selectedLocation.some(loc => item.location.includes(loc));
+                        } else {
+                            return this.selectedLocation.includes(item.location);
+                        }
+                    });
+                }
+            }
+
+            return filteredItems;
+        },
+
         paginatedItems() {
             const startIndex = this.currentPage * this.pageSize;
             return this.items.slice(startIndex, startIndex + this.pageSize);
@@ -367,6 +467,13 @@ export default {
         },
     },
     methods: {
+        handleApplyFilter() {
+            this.applyButtonClicked = true;
+            console.log('Apply button clicked');
+            console.log('Selected category:', this.selectedCategory); // Log selected location
+            console.log('Selected location:', this.selectedLocation); // Log selected location
+            this.currentPage = 0; // Reset currentPage when filter is applied
+        },
         nextPage() {
             this.currentPage++;
         },

@@ -8,8 +8,7 @@
                 style="position: absolute; top: 0; left: 0; height: 101%; width: 100%; background: linear-gradient(to bottom, transparent 75%, #102E61 87%, #102E61 40%);">
             </div>
             <img class="w-full h-[200px] md:h-[700px]" src="@/assets/images/CategoryView/ToTour/banner.jpeg" alt="" />
-            <div
-                class="flex items-center justify-center absolute top-5 md:top-20 z-[1] bg-white pl-3 lg:pl-5 rounded-r-xl">
+            <div class="flex items-center justify-center absolute top-5 md:top-20 z-[1] bg-white pl-3 lg:pl-5 rounded-r-xl">
                 <p class="text-[#102E61] text-sm sm:text-4xl font-bold p-3 pr-4 md:p-5 md:pr-7 ">
                     MAKATOUR
                 </p>
@@ -31,7 +30,7 @@
         <div>
             <div class="pb-10">
                 <!-- Filter dropdown -->
-                <div class="relative hidden lg:block text-left" @click.stop ref="dropdown">
+                <div class="relative hidden lg:block text-left" @click.stop ref="webDropdown">
                     <button
                         class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
                         @click="toggleDropdown">
@@ -70,10 +69,10 @@
                                     <div class="grid grid-rows-8 grid-flow-col gap-4 ml-4 p-2">
                                         <div v-for="(category, index) in categories" :key="'category-' + index">
                                             <label :for="'categoryCheckbox-' + index" class="flex items-center">
-                                                <input type="checkbox" :id="'categoryCheckbox-' + index"
-                                                    :value="category" v-model="selectedCategory">
+                                                <input type="checkbox" :id="'categoryCheckbox-' + index" :value="category"
+                                                    v-model="selectedCategory">
                                                 <span class="ml-2 m-0 p-0 uppercase text-[12px] font-bold">{{ category
-                                                    }}</span>
+                                                }}</span>
                                             </label>
                                         </div>
                                     </div>
@@ -83,10 +82,10 @@
                                         class="grid grid-rows-12 grid-flow-row-dense lg:grid-rows-8 md:grid-flow-col gap-4 mr-4 p-2">
                                         <div v-for="(location, index) in locations" :key="'location-' + index">
                                             <label :for="'locationCheckbox-' + index" class="flex items-left">
-                                                <input type="checkbox" :id="'locationCheckbox-' + index"
-                                                    :value="location" v-model="selectedLocation" class="-mt-12">
+                                                <input type="checkbox" :id="'locationCheckbox-' + index" :value="location"
+                                                    v-model="selectedLocation" class="-mt-12">
                                                 <span class="ml-2  -mt-2 uppercase text-[12px] font-bold h-16 w-24">{{
-                            location }}</span>
+                                                    location }}</span>
                                             </label>
                                         </div>
                                     </div>
@@ -101,7 +100,7 @@
                 </div>
                 <!-- End of Filter dropdown -->
                 <!-- Filter dropdown MOBILE-->
-                <div class="relative text-left lg:hidden">
+                <div class="relative text-left lg:hidden" ref="mobileDropdown">
                     <button
                         class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
                         @click="toggleDropdown">
@@ -125,9 +124,8 @@
                                             <h2 class="ml-5">Filters</h2>
                                         </div>
                                         <div class="flex justify-end">
-                                            <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg"
-                                                fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                                class="w-6 h-6">
+                                            <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                     d="M6 18 18 6M6 6l12 12" />
                                             </svg>
@@ -138,18 +136,18 @@
                                             <div class="grid gap-4 ml-4 p-2">
                                                 <div v-for="(category, index) in categories" :key="'category-' + index">
                                                     <label :for="'categoryCheckbox-' + index" class="flex items-center">
-                                                        <input class="accent-[#102E61]" type="checkbox"
-                                                            :id="'categoryCheckbox-' + index" :value="category"
-                                                            @change="category(category)">
-                                                        <span class="ml-3 uppercase text-sm font-bold">{{ category
-                                                            }}</span>
+                                                        <input type="checkbox" :id="'categoryCheckbox-' + index"
+                                                            :value="category" v-model="selectedCategory">
+                                                        <span class="ml-2 m-0 p-0 uppercase font-bold">{{
+                                                            category
+                                                        }}</span>
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="text-center justify-center border-t-2 ml-5 mr-5 mt-5">
-                                        <button @click="toggleDropdown()"
+                                        <button @click="handleApplyFilter"
                                             class="m-4 p-1 text-white bg-[#102E61] w-72 rounded-xl">Apply</button>
                                     </div>
                                 </div>
@@ -180,10 +178,9 @@
                             class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
                             <span>See More</span>
                             <span class="ml-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                                    stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                                 </svg>
                             </span>
                         </button>
@@ -200,8 +197,8 @@
                 <div class="flex justify-start items-center">
                     <p class="text-center text-white">Showing <span class="text-[#29BFD6]">{{ paginationStartIndex }} -
                             {{
-                            paginationEndIndex }}</span> results from <span class="text-[#29BFD6]">{{ totalRecords
-                            }}</span> records
+                                paginationEndIndex }}</span> results from <span class="text-[#29BFD6]">{{ totalRecords
+    }}</span> records
                     </p>
                 </div>
                 <div class="flex justify-end items-center mt-4">
@@ -481,7 +478,7 @@ export default {
             this.showDropdown = !this.showDropdown;
         },
         handleGlobalClick(event) {
-            if (!this.$refs.dropdown.contains(event.target)) {
+            if (!this.$refs.webDropdown.contains(event.target) && !this.$refs.mobileDropdown.contains(event.target)) {
                 this.showDropdown = false;
             }
         },

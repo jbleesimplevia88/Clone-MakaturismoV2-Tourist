@@ -28,7 +28,7 @@
         <div>
             <div class="pb-10">
                 <!-- Filter dropdown -->
-                <div class="relative hidden lg:block text-left"  @click.stop ref="dropdown">
+                <div class="relative hidden lg:block text-left" @click.stop ref="webDropdown">
                     <button
                         class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
                         @click="toggleDropdown">
@@ -97,7 +97,7 @@
                 </div>
                 <!-- End of Filter dropdown -->
                 <!-- Filter dropdown MOBILE-->
-                <div class="relative text-left lg:hidden">
+                <div class="relative text-left lg:hidden" ref="mobileDropdown">
                     <button
                         class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
                         @click="toggleDropdown">
@@ -131,12 +131,12 @@
                                     <div class="overflow-y-auto max-h-[350px] ml-5 mr-5 mt-5 custom-scrollbar">
                                         <div class="relative px-2">
                                             <div class="grid gap-4 ml-4 p-2">
-                                                <div v-for="(category, index) in categories" :key="'category-' + index">
-                                                    <label :for="'categoryCheckbox-' + index" class="flex items-center">
-                                                        <input class="accent-[#102E61]" type="checkbox"
-                                                            :id="'categoryCheckbox-' + index" :value="category"
-                                                            @change="category(category)">
-                                                        <span class="ml-3 uppercase text-sm font-bold">{{ category
+                                                <div v-for="(cuisine, index) in cuisines" :key="'cuisine-' + index">
+                                                    <label :for="'cuisineCheckbox-' + index" class="flex items-center">
+                                                        <input type="checkbox" :id="'cuisineCheckbox-' + index"
+                                                            :value="cuisine" v-model="selectedCuisine">
+                                                        <span class="ml-2 m-0 p-0 uppercase  font-bold">{{
+                                                            cuisine
                                                         }}</span>
                                                     </label>
                                                 </div>
@@ -144,7 +144,7 @@
                                         </div>
                                     </div>
                                     <div class="text-center justify-center border-t-2 ml-5 mr-5 mt-5">
-                                        <button @click="toggleDropdown()"
+                                        <button @click="handleApplyFilter"
                                             class="m-4 p-1 text-white bg-[#102E61] w-72 rounded-xl">Apply</button>
                                     </div>
                                 </div>
@@ -477,10 +477,10 @@ export default {
         handleApplyFilter() {
             this.applyButtonClicked = true;
             console.log('Apply button clicked');
-            console.log('Selected cuisine:', this.selectedCuisine); 
-            console.log('Selected location:', this.selectedLocation); 
+            console.log('Selected cuisine:', this.selectedCuisine);
+            console.log('Selected location:', this.selectedLocation);
             this.currentPage = 0; // Reset currentPage when filter is applied
-            this.showDropdown = false; 
+            this.showDropdown = false;
 
         },
         nextPage() {
@@ -496,7 +496,7 @@ export default {
             this.showDropdown = !this.showDropdown;
         },
         handleGlobalClick(event) {
-            if (!this.$refs.dropdown.contains(event.target)) {
+            if (!this.$refs.webDropdown.contains(event.target) && !this.$refs.mobileDropdown.contains(event.target)) {
                 this.showDropdown = false;
             }
         },

@@ -13,7 +13,9 @@
                     WHAT TO DO
                 </p>
             </div>
-            <div class=" sm:absolute inset-0 sm:top-56 md:top-[23rem] flex text-center lg:justify-center items-center">
+            <div
+                class="relative sm:absolute inset-0 sm:top-56 md:top-[23rem] flex text-center lg:text-left justify-center items-center z-[1]">
+
                 <p
                     class="pt-[6rem] text-[17px] sm:text-sm md:text-xl lg:text-[1.7rem] text-wrap leading lg:leading-10 text-white">
                     Makati is a cosmopolitan city that offers a variety of activities that people of all ages can
@@ -25,9 +27,9 @@
     </div>
     <div class="mx-auto px-3 lg:px-32 pb-5" style="background-color: #102E61;">
         <div>
-            <div class="pb-10">
-                <!-- Filter dropdown WEB-->
-                <div class="relative text-left  hidden lg:block" @click.stop ref="dropdown">
+            <!-- Filter dropdown WEB-->
+            <div class="pb-10  hidden lg:block">
+                <div class="relative text-left" @click.stop ref="webDropdown">
                     <button
                         class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
                         @click="toggleDropdown">
@@ -98,8 +100,11 @@
                     </div>
                 </div>
                 <!-- End of Filter dropdown -->
+            </div>
+
+            <div class="pb-10 lg:hidden" ref="mobileDropdown">
                 <!-- Filter dropdown MOBILE-->
-                <div class="relative text-left lg:hidden">
+                <div class="relative text-left ">
                     <button
                         class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
                         @click="toggleDropdown">
@@ -135,17 +140,18 @@
                                             <div class="grid gap-4 ml-4 p-2">
                                                 <div v-for="(category, index) in categories" :key="'category-' + index">
                                                     <label :for="'categoryCheckbox-' + index" class="flex items-center">
-                                                        <input class="accent-[#102E61]" type="checkbox"
-                                                            :id="'categoryCheckbox-' + index" :value="category"
-                                                            @change="applyCategoryFilter(category)">
-                                                        <span class="ml-3 uppercase text-sm font-bold">{{ category }}</span>
+                                                        <input type="checkbox" :id="'categoryCheckbox-' + index"
+                                                            :value="category" v-model="selectedCategory">
+                                                        <span class="ml-2 m-0 p-0 uppercase font-bold">{{
+                                                            category
+                                                        }}</span>
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="text-center justify-center border-t-2 ml-5 mr-5 mt-5">
-                                        <button @click="applyFilter"
+                                        <button @click="handleApplyFilter"
                                             class="m-4 p-1 text-white bg-[#102E61] w-72 rounded-xl">Apply</button>
                                     </div>
                                 </div>
@@ -153,9 +159,9 @@
                         </div>
                     </transition>
                 </div>
-                <!-- End  Filter dropdown MOBILE  -->
                 <!-- End of Filter dropdown -->
             </div>
+
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
                 <div v-for="(item, index) in filteredItems" :key="index"
                     class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
@@ -185,11 +191,12 @@
                         </button>
                     </div>
                 </div>
-              
+
             </div>
             <div v-if="filteredItems.length === 0" class="text-white text-center font p-14">
-                    <p>We're sorry, but we couldn't find any activity that matches your selected filter. Try adjusting your filter or explore other options.</p>
-                </div>
+                <p>We're sorry, but we couldn't find any activity that matches your selected filter. Try adjusting your
+                    filter or explore other options.</p>
+            </div>
             <!-- Pagination controls -->
             <div class="grid grid-cols-2">
                 <div class="flex justify-start items-center">
@@ -509,10 +516,11 @@ export default {
             this.showDropdown = !this.showDropdown;
         },
         handleGlobalClick(event) {
-            if (!this.$refs.dropdown.contains(event.target)) {
+            if (!this.$refs.webDropdown.contains(event.target) && !this.$refs.mobileDropdown.contains(event.target)) {
                 this.showDropdown = false;
             }
-        },
+        }
+        ,
         seeMore(item) {
             const {
                 latitude,

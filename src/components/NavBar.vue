@@ -10,9 +10,7 @@
         </RouterLink>
       </div>
       <!-- Right side - Calendar and Login -->
-      <div class="flex items-center space-x-3">
-
-        <!-- Search Icon -->
+      <div class="flex items-center space-x-4">
         <RouterLink to="/searchfilter" class=" lg:hidden flex items-center">
           <span class=" flex items-center whitespace-nowrap px-3 py-[0.25rem] text-surface [&>svg]:h-5 [&>svg]:w-5"
             id="button-addon2">
@@ -24,7 +22,6 @@
           </span>
         </RouterLink>
 
-        <!-- Search Icon when toggle -->
         <div class=" hidden lg:block relative  " ref="searchContainer">
           <input v-if="showInput" type="search"
             class=" relative m-0 block flex-auto rounded border border-solid border-neutral-200 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none"
@@ -41,20 +38,11 @@
             </svg>
           </span>
         </div>
-
         <!-- Calendar -->
-        <RouterLink to="/calendar" class="hidden pr-3 text-white md:inline-block"><img
+        <RouterLink to="/calendar" class="hidden text-white md:inline-block"><img
             src="@/assets/images/Header/calendar.png" alt="logo" class="w-auto h-6 mx-2"></RouterLink>
 
-        <template v-if="showIcons">
-          <!-- Original Login Button -->
-          <button @click="openLoginModal" class="text-blue-600">Login</button>
-          <!-- Become a partner button -->
-          <a class="hidden lg:block lg:bg-blue-500 lg:hover:bg-blue-700 lg:text-white lg:font-bold lg:py-2 lg:px-4 lg:border lg:border-blue-700 lg:rounded-lg"
-            href="#">Become a partner</a>
-        </template>
-        <template v-else>
-
+        <div v-if="authStore.isAuthenticated">
           <div class="flex items-center space-x-6">
             <!-- Notification Icon -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
@@ -64,15 +52,74 @@
             </svg>
 
             <!-- Person Icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+            <svg @click=togglepfp xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
               <path fill-rule="evenodd"
                 d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
                 clip-rule="evenodd" />
             </svg>
           </div>
 
+              <!-- PFP Modal -->
+          <div v-if="showPFPModal" class="absolute top-[6.5rem] right-[1.2rem] bg-gray-100 shadow text-black rounded-lg w-[325px]">
+            <div class="p-4" role="none">
+                <p class="pb-3 text-xl font-bold">Account</p>
+                <div class="pb-2 text-center">
+                  <RouterLink to="/information">
+                    <button class="flex items-center w-full p-3 bg-white rounded-xl" @click="toggleDropdown(null)">
+                      <span class="ml-[0.2rem]">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7">
+                          <path fill-rule="evenodd"
+                            d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                            clip-rule="evenodd" />
+                        </svg>
+                      </span>
+                      <span class="ml-2 text-sm">Profile</span>
+                    </button>
+                  </RouterLink>
+                </div>
+                <div class="pb-2 text-center">
+                
+                    <button class="flex items-center w-full p-3 bg-white rounded-xl" @click="toggleDropdown(null)">
+                      <span class="ml-2">
+                        <img src="@/assets/images/Header/Transaction Icon.png" alt="transaction" class="w-4 h-5">
+                      </span>
+                      <span class="ml-3 text-sm">Transactions</span>
+                    </button>
+                
+                </div>
+                <div class="pb-2 text-center">
+                  
+                    <button class="flex items-center w-full p-3 bg-white rounded-xl" @click="toggleDropdown(null)">
+                      <span class="ml-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                          <path d="M2.25 2.25a.75.75 0 0 0 0 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 0 0-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 0 0 0-1.5H5.378A2.25 2.25 0 0 1 7.5 15h11.218a.75.75 0 0 0 .674-.421 60.358 60.358 0 0 0 2.96-7.228.75.75 0 0 0-.525-.965A60.864 60.864 0 0 0 5.68 4.509l-.232-.867A1.875 1.875 0 0 0 3.636 2.25H2.25ZM3.75 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM16.5 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" />
+                        </svg>
+                      </span>
+                      <span class="ml-3 text-sm">Cart</span>
+                    </button>
+                  
+                </div>
+                <RouterLink to="/">
+                  <div class="pt-4 pb-2 text-center">
+                    <button @click="logout" class="bg-[#102E61] w-full rounded-xl flex justify-center items-center p-2">
+                      <span class="ml-2 text-white">Logout</span>
+                    </button>
+                  </div>
+                </RouterLink>
+              </div>
+          </div>
+        </div>
 
-        </template>
+
+        <div v-else>
+          <div class="flex items-center space-x-4">
+          <!-- Original Login Button -->
+          <button @click="openLoginModal" class="text-blue-600">Login</button>
+          <!-- Become a partner button -->
+          <a class="hidden lg:block lg:bg-blue-500 lg:hover:bg-blue-700 lg:text-white lg:font-bold lg:py-2 lg:px-4 lg:border lg:border-blue-700 lg:rounded-lg"
+            href="#">Become a partner</a>
+          </div>
+        </div>
 
         <!-- SIDEBAR NAVIGATION -->
         <div class="relative lg:hidden">
@@ -93,24 +140,100 @@
               <div>
                 <!-- Close button -->
                 <button @click="toggleSidebar" class="absolute top-0 left-0 m-4">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
-                    </path>
-                  </svg>
+                  <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 6.19995H23" stroke="#222222" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M5 16.2H23" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M5 11.2H23" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
                 </button>
 
+                
+
                 <!-- Sidebar content goes here -->
-                <div class="mx-4 mt-[4rem] flex flex-col justify-between h-full">
-                  <ul>
-                    <li><router-link to="/calendar" class="font-bold">Calendar</router-link></li>
+                <div class="mx-4 flex flex-col justify-between h-full">
+                  <h1 class="mt-[4rem] mb-4 font-bold text-xl">Dashboard</h1>
+                  <ul class="flex flex-row pb-5 justify-items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                      <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
+                      <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
+                    </svg>
+
+                    <li><router-link to="/">Home</router-link></li>
+                  </ul>
+                  <ul class="flex flex-row pb-5 justify-items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+              <path fill-rule="evenodd"
+                d="M5.25 9a6.75 6.75 0 0 1 13.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 0 1-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 1 1-7.48 0 24.585 24.585 0 0 1-4.831-1.244.75.75 0 0 1-.298-1.205A8.217 8.217 0 0 0 5.25 9.75V9Zm4.502 8.9a2.25 2.25 0 1 0 4.496 0 25.057 25.057 0 0 1-4.496 0Z"
+                clip-rule="evenodd" />
+            </svg>
+
+                    <li><router-link to="/">Notifications</router-link></li>
+                  </ul>
+                  <ul class="flex flex-row pb-5 justify-items-center gap-2">
+                    <img src="@/assets/images/Header/calendar.png" alt="logo" class="w-auto h-5 ">
+                    <li><router-link to="/calendar">Calendar</router-link></li>
+                  </ul>
+                  <ul class="flex flex-row pb-5 justify-items-center pl-0.5 gap-2.5">
+                    <img src="@/assets/images/Header/Transaction Icon.png" alt="transaction" class="w-4 h-5">
+                    <li><router-link to="/calendar" >Transactions</router-link></li>
+                  </ul>
+                  <ul  class="flex flex-row pb-5 justify-items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-6">
+                          <path d="M2.25 2.25a.75.75 0 0 0 0 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 0 0-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 0 0 0-1.5H5.378A2.25 2.25 0 0 1 7.5 15h11.218a.75.75 0 0 0 .674-.421 60.358 60.358 0 0 0 2.96-7.228.75.75 0 0 0-.525-.965A60.864 60.864 0 0 0 5.68 4.509l-.232-.867A1.875 1.875 0 0 0 3.636 2.25H2.25ZM3.75 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM16.5 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" />
+                        </svg>
+                    <li><router-link to="/cart" >Cart</router-link></li>
                   </ul>
 
-                  <div class="absolute bottom-5 left-0 w-full p-4 flex flex-col justify-between">
-                    <button @click="openLoginModal" class="text-blue-600 py-2">Login</button>
-                    <a class="bg-blue-500 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg text-center "
-                      href="#">Become a Partner</a>
-                  </div>
+                  <h1 class="mt-[2rem] mb-4 font-bold text-gray-500 text-opacity-30">6 Pillars</h1>
+                  <ul  class="flex flex-row pb-5 justify-items-center gap-2">
+                    <img :src="locations[0].imgSrc" :alt="locations[0].alt" class="w-5 h-6">
+                    <li><router-link to="/category/do" >What to do</router-link></li>
+                  </ul>
+                  <ul  class="flex flex-row pb-5 justify-items-center gap-2">
+                    <img :src="locations[1].imgSrc" :alt="locations[1].alt" class="w-5 h-6">
+                    <li><router-link to="/category/shop" >Where to shop</router-link></li>
+                  </ul>
+                  <ul  class="flex flex-row pb-5 justify-items-center gap-2">
+                    <img :src="locations[2].imgSrc" :alt="locations[2].alt" class="w-5 h-6">
+                    <li><router-link to="/category/see" >What to see</router-link></li>
+                  </ul> 
+                  <ul  class="flex flex-row pb-5 justify-items-center gap-2">
+                    <img :src="locations[3].imgSrc" :alt="locations[3].alt" class="w-5 h-6">
+                    <li><router-link to="/category/eat" >where to eat</router-link></li>
+                  </ul>
+                  <ul  class="flex flex-row pb-5 justify-items-center gap-2">
+                    <img :src="locations[4].imgSrc" :alt="locations[4].alt" class="w-5 h-6">
+                    <li><router-link to="/category/stay" >Where to stay</router-link></li>
+                  </ul>
+                  <ul  class="flex flex-row pb-5 justify-items-center gap-2">
+                    <img :src="locations[5].imgSrc" :alt="locations[5].alt" class="w-5 h-6">
+                    <li><router-link to="/category/tour" >Make Tour</router-link></li>
+                  </ul>
+
+
+                  <h1 class="mt-[2rem] mb-4 font-bold text-gray-500 text-opacity-30">Settings</h1>
+                  <ul  class="flex flex-row pb-5 justify-items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-auto h-5">
+                          <path fill-rule="evenodd"
+                            d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                            clip-rule="evenodd" />
+                        </svg>
+                    <li><router-link to="/calendar" >Profile</router-link></li>
+                  </ul>
+                  <ul  class="flex flex-row pb-5 justify-items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
+                    </svg>
+
+                    <li><router-link to="/calendar" >Logout</router-link></li>
+                  </ul>
+
+                  
+                 
+                  
+
+                
                 </div>
 
               </div>
@@ -164,13 +287,13 @@
                   class="w-full h-8 py-5 pl-10 border border-black rounded-xl" placeholder="Password">
               </div>
             </div>
-            <div class="hidden lg:flex items-center justify-between mb-4">
+            <div class="hidden lg:block lg:flex items-center justify-between mb-4">
               <p class="text-xs">Don't have an account? <button @click="openPrivacyModal"
                   class="text-xs font-bold text-blue-600">Sign Up</button></p>
               <button @click="openForgotModal" class="text-xs text-blue-600 font-bold">Forgot Password?</button>
             </div>
             <div class="hidden lg:block lg:mt-10 text-center">
-              <button type="submit" @click="toggleIcons"
+              <button type="submit"
                 class="lg:w-[8rem] w-full lg:px-4 py-2 lg:mb-10 text-white bg-blue-600 rounded-md">Login</button>
             </div>
             <div class="lg:hidden lg:mt-10 text-center">
@@ -558,8 +681,7 @@
             <div class="flex items-center justify-center text-center mb-[10%]">
               <!-- <button @click="openOTPModal" class="lg:w-fit w-full px-4 py-2 text-white bg-blue-600 rounded-lg ">Receive OTP</button> -->
               <p @click="openOTPModal"
-                class="lg:w-fit w-full px-4 py-2 text-white bg-blue-600 rounded-lg  cursor-pointer ">
-                Receive OTP</p>
+                class="lg:w-fit w-full px-4 py-2 text-white bg-blue-600 rounded-lg  cursor-pointer ">Receive OTP</p>
             </div>
           </form>
         </div>
@@ -649,7 +771,6 @@
         </div>
       </div>
     </div>
-
 
     <div v-if="isCategoryPath($route.path)"
       class="hidden lg:inset-x-0 lg:bottom-0 lg:grid lg:grid-cols-6 lg:pl-10 lg:pr-10 lg:pt-2 lg:pb-2 lg:justify-center lg:text-black lg:bg-white lg:border-t ">
@@ -773,6 +894,8 @@
 
 <script>
 import { RouterLink } from 'vue-router';
+import { ref } from 'vue'
+import { useAuthStore } from '@/stores/auth'
 import imageUrl from '@/assets/images/Modal/Intersect.png';
 import imageUrl2 from '@/assets/images/Modal/bg2.png';
 import run from '@/assets/images/MainNav/run.png';
@@ -781,6 +904,7 @@ import house from '@/assets/images/MainNav/house.png';
 import food from '@/assets/images/MainNav/food.png';
 import grocery from '@/assets/images/MainNav/grocery-store.png';
 import locationImg from '@/assets/images/MainNav/location.png';
+
 export default {
   name: 'NavBar',
   components: {
@@ -790,19 +914,14 @@ export default {
     return {
       isSidebarOpen: false,
       showInput: false,
-      showIcons: true,
-      showLoginModal: false,
+      showPFPModal: false,
       showSignUpModal: false,
       showForgotModal: false,
       showOTPModal: false,
-      // showOTP: false,
       showPrivacyModal: false,
       showTermsModal: false,
-      showProfileModal: false,
       checkboxChecked: false,
-      username: '',
       lastname: '',
-      password: '',
       email: '',
       pnum: '',
       citizenship: '',
@@ -863,6 +982,43 @@ export default {
       currentRoute: ''
     };
   },
+  setup() {
+    const authStore = useAuthStore();
+    const username = ref('');
+    const password = ref('');
+    const showLoginModal = ref(false);
+    const showPFPModal = ref(false);
+    
+
+    const openModal = () => {
+      showLoginModal.value = true;
+    };
+
+    const closeModal = () => {
+      showLoginModal.value = false;
+    };
+
+    const login = () => {
+      const credentials = {
+        username: username.value,
+        password: password.value
+      };
+
+      const loginSuccess = authStore.login(credentials);
+      if (loginSuccess) {
+        closeModal(); // Close the modal if login is successful
+      }
+    };
+
+
+    const logout = () => {
+      authStore.logout(); // Call the logout action from the store
+      // Additional logout logic, such as redirecting to the login page, can be added here
+      showPFPModal.value = false; // Close the modal
+  };
+
+    return { username, password, showLoginModal, openModal, login, logout ,authStore };
+  },
   created() {
     // Watch for route changes
     this.$watch(
@@ -877,6 +1033,9 @@ export default {
     );
   },
   methods: {
+    togglepfp(){
+      this.showPFPModal = !this.showPFPModal;
+    },
     toggleSidebar() {
       this.isSidebarOpen = !this.isSidebarOpen;
     },
@@ -889,21 +1048,14 @@ export default {
 
       return this.currentRoute.includes(link);
     },
-    // toggleContinueButton(event) {
-    //   this.checkboxChecked = event.target.checked;
-    // },
-    // toggleCheckbox() {
-    //   this.checkboxChecked = !this.checkboxChecked;
-    // },
     openLoginModal() {
       this.showLoginModal = true;
       this.showPrivacyModal = false;
       this.showSignUpModal = false;
-      // this.toggleIcons();
     },
-    toggleIcons() {
-      this.showIcons = !this.showIcons;
-    },
+    // openPFPModal() {
+    //   this.showPFPModal = true;
+    // },
     openSignUpModal() {
       this.showSignUpModal = true;
       this.showPrivacyModal = false;
@@ -923,25 +1075,9 @@ export default {
       this.showOTPModal = true;
       // this.showForgotModal = true;
       this.showLoginModal = true;
+
     },
-    openProfileModal() {
-      this.showProfileModal = true;
-    },
-    closeProfileModal() {
-      this.showProfileModal = false;
-    },
-    viewProfile() {
-      // Logic to view profile
-    },
-    viewTransactions() {
-      // Logic to view transactions
-    },
-    viewCart() {
-      // Logic to view cart
-    },
-    logout() {
-      // Logic to logout
-    },
+
     toggleInputVisibility() {
       this.showInput = !this.showInput;
       if (this.showInput) {
@@ -967,17 +1103,6 @@ export default {
       this.showPrivacyModal = false;
       this.showTermsModal = false;
       this.showForgotModal = false;
-      // this.showOtpModal = false;
-    },
-    login() {
-      // Your login logic here
-      console.log('Logging in...');
-      // After successful login, you might want to redirect the user
-      // Example: this.$router.push('/dashboard');
-      // Reset form fields and close modal
-      this.username = '';
-      this.password = '';
-      this.showLoginModal = false;
     },
     signup() {
       // Your sign-up logic here

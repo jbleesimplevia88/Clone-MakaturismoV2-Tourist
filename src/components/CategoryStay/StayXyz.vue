@@ -236,10 +236,12 @@
                 <div class="lg:w-[75%] border border-gray-300 p-4 rounded-lg shadow"> <!-- center this div -->
 
                     <div class="mb-5">
-                        <div class="flex flex-col m-2">
-                            <label for="Date" class=" mb-2 font-bold">Date</label>
-                            <input type="date" class="border-2 border-black rounded-md p-2.5">
-                        </div>
+        <div class="flex flex-col m-2">
+            <label for="Date" class="mb-2 font-bold">Date</label>
+            <!-- Set min attribute to restrict dates to 2024 and beyond -->
+            <input type="date" id="selectedDate" class="border-2 border-black rounded-md p-2.5" min="2024-01-01">
+        </div>
+    </div>
 
                         <div class="flex flex-col m-2">
                             <label for="" class=" mb-2 font-bold">Check In</label>
@@ -274,7 +276,7 @@
         </div>
 
 
-    </div>
+    
 
 
     <div class="relative flex flex-col">
@@ -441,6 +443,13 @@ export default {
         MapRenderer
 
     },
+    mounted() {
+        // Get today's date
+        const today = new Date().toISOString().split('T')[0];
+        // Set the min attribute of the date input to today's date
+        document.getElementById("selectedDate").setAttribute("min", today);
+    },
+
     data() {
         return {
             items: [

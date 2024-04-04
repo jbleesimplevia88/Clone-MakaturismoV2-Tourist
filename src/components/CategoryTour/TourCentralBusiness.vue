@@ -150,13 +150,14 @@
                     <div class="mb-5">
                         <div class="flex flex-col m-2">
                             <label for="Date" class=" mb-2 font-bold">Date of Tour</label>
-                            <input type="date" class="border-2 border-black rounded-md p-2.5">
+                            <input type="date" id="selectedDate" class="border-2 border-black rounded-md p-2.5" min="2024-01-01">
                         </div>
 
                         <div class="flex flex-col m-2">
-                            <label for="" class=" mb-2 font-bold">Time of Tour</label>
-                            <input type="time" class="border-2 border-black rounded-md p-2.5">
-                        </div>
+    <label for="tourTimeInput" class="mb-2 font-bold">Time of Tour</label>
+    <!-- Set id attribute for easy access in JavaScript -->
+    <input type="time" id="tourTimeInput" class="border-2 border-black rounded-md p-2.5">
+</div>
 
                         <div class="flex flex-col m-2">
                             <label for="" class=" mb-2 font-bold">Number of Person</label>
@@ -346,6 +347,22 @@ export default {
         MapRenderer
 
     },
+    mounted() {
+          // Get today's date
+          const today = new Date().toISOString().split('T')[0];
+        // Set the min attribute of the date input to today's date
+        document.getElementById("selectedDate").setAttribute("min", today);
+
+        // Debugging: Check if the component is mounted and time input is found
+        console.log("Component mounted");
+        const timeInput = document.getElementById("tourTimeInput");
+        console.log("Time input element:", timeInput);
+
+        // Set the minimum and maximum allowed time
+        timeInput.setAttribute("min", "11:00");
+        timeInput.setAttribute("max", "19:30");
+    },
+    
     data() {
         return {
             items: [

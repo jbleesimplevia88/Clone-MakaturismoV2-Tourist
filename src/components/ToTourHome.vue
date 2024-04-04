@@ -455,7 +455,7 @@ export default {
     mounted() {
         document.addEventListener('click', this.handleGlobalClick);
     },
-    beforeDestroy() {
+    beforeUnmount() {
         document.removeEventListener('click', this.handleGlobalClick);
     },
     methods: {

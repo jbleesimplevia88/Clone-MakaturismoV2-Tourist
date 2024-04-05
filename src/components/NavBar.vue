@@ -279,7 +279,8 @@
                 <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-5 my-3"
                   style="width: 15px;" alt="Username Icon" />
                 <input type="text" id="username" v-model="username"
-                  class="w-full h-8 py-5 pl-10 border border-black rounded-xl" placeholder="Username">
+                  class="w-full h-8 py-5 pl-10 border border-black rounded-xl"
+                  placeholder="'admin' is the default username">
               </div>
             </div>
             <div class="relative mb-4">
@@ -290,7 +291,8 @@
                 <img src="@/assets/images/Modal/view.png" class="absolute inset-y-0 right-0 mx-3 my-3"
                   style="width: 15px;" alt="Eye Icon" />
                 <input type="password" id="password" v-model="password"
-                  class="w-full h-8 py-5 pl-10 border border-black rounded-xl" placeholder="Password">
+                  class="w-full h-8 py-5 pl-10 border border-black rounded-xl"
+                  placeholder="'password' is the default password">
               </div>
             </div>
             <div class="hidden lg:block lg:flex items-center justify-between mb-4">

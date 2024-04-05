@@ -14,10 +14,11 @@
                 <img :src="item.imgSrc" :alt="item.alt"
                     class="w-[50%] lg:h-[30px] lg:w-[30px] h-auto lg:px-[1.5rem] lg:pt-5 lh-auto p-1 mx-auto">
                 <!-- Adjust height as needed -->
-                <h6 class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{ item.mobile }}
-                </h6>
+                <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{ item.mobile
+                    }}
+                </span>
                 <h6 class="text-center my-3 font-bold text-1xl lg:my-0 lg:font-bold lg:text-xl lg:block hidden">{{
-            item.title }}</h6>
+                    item.title }}</h6>
             </RouterLink>
         </div>
     </div>

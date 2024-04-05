@@ -1,6 +1,6 @@
 <template>
     <nav class="lg:px-[180px] lg:h-20 lg:mt-[80px] bg-[#132540] p-4 text-white text-4xl flex items-center cursor-pointer"
-        @click="handleClick()">
+       >
 
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white"
             class="lg:mr-7 w-7 lg:w-8 h-7 lg:h-10">

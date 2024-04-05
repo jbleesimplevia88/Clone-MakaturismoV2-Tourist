@@ -112,8 +112,8 @@
                                 style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 Multi handle Tote bag with Embroided Philippine Kalesa Scenery
                             </p>
-                            <img class="rounded-md lg:h-[80%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product1.png" alt="" width="100%">
+                            <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToShop/shop-product1.png"
+                                alt="" width="100%">
                             <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
@@ -128,13 +128,13 @@
                         <div v-if="showCart"
                             class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
                             @click.self="closeModal">
-                            <div class="bg-white overflow-y-auto h-[680px] w-[900px] overflow-hidden scrollbar-hide rounded-lg shadow-md p-2 mx-5"
+                            <div class="bg-white lg:h-[760px] h-[640px] w-[900px]  rounded-lg shadow-md p-2 mx-5"
                                 @click.stop>
                                 <div class="lg:w-[100%] p-4 rounded-lg">
                                     <div class="relative flex justify-end">
                                         <button class=" pr-4 pt-21 ">
                                             <svg @click="closeCart" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                viewBox="0 0 20 30" stroke-width="5" stroke="black" class="w-5 h-5">
+                                                viewBox="0 0 20 30" stroke-width="5" stroke="black" class="w-6 h-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                     d="M6 18 18 6M6 6l12 12" />
                                             </svg>
@@ -150,17 +150,14 @@
                                                 <div class="lg:flex lg:justify-between items-center">
                                                     <img src="@/assets/images/CategoryView/ToShop/shop-product2.png"
                                                         class="h-24 md:w-[80px] md:h-auto">
-
                                                 </div>
                                                 <div class="lg:flex lg:justify-center items-center">
                                                     <img src="@/assets/images/CategoryView/ToShop/shop-product3.png"
                                                         class="h-24 md:w-[80px] md:h-auto">
-
                                                 </div>
                                                 <div class="lg:flex lg:justify-center items-center">
                                                     <img src="@/assets/images/CategoryView/ToShop/shop-product4.png"
                                                         class="h-24 md:w-[80px] md:h-auto">
-
                                                 </div>
                                                 <div class="lg:flex lg:justify-center items-center mx-5">
                                                     <img src="@/assets/images/CategoryView/ToShop/button.png"
@@ -168,27 +165,22 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class=" lg:hidden grid grid-cols-2 grid-rows-1 gap-4">
-                                            <div class="w-60 ">
-                                                <img src="@/assets/images/CategoryView/ToShop/shop-product1.png">
+                                        <div class="lg:hidden grid grid-cols-2 grid-rows-1 gap-4">
+                                            <div class="w-[200px] ml-4">
+                                                <img :src="currentImage" class="h-52 w-full" />
                                             </div>
-                                            <div class="grid-cols-1 ml-20 ">
-                                                <img src="@/assets/images/CategoryView/ToShop/shop-product2.png"
-                                                    class="h-14 w-[66px] mb-2">
-                                                <img src="@/assets/images/CategoryView/ToShop/shop-product3.png"
-                                                    class="h-14 w-[66px] mb-2">
-                                                <img src="@/assets/images/CategoryView/ToShop/shop-product4.png"
-                                                    class="h-14 w-[66px] mb-2">
+                                            <div class="grid-cols-1 ml-16">
+                                                <img v-for="(image, index) in images" :key="index" :src="image"
+                                                    class="h-9 w-10 mb-2" @click="updateCurrentImage(index)" />
 
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.5" stroke="black" class="w-10 h-8 ml-3 mt-2">
+                                                    stroke-width="1.5" stroke="black" class="w-10 h-8 mt-2 cursor-pointer"
+                                                    @click="changeImage">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                                 </svg>
                                             </div>
                                         </div>
-
                                         <div class="lg:w-[60%] px-3 mt-3">
                                             <div class="lg:flex lg:flex-col text-black">
                                                 <p class="font-bold text-left text-1xl mb-2">Multi Handle Tote Bag with
@@ -196,7 +188,7 @@
                                             </div>
                                             <div class="text-black mb-5">
                                                 <p class="font-bold">Makati Shop</p>
-                                                <div class="flex justify-between mb-2">
+                                                <div class="lg:block hidden  justify-between mb-2">
                                                     <p class="w-[100%] ">₱399.00</p>
                                                     <div class="flex justify-end">
                                                         <div class="justify-between hidden lg:block">
@@ -209,29 +201,22 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="border border-gray-200 my-5"></div>
-                                                <div class="flex justify-between mb-2">
-                                                    <p class="w-[100%] text-xs">• Made from canvas material</p>
-                                                </div>
-                                                <div class="flex justify-between mb-2">
-                                                    <p class="w-[100%] text-xs">• Durable and lightweight bag</p>
-                                                </div>
-                                                <div class="flex justify-between mb-2">
-                                                    <p class="w-[100%] text-xs">• Can be washed by hand or washing
-                                                        machine
-                                                    </p>
-                                                </div>
-                                                <div class="flex justify-between mb-2">
-                                                    <p class="w-[100%] text-xs">• Multi handle feature</p>
-                                                </div>
-                                                <div class="flex justify-between mb-2">
-                                                    <p class="w-[100%] text-xs">• Can be used as a handbag or tote
-                                                        shoulder
-                                                        bag
-                                                    </p>
-                                                </div>
-                                                <div class="flex justify-between mb-2">
-                                                    <p class="w-[70%] text-xs">• Color: White</p>
+                                                <div class="border border-gray-200 lg:my-5"></div>
+                                                <div class="overflow-y-auto lg:overflow-y-visible h-[110px] lg:h-auto">
+                                                    <div class="justify-between mb-2 grid gap-2 mt-2">
+
+                                                        <p class="w-[100%] text-xs">• Made from canvas material</p>
+                                                        <p class="w-[100%] text-xs">• Durable and lightweight bag</p>
+                                                        <p class="w-[100%] text-xs">• Can be washed by hand or washing
+                                                            machine
+                                                        </p>
+                                                        <p class="w-[100%] text-xs">• Multi handle feature</p>
+                                                        <p class="w-[100%] text-xs">• Can be used as a handbag or tote
+                                                            shoulder
+                                                            bag
+                                                        </p>
+                                                        <p class="w-[70%] text-xs">• Color: White</p>
+                                                    </div>
                                                 </div>
                                                 <p class="lg:block hidden font-bold">Reviews</p>
                                                 <button class="lg:block hidden" @click="toggleshowReviews">
@@ -239,8 +224,7 @@
                                                         <div
                                                             class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                                             <div class="inline-block w-[100%]">
-                                                                <label
-                                                                    class="flex w-[100%] text-sm font-bold">juandelacruz
+                                                                <label class="flex w-[100%] text-sm font-bold">juandelacruz
                                                                     ⭐️⭐️⭐️⭐️⭐</label>
                                                                 <p class="flex text-sm">03-10-2024 11:30</p>
                                                             </div>
@@ -253,8 +237,7 @@
                                                         <div
                                                             class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                                             <div class="inline-block w-[100%]">
-                                                                <label
-                                                                    class="flex w-[100%] text-sm font-bold">faithstamaria
+                                                                <label class="flex w-[100%] text-sm font-bold">faithstamaria
                                                                     ⭐️⭐️⭐️⭐️⭐</label>
                                                                 <p class="flex text-sm">09-03-2024 08:30</p>
                                                             </div>
@@ -269,17 +252,16 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class=" lg:hidden flex items-center text-black mb-4">
-                                        Quantity 
+                                        Quantity
                                         <button @click="decrement"
                                             class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
-                                        <input type="text" class="px-4 py-2 bg-gray-100 text-center w-16 text-black" v-model="count"
-                                            readonly>
+
+                                        <input type="text" class="px-4 py-2 bg-gray-100 text-center w-16 text-black"
+                                            v-model="count" readonly>
                                         <button @click="increment"
                                             class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">+</button>
                                     </div>
-
                                     <div class="flex justify-between">
                                         <div class="w-[100%] flex justify-start">
                                             <button
@@ -402,8 +384,8 @@
                                 style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 Multi handle Tote bag with Embroided Philippine Kalesa Scenery
                             </p>
-                            <img class="rounded-md lg:h-[80%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product2.png" alt="" width="100%">
+                            <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToShop/shop-product2.png"
+                                alt="" width="100%">
                             <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
@@ -421,8 +403,8 @@
                                 style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 Multi handle Tote bag with Embroided Philippine Kalesa Scenery
                             </p>
-                            <img class="rounded-md lg:h-[80%]"
-                                src="@/assets/images/CategoryView/ToShop/shop-product3.png" alt="" width="100%">
+                            <img class="rounded-md lg:h-[80%]" src="@/assets/images/CategoryView/ToShop/shop-product3.png"
+                                alt="" width="100%">
                             <button @click="toggleshowCart"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">Add
                                 to Cart</button>
@@ -447,7 +429,7 @@
                                         src="@/assets/images/CategoryView/ToShop/shop-product4.png" alt="" width="100%">
                                 </div>
                                 <div class="w-[60%]">
-                                    <p class="text-xs text-white p-2 w-[60%] mb-4">
+                                    <p class="text-xs text-white p-2 w-[75%] mb-4">
                                         Multi handle Tote bag with Embroided Philippine Kalesa Scenery</p>
                                     <p class="text-xs text-white p-2 w-[55%]">
                                         ₱ 100.00</p>
@@ -491,7 +473,7 @@
                                         src="@/assets/images/CategoryView/ToShop/shop-product6.png" alt="" width="100%">
                                 </div>
                                 <div class="w-[60%]">
-                                    <p class="text-xs text-white p-2 w-[60%] mb-11">
+                                    <p class="text-xs text-white p-2 w-[60%] lg:mb-11 mb-5">
                                         Mini Gold Tin with Wooden Base Vinta</p>
                                     <p class="text-xs text-white p-2 w-[55%]">
                                         ₱ 100.00</p>
@@ -657,49 +639,18 @@
                             <p>x2</p>
                         </div>
                     </div>
-                    <button class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Check
-                        Out</button>
+
+                    <router-link to="/checkoutshop" class="w-full">
+                        <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]">Buy
+                            Now</button>
+                    </router-link>
+
                 </div>
             </div>
         </div>
     </div>
-    <div class="flex flex-col lg:flex-col-reverse">
-        <div class="grid lg:grid-cols-2 lg:gap-[10rem] relative mx-6 px-3 lg:px-32 pb-5 pt-5 ">
-            <!-- Feedback Content -->
-            <div class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A]" v-for="(item, index) in paginatedItems" :key="index">
-                <div class="flex flex-row">
-                    <div class="pt-[0.125rem]">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-12 h-12">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                        </svg>
-                    </div>
-                    <div class="flex flex-col">
-                        <p class="relative left-2 text-black text-lg xl:text-xl font-medium pb-3">
-                            {{ item.name }}
-                        </p>
-                        <p class="relative bottom-4 left-2 text-gray-600 text-lg">{{ item.date }}
-                        </p>
-                    </div>
-                </div>
-                <div class="p-2 w-full">
-                    <p class="text-black text-md line-clamp-3">{{ item.description }}</p>
-                </div>
-                <div class="p-1 flex justify-end items-center mr-10">
-                    <button @click="seeMore(item)"
-                        class="flex items-center px-1 py-1.5 border-2 border-black text-black m-1 rounded-md hover:bg-black hover:text-white transition-colors duration-300 text-nowrap text-xs">
-                        <span>See More</span>
-                        <span class="ml-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
-                                stroke="currentColor" class="w-4 h-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                            </svg>
-                        </span>
-                    </button>
-                </div>
-            </div>
-        </div>
+    <div class="relative flex flex-col">
+
         <div class="relative mx-6 px-3 lg:px-32 pb-5 pt-5">
             <div>
                 <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
@@ -766,6 +717,63 @@
                 </div>
             </div>
         </div>
+
+        <div class="grid lg:grid-cols-2 lg:gap-[2rem] relative mx-6 px-3 lg:px-32 pt-5">
+            <!-- Feedback Content -->
+            <div class="relative border-2 border-gray-200 rounded-md px-3 py-3" v-for="(item, index) in paginatedItems"
+                :key="index">
+
+                <div class="flex flex-row">
+                    <div class="pt-[0.125rem]">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-12 h-12">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="relative left-2 text-black text-lg xl:text-xl font-medium pb-3">
+                            {{ item.name }}
+                        </p>
+                        <p class="relative bottom-4 left-2 text-gray-600 text-lg">{{ item.date }}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="p-2 w-full">
+                    <p class="text-justify text-black text-md leading-7">{{ item.description }}</p>
+                </div>
+            </div>
+        </div>
+        <div v-if="showSeeMoreButton || showSeeLessButton" class="flex items-center justify-center pr-[5rem] mt-5 mb-10">
+            <div v-if="showSeeMoreButton">
+                <div>
+                    <div
+                        style="position: absolute; bottom :0; left: 0; height: 24%; width: 100%; background: linear-gradient(to bottom, transparent 30%, #FFFFFF 79%, #FFFFFF 50%);">
+                    </div>
+                </div>
+                <div class="absolute bottom-3">
+                    <button @click="seeMore"
+                        class="left-0 right-0 px-3 py-3 border-2 border-black text-black  rounded-md hover:bg-black hover:text-white transition-colors duration-300 text-nowrap text-xs">
+                        <span>See More</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <div v-if="showSeeLessButton" class="mb-10">
+                <div class="absolute bottom-8">
+                    <button @click="seeLess"
+                        class=" px-3 py-3 border-2 border-black text-black  rounded-md hover:bg-black hover:text-white transition-colors duration-300 text-nowrap text-xs">
+                        <span>See Less</span>
+                    </button>
+                </div>
+
+            </div>
+
+
+        </div>
+
     </div>
 </template>
 
@@ -780,6 +788,10 @@
 
 <script>
 import MapRenderer from "@/components/MapRenderer.vue";
+import shopProduct1 from '@/assets/images/CategoryView/ToShop/shop-product1.png';
+import shopProduct2 from '@/assets/images/CategoryView/ToShop/shop-product2.png';
+import shopProduct3 from '@/assets/images/CategoryView/ToShop/shop-product3.png';
+import shopProduct4 from '@/assets/images/CategoryView/ToShop/shop-product4.png';
 export default {
     props: {
         latitude: Number,
@@ -793,17 +805,63 @@ export default {
         return {
             showCart: false,
             showReviews: false,
-            items: [{
-                name: 'Juan Dela Cruz',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                date: 'December 2023',
-            },
-            {
-                name: 'Luis Paolo',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                date: 'December 2023',
-            },
+            items: [
+                {
+                    name: 'Juan Dela Cruz',
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                    date: 'December 2023',
+
+                },
+                {
+                    name: 'Luis Paolo',
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                    date: 'December 2023',
+
+                },
+                {
+                    name: 'Luis Paolo',
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                    date: 'December 2023',
+
+                },
+                {
+                    name: 'Juan Dela Cruz',
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                    date: 'December 2023',
+
+                },
+                {
+                    name: 'Juan Dela Cruz',
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                    date: 'December 2023',
+
+                },
+                {
+                    name: 'Luis Paolo',
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                    date: 'December 2023',
+
+                },
+                {
+                    name: 'Luis Paolo',
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                    date: 'December 2023',
+
+                },
+                {
+                    name: 'Juan Dela Cruz',
+                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                    date: 'December 2023',
+
+                },
             ],
+            images: [
+                shopProduct1,
+                shopProduct2,
+                shopProduct3,
+                shopProduct4
+            ],
+            currentIndex: 0,
             count: 0,
             showCartModal: false,
             currentPage: 0,
@@ -811,15 +869,30 @@ export default {
             showDropdown: false,
             categories: ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'],
             locations: ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'],
+            numFeedbackShown: 0,
+            showSeeLessButton: false
+
         };
     },
     computed: {
         paginatedItems() {
-            const startIndex = this.currentPage * this.pageSize;
-            return this.items.slice(startIndex, startIndex + this.pageSize);
+            // Return first 2 items initially and add additional items based on numFeedbackShown
+            return this.items.slice(0, 2 + this.numFeedbackShown);
         },
+        currentImage() {
+            return this.images[this.currentIndex];
+        },
+        showSeeMoreButton() {
+            return this.numFeedbackShown < this.items.length - 2;
+        }
     },
     methods: {
+        updateCurrentImage(index) {
+            this.currentIndex = index;
+        },
+        changeImage() {
+            this.currentIndex = (this.currentIndex + 1) % this.images.length;
+        },
         openCartModal() {
             this.showCartModal = true;
         },
@@ -849,6 +922,22 @@ export default {
             if (this.count > 0) {
                 this.count--;
             }
+        },
+        // Method to handle "See More" button click
+        seeMore() {
+            // Increment the number of feedback items to show
+            this.numFeedbackShown += 2; // Change this value as per your requirement
+            // Show See Less button if all items are shown
+            if (!this.showSeeMoreButton) {
+                this.showSeeLessButton = true;
+            }
+        },
+        // Method to handle "See Less" button click
+        seeLess() {
+            // Reset the number of feedback items shown to initial value
+            this.numFeedbackShown = 0;
+            // Hide See Less button
+            this.showSeeLessButton = false;
         }
     }
 };

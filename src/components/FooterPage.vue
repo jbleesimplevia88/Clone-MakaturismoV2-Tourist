@@ -1,5 +1,6 @@
 <template>
   <!-- Your main content goes here -->
+
   <footer class="mt-auto text-white bg-primary hidden lg:block w-full lg:w-full">
     <div class="py-2 bg-secondary">
       <p class="p-2 m-0 text-sm md:text-base">Official Tourism site of Makati City - Philippines</p>
@@ -7,48 +8,64 @@
     <div class="containe flex flex-col flex-grow p-10 ">
       <div class="flex flex-row  justify-center">
         <!-- Section 1 -->
-        <div class="align-middle" id="section1">
-          <div class="flex items-center mb-2 mt-20">
+        <div class="footer-section sm:w-1/4  align-middle" id="section1">
+          <div class="flex items-center mb-2 mr-">
             <img src="@/assets/images/Footer/makati_logo.png" alt="makati logo"
-              class="inline  w-6 h-auto mr-2 align-middle">
-            <h6 class="mb-2 text-sm md:text-base" style="font-size: 18px;">Makaturismo</h6>
+              class="inline w-6 h-auto mr-2 align-middle">
+            <h6 class="text-sm md:text-base">Makaturismo</h6>
           </div>
+
+
           <router-link to="/" class="mb-2 text-sm md:text-base">
-            <h6 class="mb-2 text-xl md:text-base">Home</h6>
+            <button class="text-white-500 hover:underline">Home</button>
           </router-link>
+
           <div>
+
             <div>
+
               <router-link to="/category/do" class="mb-2 text-sm md:text-base">
                 <button class="text-white-500 hover:underline">What to Do</button>
               </router-link>
             </div>
+
           </div>
           <router-link to="/category/shop" class="mb-2 text-sm md:text-base">
             <button class="text-white-500 hover:underline">Where to Shop</button>
           </router-link>
           <div>
+
             <router-link to="/category/see" class="mb-2 text-sm md:text-base">
               <button class="text-white-500 hover:underline">What to See</button>
             </router-link>
           </div>
+
           <router-link to="/category/eat" class="mb-2 text-sm md:text-base">
             <button class="text-white-500 hover:underline">Where to Eat</button>
           </router-link>
+
+
           <div>
+
             <router-link to="/category/stay" class="mb-2 text-sm md:text-base">
               <button class="text-white-500 hover:underline">Where to Stay</button>
             </router-link>
           </div>
+
           <router-link to="/category/tour" class="mb-2 text-sm md:text-base">
             <button class="text-white-500 hover:underline">MakatiTour</button>
           </router-link>
+
         </div>
+
         <!-- Section 2 -->
+
+
         <!-- Section 3 -->
         <div class="footer-section sm:w-1/4 " id="section3">
           <!-- Contact Us -->
           <div>
-            <h6 class="mb-2 text-xl md:text-base">Contact Us</h6>
+            <h6 class="mb-2 text-sm md:text-base">Contact Us</h6>
             <div class="flex items-center">
               <img src="@/assets/images/Footer/Location.png" alt="Makati City" class="inline-block mr-2 mb-2">
               <p class="mb-2 text-sm md:text-base">Makati City</p>

@@ -9,12 +9,11 @@
             </div>
             <img class="w-full h-[200px] md:h-[700px]" src="@/assets/images/CategoryView/ToTour/banner.jpeg" alt="" />
             <div class="flex items-center justify-center absolute top-5 md:top-20 z-[1] bg-white pl-3 lg:pl-5 rounded-r-xl">
-                <p
-                    class="text-[#102E61] text-sm sm:text-4xl font-bold p-3 pr-4 md:p-5 md:pr-7 ">
-                   MAKATOUR
+                <p class="text-[#102E61] text-sm sm:text-4xl font-bold p-3 pr-4 md:p-5 md:pr-7 ">
+                    MAKATOUR
                 </p>
-                 
-                
+
+
             </div>
             <div
                 class="relative sm:absolute inset-0 sm:top-56 md:top-[23rem] flex text-center lg:text-left justify-center items-center z-[1]">
@@ -31,7 +30,7 @@
         <div>
             <div class="pb-10">
                 <!-- Filter dropdown -->
-                <div class="relative hidden lg:block text-left">
+                <div class="relative hidden lg:block text-left" @click.stop ref="webDropdown">
                     <button
                         class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
                         @click="toggleDropdown">
@@ -70,10 +69,10 @@
                                     <div class="grid grid-rows-8 grid-flow-col gap-4 ml-4 p-2">
                                         <div v-for="(category, index) in categories" :key="'category-' + index">
                                             <label :for="'categoryCheckbox-' + index" class="flex items-center">
-                                                <input class="accent-[#102E61]" type="checkbox"
-                                                    :id="'categoryCheckbox-' + index" :value="category"
-                                                    @change="toggleCategory(category)">
-                                                <span class="ml-3 uppercase text-sm font-bold">{{ category }}</span>
+                                                <input type="checkbox" :id="'categoryCheckbox-' + index" :value="category"
+                                                    v-model="selectedCategory">
+                                                <span class="ml-2 m-0 p-0 uppercase text-[12px] font-bold">{{ category
+                                                }}</span>
                                             </label>
                                         </div>
                                     </div>
@@ -82,24 +81,26 @@
                                     <div
                                         class="grid grid-rows-12 grid-flow-row-dense lg:grid-rows-8 md:grid-flow-col gap-4 mr-4 p-2">
                                         <div v-for="(location, index) in locations" :key="'location-' + index">
-                                            <label :for="'locationCheckbox-' + index" class="flex items-center">
+                                            <label :for="'locationCheckbox-' + index" class="flex items-left">
                                                 <input type="checkbox" :id="'locationCheckbox-' + index" :value="location"
-                                                    @change="toggleLocation(location)">
-                                                <span class="ml-2 uppercase text-sm font-bold">{{ location }}</span>
+                                                    v-model="selectedLocation" class="-mt-12">
+                                                <span class="ml-2  -mt-2 uppercase text-[12px] font-bold h-16 w-24">{{
+                                                    location }}</span>
                                             </label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center justify-center border-t-2 ml-5 mr-5 mt-5">
-                                <button class="m-4 p-1 text-white bg-[#102E61] w-72 rounded-xl">Apply</button>
+                                <button @click="handleApplyFilter"
+                                    class="m-4 p-1 text-white bg-[#102E61] w-72 rounded-xl">Apply</button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- End of Filter dropdown -->
                 <!-- Filter dropdown MOBILE-->
-                <div class="relative text-left lg:hidden">
+                <div class="relative text-left lg:hidden" ref="mobileDropdown">
                     <button
                         class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
                         @click="toggleDropdown">
@@ -135,10 +136,10 @@
                                             <div class="grid gap-4 ml-4 p-2">
                                                 <div v-for="(category, index) in categories" :key="'category-' + index">
                                                     <label :for="'categoryCheckbox-' + index" class="flex items-center">
-                                                        <input class="accent-[#102E61]" type="checkbox"
-                                                            :id="'categoryCheckbox-' + index" :value="category"
-                                                            @change="category(category)">
-                                                        <span class="ml-3 uppercase text-sm font-bold">{{ category
+                                                        <input type="checkbox" :id="'categoryCheckbox-' + index"
+                                                            :value="category" v-model="selectedCategory">
+                                                        <span class="ml-2 m-0 p-0 uppercase font-bold">{{
+                                                            category
                                                         }}</span>
                                                     </label>
                                                 </div>
@@ -146,7 +147,7 @@
                                         </div>
                                     </div>
                                     <div class="text-center justify-center border-t-2 ml-5 mr-5 mt-5">
-                                        <button @click="toggleDropdown()"
+                                        <button @click="handleApplyFilter"
                                             class="m-4 p-1 text-white bg-[#102E61] w-72 rounded-xl">Apply</button>
                                     </div>
                                 </div>
@@ -157,7 +158,7 @@
                 <!-- End  Filter dropdown MOBILE  -->
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                <div v-for="(item, index) in paginatedItems" :key="index"
+                <div v-for="(item, index) in filteredItems" :key="index"
                     class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
                     <div class="relative">
                         <img class="w-full h-[250px] object-cover rounded-t" :src="item.image" alt="">
@@ -185,6 +186,11 @@
                         </button>
                     </div>
                 </div>
+            </div>
+            <div v-if="filteredItems.length === 0" class="text-white text-center font p-14">
+                <p>We're sorry, but we couldn't find any activity that matches your selected filter. Try adjusting your
+                    filter
+                    or explore other options.</p>
             </div>
             <!-- Pagination controls -->
             <div class="grid grid-cols-2">
@@ -278,7 +284,8 @@ export default {
                 {
                     name: "Central Business District Tour",
                     description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                    category: 'Guided Tour',
+                    category: 'District Tour',
+                    location: 'Makati Commercial Center',
                     image: item5,
                     link: "/category/tour/central",
                     mapLocation: "https://www.google.com/maps/dir//Makati+Business+Central+Foods+Corp.,+Makati+Ave,+Makati,+Metro+Manila/@14.5524615,121.023803,18.45z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c91ac93d6d43:0x4810cea98136073a!2m2!1d121.0237498!2d14.552239?entry=ttu"
@@ -286,7 +293,8 @@ export default {
                 {
                     name: 'Walkway Tour with Legazpi Market',
                     description: "Embark on a gastronomic journey and cultural immersion with the Walkway Tour featuring Legazpi Market. Explore the vibrant Legazpi Market, a popular weekend market offering a diverse selection of local products and mouthwatering treats. This guided tour will take you through a culinary adventure, introducing you to the rich flavors and aromas of Philippine cuisine.",
-                    category: 'Guided Tour',
+                    category: 'Market Tour',
+                    location: 'Legaspi Village',
                     image: item1,
                     link: "",
                     mapLocation: ""
@@ -294,7 +302,8 @@ export default {
                 {
                     name: 'Walkway Tour with Salcedo Market',
                     description: "Experience the best of Salcedo Market through a captivating Walkway Tour. Wander through the bustling market stalls filled with fresh produce, artisanal goods, and delectable street food. Discover the local flavors and culinary delights that make Salcedo Market a must-visit destination for foodies and culture enthusiasts.",
-                    category: 'Guided Tour',
+                    category: 'Market Tour',
+                    location: 'Salcedo Village',
                     image: item2,
                     link: "",
                     mapLocation: ""
@@ -302,7 +311,8 @@ export default {
                 {
                     name: "Poblacion Walk Tour",
                     description: "Embark on an unforgettable adventure through the vibrant streets of Poblacion with our Poblacion Walk Tour. Immerse yourself in the bohemian atmosphere of Makati's hip and artistic neighborhood as you explore trendy cafes, bars, and galleries. Engage with the friendly locals, discover the local art scene, and indulge in diverse culinary delights. As the sun sets, experience the lively nightlife and dance the night away. Let the energy of Poblacion ignite your senses and leave you with cherished memories.",
-                    category: 'Guided Tour',
+                    category: 'City Tour',
+                    location: 'Poblacion',
                     image: item3,
                     link: "",
                     mapLocation: ""
@@ -310,7 +320,8 @@ export default {
                 {
                     name: "Poblacion Heritage Tour",
                     description: "Travel back in time with our Poblacion Heritage Tour and unravel the historical treasures of Makati's oldest district. Explore well-preserved ancestral houses, iconic churches, and colonial landmarks that narrate the city's storied past. Walk along cobbled streets and immerse yourself in the nostalgic charm of bygone eras. Connect with the local community and gain insights into the traditions that have endured through generations. Discover the roots of Makati's cultural identity and witness the enduring legacy of Poblacion's history and heritage.",
-                    category: 'Guided Tour',
+                    category: ['District Tour', 'Church Tour'],
+                    location: 'Poblacion',
                     image: item4,
                     link: "",
                     mapLocation: ""
@@ -319,20 +330,107 @@ export default {
                 {
                     name: "The Garden Way of the Cross of St. Alphonsus Mary de Liguori Church Tour",
                     description: "Discover the spiritual side of Makati with The Garden Way of the Cross of St. Alphonsus Mary de Liguori Church Tour. This unique tour takes you through the serene and contemplative garden, featuring life-sized sculptures depicting the Passion of Christ.",
-                    category: 'Guided Tour',
+                    category: 'Church Tour',
+                    location: 'Magallanes Village',
                     image: item6,
                     link: "",
                     mapLocation: ""
                 }
             ],
+            locations: [
+                'All',
+                'Ayala-Paseo de Roxas',
+                'Bangkal',
+                'Bel-air',
+                'Cembo',
+                'Comembo',
+                'Dasmarinas Village North',
+                'Dasmarinas Village South',
+                'Forbes Park North',
+                'Forbes Park South',
+                'Fort Bonifacio Naval Station',
+                'Fort Bonifacio (Camp)',
+                'Greenbelt',
+                'Guadalupe Nuevo',
+                'Guadalupe Viejo',
+                'Kasilawan',
+                'La Paz -Singkamas -Tejeros',
+                'Legaspi Village',
+                'Magallanes Village',
+                'Makati Commercial Center',
+                'Makati CPO + Buendia Ave',
+                'Olympia & Carmona',
+                'Palanan',
+                'Pasong Tamo & Ecology Village',
+                'Pembo',
+                'Pinagkaisahan-Pitogo',
+                'Pio del Pilar',
+                'Poblacion',
+                'Rembo (East)',
+                'Rembo (West)',
+                'Salcedo Village',
+                'San Antonio Village',
+                'San Isidro',
+                'San Lorenzo Village',
+                'Sta. Cruz',
+                'Urdaneta Village',
+                'Valenzuela, Santiago, Rizal'
+            ],
+            categories: ['All', 'District Tour', 'Church Tour', 'Museum Tour', 'City Tour', 'Market Tour'],
             currentPage: 0,
             pageSize: 6,
             showDropdown: false,
-            categories: ['All', 'District Tour', 'Church Tour', 'Museum Tour', 'City Tour', 'Market Tour'],
-            locations: ['Bangkal', 'Bel-Air', 'Carmona', 'Dasmariñas', 'Forbes Park', 'Guadalupe Nuevo', 'Guadalupe Viejo', 'Kasilawan', 'La Paz', 'Magallanes', 'olympia', 'Palanan', 'Pinagkaisahan', 'Pio Del Pilar', 'Poblacion', 'San Antonio', 'San Isidro', 'San Lorenzo', 'Santa Cruz', 'Singkamas', 'Tejeros', 'Urdaneta', 'Valenzuela'],
+            selectedCategory: [],
+            selectedLocation: [],
+            applyButtonClicked: false,
         };
     },
+    watch: {
+        selectedCategory(newValue, oldValue) {
+            // Update applyButtonClicked when category changes
+            if (newValue !== oldValue) {
+                this.applyButtonClicked = false;
+            }
+        },
+        selectedLocation(newValue, oldValue) {
+            // Update applyButtonClicked when location changes
+            if (newValue !== oldValue) {
+                console.log('Location radio button clicked');
+                this.applyButtonClicked = false;
+            }
+        },
+    },
     computed: {
+        filteredItems() {
+            let filteredItems = this.items.slice(); // Create a shallow copy of items
+
+            // Apply filters only if the Apply button is clicked
+            if (this.applyButtonClicked) {
+                // Filter by category
+                if (this.selectedCategory && this.selectedCategory.length > 0 && this.selectedCategory[0] !== 'All') {
+                    filteredItems = filteredItems.filter(item => {
+                        if (Array.isArray(item.category)) {
+                            return this.selectedCategory.some(cat => item.category.includes(cat));
+                        } else {
+                            return this.selectedCategory.includes(item.category);
+                        }
+                    });
+                }
+
+                // Filter by location
+                if (this.selectedLocation && this.selectedLocation.length > 0 && this.selectedLocation[0] !== 'All') {
+                    filteredItems = filteredItems.filter(item => {
+                        if (Array.isArray(item.location)) {
+                            return this.selectedLocation.some(loc => item.location.includes(loc));
+                        } else {
+                            return this.selectedLocation.includes(item.location);
+                        }
+                    });
+                }
+            }
+
+            return filteredItems;
+        },
         paginatedItems() {
             const startIndex = this.currentPage * this.pageSize;
             return this.items.slice(startIndex, startIndex + this.pageSize);
@@ -351,7 +449,22 @@ export default {
             return this.items.length;
         },
     },
+    mounted() {
+        document.addEventListener('click', this.handleGlobalClick);
+    },
+    beforeUnmount() {
+        document.removeEventListener('click', this.handleGlobalClick);
+    },
     methods: {
+        handleApplyFilter() {
+            this.applyButtonClicked = true;
+            console.log('Apply button clicked');
+            console.log('Selected category:', this.selectedCategory);
+            console.log('Selected location:', this.selectedLocation);
+            this.currentPage = 0; // Reset currentPage when filter is applied
+            this.showDropdown = false;
+
+        },
         nextPage() {
             this.currentPage++;
         },
@@ -363,6 +476,11 @@ export default {
         },
         toggleDropdown() {
             this.showDropdown = !this.showDropdown;
+        },
+        handleGlobalClick(event) {
+            if (!this.$refs.webDropdown.contains(event.target) && !this.$refs.mobileDropdown.contains(event.target)) {
+                this.showDropdown = false;
+            }
         },
         applyFilter(category) {
             // Implement filtering logic based on selected category

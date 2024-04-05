@@ -5,17 +5,16 @@
             </div>
             <div class="relative inset-0 sm:top-56 md:top-2 pl-0 md:pl-10 flex items-center z-[1]">
                 <div class="relative flex flex-col pl-0 lg:pl-10">
-                    <div class="absolute top-4 left-3">
-                        <router-link to="/category/do">
-                            <div
-                                class="hover:bg-white hover:rounded-md hover:transition-all hover:delay-200 hover:bg-opacity-85">
+                    <div class="absolute lg:top-4 lg:left-3 top-4 z-[1]">
+                        <router-link to="/category/eat">
+                            <a class=" flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                    stroke="white" class="w-7 lg:w-10 h-7 lg:h-10">
+                                    style="filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));" stroke="currentColor"
+                                    class="w-8 ml-5 lg:ml-0 lg:w-10 h-12 lg:h-10 hover:bg-gray-300 rounded-md p-1 cursor-pointer text-white">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
                                 </svg>
-                            </div>
-
+                            </a>
                         </router-link>
                     </div>
                     <div class="relative flex flex-col items-center">
@@ -33,16 +32,25 @@
                                     class="lg:w-[100%] lg:h-[90%] rounded-br-3xl">
                             </div>
                         </div>
-                        <!-- <div class="absolute bottom-2 right-[8rem] z-20 w-100">
 
-                            <button class="hidden lg:block p-2 bg-white rounded-lg shadow outline outline-2 text-md">
-                                <img src="@/assets/images/Content/9dots.png" alt="" class="w-10 h-10">
-                                Show
-                                All
-                                Photos</button>
-                        </div> -->
                     </div>
+                    <!-- mobile -->
+                    <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 lg:p-5 px-5 py-3 shadow-lg">
+                        <div class="flex justify-between">
+                            <div>
+                                <p class="text-md">Ordering made easy</p>
+                                <p class="text-lg font-bold">Just a click away</p>
+                            </div>
 
+                            <router-link to="/checkouteat">
+                                <div class="w-[100%] px-2 mt-5">
+                                    <button
+                                        class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg p-4 w-[100%]">Check
+                                        Cart</button>
+                                </div>
+                            </router-link>
+                        </div>
+                    </div>
 
                     <div class="flex flex-col pl-8 lg:pl-8 lg:order-first">
                         <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">Little Tokyo</h1>
@@ -183,11 +191,9 @@
                     </div>
                 </div>
 
-                <div v-if="showCart"
-                    class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
+                <div v-if="showCart" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
                     @click.self="closeModal">
-                    <div class="bg-white overflow-y-auto h-[680px] w-[900px] overflow-hidden scrollbar-hide rounded-lg shadow-md p-2 mx-5"
-                        @click.stop>
+                    <div class="bg-white  lg:h-[760px] h-[665px] w-[900px] rounded-lg shadow-md p-2 mx-5" @click.stop>
                         <div class="lg:w-[100%] p-4 rounded-lg">
                             <div class="relative flex justify-end">
                                 <button class=" pr-4 pt-21 ">
@@ -197,57 +203,61 @@
                                     </svg>
                                 </button>
                             </div>
-
-                            <div class="flex justify-between w-[100%]">
-                                <div class="w-[40%]">
-
+                            <div class="lg:flex lg:justify-between w-[100%]">
+                                <div class="hidden lg:block lg:w-[40%]">
                                     <div class="flex justify-center items-center mb-3">
                                         <img src="@/assets/images/CategoryView/ToEat/best1.png"
                                             class="w-auto h-24 md:w-[500px] md:h-auto">
                                     </div>
-
                                     <div class="flex justify-between">
-
-
                                         <div class="flex justify-between items-center">
                                             <img src="@/assets/images/CategoryView/ToEat/best2.png"
                                                 class="h-24 md:w-[80px] md:h-auto">
                                         </div>
-
                                         <div class="flex justify-center items-center">
                                             <img src="@/assets/images/CategoryView/ToEat/best3.jpg"
                                                 class="h-24 md:w-[80px] md:h-auto">
                                         </div>
-
                                         <div class="flex justify-center items-center">
                                             <img src="@/assets/images/CategoryView/ToEat/other1.jpg"
                                                 class="h-24 md:w-[80px] md:h-auto">
                                         </div>
-
                                         <div class="flex justify-center items-center mx-5">
                                             <img src="@/assets/images/CategoryView/ToShop/button.png"
                                                 class="h-24 md:w-[40px] md:h-auto">
                                         </div>
-
                                     </div>
-
                                 </div>
+                                <!-- Mobile view -->
+                                <div class="lg:hidden grid grid-cols-2 grid-rows-1 gap-4">
+                                    <div class="w-[200px] ml-4">
+                                        <img :src="currentImage" class="h-52 w-full" />
+                                    </div>
+                                    <div class="grid-cols-1 ml-16">
+                                        <img v-for="(image, index) in images" :key="index" :src="image"
+                                            class="h-9 w-10 mb-2" @click="updateCurrentImage(index)" />
 
-                                <div class="w-[60%] px-3">
-
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="black" class="w-10 h-8 mt-2 cursor-pointer"
+                                            @click="changeImage">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <!-- /Mobile view -->
+                                <div class="lg:w-[60%] px-3 mt-3">
                                     <div class="flex flex-col text-black">
                                         <p class="font-bold text-left text-1xl mb-2"> This culinary enclave offers a
                                             delightful array of Japanese restaurants and eateries, serving up delicious
                                             sushi, ramen, tempura, and more.</p>
                                     </div>
-
                                     <div class="text-black mb-5">
                                         <p class="font-bold">Little Tokyo</p>
                                         <div class="flex justify-between mb-2">
                                             <p class="w-[100%] ">₱100.00</p>
-
                                             <div class="flex justify-end">
-                                                <div class="flex justify-between">
+                                                <div class="justify-between hidden lg:block">
                                                     <p class="mr-5">Quantity</p>
                                                     <div class="flex border border-black">
                                                         <button class="border border-black px-3">+</button>
@@ -255,43 +265,32 @@
                                                         <button class="border border-black px-3">-</button>
                                                     </div>
                                                 </div>
+
                                             </div>
                                         </div>
-
-                                        <div class="border border-gray-200 my-5"></div>
-
-                                        <div class="flex justify-between mb-2">
-                                            <p class="w-[100%] text-xs">• Spicy Maguro</p>
-
+                                        <div class="border border-gray-200 lg:my-5"></div>
+                                        <div class="overflow-y-auto lg:overflow-y-visible h-[110px] lg:h-auto">
+                                            <div class="justify-between mb-2 grid gap-2 mt-2">
+                                                <p class="w-[100%] text-xs">• Spicy Maguro</p>
+                                                <p class="w-[100%] text-xs">• Modern Ika Tama</p>
+                                                <p class="w-[100%] text-xs">• Udon</p>
+                                                <p class="w-[100%] text-xs">• Takoyaki</p>
+                                                <p class="w-[100%] text-xs">• San Ten Mori
+                                                </p>
+                                                <p class="w-[70%] text-xs">• Oyako Don</p>
+                                            </div>
                                         </div>
-                                        <div class="flex justify-between mb-2">
-                                            <p class="w-[100%] text-xs">• Modern Ika Tama</p>
-
+                                        <div class=" lg:hidden flex items-center text-black mb-4">
+                                            Quantity
+                                            <button @click="decrement"
+                                                class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
+                                            <input type="text" class="px-4 py-2 bg-gray-100 text-center w-16 text-black"
+                                                v-model="count" readonly>
+                                            <button @click="increment"
+                                                class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">+</button>
                                         </div>
-                                        <div class="flex justify-between mb-2">
-                                            <p class="w-[100%] text-xs">• Udon</p>
-
-                                        </div>
-                                        <div class="flex justify-between mb-2">
-                                            <p class="w-[100%] text-xs">• Takoyaki</p>
-
-                                        </div>
-
-                                        <div class="flex justify-between mb-2">
-                                            <p class="w-[100%] text-xs">• San Ten Mori
-                                            </p>
-
-                                        </div>
-
-                                        <div class="flex justify-between mb-2">
-                                            <p class="w-[70%] text-xs">• Oyako Don</p>
-
-                                        </div>
-
-                                        <p class="font-bold">Reviews</p>
-
-                                        <button @click="toggleshowReviews">
-
+                                        <p class="lg:block hidden font-bold">Reviews</p>
+                                        <button class="lg:block hidden" @click="toggleshowReviews">
                                             <div>
                                                 <div
                                                     class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
@@ -300,15 +299,12 @@
                                                             ⭐️⭐️⭐️⭐️⭐</label>
                                                         <p class="flex text-sm">03-10-2024 11:30</p>
                                                     </div>
-
                                                     <div class="flex justify-between mb-2">
                                                         <p class="w-[100%] text-xs text-left">I will buy again.
                                                             The seller is kind and accommodating with my
                                                             requests. Transaction is smooth. ❤️</p>
                                                     </div>
-
                                                 </div>
-
                                                 <div
                                                     class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                                     <div class="inline-block w-[100%]">
@@ -316,7 +312,6 @@
                                                             ⭐️⭐️⭐️⭐️⭐</label>
                                                         <p class="flex text-sm">09-03-2024 08:30</p>
                                                     </div>
-
                                                     <div class="flex justify-between mb-2">
                                                         <p class="w-[100%] text-xs text-left">I will buy again.
                                                             The seller is kind and accommodating with my
@@ -326,32 +321,21 @@
                                             </div>
                                         </button>
                                     </div>
-
                                 </div>
                             </div>
-
                             <div class="flex justify-between">
-
                                 <div class="w-[100%] flex justify-start">
                                     <button class="text-blue-600 border-blue-500 border-2 rounded-lg py-2 w-[90%]">Add
                                         to
                                         Cart</button>
                                 </div>
-
                                 <div class="w-[100%] flex justify-end">
-
                                     <router-link to="/checkoutshop" class="w-full">
                                         <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]">Buy
                                             Now</button>
                                     </router-link>
-
-
                                 </div>
-
                             </div>
-
-
-
                         </div>
                     </div>
                 </div>
@@ -860,8 +844,7 @@
             </div>
         </div>
 
-        <div v-if="showSeeMoreButton || showSeeLessButton"
-            class="flex items-center justify-center pr-[5rem] mt-5 mb-10">
+        <div v-if="showSeeMoreButton || showSeeLessButton" class="flex items-center justify-center pr-[5rem] mt-5 mb-10">
             <div v-if="showSeeMoreButton">
                 <div>
                     <div
@@ -903,9 +886,9 @@
 
 <script>
 import MapRenderer from "@/components/MapRenderer.vue";
-
-
-
+import eatProduct1 from '@/assets/images/CategoryView/ToEat/best2.png';
+import eatProduct2 from '@/assets/images/CategoryView/ToEat/best3.jpg';
+import eatProduct3 from '@/assets/images/CategoryView/ToEat/other1.jpg';
 export default {
     props: {
         latitude: Number,
@@ -967,6 +950,13 @@ export default {
 
                 },
             ],
+            images: [
+                eatProduct1,
+                eatProduct2,
+                eatProduct3,
+            ],
+            currentIndex: 0,
+            count: 0,
             showCartModal: false,
             showCart: false,
             showReviews: false,
@@ -984,12 +974,29 @@ export default {
             // Return first 2 items initially and add additional items based on numFeedbackShown
             return this.items.slice(0, 2 + this.numFeedbackShown);
         },
+        currentImage() {
+            return this.images[this.currentIndex];
+        },
         // Check if there are more feedback items to show
         showSeeMoreButton() {
             return this.numFeedbackShown < this.items.length - 2;
         }
     },
     methods: {
+        changeImage() {
+            this.currentIndex = (this.currentIndex + 1) % this.images.length;
+        },
+        updateCurrentImage(index) {
+            this.currentIndex = index;
+        },
+        increment() {
+            this.count++;
+        },
+        decrement() {
+            if (this.count > 0) {
+                this.count--;
+            }
+        },
         toggleshowCart() {
             this.showAddtoCart = false;
             this.showCart = true;

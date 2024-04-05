@@ -20,13 +20,13 @@ import 'swiper/css';
 import 'swiper/css/effect-fade'; // Import Swiper Fade Effect module styles
 
 // Import images
-import landingPageImage1 from '@/assets/images/Banner/banner-1.png';
-import landingPageImage2 from '@/assets/images/Banner/banner-2.png';
-import landingPageImage3 from '@/assets/images/Banner/banner-3.png';
-import landingPageImage4 from '@/assets/images/Banner/banner-4.png';
-import landingPageImage5 from '@/assets/images/Banner/banner-5.png';
-import landingPageImage6 from '@/assets/images/Banner/banner-6.png';
-import landingPageImage7 from '@/assets/images/Banner/banner-7.jpg';
+import landingPageImage1 from '@/assets/images/Banner/banner-1.webp';
+import landingPageImage2 from '@/assets/images/Banner/banner-2.webp';
+import landingPageImage3 from '@/assets/images/Banner/banner-3.webp';
+import landingPageImage4 from '@/assets/images/Banner/banner-4.webp';
+import landingPageImage5 from '@/assets/images/Banner/banner-5.webp';
+import landingPageImage6 from '@/assets/images/Banner/banner-6.webp';
+import landingPageImage7 from '@/assets/images/Banner/banner-7.webp';
 
 export default {
   data() {

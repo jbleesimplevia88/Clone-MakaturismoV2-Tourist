@@ -17,7 +17,7 @@
                 class="relative sm:absolute inset-0 sm:top-56 md:top-[23rem] flex text-center lg:text-left justify-center items-center z-[1]">
 
                 <p
-                    class="pt-[6rem] text-[17px] sm:text-sm md:text-xl lg:text-[1.7rem] text-wrap leading lg:leading-10 text-white">
+                    class="pt-[6rem] text-[17px] sm:text-sm md:text-xl md:pt-[2rem] lg:text-[1.7rem] text-wrap leading lg:leading-10 text-white">
                     Makati is a cosmopolitan city that offers a variety of activities that people of all ages can
                     enjoy.<br />Whether you love to stay indoors or outdoors, day or night, the city surely has something to
                     offer.

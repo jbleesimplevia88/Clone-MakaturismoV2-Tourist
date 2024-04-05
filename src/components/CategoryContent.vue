@@ -6,7 +6,7 @@
             :class="`location-card ${item.attrib}`" :class="{ 'active-effect': isActive(item.link) }"
              style="margin: 0; width: 100%; height: auto;"> -->
         <div v-for="(item, index) in locations" :key="index"
-            class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center rounded-lg"
+            class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card"
             :class="['location-card', item.attrib, { 'active-effect': isActive(item.link) }]"
             style="margin: 0; width: 100%; height: auto;">
             <RouterLink :to="item.link">
@@ -17,8 +17,8 @@
                 <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{ item.mobile
                     }}
                 </span>
-                <span class="text-center my-3 font-bold text-1xl lg:my-0 lg:font-bold lg:text-xl lg:block hidden">{{
-                    item.title }}</span>
+                <h6 class="text-center my-3 font-bold text-1xl lg:my-0 lg:font-bold lg:text-xl lg:block hidden">{{
+                    item.title }}</h6>
             </RouterLink>
         </div>
     </div>
@@ -78,39 +78,6 @@ export default {
 
 
 <style scoped>
-.bg-img {
-    background-size: 300px 500px;
-}
-
-
-
-.sidebar {
-    height: 100vh;
-    /* Set height to 100% of viewport height */
-    width: 250px;
-    /* Set desired width of sidebar */
-    background-color: #fff;
-    /* Set background color */
-    position: fixed;
-    /* Fix the position of sidebar */
-    top: 0;
-    /* Align to top */
-    right: -250px;
-    /* Initially position outside the viewport */
-    transition: right 0.3s ease;
-    /* Add transition effect */
-    padding: 20px;
-    /* Add padding */
-}
-
-.sidebar.open {
-    right: 0;
-    /* Move sidebar into view */
-
-}
-
-
-
 .swiper-container {
     height: 100%;
 }
@@ -121,19 +88,12 @@ export default {
 }
 
 .active-effect span {
-    color: white;
+    color: #008EE4;
 }
 
 .active-effect {
-    background-color: #008EE4;
-    color: white;
-}
-
-.active-effect-left {
-    background-color: #008EE4;
-    color: white;
-    border-top-left-radius: 0.5rem;
-    border-bottom-left-radius: 0.5rem;
+    background-color: white;
+    color: #008EE4;
 }
 
 .location-card {
@@ -166,11 +126,12 @@ export default {
     /* Set your desired text color */
 }
 
-.location-card:hover span {
+.location-card:hover h6 {
     color: white;
     /* Set your desired text color on hover */
     transition: filter 0.3s ease;
 }
+
 
 .m-location-card {
     width: auto;
@@ -211,58 +172,5 @@ export default {
     z-index: -1;
 }
 
-.hidden-scrollbar {
-    scrollbar-width: none;
-    /* Firefox */
-    -ms-overflow-style: none;
-    /* IE and Edge */
-}
-
-.hidden-scrollbar::-webkit-scrollbar {
-    width: 0;
-    /* WebKit */
-    height: 0;
-}
-
-.hidden-scrollbar::-webkit-scrollbar-thumb {
-    background-color: transparent;
-    /* WebKit */
-}
-
-/* Hide the scrollbar */
-::-webkit-scrollbar {
-    display: none;
-    /* Hide scrollbar for Chrome, Safari, and Opera */
-}
-
-/* .slide-enter-active,
-.slide-leave-active {
-  transition: transform 0.3s ease-in-out;
-}
-
-.slide-enter,
-.slide-leave-to {
-  transform: translateX(100%);
-}
-
-.slide-enter-to {
-  transform: translateX(-10%);
-} */
-
-/*  */
-.slide-enter-active,
-.slide-leave-active {
-    transition: 0.3s linear;
-}
-
-.slide-enter,
-.slide-leave-to {
-    transform: translateX(100%);
-}
-
-.slide-enter-to,
-.slide-leave {
-    transform: translateX(0);
-
-}
+/* Add any additional styles if needed */
 </style>

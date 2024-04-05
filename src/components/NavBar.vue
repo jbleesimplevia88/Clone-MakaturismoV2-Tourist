@@ -22,7 +22,7 @@
           </span>
         </RouterLink>
 
-        <div class=" hidden lg:block relative  " ref="searchContainer">
+        <adiv class=" hidden lg:block relative  " ref="searchContainer">
           <input v-if="showInput" type="search"
             class=" relative m-0 block flex-auto rounded border border-solid border-neutral-200 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none"
             placeholder="Search" aria-label="Search" id="exampleFormControlInput2" aria-describedby="button-addon2"
@@ -37,7 +37,7 @@
                 d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
             </svg>
           </span>
-        </div>
+        </adiv>
         <!-- Calendar -->
         <RouterLink to="/calendar" class="hidden text-white md:inline-block"><img
             src="@/assets/images/Header/calendar.png" alt="logo" class="w-auto h-6 mx-2"></RouterLink>
@@ -89,22 +89,19 @@
                 </button>
 
               </div>
+              <div class="pb-2 text-center">
 
-              <RouterLink to="/cart">
-                <div class="pb-2 text-center">
-                  <button class="flex items-center w-full p-3 bg-white rounded-xl" @click="toggleDropdown(null)">
-                    <span class="ml-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                        <path
-                          d="M2.25 2.25a.75.75 0 0 0 0 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 0 0-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 0 0 0-1.5H5.378A2.25 2.25 0 0 1 7.5 15h11.218a.75.75 0 0 0 .674-.421 60.358 60.358 0 0 0 2.96-7.228.75.75 0 0 0-.525-.965A60.864 60.864 0 0 0 5.68 4.509l-.232-.867A1.875 1.875 0 0 0 3.636 2.25H2.25ZM3.75 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM16.5 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" />
-                      </svg>
-                    </span>
-                    <span class="ml-3 text-sm">Cart</span>
-                  </button>
+                <button class="flex items-center w-full p-3 bg-white rounded-xl" @click="toggleDropdown(null)">
+                  <span class="ml-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                      <path
+                        d="M2.25 2.25a.75.75 0 0 0 0 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 0 0-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 0 0 0-1.5H5.378A2.25 2.25 0 0 1 7.5 15h11.218a.75.75 0 0 0 .674-.421 60.358 60.358 0 0 0 2.96-7.228.75.75 0 0 0-.525-.965A60.864 60.864 0 0 0 5.68 4.509l-.232-.867A1.875 1.875 0 0 0 3.636 2.25H2.25ZM3.75 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM16.5 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" />
+                    </svg>
+                  </span>
+                  <span class="ml-3 text-sm">Cart</span>
+                </button>
 
-                </div>
-              </RouterLink>
-
+              </div>
               <RouterLink to="/">
                 <div class="pt-4 pb-2 text-center">
                   <button @click="logout" class="bg-[#102E61] w-full rounded-xl flex justify-center items-center p-2">
@@ -171,7 +168,7 @@
 
                     <li><router-link to="/">Home</router-link></li>
                   </ul>
-                  <ul class="flex flex-row pb-5 justify-items-center gap-2">
+                  <ul class="flex flex-row pb-5 justify-items-center gap-2 hover:bg-slate-100">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                       <path fill-rule="evenodd"
                         d="M5.25 9a6.75 6.75 0 0 1 13.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 0 1-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 1 1-7.48 0 24.585 24.585 0 0 1-4.831-1.244.75.75 0 0 1-.298-1.205A8.217 8.217 0 0 0 5.25 9.75V9Zm4.502 8.9a2.25 2.25 0 1 0 4.496 0 25.057 25.057 0 0 1-4.496 0Z"
@@ -296,7 +293,7 @@
                   class="w-full h-8 py-5 pl-10 border border-black rounded-xl" placeholder="Password">
               </div>
             </div>
-            <div class="hidden lg:flex items-center justify-between mb-4">
+            <div class="hidden lg:block lg:flex items-center justify-between mb-4">
               <p class="text-xs">Don't have an account? <button @click="openPrivacyModal"
                   class="text-xs font-bold text-blue-600">Sign Up</button></p>
               <button @click="openForgotModal" class="text-xs text-blue-600 font-bold">Forgot Password?</button>
@@ -454,7 +451,7 @@
                   class="border border-gray-500 rounded-xl w-full py-3 px-3">
               </div>
               <!-- Middlename -->
-              <div class="lg:flex items-center mb-3">
+              <div class="lg:inline-flex lg:flex items-center mb-3">
                 <label for="username" class="w-[7rem] block lg:ml-2">Middle Initial:</label>
                 <input id="username" type="text" v-model="username" placeholder="Enter Middle Initia"
                   class="border border-gray-500 rounded-xl w-full py-3 px-3">
@@ -792,7 +789,7 @@
             <img :src="locations[0].imgSrc" :alt="locations[0].alt" class="p-[26px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-              locations[0].mobile }}</span>
+            locations[0].mobile }}</span>
             <span class="font-bold text-1xl">{{ locations[0].mobile }}</span>
           </div>
         </RouterLink>
@@ -808,7 +805,7 @@
             <img :src="locations[1].imgSrc" :alt="locations[1].alt" class="p-[26px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-              locations[1].mobile }}</span>
+            locations[1].mobile }}</span>
             <span class="font-bold text-1xl">{{ locations[1].mobile }}</span>
           </div>
         </RouterLink>
@@ -824,7 +821,7 @@
             <img :src="locations[2].imgSrc" :alt="locations[2].alt" class="p-[26px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-              locations[2].mobile }}</span>
+            locations[2].mobile }}</span>
             <span class="font-bold text-1xl">{{ locations[2].mobile }}</span>
           </div>
         </RouterLink>
@@ -840,7 +837,7 @@
             <img :src="locations[3].imgSrc" :alt="locations[3].alt" class="p-[26px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-              locations[3].mobile }}</span>
+            locations[3].mobile }}</span>
             <span class="font-bold text-1xl">{{ locations[3].mobile }}</span>
           </div>
         </RouterLink>
@@ -856,7 +853,7 @@
             <img :src="locations[4].imgSrc" :alt="locations[4].alt" class="p-[26px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-              locations[4].mobile }}</span>
+            locations[4].mobile }}</span>
             <span class="font-bold text-1xl">{{ locations[4].mobile }}</span>
           </div>
         </RouterLink>
@@ -872,7 +869,7 @@
             <img :src="locations[5].imgSrc" :alt="locations[5].alt" class="p-[26px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-              locations[5].mobile }}</span>
+            locations[5].mobile }}</span>
             <span class="font-bold text-1xl">{{ locations[5].mobile }}</span>
           </div>
         </RouterLink>

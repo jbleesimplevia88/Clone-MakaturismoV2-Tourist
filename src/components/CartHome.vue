@@ -1,5 +1,6 @@
 <template>
-    <div class="bg-cover bg-center w-screen  h-[750px]"
+
+    <div class="lg:hidden bg-cover bg-center w-screen  h-[750px]"
         style="background-image: url('src/assets/images/CategoryView/ToShop/bgoverlay.png');">
         <div class="p-5 overflow-y-auto h-[690px] ">
 

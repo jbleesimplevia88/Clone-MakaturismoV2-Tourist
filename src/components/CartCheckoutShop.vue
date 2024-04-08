@@ -96,8 +96,8 @@
 
                             <div class="border border-gray-200 py-5 pl-6">
 
-                                <input type="radio" id="payment_ibayad" name="payment_method" value="ibayad" class="mr-2"
-                                    checked>
+                                <input type="radio" id="payment_ibayad" name="payment_method" value="ibayad"
+                                    class="mr-2" checked>
                                 <label for="payment_ibayad">Ibayad</label>
 
 
@@ -199,10 +199,57 @@
 
                         <div class="bg-gray-400 h-0.5 w-[100%]"></div>
                         <div class="flex items-center my-7  ">
+
                             <img src="@/assets/images/CategoryView/ToShop/voucher.png" class="lg:w-8 h-8 mr-2">
-                            <p class="font-poppins font-sans text-base text-blue-500 mr-1">Use Voucher</p>
-                            <input type="text" id="" name="" value=""
-                                class="h-[50px] w-[70%] border border-gray-200 pl-5 mr-6" placeholder="Voucher Code">
+
+
+
+                            <button class="text-white bg-blue-500 rounded-xl px-3 py-2 text-xs font-semibold"
+                                @click="toggleVoucher">Use Voucher</button>
+
+                            <div v-if="showVoucher"
+                                class="fixed inset-0 z-50 flex items-center justify-center bg-gray-500 bg-opacity-75"
+                                @click.self="closeModal">
+                                <div class="bg-white rounded-lg shadow-md p-2 lg:max-w-2xl h-2p-[20px] w-full h-full flex items-center justify-center"
+                                    @click.stop>
+                                    <div class="lg:w-[100%] p-4 rounded-lg text-center flex flex-col items-center">
+                                        <div>
+                                            <input type="text" id="" name="" value=""
+                                                class="mb-2 h-[50px] w-[100%] border border-gray-200 pl-5 pr-3 rounded-md"
+                                                placeholder="Enter Voucher Code">
+
+
+                                            <button
+                                                class="mb-2 text-white bg-blue-500 rounded-xl w-full lg:w-full py-2 lg:py-3 px-4 lg:px-6 text-base lg:text-lg font-semibold">Apply</button>
+
+                                            <div>
+                                                <div data-v-392f50c8="" class="mt-0  bg-gray-400 h-0.5"></div>
+                                            </div>
+
+                                            <p class="mt-4 font-bold text-left">Select a Voucher</p>
+
+                                            <img src="@/assets/images/CategoryView/ToShop/voucher1.png" class="mb-6">
+                                            <img src="@/assets/images/CategoryView/ToShop/voucher1.png" class="mb-6">
+
+                                            <div>
+                                                <div data-v-392f50c8="" class="mt-5 mb-3  bg-gray-400 h-0.5"></div>
+                                            </div>
+
+                                            <p class="font-bold text-left">Not valid for this order</p>
+
+
+                                            <div>
+                                                <img src="@/assets/images/CategoryView/ToShop/voucher1.png"
+                                                    class="mb-6">
+                                                <img src="@/assets/images/CategoryView/ToShop/voucher1.png"
+                                                    class="mb-6">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="flex justify-between">
                             <p class="font-poppins font-sans font-bold text-lg pt-4">Your Total (Php)</p>
@@ -221,7 +268,8 @@
                         </div>
                         <!-- For Web -->
                         <div class="justify-center lg:block hidden pt-6">
-                            <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
+                            <button
+                                class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
                                 @click="toggleConfirmation">Proceed to Payment</button>
                         </div>
                         <div v-if="showConfirmation"
@@ -287,16 +335,16 @@
                                 class="text-xs font-semibold cursor-pointer dark:text-gray-300 text-blue-500 -mt-12 pl-2">
                                 Use
                                 voucher</button>
+
+
+                            <div>
+
+
+
+
+                            </div>
                         </div>
                     </div>
-                    <div class="flex pt-4">
-                        <img src="@/assets/images/Modal/voucher.svg" class="mb-6 w-6 h-6">
-                        <button class="text-xs font-semibold cursor-pointer dark:text-gray-300 text-blue-500 -mt-12 pl-2">
-                            Use
-                            voucher</button>
-                    </div>
-                </div>
-
 
                     <div class="justify-center pt-3">
                         <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
@@ -320,6 +368,7 @@
 
         </template>
     </div>
+
 </template>
 
 
@@ -354,13 +403,13 @@ export default {
             showConfirmation: false,
             showComplete: false,
             showPayment: true,
+            showVoucher: false,
             navButtonText: 'Request to Book'
         };
     },
     watch: {
         showPayment(newValue) {
             if (!newValue) {
-                // If the condition is false (else block is rendered), scroll to the top of the page
                 this.scrollToTop();
             }
         }
@@ -381,20 +430,20 @@ export default {
             this.showInformation = false;
             this.showConfirmation = false;
             this.showComplete = false;
+            this.showVoucher = false;
         },
         togglePayment() {
-            // Toggle the showPayment flag
             this.showPayment = !this.showPayment;
-            // Update navButtonText based on showPayment flag
             this.navButtonText = this.showPayment ? 'Request to Order' : 'Payment';
+        },
+        toggleVoucher() {
+            this.showVoucher = !this.showVoucher;
         },
         navigateBack() {
             if (!this.showPayment) {
-                // If currently in the payment section, switch to the booking section
                 this.showPayment = true;
                 this.navButtonText = 'Request to Order';
             } else {
-                // Redirect to '/category/do' when in the booking section
                 this.$router.push('/category/eat');
             }
         },
@@ -402,16 +451,18 @@ export default {
             const radioBtn = document.getElementById(id);
             if (radioBtn) {
                 if (radioBtn.checked) {
-                    radioBtn.checked = false; // If already checked, uncheck it
+                    radioBtn.checked = false;
                 } else {
-                    // Uncheck all radio buttons
                     document.querySelectorAll('input[type="radio"]').forEach(input => {
                         input.checked = false;
                     });
-                    radioBtn.checked = true; // Check the clicked radio button
+                    radioBtn.checked = true;
                 }
             }
+        },
+        useVoucher() {
+            console.log('Use Voucher button clicked!');
         }
-    },
+    }
 };
 </script>

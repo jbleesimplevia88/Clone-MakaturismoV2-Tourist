@@ -343,8 +343,8 @@ export default {
         this.showPayment = true;
         this.navButtonText = 'Request to Order';
       } else {
-        // Redirect to '/category/do' when in the booking section
-        this.$router.push('/category/shop');
+        // Go back to the previous page
+        this.$router.go(-1);
 
       }
     },

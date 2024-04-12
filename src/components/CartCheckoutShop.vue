@@ -444,7 +444,10 @@ export default {
                 this.showPayment = true;
                 this.navButtonText = 'Request to Order';
             } else {
-                this.$router.push('/category/eat');
+                // this.$router.push('/category/eat');
+                // Go back to the previous page
+                this.$router.go(-1);
+
             }
         },
         activateRadioButton(id) {

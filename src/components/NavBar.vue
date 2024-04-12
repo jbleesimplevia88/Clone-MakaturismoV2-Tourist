@@ -66,7 +66,7 @@
             <div class="p-4" role="none">
               <p class="pb-3 text-xl font-bold">Account</p>
               <div class="pb-2 text-center">
-                <RouterLink to="/information">
+                <RouterLink to="/profile">
                   <button class="flex items-center w-full p-3 bg-white rounded-xl" @click="toggleDropdown(null)">
                     <span class="ml-[0.2rem]">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7">
@@ -129,8 +129,7 @@
           <!-- Hamburger Icon for Mobile View -->
           <div @click="toggleSidebar" class="lg:hidden pr-4">
             <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 6.19995H23" stroke="#222222" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" />
+              <path d="M5 6.19995H23" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               <path d="M5 16.2H23" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               <path d="M5 11.2H23" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -210,7 +209,7 @@
                               d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
                               clip-rule="evenodd" />
                           </svg>
-                          <li class="pl-2"><router-link to="/calendar">Profile</router-link></li>
+                          <li class="pl-2"><router-link to="/profile">Profile</router-link></li>
                         </div>
                       </ul>
 
@@ -339,8 +338,7 @@
         </div>
 
         <div class="flex justify-center items-center">
-          <img src="@/assets/images/Header/makati_logo.png" alt="logo"
-            class="w-auto h-8 mr-3 md:block md:w-auto md:h-10">
+          <img src="@/assets/images/Header/makati_logo.png" alt="logo" class="w-auto h-8 mr-3 md:block md:w-auto md:h-10">
           <img src="@/assets/images/Header/makaturismo.png" alt="banner" class="w-auto h-8 md:w-auto md:h-8">
         </div>
 
@@ -608,8 +606,7 @@
           </button>
         </div>
         <div class="flex justify-center items-center">
-          <img src="@/assets/images/Header/makati_logo.png" alt="logo"
-            class="w-auto h-8 mr-3 md:block md:w-auto md:h-10">
+          <img src="@/assets/images/Header/makati_logo.png" alt="logo" class="w-auto h-8 mr-3 md:block md:w-auto md:h-10">
           <img src="@/assets/images/Header/makaturismo.png" alt="banner" class="w-auto h-8 md:w-auto md:h-8">
         </div>
         <div class="flex items-center">
@@ -858,7 +855,7 @@
             <img :src="locations[0].imgSrc" :alt="locations[0].alt" class="p-[26px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-            locations[0].mobile }}</span>
+              locations[0].mobile }}</span>
             <span class="font-bold text-1xl">{{ locations[0].mobile }}</span>
           </div>
         </RouterLink>
@@ -874,7 +871,7 @@
             <img :src="locations[1].imgSrc" :alt="locations[1].alt" class="p-[26px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-            locations[1].mobile }}</span>
+              locations[1].mobile }}</span>
             <span class="font-bold text-1xl">{{ locations[1].mobile }}</span>
           </div>
         </RouterLink>
@@ -890,7 +887,7 @@
             <img :src="locations[2].imgSrc" :alt="locations[2].alt" class="p-[26px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-            locations[2].mobile }}</span>
+              locations[2].mobile }}</span>
             <span class="font-bold text-1xl">{{ locations[2].mobile }}</span>
           </div>
         </RouterLink>
@@ -906,7 +903,7 @@
             <img :src="locations[3].imgSrc" :alt="locations[3].alt" class="p-[26px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-            locations[3].mobile }}</span>
+              locations[3].mobile }}</span>
             <span class="font-bold text-1xl">{{ locations[3].mobile }}</span>
           </div>
         </RouterLink>
@@ -922,7 +919,7 @@
             <img :src="locations[4].imgSrc" :alt="locations[4].alt" class="p-[26px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-            locations[4].mobile }}</span>
+              locations[4].mobile }}</span>
             <span class="font-bold text-1xl">{{ locations[4].mobile }}</span>
           </div>
         </RouterLink>
@@ -938,7 +935,7 @@
             <img :src="locations[5].imgSrc" :alt="locations[5].alt" class="p-[26px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-            locations[5].mobile }}</span>
+              locations[5].mobile }}</span>
             <span class="font-bold text-1xl">{{ locations[5].mobile }}</span>
           </div>
         </RouterLink>
@@ -948,7 +945,6 @@
     </div>
 
   </nav>
-
 </template>
 
 

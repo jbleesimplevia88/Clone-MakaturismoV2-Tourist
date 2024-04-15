@@ -28,7 +28,7 @@
 
     <div class="mx-auto px-3 lg:px-32 pb-5 pt-5" style="background-color: #102E61;">
         <!-- New Filter -->
-        <div class="mx-[120px] pb-3 flex flex-col px-5 bg-[#f5f5f5] rounded-lg">
+        <div class="lg:mx-[120px] mx-[60px] pb-3 flex flex-col px-5 bg-[#f5f5f5] rounded-lg">
             <!-- search bar -->
             <div class="relative my-5">
                 <div class="absolute inset-y-0 start-0 flex items-center ps-3">
@@ -39,42 +39,42 @@
                 <input type="search" id="default-search" class="w-full p-4 ps-10 text-sm text-gray-900" placeholder="Search Accomodations"/>
             </div>
 
-            <div class="flex items-center justify-between lg:grid-cols-3 space-x-4">
+            <div class="lg:flex items-center justify-between lg:grid-cols-3 lg:space-x-4">
                 <!-- Barangay -->
                 <div class="lg:flex items-center w-full mb-3">
                     <div class="w-full flex flex-col items-start justify-center">
-                    <div class="relative w-full">
-                        <select id="barangay" v-model="barangay" class="w-full py-3 px-3 pr-8 appearance-none cursor-pointer"
-                            @change="validateBarangay">
-                            <option value="" disabled selected hidden>Select barangay</option>
-                            <option v-for="(barangay, index) in barangaysInMakati " :key="index" :value="barangay" >{{ barangay }}</option>
-                        </select>
-                        <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
-                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 12a1 1 0 0 1-.707-.293l-4-4a1 1 0 1 1 1.414-1.414L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4A1 1 0 0 1 10 12z" clip-rule="evenodd" />
-                            </svg>
+                        <div class="relative w-full">
+                            <select id="barangay" v-model="barangay" class="w-full py-3 px-3 pr-8 appearance-none cursor-pointer"
+                                @change="validateBarangay">
+                                <option value="" disabled selected hidden>Select barangay</option>
+                                <option v-for="(barangay, index) in barangaysInMakati " :key="index" :value="barangay" >{{ barangay }}</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 12a1 1 0 0 1-.707-.293l-4-4a1 1 0 1 1 1.414-1.414L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4A1 1 0 0 1 10 12z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
                         </div>
-                    </div>
-                    <span v-if="barangayError" class="text-red-500 text-xs">{{ barangayError }}</span>
                     </div>
                 </div>
 
                 <!-- Start-End Date -->
+                <div class="lg:flex items-center w-full ">
+                    <div class="w-full flex flex-col items-start justify-center">
+                        <div class="relative w-full">
+
+                            <vue-date-picker v-model="dateRange" range class="w-full h-[3.8rem]" :format="dateFormat"></vue-date-picker>
+                        </div>
+
+                    </div>
+
+                    <!-- <vue-date-picker v-model="selectedDate"></vue-date-picker> -->
+                    <!-- <vue-date-picker v-model="dateRange" range class="w-full" :max-num-of-dates="2" :show-time-picker="false"></vue-date-picker> -->
+
+                </div>
                 
-               
-<div class="relative max-w-sm">
-  <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-      <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-    </svg>
-  </div>
-  <input datepicker type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
-</div>
-
-
-
                 <!-- guests -->
-                <div class="lg:flex items-center w-full mb-3 py-3 px-3 bg-white dropdown-container">
+                <div class="lg:flex  w-full mb-3 py-3 px-3 bg-white dropdown-container">
                     <div class="dropdown-toggle" @click="toggleModal">Select Options </div>
                     <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -387,6 +387,8 @@
   color: #999; /* Add color or other styles for description */
   font-size: 12px; /* Adjust font size as needed */
 }
+
+
 </style>
 
 
@@ -400,10 +402,18 @@ import item6 from '@/assets/images/CategoryView/ToStay/gomez.jpeg';
 import item7 from '@/assets/images/CategoryView/ToStay/prince.jpeg';
 import item8 from '@/assets/images/CategoryView/ToStay/howzat.jpeg';
 
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css';
+
 export default {
+    components: { VueDatePicker },
+
     data() {
         return {
             barangay: '',
+            // selectedDate: '',
+            dateRange: [],
+            dateFormat: 'yyyy-MM-dd',
             barangaysInMakati: [
             "Bangkal",
             "Bel-Air",

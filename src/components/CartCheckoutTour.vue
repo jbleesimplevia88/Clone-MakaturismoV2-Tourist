@@ -162,8 +162,7 @@
                         <div class="flex items-center my-7  ">
                             <img src="@/assets/images/CategoryView/ToShop/voucher.png" class="lg:w-8 h-8 mr-2">
                             <p class="font-poppins font-sans text-base text-blue-500 mr-1">Use Voucher</p>
-                            <input type="text" id="" name="" value=""
-                                class="h-[50px] w-[70%] border border-gray-200 pl-5 mr-6" placeholder="Voucher Code">
+
                         </div>
                         <div class="flex justify-between">
                             <p class="font-poppins font-sans font-bold text-lg pt-4">Your Total (Php)</p>

@@ -101,7 +101,6 @@
                                 <label for="payment_ibayad">Ibayad</label>
 
 
-
                             </div>
                         </div>
 
@@ -261,6 +260,17 @@
                         </p>
 
                         <!-- For Mobile -->
+
+
+
+
+                        <div class="flex justify-center lg:hidden pt-6">
+                            <button v-if="showVoucher"
+                                class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
+                                @click="toggleVoucher">Use Voucher</button>
+                        </div>
+
+
                         <div class="flex justify-center lg:hidden pt-6">
                             <button v-if="showPayment"
                                 class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
@@ -372,30 +382,6 @@
 </template>
 
 
-<style scoped>
-.slide-up-enter-active,
-.slide-up-leave-active {
-    transition: transform 0.60s;
-}
-
-.slide-up-enter,
-.slide-up-leave-to {
-    transform: translateY(-190%);
-    height: 1500px;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 0.50s;
-    height: 1500px;
-}
-
-.fade-enter,
-.fade-leave-to {
-    opacity: 0;
-}
-</style>
-
 <script>
 export default {
     data() {
@@ -404,12 +390,13 @@ export default {
             showComplete: false,
             showPayment: true,
             showVoucher: false,
-            navButtonText: 'Request to Book'
+            navButtonText: 'Request to Order'
         };
     },
     watch: {
         showPayment(newValue) {
             if (!newValue) {
+                // If the condition is false (else block is rendered), scroll to the top of the page
                 this.scrollToTop();
             }
         }
@@ -430,39 +417,42 @@ export default {
             this.showInformation = false;
             this.showConfirmation = false;
             this.showComplete = false;
-            this.showVoucher = false;
-        },
-        togglePayment() {
-            this.showPayment = !this.showPayment;
-            this.navButtonText = this.showPayment ? 'Request to Order' : 'Payment';
         },
         toggleVoucher() {
             this.showVoucher = !this.showVoucher;
+            this.navButtonText = this.showVoucher ? 'Request to Order' : 'Voucher ';
+        },
+        togglePayment() {
+            // Toggle the showPayment flag
+            this.showPayment = !this.showPayment;
+            // Update navButtonText based on showPayment flag
+            this.navButtonText = this.showPayment ? 'Request to Order' : 'Payment';
         },
         navigateBack() {
             if (!this.showPayment) {
+                // If currently in the payment section, switch to the booking section
                 this.showPayment = true;
                 this.navButtonText = 'Request to Order';
             } else {
-                this.$router.push('/category/eat');
+                // Redirect to '/category/do' when in the booking section
+                // this.$router.push('/category/eat/LittleTokyo');
+                this.$router.go(-1);
             }
         },
         activateRadioButton(id) {
             const radioBtn = document.getElementById(id);
             if (radioBtn) {
                 if (radioBtn.checked) {
-                    radioBtn.checked = false;
+                    radioBtn.checked = false; // If already checked, uncheck it
                 } else {
+                    // Uncheck all radio buttons
                     document.querySelectorAll('input[type="radio"]').forEach(input => {
                         input.checked = false;
                     });
-                    radioBtn.checked = true;
+                    radioBtn.checked = true; // Check the clicked radio button
                 }
             }
-        },
-        useVoucher() {
-            console.log('Use Voucher button clicked!');
         }
-    }
+    },
 };
 </script>

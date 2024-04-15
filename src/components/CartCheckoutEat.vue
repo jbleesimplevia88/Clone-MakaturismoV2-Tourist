@@ -69,7 +69,7 @@
                             </div>
                             <div class="flex lg:flex-col lg:items-start">
                                 <p class="mr-[30px] w-10vw lg:pr-0 lg:mr-9 lg:mb-1 font-bold">E-mail Address</p>
-                                <p class="font-normal mb-2 text-base text-gray-600 text-sm">Juandelecruz@gmail.com</p>
+                                <p class="font-normal mb-2 text-base text-gray-600 text-sm">Juandelacruz@gmail.co</p>
                             </div>
                             <div class="flex lg:flex-col lg:items-start justify-start">
                                 <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Phone Number</p>
@@ -84,7 +84,13 @@
                                 <p class="font-normal mb-3 text-gray-600">Yes</p>
                             </div>
                         </div>
+
+
                         <div class="hidden lg:block">
+
+
+
+
                             <p class="font-bold text-3xl mb-4">Payment</p>
 
 
@@ -117,7 +123,7 @@
                             <p class=" text-base font-bold">E-mail Address</p>
                         </div>
                         <div>
-                            <p class="font-normal mb-2 text-base text-gray-600">Juandelacruz@gmail.com</p>
+                            <p class="font-normal mb-2 text-base text-gray-600 text-sm">Juandelacruz@gmail.com</p>
                         </div>
                         <div>
                             <p class=" text-base font-bold">Phone Number</p>
@@ -189,11 +195,59 @@
 
                         <div class="bg-gray-400 h-0.5 w-[100%]"></div>
                         <div class="flex items-center my-7  ">
+
+
                             <img src="@/assets/images/CategoryView/ToShop/voucher.png" class="lg:w-8 h-8 mr-2">
-                            <p class="font-poppins font-sans text-base text-blue-500 mr-1">Use Voucher</p>
-                            <input type="text" id="" name="" value=""
-                                class="h-[50px] w-[70%] border border-gray-200 pl-5 mr-6" placeholder="Voucher Code">
+
+
+
+                            <button class="text-white bg-blue-500 rounded-xl px-3 py-2 text-xs font-semibold"
+                                @click="toggleVoucher">Use Voucher</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         </div>
+
+
+
+                        <div v-if="showVoucher"
+                            class="lg:w-[100%] p-4 rounded-lg text-center flex flex-col items-center">
+                            <!-- Voucher section -->
+                            <div>
+                                <input type="text" id="" name="" value=""
+                                    class="mb-2 h-[50px] w-[100%] border border-gray-200 pl-5 pr-3 rounded-md"
+                                    placeholder="Enter Voucher Code">
+                                <button
+                                    class="mb-2 text-white bg-blue-500 rounded-xl w-full lg:w-full py-2 lg:py-3 px-4 lg:px-6 text-base lg:text-lg font-semibold">Apply</button>
+                                <div>
+                                    <div data-v-392f50c8="" class="mt-0 bg-gray-400 h-0.5"></div>
+                                </div>
+                                <p class="mt-4 font-bold text-left">Select a Voucher</p>
+                                <img src="@/assets/images/CategoryView/ToShop/voucher1.png" class="mb-6">
+                                <img src="@/assets/images/CategoryView/ToShop/voucher1.png" class="mb-6">
+                                <div>
+                                    <div data-v-392f50c8="" class="mt-5 mb-3 bg-gray-400 h-0.5"></div>
+                                </div>
+                                <p class="font-bold text-left">Not valid for this order</p>
+                                <div>
+                                    <img src="@/assets/images/CategoryView/ToShop/voucher1.png" class="mb-6">
+                                    <img src="@/assets/images/CategoryView/ToShop/voucher1.png" class="mb-6">
+                                </div>
+                            </div>
+                        </div>
+
+
                         <div class="flex justify-between">
                             <p class="font-poppins font-sans font-bold text-lg pt-4">Your Total (Php)</p>
                             <p class="font-poppins font-sans text-base font-bold pt-4 ">₱ 1,296.00</p>
@@ -257,6 +311,16 @@
                         </path>
                     </svg> {{ navButtonText }}
                 </nav>
+
+
+                <div>
+
+                </div>
+
+
+
+
+
                 <div class="mt-[0rem] w-full h-full p-8">
                     <div className="grid grid-cols-1 grid-rows-4 gap-0">
                         <div class="flex border rounded p-8 h-24" @click="activateRadioButton('gcash')">
@@ -268,6 +332,7 @@
                                 <label for="helper-radio" class="font-semibold text-xl text-gray-700">
                                     Ibayad</label>
                             </div>
+
 
 
 
@@ -339,6 +404,7 @@ export default {
             showConfirmation: false,
             showComplete: false,
             showPayment: true,
+            showVoucher: false,
             navButtonText: 'Request to Order'
         };
     },
@@ -367,6 +433,9 @@ export default {
             this.showConfirmation = false;
             this.showComplete = false;
         },
+        toggleVoucher() {
+            this.showVoucher = !this.showVoucher;
+        },
         togglePayment() {
             // Toggle the showPayment flag
             this.showPayment = !this.showPayment;
@@ -382,7 +451,6 @@ export default {
                 // Redirect to '/category/do' when in the booking section
                 // this.$router.push('/category/eat/LittleTokyo');
                 this.$router.go(-1);
-
             }
         },
         activateRadioButton(id) {

@@ -81,25 +81,30 @@
               </div>
               <div class="pb-2 text-center">
 
-                <button class="flex items-center w-full p-3 bg-white rounded-xl" @click="toggleDropdown(null)">
-                  <span class="ml-2">
-                    <img src="@/assets/images/Header/Transaction Icon.png" alt="transaction" class="w-4 h-5">
-                  </span>
-                  <span class="ml-3 text-sm">Transactions</span>
-                </button>
+                <RouterLink to="/transactions">
+                  <button class="flex items-center w-full p-3 bg-white rounded-xl" @click="toggleDropdown(null)">
+                    <span class="ml-2">
+                      <img src="@/assets/images/Header/Transaction Icon.png" alt="transaction" class="w-4 h-5">
+                    </span>
+                    <span class="ml-3 text-sm">Transactions</span>
+                  </button>
+                </RouterLink>
+
 
               </div>
               <div class="pb-2 text-center">
 
-                <button class="flex items-center w-full p-3 bg-white rounded-xl" @click="toggleDropdown(null)">
-                  <span class="ml-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                      <path
-                        d="M2.25 2.25a.75.75 0 0 0 0 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 0 0-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 0 0 0-1.5H5.378A2.25 2.25 0 0 1 7.5 15h11.218a.75.75 0 0 0 .674-.421 60.358 60.358 0 0 0 2.96-7.228.75.75 0 0 0-.525-.965A60.864 60.864 0 0 0 5.68 4.509l-.232-.867A1.875 1.875 0 0 0 3.636 2.25H2.25ZM3.75 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM16.5 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" />
-                    </svg>
-                  </span>
-                  <span class="ml-3 text-sm">Cart</span>
-                </button>
+                <RouterLink to="/cart">
+                  <button class="flex items-center w-full p-3 bg-white rounded-xl" @click="toggleDropdown(null)">
+                    <span class="ml-1">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path
+                          d="M2.25 2.25a.75.75 0 0 0 0 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 0 0-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 0 0 0-1.5H5.378A2.25 2.25 0 0 1 7.5 15h11.218a.75.75 0 0 0 .674-.421 60.358 60.358 0 0 0 2.96-7.228.75.75 0 0 0-.525-.965A60.864 60.864 0 0 0 5.68 4.509l-.232-.867A1.875 1.875 0 0 0 3.636 2.25H2.25ZM3.75 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM16.5 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" />
+                      </svg>
+                    </span>
+                    <span class="ml-3 text-sm">Cart</span>
+                  </button>
+                </RouterLink>
 
               </div>
               <RouterLink to="/">
@@ -253,7 +258,7 @@
 
     <!-- Login Modal -->
     <div v-if="showLoginModal" class=" fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-      <div class="relative bg-white lg:w-[70vw] w-[90vw] h-[30rem] rounded-3xl">
+      <div class="relative bg-white 2xl:w-[55vw] lg:w-[70vw] w-[90vw] h-[30rem] rounded-3xl">
         <img src="@/assets/images/Modal/Intersect.png" alt="" class="w-full absolute rounded-t-xl">
 
         <!-- Modal Content -->
@@ -287,20 +292,29 @@
               <div class="relative w-full">
                 <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-5 my-3"
                   style="width: 15px;" alt="Username Icon" />
-                <img src="@/assets/images/Modal/view.png" class="absolute inset-y-0 right-0 mx-3 my-3"
-                  style="width: 15px;" alt="Eye Icon" />
-                <input type="password" id="password" v-model="password"
+                <!-- Add a click event to toggle the password visibility -->
+                <img src="@/assets/images/Modal/view.png" @click="showPassword = !showPassword"
+                  class="absolute inset-y-0 right-0 mx-3 my-3"
+                  :class="{ 'hidden': !showPassword, 'block': showPassword }" style="width: 15px; cursor: pointer;"
+                  alt="Eye Icon" />
+                <img src="@/assets/images/Modal/hidden.png" @click="showPassword = !showPassword"
+                  class="absolute inset-y-0 right-0 mx-3 my-3"
+                  :class="{ 'hidden': showPassword, 'block': !showPassword }" style="width: 15px; cursor: pointer;"
+                  alt="Eye Icon" />
+                <!-- Use a dynamic class to toggle between password and text type -->
+                <input :type="showPassword ? 'text' : 'password'" id="password" v-model="password"
                   class="w-full h-8 py-5 pl-10 border border-black rounded-xl" placeholder="Password">
               </div>
             </div>
-            <div class="hidden lg:block lg:flex items-center justify-between mb-4">
+
+            <div class="hidden lg:flex items-center justify-between mb-4">
               <p class="text-xs">Don't have an account? <button @click="openPrivacyModal"
                   class="text-xs font-bold text-blue-600">Sign Up</button></p>
               <button @click="openForgotModal" class="text-xs text-blue-600 font-bold">Forgot Password?</button>
             </div>
             <div class="hidden lg:block lg:mt-10 text-center">
               <button type="submit"
-                class="lg:w-[8rem] w-full lg:px-4 py-2 lg:mb-10 text-white bg-blue-600 rounded-md">Login</button>
+                class="lg:w-[5rem] w-full lg:px-4 py-3 lg:mb-10 text-white bg-blue-600 rounded-xl">Login</button>
             </div>
             <div class="lg:hidden lg:mt-10 text-center">
               <button type="submit"
@@ -315,7 +329,7 @@
     </div>
 
     <div v-if="showPrivacyModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-      <div class="relative p-7 bg-white w-[90%] lg:w-[75%] lg:h-[65%] rounded-xl">
+      <div class="relative p-7 bg-white w-[90%] lg:w-[75%] lg:h-[70%] rounded-xl">
         <!-- Modal Content -->
         <div class="relative flex justify-end">
           <button class="absolute ">
@@ -328,7 +342,7 @@
 
         <div class="flex justify-center items-center">
           <img src="@/assets/images/Header/makati_logo.png" alt="logo"
-            class="w-auto h-8 mr-3 md:block md:w-auto md:h-10">
+            class="w-auto h-8 mr-3 md:block md:w-auto md:h-10 xl:w-auto xl:h-50">
           <img src="@/assets/images/Header/makaturismo.png" alt="banner" class="w-auto h-8 md:w-auto md:h-8">
         </div>
 
@@ -418,7 +432,7 @@
 
     <!-- Sign Up Modal -->
     <div v-if="showSignUpModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-      <div class="relative pr-8 pt-8 bg-white lg:w-3/4 w-11/12 lg:h-3/4 h-[75%] rounded-xl">
+      <div class="relative pr-8 pt-8 bg-white lg:w-3/4 w-11/12 lg:h-[80%] h-[75%] rounded-xl">
         <img src="@/assets/images/Modal/bg2.png" alt=""
           class=" bottom-0 right-0 lg:w-[50%] absolute rounded-tr-xl rounded-br-xl lg:h-full ">
 
@@ -432,7 +446,7 @@
           </button>
         </div>
         <div class="lg:ml-[5rem] ml-8 my-5">
-          <div class="flex items-center">
+          <div class="flex items-center gap-4">
             <button @click="openLoginModal" class="text-blue-600"><img src="@/assets/images/Modal/back.png"
                 style="width: 20px; height: 20px;" alt="" class="my-2 mr-2"></button>
             <h2 class="text-4xl font-bold">Sign Up</h2>
@@ -531,7 +545,7 @@
 
     <!-- Terms and Condition Modal -->
     <div v-if="showTermsModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-      <div class="relative p-7 bg-white w-[90%] lg:w-[75%] lg:h-[65%] rounded-xl">
+      <div class="relative p-7 bg-white w-[90%] lg:w-[75%] lg:h-[75%] rounded-xl">
         <!-- Modal Content -->
         <div class="relative flex justify-end">
           <button class="absolute ">
@@ -640,7 +654,7 @@
               </div>
             </div>
 
-            <div class="text-center mt-5">
+            <div class="text-center mt-10">
               <button type="submit" class="lg:w-[50%] w-full px-4 py-4 text-white bg-blue-600 rounded-md"
                 @click="openSignUpModal">Continue</button>
             </div>
@@ -789,7 +803,7 @@
             <img :src="locations[0].imgSrc" :alt="locations[0].alt" class="p-[26px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-            locations[0].mobile }}</span>
+              locations[0].mobile }}</span>
             <span class="font-bold text-1xl">{{ locations[0].mobile }}</span>
           </div>
         </RouterLink>
@@ -805,7 +819,7 @@
             <img :src="locations[1].imgSrc" :alt="locations[1].alt" class="p-[26px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-            locations[1].mobile }}</span>
+              locations[1].mobile }}</span>
             <span class="font-bold text-1xl">{{ locations[1].mobile }}</span>
           </div>
         </RouterLink>
@@ -821,7 +835,7 @@
             <img :src="locations[2].imgSrc" :alt="locations[2].alt" class="p-[26px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-            locations[2].mobile }}</span>
+              locations[2].mobile }}</span>
             <span class="font-bold text-1xl">{{ locations[2].mobile }}</span>
           </div>
         </RouterLink>
@@ -837,7 +851,7 @@
             <img :src="locations[3].imgSrc" :alt="locations[3].alt" class="p-[26px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-            locations[3].mobile }}</span>
+              locations[3].mobile }}</span>
             <span class="font-bold text-1xl">{{ locations[3].mobile }}</span>
           </div>
         </RouterLink>
@@ -853,7 +867,7 @@
             <img :src="locations[4].imgSrc" :alt="locations[4].alt" class="p-[26px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-            locations[4].mobile }}</span>
+              locations[4].mobile }}</span>
             <span class="font-bold text-1xl">{{ locations[4].mobile }}</span>
           </div>
         </RouterLink>
@@ -869,7 +883,7 @@
             <img :src="locations[5].imgSrc" :alt="locations[5].alt" class="p-[26px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-            locations[5].mobile }}</span>
+              locations[5].mobile }}</span>
             <span class="font-bold text-1xl">{{ locations[5].mobile }}</span>
           </div>
         </RouterLink>
@@ -995,6 +1009,7 @@ export default {
     const showLoginModal = ref(false);
     const showPFPModal = ref(false);
     const isSidebarOpen = ref(false);
+    const showPassword = ref(false);
 
     const openModal = () => {
       showLoginModal.value = true;
@@ -1025,7 +1040,7 @@ export default {
 
     };
 
-    return { username, password, showLoginModal, openModal, login, logout, authStore };
+    return { username, password, showLoginModal, showPassword, openModal, login, logout, authStore };
   },
   created() {
     // Watch for route changes

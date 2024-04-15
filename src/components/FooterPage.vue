@@ -1,12 +1,12 @@
 <template>
   <!-- Your main content goes here -->
 
-  <footer class="mt-auto text-white bg-primary hidden lg:block w-full lg:w-full">
+  <footer class="mt-auto text-white bg-[#132540] hidden lg:block w-full lg:w-full">
     <div class="py-2 bg-secondary">
       <p class="p-2 m-0 text-sm md:text-base">Official Tourism site of Makati City - Philippines</p>
     </div>
-    <div class="containe flex flex-col flex-grow p-10 ">
-      <div class="flex flex-row  justify-center">
+    <div class="containe flex flex-col flex-grow p-10 mx-5 ">
+      <div class="flex flex-row  justify-center mx-5">
         <!-- Section 1 -->
         <div class="footer-section sm:w-1/4  align-middle" id="section1">
           <div class="flex items-center mb-2 mr-">
@@ -102,7 +102,7 @@
         </div>
       </div>
       <hr class="my-4 border-white section-divider">
-      <div class="flex items-center justify-between">
+      <div class="flex items-center justify-between mx-10">
         <p class="text-sm sm:text-left md:text-base lg:text-lg">Copyright &copy; Makati City, Philippines</p>
         <div class="flex items-center ">
           <img src="@/assets/images/Footer/facebook.png" alt="facebook" class="

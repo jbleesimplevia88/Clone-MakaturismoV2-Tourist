@@ -6,7 +6,7 @@
             :class="`location-card ${item.attrib}`" :class="{ 'active-effect': isActive(item.link) }"
              style="margin: 0; width: 100%; height: auto;"> -->
         <div v-for="(item, index) in locations" :key="index"
-            class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card border-bg-primary border-r border-opacity-20"
+            class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card border-opacity-25 border-r border-blue-800"
             :class="['location-card', item.attrib, { 'active-effect': isActive(item.link) }]"
             style="margin: 0; width: 100%; height: auto;">
             <RouterLink :to="item.link">
@@ -14,9 +14,8 @@
                 <img :src="item.imgSrc" :alt="item.alt"
                     class="w-[50%] lg:h-[30px] lg:w-[30px] h-auto lg:px-[1.5rem] lg:pt-5 lh-auto p-1 mx-auto">
                 <!-- Adjust height as needed -->
-                <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{ item.mobile
-                    }}
-                </span>
+                <h6 class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{ item.mobile }}
+                </h6>
                 <h6 class="text-center my-3 font-bold text-1xl lg:my-0 lg:font-bold lg:text-xl lg:block hidden">{{
                     item.title }}</h6>
             </RouterLink>

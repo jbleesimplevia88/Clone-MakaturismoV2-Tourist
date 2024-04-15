@@ -276,48 +276,48 @@
             <div class="relative mb-4 w-full md:w-365">
               <label for="username" class="block text-gray-700">Enter Username</label>
               <div class="relative">
-                  <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-5 my-3"
-                      style="width: 15px;" alt="Username Icon" />
-                  <input type="text" id="username" v-model="username"
-                        @input="validateUsername"
-                        class="w-full h-8 py-5 pl-10 border border-black rounded-xl" placeholder="Username">
-                  <span v-if="usernameError" class="text-red-500 text-xs">{{ usernameError }}</span>
+                <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-5 my-3"
+                  style="width: 15px;" alt="Username Icon" />
+                <input type="text" id="username" v-model="username" @input="validateUsername"
+                  class="w-full h-8 py-5 pl-10 border border-black rounded-xl" placeholder="Username">
+                <span v-if="usernameError" class="text-red-500 text-xs">{{ usernameError }}</span>
               </div>
             </div>
             <!-- login password -->
             <div class="relative mb-4">
               <label for="lpassword" class="w-full text-gray-700">Enter Password</label>
               <div class="relative w-full">
-                  <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-5 my-3"
-                      style="width: 15px;" alt="Username Icon" />
-                  <img v-if="showPassword" src="@/assets/images/Modal/view.png" class="absolute inset-y-0 right-0 mx-3 my-3"
-                          style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="togglePasswordVisibility">
-                  <img v-else src="@/assets/images/Modal/hidden.png" class="absolute inset-y-0 right-0 mx-3 my-3"
-                      style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="togglePasswordVisibility">
-                  <input id="lpassword" v-model="lpassword"
-                        @input="validateLPassword"
-                        :type="showPassword ? 'text' : 'password'"
-                        class="w-full h-8 py-5 pl-10 border border-black rounded-xl" 
-                        placeholder="Password">
-                  <span v-if="lpasswordError" class="text-red-500 text-xs">{{ lpasswordError }}</span>
+                <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-5 my-3"
+                  style="width: 15px;" alt="Username Icon" />
+                <img v-if="showPassword" src="@/assets/images/Modal/view.png" class="absolute inset-y-0 right-0 mx-3 my-3"
+                  style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="togglePasswordVisibility">
+                <img v-else src="@/assets/images/Modal/hidden.png" class="absolute inset-y-0 right-0 mx-3 my-3"
+                  style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="togglePasswordVisibility">
+                <input id="lpassword" v-model="lpassword" @input="validateLPassword"
+                  :type="showPassword ? 'text' : 'password'" class="w-full h-8 py-5 pl-10 border border-black rounded-xl"
+                  placeholder="Password">
+                <span v-if="lpasswordError" class="text-red-500 text-xs">{{ lpasswordError }}</span>
               </div>
             </div>
 
             <div class="hidden lg:block lg:flex items-center justify-between mb-4">
-              <p class="text-xs">Don't have an account? <button @click="openPrivacyModal" class="text-xs font-bold text-blue-600">Sign Up</button></p>
+              <p class="text-xs">Don't have an account? <button @click="openPrivacyModal"
+                  class="text-xs font-bold text-blue-600">Sign Up</button></p>
               <button @click="openForgotModal" class="text-xs text-blue-600 font-bold">Forgot Password?</button>
             </div>
 
             <div class="hidden lg:block lg:mt-10 text-center">
-              <button type="submit" class="lg:w-[8rem] w-full lg:px-4 py-2 text-white disabled:bg-blue-400 bg-blue-600 rounded-md"
-                      :disabled="!isLoginFormValid"
-                      @click="login">Login</button>
+              <button type="submit"
+                class="lg:w-[8rem] w-full lg:px-4 py-2 text-white disabled:bg-blue-400 bg-blue-600 rounded-md"
+                :disabled="!isLoginFormValid" @click="login">Login</button>
             </div>
 
             <div class="lg:hidden lg:mt-10 text-center">
-              <button type="submit" :disabled="!isLoginFormValid" @click="login" class="lg:w-[8rem] w-full lg:px-4 py-2 lg:mb-10 text-white disabled:bg-blue-400  bg-blue-600 rounded-md">Login</button>
+              <button type="submit" :disabled="!isLoginFormValid" @click="login"
+                class="lg:w-[8rem] w-full lg:px-4 py-2 lg:mb-10 text-white disabled:bg-blue-400  bg-blue-600 rounded-md">Login</button>
               <button @click="openForgotModal" class="text-xs text-blue-600 mt-1">Forgot Password?</button>
-              <button @click="openPrivacyModal" class="w-full mt-8 py-2 border border-blue-400 text-blue-600 bg-white rounded-md">Sign Up</button>
+              <button @click="openPrivacyModal"
+                class="w-full mt-8 py-2 border border-blue-400 text-blue-600 bg-white rounded-md">Sign Up</button>
             </div>
           </form>
         </div>
@@ -429,7 +429,8 @@
     <!-- Sign Up Modal -->
     <div v-if="showSignUpModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
       <div class="relative pr-8 pt-8 bg-white lg:w-3/4 w-11/12 lg:h-fit h-[75%] rounded-xl">
-        <img src="@/assets/images/Modal/bg2.png" alt="" class=" bottom-0 right-0 lg:w-[50%] absolute rounded-tr-xl rounded-br-xl lg:h-full ">
+        <img src="@/assets/images/Modal/bg2.png" alt=""
+          class=" bottom-0 right-0 lg:w-[50%] absolute rounded-tr-xl rounded-br-xl lg:h-full ">
 
         <!-- Modal Content -->
         <div class="relative top-0 flex justify-end">
@@ -447,53 +448,60 @@
             <h2 class="text-4xl font-bold">Sign Up</h2>
           </div>
         </div>
-        
+
         <!-- Fill out the form starts here -->
         <div class="relative z-10 flex flex-col items-start justify-center lg:h-full">
-          <form @submit.prevent="signup" @input="validateForm" class="lg:w-[62%] w-fit lg:mx-[5rem] mb-8 ml-8 text-sm lg:h-full h-[55vh] font-bold hidden-scrollbar" style="overflow-y: auto;">
-            <div class="w-full grid grid-cols-1 lg:grid-cols-2" >
+          <form @submit.prevent="signup" @input="validateForm"
+            class="lg:w-[62%] w-fit lg:mx-[5rem] mb-8 ml-8 text-sm lg:h-full h-[55vh] font-bold hidden-scrollbar"
+            style="overflow-y: auto;">
+            <div class="w-full grid grid-cols-1 lg:grid-cols-2">
               <!-- Firstname -->
               <div class="lg:flex items-center mb-3">
-                  <label for="fname" class="w-[9rem] block mb-2 ">First Name: <span class="text-red-500 text-md">*</span></label>
-                  <div class="w-full flex flex-col items-start justify-center">
-                    <input id="fname" type="text" v-model="fname" placeholder="Enter First Name" class="border border-gray-500 rounded-xl w-full py-3 px-3"
-                      @input="validateFirstname">
-                    <span v-if="fnameError" class="text-red-500 text-xs">{{ fnameError }}</span>
-                  </div>
+                <label for="fname" class="w-[9rem] block mb-2 ">First Name: <span
+                    class="text-red-500 text-md">*</span></label>
+                <div class="w-full flex flex-col items-start justify-center">
+                  <input id="fname" type="text" v-model="fname" placeholder="Enter First Name"
+                    class="border border-gray-500 rounded-xl w-full py-3 px-3" @input="validateFirstname">
+                  <span v-if="fnameError" class="text-red-500 text-xs">{{ fnameError }}</span>
+                </div>
               </div>
               <!-- Middlename -->
               <div class="lg:inline-block lg:flex items-center mb-3">
-                  <label for="mname" class="w-[9rem] lg:ml-3 lg:mr-3">Middle Initial:</label>
-                  <input id="mname" type="text" v-model="mname" placeholder="Enter Middle Initia" class="border border-gray-500 rounded-xl w-full py-3 px-3">
+                <label for="mname" class="w-[9rem] lg:ml-3 lg:mr-3">Middle Initial:</label>
+                <input id="mname" type="text" v-model="mname" placeholder="Enter Middle Initia"
+                  class="border border-gray-500 rounded-xl w-full py-3 px-3">
               </div>
             </div>
             <!-- Lastname -->
             <div class="lg:flex items-center mb-3 ">
-              <label for="lastname" class="w-[7.4rem] block">Last Name: <span class="text-red-500 text-md">*</span></label>
+              <label for="lastname" class="w-[7.4rem] block">Last Name: <span
+                  class="text-red-500 text-md">*</span></label>
               <div class="w-full flex flex-col items-start justify-center">
-                <input id="lastname" type="text" v-model="lastname" placeholder="Enter Last Name" class="border border-gray-500 rounded-xl w-full py-3 px-3"
-                @input="validateLastname">
+                <input id="lastname" type="text" v-model="lastname" placeholder="Enter Last Name"
+                  class="border border-gray-500 rounded-xl w-full py-3 px-3" @input="validateLastname">
                 <span v-if="lastnameError" class="text-red-500 text-xs">{{ lastnameError }}</span>
               </div>
             </div>
             <div class="w-full grid grid-cols-1 lg:grid-cols-2 ">
               <!-- E-mail Address -->
-                <div class="lg:flex items-center mb-3">
-                <label for="email" class="w-[9rem] block mb-2">Email Address: <span class="text-red-500 text-md">*</span></label>
+              <div class="lg:flex items-center mb-3">
+                <label for="email" class="w-[9rem] block mb-2">Email Address: <span
+                    class="text-red-500 text-md">*</span></label>
                 <div class="w-full flex flex-col items-start justify-center">
-                  <input id="email" type="text" v-model="email" placeholder="Enter Email Address" 
-                    class="border border-gray-500 rounded-xl w-full py-3 px-3"
-                    @input="validateEmail">
-                <span v-if="emailError" class="text-red-500 text-xs">{{ emailError }}</span>
+                  <input id="email" type="text" v-model="email" placeholder="Enter Email Address"
+                    class="border border-gray-500 rounded-xl w-full py-3 px-3" @input="validateEmail">
+                  <span v-if="emailError" class="text-red-500 text-xs">{{ emailError }}</span>
                 </div>
               </div>
               <!-- Phone Number -->
               <div class="lg:flex items-center mb-3">
-                <label for="pnum" class="w-[7.9rem] mb-2 lg:ml-3 ">Phone No.: <span class="text-red-500 text-md">*</span></label>
+                <label for="pnum" class="w-[7.9rem] mb-2 lg:ml-3 ">Phone No.: <span
+                    class="text-red-500 text-md">*</span></label>
                 <div class="flex flex-col items-start justify-between">
                   <div class="flex ">
                     <!-- Text box for dialing code -->
-                    <input type="text" v-model="dialingCode" readonly class="border border-gray-500 rounded-l-xl w-[3.5rem] py-3 px-3" value="+63">
+                    <input type="text" v-model="dialingCode" readonly
+                      class="border border-gray-500 rounded-l-xl w-[3.5rem] py-3 px-3" value="+63">
                     <input id="pnum" type="tel" v-model="pnum" placeholder="Enter Phone Number"
                       class="border border-gray-500 rounded-r-xl w-full py-3 px-3" maxlength="10"
                       @input="validatePhoneNumber">
@@ -505,15 +513,20 @@
             <div class="w-full grid lg:grid-cols-2 gap-2">
               <!-- Nationality -->
               <div class="lg:flex items-center mb-3">
-                <label for="citizenship" class="w-[9rem] block mb-2">Nationality: <span class="text-red-500 text-md">*</span></label>
+                <label for="citizenship" class="w-[9rem] block mb-2">Nationality: <span
+                    class="text-red-500 text-md">*</span></label>
                 <div class="w-full flex flex-col items-start justify-center">
                   <div class="relative w-full">
-                    <select id="nationality" v-model="nationality" class="border border-gray-500 rounded-xl w-full py-3 px-3 appearance-none cursor-pointer">
-                        <option v-for="(nation, index) in nationalityOptions" :key="index" :value="nation" >{{ nation }}</option>
+                    <select id="nationality" v-model="nationality"
+                      class="border border-gray-500 rounded-xl w-full py-3 px-3 appearance-none cursor-pointer">
+                      <option v-for="(nation, index) in nationalityOptions" :key="index" :value="nation">{{ nation }}
+                      </option>
                     </select>
-                      <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
+                    <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
                       <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 12a1 1 0 0 1-.707-.293l-4-4a1 1 0 1 1 1.414-1.414L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4A1 1 0 0 1 10 12z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd"
+                          d="M10 12a1 1 0 0 1-.707-.293l-4-4a1 1 0 1 1 1.414-1.414L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4A1 1 0 0 1 10 12z"
+                          clip-rule="evenodd" />
                       </svg>
                     </div>
                   </div>
@@ -522,11 +535,13 @@
               </div>
               <!-- Gender -->
               <div class="lg:flex items-center mb-3">
-                <label for="gender" class="w-[9.6rem] mb-2 lg:ml-2">Gender: <span class="text-red-500 text-md">*</span></label>
+                <label for="gender" class="w-[9.6rem] mb-2 lg:ml-2">Gender: <span
+                    class="text-red-500 text-md">*</span></label>
                 <div class="w-full flex flex-col items-start justify-center">
                   <div class="relative w-full">
-                    <select id="gender" v-model="gender" class="border border-gray-500 rounded-xl w-full py-3 px-3 pr-8 appearance-none cursor-pointer"
-                    @change="validateGender">
+                    <select id="gender" v-model="gender"
+                      class="border border-gray-500 rounded-xl w-full py-3 px-3 pr-8 appearance-none cursor-pointer"
+                      @change="validateGender">
                       <option value="" disabled selected hidden>Choose gender</option>
                       <option value="male">Male</option>
                       <option value="female">Female</option>
@@ -534,59 +549,62 @@
                     </select>
                     <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
                       <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 12a1 1 0 0 1-.707-.293l-4-4a1 1 0 1 1 1.414-1.414L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4A1 1 0 0 1 10 12z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd"
+                          d="M10 12a1 1 0 0 1-.707-.293l-4-4a1 1 0 1 1 1.414-1.414L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4A1 1 0 0 1 10 12z"
+                          clip-rule="evenodd" />
                       </svg>
                     </div>
                   </div>
-                <span v-if="genderError" class="text-red-500 text-xs">{{ genderError }}</span>
+                  <span v-if="genderError" class="text-red-500 text-xs">{{ genderError }}</span>
                 </div>
               </div>
             </div>
             <!-- Password -->
             <div class="lg:flex items-center mb-3">
-              <label for="password" class="w-[7.4rem] block ">Password: <span class="text-red-500 text-md">*</span></label>
-                <div class="w-full flex flex-col items-start justify-center">
+              <label for="password" class="w-[7.4rem] block ">Password: <span
+                  class="text-red-500 text-md">*</span></label>
+              <div class="w-full flex flex-col items-start justify-center">
                 <div class="relative w-full">
                   <img v-if="showPassword" src="@/assets/images/Modal/view.png" class="absolute right-3 mx-3 my-4"
                     style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="togglePasswordVisibility">
                   <img v-else src="@/assets/images/Modal/hidden.png" class="absolute  right-3 mx-3 my-4"
                     style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="togglePasswordVisibility">
-                  <input id="password" v-model="password" placeholder="Enter Password"
-                    @input="checkPasswordPolicy"
+                  <input id="password" v-model="password" placeholder="Enter Password" @input="checkPasswordPolicy"
                     :type="showPassword ? 'text' : 'password'"
                     class="border border-gray-500 rounded-xl w-full py-3 px-3 ">
                 </div>
                 <span v-if="passwordError" class="text-red-500 text-xs">{{ passwordError }}</span>
                 <div v-if="passwordPolicy.length > 0" class="text-red-500 text-xs">
                   <ul>
-                      <li v-for="(policy, index) in passwordPolicy" :key="index">{{ policy }}</li>
+                    <li v-for="(policy, index) in passwordPolicy" :key="index">{{ policy }}</li>
                   </ul>
                 </div>
 
-                </div>
+              </div>
             </div>
             <!-- Confirm your passsword -->
             <div class="lg:flex items-center mb-3">
-                <label for="rePassword" class="lg:w-[7.4rem] block">Confirm Password: <span class="text-red-500 text-md">*</span></label>
-                <div class="w-full flex flex-col items-start justify-center">
-                  <div class="relative w-full">
-                    <img v-if="showCPassword" src="@/assets/images/Modal/view.png" class="absolute right-3 mx-3 my-4"
+              <label for="rePassword" class="lg:w-[7.4rem] block">Confirm Password: <span
+                  class="text-red-500 text-md">*</span></label>
+              <div class="w-full flex flex-col items-start justify-center">
+                <div class="relative w-full">
+                  <img v-if="showCPassword" src="@/assets/images/Modal/view.png" class="absolute right-3 mx-3 my-4"
                     style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="toggleCPasswordVisibility">
-                    <img v-else src="@/assets/images/Modal/hidden.png" class="absolute  right-3 mx-3 my-4"
-                      style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="toggleCPasswordVisibility">
-                    <input id="rePassword" v-model="rePassword" placeholder="Confirm Password"
-                      @input="validateRePassword"
-                      :type="showCPassword ? 'text' : 'password'"
-                      class="border border-gray-500 rounded-xl w-full py-3 px-3 ">
-                  </div>
-                  <span v-if="rePasswordError" class="text-red-500 text-xs">{{ rePasswordError }}</span>
+                  <img v-else src="@/assets/images/Modal/hidden.png" class="absolute  right-3 mx-3 my-4"
+                    style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="toggleCPasswordVisibility">
+                  <input id="rePassword" v-model="rePassword" placeholder="Confirm Password" @input="validateRePassword"
+                    :type="showCPassword ? 'text' : 'password'"
+                    class="border border-gray-500 rounded-xl w-full py-3 px-3 ">
                 </div>
+                <span v-if="rePasswordError" class="text-red-500 text-xs">{{ rePasswordError }}</span>
+              </div>
             </div>
             <div class="lg:ml-[6rem]">
-              <p class=" text-xs">By using MAKATURISMO, you signify your agreement to <button @click="openTermsModal" class="text-xs font-bold text-blue-600">Terms and Conditions</button></p>
-              <button type="submit" class="w-full lg:w-[10rem] font-bold mt-3 px-4 py-3 text-white disabled:bg-blue-400 bg-blue-600 rounded-md"
-                :disabled="!isSignupFormValid"
-                @click="signup">Sign Up</button>
+              <p class=" text-xs">By using MAKATURISMO, you signify your agreement to <button @click="openTermsModal"
+                  class="text-xs font-bold text-blue-600">Terms and Conditions</button></p>
+              <button type="submit"
+                class="w-full lg:w-[10rem] font-bold mt-3 px-4 py-3 text-white disabled:bg-blue-400 bg-blue-600 rounded-md"
+                :disabled="!isSignupFormValid" @click="signup">Sign Up</button>
             </div>
           </form>
         </div>
@@ -719,7 +737,7 @@
         <img src="@/assets/images/Modal/Intersect.png" alt="" class="w-full absolute rounded-t-xl">
 
         <!-- Modal Content -->
-          <div class="relative z-10 top-0 flex justify-end">
+        <div class="relative z-10 top-0 flex justify-end">
           <button class="absolute  pr-4 pt-4">
             <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="5"
               stroke="black" class="w-7 h-7">
@@ -729,7 +747,8 @@
         </div>
 
         <div class="relative z-5 flex flex-col items-start justify-center h-full lg:ml-12">
-          <form @submit.prevent="validateForm" class="lg:w-[35%] lg:mt-[10%] mt-[20%] mx-8 lg:mx-0 flex flex-col justify-between h-full">
+          <form @submit.prevent="validateForm"
+            class="lg:w-[35%] lg:mt-[10%] mt-[20%] mx-8 lg:mx-0 flex flex-col justify-between h-full">
             <div class="mb-5">
               <div class="flex items-center mb-12 w-[50%]">
                 <button @click="openLoginModal" class="hidden text-blue-600"><img src="@/assets/images/Modal/back.png"
@@ -749,9 +768,8 @@
               </div>
             </div>
             <div class="flex items-center justify-center text-center mb-[10%]">
-              <button @click="openOTPModal" 
-                  :disabled="!isForgotFormValid"
-                  class="lg:w-fit w-full px-4 py-2 text-white disabled:bg-blue-400 bg-blue-600 rounded-lg">Receive OTP
+              <button @click="openOTPModal" :disabled="!isForgotFormValid"
+                class="lg:w-fit w-full px-4 py-2 text-white disabled:bg-blue-400 bg-blue-600 rounded-lg">Receive OTP
               </button>
 
             </div>
@@ -845,14 +863,14 @@
     </div>
 
     <div v-if="isCategoryPath($route.path)"
-      class="hidden lg:inset-x-0 lg:bottom-0 lg:grid lg:grid-cols-6 lg:pl-10 lg:pr-10 lg:pt-2 lg:pb-2 lg:justify-center lg:text-black lg:bg-white lg:border-t ">
+      class="hidden lg:inset-x-0 lg:bottom-0 lg:grid lg:grid-cols-6 lg:pl-10 lg:pr-10 lg:pt-2 lg:pb-2 lg:justify-center lg:text-black lg:bg-white lg:border-t max-w-full">
       <!-- Location 1 -->
       <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center rounded-l-lg"
         :class="['location-card', locations[0].attrib, { 'active-effect': isActive(locations[0].link) }]">
         <RouterLink :to="locations[0].link">
           <!-- Adjust height as needed -->
-          <div class="flex items-center justify-center h-10">
-            <img :src="locations[0].imgSrc" :alt="locations[0].alt" class="p-[26px]">
+          <div class="flex items-center justify-center h-10 max-w-full max-h-full">
+            <img :src="locations[0].imgSrc" :alt="locations[0].alt" class="p-[26px] max-w-full max-h-[260px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
               locations[0].mobile }}</span>
@@ -868,7 +886,7 @@
         <RouterLink :to="locations[1].link">
           <!-- Adjust height as needed -->
           <div class="flex items-center justify-center h-10">
-            <img :src="locations[1].imgSrc" :alt="locations[1].alt" class="p-[26px]">
+            <img :src="locations[1].imgSrc" :alt="locations[1].alt" class="p-[26px] max-w-full max-h-[220px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
               locations[1].mobile }}</span>
@@ -884,7 +902,7 @@
         <RouterLink :to="locations[2].link">
           <!-- Adjust height as needed -->
           <div class="flex items-center justify-center h-10">
-            <img :src="locations[2].imgSrc" :alt="locations[2].alt" class="p-[26px]">
+            <img :src="locations[2].imgSrc" :alt="locations[2].alt" class="p-[26px] max-w-full max-h-[265px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
               locations[2].mobile }}</span>
@@ -900,7 +918,7 @@
         <RouterLink :to="locations[3].link">
           <!-- Adjust height as needed -->
           <div class="flex items-center justify-center h-10">
-            <img :src="locations[3].imgSrc" :alt="locations[3].alt" class="p-[26px]">
+            <img :src="locations[3].imgSrc" :alt="locations[3].alt" class="p-[26px] max-w-full max-h-[240px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
               locations[3].mobile }}</span>
@@ -916,7 +934,7 @@
         <RouterLink :to="locations[4].link">
           <!-- Adjust height as needed -->
           <div class="flex items-center justify-center h-10">
-            <img :src="locations[4].imgSrc" :alt="locations[4].alt" class="p-[26px]">
+            <img :src="locations[4].imgSrc" :alt="locations[4].alt" class="p-[26px] max-w-full max-h-[232px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
               locations[4].mobile }}</span>
@@ -932,7 +950,7 @@
         <RouterLink :to="locations[5].link">
           <!-- Adjust height as needed -->
           <div class="flex items-center justify-center h-10">
-            <img :src="locations[5].imgSrc" :alt="locations[5].alt" class="p-[26px]">
+            <img :src="locations[5].imgSrc" :alt="locations[5].alt" class="p-[26px] max-w-full max-h-[275px]">
             <!-- Adjust height as needed -->
             <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
               locations[5].mobile }}</span>
@@ -992,8 +1010,8 @@ export default {
       showPrivacyModal: false,
       showTermsModal: false,
 
-      fname:'',
-      mname:'',
+      fname: '',
+      mname: '',
       lastname: '',
       email: '',
       dialingCode: "+63",
@@ -1012,25 +1030,25 @@ export default {
 
       usernameError: '',
       lpasswordError: '',
-      fnameError:'',
+      fnameError: '',
       lastnameError: '',
       phoneNumberError: '',
       emailError: '',
       pnumError: '',
       nationalityError: '',
       genderError: '',
-      passwordError:'',
-      rePasswordError:'',
+      passwordError: '',
+      rePasswordError: '',
       loginClicked: false,
 
       signupClicked: false,
       receiveOtpClicked: false,
-     
+
 
       imageUrl: imageUrl,
       imageUrl2: imageUrl2,
 
-       nationalityOptions: [
+      nationalityOptions: [
         "Afghan",
         "Albanian",
         "Algerian",
@@ -1279,36 +1297,36 @@ export default {
       currentRoute: ''
     };
   },
- 
+
   computed: {
-       isLoginFormValid() {
-        return this.username.trim() !== '' && this.lpassword.trim() !== '';
+    isLoginFormValid() {
+      return this.username.trim() !== '' && this.lpassword.trim() !== '';
     },
 
     isSignupFormValid() {
-        return (
-            this.fname.trim() !== '' &&
-            this.lastname.trim() !== '' &&
-            this.email.trim() !== '' &&
-            this.pnum.trim() !== '' &&
-            this.nationality.trim() !== '' &&
-            this.gender &&
-            this.password.trim() !== '' &&
-            this.rePassword.trim() !== '' &&
-            // If there are still errors, do not proceed
-            this.fnameError === '' &&
-            this.lastnameError === '' &&
-            this.emailError === '' &&
-            this.pnumError === '' &&
-            this.nationalityError === '' &&
-            this.genderError === '' &&
-            this.passwordError === '' &&
-            this.rePasswordError === ''&&
-            this.passwordPolicy.length === 0
-        );
+      return (
+        this.fname.trim() !== '' &&
+        this.lastname.trim() !== '' &&
+        this.email.trim() !== '' &&
+        this.pnum.trim() !== '' &&
+        this.nationality.trim() !== '' &&
+        this.gender &&
+        this.password.trim() !== '' &&
+        this.rePassword.trim() !== '' &&
+        // If there are still errors, do not proceed
+        this.fnameError === '' &&
+        this.lastnameError === '' &&
+        this.emailError === '' &&
+        this.pnumError === '' &&
+        this.nationalityError === '' &&
+        this.genderError === '' &&
+        this.passwordError === '' &&
+        this.rePasswordError === '' &&
+        this.passwordPolicy.length === 0
+      );
     },
     isForgotFormValid() {
-        return this.otpEmail.trim() !== '' && this.otpEmailError === '';
+      return this.otpEmail.trim() !== '' && this.otpEmailError === '';
     },
   },
 
@@ -1332,116 +1350,116 @@ export default {
     toggleSidebar() {
       this.isSidebarOpen = !this.isSidebarOpen;
     },
-     togglePasswordVisibility() {
-        this.showPassword = !this.showPassword;
+    togglePasswordVisibility() {
+      this.showPassword = !this.showPassword;
     },
     toggleCPasswordVisibility() {
-        this.showCPassword = !this.showCPassword;
+      this.showCPassword = !this.showCPassword;
     },
 
     // LOGIN VALIDATION
     validateUsername() {
-        this.usernameError = this.username.trim() === '' ? 'Please enter your username' : '';
+      this.usernameError = this.username.trim() === '' ? 'Please enter your username' : '';
     },
     validateLPassword() {
-        this.lpasswordError = this.lpassword.trim() === '' ? 'Please enter your password' : '';
+      this.lpasswordError = this.lpassword.trim() === '' ? 'Please enter your password' : '';
     },
     validateFields() {
-        // Validate fields only if the login button is clicked
-        if (this.loginClicked) {
-           
-            this.validateUsername();
-            this.validateLPassword();
-        }
+      // Validate fields only if the login button is clicked
+      if (this.loginClicked) {
+
+        this.validateUsername();
+        this.validateLPassword();
+      }
     },
     // END OF LOGIN VALIDATION
 
 
     // START SIGNUP VALIDATION
- 
+
     validateFirstname() {
-        this.fnameError = this.fname.trim() === '' ? 'Please enter your first name' : '';
+      this.fnameError = this.fname.trim() === '' ? 'Please enter your first name' : '';
     },
     validateLastname() {
-        this.lastnameError = this.lastname.trim() === '' ? 'Please enter your last name' : '';
+      this.lastnameError = this.lastname.trim() === '' ? 'Please enter your last name' : '';
     },
     validateEmail() {
-        // Regular expression for email validation
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        this.emailError = !emailPattern.test(this.email) ? 'Please enter a valid email address' : '';
+      // Regular expression for email validation
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      this.emailError = !emailPattern.test(this.email) ? 'Please enter a valid email address' : '';
     },
-   validatePhoneNumber() {
-        // Remove non-numeric characters from the input value
-        this.pnum = this.pnum.replace(/\D/g, '');
+    validatePhoneNumber() {
+      // Remove non-numeric characters from the input value
+      this.pnum = this.pnum.replace(/\D/g, '');
 
-        if (this.pnum.trim() === '') {
-            // Check if phone number is empty
-            this.pnumError = 'Please enter your Phone number';
-        } else if (this.pnum.charAt(0) !== '9') {
-            // Check if the phone number starts with the number 9
-            this.pnumError = 'Phone number must start with 9';
-        } else if (this.pnum.length < 10) {
-            // Check if phone number length is less than 10 digits
-            this.pnumError = 'Phone number must be 10 digits';
-        }else {
-            this.pnumError = '';
-        }
+      if (this.pnum.trim() === '') {
+        // Check if phone number is empty
+        this.pnumError = 'Please enter your Phone number';
+      } else if (this.pnum.charAt(0) !== '9') {
+        // Check if the phone number starts with the number 9
+        this.pnumError = 'Phone number must start with 9';
+      } else if (this.pnum.length < 10) {
+        // Check if phone number length is less than 10 digits
+        this.pnumError = 'Phone number must be 10 digits';
+      } else {
+        this.pnumError = '';
+      }
     },
 
     validateNationality() {
-        this.nationalityError = this.nationality.trim() === '' ? 'Please choose your nationality' : '';
+      this.nationalityError = this.nationality.trim() === '' ? 'Please choose your nationality' : '';
     },
     validateGender() {
-    this.genderError = !this.gender ? 'Please select your gender' : '';
+      this.genderError = !this.gender ? 'Please select your gender' : '';
     },
     validatePassword() {
-        this.passwordError = this.password.trim() === '' ? 'Please enter a password' : '';
+      this.passwordError = this.password.trim() === '' ? 'Please enter a password' : '';
     },
     validateRePassword() {
-        this.rePasswordError = this.rePassword.trim() === '' ? 'Please confirm your password' :
-            (this.rePassword !== this.password ? 'Passwords do not match' : '');
+      this.rePasswordError = this.rePassword.trim() === '' ? 'Please confirm your password' :
+        (this.rePassword !== this.password ? 'Passwords do not match' : '');
     },
     checkPasswordPolicy() {
-        this.passwordPolicy = [];
-       
-        // Check password length
-        if (this.password.length < 8) {
-            this.passwordPolicy.push('Password should be at least 8 characters long');
-        }
-       
-        // Check if password is alphanumeric
-        if (!/^(?=.*[0-9])(?=.*[a-zA-Z])/.test(this.password)) {
-            this.passwordPolicy.push('Password should be alphanumeric');
-        }
-       
-        // Check if password contains a special character
-        if (!/[^a-zA-Z0-9]/.test(this.password)) {
-            this.passwordPolicy.push('Password must contain a special character');
-        }
-       
-        // Check if password contains at least one capital letter
-        if (!/[A-Z]/.test(this.password)) {
-            this.passwordPolicy.push('Password must have at least one capital letter');
-        }
-       
-        // Check if password has no spaces
-        if (/\s/.test(this.password)) {
-            this.passwordPolicy.push('Password must not contain spaces');
-        }
+      this.passwordPolicy = [];
+
+      // Check password length
+      if (this.password.length < 8) {
+        this.passwordPolicy.push('Password should be at least 8 characters long');
+      }
+
+      // Check if password is alphanumeric
+      if (!/^(?=.*[0-9])(?=.*[a-zA-Z])/.test(this.password)) {
+        this.passwordPolicy.push('Password should be alphanumeric');
+      }
+
+      // Check if password contains a special character
+      if (!/[^a-zA-Z0-9]/.test(this.password)) {
+        this.passwordPolicy.push('Password must contain a special character');
+      }
+
+      // Check if password contains at least one capital letter
+      if (!/[A-Z]/.test(this.password)) {
+        this.passwordPolicy.push('Password must have at least one capital letter');
+      }
+
+      // Check if password has no spaces
+      if (/\s/.test(this.password)) {
+        this.passwordPolicy.push('Password must not contain spaces');
+      }
     },
 
-   validateForm() {
-        // Validate fields only if the signup button is clicked
-        if (this.signupClicked) {
-            this.validateFirstname();
-            this.validateLastname();
-            this.validateEmail();
-            this.validatePhoneNumber();
-            this.validateNationality();
-            this.validateGender();
-            this.validatePassword();
-            this.validateRePassword();
-        }
+    validateForm() {
+      // Validate fields only if the signup button is clicked
+      if (this.signupClicked) {
+        this.validateFirstname();
+        this.validateLastname();
+        this.validateEmail();
+        this.validatePhoneNumber();
+        this.validateNationality();
+        this.validateGender();
+        this.validatePassword();
+        this.validateRePassword();
+      }
     },
 
     signup() {
@@ -1460,51 +1478,51 @@ export default {
         this.showSignUpModal = false;
         this.showLoginModal = false;
       }
-        // Refresh the page
-        window.location.reload();
-      },
+      // Refresh the page
+      window.location.reload();
+    },
 
     // END OF SIGNUP VALIDATION
-   
+
     validateOtpEmail() {
-        // Regular expression for email validation
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        // this.otpEmailError = !emailPattern.test(this.otpEmail) ? 'Please enter a valid email address' : '';
+      // Regular expression for email validation
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      // this.otpEmailError = !emailPattern.test(this.otpEmail) ? 'Please enter a valid email address' : '';
 
-        if (!emailPattern.test(this.otpEmail)) {
-            if (this.otpEmail.trim() === '') {
-                this.otpEmailError = 'Please enter your email';
-            } else {
-                this.otpEmailError = 'Please enter a valid email address';
-            }
+      if (!emailPattern.test(this.otpEmail)) {
+        if (this.otpEmail.trim() === '') {
+          this.otpEmailError = 'Please enter your email';
         } else {
-            this.otpEmailError = '';
+          this.otpEmailError = 'Please enter a valid email address';
         }
+      } else {
+        this.otpEmailError = '';
+      }
 
-        // this.otpEmailError = this.otpEmail.trim() === '' ? 'Please enter your email' : '';
+      // this.otpEmailError = this.otpEmail.trim() === '' ? 'Please enter your email' : '';
 
     },
     validateForgotField() {
-        // Validate fields only if the login button is clicked
-        if (this.receiveOtpClicked) {
-            this.validateOtpEmail();
-        }
-       
+      // Validate fields only if the login button is clicked
+      if (this.receiveOtpClicked) {
+        this.validateOtpEmail();
+      }
+
     },
     openOTPModal() {
       this.receiveOtpClicked = true;
 
       this.validateForgotField();
 
-        if (this.isForgotFormValid) {
-          console.log('Sending ...');
+      if (this.isForgotFormValid) {
+        console.log('Sending ...');
 
-          this.showOTPModal = true;
-          // this.showForgotModal = true;
-          this.showLoginModal = true;
-        }
-      },
-   
+        this.showOTPModal = true;
+        // this.showForgotModal = true;
+        this.showLoginModal = true;
+      }
+    },
+
 
     isCategoryPath(path) {
       return path.startsWith('/category/') && path.split('/').length === 3;
@@ -1565,9 +1583,9 @@ export default {
       this.showTermsModal = false;
       this.showForgotModal = false;
       // Refresh the page
-        window.location.reload();
+      window.location.reload();
     },
-  
+
     forgot() {
       // Your sign-up logic here
       console.log('Forgot...');
@@ -1585,7 +1603,7 @@ export default {
       this.showOtpModal = false;
     }
   },
-   setup() {
+  setup() {
     const authStore = useAuthStore();
     const username = ref('');
     const lpassword = ref('');
@@ -1603,14 +1621,14 @@ export default {
 
     const login = () => {
 
-        
+
       const credentials = {
         username: username.value,
         password: lpassword.value
       };
 
       const loginSuccess = authStore.login(credentials);
-      if (loginSuccess ) {
+      if (loginSuccess) {
         console.log('logging in...');
         closeModal(); // Close the modal if login is successful
       }
@@ -1643,18 +1661,27 @@ export default {
 
 
 .sidebar {
-  height: 100vh; /* Set height to 100% of viewport height */
-  width: 250px; /* Set desired width of sidebar */
-  background-color: #fff; /* Set background color */
-  position: fixed; /* Fix the position of sidebar */
-  top: 0; /* Align to top */
-  right: -250px; /* Initially position outside the viewport */
-  transition: right 0.3s ease; /* Add transition effect */
-  padding: 20px; /* Add padding */
+  height: 100vh;
+  /* Set height to 100% of viewport height */
+  width: 250px;
+  /* Set desired width of sidebar */
+  background-color: #fff;
+  /* Set background color */
+  position: fixed;
+  /* Fix the position of sidebar */
+  top: 0;
+  /* Align to top */
+  right: -250px;
+  /* Initially position outside the viewport */
+  transition: right 0.3s ease;
+  /* Add transition effect */
+  padding: 20px;
+  /* Add padding */
 }
 
 .sidebar.open {
-  right: 0; /* Move sidebar into view */
+  right: 0;
+  /* Move sidebar into view */
 
 }
 
@@ -1804,11 +1831,4 @@ export default {
   transform: translateX(0);
 
 }
-
-
-
-
-
-
-
 </style>

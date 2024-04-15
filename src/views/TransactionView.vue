@@ -1,6 +1,6 @@
 <script setup>
 import NavBar from '@/components/NavBar.vue';
-import TransactionsContent from '@/components/TransactionsContent.vue';
+import TransactionsContent from '@/components/TransactionContent.vue';
 import FooterPage from '@/components/FooterPage.vue';
 
 </script>
@@ -30,6 +30,7 @@ import FooterPage from '@/components/FooterPage.vue';
 
 
 export default {
+
     data() {
         return {
             isMobile: window.innerWidth <= 768, // Adjust the breakpoint as needed

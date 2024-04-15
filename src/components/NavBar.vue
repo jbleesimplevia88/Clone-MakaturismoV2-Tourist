@@ -81,25 +81,30 @@
               </div>
               <div class="pb-2 text-center">
 
-                <button class="flex items-center w-full p-3 bg-white rounded-xl" @click="toggleDropdown(null)">
-                  <span class="ml-2">
-                    <img src="@/assets/images/Header/Transaction Icon.png" alt="transaction" class="w-4 h-5">
-                  </span>
-                  <span class="ml-3 text-sm">Transactions</span>
-                </button>
+                <RouterLink to="/transactions">
+                  <button class="flex items-center w-full p-3 bg-white rounded-xl" @click="toggleDropdown(null)">
+                    <span class="ml-2">
+                      <img src="@/assets/images/Header/Transaction Icon.png" alt="transaction" class="w-4 h-5">
+                    </span>
+                    <span class="ml-3 text-sm">Transactions</span>
+                  </button>
+                </RouterLink>
+
 
               </div>
               <div class="pb-2 text-center">
 
-                <button class="flex items-center w-full p-3 bg-white rounded-xl" @click="toggleDropdown(null)">
-                  <span class="ml-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                      <path
-                        d="M2.25 2.25a.75.75 0 0 0 0 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 0 0-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 0 0 0-1.5H5.378A2.25 2.25 0 0 1 7.5 15h11.218a.75.75 0 0 0 .674-.421 60.358 60.358 0 0 0 2.96-7.228.75.75 0 0 0-.525-.965A60.864 60.864 0 0 0 5.68 4.509l-.232-.867A1.875 1.875 0 0 0 3.636 2.25H2.25ZM3.75 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM16.5 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" />
-                    </svg>
-                  </span>
-                  <span class="ml-3 text-sm">Cart</span>
-                </button>
+                <RouterLink to="/cart">
+                  <button class="flex items-center w-full p-3 bg-white rounded-xl" @click="toggleDropdown(null)">
+                    <span class="ml-1">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path
+                          d="M2.25 2.25a.75.75 0 0 0 0 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 0 0-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 0 0 0-1.5H5.378A2.25 2.25 0 0 1 7.5 15h11.218a.75.75 0 0 0 .674-.421 60.358 60.358 0 0 0 2.96-7.228.75.75 0 0 0-.525-.965A60.864 60.864 0 0 0 5.68 4.509l-.232-.867A1.875 1.875 0 0 0 3.636 2.25H2.25ZM3.75 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM16.5 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" />
+                      </svg>
+                    </span>
+                    <span class="ml-3 text-sm">Cart</span>
+                  </button>
+                </RouterLink>
 
               </div>
               <RouterLink to="/">
@@ -129,7 +134,8 @@
           <!-- Hamburger Icon for Mobile View -->
           <div @click="toggleSidebar" class="lg:hidden pr-4">
             <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 6.19995H23" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M5 6.19995H23" stroke="#222222" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
               <path d="M5 16.2H23" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               <path d="M5 11.2H23" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -289,13 +295,14 @@
               <div class="relative w-full">
                 <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-5 my-3"
                   style="width: 15px;" alt="Username Icon" />
-                <img v-if="showPassword" src="@/assets/images/Modal/view.png" class="absolute inset-y-0 right-0 mx-3 my-3"
-                  style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="togglePasswordVisibility">
+                <img v-if="showPassword" src="@/assets/images/Modal/view.png"
+                  class="absolute inset-y-0 right-0 mx-3 my-3" style="width: 15px; cursor: pointer;" alt="Eye Icon"
+                  @click="togglePasswordVisibility">
                 <img v-else src="@/assets/images/Modal/hidden.png" class="absolute inset-y-0 right-0 mx-3 my-3"
                   style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="togglePasswordVisibility">
                 <input id="lpassword" v-model="lpassword" @input="validateLPassword"
-                  :type="showPassword ? 'text' : 'password'" class="w-full h-8 py-5 pl-10 border border-black rounded-xl"
-                  placeholder="Password">
+                  :type="showPassword ? 'text' : 'password'"
+                  class="w-full h-8 py-5 pl-10 border border-black rounded-xl" placeholder="Password">
                 <span v-if="lpasswordError" class="text-red-500 text-xs">{{ lpasswordError }}</span>
               </div>
             </div>
@@ -326,7 +333,7 @@
 
 
     <div v-if="showPrivacyModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-      <div class="relative p-7 bg-white w-[90%] lg:w-[75%] lg:h-[65%] rounded-xl">
+      <div class="relative p-7 bg-white w-[90%] lg:w-[75%] lg:h-[70%] rounded-xl">
         <!-- Modal Content -->
         <div class="relative flex justify-end">
           <button class="absolute ">
@@ -338,7 +345,8 @@
         </div>
 
         <div class="flex justify-center items-center">
-          <img src="@/assets/images/Header/makati_logo.png" alt="logo" class="w-auto h-8 mr-3 md:block md:w-auto md:h-10">
+          <img src="@/assets/images/Header/makati_logo.png" alt="logo"
+            class="w-auto h-8 mr-3 md:block md:w-auto md:h-10">
           <img src="@/assets/images/Header/makaturismo.png" alt="banner" class="w-auto h-8 md:w-auto md:h-8">
         </div>
 
@@ -442,7 +450,7 @@
           </button>
         </div>
         <div class="lg:ml-[5rem] ml-8 my-5">
-          <div class="flex items-center">
+          <div class="flex items-center gap-4">
             <button @click="openLoginModal" class="text-blue-600"><img src="@/assets/images/Modal/back.png"
                 style="width: 20px; height: 20px;" alt="" class="my-2 mr-2"></button>
             <h2 class="text-4xl font-bold">Sign Up</h2>
@@ -613,7 +621,7 @@
 
     <!-- Terms and Condition Modal -->
     <div v-if="showTermsModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-      <div class="relative p-7 bg-white w-[90%] lg:w-[75%] lg:h-[65%] rounded-xl">
+      <div class="relative p-7 bg-white w-[90%] lg:w-[75%] lg:h-[75%] rounded-xl">
         <!-- Modal Content -->
         <div class="relative flex justify-end">
           <button class="absolute ">
@@ -624,7 +632,8 @@
           </button>
         </div>
         <div class="flex justify-center items-center">
-          <img src="@/assets/images/Header/makati_logo.png" alt="logo" class="w-auto h-8 mr-3 md:block md:w-auto md:h-10">
+          <img src="@/assets/images/Header/makati_logo.png" alt="logo"
+            class="w-auto h-8 mr-3 md:block md:w-auto md:h-10">
           <img src="@/assets/images/Header/makaturismo.png" alt="banner" class="w-auto h-8 md:w-auto md:h-8">
         </div>
         <div class="flex items-center">
@@ -721,7 +730,7 @@
               </div>
             </div>
 
-            <div class="text-center mt-5">
+            <div class="text-center mt-10">
               <button type="submit" class="lg:w-[50%] w-full px-4 py-4 text-white bg-blue-600 rounded-md"
                 @click="openSignUpModal">Continue</button>
             </div>

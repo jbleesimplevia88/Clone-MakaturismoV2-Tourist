@@ -127,13 +127,45 @@
               class="inline w-6 h-auto mr-2 align-middle">
             <h6 class="text-sm md:text-base">Makaturismo</h6>
           </div>
-          <p class="mb-2 text-sm md:text-base">Home</p>
-          <p class="mb-2 text-sm md:text-base">What to Do</p>
-          <p class="mb-2 text-sm md:text-base">What to See</p>
-          <p class="mb-2 text-sm md:text-base">Where to Eat</p>
-          <p class="mb-2 text-sm md:text-base">Where to Stay</p>
-          <p class="mb-2 text-sm md:text-base">Where to Shop</p>
-          <p class="mb-2 text-sm md:text-base">MakatiTour</p>
+          <router-link to="/" class="mb-2 text-sm md:text-base">
+            <button class="text-white-500 hover:underline">Home</button>
+          </router-link>
+
+          <div>
+
+            <div>
+
+              <router-link to="/category/do" class="mb-2 text-sm md:text-base">
+                <button class="text-white-500 hover:underline">What to Do</button>
+              </router-link>
+            </div>
+
+          </div>
+          <router-link to="/category/shop" class="mb-2 text-sm md:text-base">
+            <button class="text-white-500 hover:underline">Where to Shop</button>
+          </router-link>
+          <div>
+
+            <router-link to="/category/see" class="mb-2 text-sm md:text-base">
+              <button class="text-white-500 hover:underline">What to See</button>
+            </router-link>
+          </div>
+
+          <router-link to="/category/eat" class="mb-2 text-sm md:text-base">
+            <button class="text-white-500 hover:underline">Where to Eat</button>
+          </router-link>
+
+
+          <div>
+
+            <router-link to="/category/stay" class="mb-2 text-sm md:text-base">
+              <button class="text-white-500 hover:underline">Where to Stay</button>
+            </router-link>
+          </div>
+
+          <router-link to="/category/tour" class="mb-2 text-sm md:text-base">
+            <button class="text-white-500 hover:underline">MakatiTour</button>
+          </router-link>
         </div>
         <!-- Section 2 to 4 (Displayed in a column on mobile) -->
         <div class=" footer-section w-1/2  md:pl-0 mt-4 -ml-4">

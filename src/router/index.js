@@ -26,6 +26,11 @@ const router = createRouter({
       component: () => import('../views/CalendarView.vue')
     },
     {
+      path: '/notification',
+      name: 'notification',
+      component: () => import('../views/NotificationView.vue')
+    },
+    {
       path: '/profile',
       name: 'profile',
       component: () => import('../views/ProfileView.vue')

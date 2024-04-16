@@ -44,7 +44,7 @@
                 <div class="lg:flex items-center w-full mb-3">
                     <div class="w-full flex flex-col items-start justify-center">
                         <div class="relative w-full">
-                            <select id="barangay" v-model="barangay" class="w-full py-3 px-3 pr-8 appearance-none cursor-pointer"
+                            <select id="barangay" v-model="barangay" class="w-full py-3 px-3 pr-8 appearance-none cursor-pointer border border-gray-200 rounded-sm"
                                 @change="validateBarangay">
                                 <option value="" disabled selected hidden>Select barangay</option>
                                 <option v-for="(barangay, index) in barangaysInMakati " :key="index" :value="barangay" >{{ barangay }}</option>
@@ -58,23 +58,18 @@
                     </div>
                 </div>
 
-                <!-- Start-End Date -->
-                <div class="lg:flex items-center w-full ">
-                    <div class="w-full flex flex-col items-start justify-center">
-                        <div class="relative w-full">
+                <!-- Start Date Datepicker with Placeholder -->
+                <div class="lg:flex items-center w-full">
+                <vue-date-picker v-model="selecStartDate" class="w-full h-[3.8rem]" :format="dateFormat" :placeholder="startPlaceholder"></vue-date-picker>
+                </div>
 
-                            <vue-date-picker v-model="dateRange" range class="w-full h-[3.8rem]" :format="dateFormat"></vue-date-picker>
-                        </div>
-
-                    </div>
-
-                    <!-- <vue-date-picker v-model="selectedDate"></vue-date-picker> -->
-                    <!-- <vue-date-picker v-model="dateRange" range class="w-full" :max-num-of-dates="2" :show-time-picker="false"></vue-date-picker> -->
-
+                <!-- End Date Datepicker with Placeholder -->
+                <div class="lg:flex items-center w-full">
+                <vue-date-picker v-model="selecEndDate" class="w-full h-[3.8rem]" :format="dateFormat" :placeholder="endPlaceholder" :min-date="minEndDate" :disabled="!selecStartDate"></vue-date-picker>
                 </div>
                 
                 <!-- guests -->
-                <div class="lg:flex  w-full mb-3 py-3 px-3 bg-white dropdown-container">
+                <div class="lg:flex  w-full mb-3 py-3 px-3 bg-white dropdown-container border border-gray-200 rounded-sm">
                     <div class="dropdown-toggle" @click="toggleModal">Select Options </div>
                     <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -100,7 +95,7 @@
             </div>
 
             <div class="flex items-center justify-center">
-                <button type="submit" :disabled="!isLoginFormValid" @click="search" class="lg:w-[8rem] w-full lg:px-4 py-2 text-white disabled:bg-blue-400  bg-blue-600 rounded-md">SEARCH</button>
+                <button type="submit" @click="search" class="lg:w-[8rem] w-full lg:px-4 py-2 text-white disabled:bg-blue-400  bg-blue-600 rounded-md">SEARCH</button>
             </div>
 
 
@@ -411,8 +406,10 @@ export default {
     data() {
         return {
             barangay: '',
-            // selectedDate: '',
-            dateRange: [],
+            selecStartDate: null,
+            selecEndDate: null,
+            startPlaceholder: 'Select Start Date',
+            endPlaceholder: 'Select End Date',
             dateFormat: 'yyyy-MM-dd',
             barangaysInMakati: [
             "Bangkal",
@@ -455,8 +452,6 @@ export default {
                 { name: 'Adult', quantity: 0, description: 'Ages 18 and above' }, // Add description for Adult
                 { name: 'Children', quantity: 0, description: 'Ages 0-17' } // Add description for Children
             ],
-
-
 
             items: [
                 {
@@ -534,6 +529,10 @@ export default {
         };
     },
     computed: {
+        minEndDate() {
+        // Return the selected start date plus one day
+        return this.selecStartDate ? new Date(this.selecStartDate.getTime() + 24 * 60 * 60 * 1000) : null;
+        },
         paginatedItems() {
             const startIndex = this.currentPage * this.pageSize;
             return this.items.slice(startIndex, startIndex + this.pageSize);

@@ -44,10 +44,9 @@
                 <div class="lg:flex items-center w-full mb-3">
                     <div class="w-full flex flex-col items-start justify-center">
                         <div class="relative w-full">
-                            <select id="barangay" v-model="barangay" class="w-full py-3 px-3 pr-8 appearance-none cursor-pointer border border-gray-200 rounded-sm"
-                                @change="validateBarangay">
+                            <select id="barangay" v-model="barangay" class="w-full py-3 px-3 pr-8 appearance-none cursor-pointer border border-gray-200 rounded-sm">
                                 <option value="" disabled selected hidden>Select barangay</option>
-                                <option v-for="(barangay, index) in barangaysInMakati " :key="index" :value="barangay" >{{ barangay }}</option>
+                                <option v-for="(barangay, index) in locations " :key="index" :value="barangay" >{{ barangay }}</option>
                             </select>
                             <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
                                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">

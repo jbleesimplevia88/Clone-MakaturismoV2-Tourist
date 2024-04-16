@@ -5,8 +5,9 @@
     <div class="py-2 bg-secondary">
       <p class="p-2 m-0 text-sm md:text-base">Official Tourism site of Makati City - Philippines</p>
     </div>
-    <div class="containe flex flex-col flex-grow p-10 mx-5 ">
-      <div class="flex flex-row  justify-center mx-5">
+    <div class="containe flex flex-col flex-grow p-10 ">
+      <div class="flex flex-row ml-20">
+
         <!-- Section 1 -->
         <div class="footer-section sm:w-1/4  align-middle" id="section1">
           <div class="flex items-center mb-2 mr-">
@@ -62,7 +63,7 @@
 
 
         <!-- Section 3 -->
-        <div class="footer-section sm:w-1/4 " id="section3">
+        <div class="footer-section sm:w-1/4 ml-80 " id="section3">
           <!-- Contact Us -->
           <div>
             <h6 class="mb-2 text-sm md:text-base">Contact Us</h6>
@@ -81,7 +82,7 @@
             </div>
           </div>
         </div>
-        <div class="footer-section sm:w-1/4  justify-center" id="section2">
+        <div class="footer-section sm:w-1/4  ml-80" id="section2">
           <!-- Other Related Sites -->
           <div>
             <h6 class="mb-2 text-xl md:text-base">Other Related Site</h6>
@@ -94,7 +95,7 @@
           </div>
         </div>
         <!-- Section 4 -->
-        <div class="footer-section sm:w-1/4  justify-center" id="section4">
+        <div class="footer-section sm:w-1/4  ml-80" id="section4 ml-20">
           <!-- FAQ -->
           <div>
             <h6 class="mb-2 text-sm md:text-base">FAQ</h6>

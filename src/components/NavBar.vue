@@ -22,7 +22,7 @@
           </span>
         </RouterLink>
 
-        <adiv class=" hidden lg:block relative  " ref="searchContainer">
+        <div class=" hidden lg:block relative  " ref="searchContainer">
           <input v-if="showInput" type="search"
             class=" relative m-0 block flex-auto rounded border border-solid border-neutral-200 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none"
             placeholder="Search" aria-label="Search" id="exampleFormControlInput2" aria-describedby="button-addon2"
@@ -37,7 +37,7 @@
                 d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
             </svg>
           </span>
-        </adiv>
+        </div>
         <!-- Calendar -->
         <RouterLink to="/calendar" class="hidden text-white md:inline-block"><img
             src="@/assets/images/Header/calendar.png" alt="logo" class="w-auto h-6 mx-2"></RouterLink>
@@ -142,8 +142,7 @@
           <!-- Hamburger Icon for Mobile View -->
           <div @click="toggleSidebar" class="lg:hidden pr-4">
             <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 6.19995H23" stroke="#222222" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" />
+              <path d="M5 6.19995H23" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               <path d="M5 16.2H23" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               <path d="M5 11.2H23" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -303,14 +302,13 @@
               <div class="relative w-full">
                 <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-5 my-3"
                   style="width: 15px;" alt="Username Icon" />
-                <img v-if="showPassword" src="@/assets/images/Modal/view.png"
-                  class="absolute inset-y-0 right-0 mx-3 my-3" style="width: 15px; cursor: pointer;" alt="Eye Icon"
-                  @click="togglePasswordVisibility">
+                <img v-if="showPassword" src="@/assets/images/Modal/view.png" class="absolute inset-y-0 right-0 mx-3 my-3"
+                  style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="togglePasswordVisibility">
                 <img v-else src="@/assets/images/Modal/hidden.png" class="absolute inset-y-0 right-0 mx-3 my-3"
                   style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="togglePasswordVisibility">
                 <input id="lpassword" v-model="lpassword" @input="validateLPassword"
-                  :type="showPassword ? 'text' : 'password'"
-                  class="w-full h-8 py-5 pl-10 border border-black rounded-xl" placeholder="Password">
+                  :type="showPassword ? 'text' : 'password'" class="w-full h-8 py-5 pl-10 border border-black rounded-xl"
+                  placeholder="Password">
                 <span v-if="lpasswordError" class="text-red-500 text-xs">{{ lpasswordError }}</span>
               </div>
             </div>
@@ -353,8 +351,7 @@
         </div>
 
         <div class="flex justify-center items-center">
-          <img src="@/assets/images/Header/makati_logo.png" alt="logo"
-            class="w-auto h-8 mr-3 md:block md:w-auto md:h-10">
+          <img src="@/assets/images/Header/makati_logo.png" alt="logo" class="w-auto h-8 mr-3 md:block md:w-auto md:h-10">
           <img src="@/assets/images/Header/makaturismo.png" alt="banner" class="w-auto h-8 md:w-auto md:h-8">
         </div>
 
@@ -640,8 +637,7 @@
           </button>
         </div>
         <div class="flex justify-center items-center">
-          <img src="@/assets/images/Header/makati_logo.png" alt="logo"
-            class="w-auto h-8 mr-3 md:block md:w-auto md:h-10">
+          <img src="@/assets/images/Header/makati_logo.png" alt="logo" class="w-auto h-8 mr-3 md:block md:w-auto md:h-10">
           <img src="@/assets/images/Header/makaturismo.png" alt="banner" class="w-auto h-8 md:w-auto md:h-8">
         </div>
         <div class="flex items-center">

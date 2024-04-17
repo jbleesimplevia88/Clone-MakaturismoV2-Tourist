@@ -26,6 +26,11 @@ const router = createRouter({
       component: () => import('../views/CalendarView.vue')
     },
     {
+      path: '/notification',
+      name: 'notification',
+      component: () => import('../views/NotificationView.vue')
+    },
+    {
       path: '/profile',
       name: 'profile',
       component: () => import('../views/ProfileView.vue')
@@ -44,6 +49,11 @@ const router = createRouter({
       path: '/viewAll',
       name: 'viewAll',
       component: () => import('../views/ViewAllView.vue')
+    },
+    {
+      path: '/transactions',
+      name: 'transactions',
+      component: () => import('../views/TransactionsView.vue'),
     },
     {
       path: '/cart',

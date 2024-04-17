@@ -1,6 +1,6 @@
 <template>
     <div class="relative pt-[57px] md:pt-[80px]">
-        <div class="relative">
+        <div class="relative  ">
             <div
                 style="position: absolute; top: 0; left: 0; height: 101%; width: 100%; background: linear-gradient(to left, transparent, #102E61 96%, #102E61 70%);">
             </div>
@@ -13,8 +13,6 @@
                     class="text-[#102E61] text-sm sm:text-4xl font-bold p-3 pr-4 md:p-5 md:pr-7 ">
                     WHERE TO STAY
                 </p>
-                 
-                
             </div>
             <div
                 class="relative sm:absolute inset-0 sm:top-56 md:top-[23rem] flex text-center lg:text-left justify-center items-center z-[1]">
@@ -27,9 +25,87 @@
             </div>
         </div>
     </div>
+
     <div class="mx-auto px-3 lg:px-32 pb-5 pt-5" style="background-color: #102E61;">
+        <!-- New Filter -->
+        <div class="lg:mx-[120px] mx-[60px] pb-3 flex flex-col px-5 bg-[#f5f5f5] rounded-lg">
+            <!-- search bar -->
+            <div class="relative my-5">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3">
+                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                    </svg>
+                </div>
+                <input type="search" id="default-search" class="w-full p-4 ps-10 text-sm text-gray-900" placeholder="Search Accomodations"/>
+            </div>
+
+            <div class="lg:flex items-center justify-between lg:grid-cols-3 lg:space-x-4">
+                <!-- Barangay -->
+                <div class="lg:flex items-center w-full mb-3">
+                    <div class="w-full flex flex-col items-start justify-center">
+                        <div class="relative w-full">
+                            <select id="barangay" v-model="barangay" class="w-full py-3 px-3 pr-8 appearance-none cursor-pointer border border-gray-200 rounded-sm">
+                                <option value="" disabled selected hidden>Select barangay</option>
+                                <option v-for="(barangay, index) in locations " :key="index" :value="barangay" >{{ barangay }}</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 12a1 1 0 0 1-.707-.293l-4-4a1 1 0 1 1 1.414-1.414L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4A1 1 0 0 1 10 12z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Start Date Datepicker with Placeholder -->
+                <div class="lg:flex items-center w-full">
+                <vue-date-picker v-model="selecStartDate" class="w-full h-[3.8rem]" :format="dateFormat" :placeholder="startPlaceholder"></vue-date-picker>
+                </div>
+
+                <!-- End Date Datepicker with Placeholder -->
+                <div class="lg:flex items-center w-full">
+                <vue-date-picker v-model="selecEndDate" class="w-full h-[3.8rem]" :format="dateFormat" :placeholder="endPlaceholder" :min-date="minEndDate" :disabled="!selecStartDate"></vue-date-picker>
+                </div>
+                
+                <!-- guests -->
+                <div class="lg:flex  w-full mb-3 py-3 px-3 bg-white dropdown-container border border-gray-200 rounded-sm">
+                    <div class="dropdown-toggle" @click="toggleModal">Select Options </div>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 12a1 1 0 0 1-.707-.293l-4-4a1 1 0 1 1 1.414-1.414L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4A1 1 0 0 1 10 12z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div v-if="showModal" class="modal w-full rounded-xl z-10">
+                        <div class="pt-7 pb-5 px-6 space-y-4">
+                            <div class="flex flex-col" v-for="(category, index) in guests" :key="index">
+                                <div class=" flex items-center  justify-between">
+                                    <div>{{ category.name }}</div>
+                                    <div class="flex w-[100px]">
+                                        <button class="bg-white w-full" @click="decreaseQuantity(category)">-</button>
+                                        <span>{{ category.quantity }}</span>
+                                        <button class="bg-white w-full" @click="increaseQuantity(category)">+</button>
+                                    </div>
+                                </div>
+                                <div class="category-description">{{ category.description }}</div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-center">
+                <button type="submit" @click="search" class="lg:w-[8rem] w-full lg:px-4 py-2 text-white disabled:bg-blue-400  bg-blue-600 rounded-md">SEARCH</button>
+            </div>
+
+
+        </div>
+
+
+
+
+     
         <div>
-            <div class="pb-10">
+            <div class="mt-8 pb-10">
                 <!-- Filter dropdown -->
                 <div class="relative hidden lg:block text-left">
                     <button
@@ -259,6 +335,54 @@
 .dropdown-leave-to {
     transform: translateY(100%);
 }
+
+/*  */
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+  
+}
+
+.modal {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f5f5f5;
+  /* border: 1px solid #ccc; */
+  /* border-radius: 5px; */
+  /* padding: 10px; */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.modal-content {
+  /* display: flex; */
+  /* flex-direction: column; */
+}
+
+.modal-category {
+  /* display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px; */
+}
+
+.quantity-button {
+  cursor: pointer;
+}
+.selected {
+  border-color: black;
+  border-width: 1.8px;
+}
+.category-description {
+  color: #999; /* Add color or other styles for description */
+  font-size: 12px; /* Adjust font size as needed */
+}
+
+
 </style>
 
 
@@ -272,9 +396,62 @@ import item6 from '@/assets/images/CategoryView/ToStay/gomez.jpeg';
 import item7 from '@/assets/images/CategoryView/ToStay/prince.jpeg';
 import item8 from '@/assets/images/CategoryView/ToStay/howzat.jpeg';
 
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css';
+
 export default {
+    components: { VueDatePicker },
+
     data() {
         return {
+            barangay: '',
+            selecStartDate: null,
+            selecEndDate: null,
+            startPlaceholder: 'Select Start Date',
+            endPlaceholder: 'Select End Date',
+            dateFormat: 'yyyy-MM-dd',
+            barangaysInMakati: [
+            "Bangkal",
+            "Bel-Air",
+            "Carmona",
+            "Cembo",
+            "Comembo",
+            "Dasmarinas",
+            "East Rembo",
+            "Forbes Park",
+            "Guadalupe Nuevo",
+            "Guadalupe Viejo",
+            "Kasilawan",
+            "La Paz",
+            "Magallanes",
+            "Olympia",
+            "Palanan",
+            "Pembo",
+            "Pinagkaisahan",
+            "Pio del Pilar",
+            "Pitogo",
+            "Poblacion",
+            "Post Proper Northside",
+            "Post Proper Southside",
+            "Rizal",
+            "San Antonio",
+            "San Isidro",
+            "San Lorenzo",
+            "Santa Cruz",
+            "Singkamas",
+            "South Cembo",
+            "Tejeros",
+            "Urdaneta",
+            "Valenzuela",
+            "West Rembo"
+            ],
+            showModal: false,
+            guests: [
+                { name: 'Room', quantity: 0 },
+                { name: 'Adult', quantity: 0, description: 'Ages 18 and above' }, // Add description for Adult
+                { name: 'Children', quantity: 0, description: 'Ages 0-17' } // Add description for Children
+            ],
+
             items: [
                 {
                     name: 'XYZ Hotel',
@@ -351,6 +528,10 @@ export default {
         };
     },
     computed: {
+        minEndDate() {
+        // Return the selected start date plus one day
+        return this.selecStartDate ? new Date(this.selecStartDate.getTime() + 24 * 60 * 60 * 1000) : null;
+        },
         paginatedItems() {
             const startIndex = this.currentPage * this.pageSize;
             return this.items.slice(startIndex, startIndex + this.pageSize);
@@ -412,6 +593,17 @@ export default {
 
             return { latitude: null, longitude: null };
         },
+        toggleModal() {
+            this.showModal = !this.showModal;
+        },
+        increaseQuantity(category) {
+        category.quantity++;
+        },
+        decreaseQuantity(category) {
+            if (category.quantity > 0) {
+                category.quantity--;
+            }
+        }
     },
 };
 </script>

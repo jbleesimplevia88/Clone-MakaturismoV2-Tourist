@@ -42,14 +42,22 @@
         <RouterLink to="/calendar" class="hidden text-white md:inline-block"><img
             src="@/assets/images/Header/calendar.png" alt="logo" class="w-auto h-6 mx-2"></RouterLink>
 
+        <!-- WHEN USER IS LOGGED IN-->
         <div v-if="authStore.isAuthenticated">
           <div class="hidden lg:flex items-center space-x-6">
             <!-- Notification Icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+            <svg @click="toggleNotif" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+              class="w-6 h-6">
               <path fill-rule="evenodd"
                 d="M5.25 9a6.75 6.75 0 0 1 13.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 0 1-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 1 1-7.48 0 24.585 24.585 0 0 1-4.831-1.244.75.75 0 0 1-.298-1.205A8.217 8.217 0 0 0 5.25 9.75V9Zm4.502 8.9a2.25 2.25 0 1 0 4.496 0 25.057 25.057 0 0 1-4.496 0Z"
                 clip-rule="evenodd" />
             </svg>
+
+            <!-- Notification Modal -->
+            <div v-if="showNotif"
+              class="absolute top-[6.5rem] right-[1.2rem] bg-gray-100 shadow text-black rounded-lg w-[325px]">
+
+            </div>
 
             <!-- Person Icon -->
             <svg @click=togglepfp xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -471,7 +479,7 @@
                 </div>
               </div>
               <!-- Middlename -->
-              <div class="lg:inline-block lg:flex items-center mb-3">
+              <div class="lg:flex items-center mb-3">
                 <label for="mname" class="w-[9rem] lg:ml-3 lg:mr-3">Middle Initial:</label>
                 <input id="mname" type="text" v-model="mname" placeholder="Enter Middle Initia"
                   class="border border-gray-500 rounded-xl w-full py-3 px-3">
@@ -622,7 +630,7 @@
         <!-- Modal Content -->
         <div class="relative flex justify-end">
           <button class="absolute ">
-            <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="5"
+            <svg @click="closeTC" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="5"
               stroke="black" class="w-auto h-5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
@@ -728,7 +736,7 @@
 
             <div class="text-center mt-10">
               <button type="submit" class="lg:w-[50%] w-full px-4 py-4 text-white bg-blue-600 rounded-md"
-                @click="openSignUpModal">Continue</button>
+                @click="closeTC">Continue</button>
             </div>
 
           </form>
@@ -1352,6 +1360,9 @@ export default {
     togglepfp() {
       this.showPFPModal = !this.showPFPModal;
     },
+    toggleNotif() {
+      this.showNotif = !this.showNotif;
+    },
     toggleSidebar() {
       this.isSidebarOpen = !this.isSidebarOpen;
     },
@@ -1484,7 +1495,7 @@ export default {
         this.showLoginModal = false;
       }
       // Refresh the page
-      window.location.reload();
+
     },
 
     // END OF SIGNUP VALIDATION
@@ -1542,9 +1553,6 @@ export default {
       this.showPrivacyModal = false;
       this.showSignUpModal = false;
     },
-    // openPFPModal() {
-    //   this.showPFPModal = true;
-    // },
     openSignUpModal() {
       this.showSignUpModal = true;
       this.showPrivacyModal = false;
@@ -1585,10 +1593,13 @@ export default {
       this.showLoginModal = false;
       this.showSignUpModal = false;
       this.showPrivacyModal = false;
-      this.showTermsModal = false;
+
       this.showForgotModal = false;
       // Refresh the page
       window.location.reload();
+    },
+    closeTC() {
+      this.showTermsModal = false;
     },
 
     forgot() {
@@ -1614,6 +1625,7 @@ export default {
     const lpassword = ref('');
     const showLoginModal = ref(false);
     const showPFPModal = ref(false);
+    const showNotif = ref(false);
     const isSidebarOpen = ref(false);
 
     const openModal = () => {
@@ -1644,6 +1656,7 @@ export default {
       authStore.logout(); // Call the logout action from the store
       // Additional logout logic, such as redirecting to the login page, can be added here
       showPFPModal.value = false; // Close the modal in web 
+      showNotif.value = false;
       isSidebarOpen.value = false; // Close the modal in mobile
 
     };

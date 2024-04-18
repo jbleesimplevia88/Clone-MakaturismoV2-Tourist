@@ -158,7 +158,7 @@
                 <!-- End  Filter dropdown MOBILE  -->
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div v-for="(item, index) in filteredItems" :key="index"
+                <div v-for="(item, index) in paginatedItems" :key="index"
                     class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
                     <div class="relative">
                         <img class="w-full h-[250px] object-cover rounded-t" :src="item.image" alt="">
@@ -355,6 +355,15 @@ export default {
                     link: "",
                     mapLocation: ""
                 },
+                {
+                    name: 'Altro Mondo Corp.',
+                    description: "Journey into the world of contemporary art at Altro Mondo Corp. This gallery showcases a diverse range of contemporary works, from paintings and sculptures to mixed-media art. Immerse yourself in the artistry of talented contemporary artists from the Philippines and around the globe at Altro Mondo Corp.",
+                    category: 'Art Gallery',
+                    location: 'Salcedo Village',
+                    image: item8,
+                    link: "",
+                    mapLocation: ""
+                },
 
             ],
             categories: ['All', 'Mall', 'Monument', 'Church', 'Park', 'Walkway', 'Heritage House', 'Art Gallery', 'Market'],
@@ -422,6 +431,12 @@ export default {
         },
     },
     computed: {
+        // Replace the paginatedItems computed property
+        paginatedItems() {
+            const startIndex = this.currentPage * this.pageSize;
+            return this.items.slice(startIndex, startIndex + this.pageSize);
+        },
+        // Update the filteredItems computed property to only filter items
         filteredItems() {
             let filteredItems = this.items.slice(); // Create a shallow copy of items
 
@@ -452,23 +467,18 @@ export default {
 
             return filteredItems;
         },
-
-        paginatedItems() {
-            const startIndex = this.currentPage * this.pageSize;
-            return this.items.slice(startIndex, startIndex + this.pageSize);
-        },
         pageCount() {
-            return Math.ceil(this.items.length / this.pageSize);
+            return Math.ceil(this.filteredItems.length / this.pageSize);
         },
         paginationStartIndex() {
             return this.currentPage * this.pageSize + 1;
         },
         paginationEndIndex() {
             const end = (this.currentPage + 1) * this.pageSize;
-            return end > this.totalRecords ? this.totalRecords : end;
+            return Math.min(end, this.totalRecords);
         },
         totalRecords() {
-            return this.items.length;
+            return this.filteredItems.length;
         },
     },
     mounted() {

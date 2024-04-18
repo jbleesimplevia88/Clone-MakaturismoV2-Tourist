@@ -17,7 +17,7 @@
     "@vuepic/vue-datepicker": "^8.4.0",
     "chartjs-plugin-datalabels": "^2.2.0",
     "leaflet": "^1.9.4",
-    "pinia": "^2.0.0-rc.10",
+    "pinia": "^2.1.7",
     "swiper": "^7.4.1",
     "vue": "^3.4.15",
     "vue-chartjs": "^3.5.1",

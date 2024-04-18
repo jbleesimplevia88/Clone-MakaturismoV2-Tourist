@@ -448,6 +448,17 @@
                             </div>
                         </router-link>
                     </div>
+                    <!-- AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH -->
+                    <div>
+                        <login-modal v-if="!authStore.isAuthenticated && showLoginModal"
+                            @close="showLoginModal = false"></login-modal>
+                        <button @click="handleCheckCart"
+                            class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">
+                            Check Cart
+                        </button>
+                    </div>
+
+
                 </div>
             </div>
         </div>
@@ -625,310 +636,209 @@
         /* Hide scrollbar for WebKit (Chrome, Safari) */
     }
 
-    .cart-list-scroll::-webkit-scrollbar {
-    width: 8px; /* Set the width of the scrollbar */
-    }
-
-    .cart-list-scroll::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Set the background color of the scrollbar track */
-    }
-
-    .cart-list-scroll::-webkit-scrollbar-thumb {
-    background: #888; /* Set the color of the scrollbar thumb/handle */
-    border-radius: 5px; /* Round the corners of the scrollbar thumb */
-    }
-
-    .cart-list-scroll::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Change the color of the scrollbar thumb when hovering */
-    }
-   
-    /* Your scoped styles here */
-    .toast-container {
-    position: fixed;
-    bottom: 1rem;
-    right: 1rem;
-    z-index: 9999;
-    }
-
-    .toast {
-    position: relative;
-    transition: transform 0.3s ease-in-out;
-    }
-
-    .toast-content {
-    max-width: 20rem; /* Adjust max-width as needed */
-    }
-
-
-</style>
-
 
 <script>
-    import MapRenderer from "@/components/MapRenderer.vue";
-    import shopProduct1 from '@/assets/images/CategoryView/ToShop/shop-product1.png';
-    import shopProduct2 from '@/assets/images/CategoryView/ToShop/shop-product2.png';
-    import shopProduct3 from '@/assets/images/CategoryView/ToShop/shop-product3.png';
-    import shopProduct4 from '@/assets/images/CategoryView/ToShop/shop-product4.png';
-    import bestProduct1 from '@/assets/images/CategoryView/ToShop/shop-product1.png';
-    import bestProduct2 from '@/assets/images/CategoryView/ToShop/shop-product2.png';
-    import bestProduct3 from '@/assets/images/CategoryView/ToShop/shop-product3.png';
-    import otherProduct4 from '@/assets/images/CategoryView/ToShop/shop-product4.png';
-    import otherProduct5 from '@/assets/images/CategoryView/ToShop/shop-product5.png';
-    import otherProduct6 from '@/assets/images/CategoryView/ToShop/shop-product6.png';
-    import otherProduct7 from '@/assets/images/CategoryView/ToShop/shop-product7.png';
-    import otherProduct8 from '@/assets/images/CategoryView/ToShop/shop-product8.png';
-    import otherProduct9 from '@/assets/images/CategoryView/ToShop/shop-product9.png';
-    export default {
-        props: {
-            latitude: Number,
-            longitude: Number,
-            name: String
-        },
-        components: {
-            MapRenderer
-        },
-        data() {
-            return {
-                showCart: false,
-                showReviews: false,
-                showToast: false,
-                toastMessage: "",
-                items: [{
-                        name: 'Juan Dela Cruz',
-                        description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                        date: 'December 2023',
-                    },
-                    {
-                        name: 'Luis Paolo',
-                        description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                        date: 'December 2023',
-                    },
-                    {
-                        name: 'Luis Paolo',
-                        description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                        date: 'December 2023',
-                    },
-                    {
-                        name: 'Juan Dela Cruz',
-                        description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                        date: 'December 2023',
-                    },
-                    {
-                        name: 'Juan Dela Cruz',
-                        description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                        date: 'December 2023',
-                    },
-                    {
-                        name: 'Luis Paolo',
-                        description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                        date: 'December 2023',
-                    },
-                    {
-                        name: 'Luis Paolo',
-                        description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                        date: 'December 2023',
-                    },
-                    {
-                        name: 'Juan Dela Cruz',
-                        description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                        date: 'December 2023',
-                    },
-                ],
-                images: [
-                    shopProduct1,
-                    shopProduct2,
-                    shopProduct3,
-                    shopProduct4
-                ],
-                bestProducts: [{
-                        title: "1 Multi handle Tote bag with Embroided Philippine Kalesa Scenery",
-                        image: bestProduct1,
-                        price: 399.00,
-                        shop: "Makati Shop",
-                        quantity: 1
-                    },
-                    {
-                        title: "2 Multi handle Tote bag with Embroided Philippine Kalesa Scenery",
-                        image: bestProduct2,
-                        price: 399.00,
-                        shop: "Makati Shop",
-                        quantity: 1
-                    },
-                    {
-                        title: "3 Multi handle Tote bag with Embroided Philippine Kalesa Scenery",
-                        image: bestProduct3,
-                        price: 399.00,
-                        shop: "Makati Shop",
-                        quantity: 1
-                    },
-                    // Add more products as needed
-                ],
-                otherProducts: [{
-                        title: "Beat the Heat Graphic Tee in Blush ",
-                        image: otherProduct4,
-                        price: 100.00,
-                        shop: "Makati Shop",
-                        quantity: 1
-                    },
-                    {
-                        title: "Mini Gold Tin with Wooden Base Calesa",
-                        image: otherProduct5,
-                        price: 100.00,
-                        shop: "Makati Shop",
-                        quantity: 1
-                    },
-                    {
-                        title: "Mini Gold Tin with Wooden Base Vinta ",
-                        image: otherProduct6,
-                        price: 100.00,
-                        shop: "Makati Shop",
-                        quantity: 1
-                    },
-                    {
-                        title: "Never Stop Exploring Graphic Tee in Gray",
-                        image: otherProduct7,
-                        price: 100.00,
-                        shop: "Makati Shop",
-                        quantity: 1
-                    },
-                    {
-                        title: "Mini Gold Tin with Wooden Base Nipa Hut Coconut Tree",
-                        image: otherProduct8,
-                        price: 100.00,
-                        shop: "Makati Shop",
-                        quantity: 1
-                    },
-                    {
-                        title: "  Mini Gold Tin with Wooden Base Tricycle",
-                        image: otherProduct9,
-                        price: 100.00,
-                        shop: "Makati Shop",
-                        quantity: 1
-                    },
-                ],
-                selectedProduct: null,
-                cart: [],
-                currentIndex: 0,
-                // count: 1,
-                showCartModal: false,
-                currentPage: 0,
-                pageSize: 8,
-                showDropdown: false,
-                categories: ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'],
-                locations: ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'],
-                numFeedbackShown: 0,
-                showSeeLessButton: false
-            };
-        },
-        computed: {
-            paginatedItems() {
-                // Return first 2 items initially and add additional items based on numFeedbackShown
-                return this.items.slice(0, 2 + this.numFeedbackShown);
+import MapRenderer from "@/components/MapRenderer.vue";
+import LoginModal from '@/components/LoginModal.vue';
+import { defineComponent, ref, computed } from 'vue';
+import { useAuthStore } from '@/stores/auth';
+import { useRouter } from 'vue-router';
+import shopProduct1 from '@/assets/images/CategoryView/ToShop/shop-product1.png';
+import shopProduct2 from '@/assets/images/CategoryView/ToShop/shop-product2.png';
+import shopProduct3 from '@/assets/images/CategoryView/ToShop/shop-product3.png';
+import shopProduct4 from '@/assets/images/CategoryView/ToShop/shop-product4.png';
+
+export default defineComponent({
+    props: {
+        latitude: Number,
+        longitude: Number,
+        name: String
+    },
+    components: {
+        MapRenderer,
+        LoginModal
+    },
+    setup() {
+        const router = useRouter();
+        const showReviews = ref(false);
+        const showAddtoCart = ref(false); // Define showAddtoCart
+        const showCart = ref(false);
+        const authStore = useAuthStore();
+        const showLoginModal = ref(false);
+        const showCartModal = ref(false);
+        const showSeeLessButton = ref(false);
+        const currentIndex = ref(0);
+        const count = ref(0);
+        const numFeedbackShown = ref(0);
+        const items = [
+            {
+                name: 'Juan Dela Cruz',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                date: 'December 2023',
+
             },
-            currentImage() {
-                return this.images[this.currentIndex];
+            {
+                name: 'Luis Paolo',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                date: 'December 2023',
+
             },
-            showSeeMoreButton() {
-                return this.numFeedbackShown < this.items.length - 2;
+            {
+                name: 'Luis Paolo',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                date: 'December 2023',
+
             },
-            getTotalItemsInCart() {
-                // Compute total number of items in cart
-                return this.cart.reduce((total, item) => total + item.quantity, 0);
+            {
+                name: 'Juan Dela Cruz',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                date: 'December 2023',
+
+            },
+            {
+                name: 'Juan Dela Cruz',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                date: 'December 2023',
+
+            },
+            {
+                name: 'Luis Paolo',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                date: 'December 2023',
+
+            },
+            {
+                name: 'Luis Paolo',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                date: 'December 2023',
+
+            },
+            {
+                name: 'Juan Dela Cruz',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                date: 'December 2023',
+
+            },
+        ];
+        const images = [shopProduct1, shopProduct2, shopProduct3, shopProduct4];
+        const categories = ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'];
+        const locations = ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'];
+
+        const paginatedItems = computed(() => {
+            return items.slice(0, 2 + numFeedbackShown.value);
+        });
+
+        const currentImage = computed(() => {
+            return images[currentIndex.value];
+        });
+
+        const showSeeMoreButton = computed(() => {
+            return numFeedbackShown.value < items.length - 2;
+        });
+
+        const handleCheckCart = () => {
+            if (!authStore.isAuthenticated) {
+                // Set the intended route
+                authStore.setIntendedRoute('/checkoutshop');
+                // Show the login modal
+                showLoginModal.value = true;
+            } else {
+                // If user is already authenticated, navigate to the checkoutshop route directly
+                router.push('/checkoutshop');
             }
-        },
-        methods: {
-            updateCurrentImage(index) {
-                this.currentIndex = index;
-            },
-            changeImage() {
-                this.currentIndex = (this.currentIndex + 1) % this.images.length;
-            },
-            openCartModal() {
-                this.showCartModal = true;
-            },
-            closeModal() {
-                this.showCartModal = false;
-            },
-            toggleshowCart(item) {
-                this.selectedProduct = item;
-                this.showCart = true;
-            },
-            increaseQuantity() {
-                this.selectedProduct.quantity++;
-            },
-            decreaseQuantity() {
-                if (this.selectedProduct.quantity > 1) {
-                    this.selectedProduct.quantity--;
-                }
-            },
-            showToastWithMessage(message) {
-                this.toastMessage = message;
-                this.showToast = true;
+        };
 
-                setTimeout(() => {
-                    this.showToast = false;
-                    this.toastMessage = "";
-                }, 3000); // Hide the toast after 5 seconds
-            },
-            // Function to hide the toast
-            hideToast() {
-                this.showToast = false;
-                this.toastMessage = "";
-            },
-            addToCart(item) {
-                this.selectedProduct = item;
 
-                // Check if the product already exists in the cart
-                const index = this.cart.findIndex(list => list.title === item.title);
-                if (index !== -1) {
-                    // If it exists, update the quantity
-                    this.cart[index].quantity += item.quantity;
-                    // Remove the existing item from the cart array
-                    const updatedItem = this.cart.splice(index, 1)[0];
-                    // Add the updated item to the beginning of the cart array
-                    this.cart.unshift(updatedItem);
-                } else {
-                    // If it doesn't exist, add it to the cart
-                    this.cart.unshift({
-                        title: item.title,
-                        quantity: item.quantity
-                    });
-                }
-                // Close the modal after adding to cart
-                this.showCart = false;
-                // Reset quantity to 1 for next product
-                this.selectedProduct.quantity = 1;
 
-                // Show toast notification
-                this.showToastWithMessage("Item has been added to cart");
-            },
-            closeCart() {
-                this.showCart = false;
-            },
-            toggleshowReviews() {
-                this.showReviews = true;
-                this.showCart = false;
-            },
-            closeReviews() {
-                this.showReviews = false;
-                this.showCart = true;
-            },
-            // Method to handle "See More" button click
-            seeMore() {
-                // Increment the number of feedback items to show
-                this.numFeedbackShown += 2; // Change this value as per your requirement
-                // Show See Less button if all items are shown
-                if (!this.showSeeMoreButton) {
-                    this.showSeeLessButton = true;
-                }
-            },
-            // Method to handle "See Less" button click
-            seeLess() {
-                // Reset the number of feedback items shown to initial value
-                this.numFeedbackShown = 0;
-                // Hide See Less button
-                this.showSeeLessButton = false;
+        const closeLoginModal = () => {
+            showLoginModal.value = false;
+        };
+
+        const seeMore = () => {
+            numFeedbackShown.value += 2;
+            if (!showSeeMoreButton.value) {
+                showSeeLessButton.value = true;
             }
-        },
-    };
+        };
+
+        const seeLess = () => {
+            numFeedbackShown.value = 0;
+            showSeeLessButton.value = false;
+        };
+        const changeImage = () => {
+            currentIndex.value = (currentIndex.value + 1) % images.length;
+        };
+
+        const updateCurrentImage = (index) => {
+            currentIndex.value = index;
+        };
+
+        const increment = () => {
+            count.value++;
+        };
+
+        const decrement = () => {
+            if (count.value > 0) {
+                count.value--;
+            }
+        };
+
+        const toggleshowCart = () => {
+            showAddtoCart.value = false;
+            showCart.value = true;
+        };
+
+        const closeCart = () => {
+            showCart.value = false;
+        };
+
+        const closeModal = () => {
+            showCartModal.value = false;
+        };
+
+        const toggleshowReviews = () => {
+            showReviews.value = true;
+            showCart.value = false;
+        };
+
+        const closeReviews = () => {
+            showReviews.value = false;
+            showCart.value = true;
+        };
+        return {
+            showCart,
+            router,
+            authStore,
+            showLoginModal,
+            showCartModal,
+            showReviews,
+            items,
+            images,
+            currentIndex,
+            count,
+            numFeedbackShown,
+            showSeeLessButton,
+            categories,
+            locations,
+            paginatedItems,
+            currentImage,
+            showSeeMoreButton,
+            closeLoginModal,
+            seeMore,
+            seeLess,
+            handleCheckCart,
+            changeImage,
+            updateCurrentImage,
+            increment,
+            decrement,
+            toggleshowCart,
+            closeCart,
+            closeModal,
+            toggleshowReviews,
+            closeReviews,
+
+        };
+    }
+});
+
 </script>

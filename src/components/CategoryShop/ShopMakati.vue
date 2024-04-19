@@ -207,7 +207,7 @@
 
                                 <div class=" hidden lg:block lg:w-[40%]">
                                     <div class="lg:flex justify-center items-center mb-3">
-                                        <img :src="selectedProduct.value.image" class="w-auto h-24 md:w-[500px] md:h-auto">
+                                        <img :src="selectedProduct.image" class="w-auto h-24 md:w-[500px] md:h-auto">
                                     </div>
 
                                     <div class="lg:flex lg:justify-between grid grid-cols-1 grid-rows-3 gap-4">
@@ -249,15 +249,15 @@
                                 <div class="lg:w-[60%] px-3 mt-3">
                                     <div class="lg:flex lg:flex-col text-black">
                                         <p class="font-bold text-left text-1xl mb-2">
-                                            {{ selectedProduct.value.title }}
+                                            {{ selectedProduct.title }}
                                         </p>
                                     </div>
                                     <div class="text-black mb-5">
                                         <p class="font-bold">{{
-                                            selectedProduct.value.shop }}</p>
+                                            selectedProduct.shop }}</p>
                                         <div class="lg:block hidden  justify-between mb-2">
                                             <p class="w-[100%] ">₱{{
-                                                selectedProduct.value.price }}</p>
+                                                selectedProduct.price }}</p>
                                             <div class="flex justify-end">
                                                 <div class="justify-between hidden lg:block">
                                                     <p class="mr-5">Quantity</p>
@@ -265,7 +265,7 @@
                                                         <button @click="increaseQuantity"
                                                             class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">+</button>
                                                         <span>{{
-                                                            selectedProduct.value.quantity }}</span>
+                                                            selectedProduct.quantity }}</span>
                                                         <button @click="decreaseQuantity"
                                                             class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">-</button>
                                                     </div>
@@ -1114,6 +1114,7 @@ export default defineComponent({
             closeModal,
             toggleshowReviews,
             closeReviews,
+            selectedProduct
 
         };
     }

@@ -327,9 +327,9 @@
                                                 Add to Cart</button>
                                 </div>
                                 <div class="w-[100%] flex justify-end">
-                                    <router-link to="/checkoutshop" class="w-full">
-                                        <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]">
-                                                    Buy Now</button>
+                                    <router-link to="/checkouteat" class="w-full">
+                                        <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]">Buy
+                                            Now</button>
                                     </router-link>
                                 </div>
                             </div>

@@ -52,7 +52,7 @@
             </div>
 
             <div class="mt-2 flex justify-between">
-                <p class="text-xs text-[#606060]">STANDAR DELIVERY COURIER</p>
+                <p class="text-xs text-[#606060]">STANDARD DELIVERY COURIER</p>
                 <p class="text-xs text-[#606060]">11-08-2023 03:50 PM</p>
             </div>
 

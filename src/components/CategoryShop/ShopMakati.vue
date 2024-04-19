@@ -117,7 +117,8 @@
                                 style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 {{ item.title }}
                             </p>
-                            <img class="rounded-md lg:h-[80%]" :src="item.image" alt="" width="100%">
+                            <img class="rounded-md lg:h-[80%]" :key="index" :src="item.image[0]" alt="" width="100%">
+
                             <button @click="toggleshowCart(item)"
                                 class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">
                                 See More</button>
@@ -192,7 +193,7 @@
                 <!-- View Add to cart modal -->
                 <div v-if="showCart" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
                     @click.self="closeModal">
-                    <div class="bg-white lg:h-[760px] h-[640px] w-[900px]  rounded-lg shadow-md p-2 mx-5" @click.stop>
+                    <div class="bg-white lg:h-[760px] h-[640px] w-[900px]  rounded-2xl shadow-md p-2 mx-5" @click.stop>
                         <div class="lg:w-[100%] p-4 rounded-lg">
                             <div class="relative flex justify-end">
                                 <button class=" pr-4 pt-21 ">
@@ -204,39 +205,46 @@
                             </div>
                             <div v-if="selectedProduct" class="lg:flex lg:justify-between w-[100%]">
                                 <!-- Web gallery -->
-
-                                <div class=" hidden lg:block lg:w-[40%]">
+                                <div class="hidden lg:block lg:w-[40%]">
                                     <div class="lg:flex justify-center items-center mb-3">
-                                        <img :src="selectedProduct.image" class="w-auto h-24 md:w-[500px] md:h-auto">
+                                        <img :src="currentImage" class="h-[400px] w-full" />
                                     </div>
+                                    <div class="lg:flex lg:justify-between grid grid-cols-1 grid-rows-2">
+                                        <div class="lg:flex lg:justify-center items-center gap-4">
+                                            <template v-for="(image, index) in bestProducts[0].image" :key="index">
+                                                <img :src="image"
+                                                    :class="{ 'border-black': index === currentIndex || currentImage === image }"
+                                                    class="h-20 w-20 mb-2" @click="updateCurrentImage(image)" />
+                                            </template>
 
-                                    <div class="lg:flex lg:justify-between grid grid-cols-1 grid-rows-3 gap-4">
-                                        <div class="lg:flex lg:justify-between items-center">
-                                            <img src="@/assets/images/CategoryView/ToShop/shop-product2.png"
-                                                class="h-24 md:w-[80px] md:h-auto">
+
+
                                         </div>
-                                        <div class="lg:flex lg:justify-center items-center">
-                                            <img src="@/assets/images/CategoryView/ToShop/shop-product3.png"
-                                                class="h-24 md:w-[80px] md:h-auto">
-                                        </div>
-                                        <div class="lg:flex lg:justify-center items-center">
-                                            <img src="@/assets/images/CategoryView/ToShop/shop-product4.png"
-                                                class="h-24 md:w-[80px] md:h-auto">
-                                        </div>
-                                        <div class="lg:flex lg:justify-center items-center mx-5">
-                                            <img src="@/assets/images/CategoryView/ToShop/button.png"
-                                                class="h-24 md:w-[40px] md:h-auto">
-                                        </div>
+                                        <svg @click="changeImage" class="w-10 h-8 mt-6 cursor-pointer mr-3"
+                                            viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="2" y="2" width="40" height="40" rx="20" stroke="black"
+                                                stroke-width="3" />
+                                            <path
+                                                d="M35.332 22L36.3927 23.0607L37.4534 22L36.3927 20.9393L35.332 22ZM10.332 20.5C9.5036 20.5 8.83203 21.1716 8.83203 22C8.83203 22.8284 9.5036 23.5 10.332 23.5V20.5ZM26.3927 33.0607L36.3927 23.0607L34.2714 20.9393L24.2714 30.9393L26.3927 33.0607ZM36.3927 20.9393L26.3927 10.9393L24.2714 13.0607L34.2714 23.0607L36.3927 20.9393ZM35.332 20.5L10.332 20.5V23.5L35.332 23.5V20.5Z"
+                                                fill="black" />
+                                        </svg>
                                     </div>
                                 </div>
+
+
                                 <!-- Mobile - gallery -->
                                 <div class="lg:hidden grid grid-cols-2 grid-rows-1 gap-4">
                                     <div class="w-[200px] ml-4">
                                         <img :src="currentImage" class="h-52 w-full" />
                                     </div>
                                     <div class="grid-cols-1 ml-16">
-                                        <img v-for="(image, index) in images" :key="index" :src="image"
-                                            class="h-9 w-10 mb-2" @click="updateCurrentImage(index)" />
+                                        <template v-for="(image, index) in bestProducts[0].image" :key="index">
+                                            <img :src="image"
+                                                :class="{ 'border-black': index === currentIndex || currentImage === image }"
+                                                class="h-10 w-10 mb-2" @click="updateCurrentImage(image)" />
+                                        </template>
+
+
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke-width="1.5" stroke="black" class="w-10 h-8 mt-2 cursor-pointer"
                                             @click="changeImage">
@@ -755,9 +763,6 @@ import shopProduct1 from '@/assets/images/CategoryView/ToShop/shop-product1.png'
 import shopProduct2 from '@/assets/images/CategoryView/ToShop/shop-product2.png';
 import shopProduct3 from '@/assets/images/CategoryView/ToShop/shop-product3.png';
 import shopProduct4 from '@/assets/images/CategoryView/ToShop/shop-product4.png';
-import bestProduct1 from '@/assets/images/CategoryView/ToShop/shop-product1.png';
-import bestProduct2 from '@/assets/images/CategoryView/ToShop/shop-product2.png';
-import bestProduct3 from '@/assets/images/CategoryView/ToShop/shop-product3.png';
 import otherProduct4 from '@/assets/images/CategoryView/ToShop/shop-product4.png';
 import otherProduct5 from '@/assets/images/CategoryView/ToShop/shop-product5.png';
 import otherProduct6 from '@/assets/images/CategoryView/ToShop/shop-product6.png';
@@ -849,29 +854,31 @@ export default defineComponent({
             },
         ];
 
-        const bestProducts = [{
-            title: "1 Multi handle Tote bag with Embroided Philippine Kalesa Scenery",
-            image: bestProduct1,
-            price: 399.00,
-            shop: "Makati Shop",
-            quantity: 1
-        },
-        {
-            title: "2 Multi handle Tote bag with Embroided Philippine Kalesa Scenery",
-            image: bestProduct2,
-            price: 399.00,
-            shop: "Makati Shop",
-            quantity: 1
-        },
-        {
-            title: "3 Multi handle Tote bag with Embroided Philippine Kalesa Scenery",
-            image: bestProduct3,
-            price: 399.00,
-            shop: "Makati Shop",
-            quantity: 1
-        },
+        const bestProducts = [
+            {
+                title: "1 Multi handle Tote bag with Embroided Philippine Kalesa Scenery",
+                image: [shopProduct1, shopProduct3, shopProduct4],
+                price: 399.00,
+                shop: "Makati Shop",
+                quantity: 1
+            },
+            {
+                title: "2 Multi handle Tote bag with Embroided Philippine Kalesa Scenery",
+                image: [shopProduct2, shopProduct3, shopProduct4],
+                price: 399.00,
+                shop: "Makati Shop",
+                quantity: 1
+            },
+            {
+                title: "3 Multi handle Tote bag with Embroided Philippine Kalesa Scenery",
+                image: [shopProduct3, shopProduct2, shopProduct4],
+                price: 399.00,
+                shop: "Makati Shop",
+                quantity: 1
+            }
             // Add more products as needed
         ];
+
         const otherProducts = [{
             title: "Beat the Heat Graphic Tee in Blush ",
             image: otherProduct4,
@@ -915,7 +922,6 @@ export default defineComponent({
             quantity: 1
         },
         ];
-        const images = [shopProduct1, shopProduct2, shopProduct3, shopProduct4];
         const categories = ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'];
         const locations = ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'];
 
@@ -928,9 +934,7 @@ export default defineComponent({
             return items.slice(0, 2 + numFeedbackShown.value);
         });
 
-        const currentImage = computed(() => {
-            return images[currentIndex.value];
-        });
+
 
         const showSeeMoreButton = computed(() => {
             return numFeedbackShown.value < items.length - 2;
@@ -980,14 +984,22 @@ export default defineComponent({
             numFeedbackShown.value = 0;
             showSeeLessButton.value = false;
         };
+        // Function to change the current image index
         const changeImage = () => {
-            currentIndex.value = (currentIndex.value + 1) % images.length;
+            currentIndex.value = (currentIndex.value + 1) % bestProducts[0].image.length;
         };
 
-        const updateCurrentImage = (index) => {
-            currentIndex.value = index;
+        // Function to update the current image index
+        const updateCurrentImage = (image) => {
+            currentIndex.value = bestProducts[0].image.findIndex(img => img === image);
+            currentImage.value = image;
         };
 
+
+        // Define computed property to get the current image based on the currentIndex
+        const currentImage = computed(() => {
+            return bestProducts[0].image[currentIndex.value]; // Assuming the first product's image is used for the carousel
+        });
         const increment = () => {
             count.value++;
         };
@@ -1091,7 +1103,6 @@ export default defineComponent({
             showCartModal,
             showReviews,
             items,
-            images,
             currentIndex,
             count,
             numFeedbackShown,

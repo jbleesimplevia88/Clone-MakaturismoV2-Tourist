@@ -58,22 +58,28 @@
                             <!-- Booking Confirmation Modal -->
                             <div v-if="showBookingConfirmationModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
                                 <div class="bg-white p-4 rounded-lg">
-                                    <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center justify-between mb-1">
                                         <h2 class="text-xl font-semibold">Booking Confirmed</h2>
+                                        
+                                        
                                         <button @click="closeBookingConfirmationModal">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.9" stroke="currentColor" class="w-6 h-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
                                             </svg>
                                         </button>
                                     </div>
-                                    <p>Thank you for booking with iBayad. .</p>
+                                    <p>Thank you for booking with iBayad. </p>
+                                    <br><br>
+
+                                    <p>Your booking reference is: </p>
+                                    <p>An email sent to: <span class="font-bold">Juandelacruz@gmail.com</span></p>
                                 </div>
                             </div>
 
                             <!-- Order Complete Modal -->
                             <div v-if="showOrderCompleteModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
                                 <div class="bg-white p-4 rounded-lg">
-                                    <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center justify-between mb-1">
                                         <h2 class="text-xl font-semibold">Order Completed</h2>
                                         <button @click="closeOrderCompleteModal">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.9" stroke="currentColor" class="w-6 h-6">
@@ -81,14 +87,18 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    <p>Thank you for booking with iBayad. .</p>
+                                    <p>Thank you for booking with iBayad. </p>
+                                    <br><br>
+
+                                    <p>Your booking reference is: </p>
+                                    <p>An email sent to: <span class="font-bold">Juandelacruz@gmail.com</span></p>
                                 </div>
                             </div>
 
                             <!-- Booking Complete Modal -->
                             <div v-if="showBookingCompleteModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
                                 <div class="bg-white p-4 rounded-lg">
-                                    <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center justify-between mb-1">
                                         <h2 class="text-xl font-semibold">Booking Complete Modal</h2>
                                         <button @click="closeBookingCompleteModal">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.9" stroke="currentColor" class="w-6 h-6">
@@ -96,7 +106,11 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    <p>Thank you for booking with iBayad. .</p>
+                                    <p>Thank you for booking with iBayad. </p>
+                                    <br><br>
+
+                                    <p>Your booking reference is: </p>
+                                    <p>An email sent to: <span class="font-bold">Juandelacruz@gmail.com</span></p>
                                 </div>
                             </div>
 
@@ -115,7 +129,7 @@
                         <p class="pb-3 text-xl font-bold">Account</p>
                         <div class="pb-2 text-center">
                             <RouterLink to="/profile">
-                                <button class="flex items-center w-full p-3 bg-white rounded-xl" @click="toggleDropdown(null)">
+                                <button class=" hover:bg-blue-600 flex items-center w-full p-3 bg-white rounded-xl" @click="toggleDropdown(null)">
                                     <span class="ml-[0.2rem]">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7">
                                             <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
@@ -128,7 +142,7 @@
                         <div class="pb-2 text-center">
 
                             <RouterLink to="/transactions">
-                                <button class="flex items-center w-full p-3 bg-white rounded-xl" @click="toggleDropdown(null)">
+                                <button class=" hover:bg-blue-600 flex items-center w-full p-3 bg-white rounded-xl" @click="toggleDropdown(null)">
                                     <span class="ml-2">
                                         <img src="@/assets/images/Header/Transaction Icon.png" alt="transaction" class="w-4 h-5">
                                     </span>
@@ -140,7 +154,7 @@
                         <div class="pb-2 text-center">
 
                             <RouterLink to="/cart">
-                                <button class="flex items-center w-full p-3 bg-white rounded-xl" @click="toggleDropdown(null)">
+                                <button class=" hover:bg-blue-600 flex items-center w-full p-3 bg-white rounded-xl" @click="toggleDropdown(null)">
                                     <span class="ml-1">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                                             <path d="M2.25 2.25a.75.75 0 0 0 0 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 0 0-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 0 0 0-1.5H5.378A2.25 2.25 0 0 1 7.5 15h11.218a.75.75 0 0 0 .674-.421 60.358 60.358 0 0 0 2.96-7.228.75.75 0 0 0-.525-.965A60.864 60.864 0 0 0 5.68 4.509l-.232-.867A1.875 1.875 0 0 0 3.636 2.25H2.25ZM3.75 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM16.5 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" />

@@ -34,7 +34,7 @@
         <div v-if="showBookingConfirmationModal"
             class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
             <div class="bg-white p-4 rounded-lg">
-                <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center justify-between mb-1">
                     <h2 class="text-xl font-semibold">Booking Confirmed</h2>
                     <button @click="closeBookingConfirmationModal">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.9"
@@ -43,7 +43,13 @@
                         </svg>
                     </button>
                 </div>
-                <p>Thank you for booking with iBayad. .</p>
+                <p>Thank you for booking with iBayad. </p>
+                                    <br>
+
+                                    <p>Your booking reference is: <span class="font-bold"></span></p>
+
+                                    <p>An email sent to: <span class="font-bold">Juandelacruz@gmail.com</span></p>
+
             </div>
         </div>
 
@@ -52,7 +58,7 @@
         <div v-if="showOrderCompleteModal"
             class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
             <div class="bg-white p-4 rounded-lg">
-                <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center justify-between mb-1">
                     <h2 class="text-xl font-semibold">Order Completed</h2>
                     <button @click="closeOrderCompleteModal">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.9"
@@ -61,7 +67,11 @@
                         </svg>
                     </button>
                 </div>
-                <p>Thank you for booking with iBayad. .</p>
+                <p>Thank you for booking with iBayad. </p>
+                                    <br><br>
+
+                                    <p>Your booking reference is: </p>
+                                    <p>An email sent to: <span class="font-bold">Juandelacruz@gmail.com</span></p>
             </div>
         </div>
 
@@ -72,7 +82,7 @@
         <div v-if="showBookingCompleteModal"
             class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
             <div class="bg-white p-4 rounded-lg">
-                <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center justify-between mb-1">
                     <h2 class="text-xl font-semibold">Booking Complete Modal</h2>
                     <button @click="closeBookingCompleteModal">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.9"
@@ -81,7 +91,11 @@
                         </svg>
                     </button>
                 </div>
-                <p>Thank you for booking with iBayad. .</p>
+                <p>Thank you for booking with iBayad. </p>
+                                    <br><br>
+
+                                    <p>Your booking reference is: </p>
+                                    <p>An email sent to: <span class="font-bold">Juandelacruz@gmail.com</span></p>
             </div>
         </div>
 

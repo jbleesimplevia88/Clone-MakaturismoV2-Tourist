@@ -9,8 +9,7 @@
             </div>
             <img class="w-full h-[200px] md:h-[700px]" src="@/assets/images/CategoryView/ToStay/banner.jpeg" alt="" />
             <div class="flex items-center justify-center absolute top-5 md:top-20 z-[1] bg-white pl-3 lg:pl-5 rounded-r-xl">
-                <p
-                    class="text-[#102E61] text-sm sm:text-4xl font-bold p-3 pr-4 md:p-5 md:pr-7 ">
+                <p class="text-[#102E61] text-sm sm:text-4xl font-bold p-3 pr-4 md:p-5 md:pr-7 ">
                     WHERE TO STAY
                 </p>
             </div>
@@ -32,11 +31,14 @@
             <!-- search bar -->
             <div class="relative my-5">
                 <div class="absolute inset-y-0 start-0 flex items-center ps-3">
-                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                     </svg>
                 </div>
-                <input type="search" id="default-search" class="w-full p-4 ps-10 text-sm text-gray-900" placeholder="Search Accomodations"/>
+                <input type="search" id="default-search" class="w-full p-4 ps-10 text-sm text-gray-900"
+                    placeholder="Search Accomodations" />
             </div>
 
             <div class="lg:flex items-center justify-between lg:grid-cols-3 lg:space-x-4">
@@ -44,13 +46,18 @@
                 <div class="lg:flex items-center w-full mb-3">
                     <div class="w-full flex flex-col items-start justify-center">
                         <div class="relative w-full">
-                            <select id="barangay" v-model="barangay" class="w-full py-3 px-3 pr-8 appearance-none cursor-pointer border border-gray-200 rounded-sm">
+                            <select id="barangay" v-model="barangay"
+                                class="w-full py-3 px-3 pr-8 appearance-none cursor-pointer border border-gray-200 rounded-sm">
                                 <option value="" disabled selected hidden>Select barangay</option>
-                                <option v-for="(barangay, index) in locations " :key="index" :value="barangay" >{{ barangay }}</option>
+                                <option v-for="(barangay, index) in locations " :key="index" :value="barangay">{{ barangay
+                                }}</option>
                             </select>
                             <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
-                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 12a1 1 0 0 1-.707-.293l-4-4a1 1 0 1 1 1.414-1.414L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4A1 1 0 0 1 10 12z" clip-rule="evenodd" />
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M10 12a1 1 0 0 1-.707-.293l-4-4a1 1 0 1 1 1.414-1.414L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4A1 1 0 0 1 10 12z"
+                                        clip-rule="evenodd" />
                                 </svg>
                             </div>
                         </div>
@@ -59,20 +66,24 @@
 
                 <!-- Start Date Datepicker with Placeholder -->
                 <div class="lg:flex items-center w-full">
-                <vue-date-picker v-model="selecStartDate" class="w-full h-[3.8rem]" :format="dateFormat" :placeholder="startPlaceholder"></vue-date-picker>
+                    <vue-date-picker v-model="selecStartDate" class="w-full h-[3.8rem]" :format="dateFormat"
+                        :placeholder="startPlaceholder"></vue-date-picker>
                 </div>
 
                 <!-- End Date Datepicker with Placeholder -->
                 <div class="lg:flex items-center w-full">
-                <vue-date-picker v-model="selecEndDate" class="w-full h-[3.8rem]" :format="dateFormat" :placeholder="endPlaceholder" :min-date="minEndDate" :disabled="!selecStartDate"></vue-date-picker>
+                    <vue-date-picker v-model="selecEndDate" class="w-full h-[3.8rem]" :format="dateFormat"
+                        :placeholder="endPlaceholder" :min-date="minEndDate" :disabled="!selecStartDate"></vue-date-picker>
                 </div>
-                
+
                 <!-- guests -->
                 <div class="lg:flex  w-full mb-3 py-3 px-3 bg-white dropdown-container border border-gray-200 rounded-sm">
                     <div class="dropdown-toggle" @click="toggleModal">Select Options </div>
                     <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 12a1 1 0 0 1-.707-.293l-4-4a1 1 0 1 1 1.414-1.414L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4A1 1 0 0 1 10 12z" clip-rule="evenodd" />
+                            <path fill-rule="evenodd"
+                                d="M10 12a1 1 0 0 1-.707-.293l-4-4a1 1 0 1 1 1.414-1.414L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4A1 1 0 0 1 10 12z"
+                                clip-rule="evenodd" />
                         </svg>
                     </div>
                     <div v-if="showModal" class="modal w-full rounded-xl z-10">
@@ -86,7 +97,7 @@
                                         <button class="bg-white w-full" @click="increaseQuantity(category)">+</button>
                                     </div>
                                 </div>
-                                <div class="category-description">{{ category.description }}</div> 
+                                <div class="category-description">{{ category.description }}</div>
                             </div>
                         </div>
                     </div>
@@ -94,7 +105,8 @@
             </div>
 
             <div class="flex items-center justify-center">
-                <button type="submit" @click="search" class="lg:w-[8rem] w-full lg:px-4 py-2 text-white disabled:bg-blue-400  bg-blue-600 rounded-md">SEARCH</button>
+                <button type="submit" @click="search"
+                    class="lg:w-[8rem] w-full lg:px-4 py-2 text-white disabled:bg-blue-400  bg-blue-600 rounded-md">SEARCH</button>
             </div>
 
 
@@ -103,7 +115,7 @@
 
 
 
-     
+
         <div>
             <div class="mt-8 pb-10">
                 <!-- Filter dropdown -->
@@ -265,37 +277,32 @@
             <!-- Pagination controls -->
             <div class="grid grid-cols-2">
                 <div class="flex justify-start items-center">
-                    <p class="text-center text-white">Showing <span class="text-[#29BFD6]">{{ paginationStartIndex }} -
-                            {{
-                                paginationEndIndex }}</span> results from <span class="text-[#29BFD6]">{{ totalRecords
-    }}</span> records
+                    <p class="text-center text-white">
+                        Showing
+                        <span class="text-[#29BFD6]">{{ paginationStartIndex }} - {{ paginationEndIndex }}</span>
+                        results from
+                        <span class="text-[#29BFD6]">{{ totalRecords }}</span> records
                     </p>
                 </div>
                 <div class="flex justify-end items-center mt-4">
-                    <button @click="prevPage" :disabled="currentPage === 0" class="text-white"><svg
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    <button @click="prevPage" :disabled="currentPage === 0" class="text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                         </svg>
                     </button>
-                    <button v-if="currentPage != pageCount - pageCount" @click="goToPage(currentPage - 1)"
-                        class="px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300">{{
-                            currentPage }}</button>
-                    <button
-                        class="px-3 py-1 border border-white m-1 rounded-md transition-colors duration-300 bg-white text-[#132540]">{{
-                            currentPage + 1 }}</button>
-                    <button v-if="currentPage != pageCount - 1" @click="goToPage(currentPage + 1)"
-                        class="px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300">{{
-                            currentPage + 2 }}</button>
-                    <button @click="nextPage" :disabled="currentPage === pageCount - 1" class="text-white"><svg
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    <button v-for="pageNumber in pageCount" :key="pageNumber" @click="goToPage(pageNumber - 1)"
+                        :class="{ 'px-3 py-1 border border-white m-1 rounded-md transition-colors duration-300 bg-white text-[#132540]': currentPage + 1 === pageNumber, 'text-white': currentPage + 1 !== pageNumber }">
+                        {{ pageNumber }}
+                    </button>
+                    <button @click="nextPage" :disabled="currentPage === pageCount - 1" class="text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                         </svg>
                     </button>
                 </div>
             </div>
-
         </div>
     </div>
 </template>
@@ -338,51 +345,39 @@
 
 /*  */
 .dropdown-container {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 
 .dropdown-toggle {
-  cursor: pointer;
-  
+    cursor: pointer;
+
 }
 
 .modal {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #f5f5f5;
-  /* border: 1px solid #ccc; */
-  /* border-radius: 5px; */
-  /* padding: 10px; */
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f5f5f5;
 
-.modal-content {
-  /* display: flex; */
-  /* flex-direction: column; */
-}
-
-.modal-category {
-  /* display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 5px; */
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
 .quantity-button {
-  cursor: pointer;
+    cursor: pointer;
 }
+
 .selected {
-  border-color: black;
-  border-width: 1.8px;
+    border-color: black;
+    border-width: 1.8px;
 }
+
 .category-description {
-  color: #999; /* Add color or other styles for description */
-  font-size: 12px; /* Adjust font size as needed */
+    color: #999;
+    /* Add color or other styles for description */
+    font-size: 12px;
+    /* Adjust font size as needed */
 }
-
-
 </style>
 
 
@@ -411,39 +406,39 @@ export default {
             endPlaceholder: 'Select End Date',
             dateFormat: 'yyyy-MM-dd',
             barangaysInMakati: [
-            "Bangkal",
-            "Bel-Air",
-            "Carmona",
-            "Cembo",
-            "Comembo",
-            "Dasmarinas",
-            "East Rembo",
-            "Forbes Park",
-            "Guadalupe Nuevo",
-            "Guadalupe Viejo",
-            "Kasilawan",
-            "La Paz",
-            "Magallanes",
-            "Olympia",
-            "Palanan",
-            "Pembo",
-            "Pinagkaisahan",
-            "Pio del Pilar",
-            "Pitogo",
-            "Poblacion",
-            "Post Proper Northside",
-            "Post Proper Southside",
-            "Rizal",
-            "San Antonio",
-            "San Isidro",
-            "San Lorenzo",
-            "Santa Cruz",
-            "Singkamas",
-            "South Cembo",
-            "Tejeros",
-            "Urdaneta",
-            "Valenzuela",
-            "West Rembo"
+                "Bangkal",
+                "Bel-Air",
+                "Carmona",
+                "Cembo",
+                "Comembo",
+                "Dasmarinas",
+                "East Rembo",
+                "Forbes Park",
+                "Guadalupe Nuevo",
+                "Guadalupe Viejo",
+                "Kasilawan",
+                "La Paz",
+                "Magallanes",
+                "Olympia",
+                "Palanan",
+                "Pembo",
+                "Pinagkaisahan",
+                "Pio del Pilar",
+                "Pitogo",
+                "Poblacion",
+                "Post Proper Northside",
+                "Post Proper Southside",
+                "Rizal",
+                "San Antonio",
+                "San Isidro",
+                "San Lorenzo",
+                "Santa Cruz",
+                "Singkamas",
+                "South Cembo",
+                "Tejeros",
+                "Urdaneta",
+                "Valenzuela",
+                "West Rembo"
             ],
             showModal: false,
             guests: [
@@ -518,6 +513,14 @@ export default {
                     link: "",
                     mapLocation: ""
                 },
+                {
+                    name: 'Howzat Inn',
+                    description: "Discover a budget-friendly and cozy stay at Howzat Inn. This charming inn provides comfortable accommodations without breaking the bank. With its strategic location and warm hospitality, Howzat Inn ensures a memorable and enjoyable stay in Makati.",
+                    category: 'Accommodation/Inn',
+                    image: item8,
+                    link: "",
+                    mapLocation: ""
+                },
 
             ],
             currentPage: 0,
@@ -529,25 +532,57 @@ export default {
     },
     computed: {
         minEndDate() {
-        // Return the selected start date plus one day
-        return this.selecStartDate ? new Date(this.selecStartDate.getTime() + 24 * 60 * 60 * 1000) : null;
+            // Return the selected start date plus one day
+            return this.selecStartDate ? new Date(this.selecStartDate.getTime() + 24 * 60 * 60 * 1000) : null;
         },
+        // Replace the paginatedItems computed property
         paginatedItems() {
             const startIndex = this.currentPage * this.pageSize;
             return this.items.slice(startIndex, startIndex + this.pageSize);
         },
+        // Update the filteredItems computed property to only filter items
+        filteredItems() {
+            let filteredItems = this.items.slice(); // Create a shallow copy of items
+
+            // Apply filters only if the Apply button is clicked
+            if (this.applyButtonClicked) {
+                // Filter by category
+                if (this.selectedCategory && this.selectedCategory.length > 0 && this.selectedCategory[0] !== 'All') {
+                    filteredItems = filteredItems.filter(item => {
+                        if (Array.isArray(item.category)) {
+                            return this.selectedCategory.some(cat => item.category.includes(cat));
+                        } else {
+                            return this.selectedCategory.includes(item.category);
+                        }
+                    });
+                }
+
+                // Filter by location
+                if (this.selectedLocation && this.selectedLocation.length > 0 && this.selectedLocation[0] !== 'All') {
+                    filteredItems = filteredItems.filter(item => {
+                        if (Array.isArray(item.location)) {
+                            return this.selectedLocation.some(loc => item.location.includes(loc));
+                        } else {
+                            return this.selectedLocation.includes(item.location);
+                        }
+                    });
+                }
+            }
+
+            return filteredItems;
+        },
         pageCount() {
-            return Math.ceil(this.items.length / this.pageSize);
+            return Math.ceil(this.filteredItems.length / this.pageSize);
         },
         paginationStartIndex() {
             return this.currentPage * this.pageSize + 1;
         },
         paginationEndIndex() {
             const end = (this.currentPage + 1) * this.pageSize;
-            return end > this.totalRecords ? this.totalRecords : end;
+            return Math.min(end, this.totalRecords);
         },
         totalRecords() {
-            return this.items.length;
+            return this.filteredItems.length;
         },
     },
     methods: {
@@ -597,7 +632,7 @@ export default {
             this.showModal = !this.showModal;
         },
         increaseQuantity(category) {
-        category.quantity++;
+            category.quantity++;
         },
         decreaseQuantity(category) {
             if (category.quantity > 0) {

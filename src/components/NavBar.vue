@@ -18,7 +18,7 @@
                 </span>
             </RouterLink>
 
-            <adiv class=" hidden lg:block relative  " ref="searchContainer">
+            <div class=" hidden lg:block relative  " ref="searchContainer">
                 <input v-if="showInput" type="search" class=" relative m-0 block flex-auto rounded border border-solid border-neutral-200 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none" placeholder="Search" aria-label="Search" id="exampleFormControlInput2" aria-describedby="button-addon2" ref="searchInput" />
                 <span @click="toggleInputVisibility" class="flex items-center whitespace-nowrap px-3 py-[0.25rem] text-surface [&>svg]:h-5 [&>svg]:w-5" id="button-addon2">
 
@@ -26,7 +26,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                     </svg>
                 </span>
-            </adiv>
+            </div>
             <!-- Calendar -->
             <RouterLink to="/calendar" class="hidden text-white md:inline-block"><img src="@/assets/images/Header/calendar.png" alt="logo" class="w-auto h-6 mx-2"></RouterLink>
 
@@ -305,27 +305,34 @@
                     <p class="text-xs lg:text-sm">Please log in to your account.</p>
                 </div>
 
-                <form @submit.prevent="login" class=" lg:w-[40%] h-fit md:w-[40%] w-full mr-8">
-                    <!-- username -->
-                    <div class="relative mb-4 w-full md:w-365">
-                        <label for="username" class="block text-gray-700">Enter Username</label>
-                        <div class="relative">
-                            <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-5 my-3" style="width: 15px;" alt="Username Icon" />
-                            <input type="text" id="username" v-model="username" @input="validateUsername" class="w-full h-8 py-5 pl-10 border border-black rounded-xl" placeholder="Username">
-                            <span v-if="usernameError" class="text-red-500 text-xs">{{ usernameError }}</span>
-                        </div>
-                    </div>
-                    <!-- login password -->
-                    <div class="relative mb-4">
-                        <label for="lpassword" class="w-full text-gray-700">Enter Password</label>
-                        <div class="relative w-full">
-                            <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-5 my-3" style="width: 15px;" alt="Username Icon" />
-                            <img v-if="showPassword" src="@/assets/images/Modal/view.png" class="absolute inset-y-0 right-0 mx-3 my-3" style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="togglePasswordVisibility">
-                            <img v-else src="@/assets/images/Modal/hidden.png" class="absolute inset-y-0 right-0 mx-3 my-3" style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="togglePasswordVisibility">
-                            <input id="lpassword" v-model="lpassword" @input="validateLPassword" :type="showPassword ? 'text' : 'password'" class="w-full h-8 py-5 pl-10 border border-black rounded-xl" placeholder="Password">
-                            <span v-if="lpasswordError" class="text-red-500 text-xs">{{ lpasswordError }}</span>
-                        </div>
-                    </div>
+          <form @submit.prevent="login" class=" lg:w-[40%] h-fit md:w-[40%] w-full mr-8">
+            <!-- username -->
+            <div class="relative mb-4 w-full md:w-365">
+              <label for="username" class="block text-gray-700">Enter Username</label>
+              <div class="relative">
+                <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-5 my-3"
+                  style="width: 15px;" alt="Username Icon" />
+                <input type="text" id="username" v-model="username" @input="validateUsername"
+                  class="w-full h-8 py-5 pl-10 border border-black rounded-xl" placeholder="Username">
+                <span v-if="usernameError" class="text-red-500 text-xs">{{ usernameError }}</span>
+              </div>
+            </div>
+            <!-- login password -->
+            <div class="relative mb-4">
+              <label for="lpassword" class="w-full text-gray-700">Enter Password</label>
+              <div class="relative w-full">
+                <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-5 my-3"
+                  style="width: 15px;" alt="Username Icon" />
+                <img v-if="showPassword" src="@/assets/images/Modal/view.png" class="absolute inset-y-0 right-0 mx-3 my-3"
+                  style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="togglePasswordVisibility">
+                <img v-else src="@/assets/images/Modal/hidden.png" class="absolute inset-y-0 right-0 mx-3 my-3"
+                  style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="togglePasswordVisibility">
+                <input id="lpassword" v-model="lpassword" @input="validateLPassword"
+                  :type="showPassword ? 'text' : 'password'" class="w-full h-8 py-5 pl-10 border border-black rounded-xl"
+                  placeholder="Password">
+                <span v-if="lpasswordError" class="text-red-500 text-xs">{{ lpasswordError }}</span>
+              </div>
+            </div>
 
                     <div class="hidden lg:block lg:flex items-center justify-between mb-4">
                         <p class="text-xs">Don't have an account? <button @click="openPrivacyModal" class="text-xs font-bold text-blue-600">Sign Up</button></p>
@@ -357,10 +364,10 @@
                 </button>
             </div>
 
-            <div class="flex justify-center items-center">
-                <img src="@/assets/images/Header/makati_logo.png" alt="logo" class="w-auto h-8 mr-3 md:block md:w-auto md:h-10">
-                <img src="@/assets/images/Header/makaturismo.png" alt="banner" class="w-auto h-8 md:w-auto md:h-8">
-            </div>
+        <div class="flex justify-center items-center">
+          <img src="@/assets/images/Header/makati_logo.png" alt="logo" class="w-auto h-8 mr-3 md:block md:w-auto md:h-10">
+          <img src="@/assets/images/Header/makaturismo.png" alt="banner" class="w-auto h-8 md:w-auto md:h-8">
+        </div>
 
             <div class="flex items-center">
                 <button @click="openLoginModal" class="text-blue-600">
@@ -465,109 +472,136 @@
                 </div>
             </div>
 
-            <!-- Fill out the form starts here -->
-            <div class="relative z-10 flex flex-col items-start justify-center lg:h-full">
-                <form @submit.prevent="signup" @input="validateForm" class="lg:w-[62%] w-fit lg:mx-[5rem] mb-8 ml-8 text-sm lg:h-full h-[55vh] font-bold hidden-scrollbar" style="overflow-y: auto;">
-                    <div class="w-full grid grid-cols-1 lg:grid-cols-2">
-                        <!-- Firstname -->
-                        <div class="lg:flex items-center mb-3">
-                            <label for="fname" class="w-[9rem] block mb-2 ">First Name: <span class="text-red-500 text-md">*</span></label>
-                            <div class="w-full flex flex-col items-start justify-center">
-                                <input id="fname" type="text" v-model="fname" placeholder="Enter First Name" class="border border-gray-500 rounded-xl w-full py-3 px-3" @input="validateFirstname">
-                                <span v-if="fnameError" class="text-red-500 text-xs">{{ fnameError }}</span>
-                            </div>
-                        </div>
-                        <!-- Middlename -->
-                        <div class="lg:flex items-center mb-3">
-                            <label for="mname" class="w-[9rem] lg:ml-3 lg:mr-3">Middle Initial:</label>
-                            <input id="mname" type="text" v-model="mname" placeholder="Enter Middle Initia" class="border border-gray-500 rounded-xl w-full py-3 px-3">
-                        </div>
+        <!-- Fill out the form starts here -->
+        <div class="relative z-10 flex flex-col items-start justify-center lg:h-full">
+          <form @submit.prevent="signup" @input="validateForm"
+            class="lg:w-[62%] w-fit lg:mx-[5rem] mb-8 ml-8 text-sm lg:h-full h-[55vh] font-bold hidden-scrollbar"
+            style="overflow-y: auto;">
+            <div class="w-full grid grid-cols-1 lg:grid-cols-2">
+              <!-- Firstname -->
+              <div class="lg:flex items-center mb-3">
+                <label for="fname" class="w-[9rem] block mb-2 ">First Name: <span
+                    class="text-red-500 text-md">*</span></label>
+                <div class="w-full flex flex-col items-start justify-center">
+                  <input id="fname" type="text" v-model="fname" placeholder="Enter First Name"
+                    class="border border-gray-500 rounded-xl w-full py-3 px-3" @input="validateFirstname">
+                  <span v-if="fnameError" class="text-red-500 text-xs">{{ fnameError }}</span>
+                </div>
+              </div>
+              <!-- Middlename -->
+              <div class="lg:inline-block lg:flex items-center mb-3">
+                <label for="mname" class="w-[9rem] lg:ml-3 lg:mr-3">Middle Initial:</label>
+                <input id="mname" type="text" v-model="mname" placeholder="Enter Middle Initia"
+                  class="border border-gray-500 rounded-xl w-full py-3 px-3">
+              </div>
+            </div>
+            <!-- Lastname -->
+            <div class="lg:flex items-center mb-3 ">
+              <label for="lastname" class="w-[7.4rem] block">Last Name: <span
+                  class="text-red-500 text-md">*</span></label>
+              <div class="w-full flex flex-col items-start justify-center">
+                <input id="lastname" type="text" v-model="lastname" placeholder="Enter Last Name"
+                  class="border border-gray-500 rounded-xl w-full py-3 px-3" @input="validateLastname">
+                <span v-if="lastnameError" class="text-red-500 text-xs">{{ lastnameError }}</span>
+              </div>
+            </div>
+            <div class="w-full grid grid-cols-1 lg:grid-cols-2 ">
+              <!-- E-mail Address -->
+              <div class="lg:flex items-center mb-3">
+                <label for="email" class="w-[9rem] block mb-2">Email Address: <span
+                    class="text-red-500 text-md">*</span></label>
+                <div class="w-full flex flex-col items-start justify-center">
+                  <input id="email" type="text" v-model="email" placeholder="Enter Email Address"
+                    class="border border-gray-500 rounded-xl w-full py-3 px-3" @input="validateEmail">
+                  <span v-if="emailError" class="text-red-500 text-xs">{{ emailError }}</span>
+                </div>
+              </div>
+              <!-- Phone Number -->
+              <div class="lg:flex items-center mb-3">
+                <label for="pnum" class="w-[7.9rem] mb-2 lg:ml-3 ">Phone No.: <span
+                    class="text-red-500 text-md">*</span></label>
+                <div class="flex flex-col items-start justify-between">
+                  <div class="flex ">
+                    <!-- Text box for dialing code -->
+                    <input type="text" v-model="dialingCode" readonly
+                      class="border border-gray-500 rounded-l-xl w-[3.5rem] py-3 px-3" value="+63">
+                    <input id="pnum" type="tel" v-model="pnum" placeholder="Enter Phone Number"
+                      class="border border-gray-500 rounded-r-xl w-full py-3 px-3" maxlength="10"
+                      @input="validatePhoneNumber">
+                  </div>
+                  <span v-if="pnumError" class="text-red-500 text-xs">{{ pnumError }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="w-full grid lg:grid-cols-2 gap-2">
+              <!-- Nationality -->
+              <div class="lg:flex items-center mb-3">
+                <label for="citizenship" class="w-[9rem] block mb-2">Nationality: <span
+                    class="text-red-500 text-md">*</span></label>
+                <div class="w-full flex flex-col items-start justify-center">
+                  <div class="relative w-full">
+                    <select id="nationality" v-model="nationality"
+                      class="border border-gray-500 rounded-xl w-full py-3 px-3 appearance-none cursor-pointer">
+                      <option v-for="(nation, index) in nationalityOptions" :key="index" :value="nation">{{ nation }}
+                      </option>
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
+                      <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                          d="M10 12a1 1 0 0 1-.707-.293l-4-4a1 1 0 1 1 1.414-1.414L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4A1 1 0 0 1 10 12z"
+                          clip-rule="evenodd" />
+                      </svg>
                     </div>
-                    <!-- Lastname -->
-                    <div class="lg:flex items-center mb-3 ">
-                        <label for="lastname" class="w-[7.4rem] block">Last Name: <span class="text-red-500 text-md">*</span></label>
-                        <div class="w-full flex flex-col items-start justify-center">
-                            <input id="lastname" type="text" v-model="lastname" placeholder="Enter Last Name" class="border border-gray-500 rounded-xl w-full py-3 px-3" @input="validateLastname">
-                            <span v-if="lastnameError" class="text-red-500 text-xs">{{ lastnameError }}</span>
-                        </div>
+                  </div>
+                  <span v-if="nationalityError" class="text-red-500 text-xs">{{ nationalityError }}</span>
+                </div>
+              </div>
+              <!-- Gender -->
+              <div class="lg:flex items-center mb-3">
+                <label for="gender" class="w-[9.6rem] mb-2 lg:ml-2">Gender: <span
+                    class="text-red-500 text-md">*</span></label>
+                <div class="w-full flex flex-col items-start justify-center">
+                  <div class="relative w-full">
+                    <select id="gender" v-model="gender"
+                      class="border border-gray-500 rounded-xl w-full py-3 px-3 pr-8 appearance-none cursor-pointer"
+                      @change="validateGender">
+                      <option value="" disabled selected hidden>Choose gender</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="prefer_not_to_say">Prefer not to say</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
+                      <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                          d="M10 12a1 1 0 0 1-.707-.293l-4-4a1 1 0 1 1 1.414-1.414L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4A1 1 0 0 1 10 12z"
+                          clip-rule="evenodd" />
+                      </svg>
                     </div>
-                    <div class="w-full grid grid-cols-1 lg:grid-cols-2 ">
-                        <!-- E-mail Address -->
-                        <div class="lg:flex items-center mb-3">
-                            <label for="email" class="w-[9rem] block mb-2">Email Address: <span class="text-red-500 text-md">*</span></label>
-                            <div class="w-full flex flex-col items-start justify-center">
-                                <input id="email" type="text" v-model="email" placeholder="Enter Email Address" class="border border-gray-500 rounded-xl w-full py-3 px-3" @input="validateEmail">
-                                <span v-if="emailError" class="text-red-500 text-xs">{{ emailError }}</span>
-                            </div>
-                        </div>
-                        <!-- Phone Number -->
-                        <div class="lg:flex items-center mb-3">
-                            <label for="pnum" class="w-[7.9rem] mb-2 lg:ml-3 ">Phone No.: <span class="text-red-500 text-md">*</span></label>
-                            <div class="flex flex-col items-start justify-between">
-                                <div class="flex ">
-                                    <!-- Text box for dialing code -->
-                                    <input type="text" v-model="dialingCode" readonly class="border border-gray-500 rounded-l-xl w-[3.5rem] py-3 px-3" value="+63">
-                                    <input id="pnum" type="tel" v-model="pnum" placeholder="Enter Phone Number" class="border border-gray-500 rounded-r-xl w-full py-3 px-3" maxlength="10" @input="validatePhoneNumber">
-                                </div>
-                                <span v-if="pnumError" class="text-red-500 text-xs">{{ pnumError }}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-full grid lg:grid-cols-2 gap-2">
-                        <!-- Nationality -->
-                        <div class="lg:flex items-center mb-3">
-                            <label for="citizenship" class="w-[9rem] block mb-2">Nationality: <span class="text-red-500 text-md">*</span></label>
-                            <div class="w-full flex flex-col items-start justify-center">
-                                <div class="relative w-full">
-                                    <select id="nationality" v-model="nationality" class="border border-gray-500 rounded-xl w-full py-3 px-3 appearance-none cursor-pointer">
-                                        <option v-for="(nation, index) in nationalityOptions" :key="index" :value="nation">{{ nation }}
-                                        </option>
-                                    </select>
-                                    <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
-                                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M10 12a1 1 0 0 1-.707-.293l-4-4a1 1 0 1 1 1.414-1.414L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4A1 1 0 0 1 10 12z" clip-rule="evenodd" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <span v-if="nationalityError" class="text-red-500 text-xs">{{ nationalityError }}</span>
-                            </div>
-                        </div>
-                        <!-- Gender -->
-                        <div class="lg:flex items-center mb-3">
-                            <label for="gender" class="w-[9.6rem] mb-2 lg:ml-2">Gender: <span class="text-red-500 text-md">*</span></label>
-                            <div class="w-full flex flex-col items-start justify-center">
-                                <div class="relative w-full">
-                                    <select id="gender" v-model="gender" class="border border-gray-500 rounded-xl w-full py-3 px-3 pr-8 appearance-none cursor-pointer" @change="validateGender">
-                                        <option value="" disabled selected hidden>Choose gender</option>
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                        <option value="prefer_not_to_say">Prefer not to say</option>
-                                    </select>
-                                    <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
-                                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M10 12a1 1 0 0 1-.707-.293l-4-4a1 1 0 1 1 1.414-1.414L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4A1 1 0 0 1 10 12z" clip-rule="evenodd" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <span v-if="genderError" class="text-red-500 text-xs">{{ genderError }}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Password -->
-                    <div class="lg:flex items-center mb-3">
-                        <label for="password" class="w-[7.4rem] block ">Password: <span class="text-red-500 text-md">*</span></label>
-                        <div class="w-full flex flex-col items-start justify-center">
-                            <div class="relative w-full">
-                                <img v-if="showPassword" src="@/assets/images/Modal/view.png" class="absolute right-3 mx-3 my-4" style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="togglePasswordVisibility">
-                                <img v-else src="@/assets/images/Modal/hidden.png" class="absolute  right-3 mx-3 my-4" style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="togglePasswordVisibility">
-                                <input id="password" v-model="password" placeholder="Enter Password" @input="checkPasswordPolicy" :type="showPassword ? 'text' : 'password'" class="border border-gray-500 rounded-xl w-full py-3 px-3 ">
-                            </div>
-                            <span v-if="passwordError" class="text-red-500 text-xs">{{ passwordError }}</span>
-                            <div v-if="passwordPolicy.length > 0" class="text-red-500 text-xs">
-                                <ul>
-                                    <li v-for="(policy, index) in passwordPolicy" :key="index">{{ policy }}</li>
-                                </ul>
-                            </div>
+                  </div>
+                  <span v-if="genderError" class="text-red-500 text-xs">{{ genderError }}</span>
+                </div>
+              </div>
+            </div>
+            <!-- Password -->
+            <div class="lg:flex items-center mb-3">
+              <label for="password" class="w-[7.4rem] block ">Password: <span
+                  class="text-red-500 text-md">*</span></label>
+              <div class="w-full flex flex-col items-start justify-center">
+                <div class="relative w-full">
+                  <img v-if="showPassword" src="@/assets/images/Modal/view.png" class="absolute right-3 mx-3 my-4"
+                    style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="togglePasswordVisibility">
+                  <img v-else src="@/assets/images/Modal/hidden.png" class="absolute  right-3 mx-3 my-4"
+                    style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="togglePasswordVisibility">
+                  <input id="password" v-model="password" placeholder="Enter Password" @input="checkPasswordPolicy"
+                    :type="showPassword ? 'text' : 'password'"
+                    class="border border-gray-500 rounded-xl w-full py-3 px-3 ">
+                </div>
+                <span v-if="passwordError" class="text-red-500 text-xs">{{ passwordError }}</span>
+                <div v-if="passwordPolicy.length > 0" class="text-red-500 text-xs">
+                  <ul>
+                    <li v-for="(policy, index) in passwordPolicy" :key="index">{{ policy }}</li>
+                  </ul>
+                </div>
 
                         </div>
                     </div>
@@ -594,24 +628,25 @@
 
     <!-- Terms and Condition Modal -->
     <div v-if="showTermsModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-        <div class="relative p-7 bg-white w-[90%] lg:w-[75%] lg:h-[75%] rounded-xl">
-            <!-- Modal Content -->
-            <div class="relative flex justify-end">
-                <button class="absolute ">
-                    <svg @click="closeTC" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="5" stroke="black" class="w-auto h-5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-            <div class="flex justify-center items-center">
-                <img src="@/assets/images/Header/makati_logo.png" alt="logo" class="w-auto h-8 mr-3 md:block md:w-auto md:h-10">
-                <img src="@/assets/images/Header/makaturismo.png" alt="banner" class="w-auto h-8 md:w-auto md:h-8">
-            </div>
-            <div class="flex items-center">
-                <button @click="openSignUpModal" class="text-blue-600">
-                    <img src="@/assets/images/Header/back.svg" alt="backBtn" class="h-4 lg:h-5 w-auto ml-4 lg:ml-8 mr-2">
-                </button>
-            </div>
+      <div class="relative p-7 bg-white w-[90%] lg:w-[75%] lg:h-[75%] rounded-xl">
+        <!-- Modal Content -->
+        <div class="relative flex justify-end">
+          <button class="absolute ">
+            <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="5"
+              stroke="black" class="w-auto h-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="flex justify-center items-center">
+          <img src="@/assets/images/Header/makati_logo.png" alt="logo" class="w-auto h-8 mr-3 md:block md:w-auto md:h-10">
+          <img src="@/assets/images/Header/makaturismo.png" alt="banner" class="w-auto h-8 md:w-auto md:h-8">
+        </div>
+        <div class="flex items-center">
+          <button @click="openSignUpModal" class="text-blue-600">
+            <img src="@/assets/images/Header/back.svg" alt="backBtn" class="h-4 lg:h-5 w-auto ml-4 lg:ml-8 mr-2">
+          </button>
+        </div>
 
             <div class="relative z-10 flex flex-col items-center h-full">
                 <form @submit.prevent="signup" class="w-[85%] lg:px-10 px-2 lg:mt-0 mt-5">
@@ -712,9 +747,10 @@
                         </div>
                     </div>
 
-                    <div class="text-center mt-10">
-                        <button type="submit" class="lg:w-[50%] w-full px-4 py-4 text-white bg-blue-600 rounded-md" @click="closeTC">Continue</button>
-                    </div>
+            <div class="text-center mt-10">
+              <button type="submit" class="lg:w-[50%] w-full px-4 py-4 text-white bg-blue-600 rounded-md"
+                @click="openSignUpModal">Continue</button>
+            </div>
 
                 </form>
             </div>
@@ -1300,81 +1336,43 @@ export default {
         },
     },
 
-    created() {
-        // Watch for route changes
-        this.$watch(
-            () => this.$route.path,
-            newPath => {
-                // Check if the new path starts with '/category/' and has exactly two segments
-                if (newPath.startsWith('/category/') && newPath.split('/').length === 3) {
-                    console.log('active');
-                    this.currentRoute = newPath;
-                }
-            }
-        );
+  created() {
+    // Watch for route changes
+    this.$watch(
+      () => this.$route.path,
+      newPath => {
+        // Check if the new path starts with '/category/' and has exactly two segments
+        if (newPath.startsWith('/category/') && newPath.split('/').length === 3) {
+          console.log('active');
+          this.currentRoute = newPath;
+        }
+      }
+    );
+  },
+  methods: {
+    togglepfp() {
+      this.showPFPModal = !this.showPFPModal;
     },
-    methods: {
-      openNotifModal(notification) {
-            switch (notification) {
-                case "Booking Confirmation":
-                    this.showBookingConfirmationModal = true;
-                    break;
-                case "Order Complete":
-                    this.showOrderCompleteModal = true;
-                    break;
-                case "Booking Complete":
-                    this.showBookingCompleteModal = true;
-                    break;
-                // Add cases for other types of notifications if needed
-            }
-        },
-        closeBookingConfirmationModal() {
-            this.showBookingConfirmationModal = false;
-        },
-        closeOrderCompleteModal() {
-            this.showOrderCompleteModal = false;
-        },
-        closeBookingCompleteModal() {
-            this.showBookingCompleteModal = false;
-        },
-        togglepfp() {
-            this.showPFPModal = !this.showPFPModal;
-            // Close notification modal if open
-            if (this.showPFPModal && this.showNotifModal) {
-                this.showNotifModal = false;
-            }
-        },
+    toggleSidebar() {
+      this.isSidebarOpen = !this.isSidebarOpen;
+    },
+    togglePasswordVisibility() {
+      this.showPassword = !this.showPassword;
+    },
+    toggleCPasswordVisibility() {
+      this.showCPassword = !this.showCPassword;
+    },
 
-        toggleBookingConfirmationModal() {
-            this.showBookingConfirmationModal = true;
-        },
-        
-        toggleNotif() {
-            this.showNotifModal = !this.showNotifModal;
-            // Close profile modal if open
-            if (this.showNotifModal && this.showPFPModal) {
-                this.showPFPModal = false;
-            }
-        },
-        toggleSidebar() {
-            this.isSidebarOpen = !this.isSidebarOpen;
-        },
-        togglePasswordVisibility() {
-            this.showPassword = !this.showPassword;
-        },
-        toggleCPasswordVisibility() {
-            this.showCPassword = !this.showCPassword;
-        },
-        // LOGIN VALIDATION
-        validateUsername() {
-            this.usernameError = this.username.trim() === '' ? 'Please enter your username' : '';
-        },
-        validateLPassword() {
-            this.lpasswordError = this.lpassword.trim() === '' ? 'Please enter your password' : '';
-        },
-        validateFields() {
-            // Validate fields only if the login button is clicked
-            if (this.loginClicked) {
+    // LOGIN VALIDATION
+    validateUsername() {
+      this.usernameError = this.username.trim() === '' ? 'Please enter your username' : '';
+    },
+    validateLPassword() {
+      this.lpasswordError = this.lpassword.trim() === '' ? 'Please enter your password' : '';
+    },
+    validateFields() {
+      // Validate fields only if the login button is clicked
+      if (this.loginClicked) {
 
                 this.validateUsername();
                 this.validateLPassword();
@@ -1482,12 +1480,12 @@ export default {
             if (this.isSignupFormValid) {
                 console.log('Signing up...');
 
-                this.showSignUpModal = false;
-                this.showLoginModal = false;
-            }
-            // Refresh the page
-
-        },
+        this.showSignUpModal = false;
+        this.showLoginModal = false;
+      }
+      // Refresh the page
+      window.location.reload();
+    },
 
         // END OF SIGNUP VALIDATION
 
@@ -1536,85 +1534,86 @@ export default {
         isActive(link) {
             // Check if the current route contains the provided link
 
-            return this.currentRoute.includes(link);
-        },
-        openLoginModal() {
-            this.showLoginModal = true;
-            this.showPrivacyModal = false;
-            this.showSignUpModal = false;
-        },
-        openSignUpModal() {
-            this.showSignUpModal = true;
-            this.showPrivacyModal = false;
-            this.showTermsModal = false;
-        },
-        openPrivacyModal() {
-            this.showPrivacyModal = true;
-        },
-        openTermsModal() {
-            this.showTermsModal = true;
-        },
-        openForgotModal() {
-            this.showForgotModal = true;
-            // this.showOTPModal = false;
-        },
-
-        toggleInputVisibility() {
-            this.showInput = !this.showInput;
-            if (this.showInput) {
-                this.$nextTick(() => {
-                    this.$refs.searchInput.focus();
-                });
-            }
-        },
-        closeInputField(event) {
-            if (!this.$refs.searchContainer.contains(event.target)) {
-                this.showInput = false;
-            }
-        },
-        toggleshowOTP() {
-            this.showForgotModal = true;
-            this.showOTP = true;
-        },
-        closeOTP() {
-            this.showOTPModal = false;
-            this.showLoginModal = false;
-            this.showSignUpModal = false;
-            this.showPrivacyModal = false;
-
-            this.showForgotModal = false;
-            // Refresh the page
-            window.location.reload();
-        },
-        closeTC() {
-            this.showTermsModal = false;
-        },
-
-        forgot() {
-            // Your sign-up logic here
-            console.log('Forgot...');
-            // After successful sign-up, you might want to redirect the user
-            // Example: this.$router.push('/dashboard');
-            // Reset form fields and close modal
-            this.showForgotModal = false;
-        },
-        otp() {
-            // Your sign-up logic here
-            console.log('...');
-            // After successful sign-up, you might want to redirect the user
-            // Example: this.$router.push('/dashboard');
-            // Reset form fields and close modal
-            this.showOtpModal = false;
-        }
+      return this.currentRoute.includes(link);
     },
-    setup() {
-        const authStore = useAuthStore();
-        const username = ref('');
-        const lpassword = ref('');
-        const showLoginModal = ref(false);
-        const showPFPModal = ref(false);
-        const showNotif = ref(false);
-        const isSidebarOpen = ref(false);
+    openLoginModal() {
+      this.showLoginModal = true;
+      this.showPrivacyModal = false;
+      this.showSignUpModal = false;
+    },
+    // openPFPModal() {
+    //   this.showPFPModal = true;
+    // },
+    openSignUpModal() {
+      this.showSignUpModal = true;
+      this.showPrivacyModal = false;
+      this.showTermsModal = false;
+    },
+    openPrivacyModal() {
+      this.showPrivacyModal = true;
+    },
+    openTermsModal() {
+      this.showTermsModal = true;
+    },
+    openForgotModal() {
+      this.showForgotModal = true;
+      // this.showOTPModal = false;
+    },
+
+
+    toggleInputVisibility() {
+      this.showInput = !this.showInput;
+      if (this.showInput) {
+        this.$nextTick(() => {
+          this.$refs.searchInput.focus();
+        });
+      }
+    },
+    closeInputField(event) {
+      if (!this.$refs.searchContainer.contains(event.target)) {
+        this.showInput = false;
+      }
+    }
+    ,
+    toggleshowOTP() {
+      this.showForgotModal = true;
+      this.showOTP = true;
+    },
+    closeOTP() {
+      this.showOTPModal = false;
+      this.showLoginModal = false;
+      this.showSignUpModal = false;
+      this.showPrivacyModal = false;
+      this.showTermsModal = false;
+      this.showForgotModal = false;
+      // Refresh the page
+      window.location.reload();
+    },
+
+    forgot() {
+      // Your sign-up logic here
+      console.log('Forgot...');
+      // After successful sign-up, you might want to redirect the user
+      // Example: this.$router.push('/dashboard');
+      // Reset form fields and close modal
+      this.showForgotModal = false;
+    },
+    otp() {
+      // Your sign-up logic here
+      console.log('...');
+      // After successful sign-up, you might want to redirect the user
+      // Example: this.$router.push('/dashboard');
+      // Reset form fields and close modal
+      this.showOtpModal = false;
+    }
+  },
+  setup() {
+    const authStore = useAuthStore();
+    const username = ref('');
+    const lpassword = ref('');
+    const showLoginModal = ref(false);
+    const showPFPModal = ref(false);
+    const isSidebarOpen = ref(false);
 
         const openModal = () => {
             showLoginModal.value = true;
@@ -1638,12 +1637,12 @@ export default {
             }
         };
 
-        const logout = () => {
-            authStore.logout(); // Call the logout action from the store
-            // Additional logout logic, such as redirecting to the login page, can be added here
-            showPFPModal.value = false; // Close the modal in web 
-            showNotif.value = false;
-            isSidebarOpen.value = false; // Close the modal in mobile
+
+    const logout = () => {
+      authStore.logout(); // Call the logout action from the store
+      // Additional logout logic, such as redirecting to the login page, can be added here
+      showPFPModal.value = false; // Close the modal in web 
+      isSidebarOpen.value = false; // Close the modal in mobile
 
         };
 

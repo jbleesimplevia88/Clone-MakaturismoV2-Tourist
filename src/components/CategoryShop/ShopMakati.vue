@@ -98,8 +98,9 @@
                                 <p class="rounded-lg lg:text-sm text-xs lg:px-2 pt-2 absolute top-2.5 left-3 right-3 text-white p-2 w-71" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                     {{item.title}}
                                 </p>
-                                <img class="rounded-md lg:h-56 h-36 w-full object-fill" :src="item.image" alt="">
-                                <button @click="toggleshowCart(item)" class="text-xs bg-blue-600 rounded-md py-1 px-3 w-full mt-2">See More</button>
+                                <img class="rounded-md lg:h-56 h-36 w-full object-fill" :key="index" :src="item.image[0]" alt="">
+    
+                            <button @click="toggleshowCart(item)" class="text-xs bg-blue-600 rounded-md py-1 px-3 w-full mt-2">See More</button>
                             </div>
                             <div class="flex justify-end absolute bottom-[58px] right-[25px]">
                                     <div class="flex justify-between">
@@ -160,8 +161,9 @@
                     </div>
                 </div>
                 <!-- View Add to cart modal -->
-                <div v-if="showCart" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center" @click.self="closeModal">
-                    <div class="bg-white lg:h-[760px] h-[640px] w-[900px]  rounded-lg shadow-md p-2 mx-5" @click.stop>
+                <div v-if="showCart" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
+                    @click.self="closeModal">
+                    <div class="bg-white lg:h-[760px] h-[640px] w-[900px]  rounded-2xl shadow-md p-2 mx-5" @click.stop>
                         <div class="lg:w-[100%] p-4 rounded-lg">
                             <div class="relative flex justify-end">
                                 <button class=" pr-4 pt-21 ">
@@ -173,36 +175,52 @@
                             </div>
                             <div v-if="selectedProduct" class="lg:flex lg:justify-between w-[100%]">
                                 <!-- Web gallery -->
-                                <div class=" hidden lg:block lg:w-[40%]">
+                                <div class="hidden lg:block lg:w-[40%]">
                                     <div class="lg:flex justify-center items-center mb-3">
-                                        <img :src="selectedProduct.image" class="w-auto h-24 md:w-[500px] md:h-auto">
+                                        <img :src="currentImage" class="h-[400px] w-full" />
                                     </div>
-                                    <div class="lg:flex lg:justify-between grid grid-cols-1 grid-rows-3 gap-4">
-                                        <div class="lg:flex lg:justify-between items-center">
-                                            <img src="@/assets/images/CategoryView/ToShop/shop-product2.png" class="h-24 md:w-[80px] md:h-auto">
+                                    <div class="lg:flex lg:justify-between grid grid-cols-1 grid-rows-2">
+                                        <div class="lg:flex lg:justify-center items-center gap-4">
+                                            <template v-for="(image, index) in bestProducts[0].image" :key="index">
+                                                <img :src="image"
+                                                    :class="{ 'border-black': index === currentIndex || currentImage === image }"
+                                                    class="h-20 w-20 mb-2" @click="updateCurrentImage(image)" />
+                                            </template>
+
+
+
                                         </div>
-                                        <div class="lg:flex lg:justify-center items-center">
-                                            <img src="@/assets/images/CategoryView/ToShop/shop-product3.png" class="h-24 md:w-[80px] md:h-auto">
-                                        </div>
-                                        <div class="lg:flex lg:justify-center items-center">
-                                            <img src="@/assets/images/CategoryView/ToShop/shop-product4.png" class="h-24 md:w-[80px] md:h-auto">
-                                        </div>
-                                        <div class="lg:flex lg:justify-center items-center mx-5">
-                                            <img src="@/assets/images/CategoryView/ToShop/button.png" class="h-24 md:w-[40px] md:h-auto">
-                                        </div>
+                                        <svg @click="changeImage" class="w-10 h-8 mt-6 cursor-pointer mr-3"
+                                            viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="2" y="2" width="40" height="40" rx="20" stroke="black"
+                                                stroke-width="3" />
+                                            <path
+                                                d="M35.332 22L36.3927 23.0607L37.4534 22L36.3927 20.9393L35.332 22ZM10.332 20.5C9.5036 20.5 8.83203 21.1716 8.83203 22C8.83203 22.8284 9.5036 23.5 10.332 23.5V20.5ZM26.3927 33.0607L36.3927 23.0607L34.2714 20.9393L24.2714 30.9393L26.3927 33.0607ZM36.3927 20.9393L26.3927 10.9393L24.2714 13.0607L34.2714 23.0607L36.3927 20.9393ZM35.332 20.5L10.332 20.5V23.5L35.332 23.5V20.5Z"
+                                                fill="black" />
+                                        </svg>
                                     </div>
                                 </div>
+
+
                                 <!-- Mobile - gallery -->
                                 <div class="lg:hidden grid grid-cols-2 grid-rows-1 gap-4 mb-3">
                                     <div class="w-[200px] ml-4">
                                         <img :src="currentImage" class="h-52 w-full" />
                                     </div>
                                     <div class="grid-cols-1 ml-16">
-                                        <img v-for="(image, index) in images" :key="index" :src="image" class="h-9 w-10 mb-2" @click="updateCurrentImage(index)" />
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" class="w-10 h-8 mt-2 cursor-pointer" @click="changeImage">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                            </svg>
+                                        <template v-for="(image, index) in bestProducts[0].image" :key="index">
+                                            <img :src="image"
+                                                :class="{ 'border-black': index === currentIndex || currentImage === image }"
+                                                class="h-10 w-10 mb-2" @click="updateCurrentImage(image)" />
+                                        </template>
+
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="black" class="w-10 h-8 mt-2 cursor-pointer"
+                                            @click="changeImage">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                        </svg>
                                     </div>
                                 </div>
                                 <!-- right section -->
@@ -647,346 +665,381 @@
 
 
 <script>
-    import MapRenderer from "@/components/MapRenderer.vue";
-    import LoginModal from '@/components/LoginModal.vue';
-    import {
-        defineComponent,
-        ref,
-        computed
-    } from 'vue';
-    import {
-        useAuthStore
-    } from '@/stores/auth';
-    import {
-        useCartStore
-    } from '@/stores/toShopCart';
-    import {
-        useRouter
-    } from 'vue-router';
-    import shopProduct1 from '@/assets/images/CategoryView/ToShop/shop-product1.png';
-    import shopProduct2 from '@/assets/images/CategoryView/ToShop/shop-product2.png';
-    import shopProduct3 from '@/assets/images/CategoryView/ToShop/shop-product3.png';
-    import shopProduct4 from '@/assets/images/CategoryView/ToShop/shop-product4.png';
-    import bestProduct1 from '@/assets/images/CategoryView/ToShop/shop-product1.png';
-    import bestProduct2 from '@/assets/images/CategoryView/ToShop/shop-product2.png';
-    import bestProduct3 from '@/assets/images/CategoryView/ToShop/shop-product3.png';
-    import otherProduct4 from '@/assets/images/CategoryView/ToShop/shop-product4.png';
-    import otherProduct5 from '@/assets/images/CategoryView/ToShop/shop-product5.png';
-    import otherProduct6 from '@/assets/images/CategoryView/ToShop/shop-product6.png';
-    import otherProduct7 from '@/assets/images/CategoryView/ToShop/shop-product7.png';
-    import otherProduct8 from '@/assets/images/CategoryView/ToShop/shop-product8.png';
-    import otherProduct9 from '@/assets/images/CategoryView/ToShop/shop-product9.png';
-    export default defineComponent({
-        props: {
-            latitude: Number,
-            longitude: Number,
-            name: String
+import MapRenderer from "@/components/MapRenderer.vue";
+import LoginModal from '@/components/LoginModal.vue';
+import { defineComponent, ref, computed } from 'vue';
+import { useAuthStore } from '@/stores/auth';
+import { useCartStore } from '@/stores/toShopCart';
+import { useRouter } from 'vue-router';
+import shopProduct1 from '@/assets/images/CategoryView/ToShop/shop-product1.png';
+import shopProduct2 from '@/assets/images/CategoryView/ToShop/shop-product2.png';
+import shopProduct3 from '@/assets/images/CategoryView/ToShop/shop-product3.png';
+import shopProduct4 from '@/assets/images/CategoryView/ToShop/shop-product4.png';
+import otherProduct4 from '@/assets/images/CategoryView/ToShop/shop-product4.png';
+import otherProduct5 from '@/assets/images/CategoryView/ToShop/shop-product5.png';
+import otherProduct6 from '@/assets/images/CategoryView/ToShop/shop-product6.png';
+import otherProduct7 from '@/assets/images/CategoryView/ToShop/shop-product7.png';
+import otherProduct8 from '@/assets/images/CategoryView/ToShop/shop-product8.png';
+import otherProduct9 from '@/assets/images/CategoryView/ToShop/shop-product9.png';
+
+export default defineComponent({
+    props: {
+        latitude: Number,
+        longitude: Number,
+        name: String
+    },
+    components: {
+        MapRenderer,
+        LoginModal
+    },
+    setup() {
+        const cartStore = useCartStore();
+
+        const router = useRouter();
+        // nics
+        const cart = computed(() => cartStore.cart);
+
+        const showToast = ref(false);
+        const toastMessage = ref("");
+        const currentPage = ref(0);
+        const showCart = ref(false);
+        const showCartModal = ref(false);
+        const selectedProduct = ref(null);
+
+        const currentIndex = ref(0);
+        // nics end
+        const showReviews = ref(false);
+        const showAddtoCart = ref(false); // Define showAddtoCart
+        const authStore = useAuthStore();
+        const showLoginModal = ref(false);
+        const showSeeLessButton = ref(false);
+        const count = ref(0);
+        const numFeedbackShown = ref(0);
+        const items = [
+            {
+                name: 'Juan Dela Cruz',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                date: 'December 2023',
+
+            },
+            {
+                name: 'Luis Paolo',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                date: 'December 2023',
+
+            },
+            {
+                name: 'Luis Paolo',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                date: 'December 2023',
+
+            },
+            {
+                name: 'Juan Dela Cruz',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                date: 'December 2023',
+
+            },
+            {
+                name: 'Juan Dela Cruz',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                date: 'December 2023',
+
+            },
+            {
+                name: 'Luis Paolo',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                date: 'December 2023',
+
+            },
+            {
+                name: 'Luis Paolo',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                date: 'December 2023',
+
+            },
+            {
+                name: 'Juan Dela Cruz',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                date: 'December 2023',
+
+            },
+        ];
+
+        const bestProducts = [
+            {
+                title: "1 Multi handle Tote bag with Embroided Philippine Kalesa Scenery",
+                image: [shopProduct1, shopProduct3, shopProduct4],
+                price: 399.00,
+                shop: "Makati Shop",
+                quantity: 1
+            },
+            {
+                title: "2 Multi handle Tote bag with Embroided Philippine Kalesa Scenery",
+                image: [shopProduct2, shopProduct3, shopProduct4],
+                price: 399.00,
+                shop: "Makati Shop",
+                quantity: 1
+            },
+            {
+                title: "3 Multi handle Tote bag with Embroided Philippine Kalesa Scenery",
+                image: [shopProduct3, shopProduct2, shopProduct4],
+                price: 399.00,
+                shop: "Makati Shop",
+                quantity: 1
+            }
+            // Add more products as needed
+        ];
+
+        const otherProducts = [{
+            title: "Beat the Heat Graphic Tee in Blush ",
+            image: otherProduct4,
+            price: 100.00,
+            shop: "Makati Shop",
+            quantity: 1
         },
-        components: {
-            MapRenderer,
-            LoginModal
+        {
+            title: "Mini Gold Tin with Wooden Base Calesa",
+            image: otherProduct5,
+            price: 100.00,
+            shop: "Makati Shop",
+            quantity: 1
         },
-        setup() {
-            const cartStore = useCartStore();
-            const router = useRouter();
-            // nics
-            const cart = computed(() => cartStore.cart);
-            const showToast = ref(false);
-            const toastMessage = ref("");
-            const currentPage = ref(0);
-            const showCart = ref(false);
-            const showCartModal = ref(false);
-            const selectedProduct = ref(null);
-            const currentIndex = ref(0);
-            // nics end
-            const showReviews = ref(false);
-            const showAddtoCart = ref(false); // Define showAddtoCart
-            const authStore = useAuthStore();
-            const showLoginModal = ref(false);
-            const showSeeLessButton = ref(false);
-            const count = ref(0);
-            const numFeedbackShown = ref(0);
-            const items = [{
-                    name: 'Juan Dela Cruz',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                    date: 'December 2023',
-                },
-                {
-                    name: 'Luis Paolo',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                    date: 'December 2023',
-                },
-                {
-                    name: 'Luis Paolo',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                    date: 'December 2023',
-                },
-                {
-                    name: 'Juan Dela Cruz',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                    date: 'December 2023',
-                },
-                {
-                    name: 'Juan Dela Cruz',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                    date: 'December 2023',
-                },
-                {
-                    name: 'Luis Paolo',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                    date: 'December 2023',
-                },
-                {
-                    name: 'Luis Paolo',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                    date: 'December 2023',
-                },
-                {
-                    name: 'Juan Dela Cruz',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                    date: 'December 2023',
-                },
-            ];
-            const bestProducts = [{
-                    title: "1 Multi handle Tote bag with Embroided Philippine Kalesa Scenery",
-                    image: bestProduct1,
-                    price: 399.00,
-                    shop: "Makati Shop",
-                    quantity: 1
-                },
-                {
-                    title: "2 Multi handle Tote bag with Embroided Philippine Kalesa Scenery",
-                    image: bestProduct2,
-                    price: 399.00,
-                    shop: "Makati Shop",
-                    quantity: 1
-                },
-                {
-                    title: "3 Multi handle Tote bag with Embroided Philippine Kalesa Scenery",
-                    image: bestProduct3,
-                    price: 399.00,
-                    shop: "Makati Shop",
-                    quantity: 1
-                },
-                // Add more products as needed
-            ];
-            const otherProducts = [{
-                    title: "Beat the Heat Graphic Tee in Blush ",
-                    image: otherProduct4,
-                    price: 100.00,
-                    shop: "Makati Shop",
-                    quantity: 1
-                },
-                {
-                    title: "Mini Gold Tin with Wooden Base Calesa",
-                    image: otherProduct5,
-                    price: 100.00,
-                    shop: "Makati Shop",
-                    quantity: 1
-                },
-                {
-                    title: "Mini Gold Tin with Wooden Base Vinta ",
-                    image: otherProduct6,
-                    price: 100.00,
-                    shop: "Makati Shop",
-                    quantity: 1
-                },
-                {
-                    title: "Never Stop Exploring Graphic Tee in Gray",
-                    image: otherProduct7,
-                    price: 100.00,
-                    shop: "Makati Shop",
-                    quantity: 1
-                },
-                {
-                    title: "Mini Gold Tin with Wooden Base Nipa Hut Coconut Tree",
-                    image: otherProduct8,
-                    price: 100.00,
-                    shop: "Makati Shop",
-                    quantity: 1
-                },
-                {
-                    title: "  Mini Gold Tin with Wooden Base Tricycle",
-                    image: otherProduct9,
-                    price: 100.00,
-                    shop: "Makati Shop",
-                    quantity: 1
-                },
-            ];
-            const images = [shopProduct1, shopProduct2, shopProduct3, shopProduct4];
-            const categories = ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'];
-            const locations = ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'];
-            // const getTotalItemsInCart = computed(() => {
-            //     return this.cart.value.reduce((total, item) => total + item.quantity, 0);
-            // });
-            const paginatedItems = computed(() => {
-                return items.slice(0, 2 + numFeedbackShown.value);
-            });
-            const currentImage = computed(() => {
-                return images[currentIndex.value];
-            });
-            const showSeeMoreButton = computed(() => {
-                return numFeedbackShown.value < items.length - 2;
-            });
-            const totalItemsInCart = computed(() => {
-                return cartStore.cart.reduce((total, item) => total + item.quantity, 0);
-            });
-            const clearCartAndNavigate = () => {
-                cartStore.clearCart();
-                // navigate to checkoutshop route
-            };
-            const handleCheckCart = () => {
-                if (!authStore.isAuthenticated) {
-                    // Set the intended route
-                    authStore.setIntendedRoute('/checkoutshop');
-                    // Show the login modal
-                    showLoginModal.value = true;
-                } else {
-                    // If user is already authenticated, navigate to the checkoutshop route directly
-                    router.push('/checkoutshop');
-                }
-            };
-            const openCartModal = () => {
-                showCartModal.value = true;
-            };
-            const closeLoginModal = () => {
-                showLoginModal.value = false;
-            };
-            const seeMore = () => {
-                numFeedbackShown.value += 2;
-                if (!showSeeMoreButton.value) {
-                    showSeeLessButton.value = true;
-                }
-            };
-            const seeLess = () => {
-                numFeedbackShown.value = 0;
-                showSeeLessButton.value = false;
-            };
-            const changeImage = () => {
-                currentIndex.value = (currentIndex.value + 1) % images.length;
-            };
-            const updateCurrentImage = (index) => {
-                currentIndex.value = index;
-            };
-            const increment = () => {
-                count.value++;
-            };
-            const decrement = () => {
-                if (count.value > 0) {
-                    count.value--;
-                }
-            };
-            const toggleshowCart = (item) => {
-                selectedProduct.value = item;
-                // console.log(selectedProduct.value); // Log selectedProduct to check its contents
-                showCart.value = true;
-            };
-            const closeCart = () => {
-                showCart.value = false;
-            };
-            const closeModal = () => {
-                showCartModal.value = false;
-            };
-            const toggleshowReviews = () => {
-                showReviews.value = true;
-                showCart.value = false;
-            };
-            const closeReviews = () => {
-                showReviews.value = false;
-                showCart.value = true;
-            };
-            const increaseQuantity = () => {
-                selectedProduct.value.quantity++;
-            };
-            const decreaseQuantity = () => {
-                if (selectedProduct.value.quantity > 1) {
-                    selectedProduct.value.quantity--;
-                }
-            };
-            const showToastWithMessage = (message) => {
-                toastMessage.value = message;
-                showToast.value = true;
-                setTimeout(() => {
-                    showToast.value = false;
-                    toastMessage.value = "";
-                }, 3000); // Hide the toast after 3 seconds
-            };
-            const hideToast = () => {
+        {
+            title: "Mini Gold Tin with Wooden Base Vinta ",
+            image: otherProduct6,
+            price: 100.00,
+            shop: "Makati Shop",
+            quantity: 1
+        },
+        {
+            title: "Never Stop Exploring Graphic Tee in Gray",
+            image: otherProduct7,
+            price: 100.00,
+            shop: "Makati Shop",
+            quantity: 1
+        },
+        {
+            title: "Mini Gold Tin with Wooden Base Nipa Hut Coconut Tree",
+            image: otherProduct8,
+            price: 100.00,
+            shop: "Makati Shop",
+            quantity: 1
+        },
+        {
+            title: "  Mini Gold Tin with Wooden Base Tricycle",
+            image: otherProduct9,
+            price: 100.00,
+            shop: "Makati Shop",
+            quantity: 1
+        },
+        ];
+        const categories = ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'];
+        const locations = ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'];
+
+
+        // const getTotalItemsInCart = computed(() => {
+        //     return this.cart.value.reduce((total, item) => total + item.quantity, 0);
+
+        // });
+        const paginatedItems = computed(() => {
+            return items.slice(0, 2 + numFeedbackShown.value);
+        });
+
+
+
+        const showSeeMoreButton = computed(() => {
+            return numFeedbackShown.value < items.length - 2;
+        });
+
+        const totalItemsInCart = computed(() => {
+            return cartStore.cart.reduce((total, item) => total + item.quantity, 0);
+        });
+
+        const clearCartAndNavigate = () => {
+            cartStore.clearCart();
+            // navigate to checkoutshop route
+        };
+
+
+        const handleCheckCart = () => {
+            if (!authStore.isAuthenticated) {
+                // Set the intended route
+                authStore.setIntendedRoute('/checkoutshop');
+                // Show the login modal
+                showLoginModal.value = true;
+            } else {
+                // If user is already authenticated, navigate to the checkoutshop route directly
+                router.push('/checkoutshop');
+            }
+        };
+
+
+
+        const openCartModal = () => {
+            showCartModal.value = true;
+
+        };
+
+        const closeLoginModal = () => {
+            showLoginModal.value = false;
+        };
+
+        const seeMore = () => {
+            numFeedbackShown.value += 2;
+            if (!showSeeMoreButton.value) {
+                showSeeLessButton.value = true;
+            }
+        };
+
+        const seeLess = () => {
+            numFeedbackShown.value = 0;
+            showSeeLessButton.value = false;
+        };
+        // Function to change the current image index
+        const changeImage = () => {
+            currentIndex.value = (currentIndex.value + 1) % bestProducts[0].image.length;
+        };
+
+        // Function to update the current image index
+        const updateCurrentImage = (image) => {
+            currentIndex.value = bestProducts[0].image.findIndex(img => img === image);
+            currentImage.value = image;
+        };
+
+
+        // Define computed property to get the current image based on the currentIndex
+        const currentImage = computed(() => {
+            return bestProducts[0].image[currentIndex.value]; // Assuming the first product's image is used for the carousel
+        });
+        const increment = () => {
+            count.value++;
+        };
+
+        const decrement = () => {
+            if (count.value > 0) {
+                count.value--;
+            }
+        };
+
+        const toggleshowCart = (item) => {
+            selectedProduct.value = item;
+            console.log(selectedProduct.value); // Log selectedProduct to check its contents
+            showCart.value = true;
+        };
+
+
+        const closeCart = () => {
+            showCart.value = false;
+        };
+
+        const closeModal = () => {
+            showCartModal.value = false;
+        };
+
+        const toggleshowReviews = () => {
+            showReviews.value = true;
+            showCart.value = false;
+        };
+
+        const closeReviews = () => {
+            showReviews.value = false;
+            showCart.value = true;
+        };
+
+        const increaseQuantity = () => {
+            selectedProduct.value.quantity++;
+        };
+
+        const decreaseQuantity = () => {
+            if (selectedProduct.value.quantity > 1) {
+                selectedProduct.value.quantity--;
+            }
+        };
+
+        const showToastWithMessage = (message) => {
+            toastMessage.value = message;
+            showToast.value = true;
+
+            setTimeout(() => {
                 showToast.value = false;
                 toastMessage.value = "";
-            };
-            const addToCart = (item) => {
-                selectedProduct.value = item;
-                // Ensure cartStore.cart is initialized
-                if (!cartStore.cart) {
-                    cartStore.cart = [];
-                }
-                const existingProductIndex = cartStore.cart.findIndex(cartItem => cartItem.title === item.title);
-                if (existingProductIndex !== -1) {
-                    cartStore.cart[existingProductIndex].quantity += item.quantity;
-                    const updatedProduct = cartStore.cart.splice(existingProductIndex, 1)[0];
-                    cartStore.cart.unshift(updatedProduct);
-                } else {
-                    cartStore.addToCart({
-                        title: item.title,
-                        quantity: item.quantity,
-                        price: item.price
-                    });
-                }
-                showCart.value = false;
-                selectedProduct.value.quantity = 1;
-                showToastWithMessage("Item has been added to cart");
-            };
-            /////////////////////////////////////////
-            return {
-                clearCartAndNavigate,
-                useCartStore,
-                cart,
-                showAddtoCart,
-                openCartModal,
-                // getTotalItemsInCart,
-                bestProducts,
-                otherProducts,
-                showToast,
-                toastMessage,
-                currentPage,
-                decreaseQuantity,
-                increaseQuantity,
-                hideToast,
-                addToCart,
-                showCart,
-                router,
-                authStore,
-                showLoginModal,
-                showCartModal,
-                showReviews,
-                items,
-                images,
-                currentIndex,
-                count,
-                numFeedbackShown,
-                showSeeLessButton,
-                categories,
-                locations,
-                paginatedItems,
-                currentImage,
-                showSeeMoreButton,
-                closeLoginModal,
-                seeMore,
-                seeLess,
-                handleCheckCart,
-                changeImage,
-                updateCurrentImage,
-                increment,
-                decrement,
-                toggleshowCart,
-                closeCart,
-                closeModal,
-                toggleshowReviews,
-                closeReviews,
-                selectedProduct,
-                totalItemsInCart
-            };
-        }
-    });
+            }, 3000); // Hide the toast after 3 seconds
+        };
+
+        const hideToast = () => {
+            showToast.value = false;
+            toastMessage.value = "";
+        };
+        const addToCart = (item) => {
+            selectedProduct.value = item;
+            const existingProductIndex = cartStore.cart.findIndex(cartItem => cartItem.title === item.title);
+            if (existingProductIndex !== -1) {
+                cartStore.cart[existingProductIndex].quantity += item.quantity;
+                const updatedProduct = cartStore.cart.splice(existingProductIndex, 1)[0];
+                cartStore.cart.unshift(updatedProduct);
+            } else {
+                cartStore.addToCart({
+                    title: item.title,
+                    quantity: item.quantity,
+                    price: item.price
+                });
+            }
+            showCart.value = false;
+            selectedProduct.value.quantity = 1;
+            showToastWithMessage("Item has been added to cart");
+        };
+
+        /////////////////////////////////////////
+        return {
+            totalItemsInCart,
+            clearCartAndNavigate,
+            useCartStore,
+            cart,
+            showAddtoCart,
+            openCartModal,
+            // getTotalItemsInCart,
+            bestProducts,
+            otherProducts,
+            showToast,
+            toastMessage,
+            currentPage,
+            decreaseQuantity,
+            increaseQuantity,
+            hideToast,
+            addToCart,
+            showCart,
+            router,
+            authStore,
+            showLoginModal,
+            showCartModal,
+            showReviews,
+            items,
+            currentIndex,
+            count,
+            numFeedbackShown,
+            showSeeLessButton,
+            categories,
+            locations,
+            paginatedItems,
+            currentImage,
+            showSeeMoreButton,
+            closeLoginModal,
+            seeMore,
+            seeLess,
+            handleCheckCart,
+            changeImage,
+            updateCurrentImage,
+            increment,
+            decrement,
+            toggleshowCart,
+            closeCart,
+            closeModal,
+            toggleshowReviews,
+            closeReviews,
+            selectedProduct
+
+        };
+    }
+});
 </script>

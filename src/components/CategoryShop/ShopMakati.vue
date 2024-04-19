@@ -778,9 +778,10 @@ export default defineComponent({
         LoginModal
     },
     setup() {
+        const cartStore = useCartStore();
+
         const router = useRouter();
         // nics
-        const cartStore = useCartStore();
         const cart = computed(() => cartStore.cart);
 
         const showToast = ref(false);
@@ -1048,40 +1049,24 @@ export default defineComponent({
             showToast = false;
             toastMessage = "";
         };
-
-
-
         const addToCart = (item) => {
-            // No need to initialize cartStore again
-            // Use cartStore directly here
             selectedProduct.value = item;
-
-            const existingProductIndex = cartStore.cart.value.findIndex(cartItem => cartItem.title === item.title);
+            const existingProductIndex = cartStore.cart.findIndex(cartItem => cartItem.title === item.title);
             if (existingProductIndex !== -1) {
-                // If it exists, update the quantity
-                cartStore.cart.value[existingProductIndex].quantity += item.quantity;
-
-                // Remove the existing item from the cart array if it is updated
-                const updatedProduct = cartStore.cart.value.splice(existingProductIndex, 1)[0];
-
-                // Move the latest and updated product to the beginning of the cart list
-                cartStore.cart.value.unshift(updatedProduct);
+                cartStore.cart[existingProductIndex].quantity += item.quantity;
+                const updatedProduct = cartStore.cart.splice(existingProductIndex, 1)[0];
+                cartStore.cart.unshift(updatedProduct);
             } else {
-                // If it doesn't exist, add it to the cart
                 cartStore.addToCart({
                     title: item.title,
                     quantity: item.quantity,
                     price: item.price
                 });
             }
-
             showCart.value = false;
             selectedProduct.value.quantity = 1;
-
             showToastWithMessage("Item has been added to cart");
         };
-
-
 
         /////////////////////////////////////////
         return {
@@ -1132,6 +1117,7 @@ export default defineComponent({
             closeModal,
             toggleshowReviews,
             closeReviews,
+            selectedProduct
 
         };
     }

@@ -231,7 +231,7 @@
                                     </div>
                                 </div>
                                 <!-- Mobile - gallery -->
-                                <div class="lg:hidden grid grid-cols-2 grid-rows-1 gap-4">
+                                <div class="lg:hidden grid grid-cols-2 grid-rows-1 gap-4 mb-3">
                                     <div class="w-[200px] ml-4">
                                         <img :src="currentImage" class="h-52 w-full" />
                                     </div>
@@ -247,33 +247,31 @@
                                     </div>
                                 </div>
                                 <!-- right section -->
-                                <div class="lg:w-[60%] px-3 mt-3">
+                                <div class="lg:w-[60%] px-3">
                                     <div class="lg:flex lg:flex-col text-black">
-                                        <p class="font-bold text-left text-1xl mb-2">
+                                        <p class="font-bold text-left lg:text-3xl text-2xl mb-2" style="line-height: 1.2;">
                                             {{ selectedProduct.title }}
                                         </p>
                                     </div>
-                                    <div class="text-black mb-5">
-                                        <p class="font-bold">{{ selectedProduct.shop }}</p>
-                                        <div class="lg:block hidden  justify-between mb-2">
-                                            <p class="w-[100%] ">₱{{ selectedProduct.price }}</p>
-                                            <div class="flex justify-end">
-                                                <div class="justify-between hidden lg:block">
-                                                    <p class="mr-5">Quantity</p>
-                                                     <div class="flex items-center">
-                                                        <button @click="increaseQuantity"
-                                                            class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">+</button>
-                                                        <span>{{ selectedProduct.quantity }}</span>
-                                                        <button @click="decreaseQuantity"
-                                                            class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">-</button>
-                                                    </div>
-                                                </div>
+                                    <div class=" flex flex-col text-black mb-3">
+                                        <p class="font-bold text-xl">{{ selectedProduct.shop }}</p>
+                                        
+                                        <div class="lg:inline-flex hidden items-center justify-between" style="line-height: 2;">
+                                            <div class="text-2xl">₱{{ selectedProduct.price }}</div>
+
+                                            <div class="flex items-center">
+                                                <p>Quantity</p>
+                                                <button @click="increaseQuantity"
+                                                    class="ml-4 px-4 py-1 bg-gray-200 text-gray-700 rounded-l-lg">+</button>
+                                                <span class="px-4">{{ selectedProduct.quantity }}</span>
+                                                <button @click="decreaseQuantity"
+                                                    class="px-4 py-1 bg-gray-200 text-gray-700 rounded-r-lg">-</button>
                                             </div>
                                         </div>
-                                        <div class="border border-gray-200 lg:my-5"></div>
+                                        <div class="border border-gray-200 lg:my-3"></div>
                                         <!-- description -->
                                         <div class="overflow-y-auto lg:overflow-y-visible h-[110px] lg:h-auto">
-                                            <div class="justify-between mb-2 grid gap-2 mt-2">
+                                            <div class="justify-between mb-2 grid gap-2 mt-1">
                                                 <p class="w-[100%] text-xs">• Made from canvas material</p>
                                                 <p class="w-[100%] text-xs">• Durable and lightweight bag</p>
                                                 <p class="w-[100%] text-xs">• Can be washed by hand or washing machine

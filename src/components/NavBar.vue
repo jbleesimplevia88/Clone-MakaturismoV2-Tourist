@@ -258,7 +258,7 @@
     <!-- Login Modal -->
     <div v-if="showLoginModal" class=" fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
       <div class="relative bg-white lg:w-[70vw] w-[90vw] h-fit rounded-3xl">
-        <img src="@/assets/images/Modal/Intersect.png" alt="" class="w-full absolute rounded-t-xl">
+        <img src="@/assets/images/Modal/Intersect.png" alt="" class="w-full lg:h-full absolute rounded-t-xl">
 
         <!-- Modal Content -->
         <div class="relative top-0 flex justify-end">

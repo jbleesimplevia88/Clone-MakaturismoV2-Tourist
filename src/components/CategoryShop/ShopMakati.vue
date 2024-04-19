@@ -17,10 +17,10 @@
                             </a>
                         </router-link>
                     </div>
-                    <div class="relative flex flex-col items-center">
-                        <div class="lg:pl-9 grid grid-cols-1 lg:grid-cols-5 lg:pr-[7rem]">
+                    <div class="relative flex flex-col items-center justify-between">
+                        <div class="lg:pl-9 grid grid-cols-1 lg:grid-cols-5 ">
                             <img src="@/assets/images/CategoryView/ToShop/shop1.png" alt=""
-                                class="col-span-3 w-[100%] h-full lg:w-[97%] lg:h-[95%] rounded-l-3xl">
+                                class="col-span-3 w-[100%] h-full lg:w-[100%] lg:h-[95%] rounded-l-3xl">
                             <div class="hidden col-span-2 md:grid md:grid-cols-2 gap-4 ">
                                 <img src="@/assets/images/CategoryView/ToShop/shop2.png" alt=""
                                     class="lg:w-[100%] lg:h-[90%]">
@@ -254,19 +254,16 @@
                                         </p>
                                     </div>
                                     <div class="text-black mb-5">
-                                        <p class="font-bold">{{
-                                            selectedProduct.shop }}</p>
+                                        <p class="font-bold">{{ selectedProduct.shop }}</p>
                                         <div class="lg:block hidden  justify-between mb-2">
-                                            <p class="w-[100%] ">₱{{
-                                                selectedProduct.price }}</p>
+                                            <p class="w-[100%] ">₱{{ selectedProduct.price }}</p>
                                             <div class="flex justify-end">
                                                 <div class="justify-between hidden lg:block">
                                                     <p class="mr-5">Quantity</p>
-                                                    <div class="flex items-center">
+                                                     <div class="flex items-center">
                                                         <button @click="increaseQuantity"
                                                             class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">+</button>
-                                                        <span>{{
-                                                            selectedProduct.quantity }}</span>
+                                                        <span>{{ selectedProduct.quantity }}</span>
                                                         <button @click="decreaseQuantity"
                                                             class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">-</button>
                                                     </div>
@@ -490,12 +487,12 @@
 
         <!-- Cart -->
         <div>
-            <div v-if="cart.length > 0" class="hidden lg:block ">
+            <div v-if="totalItemsInCart  > 0" class="hidden lg:block ">
                 <div class="cart-bg my-4 lg:w-[30%] lg:h-[85rem] right-7 absolute top-[8rem] ">
                     <div class="cart-list lg:w-[75%] h-[40rem] border border-gray-300 p-4 rounded-lg shadow">
                         <!-- center this div -->
                         <p class="text-center font-bold">Number of items</p>
-                        <p class="text-center font-bold text-3xl">{{ getTotalItemsInCart }}</p>
+                        <p class="text-center font-bold text-3xl">{{ totalItemsInCart  }}</p>
                         <div class="cart-list-scroll mb-5" style="height: 29rem; overflow-y: auto;">
                             <!-- Set specific height and add scrollbar -->
                             <p class="font-bold mb-5">List of items</p>
@@ -922,10 +919,10 @@ export default defineComponent({
         const locations = ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'];
 
 
-        const getTotalItemsInCart = computed(() => {
-            return this.cart.value.reduce((total, item) => total + item.quantity, 0);
+        // const getTotalItemsInCart = computed(() => {
+        //     return this.cart.value.reduce((total, item) => total + item.quantity, 0);
 
-        });
+        // });
         const paginatedItems = computed(() => {
             return items.slice(0, 2 + numFeedbackShown.value);
         });
@@ -946,7 +943,6 @@ export default defineComponent({
             cartStore.clearCart();
             // navigate to checkoutshop route
         };
-
 
         const handleCheckCart = () => {
             if (!authStore.isAuthenticated) {
@@ -1026,31 +1022,36 @@ export default defineComponent({
         };
 
         const increaseQuantity = () => {
-            selectedProduct.quantity++;
+            selectedProduct.value.quantity++;
         };
 
         const decreaseQuantity = () => {
-            if (selectedProduct.quantity > 1) {
-                selectedProduct.quantity--;
+            if (selectedProduct.value.quantity > 1) {
+                selectedProduct.value.quantity--;
             }
         };
 
         const showToastWithMessage = (message) => {
-            toastMessage = message;
-            showToast = true;
+            toastMessage.value = message;
+            showToast.value = true;
 
             setTimeout(() => {
-                showToast = false;
-                toastMessage = "";
+                showToast.value = false;
+                toastMessage.value = "";
             }, 3000); // Hide the toast after 3 seconds
         };
 
         const hideToast = () => {
-            showToast = false;
-            toastMessage = "";
+            showToast.value = false;
+            toastMessage.value = "";
         };
         const addToCart = (item) => {
             selectedProduct.value = item;
+            // Ensure cartStore.cart is initialized
+            if (!cartStore.cart) {
+                cartStore.cart = [];
+            }
+            
             const existingProductIndex = cartStore.cart.findIndex(cartItem => cartItem.title === item.title);
             if (existingProductIndex !== -1) {
                 cartStore.cart[existingProductIndex].quantity += item.quantity;
@@ -1070,14 +1071,12 @@ export default defineComponent({
 
         /////////////////////////////////////////
         return {
-            totalItemsInCart,
             clearCartAndNavigate,
             useCartStore,
-            selectedProduct,
             cart,
             showAddtoCart,
             openCartModal,
-            getTotalItemsInCart,
+            // getTotalItemsInCart,
             bestProducts,
             otherProducts,
             showToast,
@@ -1117,7 +1116,8 @@ export default defineComponent({
             closeModal,
             toggleshowReviews,
             closeReviews,
-            selectedProduct
+            selectedProduct,
+            totalItemsInCart
 
         };
     }

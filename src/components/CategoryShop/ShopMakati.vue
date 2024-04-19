@@ -202,14 +202,14 @@
                                     </svg>
                                 </button>
                             </div>
-                            <div class="lg:flex lg:justify-between w-[100%]">
+                            <div v-if="selectedProduct" class="lg:flex lg:justify-between w-[100%]">
                                 <!-- Web gallery -->
 
                                 <div class=" hidden lg:block lg:w-[40%]">
                                     <div class="lg:flex justify-center items-center mb-3">
-                                        <img :src="selectedProduct.image" class="w-auto h-24 md:w-[500px] md:h-auto">
-
+                                        <img :src="selectedProduct.value.image" class="w-auto h-24 md:w-[500px] md:h-auto">
                                     </div>
+
                                     <div class="lg:flex lg:justify-between grid grid-cols-1 grid-rows-3 gap-4">
                                         <div class="lg:flex lg:justify-between items-center">
                                             <img src="@/assets/images/CategoryView/ToShop/shop-product2.png"
@@ -249,15 +249,15 @@
                                 <div class="lg:w-[60%] px-3 mt-3">
                                     <div class="lg:flex lg:flex-col text-black">
                                         <p class="font-bold text-left text-1xl mb-2">
-                                            {{ selectedProduct.title }}
+                                            {{ selectedProduct.value.title }}
                                         </p>
                                     </div>
                                     <div class="text-black mb-5">
                                         <p class="font-bold">{{
-                                            selectedProduct.shop }}</p>
+                                            selectedProduct.value.shop }}</p>
                                         <div class="lg:block hidden  justify-between mb-2">
                                             <p class="w-[100%] ">₱{{
-                                                selectedProduct.price }}</p>
+                                                selectedProduct.value.price }}</p>
                                             <div class="flex justify-end">
                                                 <div class="justify-between hidden lg:block">
                                                     <p class="mr-5">Quantity</p>
@@ -265,7 +265,7 @@
                                                         <button @click="increaseQuantity"
                                                             class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">+</button>
                                                         <span>{{
-                                                            selectedProduct.quantity }}</span>
+                                                            selectedProduct.value.quantity }}</span>
                                                         <button @click="decreaseQuantity"
                                                             class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">-</button>
                                                     </div>
@@ -749,6 +749,7 @@ import MapRenderer from "@/components/MapRenderer.vue";
 import LoginModal from '@/components/LoginModal.vue';
 import { defineComponent, ref, computed } from 'vue';
 import { useAuthStore } from '@/stores/auth';
+import { useCartStore } from '@/stores/toShopCart';
 import { useRouter } from 'vue-router';
 import shopProduct1 from '@/assets/images/CategoryView/ToShop/shop-product1.png';
 import shopProduct2 from '@/assets/images/CategoryView/ToShop/shop-product2.png';
@@ -777,6 +778,9 @@ export default defineComponent({
     setup() {
         const router = useRouter();
         // nics
+        const cartStore = useCartStore();
+        const cart = computed(() => cartStore.cart);
+
         const showToast = ref(false);
         const toastMessage = ref("");
         const currentPage = ref(0);
@@ -784,7 +788,6 @@ export default defineComponent({
         const showCartModal = ref(false);
         const selectedProduct = ref(null);
 
-        const cart = ref([]);
         const currentIndex = ref(0);
         // nics end
         const showReviews = ref(false);
@@ -932,6 +935,16 @@ export default defineComponent({
             return numFeedbackShown.value < items.length - 2;
         });
 
+        const totalItemsInCart = computed(() => {
+            return cartStore.cart.reduce((total, item) => total + item.quantity, 0);
+        });
+
+        const clearCartAndNavigate = () => {
+            cartStore.clearCart();
+            // navigate to checkoutshop route
+        };
+
+
         const handleCheckCart = () => {
             if (!authStore.isAuthenticated) {
                 // Set the intended route
@@ -1034,18 +1047,29 @@ export default defineComponent({
             toastMessage = "";
         };
 
+
+
         const addToCart = (item) => {
+            // No need to initialize cartStore again
+            // Use cartStore directly here
             selectedProduct.value = item;
 
-            const index = cart.value.findIndex((list) => list.title === item.title);
-            if (index !== -1) {
-                cart.value[index].quantity += item.quantity;
-                const updatedItem = cart.value.splice(index, 1)[0];
-                cart.value.unshift(updatedItem);
+            const existingProductIndex = cartStore.cart.value.findIndex(cartItem => cartItem.title === item.title);
+            if (existingProductIndex !== -1) {
+                // If it exists, update the quantity
+                cartStore.cart.value[existingProductIndex].quantity += item.quantity;
+
+                // Remove the existing item from the cart array if it is updated
+                const updatedProduct = cartStore.cart.value.splice(existingProductIndex, 1)[0];
+
+                // Move the latest and updated product to the beginning of the cart list
+                cartStore.cart.value.unshift(updatedProduct);
             } else {
-                cart.value.unshift({
+                // If it doesn't exist, add it to the cart
+                cartStore.addToCart({
                     title: item.title,
-                    quantity: item.quantity
+                    quantity: item.quantity,
+                    price: item.price
                 });
             }
 
@@ -1056,8 +1080,12 @@ export default defineComponent({
         };
 
 
+
         /////////////////////////////////////////
         return {
+            totalItemsInCart,
+            clearCartAndNavigate,
+            useCartStore,
             cart,
             showAddtoCart,
             openCartModal,

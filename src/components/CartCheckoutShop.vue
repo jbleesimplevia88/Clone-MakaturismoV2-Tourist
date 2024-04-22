@@ -165,9 +165,20 @@
                             </div>
 
                             <div v-if="totalAmount > 0" class="flex justify-between">
-                                <p class="font-poppins font-sans font-bold text-lg pt-4">Your Total (Php)</p>
+                                <p class="font-poppins font-sans font-bold text-lg pt-4">{{ displayTotalLabel }}</p>
                                 <p class="font-poppins font-sans text-base font-bold pt-4 ">₱ {{ totalAmount }}</p>
                             </div>
+
+                            <div v-if="discountPrice" class="flex justify-between text-[#9bbf2f]">
+                                <p class="font-poppins font-sans font-bold text-lg pt-4">Special Discount:</p>
+                                <p class="font-poppins font-sans text-base font-bold pt-4">- ₱ {{ discountPrice }}</p>
+                            </div>
+                            <div class="bg-gray-400 h-0.5 mt-2"></div>
+                            <div v-if="anyVoucherApplied" class="flex justify-between ">
+                                <p class="font-poppins font-sans font-bold text-lg pt-4">Total (in PHP):</p>
+                                <p class="font-poppins font-sans text-xl font-bold pt-4">{{ finalPrice }}</p>
+                            </div>
+
                             <p class="lg:font-poppins font-sans text-base font-bold text-right underline hidden">Price
                                 Breakdown
                             </p>
@@ -249,10 +260,6 @@
                                     <label for="helper-radio" class="font-semibold text-xl text-gray-700">
                                         Ibayad</label>
                                 </div>
-
-
-
-
                             </div>
                             <div class="flex pt-4">
                                 <img src="@/assets/images/Modal/voucher.svg" class="mb-6 w-6 h-6">
@@ -292,8 +299,6 @@
     <template v-else>
         <div class="lg:w-[100%] p-4 rounded-lg text-center flexflex-col items-center pt-20">
             <!-- Voucher section -->
-
-
             <div class="flex flex-col items-center">
                 <input type="text" id="" name="" value=""
                     class="mb-2 h-[50px] w-[100%] border border-gray-200 pl-5 pr-3 rounded-md"
@@ -305,23 +310,33 @@
                     <div data-v-392f50c8="" class="mt-0 bg-gray-400 h-0.5"></div>
                 </div>
                 <p class="mt-4 font-bold text-left">Select a Voucher</p>
-                <img src="@/assets/images/CategoryView/ToShop/voucher1.png" class="mb-6">
-                <img src="@/assets/images/CategoryView/ToShop/voucher1.png" class="mb-6">
+                <div v-for="(voucher, index) in vouchers" :key="index">
+                    <div class="absolute grid grid-rows-3 text-left ml-14 mt-1">
+                        <span class="font-semibold">{{ voucher.code }}</span>
+                        <span class="font-bold">P{{ voucher.amount }}</span>
+                        <button type="submit" class="text-sm font-bold ml-52 cursor-pointer" @click="toggleVoucher(index)">
+                            {{ voucher.applied ? 'Remove' : 'Apply' }}
+                        </button>
+                    </div>
+                    <img src="@/assets/images/CategoryView/ToEat/voucher.png" class="mb-6">
+                </div>
                 <div>
                     <div data-v-392f50c8="" class="mt-5 mb-3 bg-gray-400 h-0.5"></div>
                 </div>
                 <p class="font-bold text-left">Not valid for this order</p>
-                <div>
-                    <img src="@/assets/images/CategoryView/ToShop/voucher1.png" class="mb-6">
-                    <img src="@/assets/images/CategoryView/ToShop/voucher1.png" class="mb-6">
+                <div v-for="(voucher, index) in invalidVouchers" :key="index">
+                    <div class="absolute grid grid-rows-3 text-left ml-14 mt-1">
+                        <span class="font-semibold">{{ voucher.code }}</span>
+                        <span class="font-bold">P{{ voucher.amount }}</span>
+                        <button type="submit" class="text-sm font-bold ml-52 cursor-pointer" disabled>
+                            Apply
+                        </button>
+                    </div>
+                    <img src="@/assets/images/CategoryView/ToEat/voucher.png" class="mb-6">
                 </div>
             </div>
         </div>
     </template>
-
-
-
-
 
 </template>
 
@@ -352,40 +367,103 @@
 
 <script>
 // import { useCartStore } from '@/stores/toShopCart'
-import { computed } from 'vue';
 import { useCartStore } from '@/stores/toShopCart';
+import { ref, computed, reactive, watch } from 'vue'; // Import necessary Vue methods
+
 
 export default {
      setup() {
         const cartStore = useCartStore();
 
+        // Voucher data structure with applied state
+        const vouchers = reactive([
+            { code: 'DISCOUNT999', amount: 999.00, applied: false },
+            { code: 'DISCOUNT100', amount: 100.00, applied: false },
+        ]);
+
+         const invalidVouchers = reactive([
+            { code: 'DISCOUNT50', amount: 50.00, applied: false },
+            { code: 'DISCOUNT200', amount: 200.00, applied: false },
+        ]);
+
         const cart = computed(() => cartStore.cart);
 
+        // Compute the total amount of items in the cart
         const totalItemsInCart = computed(() => {
             return cartStore.cart.reduce((total, item) => total + item.quantity, 0);
         });
 
-        // Compute the overall total amount only once
+        // Compute the overall total amount based on items in the cart
         const totalAmount = computed(() => {
             return cartStore.cart.reduce((total, item) => total + (item.quantity * item.price), 0);
         });
 
+
+        // Compute the discount price based on applied vouchers
+        const discountPrice = computed(() => {
+            return vouchers.reduce((total, voucher) => {
+                return voucher.applied ? total + voucher.amount : total;
+            }, 0);
+        });
+
+        // Compute the final price by subtracting discount from total amount
+        const finalPrice = computed(() => {
+            return totalAmount.value - discountPrice.value;
+        });
+        const anyVoucherApplied = computed(() => {
+            // Check if any voucher is applied
+            return vouchers.some(voucher => voucher.applied);
+        });
+
+
+        // Method to toggle voucher applied state
+        const toggleVoucher = (index) => {
+            vouchers[index].applied = !vouchers[index].applied;
+
+             // Recalculate discountPrice based on applied vouchers
+            discountPrice.value = vouchers.reduce((total, voucher) => {
+                return voucher.applied ? total + voucher.amount : total;
+            }, 0);
+
+           this.displayTotalLabel = vouchers.some(voucher => voucher.applied) ? 'Subtotal' : 'Your Total (Php)';
+        };
+
         return {
-        cart,
-        totalItemsInCart,
-        totalAmount
+            cart,
+            totalItemsInCart,
+            totalAmount,
+            discountPrice,
+            finalPrice,
+            vouchers,
+            invalidVouchers,
+            anyVoucherApplied,
+            toggleVoucher
         };
     },
+
     
     data() {
         return {
             showConfirmation: false,
             showComplete: false,
             showPayment: true,
+            
+             voucher: {
+                applied: false
+            },
+            selectedVoucher: null,
+            displayTotalLabel: 'Your Total (Php)',
             showVoucher: false,
-            navButtonText: 'Request to Book'
+
+            discountPrice: 0,
+            showConfirmation: false,
+            showComplete: false,
+            showPayment: true,
+            navButtonText: 'Request to Order'
         };
     },
+   
+    
     watch: {
         showPayment(newValue) {
             if (!newValue) {
@@ -395,6 +473,22 @@ export default {
         }
     },
     methods: {
+        // toggleVoucher(index) {
+        //     this.showVoucher = !this.showVoucher;
+        //     if (this.vouchers[index]) {
+        //         // Toggle the 'applied' property of the voucher
+        //         this.vouchers[index].applied = !this.vouchers[index].applied;
+        //         // Log and check if true or false
+        //         console.log(`Voucher applied state: ${this.vouchers[index].applied}`);
+        //         // Update discountPrice based on applied vouchers
+        //         this.discountPrice = this.vouchers.reduce((total, voucher) => {
+        //             return voucher.applied ? total + voucher.amount : total;
+        //         }, 0);
+        //         // Update displayTotalLabel
+        //         this.displayTotalLabel = this.showVoucher ? 'Your Total (Php)' : ' Subtotal';
+        //     }
+        // },
+
         scrollToTop() {
             window.scrollTo(0, 0);
         },

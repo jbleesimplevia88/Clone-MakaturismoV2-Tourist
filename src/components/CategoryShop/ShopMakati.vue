@@ -118,11 +118,13 @@
                         </div>
                     </div>
                 </div>
+                
                 <!-- Other Items -->
                 <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">OTHER ITEMS</h1>
                 <div class="flex w-[100%]">
                     <div class="flex justify-between items-center mb-2 space-x-5">
                         <!-- WEB VERSION OTHER ITEMS -->
+                        
                         <!-- First column -->
                         <div class="flex-col lg:block hidden">
                             <div v-for="(item, index) in otherProducts.slice(0, 3)" :key="index" class="card-wrapper">
@@ -213,6 +215,7 @@
                             <div class="flex flex-col">
                                 <div v-for="(item, index) in otherProducts.slice(3, 6)" :key="index" class="card-wrapper">
                                     <!-- Your card content goes here -->
+                                   
                                     <!-- WEB VERION -->
                                     <div
                                         class="hidden lg:block card bg-blue-950 w-[100%] border-2 h-[190px] m-1 p-4 rounded-xl relative justify-between">
@@ -427,6 +430,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- Toast -->
                 <div id="app">
                     <!-- Other content -->
@@ -461,6 +465,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- Show reviews modal -->
                 <div v-if="showReviews"
                     class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"

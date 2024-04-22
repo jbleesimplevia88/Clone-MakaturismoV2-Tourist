@@ -173,7 +173,7 @@
                     <div class="p-1 flex justify-end items-center">
                         <button @click="seeMore(item)"
                             class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
-                            <span>See More</span>
+                            <span>Read More</span>
                             <span class="ml-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
                                     stroke="currentColor" class="w-4 h-4">

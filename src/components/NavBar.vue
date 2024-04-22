@@ -31,6 +31,7 @@
             <RouterLink to="/calendar" class="hidden text-white md:inline-block"><img src="@/assets/images/Header/calendar.png" alt="logo" class="w-auto h-6 mx-2"></RouterLink>
 
             <!-- WHEN USER IS LOGGED IN-->
+            
             <div v-if="authStore.isAuthenticated">
                 <div class="hidden lg:flex items-center space-x-6">
                     <!-- Notification Icon -->
@@ -507,7 +508,8 @@
                     <div class="w-full grid grid-cols-1 lg:grid-cols-2 ">
                         <!-- E-mail Address -->
                         <div class="lg:flex items-center mb-3">
-                            <label for="email" class="w-[9rem] block mb-2">Email Address: <span class="text-red-500 text-md">*</span></label>
+                          <label for="email" class="w-[9rem] block mb-2 text-xs">Email Address: <span class="text-red-500 text-md">*</span></label>
+
                             <div class="w-full flex flex-col items-start justify-center">
                                 <input id="email" type="text" v-model="email" placeholder="Enter Email Address" class="border border-gray-500 rounded-xl w-full py-3 px-3" @input="validateEmail">
                                 <span v-if="emailError" class="text-red-500 text-xs">{{ emailError }}</span>

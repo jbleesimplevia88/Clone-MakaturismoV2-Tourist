@@ -107,7 +107,7 @@
             <p class="text-lg md:text-black text-left pl-2.5 pb-5">(02) 7795 9595</p>
         </div>
 
-        <h1 class="font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SPOT IN HERE IN GLORIETTA</h1>
+        
 
         <ContentCarousel class="mb-10" />
 
@@ -267,7 +267,7 @@
 
 
 <script>
-import ContentCarousel from '@/components/ContentModalCarousel.vue';
+
 import MapRenderer from "@/components/MapRenderer.vue";
 
 
@@ -279,7 +279,7 @@ export default {
         name: String
     },
     components: {
-        ContentCarousel,
+       
         MapRenderer
 
     },

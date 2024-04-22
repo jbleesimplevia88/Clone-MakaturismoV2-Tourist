@@ -1,6 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import TopPlace from '@/components/TopPlace.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import { useAuthStore } from '@/stores/auth';
+import HomeView from '../views/HomeView.vue';
+import TopPlace from '@/components/TopPlace.vue';
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,6 +31,12 @@ const router = createRouter({
       path: '/notification',
       name: 'notification',
       component: () => import('../views/NotificationView.vue')
+    },
+    {
+      path: '/loginmodal',
+      name: 'loginmodal',
+      component: () => import('../components/LoginModal.vue')
+      
     },
     {
       path: '/profile',
@@ -68,7 +76,8 @@ const router = createRouter({
             {
               path: '/checkoutshop',
               name: 'cartcheckoutshop',
-              component: () => import('../components/CartCheckoutShop.vue')
+              component: () => import('../components/CartCheckoutShop.vue'),
+              meta: { requiresAuth: true }
             },
             {
               path: '/checkouteat',
@@ -87,8 +96,6 @@ const router = createRouter({
             },
             
           ]
-
-
     },
     {
       path: '/category',
@@ -208,6 +215,24 @@ const router = createRouter({
       ]
     }
   ]
-})
+});
 
+router.beforeEach((to, from, next) => {
+  const authStore = useAuthStore(); 
+  authStore.initialize(); 
+  // Check if the route requires authentication
+  if (to.meta.requiresAuth) {
+    // Check if the user is authenticated
+    if (!authStore.isAuthenticated) {
+      // If not authenticated, redirect to login page
+      next({ name: 'home' }); // Change 'loginmodal' to your actual login route name
+    } else {
+      // If authenticated, proceed to the requested route
+      next();
+    }
+  } else {
+    // If the route does not require authentication, proceed
+    next();
+  }
+});
 export default router

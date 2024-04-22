@@ -155,7 +155,7 @@
                 <!-- End  Filter dropdown MOBILE  -->
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div v-for="(item, index) in filteredItems" :key="index"
+                <div v-for="(item, index) in paginatedItems" :key="index"
                     class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
                     <div class="relative">
                         <img class="w-full h-[250px] object-cover rounded-t" :src="item.image" alt="">
@@ -172,7 +172,7 @@
                     <div class="p-1 flex justify-end items-center">
                         <button @click="seeMore(item)"
                             class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
-                            <span>See More</span>
+                            <span>Read More</span>
                             <span class="ml-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
                                     stroke="currentColor" class="w-4 h-4">
@@ -190,30 +190,26 @@
             <!-- Pagination controls -->
             <div class="grid grid-cols-2">
                 <div class="flex justify-start items-center">
-                    <p class="text-center text-white">Showing <span class="text-[#29BFD6]">{{ paginationStartIndex }} -
-                            {{
-                                paginationEndIndex }}</span> results from <span class="text-[#29BFD6]">{{ totalRecords
-    }}</span> records
+                    <p class="text-center text-white">
+                        Showing
+                        <span class="text-[#29BFD6]">{{ paginationStartIndex }} - {{ paginationEndIndex }}</span>
+                        results from
+                        <span class="text-[#29BFD6]">{{ totalRecords }}</span> records
                     </p>
                 </div>
                 <div class="flex justify-end items-center mt-4">
-                    <button @click="prevPage" :disabled="currentPage === 0" class="text-white"><svg
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    <button @click="prevPage" :disabled="currentPage === 0" class="text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                         </svg>
                     </button>
-                    <button v-if="currentPage != pageCount - pageCount" @click="goToPage(currentPage - 1)"
-                        class="px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300">{{
-                            currentPage }}</button>
-                    <button
-                        class="px-3 py-1 border border-white m-1 rounded-md transition-colors duration-300 bg-white text-[#132540]">{{
-                            currentPage + 1 }}</button>
-                    <button v-if="currentPage != pageCount - 1" @click="goToPage(currentPage + 1)"
-                        class="px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300">{{
-                            currentPage + 2 }}</button>
-                    <button @click="nextPage" :disabled="currentPage === pageCount - 1" class="text-white"><svg
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    <button v-for="pageNumber in pageCount" :key="pageNumber" @click="goToPage(pageNumber - 1)"
+                        :class="{ 'px-3 py-1 border border-white m-1 rounded-md transition-colors duration-300 bg-white text-[#132540]': currentPage + 1 === pageNumber, 'text-white': currentPage + 1 !== pageNumber }">
+                        {{ pageNumber }}
+                    </button>
+                    <button @click="nextPage" :disabled="currentPage === pageCount - 1" class="text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                         </svg>
@@ -354,6 +350,46 @@ export default {
                 link: "",
                 mapLocation: ""
             },
+            {
+                name: 'Old Manila at The Peninsula Manila',
+                description: "Elevate your dining experience at Old Manila, a culinary gem that celebrates modern European cuisine. With a focus on premium ingredients and artful presentation, each dish is a masterpiece that delights both the palate and the eye. Indulge in a gastronomic adventure at Old Manila and experience the art of fine dining.",
+                category: 'Restaurant',
+                cuisine: ['European', 'French'],
+                location: 'Ayala-Paseo de Roxas',
+                image: item7,
+                link: "",
+                mapLocation: ""
+            },
+            {
+                name: 'Brera Delicatessen',
+                description: "Satisfy your cravings for authentic Italian delicacies at Brera Delicatessen. This cozy trattoria serves up an array of traditional Italian dishes, from wood-fired pizzas to handcrafted pasta. With warm Italian hospitality and an inviting ambiance, Brera Delicatessen promises an unforgettable dining experience in Makati.",
+                category: 'Restaurant',
+                cuisine: 'Italian',
+                location: 'San Antonio Village',
+                image: item8,
+                link: "",
+                mapLocation: ""
+            },
+            {
+                name: 'Old Manila at The Peninsula Manila',
+                description: "Elevate your dining experience at Old Manila, a culinary gem that celebrates modern European cuisine. With a focus on premium ingredients and artful presentation, each dish is a masterpiece that delights both the palate and the eye. Indulge in a gastronomic adventure at Old Manila and experience the art of fine dining.",
+                category: 'Restaurant',
+                cuisine: ['European', 'French'],
+                location: 'Ayala-Paseo de Roxas',
+                image: item7,
+                link: "",
+                mapLocation: ""
+            },
+            {
+                name: 'Brera Delicatessen',
+                description: "Satisfy your cravings for authentic Italian delicacies at Brera Delicatessen. This cozy trattoria serves up an array of traditional Italian dishes, from wood-fired pizzas to handcrafted pasta. With warm Italian hospitality and an inviting ambiance, Brera Delicatessen promises an unforgettable dining experience in Makati.",
+                category: 'Restaurant',
+                cuisine: 'Italian',
+                location: 'San Antonio Village',
+                image: item8,
+                link: "",
+                mapLocation: ""
+            },
             ],
             cuisines: ['All', 'American', 'Argentine', 'Asian', 'Australian', 'Chinese', 'European', 'Filipino', 'French', 'German', 'Halal', 'Indian', 'Irish', 'Italian', 'Argentine', 'Japanese', 'Korean', 'Mediterranean', 'Mexican', 'Singapore', 'Spanish', 'Swiss', 'Thai', 'Vietnamese'],
             locations: [
@@ -425,18 +461,24 @@ export default {
         document.removeEventListener('click', this.handleGlobalClick);
     },
     computed: {
+        // Replace the paginatedItems computed property
+        paginatedItems() {
+            const startIndex = this.currentPage * this.pageSize;
+            return this.items.slice(startIndex, startIndex + this.pageSize);
+        },
+        // Update the filteredItems computed property to only filter items
         filteredItems() {
             let filteredItems = this.items.slice(); // Create a shallow copy of items
 
             // Apply filters only if the Apply button is clicked
             if (this.applyButtonClicked) {
-                // Filter by cuisine
-                if (this.selectedCuisine && this.selectedCuisine.length > 0 && this.selectedCuisine[0] !== 'All') {
+                // Filter by category
+                if (this.selectedCategory && this.selectedCategory.length > 0 && this.selectedCategory[0] !== 'All') {
                     filteredItems = filteredItems.filter(item => {
-                        if (Array.isArray(item.cuisine)) {
-                            return this.selectedCuisine.some(cat => item.cuisine.includes(cat));
+                        if (Array.isArray(item.category)) {
+                            return this.selectedCategory.some(cat => item.category.includes(cat));
                         } else {
-                            return this.selectedCuisine.includes(item.cuisine);
+                            return this.selectedCategory.includes(item.category);
                         }
                     });
                 }
@@ -455,22 +497,18 @@ export default {
 
             return filteredItems;
         },
-        paginatedItems() {
-            const startIndex = this.currentPage * this.pageSize;
-            return this.items.slice(startIndex, startIndex + this.pageSize);
-        },
         pageCount() {
-            return Math.ceil(this.items.length / this.pageSize);
+            return Math.ceil(this.filteredItems.length / this.pageSize);
         },
         paginationStartIndex() {
             return this.currentPage * this.pageSize + 1;
         },
         paginationEndIndex() {
             const end = (this.currentPage + 1) * this.pageSize;
-            return end > this.totalRecords ? this.totalRecords : end;
+            return Math.min(end, this.totalRecords);
         },
         totalRecords() {
-            return this.items.length;
+            return this.filteredItems.length;
         },
     },
     methods: {

@@ -6,7 +6,10 @@ import Notification from '@/components/NotificationContent.vue';
 </script>
 
 <template>
-    <NavBar />
+
     <Notification />
+    <NavBar />
+    <RouterView />
+    <FooterPage />
     <!-- <FooterPage /> -->
 </template>

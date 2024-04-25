@@ -20,7 +20,6 @@
                     <div class="items-center lg:mr-10">
                         <img src="@/assets/images/CategoryView/ToShop/shop1.png" alt=""
                             class="rounded-3xl lg:w-full lg:h-[500px] object-cover">
-
                     </div>
                     <!-- Monile -->
                     <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 p-5 shadow-lg z-50">
@@ -34,7 +33,6 @@
                                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg">
                                     Shop Now
                                 </button>
-
                             </div>
                         </div>
                     </div>
@@ -131,7 +129,7 @@
                                     class="card bg-blue-950 w-[100%] border-2 h-[190px] m-1 p-4 rounded-xl relative flex justify-between">
                                     <div class="flex justify-between w-[100%]">
                                         <div class="w-[40%]">
-                                            <img class="rounded-md lg:h-full" :src="item.image" alt="" width="90%">
+                                            <img class="rounded-md lg:h-full" :key="index" :src="item.image[0]" alt="">
                                         </div>
                                         <div class="w-[60%]">
                                             <p class="grid grid-cols-1 text-xs text-white mb-4 ml-2"> {{ item.title }}
@@ -158,7 +156,7 @@
                                     class="card bg-blue-950 w-[100%] border-2 h-[190px] m-1 p-4 rounded-xl relative flex justify-between">
                                     <div class="flex justify-between w-[100%]">
                                         <div class="w-[40%]">
-                                            <img class="rounded-md lg:h-full" :src="item.image" alt="" width="90%">
+                                            <img class="rounded-md lg:h-full" :key="index" :src="item.image[0]">
                                         </div>
                                         <div class="w-[60%]">
                                             <p class="grid grid-cols-1 text-xs text-white mb-4 ml-2"> {{ item.title }}
@@ -188,7 +186,7 @@
                                         class="card bg-blue-950 w-[100%] border-2 h-[170px] m-1 p-4 rounded-xl relative flex justify-between">
                                         <div class="flex justify-between w-[100%]">
                                             <div class="w-[40%]">
-                                                <img class="rounded-md lg:h-full mb-1 w-24" :src="item.image" alt="">
+                                                <img class="rounded-md lg:h-full mb-1 w-24" :src="item.image[0]" alt="">
                                                 <button @click="toggleshowCart(item)"
                                                     class=" text-white w-[98px] text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 -ml-[1px]">See
                                                     More</button>
@@ -218,7 +216,7 @@
                                         class="hidden lg:block card bg-blue-950 w-[100%] border-2 h-[190px] m-1 p-4 rounded-xl relative justify-between">
                                         <div class="flex justify-between w-[100%]">
                                             <div class="w-[40%]">
-                                                <img class="rounded-md lg:h-full" :src="item.image" alt="" width="90%">
+                                                <img class="rounded-md lg:h-full" :src="item.image[0]" alt="" width="90%">
                                             </div>
                                             <div class="w-[60%]">
                                                 <p class="grid grid-cols-1 text-xs text-white mb-4 ml-2"> {{ item.title }}
@@ -241,7 +239,7 @@
                                         class="lg:hidden card bg-blue-950 w-[100%] border-2 h-[170px] m-1 p-4 rounded-xl relative flex justify-between">
                                         <div class="flex justify-between w-[100%]">
                                             <div class="w-[40%]">
-                                                <img class="rounded-md lg:h-full mb-1 w-24" :src="item.image" alt="">
+                                                <img class="rounded-md lg:h-full mb-1 w-24" :src="item.image[0]" alt="">
                                                 <button @click="toggleshowCart(item)"
                                                     class=" text-white text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 -ml-[1px] w-full">See
                                                     More</button>
@@ -284,18 +282,16 @@
                                 <!-- Web gallery -->
                                 <div class="hidden lg:block lg:w-[40%]">
                                     <div class="lg:flex justify-center items-center mb-3">
+                                        <!-- Use currentImage to access the reactive value -->
                                         <img :src="currentImage" class="h-[400px] w-full" />
                                     </div>
                                     <div class="lg:flex lg:justify-between grid grid-cols-1 grid-rows-2">
                                         <div class="lg:flex lg:justify-center items-center gap-4">
-                                            <template v-for="(image, index) in bestProducts[0].image" :key="index">
-                                                <img :src="image"
-                                                    :class="{ 'border-black': index === currentIndex || currentImage === image }"
-                                                    class="h-20 w-20 mb-2" @click="updateCurrentImage(image)" />
+                                            <!-- Loop through selectedProductImages and access image directly -->
+                                            <template v-for="(image, index) in selectedProductImages" :key="index">
+                                                <img :src="image" class="h-20 w-20 mb-2"
+                                                    @click="updateCurrentImage(image)" />
                                             </template>
-
-
-
                                         </div>
                                         <svg @click="changeImage" class="w-10 h-8 mt-6 cursor-pointer mr-3"
                                             viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -309,16 +305,15 @@
                                 </div>
 
 
+
                                 <!-- Mobile - gallery -->
                                 <div class="lg:hidden grid grid-cols-2 grid-rows-1 gap-4 mb-3">
                                     <div class="w-[200px] ml-4">
                                         <img :src="currentImage" class="h-52 w-full" />
                                     </div>
                                     <div class="grid-cols-1 ml-16">
-                                        <template v-for="(image, index) in bestProducts[0].image" :key="index">
-                                            <img :src="image"
-                                                :class="{ 'border-black': index === currentIndex || currentImage === image }"
-                                                class="h-12 w-16 mb-2" @click="updateCurrentImage(image)" />
+                                        <template v-for="(image, index) in selectedProductImages" :key="index">
+                                            <img :src="image" class="h-12 w-16 mb-2" @click="updateCurrentImage(image)" />
                                         </template>
 
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -343,11 +338,13 @@
                                             <div class="text-2xl">₱{{ selectedProduct.price }}</div>
                                             <div class="flex items-center">
                                                 <p>Quantity</p>
-                                                <button @click="increaseQuantity"
-                                                    class="ml-4 px-4 py-1 bg-gray-200 text-gray-700 rounded-l-lg">+</button>
-                                                <span class="px-4">{{ selectedProduct.quantity }}</span>
                                                 <button @click="decreaseQuantity"
-                                                    class="px-4 py-1 bg-gray-200 text-gray-700 rounded-r-lg">-</button>
+                                                    class="ml-4 px-4 py-1 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
+
+                                                <span class="px-4">{{ selectedProduct.quantity }}</span>
+                                                <button @click="increaseQuantity"
+                                                    class=" px-4 py-1 bg-gray-200 text-gray-700 rounded-r-lg">+</button>
+
                                             </div>
                                         </div>
                                         <div class="border border-gray-200 lg:my-3"></div>
@@ -603,13 +600,17 @@
                                 <p class="text-center font-bold">Number of items</p>
                                 <p class="text-center font-bold text-3xl">{{ totalItemsInCart }}</p>
                             </div>
-                            <router-link to="/cart">
+
+                            <template v-if="!isCartEmpty">
                                 <div class="w-[120%]">
-                                    <button
-                                        class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Edit
-                                        Cart</button>
+                                    <button @click="authStore.isAuthenticated ? router.push('/cart') : handleCheckCart()"
+                                        class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">
+                                        Edit Cart
+                                    </button>
+
                                 </div>
-                            </router-link>
+                            </template>
+
                         </div>
                         <div class="mb-5">
                             <p class="font-bold">List of items</p>
@@ -620,19 +621,19 @@
                                 </div>
                             </template>
                             <template v-else>
-                                <p class="text-center">Your cart is empty</p>
+                                <p class="text-center">
+                                    Your cart is empty</p>
                             </template>
                         </div>
                         <!-- Buy Now button -->
-                        <div>
+                        <div v-if="!isCartEmpty">
                             <login-modal v-if="!authStore.isAuthenticated && showLoginModal"
                                 @close="showLoginModal = false"></login-modal>
-                            <button @click="handleCheckCart"
+                            <button @click="addToBuyNowAndCheckCart(false)"
                                 class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[90%]">
-                                Buy Now Cart
+                                Buy Now
                             </button>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -763,32 +764,25 @@
 <style scoped>
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
-    /* Hide scrollbar for WebKit (Chrome, Safari) */
 }
 
 .cart-list-scroll::-webkit-scrollbar {
     width: 8px;
-    /* Set the width of the scrollbar */
 }
 
 .cart-list-scroll::-webkit-scrollbar-track {
     background: #f1f1f1;
-    /* Set the background color of the scrollbar track */
 }
 
 .cart-list-scroll::-webkit-scrollbar-thumb {
     background: #888;
-    /* Set the color of the scrollbar thumb/handle */
     border-radius: 5px;
-    /* Round the corners of the scrollbar thumb */
 }
 
 .cart-list-scroll::-webkit-scrollbar-thumb:hover {
     background: #555;
-    /* Change the color of the scrollbar thumb when hovering */
 }
 
-/* Your scoped styles here */
 .toast-container {
     position: fixed;
     bottom: 1rem;
@@ -803,7 +797,6 @@
 
 .toast-content {
     max-width: 20rem;
-    /* Adjust max-width as needed */
 }
 </style>
 
@@ -816,7 +809,8 @@ import LoginModal from '@/components/LoginModal.vue';
 import {
     defineComponent,
     ref,
-    computed
+    computed,
+    watch
 } from 'vue';
 import {
     useAuthStore
@@ -850,22 +844,28 @@ export default defineComponent({
     setup() {
         const cartStore = useCartStore();
         const router = useRouter();
-        // nics
+        const authStore = useAuthStore();
         const cart = computed(() => cartStore.cart);
+
+        const editCartProducts = ref([]);
+        const buyNowProducts = ref([]);
+        const selectedProduct = ref(null);
+
         const showToast = ref(false);
         const toastMessage = ref("");
+        const currentIndex = ref(0);
         const currentPage = ref(0);
+        const count = ref(0);
+
         const showCart = ref(false);
         const showCartModal = ref(false);
-        const selectedProduct = ref(null);
-        const currentIndex = ref(0);
-        // nics end
         const showReviews = ref(false);
-        const showAddtoCart = ref(false); // Define showAddtoCart
-        const authStore = useAuthStore();
+        const showAddtoCart = ref(false);
         const showLoginModal = ref(false);
         const showSeeLessButton = ref(false);
-        const count = ref(0);
+
+        const selectedProductImages = ref([]);
+        const selectedProductIsFromBestProducts = ref(false);
         const numFeedbackShown = ref(0);
         const items = [{
             name: 'Juan Dela Cruz',
@@ -933,42 +933,42 @@ export default defineComponent({
         ];
         const otherProducts = [{
             title: "Beat the Heat Graphic Tee in Blush ",
-            image: otherProduct4,
+            image: [otherProduct4, shopProduct2, shopProduct3],
             price: 100.00,
             shop: "Makati Shop",
             quantity: 1
         },
         {
             title: "Mini Gold Tin with Wooden Base Calesa",
-            image: otherProduct5,
+            image: [otherProduct5, shopProduct2, shopProduct3],
             price: 100.00,
             shop: "Makati Shop",
             quantity: 1
         },
         {
             title: "Mini Gold Tin with Wooden Base Vinta ",
-            image: otherProduct6,
+            image: [otherProduct6, shopProduct2, shopProduct3],
             price: 100.00,
             shop: "Makati Shop",
             quantity: 1
         },
         {
             title: "Never Stop Exploring Graphic Tee in Gray",
-            image: otherProduct7,
+            image: [otherProduct7, shopProduct2, shopProduct3],
             price: 100.00,
             shop: "Makati Shop",
             quantity: 1
         },
         {
             title: "Mini Gold Tin with Wooden Base Nipa Hut Coconut Tree",
-            image: otherProduct8,
+            image: [otherProduct8, shopProduct2, shopProduct3],
             price: 100.00,
             shop: "Makati Shop",
             quantity: 1
         },
         {
             title: "  Mini Gold Tin with Wooden Base Tricycle",
-            image: otherProduct9,
+            image: [otherProduct9, shopProduct2, shopProduct3],
             price: 100.00,
             shop: "Makati Shop",
             quantity: 1
@@ -976,43 +976,97 @@ export default defineComponent({
         ];
         const categories = ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'];
         const locations = ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'];
-        // const getTotalItemsInCart = computed(() => {
-        //     return this.cart.value.reduce((total, item) => total + item.quantity, 0);
-        // });
+
+
+        //*******************ALL CODE FOR CHECKING WHETHER PRODUCT IS COMING FROM EDEITCART ARRAY OR BUYNOW ARRAY***********//
+        const handleCheckCart = (isFromEditCart) => {
+            if (!authStore.isAuthenticated) {
+                // If the user is not authenticated, set the intended route to /cart
+                authStore.setIntendedRoute('/cart');
+                // Show the login modal
+                showLoginModal.value = true;
+            } else {
+                const cartArray = isFromEditCart ? editCartProducts : buyNowProducts;
+                cartArray.value = cartStore.cart.slice();
+                // Proceed to /cart if the user is authenticated and it's from editing the cart
+                if (isFromEditCart) {
+                    router.push('/cart');
+                } else {
+                    // Otherwise, proceed to the desired route (e.g., /checkoutshop)
+                    router.push('/checkoutshop');
+                }
+            }
+        };
+
+
+        const addToCart = (item, isFromEditCart = false) => {
+            const cartArray = isFromEditCart ? editCartProducts : buyNowProducts;
+            cartStore.addToCart(item, isFromEditCart);
+            cartArray.value = cartStore.cart.slice();
+            // Close the cart after adding the item
+            showCartModal.value = false;
+            // Reset the quantity of the selected product
+            if (item !== null) {
+                item.quantity = 1;
+            }
+            showToastWithMessage("Item has been added to cart");
+        };
+
+        const addToBuyNowAndCheckCart = (isFromEditCart) => {
+            addToBuyNow(selectedProduct.value);
+            handleCheckCart(isFromEditCart);
+        };
+
+        const addToBuyNow = (item) => {
+            buyNowProducts.value.push(item);
+        };
+
+        const totalItemsInCart = computed(() => {
+            return cartStore.cart.reduce((total, item) => total + item.quantity, 0);
+        });
+
+        watch(cartStore.cart, (newCart) => {
+            editCartProducts.value = [...newCart];
+        }, {
+            deep: true
+        });
+        //*******************END OF ALL CODE FOR CHECKING WHETHER PRODUCT IS COMING FROM EDEITCART ARRAY OR BUYNOW ARRAY***********//
+
+        // we need this to kknow which array will the carousel get the images from sa best seller ba or sa other product
+        watch(selectedProduct, (newValue) => {
+            console.log("Selected Product Changed:", newValue);
+            const isBestProduct = bestProducts.some(product => product.title === newValue.title);
+            selectedProductImages.value = newValue ?
+                (isBestProduct ?
+                    (console.log("Fetching image from bestProducts"), newValue.image) :
+                    (console.log("Fetching image from otherProducts"), newValue.image)) || [] : [];
+            selectedProductIsFromBestProducts.value = isBestProduct;
+        });
+        // Modify changeImage function to use selectedProductImages length
+        const changeImage = () => {
+            currentIndex.value = (currentIndex.value + 1) % selectedProductImages.value.length;
+        };
+        // Function to update the current image index
+        const updateCurrentImage = (image) => {
+            currentIndex.value = selectedProductImages.value.findIndex(img => img === image);
+            currentImage.value = image;
+        };
+        // Define computed property to get the current image based on the currentIndex
+        const currentImage = computed(() => {
+            return selectedProductImages.value[currentIndex.value] || ''; // Assuming the first product's image is used for the carousel
+        });
+        const clearCartAndNavigate = () => {
+            cartStore.clearCart();
+        };
+        const isCartEmpty = computed(() => {
+            return cartStore.cart.length === 0;
+        });
         const paginatedItems = computed(() => {
             return items.slice(0, 2 + numFeedbackShown.value);
         });
         const showSeeMoreButton = computed(() => {
             return numFeedbackShown.value < items.length - 2;
         });
-        const totalItemsInCart = computed(() => {
-            return cartStore.cart.reduce((total, item) => total + item.quantity, 0);
-        });
-        const clearCartAndNavigate = () => {
-            cartStore.clearCart();
-            // navigate to checkoutshop route
-        };
-        const handleCheckCart = () => {
-            if (!authStore.isAuthenticated) {
-                // Set the intended route
-                authStore.setIntendedRoute('/checkoutshop');
-                // Show the login modal
-                showLoginModal.value = true;
-            } else {
-                // If user is already authenticated, navigate to the checkoutshop route directly
-                router.push('/checkoutshop');
-            }
-        };
-        // Add a console.log statement to openCartModal function
-        const openCartModal = () => {
-            console.log("Opening cart modal");
-            showCartModal.value = true;
-        };
-
-
-        const closeLoginModal = () => {
-            showLoginModal.value = false;
-        };
         const seeMore = () => {
             numFeedbackShown.value += 2;
             if (!showSeeMoreButton.value) {
@@ -1023,19 +1077,6 @@ export default defineComponent({
             numFeedbackShown.value = 0;
             showSeeLessButton.value = false;
         };
-        // Function to change the current image index
-        const changeImage = () => {
-            currentIndex.value = (currentIndex.value + 1) % bestProducts[0].image.length;
-        };
-        // Function to update the current image index
-        const updateCurrentImage = (image) => {
-            currentIndex.value = bestProducts[0].image.findIndex(img => img === image);
-            currentImage.value = image;
-        };
-        // Define computed property to get the current image based on the currentIndex
-        const currentImage = computed(() => {
-            return bestProducts[0].image[currentIndex.value]; // Assuming the first product's image is used for the carousel
-        });
         const increment = () => {
             count.value++;
         };
@@ -1046,8 +1087,15 @@ export default defineComponent({
         };
         const toggleshowCart = (item) => {
             selectedProduct.value = item;
-            console.log(selectedProduct.value); // Log selectedProduct to check its contents
+            console.log(selectedProduct.value);
             showCart.value = true;
+        };
+        const openCartModal = () => {
+            console.log("Opening cart modal");
+            showCartModal.value = true;
+        };
+        const closeLoginModal = () => {
+            showLoginModal.value = false;
         };
         const closeCart = () => {
             showCart.value = false;
@@ -1077,38 +1125,20 @@ export default defineComponent({
             setTimeout(() => {
                 showToast.value = false;
                 toastMessage.value = "";
-            }, 3000); // Hide the toast after 3 seconds
+            }, 3000);
         };
         const hideToast = () => {
             showToast.value = false;
             toastMessage.value = "";
         };
-        const addToCart = (item) => {
-            selectedProduct.value = item;
-            const existingProductIndex = cartStore.cart.findIndex(cartItem => cartItem.title === item.title);
-            if (existingProductIndex !== -1) {
-                cartStore.cart[existingProductIndex].quantity += item.quantity;
-                const updatedProduct = cartStore.cart.splice(existingProductIndex, 1)[0];
-                cartStore.cart.unshift(updatedProduct);
-            } else {
-                cartStore.addToCart({
-                    title: item.title,
-                    quantity: item.quantity,
-                    price: item.price
-                });
-            }
-            showCart.value = false; // Close the cart after adding the item
-            selectedProduct.value.quantity = 1;
-            showToastWithMessage("Item has been added to cart");
-        };
 
-        // Computed property to check if the cart is empty
-        const isCartEmpty = computed(() => {
-            return cartStore.cart.length === 0;
-        });
 
-        /////////////////////////////////////////
         return {
+            addToBuyNowAndCheckCart,
+            editCartProducts,
+            selectedProduct,
+            selectedProductIsFromBestProducts,
+            selectedProductImages,
             isCartEmpty,
             totalItemsInCart,
             clearCartAndNavigate,
@@ -1155,7 +1185,6 @@ export default defineComponent({
             closeModal,
             toggleshowReviews,
             closeReviews,
-            selectedProduct
         };
     }
 });

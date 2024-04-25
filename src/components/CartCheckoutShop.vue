@@ -12,31 +12,38 @@
                 </nav>
                 <div class="justify-center my-5 mr-5 relative lg:mb-[20rem] ">
                     <div class="lg:block relative lg:w-[60%] lg:top-[3rem] top-5">
-
-<!-- Orders of User -->
+                        <!-- Orders of User -->
                         <div class="relative mx-6 px-3 lg:pl-32 mb-[30px]">
-
-                            <p class="mb-4 font-bold text-3xl">Your Order</p>
+                            <p class="mb-4 text-2xl font-bold">Your Order</p>
                             <p class="mb-4 font-bold text-3m">Number Of Items</p>
-                            <p class="mb-4 font-bold text-3m">{{totalItemsInCart}}</p>
+                            <p class="mb-4 font-bold text-3m">{{ totalItemsInCart }}</p>
                             <div class="w-[100%]">
                                 <div class="flex justify-between">
-                                    <p class="text-sm w-[50%] mb-5">List of items</p>
-                                    <p class="w-[12%] flex justify-center">Quantity</p>
-                                    <p class="w-[12%] flex justify-center">Cost</p>
-                                    <p class="w-[12%] flex justify-center">Total</p>
+                                    <p class="font-bold w-[50%] mb-5">List of items</p>
+                                    <p class="w-[19%] flex justify-center mb-4 font-bold ">Quantity</p>
+                                    <p class="w-[12%] flex justify-center mb-4 font-bold ">Cost</p>
+                                    <p class="w-[12%] flex justify-center mb-4 font-bold ">Total</p>
                                 </div>
-                                 <div v-for="(cartItem, index) in cart" :key="index" class="flex justify-between mb-3">
-                                    <div class="text-xs w-[50%]">{{ cartItem.title }}</div>
-                                    <div class="w-[12%] flex justify-center">{{ cartItem.quantity }}</div>
-                                    <div class="w-[12%] flex justify-center">{{ cartItem.price }}</div>
-                                    <div class="w-[12%] flex justify-center">{{ cartItem.quantity * cartItem.price }}</div>
+                                <div class="mb-5 overflow-y-scroll h-28 lg:h-full lg:overflow-hidden pr-3">
+                                    <div v-if="!selectedItems || selectedItems.length === 0"
+                                        class="text-center text-gray-500">
+                                        Cart is empty
+                                    </div>
+                                    <div v-else>
+                                        <div v-for="(cartItem, index) in selectedItems" :key="index"
+                                            class="flex justify-between mb-3">
+                                            <div class="w-[50%]">{{ cartItem.title }}</div>
+                                            <div class="w-[19%] flex justify-center">{{ cartItem.quantity }}</div>
+                                            <div class="w-[12%] flex justify-center">{{ cartItem.price }}</div>
+                                            <div class="w-[12%] flex justify-center">{{ cartItem.quantity * cartItem.price
+                                            }}</div>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
                         </div>
-
-<!-- Information of user -->
+                        <!-- Information of user -->
                         <div class="relative hidden lg:block mx-6 px-3 lg:pl-32 mb-[30px]">
                             <p class="mb-4 font-bold lg:text-3xl text-2xl">Your Information</p>
                             <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-4">
@@ -46,7 +53,7 @@
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start">
                                     <p class="mr-[30px] w-10vw lg:pr-0 lg:mr-9 lg:mb-1 font-bold">E-mail Address</p>
-                                    <p class="font-normal mb-2 text-base text-gray-600 text-sm">Juandelacruz@gmail.co
+                                    <p class="font-normal mb-2 text-base text-gray-600">Juandelacruz@gmail.co
                                     </p>
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start justify-start">
@@ -62,35 +69,20 @@
                                     <p class="font-normal mb-3 text-gray-600">Yes</p>
                                 </div>
                             </div>
-
-
                             <div class="hidden lg:block">
-
-
-
-
                                 <p class="font-bold text-3xl mb-4">Payment</p>
-
-
                                 <div class="border border-gray-200 py-5 pl-6">
-
                                     <input type="radio" id="payment_ibayad" name="payment_method" value="ibayad"
                                         class="mr-2" checked>
                                     <label for="payment_ibayad">Ibayad</label>
-
-
-
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
                     <!-- FOR MOBILE -->
-                    <div class=" lg:hidden p-5 ">
-
-                        <div class="mt-5 bg-gray-400 h-0.5"></div>
-                        <p class=" text-2xl font-bold pt-6">Your Information</p>
+                    <div class=" ml-4 bg-gray-400 h-0.5"></div>
+                    <div class="ml-4 lg:hidden p-5 ">
+                        <p class=" text-2xl font-bold pt-2">Your Information</p>
                         <div className="grid grid-cols-2 grid-rows-5 pt-5 " style="word-wrap: break-word;">
                             <div>
                                 <p class="text-base font-bold">Full Name</p>
@@ -102,7 +94,7 @@
                                 <p class=" text-base font-bold">E-mail Address</p>
                             </div>
                             <div>
-                                <p class="font-normal mb-2 text-base text-gray-600 text-sm">Juandelacruz@gmail.com</p>
+                                <p class="font-normal mb-2 text-base text-gray-600">Juandelacruz@gmail.com</p>
                             </div>
                             <div>
                                 <p class=" text-base font-bold">Phone Number</p>
@@ -124,9 +116,8 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Start of Central Business District Tour -->
-                    <div class="my-4 lg:w-[32%] lg:h-[30%] lg:right-10 lg:absolute relative lg:top-[3rem] w-screen">
+                    <div class="my-2 lg:w-[32%] lg:h-[30%] lg:right-10 lg:absolute relative lg:top-[3rem] w-screen">
                         <div class="border border-gray-400 rounded-xl p-5 ml-5 w-[90%]  h-fit">
                             <div class="lg:flex items-center mb-5">
                                 <img src="@/assets/images/CategoryView/ToShop/kultura.png"
@@ -146,24 +137,31 @@
                             </div>
                             <div class="bg-gray-400 h-0.5"></div>
                             <p class="lg:mr-9 lg:mt-2 lg:font-sans lg:text-3xl font-bold  text-lg pt-4 mb-5">Your Total</p>
-                            <div class="items-center mb-5">
-                                <div v-for="(cartItem, index) in cart" :key="index" class="flex justify-between mb-2 w-[100%]">
-                                    <p class="w-[70%]">{{ cartItem.title }} </p>
-                                    <p class="text-gray-400">₱ {{ cartItem.quantity * cartItem.price }}</p>
+                            <div class="mb-5 overflow-y-scroll h-32 lg:h-full lg:overflow-hidden pr-3">
+                                <div class="items-center mb-5">
+                                    <div v-if="!selectedItems || selectedItems.length === 0"
+                                        class="text-center text-gray-500">
+                                        Cart is empty
+                                    </div>
+                                    <div v-else>
+                                        <div v-for="(cartItem, index) in selectedItems" :key="index"
+                                            class="flex justify-between mb-3 ">
+
+                                            <p class="w-[70%]">{{ cartItem.title }} </p>
+                                            <p class="text-gray-400">₱ {{ cartItem.quantity * cartItem.price }}</p>
+                                        </div>
+                                    </div>
+                                    <p class="lg:font-poppins font-sans text-base font-bold text-right underline hidden">
+                                        Price Breakdown
+                                    </p>
                                 </div>
-
-                                <p class="lg:font-poppins font-sans text-base font-bold text-right underline hidden">
-                                    Price Breakdown
-                                </p>
                             </div>
-
                             <div class="bg-gray-400 h-0.5 w-[100%]"></div>
                             <div class="flex items-center my-7  ">
                                 <img src="@/assets/images/CategoryView/ToShop/voucher.png" class="lg:w-8 h-8 mr-2">
                                 <button class="text-white bg-blue-500 rounded-xl px-3 py-2 text-xs font-semibold"
                                     @click="toggleVoucher">Use Voucher</button>
                             </div>
-
                             <div v-if="totalAmount > 0" class="flex justify-between">
                                 <p class="font-poppins font-sans font-bold text-lg pt-4">Your Total (Php)</p>
                                 <p class="font-poppins font-sans text-base font-bold pt-4 ">₱ {{ totalAmount }}</p>
@@ -171,7 +169,6 @@
                             <p class="lg:font-poppins font-sans text-base font-bold text-right underline hidden">Price
                                 Breakdown
                             </p>
-
                             <!-- For Mobile -->
                             <div class="flex justify-center lg:hidden pt-6">
                                 <button v-if="showPayment"
@@ -223,21 +220,12 @@
                         class=" h-28 pt-16 pl-5  bg-[#132540] text-white text-xl font-semibold flex items-center  cursor-pointer lg:px-[100px] lg:h-20 lg:mt-[80px] lg:text-4xl lg:pt-0 ">
                         <svg @click="navigateBack" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke-width="3" stroke="white" class="h-5 pr-2 lg:mr-7 lg:w-10 lg:h-14">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18">
                             </path>
                         </svg> {{ navButtonText }}
                     </nav>
-
-
                     <div>
-
                     </div>
-
-
-
-
-
                     <div class="mt-[0rem] w-full h-full p-8">
                         <div className="grid grid-cols-1 grid-rows-4 gap-0">
                             <div class="flex border rounded p-8 h-24" @click="activateRadioButton('gcash')">
@@ -249,10 +237,6 @@
                                     <label for="helper-radio" class="font-semibold text-xl text-gray-700">
                                         Ibayad</label>
                                 </div>
-
-
-
-
                             </div>
                             <div class="flex pt-4">
                                 <img src="@/assets/images/Modal/voucher.svg" class="mb-6 w-6 h-6">
@@ -262,10 +246,8 @@
                                     voucher</button>
                             </div>
                         </div>
-
                         <div class="justify-center pt-3">
-                            <button
-                                class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
+                            <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
                                 @click="toggleComplete">Confirm Booking</button>
                             <div v-if="showComplete"
                                 class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
@@ -282,9 +264,7 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </template>
         </div>
     </template>
@@ -292,8 +272,6 @@
     <template v-else>
         <div class="lg:w-[100%] p-4 rounded-lg text-center flexflex-col items-center pt-20">
             <!-- Voucher section -->
-
-
             <div class="flex flex-col items-center">
                 <input type="text" id="" name="" value=""
                     class="mb-2 h-[50px] w-[100%] border border-gray-200 pl-5 pr-3 rounded-md"
@@ -318,11 +296,6 @@
             </div>
         </div>
     </template>
-
-
-
-
-
 </template>
 
 
@@ -351,32 +324,45 @@
 </style>
 
 <script>
-// import { useCartStore } from '@/stores/toShopCart'
-import { computed } from 'vue';
-import { useCartStore } from '@/stores/toShopCart';
+import {
+    computed
+} from 'vue';
+import {
+    useCartStore
+} from '@/stores/toShopCart';
 
 export default {
-     setup() {
+    setup() {
         const cartStore = useCartStore();
+        // Compute the selected items based on the user's action
+        const selectedItems = computed(() => {
+            // If the user is editing the cart, display items from the editCartProducts array
+            if (cartStore.editCartProducts.length > 0) {
+                return cartStore.editCartProducts.filter(item => item.selected);
+            }
+            // If the user is buying now, display items from the buyNowProducts array
+            else if (cartStore.buyNowProducts.length > 0) {
+                return cartStore.buyNowProducts.filter(item => item.selected);
+            }
+            // Default to displaying items from the cart array
+            return cartStore.cart.filter(item => item.selected);
+        });
 
-        const cart = computed(() => cartStore.cart);
-
+        // Compute the total number of items in the selected items
         const totalItemsInCart = computed(() => {
-            return cartStore.cart.reduce((total, item) => total + item.quantity, 0);
+            return selectedItems.value.reduce((total, item) => total + item.quantity, 0);
         });
 
-        // Compute the overall total amount only once
+        // Compute the overall total amount for the selected items
         const totalAmount = computed(() => {
-            return cartStore.cart.reduce((total, item) => total + (item.quantity * item.price), 0);
+            return selectedItems.value.reduce((total, item) => total + (item.quantity * item.price), 0);
         });
-
         return {
-        cart,
-        totalItemsInCart,
-        totalAmount
+            selectedItems,
+            totalItemsInCart,
+            totalAmount
         };
     },
-    
     data() {
         return {
             showConfirmation: false,
@@ -429,8 +415,6 @@ export default {
                 // this.$router.push('/category/eat');
                 // Go back to the previous page
                 this.$router.go(-1);
-
-
             }
         },
         activateRadioButton(id) {

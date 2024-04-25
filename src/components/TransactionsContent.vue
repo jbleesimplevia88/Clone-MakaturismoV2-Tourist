@@ -1,29 +1,28 @@
 <template>
-    <div class="bg-[#102E61] w-full h-[700px] z-10 ">
-        <div class="bg-white p-6 pb-10 mx-auto -mt-[2rem] space-y-6 lg:w-[94%] rounded-lg hidden-scrollbar">
+  <div class="bg-[#102E61] w-full h-[700px] z-10">
+    <div class="bg-white p-6 pb-10 mx-auto -mt-[2rem] space-y-6 lg:w-[94%] rounded-lg hidden-scrollbar">
 
-            <div class="w-[100%] h-[35rem] z-10 space-y-2 overflow-y-auto hidden-scrollbar">
-                <div v-for="(item, index) in items" :key="index"
-                    class="flex justify-between mt-5 mx-auto w-[90%] h-[154px] bg-[#E7EAEF] space-y-2">
-                    <div class="flex flex-row gap-[5rem]">
-                        <img :src="item.imageSrc" :alt="item.alt" class="w-8 h-auto lg:w-[154px] lg:h-[154px]">
-                        <div class="w-[25rem]">
-                            <p class=" h-[2rem] mt-3 text-lg ">{{ item.title }}</p>
-                            <p class="mt-[5rem] text-xs text-gray-500">{{ item.status }}</p>
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center mr-5">
-                        <p>{{ item.quantity }}x</p>
-                        <p>₱ {{ item.price }}</p>
-                        <button @click="openParcelDetails(item)"
-                            class="mt-[2.7rem] px-4 py-2.5 p-2 bg-[#2969D6] font-bold text-white rounded-md text-center">Buy
-                            Again</button>
+        <div class="w-[100%] h-[35rem] z-10 space-y-2 overflow-y-auto hidden-scrollbar">
+            <div v-for="(item, index) in items" :key="index" class="flex justify-between mt-5 mx-auto w-[90%] h-[154px] bg-[#E7EAEF] space-y-2">
+                <div class="flex flex-row gap-[5rem]">
+                    <img :src="item.imageSrc" :alt="item.alt" class="w-8 h-auto lg:w-[154px] lg:h-[154px]">
+                    <div class="w-[25rem]">
+                        <p class="mt-6 h-[2rem] mt-3 text-lg">{{ item.title }}</p>
+                        <p class="mt-10 text-sm text-gray-500">{{ item.date }}</p> <!-- Display date here -->
+                        <p class="mt-2 [5rem] text-xs text-gray-500">{{ item.status }}</p>
                     </div>
                 </div>
+                <div class="flex flex-col items-center mr-5">
+                    <p>{{ item.quantity }}x</p>
+                    <p>₱ {{ item.price }}</p>
+                    <button @click="openParcelDetails(item)" class="mt-[2.7rem] px-4 py-2.5 p-2 bg-[#2969D6] font-bold text-white rounded-md text-center">Buy Again</button>
+                </div>
             </div>
-
         </div>
+
     </div>
+</div>
+
 
     <!-- Buy Again Modal -->
     <div v-if="showParcelDetails"
@@ -106,6 +105,7 @@ export default {
                     imageSrc: shirt,
                     alt: "shirt",
                     title: "Never Stop Exploring Graphic Tee in Gray",
+                    date: "11-08-2023 03:50 PM",
                     status: "Parcel has been delivered",
                     quantity: 1,
                     price: '299.00'
@@ -114,6 +114,7 @@ export default {
                     imageSrc: bag,
                     alt: "bag",
                     title: "Multi Handle Tote Bag with Embroidered Philippines Kalesa Scenery",
+                    date: "11-08-2023 03:50 PM",
                     status: "Parcel has been delivered",
                     quantity: 1,
                     price: '299.00'
@@ -122,6 +123,7 @@ export default {
                     imageSrc: kalesa,
                     alt: "kalesa",
                     title: "Never Stop Exploring Graphic Tee in Gray",
+                    date: "11-08-2023 03:50 PM",
                     status: "Parcel has been delivered",
                     quantity: 1,
                     price: '100.00'
@@ -130,6 +132,7 @@ export default {
                     imageSrc: shirt,
                     alt: "shirt",
                     title: "Never Stop Exploring Graphic Tee in Gray",
+                    date: "11-08-2023 03:50 PM",
                     status: "Parcel has been delivered",
                     quantity: 1,
                     price: '299.00'
@@ -138,6 +141,7 @@ export default {
                     imageSrc: bag,
                     alt: "bag",
                     title: "Never Stop Exploring Graphic Tee in Gray",
+                    date: "11-08-2023 03:50 PM",
                     status: "Parcel has been delivered",
                     quantity: 1,
                     price: '299.00'
@@ -146,6 +150,7 @@ export default {
                     imageSrc: kalesa,
                     alt: "kalesa",
                     title: "Never Stop Exploring Graphic Tee in Gray",
+                    date: "11-08-2023 03:50 PM",
                     status: "Parcel has been delivered",
                     quantity: 1,
                     price: '100.00'

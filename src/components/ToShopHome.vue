@@ -158,7 +158,7 @@
                 <!-- End  Filter dropdown MOBILE  -->
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div v-for="(item, index) in paginatedItems" :key="index"
+                <div v-for="(item, index) in filteredItems" :key="index"
                     class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
                     <div class="relative">
                         <img class="w-full h-[250px] object-cover rounded-t" :src="item.image" alt="">
@@ -355,9 +355,9 @@ export default {
                 // mapLocation: "https://www.google.com/maps/dir//532-C+Gen.+M.+Hizon,+Makati,+1233+Metro+Manila/@14.5429672,121.0127257,21z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9007d90d0c5:0x9fe2a1087ad72ff4!2m2!1d121.0127104!2d14.5428967?entry=ttuWWI"
             },
             ],
-            categories: ['All', 'Mall', 'Strip Mall', 'Museum Shop', 'Gift Shop', 'Souvenir'],
+            categories: ['Mall', 'Strip Mall', 'Museum Shop', 'Gift Shop', 'Souvenir'],
             locations: [
-                'All',
+
                 'Ayala-Paseo de Roxas',
                 'Bangkal',
                 'Bel-air',

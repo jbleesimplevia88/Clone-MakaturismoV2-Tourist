@@ -166,8 +166,9 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div v-for="(item, index) in paginatedItems" :key="index"
+                <div v-for="(item, index) in filteredItems" :key="index"
                     class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
+
 
                     <div class="relative">
                         <img class="w-full h-[250px] object-cover rounded-t" :src="item.image" alt="">
@@ -354,9 +355,9 @@ export default {
                 mapLocation: ""
             },
             ],
-            categories: ['All', 'Entertainment', 'Fitness', 'Museum', 'Sightseeing Tour', 'Spa & Wellness', 'Gym', 'Cinema', 'Sports Arena', 'Theater', 'Game', 'Library', 'Gallery'],
+            categories: ['Entertainment', 'Fitness', 'Museum', 'Sightseeing Tour', 'Spa & Wellness', 'Gym', 'Cinema', 'Sports Arena', 'Theater', 'Game', 'Library', 'Gallery'],
             locations: [
-                'All',
+
                 'Ayala-Paseo de Roxas',
                 'Bangkal',
                 'Bel-air',
@@ -504,6 +505,7 @@ export default {
             }
         }
         ,
+
         seeMore(item) {
             const {
                 latitude,

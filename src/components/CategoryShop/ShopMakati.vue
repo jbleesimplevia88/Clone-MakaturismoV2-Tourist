@@ -137,10 +137,10 @@
                                             <p class="text-xs text-white p-2 w-[55%]">₱ {{ item.price }}</p>
                                             <div class="flex justify-between items-center mt-3 mb-2">
                                                 <button @click="toggleshowCart(item)"
-                                                    class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%]">See
+                                                    class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%] text-white">See
                                                     More</button>
                                                 <button @click="addToCart(item)"
-                                                    class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%]">Add to
+                                                    class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%] text-white">Add to
                                                     Cart</button>
                                             </div>
                                         </div>
@@ -164,10 +164,10 @@
                                             <p class="text-xs text-white p-2 w-[55%]">₱ {{ item.price }}</p>
                                             <div class="flex justify-between items-center mt-3 mb-2">
                                                 <button @click="toggleshowCart(item)"
-                                                    class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%]">See
+                                                    class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%] text-white">See
                                                     More</button>
                                                 <button @click="addToCart(item)"
-                                                    class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%]">Add to
+                                                    class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%] text-white">Add to
                                                     Cart</button>
                                             </div>
                                         </div>

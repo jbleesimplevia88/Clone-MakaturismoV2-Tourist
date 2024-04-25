@@ -18,10 +18,11 @@
                         </router-link>
                     </div>
                     <div class="relative flex flex-col items-center">
-                        <div class="lg:pl-9 grid grid-cols-1 lg:grid-cols-5 lg:pr-[7rem]">
-                            <img src="@/assets/images/CategoryView/ToEat/eat1.png" alt=""
-                                class="col-span-3 w-[100%] h-full lg:w-[97%] lg:h-[95%] rounded-l-3xl">
-                            <div class="hidden col-span-2 md:grid md:grid-cols-2 gap-4 ">
+                        <div class=" lg:pr-[7rem]">
+                            <ContentCarousel :items="items" class="mb-10" />
+
+
+                            <!-- <div class="hidden col-span-2 md:grid md:grid-cols-2 gap-4 ">
                                 <img src="@/assets/images/CategoryView/ToEat/eat2.png" alt=""
                                     class="lg:w-[100%] lg:h-[90%]">
                                 <img src="@/assets/images/CategoryView/ToEat/eat3.png" alt=""
@@ -30,7 +31,7 @@
                                     class="lg:w-[100%] lg:h-[90%]">
                                 <img src="@/assets/images/CategoryView/ToEat/eat5.jpg" alt=""
                                     class="lg:w-[100%] lg:h-[90%] rounded-br-3xl">
-                            </div>
+                            </div> -->
                         </div>
 
                     </div>
@@ -41,7 +42,6 @@
                                 <p class="text-md">Ordering made easy</p>
                                 <p class="text-lg font-bold">Just a click away</p>
                             </div>
-
                             <router-link to="/checkouteat">
                                 <div class="w-[100%] px-2 mt-5">
                                     <button
@@ -51,7 +51,6 @@
                             </router-link>
                         </div>
                     </div>
-
                     <div class="flex flex-col pl-8 lg:pl-8 lg:order-first">
                         <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">Little Tokyo</h1>
                         <p class="text-md text-white text-left pb-5">Restaurant/Food District</p>
@@ -60,25 +59,19 @@
             </div>
         </div>
     </div>
-
     <div class="flex flex-wrap justify-between items-center mb-2 relative">
         <div class="my-4 lg:p-0 lg:w-[75%]">
             <div class="relative mx-6 px-3 lg:px-32 pt-5">
-
-
                 <p class="font-bold text-lg text-black text-left pb-5 pt-3 lg:pt-[5rem]">About this place</p>
-                <p class="text-lg text-justify text-black pb-5">Savor the authentic flavors of Japan in the heart of
-                    Makati at Little Tokyo. This culinary enclave offers a delightful array of Japanese restaurants and
-                    eateries, serving up delicious sushi, ramen, tempura, and more. Whether you're a sushi aficionado or
-                    a ramen lover, Little Tokyo promises a delectable dining experience in a charming Japanese setting.
+                <p class="text-lg text-justify text-black pb-5">Savor the authentic flavors of Japan in the heart of Makati
+                    at Little Tokyo. This culinary enclave offers a delightful array of Japanese restaurants and eateries,
+                    serving up delicious sushi, ramen, tempura, and more. Whether you're a sushi
+                    aficionado or a ramen lover, Little Tokyo promises a delectable dining experience in a charming Japanese
+                    setting.
                 </p>
-
                 <div class="hidden border border-gray-400 lg:w-[]">
                     <p class="text-center font-bold">Number of items</p>
                 </div>
-
-
-
                 <div class="flex flex-row">
                     <div class="pt-3">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -91,7 +84,6 @@
                     </div>
                     <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">N/A</p>
                 </div>
-
                 <div class="flex flex-row">
                     <div class="pt-1">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -99,14 +91,11 @@
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
-
                     </div>
                     <div class="flex flex-col pl-2.5">
                         <p class="text-lg md:text-black text-left pb-5">N/A</p>
-
                     </div>
                 </div>
-
                 <div class="flex flex-row">
                     <div class="pt-0.25">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -114,34 +103,34 @@
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
                         </svg>
-
                     </div>
                     <p class="text-lg md:text-black text-left pl-2.5 pb-5">N/A</p>
                 </div>
-
                 <!-- BEst seller -->
-               <div class="my-4 lg:w-[100%]">
+                <div class="my-4 lg:w-[100%]">
                     <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SELLERS</h1>
                     <div class="lg:flex f;ex-col justify-start items-center text-white lg:w-[100%]">
                         <!-- Cards in Best seller -->
-                        <div v-for="(item, index) in bestProducts" :key="index" class="lg:w-auto lg:flex-auto bg-blue-950 lg:h-[15rem] w-[47%] h-[190px] m-1 p-2 lg:p-3 rounded-xl relative flex flex-col justify-between">
-                            <p class="rounded-lg lg:text-sm text-xs lg:px-2 pt-2 absolute top-2.5 left-3 right-3 text-white p-2 w-71" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
-                                {{item.title}}
+                        <div v-for="(item, index) in bestProducts" :key="index"
+                            class="lg:w-auto lg:flex-auto bg-blue-950 lg:h-[15rem] w-[47%] h-[190px] m-1 p-2 lg:p-3 rounded-xl relative flex flex-col justify-between">
+                            <p class="rounded-lg lg:text-sm text-xs lg:px-2 pt-2 absolute top-2.5 left-3 right-3 text-white p-2 w-71"
+                                style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
+                                {{ item.title }}
                             </p>
                             <img class="rounded-md lg:h-[80%]" :src="item.image" alt="" width="100%">
-                            <button @click="toggleshowCart(item)" class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">
-                                        See More</button>
+                            <button @click="toggleshowCart(item)"
+                                class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">
+                                See More</button>
                             <div class="flex justify-end absolute bottom-[65px] right-[18px]">
                                 <div class="flex justify-between">
                                     <div class="flex bg-blue-950 border-1 rounded-lg border-white">
-                                        <p class="text-xs border rounded-lg border-white p-1">₱{{item.price}}</p>
+                                        <p class="text-xs border rounded-lg border-white p-1">₱{{ item.price }}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <!-- Other Items -->
                 <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">OTHER ITEMS</h1>
                 <div class="flex flex-wrap justify-between items-center mb-2">
@@ -149,17 +138,22 @@
                     <div class="lg:w-[49%] flex flex-wrap items-center">
                         <div v-for="(item, index) in otherProducts.slice(0, 3)" :key="index" class="card-wrapper">
                             <!-- Your card content goes here -->
-                            <div class="card bg-blue-950 w-[100%] border-2 h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
+                            <div
+                                class="card bg-blue-950 w-[100%] border-2 h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
                                 <div class="flex justify-between  w-[100%]">
                                     <div class="w-[40%]">
                                         <img class="rounded-md mt-2 lg:h-[89%]" :src="item.image" alt="" width="100%">
                                     </div>
                                     <div class="w-[60%]">
-                                        <p class="text-xs text-white p-2 w-[75%] mb-4">{{item.title}}</p>
-                                        <p class="text-xs text-white p-2 w-[55%]">₱ {{item.price}}</p>
+                                        <p class="text-xs text-white p-2 w-[75%] mb-4">{{ item.title }}</p>
+                                        <p class="text-xs text-white p-2 w-[55%]">₱ {{ item.price }}</p>
                                         <div class="flex justify-between items-center mt-3 mb-2">
-                                            <button @click="toggleshowCart(item)" class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%]">See More</button>
-                                            <button @click="addToCart(item)" class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%]">Add to Cart</button>
+                                            <button @click="toggleshowCart(item)"
+                                                class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%]">See
+                                                More</button>
+                                            <button @click="addToCart(item)"
+                                                class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%]">Add to
+                                                Cart</button>
                                         </div>
                                     </div>
                                 </div>
@@ -170,17 +164,22 @@
                     <div class="lg:w-[49%] flex flex-wrap items-center">
                         <div v-for="(item, index) in otherProducts.slice(3, 6)" :key="index" class="card-wrapper">
                             <!-- Your card content goes here -->
-                            <div class="card bg-blue-950 w-[100%] border-2 h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
+                            <div
+                                class="card bg-blue-950 w-[100%] border-2 h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
                                 <div class="flex justify-between  w-[100%]">
                                     <div class="w-[40%]">
                                         <img class="rounded-md mt-2 lg:h-[89%]" :src="item.image" alt="" width="100%">
                                     </div>
                                     <div class="w-[60%]">
-                                        <p class="text-xs text-white p-2 w-[75%] mb-4">{{item.title}}</p>
-                                        <p class="text-xs text-white p-2 w-[55%]">₱ {{item.price}}</p>
+                                        <p class="text-xs text-white p-2 w-[75%] mb-4">{{ item.title }}</p>
+                                        <p class="text-xs text-white p-2 w-[55%]">₱ {{ item.price }}</p>
                                         <div class="flex justify-between items-center mt-3 mb-2">
-                                            <button @click="toggleshowCart(item)" class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%]">See More</button>
-                                            <button @click="addToCart(item)" class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%]">Add to Cart</button>
+                                            <button @click="toggleshowCart(item)"
+                                                class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%]">See
+                                                More</button>
+                                            <button @click="addToCart(item)"
+                                                class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%]">Add to
+                                                Cart</button>
                                         </div>
                                     </div>
                                 </div>
@@ -188,66 +187,61 @@
                         </div>
                     </div>
                 </div>
-
-                 <!-- View Add to cart modal -->
-                <div v-if="showCart" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center" @click.self="closeModal">
+                <!-- View Add to cart modal -->
+                <div v-if="showCart" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
+                    @click.self="closeModal">
                     <div class="bg-white lg:h-[760px] h-[640px] w-[900px]  rounded-lg shadow-md p-2 mx-5" @click.stop>
                         <div class="lg:w-[100%] p-4 rounded-lg">
                             <div class="relative flex justify-end">
                                 <button class=" pr-4 pt-21 ">
-                                            <svg @click="closeCart" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                viewBox="0 0 20 30" stroke-width="5" stroke="black" class="w-6 h-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M6 18 18 6M6 6l12 12" />
-                                            </svg>
-                                        </button>
+                                    <svg @click="closeCart" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 20 30" stroke-width="5" stroke="black" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
                             </div>
                             <div class="lg:flex lg:justify-between w-[100%]">
                                 <!-- Web gallery -->
-                                <div class=" hidden lg:block lg:w-[40%]">
-                                    <div class="lg:flex justify-center items-center mb-3">
-                                        <img :src="selectedProduct.image" class="w-auto h-24 md:w-[500px] md:h-auto">
-                                    </div>
-                                    
-                                    <div class="flex justify-between">
-                                        <div class="flex justify-between items-center">
-                                            <img src="@/assets/images/CategoryView/ToEat/best2.png"
-                                                class="h-24 md:w-[80px] md:h-auto">
-                                        </div>
-                                        <div class="flex justify-center items-center">
-                                            <img src="@/assets/images/CategoryView/ToEat/best3.jpg"
-                                                class="h-24 md:w-[80px] md:h-auto">
-                                        </div>
-                                        <div class="flex justify-center items-center">
-                                            <img src="@/assets/images/CategoryView/ToEat/other1.jpg"
-                                                class="h-24 md:w-[80px] md:h-auto">
-                                        </div>
-                                        <div class="flex justify-center items-center mx-5">
-                                            <img src="@/assets/images/CategoryView/ToShop/button.png"
-                                                class="h-24 md:w-[40px] md:h-auto">
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="hidden lg:block lg:w-[40%]">
+    <div class="lg:flex justify-center items-center mb-3">
+        <img :src="selectedProduct.image" class="w-auto h-24 md:w-[500px] md:h-auto" id="mainImage">
+    </div>
+    
+    <div class="flex justify-between">
+        <div class="flex justify-between items-center">
+            <img src="@/assets/images/CategoryView/ToEat/best2.png" class="h-24 md:w-[80px] md:h-auto" onclick="changeMainImage('@/assets/images/CategoryView/ToEat/best2.png')">
+        </div>
+        <div class="flex justify-center items-center">
+            <img src="@/assets/images/CategoryView/ToEat/best3.jpg" class="h-24 md:w-[80px] md:h-auto" onclick="changeMainImage('@/assets/images/CategoryView/ToEat/best3.jpg')">
+        </div>
+        <div class="flex justify-center items-center">
+            <img src="@/assets/images/CategoryView/ToEat/other1.jpg" class="h-24 md:w-[80px] md:h-auto" onclick="changeMainImage('@/assets/images/CategoryView/ToEat/other1.jpg')">
+        </div>
+        <div class="flex justify-center items-center mx-5">
+            <img src="@/assets/images/CategoryView/ToShop/button.png" class="h-24 md:w-[40px] md:h-auto">
+        </div>
+    </div>
+</div>
                                 <!-- Mobile - gallery -->
                                 <div class="lg:hidden grid grid-cols-2 grid-rows-1 gap-4">
-                                            <div class="w-[200px] ml-4">
-                                                <img :src="currentImage" class="h-52 w-full" />
-                                            </div>
-                                            <div class="grid-cols-1 ml-16">
-                                                <img v-for="(image, index) in images" :key="index" :src="image"
-                                                    class="h-9 w-10 mb-2" @click="updateCurrentImage(index)" />
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.5" stroke="black" class="w-10 h-8 mt-2 cursor-pointer"
-                                                    @click="changeImage">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                                </svg>
-                                            </div>
-                                        </div>
+                                    <div class="w-[200px] ml-4">
+                                        <img :src="currentImage" class="h-52 w-full" />
+                                    </div>
+                                    <div class="grid-cols-1 ml-16">
+                                        <img v-for="(image, index) in images" :key="index" :src="image"
+                                            class="h-9 w-10 mb-2" @click="updateCurrentImage(index)" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="black" class="w-10 h-8 mt-2 cursor-pointer"
+                                            @click="changeImage">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                        </svg>
+                                    </div>
+                                </div>
                                 <!-- right section -->
                                 <div class="lg:w-[60%] px-3 mt-3">
                                     <div class="lg:flex lg:flex-col text-black">
-                                        <p class="font-bold text-left text-1xl mb-2">{{selectedProduct.title }}</p>
+                                        <p class="font-bold text-left text-1xl mb-2">{{ selectedProduct.title }}</p>
                                     </div>
                                     <div class="text-black mb-5">
                                         <p class="font-bold">{{ selectedProduct.shop }}</p>
@@ -257,9 +251,11 @@
                                                 <div class="justify-between hidden lg:block">
                                                     <p class="mr-5">Quantity</p>
                                                     <div class="flex items-center">
-                                                        <button @click="increaseQuantity" class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">+</button>
+                                                        <button @click="increaseQuantity"
+                                                            class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">+</button>
                                                         <span>{{ selectedProduct.quantity }}</span>
-                                                        <button @click="decreaseQuantity" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">-</button>
+                                                        <button @click="decreaseQuantity"
+                                                            class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">-</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -281,169 +277,190 @@
                                         <!-- preview of reviews -->
                                         <p class="lg:block hidden font-bold">Reviews</p>
                                         <button class="lg:block hidden" @click="toggleshowReviews">
-                                                    <div>
-                                                        <div
-                                                            class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
-                                                            <div class="inline-block w-[100%]">
-                                                                <label class="flex w-[100%] text-sm font-bold">juandelacruz
-                                                                    ⭐️⭐️⭐️⭐️⭐</label>
-                                                                <p class="flex text-sm">03-10-2024 11:30</p>
-                                                            </div>
-                                                            <div class="flex justify-between mb-2">
-                                                                <p class="w-[100%] text-xs text-left">I will buy again.
-                                                                    The seller is kind and accommodating with my
-                                                                    requests. Transaction is smooth. ❤️</p>
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
-                                                            <div class="inline-block w-[100%]">
-                                                                <label class="flex w-[100%] text-sm font-bold">faithstamaria
-                                                                    ⭐️⭐️⭐️⭐️⭐</label>
-                                                                <p class="flex text-sm">09-03-2024 08:30</p>
-                                                            </div>
-                                                            <div class="flex justify-between mb-2">
-                                                                <p class="w-[100%] text-xs text-left">I will buy again.
-                                                                    The seller is kind and accommodating with my
-                                                                    requests. Transaction is smooth. ❤️</p>
-                                                            </div>
-                                                        </div>
+                                            <div>
+                                                <div
+                                                    class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                                    <div class="inline-block w-[100%]">
+                                                        <label class="flex w-[100%] text-sm font-bold">juandelacruz
+                                                            ⭐️⭐️⭐️⭐️⭐</label>
+                                                        <p class="flex text-sm">03-10-2024 11:30</p>
                                                     </div>
-                                                </button>
+                                                    <div class="flex justify-between mb-2">
+                                                        <p class="w-[100%] text-xs text-left">I will buy again.
+                                                            The seller is kind and accommodating with my
+                                                            requests. Transaction is smooth. ❤️</p>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="flex w-[100%] flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                                    <div class="inline-block w-[100%]">
+                                                        <label class="flex w-[100%] text-sm font-bold">faithstamaria
+                                                            ⭐️⭐️⭐️⭐️⭐</label>
+                                                        <p class="flex text-sm">09-03-2024 08:30</p>
+                                                    </div>
+                                                    <div class="flex justify-between mb-2">
+                                                        <p class="w-[100%] text-xs text-left">I will buy again.
+                                                            The seller is kind and accommodating with my
+                                                            requests. Transaction is smooth. ❤️</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                             <!-- Mobile - Quantity counter -->
                             <div class="lg:hidden flex items-center text-black mb-4">
                                 Quantity
-                                <button @click="decreaseQuantity" class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
+                                <button @click="decreaseQuantity"
+                                    class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
                                 <span>{{ selectedProduct.quantity }}</span>
-                                <button @click="increaseQuantity" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">+</button>
+                                <button @click="increaseQuantity"
+                                    class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">+</button>
                             </div>
                             <!-- buttons -->
                             <div class="flex justify-between">
                                 <div class="w-[100%] flex justify-start">
-                                    <button @click="addToCart(selectedProduct)" class="text-blue-600 border-blue-500 border-2 rounded-lg py-2 w-[90%]">
-                                                Add to Cart</button>
+                                    <button @click="addToCart(selectedProduct)"
+                                        class="text-blue-600 border-blue-500 border-2 rounded-lg py-2 w-[90%]">
+                                        Add to Cart</button>
                                 </div>
                                 <div class="w-[100%] flex justify-end">
                                     <router-link to="/checkouteat" class="w-full">
                                         <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]">Buy
                                             Now</button>
-
                                     </router-link>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <!-- Toast -->
                 <div id="app">
                     <!-- Other content -->
                     <div class="toast-container">
-                    <div v-if="showToast" class="toast" role="alert">
-                        <!-- Toast content -->
-                        <div class="toast-content flex items-center p-4 text-black-500 bg-green-300 rounded-lg shadow ">
-                        <!-- Toast icon -->
-                        <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
-                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-                            </svg>
-                            <span class="sr-only">Check icon</span>
+                        <div v-if="showToast" class="toast" role="alert">
+                            <!-- Toast content -->
+                            <div class="toast-content flex items-center p-4 text-black-500 bg-green-300 rounded-lg shadow ">
+                                <!-- Toast icon -->
+                                <div
+                                    class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+                                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                    </svg>
+                                    <span class="sr-only">Check icon</span>
+                                </div>
+                                <!-- Toast message -->
+                                <div class="ms-3 text-sm font-normal">{{ toastMessage }}</div>
+                                <!-- Close button -->
+                                <button @click="hideToast" type="button"
+                                    class="ml-3 -mx-1 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8"
+                                    aria-label="Close">
+                                    <span class="sr-only">Close</span>
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 14 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
-                        <!-- Toast message -->
-                        <div class="ms-3 text-sm font-normal">{{ toastMessage }}</div>
-                        <!-- Close button -->
-                        <button @click="hideToast" type="button" class="ml-3 -mx-1 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8" aria-label="Close">
-                            <span class="sr-only">Close</span>
-                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                            </svg>
-                        </button>
-                        </div>
-                    </div>
                     </div>
                 </div>
-
                 <!-- Show reviews modal -->
-                <div v-if="showReviews" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center" @click.self="closeModal">
-                    <div class="bg-white overflow-y-auto h-[680px] w-[900px] overflow-hidden scrollbar-hide rounded-lg shadow-md p-2 mx-5" @click.stop>
+                <div v-if="showReviews"
+                    class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
+                    @click.self="closeModal">
+                    <div class="bg-white overflow-y-auto h-[680px] w-[900px] overflow-hidden scrollbar-hide rounded-lg shadow-md p-2 mx-5"
+                        @click.stop>
                         <div class="lg:w-[100%] p-4 rounded-lg">
                             <div class="relative flex justify-end">
                                 <button class=" pr-1 pt-23 ">
-                                                    <svg @click="closeReviews" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 20 30" stroke-width="5" stroke="black" class="w-9 h-9">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M6 18 18 6M6 6l12 12" />
-                                                    </svg>
-                                                </button>
+                                    <svg @click="closeReviews" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 20 30" stroke-width="5" stroke="black" class="w-9 h-9">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
                             </div>
                             <h1 class="mb-5 font-bold text-xl text-black text-left pb-2 lg:pt-3">REVIEWS</h1>
                             <div class="overflow-y-auto h-[500px] scrollbar-hide mb-2">
-                                <div class="flex w-[100%]  text-black flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                <div
+                                    class="flex w-[100%]  text-black flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                     <div class="inline-block w-[100%]">
                                         <label class="flex w-[100%] text-md font-bold">juandelacruz
-                                                            ⭐️⭐️⭐️⭐</label>
+                                            ⭐️⭐️⭐️⭐</label>
                                         <p class="flex text-xs">03-10-2024 11:30</p>
                                     </div>
                                     <div class="flex justify-between mb-2">
-                                        <p class="w-[100%] text-md">I will buy again. The seller is kind and accommodating with my requests. Transaction is smooth. ❤️
+                                        <p class="w-[100%] text-md">I will buy again. The seller is kind and accommodating
+                                            with my requests. Transaction is smooth. ❤️
                                         </p>
                                     </div>
                                 </div>
-                                <div class="flex w-[100%]  text-black flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                <div
+                                    class="flex w-[100%]  text-black flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                     <div class="inline-block w-[100%]">
                                         <label class="flex w-[100%] text-mb font-bold">faithstamaria
-                                                            ⭐️⭐️⭐️⭐️⭐</label>
+                                            ⭐️⭐️⭐️⭐️⭐</label>
                                         <p class="flex text-xs">03-10-2024 11:30</p>
                                     </div>
                                     <div class="flex justify-between mb-2">
-                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating with my requests. Transaction is smooth. ❤️
+                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating
+                                            with my requests. Transaction is smooth. ❤️
                                         </p>
                                     </div>
                                 </div>
-                                <div class="flex w-[100%]  text-black  flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                <div
+                                    class="flex w-[100%]  text-black  flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                     <div class="inline-block w-[100%]">
                                         <label class="flex w-[100%] text-mb font-bold">clendafaith
-                                                            ⭐️⭐️⭐️⭐️⭐</label>
+                                            ⭐️⭐️⭐️⭐️⭐</label>
                                         <p class="flex text-xs">03-10-2024 11:30</p>
                                     </div>
                                     <div class="flex justify-between mb-2">
-                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating with my requests. Transaction is smooth. ❤️
+                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating
+                                            with my requests. Transaction is smooth. ❤️
                                         </p>
                                     </div>
                                 </div>
-                                <div class="flex w-[100%]  text-black flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                <div
+                                    class="flex w-[100%]  text-black flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                     <div class="inline-block w-[100%]">
                                         <label class="flex w-[100%] text-mb font-bold">juhannamarie
-                                                            ⭐️⭐️⭐️⭐️⭐</label>
+                                            ⭐️⭐️⭐️⭐️⭐</label>
                                         <p class="flex text-xs">03-10-2024 11:30</p>
                                     </div>
                                     <div class="flex justify-between mb-2">
-                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating with my requests. Transaction is smooth. ❤️
+                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating
+                                            with my requests. Transaction is smooth. ❤️
                                         </p>
                                     </div>
                                 </div>
-                                <div class="flex w-[100%]  text-black  flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                <div
+                                    class="flex w-[100%]  text-black  flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                     <div class="inline-block w-[100%]">
                                         <label class="flex w-[100%] text-mb font-bold">jobellenina
-                                                            ⭐️⭐️⭐️⭐️⭐</label>
+                                            ⭐️⭐️⭐️⭐️⭐</label>
                                         <p class="flex text-xs">03-10-2024 11:30</p>
                                     </div>
                                     <div class="flex justify-between mb-2">
-                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating with my requests. Transaction is smooth. ❤️
+                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating
+                                            with my requests. Transaction is smooth. ❤️
                                         </p>
                                     </div>
                                 </div>
-                                <div class="flex w-[100%]  text-black flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
+                                <div
+                                    class="flex w-[100%]  text-black flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                     <div class="inline-block w-[100%]">
                                         <label class="flex w-[100%] text-mb font-bold">chezterfaith
-                                                            ⭐️⭐️⭐️⭐️⭐</label>
+                                            ⭐️⭐️⭐️⭐️⭐</label>
                                         <p class="flex text-xs">03-10-2024 11:30</p>
                                     </div>
                                     <div class="flex justify-between mb-2">
-                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating with my requests. Transaction is smooth. ❤️
+                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating
+                                            with my requests. Transaction is smooth. ❤️
                                         </p>
                                     </div>
                                 </div>
@@ -453,7 +470,6 @@
                 </div>
             </div>
         </div>
-        
         <!-- Cart -->
         <div>
             <div v-if="cart.length > 0" class="hidden lg:block ">
@@ -472,16 +488,19 @@
                         </div>
                         <router-link to="/checkoutshop">
                             <div class="w-[100%] mb-2">
-                                <button class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Check Cart</button>
+                                <button
+                                    class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Check
+                                    Cart</button>
                             </div>
                         </router-link>
                     </div>
                 </div>
             </div>
         </div>
-
         <!-- Mobile- cart -->
-        <div v-if="showCartModal" class="lg:hidden fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center" @click.self="closeModal">
+        <div v-if="showCartModal"
+            class="lg:hidden fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
+            @click.self="closeModal">
             <div class="bg-white rounded-lg shadow-md p-2 max-w-md mx-5" @click.stop>
                 <div class="lg:w-[100%] p-4 rounded-lg">
                     <div class="flex justify-between mb-2">
@@ -491,8 +510,9 @@
                         </div>
                         <router-link to="/cart">
                             <div class="w-[120%]">
-                                <button class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Edit
-                                            Cart</button>
+                                <button
+                                    class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Edit
+                                    Cart</button>
                             </div>
                         </router-link>
                     </div>
@@ -521,37 +541,27 @@
                     </div>
                     <router-link to="/checkoutshop" class="w-full">
                         <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]">Buy
-                                    Now</button>
+                            Now</button>
                     </router-link>
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
-
-<!--  -->
+    <!--  -->
     <div class="relative flex flex-col">
         <div class="relative mx-6 px-3 lg:px-32 pb-5 pt-5">
             <div>
                 <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
                 <MapRenderer :latitude="latitude" :longitude="longitude" :name="name" />
-
                 <!-- <img src="@/assets/images/CategoryView/ToSee/Glorietta Map.jpg" alt="" class="pb-12 block lg:hidden"> -->
                 <!-- <div class="hidden lg:block lg:pb-10">
-                    <img src="@/assets/images/CategoryView/ToDo/Omniverse Web Map.png" alt="" class="w-[100%] h-[100%]">
-                </div> -->
+                        <img src="@/assets/images/CategoryView/ToDo/Omniverse Web Map.png" alt="" class="w-[100%] h-[100%]">
+                    </div> -->
             </div>
             <hr style="border-top: 1px solid black">
             <div>
-
                 <h1 class="font-bold text-lg text-black text-left pt-10 pb-4">5.0 Ratings (500 Reviews)</h1>
                 <div class="grid lg:grid-cols-2">
-
-
-
                     <div class="flex justify-evenly">
                         <p class=" ext-lgmdext-black text-left pb-5">Factor 1</p>
                         <div class="my-2 mx-2 flex font-bold">
@@ -561,7 +571,6 @@
                         </div>
                         <p class=" ext-lgmdext-black text-left pb-5">5.0</p>
                     </div>
-
                     <div class="flex justify-evenly">
                         <p class=" ext-lgmdext-black text-left pb-5">Factor 1</p>
                         <div class="my-2 mx-2 flex font-bold">
@@ -571,8 +580,6 @@
                         </div>
                         <p class=" ext-lgmdext-black text-left pb-5">5.0</p>
                     </div>
-
-
                     <div class="flex justify-evenly">
                         <p class=" ext-lgmdext-black text-left pb-5">Factor 1</p>
                         <div class="my-2 mx-2 flex font-bold">
@@ -582,7 +589,6 @@
                         </div>
                         <p class=" ext-lgmdext-black text-left pb-5">5.0</p>
                     </div>
-
                     <div class="flex justify-evenly">
                         <p class=" ext-lgmdext-black text-left pb-5">Factor 1</p>
                         <div class="my-2 mx-2 flex font-bold">
@@ -592,7 +598,6 @@
                         </div>
                         <p class=" ext-lgmdext-black text-left pb-5">5.0</p>
                     </div>
-
                     <div class="flex justify-evenly">
                         <p class=" ext-lgmdext-black text-left pb-5">Factor 1</p>
                         <div class="my-2 mx-2 flex font-bold">
@@ -602,7 +607,6 @@
                         </div>
                         <p class=" ext-lgmdext-black text-left pb-5">5.0</p>
                     </div>
-
                     <div class="flex justify-evenly">
                         <p class=" ext-lgmdext-black text-left pb-5">Factor 1</p>
                         <div class="my-2 mx-2 flex font-bold">
@@ -615,14 +619,10 @@
                 </div>
             </div>
         </div>
-
         <div class="grid lg:grid-cols-2 lg:gap-[2rem] relative mx-6 px-3 lg:px-32 pt-5">
             <!-- Feedback Content -->
-
-
             <div class="relative border-2 border-gray-200 rounded-md px-3 py-3" v-for="(item, index) in paginatedItems"
                 :key="index">
-
                 <div class="flex flex-row">
                     <div class="pt-[0.125rem]">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -639,13 +639,11 @@
                         </p>
                     </div>
                 </div>
-
                 <div class="p-2 w-full">
                     <p class="text-justify text-black text-md leading-7">{{ item.description }}</p>
                 </div>
             </div>
         </div>
-
         <div v-if="showSeeMoreButton || showSeeLessButton" class="flex items-center justify-center pr-[5rem] mt-5 mb-10">
             <div v-if="showSeeMoreButton">
                 <div>
@@ -659,9 +657,7 @@
                         <span>See More</span>
                     </button>
                 </div>
-
             </div>
-
             <div v-if="showSeeLessButton" class="mb-10">
                 <div class="absolute bottom-8">
                     <button @click="seeLess"
@@ -669,10 +665,7 @@
                         <span>See Less</span>
                     </button>
                 </div>
-
             </div>
-
-
         </div>
     </div>
 </template>
@@ -680,56 +673,58 @@
 
 <style scoped>
 .scrollbar-hide::-webkit-scrollbar {
-        display: none;
-        /* Hide scrollbar for WebKit (Chrome, Safari) */
-    }
+    display: none;
+    /* Hide scrollbar for WebKit (Chrome, Safari) */
+}
 
-    .cart-list-scroll::-webkit-scrollbar {
-    width: 8px; /* Set the width of the scrollbar */
-    }
+.cart-list-scroll::-webkit-scrollbar {
+    width: 8px;
+    /* Set the width of the scrollbar */
+}
 
-    .cart-list-scroll::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Set the background color of the scrollbar track */
-    }
+.cart-list-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* Set the background color of the scrollbar track */
+}
 
-    .cart-list-scroll::-webkit-scrollbar-thumb {
-    background: #888; /* Set the color of the scrollbar thumb/handle */
-    border-radius: 5px; /* Round the corners of the scrollbar thumb */
-    }
+.cart-list-scroll::-webkit-scrollbar-thumb {
+    background: #888;
+    /* Set the color of the scrollbar thumb/handle */
+    border-radius: 5px;
+    /* Round the corners of the scrollbar thumb */
+}
 
-    .cart-list-scroll::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Change the color of the scrollbar thumb when hovering */
-    }
-   
-   
+.cart-list-scroll::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Change the color of the scrollbar thumb when hovering */
+}
 
-
-    /* Your scoped styles here */
-    .toast-container {
+/* Your scoped styles here */
+.toast-container {
     position: fixed;
     bottom: 1rem;
     right: 1rem;
     z-index: 9999;
-    }
+}
 
-    .toast {
+.toast {
     position: relative;
     transition: transform 0.3s ease-in-out;
-    }
+}
 
-    .toast-content {
-    max-width: 20rem; /* Adjust max-width as needed */
-    }
-
+.toast-content {
+    max-width: 20rem;
+    /* Adjust max-width as needed */
+}
 </style>
 
 
 <script>
+import ContentCarousel from '@/components/ToEatCarousel.vue';
 import MapRenderer from "@/components/MapRenderer.vue";
 import eatProduct1 from '@/assets/images/CategoryView/ToEat/best2.png';
 import eatProduct2 from '@/assets/images/CategoryView/ToEat/best3.jpg';
 import eatProduct3 from '@/assets/images/CategoryView/ToEat/other1.jpg';
-
 import bestProduct1 from '@/assets/images/CategoryView/ToEat/best1.png';
 import bestProduct2 from '@/assets/images/CategoryView/ToEat/best2.png';
 import bestProduct3 from '@/assets/images/CategoryView/ToEat/best3.jpg';
@@ -739,15 +734,16 @@ import otherProduct6 from '@/assets/images/CategoryView/ToEat/other3.png';
 import otherProduct7 from '@/assets/images/CategoryView/ToEat/other4.jpg';
 import otherProduct8 from '@/assets/images/CategoryView/ToEat/other5.png';
 import otherProduct9 from '@/assets/images/CategoryView/ToEat/other6.png';
-
-
 export default {
     props: {
         latitude: Number,
         longitude: Number,
         name: String
+        
+        
     },
     components: {
+        ContentCarousel,
         MapRenderer
     },
     data() {
@@ -756,130 +752,120 @@ export default {
             showReviews: false,
             showToast: false,
             toastMessage: "",
-            items: [
-                {
-                    name: 'Juan Dela Cruz',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                    date: 'December 2023',
-
-                },
-                {
-                    name: 'Luis Paolo',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                    date: 'December 2023',
-
-                },
-                {
-                    name: 'Luis Paolo',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                    date: 'December 2023',
-
-                },
-                {
-                    name: 'Juan Dela Cruz',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                    date: 'December 2023',
-
-                },
-                {
-                    name: 'Juan Dela Cruz',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                    date: 'December 2023',
-
-                },
-                {
-                    name: 'Luis Paolo',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                    date: 'December 2023',
-
-                },
-                {
-                    name: 'Luis Paolo',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                    date: 'December 2023',
-
-                },
-                {
-                    name: 'Juan Dela Cruz',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                    date: 'December 2023',
-
-                },
+            items: [{
+                name: 'Juan Dela Cruz',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                date: 'December 2023',
+            },
+            {
+                name: 'Luis Paolo',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                date: 'December 2023',
+            },
+            {
+                name: 'Luis Paolo',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                date: 'December 2023',
+            },
+            {
+                name: 'Juan Dela Cruz',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                date: 'December 2023',
+            },
+            {
+                name: 'Juan Dela Cruz',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                date: 'December 2023',
+            },
+            {
+                name: 'Luis Paolo',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                date: 'December 2023',
+            },
+            {
+                name: 'Luis Paolo',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                date: 'December 2023',
+            },
+            {
+                name: 'Juan Dela Cruz',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                date: 'December 2023',
+            },
             ],
             images: [
                 eatProduct1,
                 eatProduct2,
                 eatProduct3,
             ],
-             bestProducts: [{
-                        title: "Spicy Maguro",
-                        image: bestProduct1,
-                        price: 100.00,
-                        quantity: 1
-                    },
-                    {
-                        title: "Modern Ika Tama",
-                        image: bestProduct2,
-                        price: 399.00,
-                        quantity: 1
-                    },
-                    {
-                        title: "Udon",
-                        image: bestProduct3,
-                        price: 100.00,
-                        quantity: 1
-                    },
-                    // Add more products as needed
+            bestProducts: [{
+                title: "Spicy Maguro",
+                image: bestProduct1,
+                price: 100.00,
+                quantity: 1
+            },
+            {
+                title: "Modern Ika Tama",
+                image: bestProduct2,
+                price: 399.00,
+                quantity: 1
+            },
+            {
+                title: "Udon",
+                image: bestProduct3,
+                price: 100.00,
+                quantity: 1
+            },
+                // Add more products as needed
             ],
             otherProducts: [{
-                    title: "Takoyaki ",
-                    image: otherProduct4,
-                    price: 100.00,
-                    shop: "Makati Shop",
-                    quantity: 1
-                },
-                {
-                    title: "Oyako",
-                    image: otherProduct5,
-                    price: 100.00,
-                    shop: "Makati Shop",
-                    quantity: 1
-                },
-                {
-                    title: "Kinds Chirashi ",
-                    image: otherProduct6,
-                    price: 100.00,
-                    shop: "Makati Shop",
-                    quantity: 1
-                },
-                {
-                    title: "San Ten Mori",
-                    image: otherProduct7,
-                    price: 100.00,
-                    shop: "Makati Shop",
-                    quantity: 1
-                },
-                {
-                    title: "Makunouchi Bento",
-                    image: otherProduct8,
-                    price: 100.00,
-                    shop: "Makati Shop",
-                    quantity: 1
-                },
-                {
-                    title: "Chasyu",
-                    image: otherProduct9,
-                    price: 100.00,
-                    shop: "Makati Shop",
-                    quantity: 1
-                },
+                title: "Takoyaki ",
+                image: otherProduct4,
+                price: 100.00,
+                shop: "Makati Shop",
+                quantity: 1
+            },
+            {
+                title: "Oyako",
+                image: otherProduct5,
+                price: 100.00,
+                shop: "Makati Shop",
+                quantity: 1
+            },
+            {
+                title: "Kinds Chirashi ",
+                image: otherProduct6,
+                price: 100.00,
+                shop: "Makati Shop",
+                quantity: 1
+            },
+            {
+                title: "San Ten Mori",
+                image: otherProduct7,
+                price: 100.00,
+                shop: "Makati Shop",
+                quantity: 1
+            },
+            {
+                title: "Makunouchi Bento",
+                image: otherProduct8,
+                price: 100.00,
+                shop: "Makati Shop",
+                quantity: 1
+            },
+            {
+                title: "Chasyu",
+                image: otherProduct9,
+                price: 100.00,
+                shop: "Makati Shop",
+                quantity: 1
+            },
             ],
             selectedProduct: null,
             cart: [],
             currentIndex: 0,
             count: 0,
             showCartModal: false,
-            
             currentPage: 0,
             pageSize: 8,
             showDropdown: false,
@@ -917,11 +903,11 @@ export default {
             this.showCartModal = false;
         },
         toggleshowCart(item) {
-             this.selectedProduct = item;
+            this.selectedProduct = item;
             this.showCart = true;
         },
         increaseQuantity() {
-                this.selectedProduct.quantity++;
+            this.selectedProduct.quantity++;
         },
         decreaseQuantity() {
             if (this.selectedProduct.quantity > 1) {
@@ -931,49 +917,43 @@ export default {
         showToastWithMessage(message) {
             this.toastMessage = message;
             this.showToast = true;
-
             setTimeout(() => {
                 this.showToast = false;
                 this.toastMessage = "";
             }, 3000); // Hide the toast after 5 seconds
         },
-
         addToCart(item) {
-                this.selectedProduct = item;
-
-                // Check if the product already exists in the cart
-                const index = this.cart.findIndex(list => list.title === item.title);
-                if (index !== -1) {
-                    // If it exists, update the quantity
-                    this.cart[index].quantity += item.quantity;
-                    // Remove the existing item from the cart array
-                    const updatedItem = this.cart.splice(index, 1)[0];
-                    // Add the updated item to the beginning of the cart array
-                    this.cart.unshift(updatedItem);
-                } else {
-                    // If it doesn't exist, add it to the cart
-                    this.cart.unshift({
-                        title: item.title,
-                        quantity: item.quantity
-                    });
-                }
-                // Close the modal after adding to cart
-                this.showCart = false;
-                // Reset quantity to 1 for next product
-                this.selectedProduct.quantity = 1;
-
-                // Show toast notification
-                this.showToastWithMessage("Item has been added to cart");
-
-                 // Show toast notification
-                // this.showToast = true;
-                // this.toastMessage = "Item has been added to cart";
-
-                // Hide toast after 3 seconds
-                // setTimeout(() => {
-                // this.showToast = false;
-                // }, 3000);
-            },
+            this.selectedProduct = item;
+            // Check if the product already exists in the cart
+            const index = this.cart.findIndex(list => list.title === item.title);
+            if (index !== -1) {
+                // If it exists, update the quantity
+                this.cart[index].quantity += item.quantity;
+                // Remove the existing item from the cart array
+                const updatedItem = this.cart.splice(index, 1)[0];
+                // Add the updated item to the beginning of the cart array
+                this.cart.unshift(updatedItem);
+            } else {
+                // If it doesn't exist, add it to the cart
+                this.cart.unshift({
+                    title: item.title,
+                    quantity: item.quantity
+                });
+            }
+            // Close the modal after adding to cart
+            this.showCart = false;
+            // Reset quantity to 1 for next product
+            this.selectedProduct.quantity = 1;
+            // Show toast notification
+            this.showToastWithMessage("Item has been added to cart");
+            // Show toast notification
+            // this.showToast = true;
+            // this.toastMessage = "Item has been added to cart";
+            // Hide toast after 3 seconds
+            // setTimeout(() => {
+            // this.showToast = false;
+            // }, 3000);
+        },
         // Function to hide the toast
         hideToast() {
             this.showToast = false;
@@ -982,7 +962,6 @@ export default {
         closeCart() {
             this.showCart = false;
         },
-        
         toggleshowReviews() {
             this.showReviews = true;
             this.showCart = false;
@@ -1006,7 +985,6 @@ export default {
             // Hide See Less button
             this.showSeeLessButton = false;
         }
-
     },
 };
 </script>

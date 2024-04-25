@@ -242,7 +242,7 @@
                                 <ul class="flex flex-row pb-5 justify-items-center pl-0.5 gap-2.5">
                                     <img src="@/assets/images/Header/Transaction Icon.png" alt="transaction" class="w-4 h-5">
                                     <li>
-                                        <router-link to="/calendar">Transactions</router-link>
+                                        <router-link to="/transactions">Transactions</router-link>
                                     </li>
                                 </ul>
                                 <ul class="flex flex-row pb-5 justify-items-center gap-2">
@@ -302,7 +302,7 @@
     <!-- Login Modal -->
     <div v-if="showLoginModal" class=" fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
         <div class="relative bg-white lg:w-[70vw] w-[90vw] h-fit rounded-3xl">
-            <img src="@/assets/images/Modal/Intersect.png" alt="" class="w-full absolute rounded-t-xl">
+            <img src="@/assets/images/Modal/Intersect.png" alt="" class="w-full lg:h-full absolute rounded-t-xl">
 
             <!-- Modal Content -->
             <div class="relative top-0 flex justify-end">

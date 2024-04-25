@@ -23,10 +23,11 @@
                         </router-link>
                     </div>
                     <div class="relative flex flex-col items-center">
-                        <div class="lg:pl-9 grid grid-cols-1 lg:grid-cols-5 lg:pr-[7rem]">
-                            <img src="@/assets/images/CategoryView/ToTour/tour1.png" alt=""
-                                class="col-span-3 w-[100%] h-full lg:w-[97%] lg:h-[95%] rounded-l-3xl">
-                            <div class="hidden col-span-2 md:grid md:grid-cols-2 gap-4 ">
+                        <div class=" lg:pr-[7rem]">
+                            <ContentCarousel :items="items" class="mb-10" />
+
+                      
+                            <!-- <div class="hidden col-span-2 md:grid md:grid-cols-2 gap-4 ">
                                 <img src="@/assets/images/CategoryView/ToTour/tour2.png" alt=""
                                     class="lg:w-[100%] lg:h-[90%]">
                                 <img src="@/assets/images/CategoryView/ToTour/tour3.png" alt=""
@@ -35,7 +36,7 @@
                                     class="lg:w-[100%] lg:h-[90%]">
                                 <img src="@/assets/images/CategoryView/ToTour/tour5.jpg" alt=""
                                     class="lg:w-[100%] lg:h-[90%] rounded-br-3xl">
-                            </div>
+                            </div> -->
                         </div>
                         <!-- <div class="absolute bottom-2 right-[8rem] z-20 w-100">
 
@@ -333,18 +334,19 @@
 
 
 <script>
-import MapRenderer from "@/components/MapRenderer.vue";
+     import ContentCarousel from '@/components/TourCarousel.vue';
+    import MapRenderer from "@/components/MapRenderer.vue";
 
 
-
-export default {
-    props: {
-        latitude: Number,
-        longitude: Number,
-        name: String
-    },
-    components: {
-        MapRenderer
+    export default {
+        props: {
+            latitude: Number,
+            longitude: Number,
+            name: String
+        },
+        components: {
+            ContentCarousel,
+            MapRenderer
 
     },
     mounted() {

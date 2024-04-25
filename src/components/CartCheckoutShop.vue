@@ -157,7 +157,9 @@
                                     <div class="bg-gray-400 h-0.5 w-[100%]"></div>
                                     <div class="flex items-center my-7  ">
                                         <img src="@/assets/images/CategoryView/ToShop/voucher.png" class="lg:w-8 h-8 mr-2">
-                                        <button class="text-white bg-blue-500 rounded-xl px-3 py-2 text-xs font-semibold"
+                                        <button class="hidden lg:block text-white bg-blue-500 rounded-xl px-3 py-2 text-xs font-semibold"
+                                            @click="toggleVoucherWeb">Use Voucher</button>
+                                        <button class="lg:hidden text-white bg-blue-500 rounded-xl px-3 py-2 text-xs font-semibold"
                                             @click="toggleVoucher">Use Voucher</button>
                                     </div>
                                     <div class="flex justify-between">
@@ -224,17 +226,21 @@
                             </div>
 
                             <div v-else>
-                               <div class="lg:w-[100%] p-4 rounded-lg">
+                               <div class="lg:w-[100%]  rounded-lg">
                                     <!-- Voucher section -->
-                                    <button class="text-white bg-blue-500 rounded-xl px-3 py-2 text-xs font-semibold" @click="toggleBack">Back</button>
-
+                                    <!-- <button class="text-white bg-blue-500 rounded-xl px-3 py-2 text-xs font-semibold" @click="toggleBack">Back</button> -->
+                                    <svg @click="toggleBack" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="3" stroke="black" class="lg:mr-5 lg:w-5 lg:h-10">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18">
+                                        </path>
+                                    </svg> 
                                     <div class="flex flex-col items-center">
                                         <input type="text" id="" name="" value=""
                                             class="mb-2 h-[50px] w-[100%] border border-gray-200 pl-5 pr-3 rounded-md"
                                             placeholder="Enter Voucher Code">
                                         <button
                                             class="mb-2 text-white bg-blue-500 rounded-xl w-full lg:w-full py-2 lg:py-3 px-4 lg:px-6 text-base lg:text-lg font-semibold"
-                                            @click="toggleVoucher">Apply</button>
+                                            @click="toggleVoucherWeb">Apply</button>
                                         <div>
                                             <div data-v-392f50c8="" class="mt-0 bg-gray-400 h-0.5"></div>
                                         </div>
@@ -243,7 +249,7 @@
                                             <div class="absolute grid grid-rows-3 text-left ml-14 mt-1">
                                                 <span class="font-semibold">{{ voucher.code }}</span>
                                                 <span class="font-bold">P{{ voucher.amount }}</span>
-                                                <button type="submit" class="text-sm font-bold ml-52 cursor-pointer" @click="toggleVoucher(voucher)">
+                                                <button type="submit" class="text-sm font-bold ml-52 cursor-pointer" @click="toggleVoucherWeb(voucher)">
                                                     {{ voucher.applied ? 'Remove' : 'Apply' }}
                                                 </button>
 
@@ -331,7 +337,7 @@
         </div>
     </template>
 
-    <template v-else>
+    <template v-else> 
         <div class="lg:w-[100%] p-4 rounded-lg text-center flexflex-col items-center pt-20">
             <!-- Voucher section -->
             <div class="flex flex-col items-center">
@@ -481,7 +487,23 @@ export default {
     methods: {
         toggleVoucher(voucher) {
             // Toggle the visibility of the voucher section
-            // this.showVoucher = !this.showVoucher;
+            this.showVoucher = !this.showVoucher;
+            // this.showSummary = !this.showSummary;
+            // Toggle the 'applied' property of the voucher
+            voucher.applied = !voucher.applied;
+            // Log and check if true or false
+            console.log(`Voucher applied state: ${voucher.applied}`);
+            // Update discountPrice based on applied vouchers
+            this.discountPrice = this.vouchers.reduce((total, v) => {
+                console.log(`Voucher: ${v.code}, Applied: ${v.applied}, Amount: ${v.amount}`);
+                return v.applied ? total + v.amount : total; // Remove : Apply
+            }, 0);
+            // Update displayTotalLabel
+            this.displayTotalLabel = this.discountPrice ? 'Subtotal' : 'Your Total (Php)';
+
+        },
+        toggleVoucherWeb(voucher) {
+            // Toggle the visibility of the voucher section
             this.showSummary = !this.showSummary;
             // Toggle the 'applied' property of the voucher
             voucher.applied = !voucher.applied;

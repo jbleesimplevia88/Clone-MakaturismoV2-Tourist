@@ -242,7 +242,7 @@
                                 <ul class="flex flex-row pb-5 justify-items-center pl-0.5 gap-2.5">
                                     <img src="@/assets/images/Header/Transaction Icon.png" alt="transaction" class="w-4 h-5">
                                     <li>
-                                        <router-link to="/calendar">Transactions</router-link>
+                                        <router-link to="/transactions">Transactions</router-link>
                                     </li>
                                 </ul>
                                 <ul class="flex flex-row pb-5 justify-items-center gap-2">

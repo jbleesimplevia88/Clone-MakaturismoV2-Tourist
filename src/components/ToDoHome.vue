@@ -518,6 +518,7 @@ export default {
             }
         }
         ,
+
         seeMore(item) {
             const {
                 latitude,

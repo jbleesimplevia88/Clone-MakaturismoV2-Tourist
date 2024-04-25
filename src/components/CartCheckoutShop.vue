@@ -12,28 +12,39 @@
                 </nav>
                 <div class="justify-center my-5 mr-5 relative lg:mb-[20rem] ">
                     <div class="lg:block relative lg:w-[60%] lg:top-[3rem] top-5">
+                        <!-- Orders of User -->
                         <div class="relative mx-6 px-3 lg:pl-32 mb-[30px]">
-                            <p class="mb-4 font-bold text-3xl">Your Order</p>
+                            <p class="mb-4 text-2xl font-bold">Your Order</p>
                             <p class="mb-4 font-bold text-3m">Number Of Items</p>
-                            <p class="mb-4 font-bold text-3m">{{totalItemsInCart}}</p>
+                            <p class="mb-4 font-bold text-3m">{{ totalItemsInCart }}</p>
                             <div class="w-[100%]">
                                 <div class="flex justify-between">
-                                    <p class="text-sm w-[50%]">List of items</p>
-                                    <p class="">Quantity</p>
-                                    <p class="">Cost</p>
-                                    <p class="">Total</p>
+                                    <p class="font-bold w-[50%] mb-5">List of items</p>
+                                    <p class="w-[19%] flex justify-center mb-4 font-bold ">Quantity</p>
+                                    <p class="w-[12%] flex justify-center mb-4 font-bold ">Cost</p>
+                                    <p class="w-[12%] flex justify-center mb-4 font-bold ">Total</p>
                                 </div>
-                                <div v-for="(cartItem, index) in cart" :key="index" class="flex justify-between mb-3">
-                                    <div class="text-xs w-[50%]">{{ cartItem.title }}</div>
-                                    <div class="w-[12%] flex justify-center">{{ cartItem.quantity }}</div>
-                                    <div class="w-[12%] flex justify-center">{{ cartItem.price }}</div>
-                                    <div class="w-[12%] flex justify-center">{{ cartItem.quantity * cartItem.price }}</div>
+                                <div class="mb-5 overflow-y-scroll h-28 lg:h-full lg:overflow-hidden pr-3">
+                                    <div v-if="!selectedItems || selectedItems.length === 0"
+                                        class="text-center text-gray-500">
+                                        Cart is empty
+                                    </div>
+                                    <div v-else>
+                                        <div v-for="(cartItem, index) in selectedItems" :key="index"
+                                            class="flex justify-between mb-3">
+                                            <div class="w-[50%]">{{ cartItem.title }}</div>
+                                            <div class="w-[19%] flex justify-center">{{ cartItem.quantity }}</div>
+                                            <div class="w-[12%] flex justify-center">{{ cartItem.price }}</div>
+                                            <div class="w-[12%] flex justify-center">{{ cartItem.quantity * cartItem.price
+                                            }}</div>
+                                        </div>
+                                    </div>
                                 </div>
 
-                               
                             </div>
                         </div>
-                        <div class="relative hidden lg:block mx-6 px-3 lg:pl-32 mb-[30px]">
+                        <!-- Information of user -->
+                        <div class="relative hidden lg:block mx-6 px-3 lg:pl-32 mb-[30px] lg:mb-24">
                             <p class="mb-4 font-bold lg:text-3xl text-2xl">Your Information</p>
                             <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-4">
                                 <div class="flex lg:flex-col lg:items-start justify-start">
@@ -42,7 +53,7 @@
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start">
                                     <p class="mr-[30px] w-10vw lg:pr-0 lg:mr-9 lg:mb-1 font-bold">E-mail Address</p>
-                                    <p class="font-normal mb-2 text-base text-gray-600 text-sm">Juandelacruz@gmail.co
+                                    <p class="font-normal mb-2 text-base text-gray-600">Juandelacruz@gmail.co
                                     </p>
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start justify-start">
@@ -69,9 +80,9 @@
                         </div>
                     </div>
                     <!-- FOR MOBILE -->
-                    <div class=" lg:hidden p-5 ">
-                        <div class="mt-5 bg-gray-400 h-0.5"></div>
-                        <p class=" text-2xl font-bold pt-6">Your Information</p>
+                    <div class=" ml-4 bg-gray-400 h-0.5"></div>
+                    <div class="ml-4 lg:hidden p-5 ">
+                        <p class=" text-2xl font-bold pt-2">Your Information</p>
                         <div className="grid grid-cols-2 grid-rows-5 pt-5 " style="word-wrap: break-word;">
                             <div>
                                 <p class="text-base font-bold">Full Name</p>
@@ -83,7 +94,7 @@
                                 <p class=" text-base font-bold">E-mail Address</p>
                             </div>
                             <div>
-                                <p class="font-normal mb-2 text-base text-gray-600 text-sm">Juandelacruz@gmail.com</p>
+                                <p class="font-normal mb-2 text-base text-gray-600">Juandelacruz@gmail.com</p>
                             </div>
                             <div>
                                 <p class=" text-base font-bold">Phone Number</p>
@@ -338,14 +349,13 @@
                     <div class="absolute grid grid-rows-3 text-left ml-14 mt-1">
                         <span class="font-semibold">{{ voucher.code }}</span>
                         <span class="font-bold">P{{ voucher.amount }}</span>
-                        <button type="submit" class="text-sm font-bold ml-52 cursor-pointer" @click="toggleVoucher(voucher)">
+                        <button type="submit" class="text-sm font-bold ml-52 cursor-pointer"
+                            @click="toggleVoucher(voucher)">
                             {{ voucher.applied ? 'Remove' : 'Apply' }}
                         </button>
-
                     </div>
                     <img src="@/assets/images/CategoryView/ToEat/voucher.png" class="mb-6">
                 </div>
-
                 <div>
                     <div data-v-392f50c8="" class="mt-5 mb-3 bg-gray-400 h-0.5"></div>
                 </div>
@@ -391,29 +401,40 @@
 </style>
 
 <script>
-import { computed } from 'vue';
-import { useCartStore } from '@/stores/toShopCart';
-
-
+import {
+    computed
+} from 'vue';
+import {
+    useCartStore
+} from '@/stores/toShopCart';
 export default {
-     setup() {
+    setup() {
         const cartStore = useCartStore();
-
-        const cart = computed(() => cartStore.cart);
-
+        // Compute the selected items based on the user's action
+        const selectedItems = computed(() => {
+            // If the user is editing the cart, display items from the editCartProducts array
+            if (cartStore.editCartProducts.length > 0) {
+                return cartStore.editCartProducts.filter(item => item.selected);
+            }
+            // If the user is buying now, display items from the buyNowProducts array
+            else if (cartStore.buyNowProducts.length > 0) {
+                return cartStore.buyNowProducts.filter(item => item.selected);
+            }
+            // Default to displaying items from the cart array
+            return cartStore.cart.filter(item => item.selected);
+        });
+        // Compute the total number of items in the selected items
         const totalItemsInCart = computed(() => {
-            return cartStore.cart.reduce((total, item) => total + item.quantity, 0);
+            return selectedItems.value.reduce((total, item) => total + item.quantity, 0);
         });
-
-        // Compute the overall total amount only once
+        // Compute the overall total amount for the selected items
         const totalAmount = computed(() => {
-            return cartStore.cart.reduce((total, item) => total + (item.quantity * item.price), 0);
+            return selectedItems.value.reduce((total, item) => total + (item.quantity * item.price), 0);
         });
-
         return {
-        cart,
-        totalItemsInCart,
-        totalAmount,
+            selectedItems,
+            totalItemsInCart,
+            totalAmount
         };
     },
     data() {
@@ -446,8 +467,7 @@ export default {
             navButtonText: 'Request to Order'
         };
     },
-    
-   computed: {
+    computed: {
         validVouchers() {
             return this.vouchers.filter(voucher => voucher.amount < this.totalAmount);
         },
@@ -479,7 +499,6 @@ export default {
         toggleBack() {
             this.showSummary = true;
         },
-       
         scrollToTop() {
             window.scrollTo(0, 0);
         },
@@ -496,7 +515,6 @@ export default {
             this.showConfirmation = false;
             this.showComplete = false;
         },
-        
         togglePayment() {
             // Toggle the showPayment flag
             this.showPayment = !this.showPayment;
@@ -537,8 +555,8 @@ export default {
             }
         },
         totalAmount() {
-      this.updateInvalidVouchers();
-    }
+            this.updateInvalidVouchers();
+        }
     },
 };
 </script>

@@ -270,7 +270,7 @@
                 <!-- View Add to cart modal -->
                 <div v-if="showCart" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
                     @click.self="closeModal">
-                    <div class="bg-white lg:h-[760px] h-[640px] w-[900px]  rounded-2xl shadow-md p-2 mx-5" @click.stop>
+                    <div class="bg-white lg:h-[760px] h-[660px] w-[900px]  rounded-2xl shadow-md p-2 mx-5" @click.stop>
                         <div class="lg:w-[100%] p-4 rounded-lg">
                             <div class="relative flex justify-end">
                                 <button class=" pr-4 pt-21 ">

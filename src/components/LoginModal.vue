@@ -14,7 +14,8 @@
                 </button>
             </div>
 
-            <div class="relative z-10 flex flex-col items-start justify-center h-fit lg:mt-[5rem] mt-[5rem] lg:ml-[6%] m-8">
+            <div
+                class="relative z-10 flex flex-col items-start justify-center h-fit lg:mt-[5rem] mt-[5rem] lg:ml-[6%] m-8">
                 <div class="mt-5 mb-5">
                     <h2 class="text-2xl lg:text-3xl font-bold">Welcome!</h2>
                     <p class="text-xs lg:text-sm">Please log in to your account.</p>
@@ -41,8 +42,9 @@
                             <img v-if="showPassword" src="@/assets/images/Modal/view.png"
                                 class="absolute inset-y-0 right-0 mx-3 my-3" style="width: 15px; cursor: pointer;"
                                 alt="Eye Icon" @click="togglePasswordVisibility">
-                            <img v-else src="@/assets/images/Modal/hidden.png" class="absolute inset-y-0 right-0 mx-3 my-3"
-                                style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="togglePasswordVisibility">
+                            <img v-else src="@/assets/images/Modal/hidden.png"
+                                class="absolute inset-y-0 right-0 mx-3 my-3" style="width: 15px; cursor: pointer;"
+                                alt="Eye Icon" @click="togglePasswordVisibility">
                             <input id="lpassword" v-model="lpassword" @input="validateLPassword"
                                 :type="showPassword ? 'text' : 'password'"
                                 class="w-full h-8 py-5 pl-10 border border-black rounded-xl" placeholder="Password">
@@ -53,7 +55,8 @@
                     <div class="hidden lg:block lg:flex items-center justify-between mb-4">
                         <p class="text-xs">Don't have an account? <button @click="openPrivacyModal"
                                 class="text-xs font-bold text-blue-600">Sign Up</button></p>
-                        <button @click="openForgotModal" class="text-xs text-blue-600 font-bold">Forgot Password?</button>
+                        <button @click="openForgotModal" class="text-xs text-blue-600 font-bold">Forgot
+                            Password?</button>
                     </div>
 
                     <div class="hidden lg:block lg:mt-10 text-center">
@@ -96,7 +99,8 @@
 
             <div class="flex items-center">
                 <button @click="openLoginModal" class="text-blue-600">
-                    <img src="@/assets/images/Header/back.svg" alt="backBtn" class="h-4 lg:h-5 w-auto ml-4 lg:ml-8 mr-2">
+                    <img src="@/assets/images/Header/back.svg" alt="backBtn"
+                        class="h-4 lg:h-5 w-auto ml-4 lg:ml-8 mr-2">
                 </button>
             </div>
 
@@ -113,10 +117,12 @@
                             <p class="mb-5 text-sm text-justify">We may collect personal information from you when you
                                 interact with
                                 our website,
-                                products, or services. This information may include but is not limited to your name, email
+                                products, or services. This information may include but is not limited to your name,
+                                email
                                 address,
                                 mailing
-                                address, phone number, and payment details. We collect this information to provide you with
+                                address, phone number, and payment details. We collect this information to provide you
+                                with
                                 our
                                 services and to improve and customize your experience with us.</p>
                             <p class="font-bold mb-5">Use of Personal Information:</p>
@@ -133,13 +139,15 @@
                             <p class="font-bold mb-5">Protection of Personal Information:</p>
 
 
-                            <p class="mb-5 text-sm text-justify">We take the security of your personal information seriously
+                            <p class="mb-5 text-sm text-justify">We take the security of your personal information
+                                seriously
                                 and
                                 have implemented
                                 appropriate measures to protect it from unauthorized access, disclosure, alteration, or
                                 destruction.
                                 However, please note
-                                that no method of transmission over the internet or electronic storage is 100% secure, and
+                                that no method of transmission over the internet or electronic storage is 100% secure,
+                                and
                                 we cannot
                                 guarantee absolute security.</p>
 
@@ -148,7 +156,8 @@
                             <p class="mb-5 text-sm text-justify">We may share your personal information with third-party
                                 service
                                 providers who assist
-                                us in providing our services, conducting our business, or servicing you. We may also share
+                                us in providing our services, conducting our business, or servicing you. We may also
+                                share
                                 your
                                 information when
                                 required by law or to protect our rights, property, or safety.</p>
@@ -158,7 +167,8 @@
                             <p class="mb-5 text-sm text-justify">You have the right to access, update, or delete your
                                 personal
                                 information. You may
-                                also have the right to object to or restrict certain types of processing. If you would like
+                                also have the right to object to or restrict certain types of processing. If you would
+                                like
                                 to
                                 exercise any of these
                                 rights, please contact us using the information provided below.</p>
@@ -168,7 +178,8 @@
                             <p class="mb-5 text-sm text-justify">We reserve the right to update or modify this Privacy
                                 Policy at any
                                 time. Any changes
-                                will be effective immediately upon posting the updated Privacy Policy on our website.</p>
+                                will be effective immediately upon posting the updated Privacy Policy on our website.
+                            </p>
                             <!-- contents -->
                         </div>
                     </div>
@@ -226,7 +237,8 @@
                                     class="text-red-500 text-md">*</span></label>
                             <div class="w-full flex flex-col items-start justify-center">
                                 <input id="fname" type="text" v-model="fname" placeholder="Enter First Name"
-                                    class="border border-gray-500 rounded-xl w-full py-3 px-3" @input="validateFirstname">
+                                    class="border border-gray-500 rounded-xl w-full py-3 px-3"
+                                    @input="validateFirstname">
                                 <span v-if="fnameError" class="text-red-500 text-xs">{{ fnameError }}</span>
                             </div>
                         </div>
@@ -284,7 +296,8 @@
                                 <div class="relative w-full">
                                     <select id="nationality" v-model="nationality"
                                         class="border border-gray-500 rounded-xl w-full py-3 px-3 appearance-none cursor-pointer">
-                                        <option v-for="(nation, index) in nationalityOptions" :key="index" :value="nation">
+                                        <option v-for="(nation, index) in nationalityOptions" :key="index"
+                                            :value="nation">
                                             {{ nation }}
                                         </option>
                                     </select>
@@ -334,10 +347,11 @@
                         <div class="w-full flex flex-col items-start justify-center">
                             <div class="relative w-full">
                                 <img v-if="showPassword" src="@/assets/images/Modal/view.png"
-                                    class="absolute right-3 mx-3 my-4" style="width: 15px; cursor: pointer;" alt="Eye Icon"
-                                    @click="togglePasswordVisibility">
+                                    class="absolute right-3 mx-3 my-4" style="width: 15px; cursor: pointer;"
+                                    alt="Eye Icon" @click="togglePasswordVisibility">
                                 <img v-else src="@/assets/images/Modal/hidden.png" class="absolute  right-3 mx-3 my-4"
-                                    style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="togglePasswordVisibility">
+                                    style="width: 15px; cursor: pointer;" alt="Eye Icon"
+                                    @click="togglePasswordVisibility">
                                 <input id="password" v-model="password" placeholder="Enter Password"
                                     @input="checkPasswordPolicy" :type="showPassword ? 'text' : 'password'"
                                     class="border border-gray-500 rounded-xl w-full py-3 px-3 ">
@@ -358,10 +372,11 @@
                         <div class="w-full flex flex-col items-start justify-center">
                             <div class="relative w-full">
                                 <img v-if="showCPassword" src="@/assets/images/Modal/view.png"
-                                    class="absolute right-3 mx-3 my-4" style="width: 15px; cursor: pointer;" alt="Eye Icon"
-                                    @click="toggleCPasswordVisibility">
+                                    class="absolute right-3 mx-3 my-4" style="width: 15px; cursor: pointer;"
+                                    alt="Eye Icon" @click="toggleCPasswordVisibility">
                                 <img v-else src="@/assets/images/Modal/hidden.png" class="absolute  right-3 mx-3 my-4"
-                                    style="width: 15px; cursor: pointer;" alt="Eye Icon" @click="toggleCPasswordVisibility">
+                                    style="width: 15px; cursor: pointer;" alt="Eye Icon"
+                                    @click="toggleCPasswordVisibility">
                                 <input id="rePassword" v-model="rePassword" placeholder="Confirm Password"
                                     @input="validateRePassword" :type="showCPassword ? 'text' : 'password'"
                                     class="border border-gray-500 rounded-xl w-full py-3 px-3 ">
@@ -401,7 +416,8 @@
             </div>
             <div class="flex items-center">
                 <button @click="openSignUpModal" class="text-blue-600">
-                    <img src="@/assets/images/Header/back.svg" alt="backBtn" class="h-4 lg:h-5 w-auto ml-4 lg:ml-8 mr-2">
+                    <img src="@/assets/images/Header/back.svg" alt="backBtn"
+                        class="h-4 lg:h-5 w-auto ml-4 lg:ml-8 mr-2">
                 </button>
             </div>
 
@@ -412,7 +428,8 @@
 
                     <div class="flex justify-between overflow-y-auto h-[230px] w-[100%] hidden-scrollbar mb-2">
                         <div class="flex flex-col">
-                            <p class=" mb-5">Welcome to <span class="font-bold">MAKATURISMO</span>, a local tourism website
+                            <p class=" mb-5">Welcome to <span class="font-bold">MAKATURISMO</span>, a local tourism
+                                website
                                 that
                                 connects users, businesses, advertisers, and showcases various products and services. By
                                 accessing and
@@ -420,24 +437,29 @@
 
 
                             <p class="font-bold ">1. Acceptance of Terms</p>
-                            <p class="ml-4 mb-5 text-sm text-justify">By using this website, you acknowledge that you have
+                            <p class="ml-4 mb-5 text-sm text-justify">By using this website, you acknowledge that you
+                                have
                                 read,
-                                understood, and agree to be bound by these terms and conditions. If you do not agree with
+                                understood, and agree to be bound by these terms and conditions. If you do not agree
+                                with
                                 any part of
                                 these terms, please refrain from using this website.</p>
 
                             <p class="font-bold ">2. User Accounts:</p>
-                            <p class="ml-4 text-sm text-justify">a. To access certain features on the website, you may be
+                            <p class="ml-4 text-sm text-justify">a. To access certain features on the website, you may
+                                be
                                 required
                                 to create a user account. You must provide accurate and complete information during the
                                 registration
                                 process.</p>
-                            <p class="ml-4 text-sm text-justify">b. You are responsible for maintaining the confidentiality
+                            <p class="ml-4 text-sm text-justify">b. You are responsible for maintaining the
+                                confidentiality
                                 of your
                                 account credentials and ensuring the security of your account.</p>
                             <p class="ml-4 mb-5 text-sm text-justify">c. You are solely responsible for all activities
                                 conducted
-                                through your account, and you must notify us immediately of any unauthorized use or security
+                                through your account, and you must notify us immediately of any unauthorized use or
+                                security
                                 breach.
                             </p>
 
@@ -448,7 +470,8 @@
                             <p class="ml-4 text-sm text-justify">b.Users shall not engage in any illegal, abusive,
                                 defamatory, or
                                 harmful activities while using the website.</p>
-                            <p class="ml-4 mb-5 text-sm text-justify">c. Users must respect the intellectual property rights
+                            <p class="ml-4 mb-5 text-sm text-justify">c. Users must respect the intellectual property
+                                rights
                                 of
                                 others, including businesses and advertisers featured on the website.</p>
 
@@ -466,7 +489,8 @@
                             <p class="font-bold ">5. Products and Services:</p>
                             <p class="ml-4 text-sm text-justify">a. The website may feature products and services from
                                 various
-                                businesses. We do not endorse or guarantee the quality of these products and services.</p>
+                                businesses. We do not endorse or guarantee the quality of these products and services.
+                            </p>
                             <p class="ml-4 text-sm text-justify">b. Users are solely responsible for any transactions or
                                 interactions they enter into with businesses through this website.</p>
                             <p class="ml-4 mb-5 text-sm text-justify">c. We are not liable for any losses, damages, or
@@ -486,29 +510,36 @@
                             <p class="font-bold ">7. Intellectual Property:</p>
                             <p class="ml-4 text-sm text-justify">a. All content and materials on this website, including
                                 logos,
-                                trademarks, text, images, and software, are the property of Love Laguna or its licensors and
+                                trademarks, text, images, and software, are the property of Love Laguna or its licensors
+                                and
                                 are
                                 protected by intellectual property laws. </p>
-                            <p class="ml-4 mb-5 text-sm text-justify">b. Users must not use, reproduce, or distribute any
+                            <p class="ml-4 mb-5 text-sm text-justify">b. Users must not use, reproduce, or distribute
+                                any
                                 content
                                 from this website without obtaining proper authorization.</p>
 
                             <p class="font-bold ">8. Disclaimer of Liability</p>
-                            <p class="ml-4 text-sm text-justify">a. The website and its content are provided "as is" without
+                            <p class="ml-4 text-sm text-justify">a. The website and its content are provided "as is"
+                                without
                                 any
                                 warranties, express or implied. We do not guarantee the accuracy, completeness, or
                                 reliability of the
                                 information provided. </p>
-                            <p class="ml-4 mb-5 text-sm text-justify">b. We shall not be liable for any direct, indirect,
-                                incidental, consequential, or punitive damages arising from the use or inability to use the
+                            <p class="ml-4 mb-5 text-sm text-justify">b. We shall not be liable for any direct,
+                                indirect,
+                                incidental, consequential, or punitive damages arising from the use or inability to use
+                                the
                                 website or
                                 its content</p>
 
                             <p class="font-bold ">9. Modification and Termination</p>
-                            <p class="ml-4 text-sm text-justify">a. We reserve the right to modify or terminate the website
+                            <p class="ml-4 text-sm text-justify">a. We reserve the right to modify or terminate the
+                                website
                                 and
                                 these terms and conditions at any time without prior notice </p>
-                            <p class="ml-4 mb-5 text-sm text-justify">b. Continue use of the website after any changes to
+                            <p class="ml-4 mb-5 text-sm text-justify">b. Continue use of the website after any changes
+                                to
                                 the terms
                                 constitutes your acceptance of the revised terms</p>
 
@@ -516,7 +547,8 @@
                             <p class="ml-4 text-sm text-justify">a. These terms and conditions shall be governed by and
                                 construed in
                                 accordance with the laws of the Philippines </p>
-                            <p class="ml-4 mb-5 text-sm text-justify">b. Any disputes arising from the use of the website
+                            <p class="ml-4 mb-5 text-sm text-justify">b. Any disputes arising from the use of the
+                                website
                                 shall be
                                 subject to the exclusive jurisdiction of the courts in the Philippines.</p>
 
@@ -589,8 +621,8 @@
         <!-- Modal Content -->
         <div class="relative flex justify-end">
             <button class="absolute pr-4 pt-4 ">
-                <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="5"
-                    stroke="black" class="w-7 h-7">
+                <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke-width="5" stroke="black" class="w-7 h-7">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                 </svg>
             </button>
@@ -672,7 +704,6 @@
 
 
 <script>
-import { RouterLink } from 'vue-router';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue'
 import { useAuthStore } from '@/stores/auth'
@@ -687,9 +718,6 @@ import locationImg from '@/assets/images/MainNav/location.png';
 
 export default {
     name: 'NavBar',
-    components: {
-        RouterLink,
-    },
     setup() {
         const authStore = useAuthStore();
         const router = useRouter(); // Import useRouter here

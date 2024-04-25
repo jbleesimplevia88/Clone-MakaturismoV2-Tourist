@@ -116,13 +116,13 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Other Items -->
                 <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">OTHER ITEMS</h1>
                 <div class="flex w-[100%]">
                     <div class="flex justify-between items-center mb-2 space-x-5">
                         <!-- WEB VERSION OTHER ITEMS -->
-                        
+
                         <!-- First column -->
                         <div class="flex-col lg:block hidden">
                             <div v-for="(item, index) in otherProducts.slice(0, 3)" :key="index" class="card-wrapper">
@@ -213,7 +213,7 @@
                             <div class="flex flex-col">
                                 <div v-for="(item, index) in otherProducts.slice(3, 6)" :key="index" class="card-wrapper">
                                     <!-- Your card content goes here -->
-                                   
+
                                     <!-- WEB VERION -->
                                     <div
                                         class="hidden lg:block card bg-blue-950 w-[100%] border-2 h-[190px] m-1 p-4 rounded-xl relative justify-between">
@@ -582,12 +582,14 @@
                         </div>
                         <!-- AUTHHHHHH BUTTOONNNNNNNN -->
                         <div>
-                            <login-modal v-if="!authStore.isAuthenticated && showLoginModal"
-                                @close="showLoginModal = false"></login-modal>
-                            <button @click="handleCheckCart"
-                                class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">
-                                Check Cart
-                            </button>
+                            <div v-if="!isCartEmpty">
+                                <login-modal v-if="!authStore.isAuthenticated && showLoginModal"
+                                    @close="showLoginModal = false"></login-modal>
+                                <button @click="addToBuyNowAndCheckCart(false)"
+                                    class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[90%]">
+                                    Buy Now
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

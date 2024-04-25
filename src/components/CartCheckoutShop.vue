@@ -41,11 +41,10 @@
                                     </div>
                                 </div>
 
-                               
                             </div>
                         </div>
                         <!-- Information of user -->
-                        <div class="relative hidden lg:block mx-6 px-3 lg:pl-32 mb-[30px]">
+                        <div class="relative hidden lg:block mx-6 px-3 lg:pl-32 mb-[30px] lg:mb-24">
                             <p class="mb-4 font-bold lg:text-3xl text-2xl">Your Information</p>
                             <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-4">
                                 <div class="flex lg:flex-col lg:items-start justify-start">
@@ -147,7 +146,6 @@
                                     <div v-else>
                                         <div v-for="(cartItem, index) in selectedItems" :key="index"
                                             class="flex justify-between mb-3 ">
-
                                             <p class="w-[70%]">{{ cartItem.title }} </p>
                                             <p class="text-gray-400">₱ {{ cartItem.quantity * cartItem.price }}</p>
                                         </div>
@@ -164,16 +162,15 @@
                                     @click="toggleVoucher">Use Voucher</button>
                             </div>
                             <div class="flex justify-between">
-                             <!-- Change "Your Total (Php)" to "Subtotal" if a voucher is applied -->
+                                <!-- Change "Your Total (Php)" to "Subtotal" if a voucher is applied -->
                                 <p class="font-poppins font-sans font-bold text-lg pt-4">{{ displayTotalLabel }}</p>
                                 <p class="font-poppins font-sans text-base font-bold pt-4">{{ totalAmount }}</p>
                             </div>
-                           <!-- If the discountPrice has a value, show this line -->
+                            <!-- If the discountPrice has a value, show this line -->
                             <div v-if="discountPrice !== 0" class="flex justify-between text-[#9bbf2f]">
                                 <p class="font-poppins font-sans font-bold text-lg pt-4">Special Discount:</p>
                                 <p class="font-poppins font-sans text-base font-bold pt-4">- ₱ {{ discountPrice }} </p>
                             </div>
-
                             <div class="bg-gray-400 h-0.5 mt-2"></div>
                             <!-- Compute the final price -->
                             <div class="flex justify-between ">
@@ -227,7 +224,7 @@
                     </div>
                 </div>
             </template>
-            
+
             <template v-else>
                 <div class="lg:hidden">
                     <nav
@@ -261,7 +258,6 @@
                             </div>
                         </div>
                         <div class="justify-center pt-3">
-                            <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
                             <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
                                 @click="toggleComplete">Confirm Booking</button>
                             <div v-if="showComplete"
@@ -302,14 +298,13 @@
                     <div class="absolute grid grid-rows-3 text-left ml-14 mt-1">
                         <span class="font-semibold">{{ voucher.code }}</span>
                         <span class="font-bold">P{{ voucher.amount }}</span>
-                        <button type="submit" class="text-sm font-bold ml-52 cursor-pointer" @click="toggleVoucher(voucher)">
+                        <button type="submit" class="text-sm font-bold ml-52 cursor-pointer"
+                            @click="toggleVoucher(voucher)">
                             {{ voucher.applied ? 'Remove' : 'Apply' }}
                         </button>
-
                     </div>
                     <img src="@/assets/images/CategoryView/ToEat/voucher.png" class="mb-6">
                 </div>
-
                 <div>
                     <div data-v-392f50c8="" class="mt-5 mb-3 bg-gray-400 h-0.5"></div>
                 </div>
@@ -355,10 +350,12 @@
 </style>
 
 <script>
-import { computed } from 'vue';
-import { useCartStore } from '@/stores/toShopCart';
-
-
+import {
+    computed
+} from 'vue';
+import {
+    useCartStore
+} from '@/stores/toShopCart';
 export default {
     setup() {
         const cartStore = useCartStore();
@@ -375,12 +372,10 @@ export default {
             // Default to displaying items from the cart array
             return cartStore.cart.filter(item => item.selected);
         });
-
         // Compute the total number of items in the selected items
         const totalItemsInCart = computed(() => {
             return selectedItems.value.reduce((total, item) => total + item.quantity, 0);
         });
-
         // Compute the overall total amount for the selected items
         const totalAmount = computed(() => {
             return selectedItems.value.reduce((total, item) => total + (item.quantity * item.price), 0);
@@ -393,20 +388,33 @@ export default {
     },
     data() {
         return {
-            shops: [
-                {
-                    image: "src/assets/images/CategoryView/ToShop/kultura.png",
-                    name: "Shop Makati",
-                    type: "Shop",
-                    rating: "5.0",
-                    reviews: "500",
-                }
-            ],
-            vouchers: [
-                { code: 'DISCOUNT999', amount: 999.00, applied: false },
-                { code: 'DISCOUNT100', amount: 100.00, applied: false },
-                { code: 'DISCOUNT50', amount: 50.00, applied: false },
-                { code: 'DISCOUNT200', amount: 200.00, applied: false }
+            shops: [{
+                image: "src/assets/images/CategoryView/ToShop/kultura.png",
+                name: "Shop Makati",
+                type: "Shop",
+                rating: "5.0",
+                reviews: "500",
+            }],
+            vouchers: [{
+                code: 'DISCOUNT999',
+                amount: 999.00,
+                applied: false
+            },
+            {
+                code: 'DISCOUNT100',
+                amount: 100.00,
+                applied: false
+            },
+            {
+                code: 'DISCOUNT50',
+                amount: 50.00,
+                applied: false
+            },
+            {
+                code: 'DISCOUNT200',
+                amount: 200.00,
+                applied: false
+            }
             ],
             voucher: {
                 applied: false
@@ -420,8 +428,7 @@ export default {
             navButtonText: 'Request to Order'
         };
     },
-    
-   computed: {
+    computed: {
         validVouchers() {
             return this.vouchers.filter(voucher => voucher.amount < this.totalAmount);
         },
@@ -448,7 +455,6 @@ export default {
             // Update displayTotalLabel
             this.displayTotalLabel = this.discountPrice ? 'Subtotal' : 'Your Total (Php)';
         },
-       
         scrollToTop() {
             window.scrollTo(0, 0);
         },
@@ -465,7 +471,6 @@ export default {
             this.showConfirmation = false;
             this.showComplete = false;
         },
-        
         togglePayment() {
             // Toggle the showPayment flag
             this.showPayment = !this.showPayment;
@@ -506,8 +511,8 @@ export default {
             }
         },
         totalAmount() {
-      this.updateInvalidVouchers();
-    }
+            this.updateInvalidVouchers();
+        }
     },
 };
 </script>

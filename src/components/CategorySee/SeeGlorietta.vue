@@ -23,10 +23,13 @@
                         </router-link>
                     </div>
                     <div class="relative flex flex-col items-center">
-                        <div class="lg:pl-9 grid grid-cols-1 lg:grid-cols-5 lg:pr-[7rem]">
-                            <img src="@/assets/images/CategoryView/ToSee/Poblacion 1.png" alt=""
-                                class="col-span-3 w-[100%] h-full lg:w-[98%] lg:h-[100%] rounded-l-3xl">
-                            <div class="hidden col-span-2 md:grid md:grid-cols-2 gap-4">
+                        
+      
+                        <div class=" lg:pr-[7rem]">
+                            <ContentCarousel class="mb-10" />
+                         
+                     
+                            <!-- <div class="hidden col-span-2 md:grid md:grid-cols-2 gap-4">
                                 <img src="@/assets/images/CategoryView/ToSee/Glorietta Pink.png" alt="" class="size-full">
                                 <img src="@/assets/images/CategoryView/ToSee/Glorietta Inside.png" alt=""
                                     class="size-full rounded-tr-3xl">
@@ -34,7 +37,7 @@
                                     class="size-full">
                                 <img src="@/assets/images/CategoryView/ToSee/Poblacion 1.png" alt=""
                                     class="size-full rounded-br-3xl">
-                            </div>
+                            </div> -->
                         </div>
                         <!-- <div class="absolute bottom-2 right-[8rem] z-20 w-100">
 
@@ -107,9 +110,8 @@
             <p class="text-lg md:text-black text-left pl-2.5 pb-5">(02) 7795 9595</p>
         </div>
 
-        <h1 class="font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SPOT IN HERE IN GLORIETTA</h1>
+   
 
-        <ContentCarousel class="mb-10" />
 
 
     </div>
@@ -267,22 +269,23 @@
 
 
 <script>
-import ContentCarousel from '@/components/ContentModalCarousel.vue';
+import ContentCarousel from '@/components/ToSeeCarousel.vue';
 import MapRenderer from "@/components/MapRenderer.vue";
 
 
 
-export default {
-    props: {
-        latitude: Number,
-        longitude: Number,
-        name: String
-    },
-    components: {
-        ContentCarousel,
-        MapRenderer
 
-    },
+
+export default {
+  props: {
+    latitude: Number,
+    longitude: Number,
+    name: String
+  },
+  components: {
+     ContentCarousel,
+    MapRenderer
+  },
     data() {
         return {
             items: [

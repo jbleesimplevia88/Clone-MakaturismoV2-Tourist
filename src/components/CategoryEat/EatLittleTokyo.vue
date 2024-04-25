@@ -18,10 +18,11 @@
                         </router-link>
                     </div>
                     <div class="relative flex flex-col items-center">
-                        <div class="lg:pl-9 grid grid-cols-1 lg:grid-cols-5 lg:pr-[7rem]">
-                            <img src="@/assets/images/CategoryView/ToEat/eat1.png" alt=""
-                                class="col-span-3 w-[100%] h-full lg:w-[97%] lg:h-[95%] rounded-l-3xl">
-                            <div class="hidden col-span-2 md:grid md:grid-cols-2 gap-4 ">
+                        <div class=" lg:pr-[7rem]">
+                            <ContentCarousel :items="items" class="mb-10" />
+
+
+                            <!-- <div class="hidden col-span-2 md:grid md:grid-cols-2 gap-4 ">
                                 <img src="@/assets/images/CategoryView/ToEat/eat2.png" alt=""
                                     class="lg:w-[100%] lg:h-[90%]">
                                 <img src="@/assets/images/CategoryView/ToEat/eat3.png" alt=""
@@ -30,8 +31,9 @@
                                     class="lg:w-[100%] lg:h-[90%]">
                                 <img src="@/assets/images/CategoryView/ToEat/eat5.jpg" alt=""
                                     class="lg:w-[100%] lg:h-[90%] rounded-br-3xl">
-                            </div>
+                            </div> -->
                         </div>
+
                     </div>
                     <!-- mobile -->
                     <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 lg:p-5 px-5 py-3 shadow-lg">
@@ -200,29 +202,26 @@
                             </div>
                             <div class="lg:flex lg:justify-between w-[100%]">
                                 <!-- Web gallery -->
-                                <div class=" hidden lg:block lg:w-[40%]">
-                                    <div class="lg:flex justify-center items-center mb-3">
-                                        <img :src="selectedProduct.image" class="w-auto h-24 md:w-[500px] md:h-auto">
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <div class="flex justify-between items-center">
-                                            <img src="@/assets/images/CategoryView/ToEat/best2.png"
-                                                class="h-24 md:w-[80px] md:h-auto">
-                                        </div>
-                                        <div class="flex justify-center items-center">
-                                            <img src="@/assets/images/CategoryView/ToEat/best3.jpg"
-                                                class="h-24 md:w-[80px] md:h-auto">
-                                        </div>
-                                        <div class="flex justify-center items-center">
-                                            <img src="@/assets/images/CategoryView/ToEat/other1.jpg"
-                                                class="h-24 md:w-[80px] md:h-auto">
-                                        </div>
-                                        <div class="flex justify-center items-center mx-5">
-                                            <img src="@/assets/images/CategoryView/ToShop/button.png"
-                                                class="h-24 md:w-[40px] md:h-auto">
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="hidden lg:block lg:w-[40%]">
+    <div class="lg:flex justify-center items-center mb-3">
+        <img :src="selectedProduct.image" class="w-auto h-24 md:w-[500px] md:h-auto" id="mainImage">
+    </div>
+    
+    <div class="flex justify-between">
+        <div class="flex justify-between items-center">
+            <img src="@/assets/images/CategoryView/ToEat/best2.png" class="h-24 md:w-[80px] md:h-auto" onclick="changeMainImage('@/assets/images/CategoryView/ToEat/best2.png')">
+        </div>
+        <div class="flex justify-center items-center">
+            <img src="@/assets/images/CategoryView/ToEat/best3.jpg" class="h-24 md:w-[80px] md:h-auto" onclick="changeMainImage('@/assets/images/CategoryView/ToEat/best3.jpg')">
+        </div>
+        <div class="flex justify-center items-center">
+            <img src="@/assets/images/CategoryView/ToEat/other1.jpg" class="h-24 md:w-[80px] md:h-auto" onclick="changeMainImage('@/assets/images/CategoryView/ToEat/other1.jpg')">
+        </div>
+        <div class="flex justify-center items-center mx-5">
+            <img src="@/assets/images/CategoryView/ToShop/button.png" class="h-24 md:w-[40px] md:h-auto">
+        </div>
+    </div>
+</div>
                                 <!-- Mobile - gallery -->
                                 <div class="lg:hidden grid grid-cols-2 grid-rows-1 gap-4">
                                     <div class="w-[200px] ml-4">
@@ -721,6 +720,7 @@
 
 
 <script>
+import ContentCarousel from '@/components/ToEatCarousel.vue';
 import MapRenderer from "@/components/MapRenderer.vue";
 import eatProduct1 from '@/assets/images/CategoryView/ToEat/best2.png';
 import eatProduct2 from '@/assets/images/CategoryView/ToEat/best3.jpg';
@@ -739,8 +739,11 @@ export default {
         latitude: Number,
         longitude: Number,
         name: String
+        
+        
     },
     components: {
+        ContentCarousel,
         MapRenderer
     },
     data() {

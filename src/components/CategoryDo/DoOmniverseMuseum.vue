@@ -18,11 +18,12 @@
                             </a>
                         </router-link>
                     </div>
-                    <div class="relative flex flex-col items-center">
-                        <div class="lg:pl-9 grid grid-cols-1 lg:grid-cols-5 lg:pr-[7rem]">
-                            <img src="@/assets/images/CategoryView/ToDo/omni.jpg" alt=""
-                                class="col-span-3 w-[100%] h-full lg:w-[97%] lg:h-[95%] rounded-l-3xl">
-                            <div class="hidden col-span-2 md:grid md:grid-cols-2 gap-4 ">
+                   <div class="relative flex flex-col items-center">
+    <div class="lg:pr-[4rem]">
+      <ContentCarousel :items="items" class="mb-10" />
+
+
+                            <!-- <div class="hidden col-span-2 md:grid md:grid-cols-2 gap-4 ">
                                 <img src="@/assets/images/CategoryView/ToDo/Wonder Woman.png" alt=""
                                     class="lg:w-[100%] lg:h-[90%]">
                                 <img src="@/assets/images/CategoryView/ToDo/Avengers.png" alt=""
@@ -31,7 +32,7 @@
                                     class="lg:w-[100%] lg:h-[90%]">
                                 <img src="@/assets/images/CategoryView/ToDo/Iron Man Set.png" alt=""
                                     class="lg:w-[100%] lg:h-[90%] rounded-br-3xl">
-                            </div>
+                            </div> -->
                         </div>
                         <!-- <div class="absolute bottom-2 right-[8rem] z-20 w-100">
 
@@ -106,9 +107,9 @@
             <p class="text-lg md:text-black text-left pl-2.5 pb-5">0915 009 1034</p>
         </div>
 
-        <h1 class="font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SPOT IN HERE IN OMNIVERSE MUSEUM</h1>
+     
 
-        <ContentCarousel class="mb-10" />
+    
 
 
     </div>
@@ -262,22 +263,24 @@
 
 
 <script>
-import ContentCarousel from '@/components/ContentModalCarousel.vue';
+import ContentCarousel from '@/components/ToDoCarousel.vue';
 import MapRenderer from "@/components/MapRenderer.vue";
 
 
 
+
+
 export default {
-    props: {
-        latitude: Number,
-        longitude: Number,
-        name: String
-    },
-    components: {
-        ContentCarousel,
-        MapRenderer
-    },
-    data() {
+  props: {
+    latitude: Number,
+    longitude: Number,
+    name: String
+  },
+  components: {
+     ContentCarousel,
+    MapRenderer
+  },
+ data() {
         return {
             items: [
                 {
@@ -334,7 +337,6 @@ export default {
             showDropdown: false,
             categories: ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'],
             locations: ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'],
-            // New property to track number of feedback items shown
             numFeedbackShown: 0,
             showSeeLessButton: false
         };
@@ -343,6 +345,7 @@ export default {
         paginatedItems() {
             // Return first 2 items initially and add additional items based on numFeedbackShown
             return this.items.slice(0, 2 + this.numFeedbackShown);
+       
         },
         // Check if there are more feedback items to show
         showSeeMoreButton() {
@@ -366,6 +369,6 @@ export default {
             // Hide See Less button
             this.showSeeLessButton = false;
         }
-    }
+    },
 };
 </script>

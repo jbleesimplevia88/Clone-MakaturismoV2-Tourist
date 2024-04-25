@@ -4,17 +4,10 @@
             <div class="bg-[#102E61] h-[101%] lg:h-[110%]" style="position: absolute; top: 0px; left: 0; width: 100%; ">
             </div>
             <div class=" z-[1]">
-            <div class=" z-[1]">
                 <div class="relative flex flex-col pl-0 lg:pl-10">
                     <div class="absolute lg:top-4 lg:left-3 top-4 z-[1]">
                         <router-link to="/category/shop">
                             <a class=" flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                    style="filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));" stroke="currentColor"
-                                    class="w-8 ml-5 lg:ml-0 lg:w-10 h-12 lg:h-10 hover:bg-gray-300 rounded-md p-1 cursor-pointer text-white">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-                                </svg>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
                                     style="filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));" stroke="currentColor"
                                     class="w-8 ml-5 lg:ml-0 lg:w-10 h-12 lg:h-10 hover:bg-gray-300 rounded-md p-1 cursor-pointer text-white">
@@ -28,12 +21,7 @@
                         <img src="@/assets/images/CategoryView/ToShop/shop1.png" alt=""
                             class="rounded-3xl lg:w-full lg:h-[500px] object-cover">
                     </div>
-                    <div class="items-center lg:mr-10">
-                        <img src="@/assets/images/CategoryView/ToShop/shop1.png" alt=""
-                            class="rounded-3xl lg:w-full lg:h-[500px] object-cover">
-                    </div>
                     <!-- Monile -->
-                    <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 p-5 shadow-lg z-50">
                     <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 p-5 shadow-lg z-50">
                         <div class="flex justify-between">
                             <div>
@@ -63,17 +51,12 @@
                 <p class="text-lg text-justify text-black pb-5">From handmade souvenirs, eco-friendly Barongs and
                     fashionable Filipiniana to artisanal chocolates and more, Makati Shop continues its mission to embrace
                     our heritage and keep them relevant; support communities and help grow small businesses;
-                <p class="text-lg text-justify text-black pb-5">From handmade souvenirs, eco-friendly Barongs and
-                    fashionable Filipiniana to artisanal chocolates and more, Makati Shop continues its mission to embrace
-                    our heritage and keep them relevant; support communities and help grow small businesses;
                     protect the environment and elevate pride in our identity.</p>
                 <div class="hidden border border-gray-400 lg:w-[]">
                     <p class="text-center font-bold">Number of items</p>
                 </div>
                 <div class="flex flex-row">
                     <div class="pt-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -86,8 +69,6 @@
                 </div>
                 <div class="flex flex-row">
                     <div class="pt-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -105,11 +86,6 @@
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
                         </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
-                        </svg>
                     </div>
                     <p class="text-lg md:text-black text-left pl-2.5 pb-5">(02) 8892 1024</p>
                 </div>
@@ -117,21 +93,7 @@
                 <div class="my-4 lg:w-[100%]">
                     <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SELLERS</h1>
                     <div class="flex flex-wrap lg:flex justify-start text-white lg:space-x-5 lg:w-[70%] w-full">
-                    <div class="flex flex-wrap lg:flex justify-start text-white lg:space-x-5 lg:w-[70%] w-full">
                         <!-- Cards in Best seller -->
-                        <div v-for="(item, index) in bestProducts" :key="index"
-                            class="lg:flex-auto bg-blue-950 lg:h-[18rem] w-[10rem] h-[200px] m-1 p-2 lg:p-5 rounded-xl relative flex flex-col justify-between">
-                            <div class="flex flex-col w-fit items-center justify-between">
-                                <p class="rounded-lg lg:text-sm text-xs lg:px-2 pt-2 absolute top-2.5 left-3 right-3 text-white p-2 w-71"
-                                    style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
-                                    {{ item.title }}
-                                </p>
-                                <img class="rounded-md lg:h-56 h-36 w-full object-fill" :key="index" :src="item.image[0]"
-                                    alt="">
-                                <button @click="toggleshowCart(item)"
-                                    class="text-xs bg-blue-600 rounded-md py-1 px-3 w-full mt-2">See More</button>
-                            </div>
-                            <div class="flex justify-end absolute bottom-[58px] right-[25px]">
                         <div v-for="(item, index) in bestProducts" :key="index"
                             class="lg:flex-auto bg-blue-950 lg:h-[18rem] w-[10rem] h-[200px] m-1 p-2 lg:p-5 rounded-xl relative flex flex-col justify-between">
                             <div class="flex flex-col w-fit items-center justify-between">
@@ -579,24 +541,17 @@
                                     <div class="flex justify-between mb-2">
                                         <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating
                                             with my requests. Transaction is smooth. ❤️
-                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating
-                                            with my requests. Transaction is smooth. ❤️
                                         </p>
                                     </div>
                                 </div>
                                 <div
                                     class="flex w-[100%]  text-black flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
-                                <div
-                                    class="flex w-[100%]  text-black flex-col col-span-2 items-left bg-gray-300 mt-3 mb-3 rounded-xl p-3">
                                     <div class="inline-block w-[100%]">
                                         <label class="flex w-[100%] text-mb font-bold">chezterfaith
-                                            ⭐️⭐️⭐️⭐️⭐</label>
                                             ⭐️⭐️⭐️⭐️⭐</label>
                                         <p class="flex text-xs">03-10-2024 11:30</p>
                                     </div>
                                     <div class="flex justify-between mb-2">
-                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating
-                                            with my requests. Transaction is smooth. ❤️
                                         <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating
                                             with my requests. Transaction is smooth. ❤️
                                         </p>
@@ -611,12 +566,10 @@
         <!-- Cart -->
         <div>
             <div v-if="totalItemsInCart > 0" class="hidden lg:block ">
-            <div v-if="totalItemsInCart > 0" class="hidden lg:block ">
                 <div class="cart-bg my-4 lg:w-[30%] lg:h-[85rem] right-7 absolute top-[8rem] ">
                     <div class="cart-list lg:w-[75%] h-[40rem] border border-gray-300 p-4 rounded-lg shadow">
                         <!-- center this div -->
                         <p class="text-center font-bold">Number of items</p>
-                        <p class="text-center font-bold text-3xl">{{ totalItemsInCart }}</p>
                         <p class="text-center font-bold text-3xl">{{ totalItemsInCart }}</p>
                         <div class="cart-list-scroll mb-5" style="height: 29rem; overflow-y: auto;">
                             <!-- Set specific height and add scrollbar -->
@@ -640,45 +593,7 @@
                 </div>
             </div>
         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- Mobile- cart -->
-        <template v-if="showCartModal">
-            <div class="lg:hidden fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
-                @click.self="closeModal">
-                <div class="bg-white rounded-lg shadow-md p-2 max-w-md mx-5" @click.stop>
-                    <div class="lg:w-[100%] p-4 rounded-lg">
-                        <!-- Cart items -->
-                        <div class="flex justify-between mb-2">
-                            <div class="w-[50%]">
-                                <p class="text-center font-bold">Number of items</p>
-                                <p class="text-center font-bold text-3xl">{{ totalItemsInCart }}</p>
-                            </div>
-                            <template v-if="!isCartEmpty">
-                                <div class="w-[120%]">
-                                    <!-- Update the click event handler to call handleEditCart function -->
-                                    <button @click="handleEditCart"
-                                        class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">
-                                        Edit Cart
-                                    </button>
-                                </div>
-                            </template>
-
-                        </div>
-                        <div class="mb-5">
-                            <p class="font-bold">List of items</p>
-                            <template v-if="!isCartEmpty">
-                                <div v-for="(cartItem, index) in cart" :key="index" class="flex justify-between mb-2 pr-4">
-                                    <p class="w-[70%]">{{ cartItem.title }}</p>
-                                    <p>x{{ cartItem.quantity }}</p>
-                                </div>
-                            </template>
-                            <template v-else>
-                                <p class="text-center">
-                                    Your cart is empty</p>
-                            </template>
         <template v-if="showCartModal">
             <div class="lg:hidden fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
                 @click.self="closeModal">
@@ -729,13 +644,7 @@
                 </div>
             </div>
         </template>
-                    </div>
-                </div>
-            </div>
-        </template>
 
-
-    </div>
 
     </div>
     <div class="relative flex flex-col">
@@ -810,15 +719,8 @@
         <div class="grid lg:grid-cols-2 lg:gap-[2rem] relative mx-6 px-3 lg:px-32 pt-5">
             <div class="relative border-2 border-gray-200 rounded-md px-3 py-3" v-for="( item, index ) in  paginatedItems "
                 :key="index">
-            <div class="relative border-2 border-gray-200 rounded-md px-3 py-3" v-for="( item, index ) in  paginatedItems "
-                :key="index">
                 <div class="flex flex-row">
                     <div class="pt-[0.125rem]">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-12 h-12">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                        </svg>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-12 h-12">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -843,15 +745,9 @@
                 <div>
                     <div
                         style="position: absolute; bottom :0; left: 0; height: 24%; width: 100%; background: linear-gradient(to bottom, transparent 30%, #FFFFFF 79%, #FFFFFF 50%);">
-                    <div
-                        style="position: absolute; bottom :0; left: 0; height: 24%; width: 100%; background: linear-gradient(to bottom, transparent 30%, #FFFFFF 79%, #FFFFFF 50%);">
                     </div>
                 </div>
                 <div class="absolute bottom-3">
-                    <button @click="seeMore"
-                        class="left-0 right-0 px-3 py-3 border-2 border-black text-black  rounded-md hover:bg-black hover:text-white transition-colors duration-300 text-nowrap text-xs">
-                        <span>See More</span>
-                    </button>
                     <button @click="seeMore"
                         class="left-0 right-0 px-3 py-3 border-2 border-black text-black  rounded-md hover:bg-black hover:text-white transition-colors duration-300 text-nowrap text-xs">
                         <span>See More</span>
@@ -860,10 +756,6 @@
             </div>
             <div v-if="showSeeLessButton" class="mb-10">
                 <div class="absolute bottom-8">
-                    <button @click="seeLess"
-                        class=" px-3 py-3 border-2 border-black text-black  rounded-md hover:bg-black hover:text-white transition-colors duration-300 text-nowrap text-xs">
-                        <span>See Less</span>
-                    </button>
                     <button @click="seeLess"
                         class=" px-3 py-3 border-2 border-black text-black  rounded-md hover:bg-black hover:text-white transition-colors duration-300 text-nowrap text-xs">
                         <span>See Less</span>
@@ -881,20 +773,11 @@
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
 }
-.scrollbar-hide::-webkit-scrollbar {
-    display: none;
-}
 
 .cart-list-scroll::-webkit-scrollbar {
     width: 8px;
 }
-.cart-list-scroll::-webkit-scrollbar {
-    width: 8px;
-}
 
-.cart-list-scroll::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
 .cart-list-scroll::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
@@ -903,16 +786,7 @@
     background: #888;
     border-radius: 5px;
 }
-.cart-list-scroll::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 5px;
-}
 
-.cart-list-scroll::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-
-.toast-container {
 .cart-list-scroll::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
@@ -923,23 +797,16 @@
     right: 1rem;
     z-index: 9999;
 }
-}
 
-.toast {
 .toast {
     position: relative;
     transition: transform 0.3s ease-in-out;
 }
-}
 
-.toast-content {
-    max-width: 20rem;
-}
 .toast-content {
     max-width: 20rem;
 }
 </style>
-
 
 
 
@@ -1164,53 +1031,7 @@ export default defineComponent({
         };
         const addToBuyNow = (item) => {
             buyNowProducts.value.push(item);
-        const addToBuyNow = (item) => {
-            buyNowProducts.value.push(item);
         };
-        const totalItemsInCart = computed(() => {
-            return cartStore.cart.reduce((total, item) => total + item.quantity, 0);
-        });
-        watch(cartStore.cart, (newCart) => {
-            editCartProducts.value = [...newCart];
-        }, {
-            deep: true
-        });
-        //*******************END OF ALL CODE FOR CHECKING WHETHER PRODUCT IS COMING FROM EDEITCART ARRAY OR BUYNOW ARRAY***********//
-        // we need this to kknow which array will the carousel get the images from sa best seller ba or sa other product
-        watch(selectedProduct, (newValue) => {
-            console.log("Selected Product Changed:", newValue);
-            const isBestProduct = bestProducts.some(product => product.title === newValue.title);
-            selectedProductImages.value = newValue ?
-                (isBestProduct ?
-                    (console.log("Fetching image from bestProducts"), newValue.image) :
-                    (console.log("Fetching image from otherProducts"), newValue.image)) || [] : [];
-            selectedProductIsFromBestProducts.value = isBestProduct;
-        });
-        // Modify changeImage function to use selectedProductImages length
-        const changeImage = () => {
-            currentIndex.value = (currentIndex.value + 1) % selectedProductImages.value.length;
-        };
-        // Function to update the current image index
-        const updateCurrentImage = (image) => {
-            currentIndex.value = selectedProductImages.value.findIndex(img => img === image);
-            currentImage.value = image;
-        };
-        // Define computed property to get the current image based on the currentIndex
-        const currentImage = computed(() => {
-            return selectedProductImages.value[currentIndex.value] || ''; // Assuming the first product's image is used for the carousel
-        });
-        const clearCartAndNavigate = () => {
-            cartStore.clearCart();
-        };
-        const isCartEmpty = computed(() => {
-            return cartStore.cart.length === 0;
-        });
-        const paginatedItems = computed(() => {
-            return items.slice(0, 2 + numFeedbackShown.value);
-        });
-        const showSeeMoreButton = computed(() => {
-            return numFeedbackShown.value < items.length - 2;
-        });
         const totalItemsInCart = computed(() => {
             return cartStore.cart.reduce((total, item) => total + item.quantity, 0);
         });
@@ -1276,9 +1097,6 @@ export default defineComponent({
         const toggleshowCart = (item) => {
             selectedProduct.value = item;
             console.log(selectedProduct.value);
-        const toggleshowCart = (item) => {
-            selectedProduct.value = item;
-            console.log(selectedProduct.value);
             showCart.value = true;
         };
         const openCartModal = () => {
@@ -1301,26 +1119,6 @@ export default defineComponent({
         const closeReviews = () => {
             showReviews.value = false;
             showCart.value = true;
-        };
-        const increaseQuantity = () => {
-            selectedProduct.value.quantity++;
-        };
-        const decreaseQuantity = () => {
-            if (selectedProduct.value.quantity > 1) {
-                selectedProduct.value.quantity--;
-            }
-        };
-        const showToastWithMessage = (message) => {
-            toastMessage.value = message;
-            showToast.value = true;
-            setTimeout(() => {
-                showToast.value = false;
-                toastMessage.value = "";
-            }, 3000);
-        };
-        const hideToast = () => {
-            showToast.value = false;
-            toastMessage.value = "";
         };
         const increaseQuantity = () => {
             selectedProduct.value.quantity++;

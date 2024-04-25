@@ -40,7 +40,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                         <!-- Information of user -->
@@ -116,11 +115,9 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Start of Central Business District Tour -->
                     <!-- <div v-for="(shop, index) in shops" :key="index" class="my-4 lg:w-[32%] lg:h-[30%] lg:right-10 lg:absolute relative lg:top-[3rem] w-screen"> -->
                     <!-- <div class="border border-gray-400 rounded-xl p-5 ml-5 w-[90%] h-fit"> -->
-
                     <div class="my-4 lg:w-[32%] lg:h-[30%] lg:right-10 lg:absolute relative lg:top-[3rem] w-screen">
                         <div class="border border-gray-400 rounded-xl p-5 ml-5 w-[90%] h-fit">
                             <!-- summary -->
@@ -150,13 +147,11 @@
                                             <p class="w-[70%]">{{ cartItem.title }} </p>
                                             <p class="text-gray-400">₱ {{ cartItem.quantity * cartItem.price }}</p>
                                         </div>
-
                                         <p
                                             class="lg:font-poppins font-sans text-base font-bold text-right underline hidden">
                                             Price Breakdown
                                         </p>
                                     </div>
-
                                     <div class="bg-gray-400 h-0.5 w-[100%]"></div>
                                     <div class="flex items-center my-7  ">
                                         <img src="@/assets/images/CategoryView/ToShop/voucher.png" class="lg:w-8 h-8 mr-2">
@@ -178,7 +173,6 @@
                                         <p class="font-poppins font-sans text-base font-bold pt-4">- ₱ {{ discountPrice }}
                                         </p>
                                     </div>
-
                                     <div class="bg-gray-400 h-0.5 mt-2"></div>
                                     <!-- Compute the final price -->
                                     <div class="flex justify-between ">
@@ -231,7 +225,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div v-else>
                                 <div class="lg:w-[100%]  rounded-lg">
                                     <!-- Voucher section -->
@@ -261,11 +254,9 @@
                                                     @click="toggleVoucherWeb(voucher)">
                                                     {{ voucher.applied ? 'Remove' : 'Apply' }}
                                                 </button>
-
                                             </div>
                                             <img src="@/assets/images/CategoryView/ToEat/voucher.png" class="mb-6">
                                         </div>
-
                                         <div>
                                             <div data-v-392f50c8="" class="mt-5 mb-3 bg-gray-400 h-0.5"></div>
                                         </div>
@@ -284,7 +275,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -426,24 +416,20 @@ import {
 export default {
     setup() {
         const cartStore = useCartStore();
-        // Compute the selected items based on the user's action
         const selectedItems = computed(() => {
-            // If the user is editing the cart, display items from the editCartProducts array
+            // If the user is editing the cart
             if (cartStore.editCartProducts.length > 0) {
                 return cartStore.editCartProducts.filter(item => item.selected);
             }
-            // If the user is buying now, display items from the buyNowProducts array
+            // If the user is buying now
             else if (cartStore.buyNowProducts.length > 0) {
                 return cartStore.buyNowProducts.filter(item => item.selected);
             }
-            // Default to displaying items from the cart array
             return cartStore.cart.filter(item => item.selected);
         });
-        // Compute the total number of items in the selected items
         const totalItemsInCart = computed(() => {
             return selectedItems.value.reduce((total, item) => total + item.quantity, 0);
         });
-        // Compute the overall total amount for the selected items
         const totalAmount = computed(() => {
             return selectedItems.value.reduce((total, item) => total + (item.quantity * item.price), 0);
         });
@@ -456,20 +442,33 @@ export default {
     data() {
         return {
             showSummary: true,
-            shops: [
-                {
-                    image: "src/assets/images/CategoryView/ToShop/kultura.png",
-                    name: "Shop Makati",
-                    type: "Shop",
-                    rating: "5.0",
-                    reviews: "500",
-                }
-            ],
-            vouchers: [
-                { code: 'DISCOUNT999', amount: 999.00, applied: false },
-                { code: 'DISCOUNT100', amount: 100.00, applied: false },
-                { code: 'DISCOUNT50', amount: 50.00, applied: false },
-                { code: 'DISCOUNT200', amount: 200.00, applied: false }
+            shops: [{
+                image: "src/assets/images/CategoryView/ToShop/kultura.png",
+                name: "Shop Makati",
+                type: "Shop",
+                rating: "5.0",
+                reviews: "500",
+            }],
+            vouchers: [{
+                code: 'DISCOUNT999',
+                amount: 999.00,
+                applied: false
+            },
+            {
+                code: 'DISCOUNT100',
+                amount: 100.00,
+                applied: false
+            },
+            {
+                code: 'DISCOUNT50',
+                amount: 50.00,
+                applied: false
+            },
+            {
+                code: 'DISCOUNT200',
+                amount: 200.00,
+                applied: false
+            }
             ],
             voucher: {
                 applied: false
@@ -510,7 +509,6 @@ export default {
             }, 0);
             // Update displayTotalLabel
             this.displayTotalLabel = this.discountPrice ? 'Subtotal' : 'Your Total (Php)';
-
         },
         toggleVoucherWeb(voucher) {
             // Toggle the visibility of the voucher section
@@ -526,7 +524,6 @@ export default {
             }, 0);
             // Update displayTotalLabel
             this.displayTotalLabel = this.discountPrice ? 'Subtotal' : 'Your Total (Php)';
-
         },
         toggleBack() {
             this.showSummary = true;

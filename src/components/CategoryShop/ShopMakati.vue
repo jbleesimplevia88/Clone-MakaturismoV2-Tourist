@@ -140,7 +140,8 @@
                                                     class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%] text-white">See
                                                     More</button>
                                                 <button @click="addToCart(item)"
-                                                    class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%] text-white">Add to
+                                                    class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%] text-white">Add
+                                                    to
                                                     Cart</button>
                                             </div>
                                         </div>
@@ -167,7 +168,8 @@
                                                     class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%] text-white">See
                                                     More</button>
                                                 <button @click="addToCart(item)"
-                                                    class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%] text-white">Add to
+                                                    class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%] text-white">Add
+                                                    to
                                                     Cart</button>
                                             </div>
                                         </div>
@@ -978,24 +980,6 @@ export default defineComponent({
         const categories = ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'];
         const locations = ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'];
         //*******************ALL CODE FOR CHECKING WHETHER PRODUCT IS COMING FROM EDEITCART ARRAY OR BUYNOW ARRAY***********//
-        const handleCheckCart = (isFromEditCart) => {
-            if (!authStore.isAuthenticated) {
-                // If the user is not authenticated, set the intended route to /cart
-                authStore.setIntendedRoute('/cart');
-                // Show the login modal
-                showLoginModal.value = true;
-            } else {
-                const cartArray = isFromEditCart ? editCartProducts : buyNowProducts;
-                cartArray.value = cartStore.cart.slice();
-                // Proceed to /cart if the user is authenticated and it's from editing the cart
-                if (isFromEditCart) {
-                    router.push('/cart');
-                } else {
-                    // Otherwise, proceed to the desired route (e.g., /checkoutshop)
-                    router.push('/checkoutshop');
-                }
-            }
-        };
         const handleEditCart = () => {
             if (!authStore.isAuthenticated) {
                 authStore.setIntendedRoute('/cart');
@@ -1004,48 +988,40 @@ export default defineComponent({
                 router.push('/cart');
             }
         };
-        // Function to handle "Buy Now" action
+
         const handleBuyNow = () => {
             if (!authStore.isAuthenticated) {
-                // If not authenticated, set intended route to /checkoutshop
                 authStore.setIntendedRoute('/checkoutshop');
-                // Show login modal
                 showLoginModal.value = true;
             } else {
-                // If authenticated, add to buy-now list and proceed to checkout
                 addToBuyNow(selectedProduct.value);
                 router.push('/checkoutshop');
             }
         };
+
         const addToCart = (item, isFromEditCart = false) => {
             const cartArray = isFromEditCart ? editCartProducts : buyNowProducts;
             cartStore.addToCart(item, isFromEditCart);
             cartArray.value = cartStore.cart.slice();
-            // Close the cart after adding the item
             showCartModal.value = false;
-            // Reset the quantity of the selected product
             if (item !== null) {
                 item.quantity = 1;
             }
-            // Show toast message
             showToastWithMessage("Item has been added to cart");
-            // If not from editing cart and Buy Now is true, add to buy-now list
             if (!isFromEditCart && showAddtoCart.value) {
                 addToBuyNow(item);
             }
         };
+
         const addToBuyNowAndCheckCart = () => {
             if (!authStore.isAuthenticated) {
-                // If not authenticated, set the intended route to /checkoutshop
                 authStore.setIntendedRoute('/checkoutshop');
-                // Show the login modal
                 showLoginModal.value = true;
             } else {
-                // If authenticated, add to buy-now list and check cart
                 addToBuyNow(selectedProduct.value);
-                handleCheckCart(false); // Pass false to indicate Buy Now
             }
         };
+
         const addToBuyNow = (item) => {
             buyNowProducts.value.push(item);
         };
@@ -1201,7 +1177,6 @@ export default defineComponent({
             closeLoginModal,
             seeMore,
             seeLess,
-            handleCheckCart,
             changeImage,
             updateCurrentImage,
             increment,

@@ -3,9 +3,9 @@ import { defineStore } from 'pinia';
 export const useCartStore = defineStore({
     id: 'cart',
     state: () => ({
-        cart: [], // Combine all items in a single cart array
-        editCartProducts: [], // Define editCartProducts array to store products for editing
-        buyNowProducts: [], // Define buyNowProducts array to store products for immediate purchase
+        cart: [],
+        editCartProducts: [], 
+        buyNowProducts: [], 
     }),
 
     actions: {

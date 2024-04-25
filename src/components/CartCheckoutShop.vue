@@ -41,6 +41,7 @@
                                     </div>
                                 </div>
 
+                               
                             </div>
                         </div>
                         <!-- Information of user -->
@@ -117,21 +118,21 @@
                         </div>
                     </div>
                     <!-- Start of Central Business District Tour -->
-                    <div class="my-2 lg:w-[32%] lg:h-[30%] lg:right-10 lg:absolute relative lg:top-[3rem] w-screen">
-                        <div class="border border-gray-400 rounded-xl p-5 ml-5 w-[90%]  h-fit">
+                    <div v-for="(shop, index) in shops" :key="index"
+                        class="my-4 lg:w-[32%] lg:h-[30%] lg:right-10 lg:absolute relative lg:top-[3rem] w-screen">
+                        <div class="border border-gray-400 rounded-xl p-5 ml-5 w-[90%] h-fit">
                             <div class="lg:flex items-center mb-5">
-                                <img src="@/assets/images/CategoryView/ToShop/kultura.png"
-                                    class="w-[100%] lg:w-[40%] h-[6rem] rounded-lg">
+                                <img :src="shop.image" class="w-[100%] lg:w-[40%] h-[6rem] rounded-lg">
                                 <div class="ml-1 flex flex-col">
                                     <div>
-                                        <p class="font-bold">Shop Makati</p>
+                                        <p class="font-bold">{{ shop.name }}</p>
                                     </div>
                                     <div>
-                                        <p class="mb-5 mt-2 text-gray-400">Shop</p>
+                                        <p class="mb-5 mt-2 text-gray-400">{{ shop.type }}</p>
                                     </div>
                                     <div class="flex">
-                                        <p class="font-semibold text-sm  mt-0">5.0 Ratings</p>
-                                        <p class="text-sm text-gray-400">(500 Review)</p>
+                                        <p class="font-semibold text-sm mt-0">{{ shop.rating }} Ratings</p>
+                                        <p class="text-sm text-gray-400">({{ shop.reviews }} Review)</p>
                                     </div>
                                 </div>
                             </div>
@@ -162,9 +163,22 @@
                                 <button class="text-white bg-blue-500 rounded-xl px-3 py-2 text-xs font-semibold"
                                     @click="toggleVoucher">Use Voucher</button>
                             </div>
-                            <div v-if="totalAmount > 0" class="flex justify-between">
-                                <p class="font-poppins font-sans font-bold text-lg pt-4">Your Total (Php)</p>
-                                <p class="font-poppins font-sans text-base font-bold pt-4 ">₱ {{ totalAmount }}</p>
+                            <div class="flex justify-between">
+                             <!-- Change "Your Total (Php)" to "Subtotal" if a voucher is applied -->
+                                <p class="font-poppins font-sans font-bold text-lg pt-4">{{ displayTotalLabel }}</p>
+                                <p class="font-poppins font-sans text-base font-bold pt-4">{{ totalAmount }}</p>
+                            </div>
+                           <!-- If the discountPrice has a value, show this line -->
+                            <div v-if="discountPrice !== 0" class="flex justify-between text-[#9bbf2f]">
+                                <p class="font-poppins font-sans font-bold text-lg pt-4">Special Discount:</p>
+                                <p class="font-poppins font-sans text-base font-bold pt-4">- ₱ {{ discountPrice }} </p>
+                            </div>
+
+                            <div class="bg-gray-400 h-0.5 mt-2"></div>
+                            <!-- Compute the final price -->
+                            <div class="flex justify-between ">
+                                <p class="font-poppins font-sans font-bold text-lg pt-4">Total (in PHP):</p>
+                                <p class="font-poppins font-sans text-xl font-bold pt-4">{{ finalPrice }}</p>
                             </div>
                             <p class="lg:font-poppins font-sans text-base font-bold text-right underline hidden">Price
                                 Breakdown
@@ -213,7 +227,7 @@
                     </div>
                 </div>
             </template>
-
+            
             <template v-else>
                 <div class="lg:hidden">
                     <nav
@@ -247,6 +261,7 @@
                             </div>
                         </div>
                         <div class="justify-center pt-3">
+                            <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
                             <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
                                 @click="toggleComplete">Confirm Booking</button>
                             <div v-if="showComplete"
@@ -283,15 +298,31 @@
                     <div data-v-392f50c8="" class="mt-0 bg-gray-400 h-0.5"></div>
                 </div>
                 <p class="mt-4 font-bold text-left">Select a Voucher</p>
-                <img src="@/assets/images/CategoryView/ToShop/voucher1.png" class="mb-6">
-                <img src="@/assets/images/CategoryView/ToShop/voucher1.png" class="mb-6">
+                <div v-for="(voucher, index) in validVouchers" :key="index">
+                    <div class="absolute grid grid-rows-3 text-left ml-14 mt-1">
+                        <span class="font-semibold">{{ voucher.code }}</span>
+                        <span class="font-bold">P{{ voucher.amount }}</span>
+                        <button type="submit" class="text-sm font-bold ml-52 cursor-pointer" @click="toggleVoucher(voucher)">
+                            {{ voucher.applied ? 'Remove' : 'Apply' }}
+                        </button>
+
+                    </div>
+                    <img src="@/assets/images/CategoryView/ToEat/voucher.png" class="mb-6">
+                </div>
+
                 <div>
                     <div data-v-392f50c8="" class="mt-5 mb-3 bg-gray-400 h-0.5"></div>
                 </div>
                 <p class="font-bold text-left">Not valid for this order</p>
-                <div>
-                    <img src="@/assets/images/CategoryView/ToShop/voucher1.png" class="mb-6">
-                    <img src="@/assets/images/CategoryView/ToShop/voucher1.png" class="mb-6">
+                <div v-for="voucher in invalidVouchers" :key="voucher.code">
+                    <div class="absolute grid grid-rows-3 text-left ml-14 mt-1">
+                        <span class="font-semibold">{{ voucher.code }}</span>
+                        <span class="font-bold">P{{ voucher.amount }}</span>
+                        <button type="submit" class="text-sm font-bold ml-52 cursor-pointer" disabled>
+                            Apply
+                        </button>
+                    </div>
+                    <img src="@/assets/images/CategoryView/ToEat/voucher.png" class="mb-6">
                 </div>
             </div>
         </div>
@@ -324,12 +355,9 @@
 </style>
 
 <script>
-import {
-    computed
-} from 'vue';
-import {
-    useCartStore
-} from '@/stores/toShopCart';
+import { computed } from 'vue';
+import { useCartStore } from '@/stores/toShopCart';
+
 
 export default {
     setup() {
@@ -365,22 +393,62 @@ export default {
     },
     data() {
         return {
+            shops: [
+                {
+                    image: "src/assets/images/CategoryView/ToShop/kultura.png",
+                    name: "Shop Makati",
+                    type: "Shop",
+                    rating: "5.0",
+                    reviews: "500",
+                }
+            ],
+            vouchers: [
+                { code: 'DISCOUNT999', amount: 999.00, applied: false },
+                { code: 'DISCOUNT100', amount: 100.00, applied: false },
+                { code: 'DISCOUNT50', amount: 50.00, applied: false },
+                { code: 'DISCOUNT200', amount: 200.00, applied: false }
+            ],
+            voucher: {
+                applied: false
+            },
+            displayTotalLabel: 'Your Total (Php)',
+            discountPrice: 0,
             showConfirmation: false,
             showComplete: false,
             showPayment: true,
             showVoucher: false,
-            navButtonText: 'Request to Book'
+            navButtonText: 'Request to Order'
         };
     },
-    watch: {
-        showPayment(newValue) {
-            if (!newValue) {
-                // If the condition is false (else block is rendered), scroll to the top of the page
-                this.scrollToTop();
-            }
+    
+   computed: {
+        validVouchers() {
+            return this.vouchers.filter(voucher => voucher.amount < this.totalAmount);
+        },
+        invalidVouchers() {
+            return this.vouchers.filter(voucher => voucher.amount >= this.totalAmount);
+        },
+        finalPrice() {
+            return this.totalAmount - this.discountPrice;
         }
     },
     methods: {
+        toggleVoucher(voucher) {
+            // Toggle the visibility of the voucher section
+            this.showVoucher = !this.showVoucher;
+            // Toggle the 'applied' property of the voucher
+            voucher.applied = !voucher.applied;
+            // Log and check if true or false
+            console.log(`Voucher applied state: ${voucher.applied}`);
+            // Update discountPrice based on applied vouchers
+            this.discountPrice = this.vouchers.reduce((total, v) => {
+                console.log(`Voucher: ${v.code}, Applied: ${v.applied}, Amount: ${v.amount}`);
+                return v.applied ? total + v.amount : total; // Remove : Apply
+            }, 0);
+            // Update displayTotalLabel
+            this.displayTotalLabel = this.discountPrice ? 'Subtotal' : 'Your Total (Php)';
+        },
+       
         scrollToTop() {
             window.scrollTo(0, 0);
         },
@@ -397,9 +465,7 @@ export default {
             this.showConfirmation = false;
             this.showComplete = false;
         },
-        toggleVoucher() {
-            this.showVoucher = !this.showVoucher;
-        },
+        
         togglePayment() {
             // Toggle the showPayment flag
             this.showPayment = !this.showPayment;
@@ -431,6 +497,17 @@ export default {
                 }
             }
         }
+    },
+    watch: {
+        showPayment(newValue) {
+            if (!newValue) {
+                // If the condition is false (else block is rendered), scroll to the top of the page
+                this.scrollToTop();
+            }
+        },
+        totalAmount() {
+      this.updateInvalidVouchers();
+    }
     },
 };
 </script>

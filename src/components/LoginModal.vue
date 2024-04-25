@@ -1,6 +1,6 @@
 <template>
     <!-- Login Modal -->
-    <div class=" fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+    <div class=" fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-[999]">
         <div class="relative bg-white lg:w-[70vw] w-[90vw] h-fit rounded-3xl">
             <img src="@/assets/images/Modal/Intersect.png" alt="" class="lg:w-full lg:h-full absolute rounded-t-xl">
             <!-- Modal Content -->
@@ -92,7 +92,7 @@
             <div class="relative z-10 flex flex-col items-center h-full">
                 <form @submit.prevent="signup" class="w-[85%] lg:px-10 px-2 lg:mt-0 mt-5">
                     <!-- <div class="mb-5">
-                  </div> -->
+                      </div> -->
                     <!-- make it scrollable -->
                     <div class="flex justify-between overflow-y-auto h-[230px] w-[100%] hidden-scrollbar mb-2">
                         <div class="flex flex-col">
@@ -115,7 +115,8 @@
                                 and have implemented appropriate measures to protect it from unauthorized access,
                                 disclosure, alteration, or destruction. However, please note that no method of transmission
                                 over the internet or electronic storage is 100% secure, and we cannot guarantee absolute
-                                security.</p>
+                                security.
+                            </p>
                             <p class="font-bold mb-5">Sharing of Personal Information:</p>
                             <p class="mb-5 text-sm text-justify">We may share your personal information with third-party
                                 service providers who assist us in providing our services, conducting our business, or
@@ -401,7 +402,8 @@
                             <p class="font-bold ">5. Products and Services:</p>
                             <p class="ml-4 text-sm text-justify">a. The website may feature products and services from
                                 various businesses. We do not endorse or guarantee the quality of these products and
-                                services.</p>
+                                services.
+                            </p>
                             <p class="ml-4 text-sm text-justify">b. Users are solely responsible for any transactions or
                                 interactions they enter into with businesses through this website.</p>
                             <p class="ml-4 mb-5 text-sm text-justify">c. We are not liable for any losses, damages, or

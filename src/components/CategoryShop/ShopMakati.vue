@@ -581,8 +581,7 @@
                         </div>
                         <!-- AUTHHHHHH BUTTOONNNNNNNN -->
                         <div v-if="!isCartEmpty">
-                            <login-modal v-if="!authStore.isAuthenticated && showLoginModal"
-                                @close="showLoginModal = false"></login-modal>
+
                             <!-- Update the click event handler to call handleBuyNow function -->
                             <button @click="handleBuyNow"
                                 class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[90%]">
@@ -765,6 +764,8 @@
             </div>
         </div>
     </div>
+
+    <login-modal v-if="!authStore.isAuthenticated && showLoginModal" @close="showLoginModal = false"></login-modal>
 </template>
 
 
@@ -988,7 +989,6 @@ export default defineComponent({
                 router.push('/cart');
             }
         };
-
         const handleBuyNow = () => {
             if (!authStore.isAuthenticated) {
                 authStore.setIntendedRoute('/checkoutshop');
@@ -998,8 +998,13 @@ export default defineComponent({
                 router.push('/checkoutshop');
             }
         };
-
         const addToCart = (item, isFromEditCart = false) => {
+            if (!authStore.isAuthenticated) {
+                authStore.setIntendedRoute(router.currentRoute.value.path);
+
+                showLoginModal.value = true;
+                return;
+            }
             const cartArray = isFromEditCart ? editCartProducts : buyNowProducts;
             cartStore.addToCart(item, isFromEditCart);
             cartArray.value = cartStore.cart.slice();
@@ -1013,6 +1018,9 @@ export default defineComponent({
             }
         };
 
+
+
+
         const addToBuyNowAndCheckCart = () => {
             if (!authStore.isAuthenticated) {
                 authStore.setIntendedRoute('/checkoutshop');
@@ -1021,7 +1029,6 @@ export default defineComponent({
                 addToBuyNow(selectedProduct.value);
             }
         };
-
         const addToBuyNow = (item) => {
             buyNowProducts.value.push(item);
         };

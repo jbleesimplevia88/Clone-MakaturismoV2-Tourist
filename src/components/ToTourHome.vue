@@ -156,7 +156,7 @@
                 <!-- End  Filter dropdown MOBILE  -->
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                <div v-for="(item, index) in paginatedItems" :key="index"
+                <div v-for="(item, index) in filteredItems" :key="index"
                     class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
                     <div class="relative">
                         <img class="w-full h-[250px] object-cover rounded-t" :src="item.image" alt="">
@@ -334,7 +334,6 @@ export default {
             }
             ],
             locations: [
-                'All',
                 'Ayala-Paseo de Roxas',
                 'Bangkal',
                 'Bel-air',
@@ -372,7 +371,7 @@ export default {
                 'Urdaneta Village',
                 'Valenzuela, Santiago, Rizal'
             ],
-            categories: ['All', 'District Tour', 'Church Tour', 'Museum Tour', 'City Tour', 'Market Tour'],
+            categories: ['District Tour', 'Church Tour', 'Museum Tour', 'City Tour', 'Market Tour'],
             currentPage: 0,
             pageSize: 6,
             showDropdown: false,

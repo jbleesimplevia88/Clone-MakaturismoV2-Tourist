@@ -79,7 +79,7 @@
                             </div>
                         </div>
                         <!-- FOR MOBILE -->
-                        <div class=" ml-4 bg-gray-400 h-0.5"></div>
+                        <div class=" ml-4 bg-gray-400 h-0.5 mt-52"></div>
                         <div class="ml-4 lg:hidden p-5 ">
                             <p class=" text-2xl font-bold pt-2">Your Information</p>
                             <div className="grid grid-cols-2 grid-rows-5 pt-5 " style="word-wrap: break-word;">
@@ -394,11 +394,11 @@
 
 <script>
     import { computed } from 'vue';
-    import { useCartStore } from '@/stores/toEatCart';
+    import { useCartStoreEat } from '@/stores/toEatCart';
 
     export default {
         setup() {
-            const cartStore = useCartStore();
+            const cartStore = useCartStoreEat();
             const selectedItems = computed(() => {
                 // If the user is editing the cart
                 if (cartStore.editCartProducts.length > 0) {

@@ -152,7 +152,7 @@
                                         <div class="w-[60%]">
                                             <p class="text-xs text-white p-2 w-[75%] mb-4">{{ item.title }}</p>
                                             <p class="text-xs text-white p-2 w-[55%]">₱ {{ item.price }}</p>
-                                            <div class="flex justify-between items-center mt-3 mb-2">
+                                            <div class="flex justify-between items-center mt-12 mb-2">
                                                 <button @click="toggleshowCart(item)"
                                                     class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%] text-white">See
                                                     More</button>
@@ -180,7 +180,7 @@
                                             <p class="grid grid-cols-1 text-xs text-white mb-4 ml-2"> {{ item.title }}
                                             </p>
                                             <p class="text-xs text-white p-2 w-[55%]">₱ {{ item.price }}</p>
-                                            <div class="flex justify-between items-center mt-3 mb-2">
+                                            <div class="flex justify-between items-center mt-14 mb-2">
                                                 <button @click="toggleshowCart(item)"
                                                     class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%] text-white">See
                                                     More</button>
@@ -205,7 +205,8 @@
                                         class="card bg-blue-950 w-[100%] border-2 h-[170px] m-1 p-4 rounded-xl relative flex justify-between">
                                         <div class="flex justify-between w-[100%]">
                                             <div class="w-[50%]">
-                                                <img class="rounded-md lg:h-full mb-1 w-full h-24" :src="item.image[0]" alt="">
+                                                <img class="rounded-md lg:h-full mb-1 w-full h-24" :src="item.image[0]"
+                                                    alt="">
                                                 <button @click="toggleshowCart(item)"
                                                     class=" text-white w-[98px] text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 -ml-[1px]">See
                                                     More</button>
@@ -258,7 +259,8 @@
                                         class="lg:hidden card bg-blue-950 w-[100%] border-2 h-[170px] m-1 p-4 rounded-xl relative flex justify-between">
                                         <div class="flex justify-between w-[100%]">
                                             <div class="w-[40%]">
-                                                <img class="rounded-md lg:h-full mb-1 w-full h-24" :src="item.image[0]" alt="">
+                                                <img class="rounded-md lg:h-full mb-1 w-full h-24" :src="item.image[0]"
+                                                    alt="">
                                                 <button @click="toggleshowCart(item)"
                                                     class=" text-white text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 -ml-[1px] w-full">See
                                                     More</button>
@@ -289,7 +291,7 @@
                 <!-- View Add to cart modal -->
                 <div v-if="showCart" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
                     @click.self="closeModal">
-                    <div class="bg-white lg:h-[760px] h-[660px] w-[900px]  rounded-2xl shadow-md p-2 mx-5" @click.stop>
+                    <div class="bg-white lg:h-[760px] h-[620px] w-[900px]  rounded-2xl shadow-md p-2 mx-5" @click.stop>
                         <div class="lg:w-[100%] p-4 rounded-lg">
                             <div class="relative flex justify-end">
                                 <button class=" pr-4 pt-21 ">
@@ -433,7 +435,7 @@
                                         Add to Cart</button>
                                 </div>
                                 <div class="w-[100%] flex justify-end">
-                                    <router-link to="/checkoutshop" class="w-full">
+                                    <router-link to="/checkouteat" class="w-full">
                                         <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]">
                                             Buy Now</button>
                                     </router-link>
@@ -845,8 +847,8 @@ import {
     useAuthStore
 } from '@/stores/auth';
 import {
-    useCartStore
-} from '@/stores/toShopCart';
+    useCartStoreEat
+} from '@/stores/toEatCart';
 import {
     useRouter
 } from 'vue-router';
@@ -874,7 +876,7 @@ export default defineComponent({
         ContentCarousel
     },
     setup() {
-        const cartStore = useCartStore();
+        const cartStore = useCartStoreEat();
         const router = useRouter();
         const authStore = useAuthStore();
         const cart = computed(() => cartStore.cart);
@@ -1007,19 +1009,19 @@ export default defineComponent({
         //*******************ALL CODE FOR CHECKING WHETHER PRODUCT IS COMING FROM EDEITCART ARRAY OR BUYNOW ARRAY***********//
         const handleEditCart = () => {
             if (!authStore.isAuthenticated) {
-                authStore.setIntendedRoute('/cart');
+                authStore.setIntendedRoute('/carteat');
                 showLoginModal.value = true;
             } else {
-                router.push('/cart');
+                router.push('/carteat');
             }
         };
         const handleBuyNow = () => {
             if (!authStore.isAuthenticated) {
-                authStore.setIntendedRoute('/checkoutshop');
+                authStore.setIntendedRoute('/checkouteat');
                 showLoginModal.value = true;
             } else {
                 addToBuyNow(selectedProduct.value);
-                router.push('/checkoutshop');
+                router.push('/checkouteat');
             }
         };
         const addToCart = (item, isFromEditCart = false) => {
@@ -1047,7 +1049,7 @@ export default defineComponent({
 
         const addToBuyNowAndCheckCart = () => {
             if (!authStore.isAuthenticated) {
-                authStore.setIntendedRoute('/checkoutshop');
+                authStore.setIntendedRoute('/checkouteat');
                 showLoginModal.value = true;
             } else {
                 addToBuyNow(selectedProduct.value);
@@ -1175,7 +1177,7 @@ export default defineComponent({
             isCartEmpty,
             totalItemsInCart,
             clearCartAndNavigate,
-            useCartStore,
+            useCartStoreEat,
             cart,
             showAddtoCart,
             openCartModal,

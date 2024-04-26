@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 
-export const useCartStore = defineStore({
+export const useCartStoreEat = defineStore({
     id: 'cart',
     state: () => ({
         cart: [],

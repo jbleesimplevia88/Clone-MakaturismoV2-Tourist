@@ -17,9 +17,9 @@
                             </a>
                         </router-link>
                     </div>
-                    <div class="items-center lg:mr-10">
-                        <img src="@/assets/images/CategoryView/ToShop/shop1.png" alt=""
-                            class="rounded-3xl lg:w-full lg:h-[500px] object-cover">
+                    <div class=" lg:pr-[7rem]">
+                        <ContentCarousel :items="items" class="mb-10" />
+
                     </div>
                     <!-- Monile -->
                     <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 p-5 shadow-lg z-50">
@@ -305,9 +305,6 @@
                                         </svg>
                                     </div>
                                 </div>
-
-
-
                                 <!-- Mobile - gallery -->
                                 <div class="lg:hidden grid grid-cols-2 grid-rows-1 gap-4 mb-3">
                                     <div class="w-[200px] ml-4">
@@ -812,6 +809,7 @@
 
 
 <script>
+import ContentCarousel from '@/components/ToShopCarousel.vue';
 import MapRenderer from "@/components/MapRenderer.vue";
 import LoginModal from '@/components/LoginModal.vue';
 import {
@@ -839,6 +837,7 @@ import otherProduct6 from '@/assets/images/CategoryView/ToShop/shop-product6.png
 import otherProduct7 from '@/assets/images/CategoryView/ToShop/shop-product7.png';
 import otherProduct8 from '@/assets/images/CategoryView/ToShop/shop-product8.png';
 import otherProduct9 from '@/assets/images/CategoryView/ToShop/shop-product9.png';
+
 export default defineComponent({
     props: {
         latitude: Number,
@@ -847,7 +846,8 @@ export default defineComponent({
     },
     components: {
         MapRenderer,
-        LoginModal
+        LoginModal,
+        ContentCarousel
     },
     setup() {
         const cartStore = useCartStore();

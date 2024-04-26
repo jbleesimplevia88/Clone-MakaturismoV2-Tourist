@@ -117,11 +117,11 @@
                         <!-- Cards in Best seller -->
                         <div v-for="(item, index) in bestProducts" :key="index"
                             class=" lg:w-auto lg:flex-auto bg-blue-950 lg:h-[15rem] h-[190px] m-1 p-2 lg:p-3 rounded-xl relative flex flex-col justify-between">
-                            <p class="rounded-lg lg:text-sm text-xs lg:px-2 pt-2 absolute top-2.5 left-3 right-3 text-white p-2 w-71" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
+                            <p class="rounded-lg lg:text-sm text-xs lg:px-2 pt-2 absolute top-2.5 left-3 right-3 text-white p-2 w-71"
+                                style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 {{ item.title }}
                             </p>
-                            <img class="rounded-md h-[80%]" :key="index" :src="item.image[0]"
-                                alt="" width="100%">
+                            <img class="rounded-md h-[80%]" :key="index" :src="item.image[0]" alt="" width="100%">
                             <button @click="toggleshowCart(item)"
                                 class="text-xs absolute lg:bottom-4 bottom-2 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">
                                 See More</button>
@@ -140,7 +140,7 @@
                 <div class="flex w-[100%]">
                     <div class="flex justify-between items-center mb-2 space-x-5">
                         <!-- WEB VERSION OTHER ITEMS -->
-                        
+
                         <!-- First column -->
                         <div class="flex-col lg:block hidden">
                             <div v-for="(item, index) in otherProducts.slice(0, 3)" :key="index" class="card-wrapper">
@@ -156,10 +156,10 @@
                                             <p class="text-xs text-white p-2 w-[55%]">₱ {{ item.price }}</p>
                                             <div class="flex justify-between items-center mt-4 mb-2">
                                                 <button @click="toggleshowCart(item)"
-                                                    class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%] text-white">See
+                                                    class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%] text-white mt-12">See
                                                     More</button>
                                                 <button @click="addToCart(item)"
-                                                    class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%] text-white">Add
+                                                    class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%] text-white mt-12">Add
                                                     to
                                                     Cart</button>
                                             </div>
@@ -184,10 +184,10 @@
                                             <p class="text-xs text-white p-2 w-[55%]">₱ {{ item.price }}</p>
                                             <div class="flex justify-between items-center mt-4 mb-2">
                                                 <button @click="toggleshowCart(item)"
-                                                    class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%] text-white">See
+                                                    class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%] text-white mt-12">See
                                                     More</button>
                                                 <button @click="addToCart(item)"
-                                                    class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%] text-white">Add
+                                                    class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%] text-white mt-12">Add
                                                     to
                                                     Cart</button>
                                             </div>
@@ -196,7 +196,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- END WEB VERSION OTHER ITEMS -->
                         <!-- MOBILE VERSION OTHER ITEMS -->
                         <div class="lg:hidden grid-flow-row">

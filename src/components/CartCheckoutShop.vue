@@ -115,9 +115,9 @@
                             </div>
                         </div>
                     </div>
+
+
                     <!-- Start of Central Business District Tour -->
-                    <!-- <div v-for="(shop, index) in shops" :key="index" class="my-4 lg:w-[32%] lg:h-[30%] lg:right-10 lg:absolute relative lg:top-[3rem] w-screen"> -->
-                    <!-- <div class="border border-gray-400 rounded-xl p-5 ml-5 w-[90%] h-fit"> -->
                     <div class="my-4 lg:w-[32%] lg:h-[30%] lg:right-10 lg:absolute relative lg:top-[3rem] w-screen">
                         <div class="border border-gray-400 rounded-xl p-5 ml-5 w-[90%] h-fit">
                             <!-- summary -->
@@ -407,12 +407,8 @@
 </style>
 
 <script>
-import {
-    computed
-} from 'vue';
-import {
-    useCartStore
-} from '@/stores/toShopCart';
+import { computed } from 'vue';
+import { useCartStore } from '@/stores/toShopCart';
 export default {
     setup() {
         const cartStore = useCartStore();

@@ -19,7 +19,7 @@
             </div>
             <div class=" bg-white-200 mb-5 bg-white rounded-bl-lg rounded-br-lg">
                 <div class="flex items-center gap-4 mb-2 ">
-                    <div class=" text-xl font-semibold  mt-2 mb-3 border-b-2 w-full"><span class="ml-10">Shop Makati</span>
+                    <div class=" text-xl font-semibold  mt-2 mb-3 border-b-2 w-full"><span class="ml-10">Little Tokyo</span>
                     </div>
                 </div>
                 <div class="flex items-center gap-4 mt-1">
@@ -64,7 +64,7 @@
                 Total ({{ selectedItemsCount }} Items):<br>
                 <span class="text-lg font-semibold ">₱ {{ totalAmount }}</span>
             </p>
-            <router-link to="/checkoutshop">
+            <router-link to="/checkouteat">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg">
                     Check Out
                 </button>
@@ -75,12 +75,12 @@
 
 
 <script>
-import { useCartStore } from '@/stores/toShopCart';
+import { useCartStoreEat } from '@/stores/toEatCart';
 import { computed, ref, watch } from 'vue';
 
 export default {
     setup() {
-        const cartStore = useCartStore();
+        const cartStore = useCartStoreEat();
         const editCartProducts = computed(() => cartStore.editCartProducts); // Fetch editCartProducts from the store
 
         const selectAll = ref(false);

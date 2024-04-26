@@ -24,7 +24,7 @@
                                     <p class="w-[12%] flex justify-center mb-4 font-bold ">Cost</p>
                                     <p class="w-[12%] flex justify-center mb-4 font-bold ">Total</p>
                                 </div>
-                                <div class="mb-5 overflow-y-scroll h-28 lg:h-full lg:overflow-hidden pr-3">
+                                <div class="mb-5 overflow-y-scroll h-28 lg:h-full lg:overflow-hidden custom-scrollbar">
                                     <div v-if="!selectedItems || selectedItems.length === 0"
                                         class="text-center text-gray-500">
                                         Cart is empty
@@ -35,7 +35,7 @@
                                             <div class="w-[50%]">{{ cartItem.title }}</div>
                                             <div class="w-[19%] flex justify-center">{{ cartItem.quantity }}</div>
                                             <div class="w-[12%] flex justify-center">{{ cartItem.price }}</div>
-                                            <div class="w-[12%] flex justify-center">{{ cartItem.quantity * cartItem.price
+                                            <div class="w-[10%] flex justify-center">{{ cartItem.quantity * cartItem.price
                                             }}</div>
                                         </div>
                                     </div>
@@ -115,9 +115,9 @@
                             </div>
                         </div>
                     </div>
+
+
                     <!-- Start of Central Business District Tour -->
-                    <!-- <div v-for="(shop, index) in shops" :key="index" class="my-4 lg:w-[32%] lg:h-[30%] lg:right-10 lg:absolute relative lg:top-[3rem] w-screen"> -->
-                    <!-- <div class="border border-gray-400 rounded-xl p-5 ml-5 w-[90%] h-fit"> -->
                     <div class="my-4 lg:w-[32%] lg:h-[30%] lg:right-10 lg:absolute relative lg:top-[3rem] w-screen">
                         <div class="border border-gray-400 rounded-xl p-5 ml-5 w-[90%] h-fit">
                             <!-- summary -->
@@ -139,9 +139,9 @@
                                         </div>
                                     </div>
                                     <div class="bg-gray-400 h-0.5"></div>
-                                    <p class="lg:mr-9 lg:mt-2 lg:font-sans lg:text-3xl font-bold text-lg pt-4">Your Total
+                                    <p class="lg:mr-9 lg:mt-2 lg:font-sans lg:text-3xl font-bold text-lg pt-4 mb-5">Your Total
                                     </p>
-                                    <div class="items-center mb-5">
+                                    <div class="items-center ml-3 mb-5">
                                         <div v-for="(cartItem, index) in selectedItems" :key="index"
                                             class="flex justify-between mb-2 w-[100%]">
                                             <p class="w-[70%]">{{ cartItem.title }} </p>
@@ -404,15 +404,19 @@
 .fade-leave-to {
     opacity: 0;
 }
+.custom-scrollbar::-webkit-scrollbar {
+    width: 5px; /* Width of the scrollbar */
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: #4b5563; /* Color of the scrollbar thumb */
+        border-radius: 2.5px; /* Rounded corners */
+    }
 </style>
 
 <script>
-import {
-    computed
-} from 'vue';
-import {
-    useCartStore
-} from '@/stores/toShopCart';
+import { computed } from 'vue';
+import { useCartStore } from '@/stores/toShopCart';
 export default {
     setup() {
         const cartStore = useCartStore();

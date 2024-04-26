@@ -17,9 +17,9 @@
                             </a>
                         </router-link>
                     </div>
-                    <div class="items-center lg:mr-10">
-                        <img src="@/assets/images/CategoryView/ToShop/shop1.png" alt=""
-                            class="rounded-3xl lg:w-full lg:h-[500px] object-cover">
+                    <div class=" lg:pr-[7rem]">
+                        <ContentCarousel :items="items" class="mb-10" />
+
                     </div>
                     <!-- Monile -->
                     <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 p-5 shadow-lg z-50">
@@ -92,24 +92,24 @@
                 <!-- Best sellers -->
                 <div class="my-4 lg:w-[100%]">
                     <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SELLERS</h1>
-                    <div class="flex flex-wrap lg:flex justify-start text-white lg:space-x-5 lg:w-[70%] w-full">
+                    <!-- <div class="lg:flex justify-start text-white lg:w-[100%]"> -->
+                    <div class="grid grid-cols-2 md:grid-cols-3 justify-start text-white lg:w-[100%]">
+
                         <!-- Cards in Best seller -->
                         <div v-for="(item, index) in bestProducts" :key="index"
-                            class="lg:flex-auto bg-blue-950 lg:h-[18rem] w-[10rem] h-[200px] m-1 p-2 lg:p-5 rounded-xl relative flex flex-col justify-between">
-                            <div class="flex flex-col w-fit items-center justify-between">
-                                <p class="rounded-lg lg:text-sm text-xs lg:px-2 pt-2 absolute top-2.5 left-3 right-3 text-white p-2 w-71"
-                                    style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
-                                    {{ item.title }}
-                                </p>
-                                <img class="rounded-md lg:h-56 h-36 w-full object-fill" :key="index" :src="item.image[0]"
-                                    alt="">
-                                <button @click="toggleshowCart(item)"
-                                    class="text-xs bg-blue-600 rounded-md py-1 px-3 w-full mt-2">See More</button>
-                            </div>
-                            <div class="flex justify-end absolute bottom-[58px] right-[25px]">
+                            class=" lg:w-auto lg:flex-auto bg-blue-950 lg:h-[15rem] h-[190px] m-1 p-2 lg:p-3 rounded-xl relative flex flex-col justify-between">
+                            <p class="rounded-lg lg:text-sm text-xs lg:px-2 pt-2 absolute top-2.5 left-3 right-3 text-white p-2 w-71" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
+                                {{ item.title }}
+                            </p>
+                            <img class="rounded-md h-[80%]" :key="index" :src="item.image[0]"
+                                alt="" width="100%">
+                            <button @click="toggleshowCart(item)"
+                                class="text-xs absolute lg:bottom-4 bottom-2 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">
+                                See More</button>
+                            <div class="flex justify-end absolute lg:bottom-[65px] bottom-[50px] right-[18px]">
                                 <div class="flex justify-between">
-                                    <div class="flex bg-blue-950 border-1 rounded-xl border-white">
-                                        <p class="text-xs border rounded-xl border-white p-1">₱{{ item.price }}</p>
+                                    <div class="flex bg-blue-950 border-1 rounded-lg border-white">
+                                        <p class="text-xs border rounded-lg border-white p-1">₱{{ item.price }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -118,26 +118,26 @@
                 </div>
                 <!-- Other Items -->
                 <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">OTHER ITEMS</h1>
-                <div class="flex w-[100%]">
+                 <div class="flex w-[100%]">
                     <div class="flex justify-between items-center mb-2 space-x-5">
                         <!-- WEB VERSION OTHER ITEMS -->
+                        
                         <!-- First column -->
                         <div class="flex-col lg:block hidden">
                             <div v-for="(item, index) in otherProducts.slice(0, 3)" :key="index" class="card-wrapper">
                                 <!-- Your card content goes here -->
                                 <div
-                                    class="card bg-blue-950 w-[100%] border-2 h-[190px] m-1 p-4 rounded-xl relative flex justify-between">
-                                    <div class="flex justify-between w-[100%]">
+                                    class="card bg-blue-950 w-[100%] border-2 m-1 p-2 rounded-xl relative flex flex-col justify-between">
+                                    <div class="flex justify-between  w-[100%]">
                                         <div class="w-[40%]">
-                                            <img class="rounded-md lg:h-full" :key="index" :src="item.image[0]" alt="">
+                                            <img class="rounded-md " :key="index" :src="item.image[0]" alt="">
                                         </div>
                                         <div class="w-[60%]">
-                                            <p class="grid grid-cols-1 text-xs text-white mb-4 ml-2"> {{ item.title }}
-                                            </p>
+                                            <p class="text-xs text-white p-2 w-[75%]">{{ item.title }}</p>
                                             <p class="text-xs text-white p-2 w-[55%]">₱ {{ item.price }}</p>
-                                            <div class="flex justify-between items-center mt-3 mb-2">
+                                            <div class="flex justify-between items-center mt-4 mb-2">
                                                 <button @click="toggleshowCart(item)"
-                                                    class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%] text-white">See
+                                                    class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-2 w-[40%] text-white">See
                                                     More</button>
                                                 <button @click="addToCart(item)"
                                                     class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%] text-white">Add
@@ -154,18 +154,18 @@
                             <div v-for="(item, index) in otherProducts.slice(3, 6)" :key="index" class="card-wrapper">
                                 <!-- Your card content goes here -->
                                 <div
-                                    class="card bg-blue-950 w-[100%] border-2 h-[190px] m-1 p-4 rounded-xl relative flex justify-between">
-                                    <div class="flex justify-between w-[100%]">
-                                        <div class="w-[40%]">
-                                            <img class="rounded-md lg:h-full" :key="index" :src="item.image[0]">
+                                    class="card bg-blue-950 border-2 m-1 p-2 rounded-xl relative flex flex-col justify-between">
+                                    <div class="flex justify-between w-10/12">
+                                        <div class="w-auto">
+                                            <img class="rounded-md" :key="index" :src="item.image[0]">
                                         </div>
                                         <div class="w-[60%]">
                                             <p class="grid grid-cols-1 text-xs text-white mb-4 ml-2"> {{ item.title }}
                                             </p>
                                             <p class="text-xs text-white p-2 w-[55%]">₱ {{ item.price }}</p>
-                                            <div class="flex justify-between items-center mt-3 mb-2">
+                                            <div class="flex justify-between items-center mt-4 mb-2">
                                                 <button @click="toggleshowCart(item)"
-                                                    class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%] text-white">See
+                                                    class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-2 w-[40%] text-white">See
                                                     More</button>
                                                 <button @click="addToCart(item)"
                                                     class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%] text-white">Add
@@ -177,6 +177,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <!-- END WEB VERSION -->
                         <!-- MOBILE VERSION OTHER ITEMS -->
                         <div class="lg:hidden grid-flow-row">
@@ -305,9 +306,6 @@
                                         </svg>
                                     </div>
                                 </div>
-
-
-
                                 <!-- Mobile - gallery -->
                                 <div class="lg:hidden grid grid-cols-2 grid-rows-1 gap-4 mb-3">
                                     <div class="w-[200px] ml-4">
@@ -812,6 +810,7 @@
 
 
 <script>
+import ContentCarousel from '@/components/ToShopCarousel.vue';
 import MapRenderer from "@/components/MapRenderer.vue";
 import LoginModal from '@/components/LoginModal.vue';
 import {
@@ -839,6 +838,7 @@ import otherProduct6 from '@/assets/images/CategoryView/ToShop/shop-product6.png
 import otherProduct7 from '@/assets/images/CategoryView/ToShop/shop-product7.png';
 import otherProduct8 from '@/assets/images/CategoryView/ToShop/shop-product8.png';
 import otherProduct9 from '@/assets/images/CategoryView/ToShop/shop-product9.png';
+
 export default defineComponent({
     props: {
         latitude: Number,
@@ -847,7 +847,8 @@ export default defineComponent({
     },
     components: {
         MapRenderer,
-        LoginModal
+        LoginModal,
+        ContentCarousel
     },
     setup() {
         const cartStore = useCartStore();

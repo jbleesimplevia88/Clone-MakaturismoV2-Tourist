@@ -19,7 +19,7 @@
             </div>
             <div class=" bg-white-200 mb-5 bg-white rounded-bl-lg rounded-br-lg">
                 <div class="flex items-center gap-4 mb-2 ">
-                    <div class=" text-xl font-semibold  mt-2 mb-3 border-b-2 w-full"><span class="ml-10">Kultura</span>
+                    <div class=" text-xl font-semibold  mt-2 mb-3 border-b-2 w-full"><span class="ml-10">Shop Makati</span>
                     </div>
                 </div>
                 <div class="flex items-center gap-4 mt-1">

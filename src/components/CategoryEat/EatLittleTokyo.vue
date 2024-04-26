@@ -111,20 +111,21 @@
                 <!-- BEst seller -->
                 <div class="my-4 lg:w-[100%]">
                     <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SELLERS</h1>
-                    <div class="flex flex-wrap lg:flex justify-start text-white lg:space-x-5 lg:w-[70%] w-full">
+                    <!-- <div class="lg:flex justify-start text-white lg:w-[100%]"> -->
+                    <div class="grid grid-cols-2 md:grid-cols-3 justify-start text-white lg:w-[100%]">
+
                         <!-- Cards in Best seller -->
                         <div v-for="(item, index) in bestProducts" :key="index"
-                            class=" lg:flex-auto bg-blue-950 lg:h-[18rem]  w-[10rem]  h-[200px] m-1 p-2 lg:p-5 rounded-xl relative flex flex-col justify-between">
-                            <p class="rounded-lg lg:text-sm text-xs lg:px-2 pt-2 absolute top-2.5 left-3 right-3 text-white p-2 w-71"
-                                style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
+                            class=" lg:w-auto lg:flex-auto bg-blue-950 lg:h-[15rem] h-[190px] m-1 p-2 lg:p-3 rounded-xl relative flex flex-col justify-between">
+                            <p class="rounded-lg lg:text-sm text-xs lg:px-2 pt-2 absolute top-2.5 left-3 right-3 text-white p-2 w-71" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
                                 {{ item.title }}
                             </p>
-                            <img class="rounded-md lg:h-56 h-36 w-full object-fill" :key="index" :src="item.image[0]"
-                                alt="">
+                            <img class="rounded-md h-[80%]" :key="index" :src="item.image[0]"
+                                alt="" width="100%">
                             <button @click="toggleshowCart(item)"
-                                class="text-xs absolute bottom-4 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">
+                                class="text-xs absolute lg:bottom-4 bottom-2 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">
                                 See More</button>
-                            <div class="flex justify-end absolute bottom-[65px] right-[18px]">
+                            <div class="flex justify-end absolute lg:bottom-[65px] bottom-[50px] right-[18px]">
                                 <div class="flex justify-between">
                                     <div class="flex bg-blue-950 border-1 rounded-lg border-white">
                                         <p class="text-xs border rounded-lg border-white p-1">₱{{ item.price }}</p>
@@ -139,20 +140,21 @@
                 <div class="flex w-[100%]">
                     <div class="flex justify-between items-center mb-2 space-x-5">
                         <!-- WEB VERSION OTHER ITEMS -->
+                        
                         <!-- First column -->
                         <div class="flex-col lg:block hidden">
                             <div v-for="(item, index) in otherProducts.slice(0, 3)" :key="index" class="card-wrapper">
                                 <!-- Your card content goes here -->
                                 <div
-                                    class="card bg-blue-950 w-[100%] border-2 h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
+                                    class="card bg-blue-950 w-[100%] border-2 m-1 p-2 rounded-xl relative flex flex-col justify-between">
                                     <div class="flex justify-between  w-[100%]">
                                         <div class="w-[40%]">
-                                            <img class="rounded-md lg:h-full" :key="index" :src="item.image[0]" alt="">
+                                            <img class="rounded-md " :key="index" :src="item.image[0]" alt="">
                                         </div>
                                         <div class="w-[60%]">
-                                            <p class="text-xs text-white p-2 w-[75%] mb-4">{{ item.title }}</p>
+                                            <p class="text-xs text-white p-2 w-[75%]">{{ item.title }}</p>
                                             <p class="text-xs text-white p-2 w-[55%]">₱ {{ item.price }}</p>
-                                            <div class="flex justify-between items-center mt-12 mb-2">
+                                            <div class="flex justify-between items-center mt-4 mb-2">
                                                 <button @click="toggleshowCart(item)"
                                                     class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%] text-white">See
                                                     More</button>
@@ -171,16 +173,16 @@
                             <div v-for="(item, index) in otherProducts.slice(3, 6)" :key="index" class="card-wrapper">
                                 <!-- Your card content goes here -->
                                 <div
-                                    class="card bg-blue-950 w-[100%] border-2 h-[190px] m-1 p-2 rounded-xl relative flex flex-col justify-between">
+                                    class="card bg-blue-950 w-[100%] border-2 m-1 p-2 rounded-xl relative flex flex-col justify-between">
                                     <div class="flex justify-between  w-[100%]">
                                         <div class="w-[40%]">
-                                            <img class="rounded-md lg:h-full" :key="index" :src="item.image[0]">
+                                            <img class="rounded-md" :key="index" :src="item.image[0]">
                                         </div>
                                         <div class="w-[60%]">
                                             <p class="grid grid-cols-1 text-xs text-white mb-4 ml-2"> {{ item.title }}
                                             </p>
                                             <p class="text-xs text-white p-2 w-[55%]">₱ {{ item.price }}</p>
-                                            <div class="flex justify-between items-center mt-14 mb-2">
+                                            <div class="flex justify-between items-center mt-4 mb-2">
                                                 <button @click="toggleshowCart(item)"
                                                     class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%] text-white">See
                                                     More</button>
@@ -194,6 +196,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <!-- END WEB VERSION OTHER ITEMS -->
                         <!-- MOBILE VERSION OTHER ITEMS -->
                         <div class="lg:hidden grid-flow-row">

@@ -1,21 +1,46 @@
 <template>
-  <div class="bg-[#102E61] w-full h-[700px] z-10">
+    <div class="bg-[#102E61] w-full h-[700px] z-10 lg:block hidden">
+        <div class="bg-white p-6 pb-10 mx-auto -mt-[2rem] space-y-6 lg:w-[94%] rounded-lg hidden-scrollbar">
+
+            <div class="w-[100%] h-[35rem] z-10 space-y-2 overflow-y-auto hidden-scrollbar">
+                <div v-for="(item, index) in items" :key="index" class="flex justify-between mt-5 mx-auto w-[90%] h-[154px] bg-[#E7EAEF] space-y-2">
+                    <div class="flex flex-row gap-[5rem]">
+                        <img :src="item.imageSrc" :alt="item.alt" class="w-8 h-auto lg:w-[154px] lg:h-[154px]">
+                        <div class="w-[15rem]">
+                            <p class="mt-6 h-[2rem] mt-3 text-md">{{ item.title }}</p>
+                            <p class="mt-10 text-sm text-gray-500">{{ item.date }}</p> <!-- Display date here -->
+                            <p class="mt-2 [5rem] text-xs text-gray-500">{{ item.status }}</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center mr-5">
+                        <p>{{ item.quantity }}x</p>
+                        <p>₱ {{ item.price }}</p>
+                        <button @click="openParcelDetails(item)" class="mt-[2.7rem] px-4 py-2.5 p-2 bg-[#2969D6] font-bold text-white rounded-md text-center">Buy Again</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="bg-[#102E61] w-full h-[700px] z-10 block lg:hidden ">
     <div class="bg-white p-6 pb-10 mx-auto -mt-[2rem] space-y-6 lg:w-[94%] rounded-lg hidden-scrollbar">
 
         <div class="w-[100%] h-[35rem] z-10 space-y-2 overflow-y-auto hidden-scrollbar">
-            <div v-for="(item, index) in items" :key="index" class="flex justify-between mt-5 mx-auto w-[90%] h-[154px] bg-[#E7EAEF] space-y-2">
-                <div class="flex flex-row gap-[5rem]">
-                    <img :src="item.imageSrc" :alt="item.alt" class="w-8 h-auto lg:w-[154px] lg:h-[154px]">
-                    <div class="w-[25rem]">
-                        <p class="mt-6 h-[2rem] mt-3 text-lg">{{ item.title }}</p>
-                        <p class="mt-10 text-sm text-gray-500">{{ item.date }}</p> <!-- Display date here -->
+            <div v-for="(item, index) in items" :key="index" class="flex justify-between mt-5 mx-auto w-[90%] h-[154px] bg-[#E7EAEF] space-y-2 relative"> <!-- Add relative positioning -->
+                <div class="flex flex-row lg:gap-[5rem]">
+                    <img :src="item.imageSrc" :alt="item.alt" class="w-8 h-auto lg:w-[100%] lg:h-[100%] hidden lg:block">
+                    <div class="lg:hidden block">
+                        <img :src="item.imageSrc" :alt="item.alt" class="w-[76px] h-[76px]">
+                        <p class="lg:mt-10 text-sm text-gray-500">{{ item.date }}</p> <!-- Display date here -->
                         <p class="mt-2 [5rem] text-xs text-gray-500">{{ item.status }}</p>
                     </div>
-                </div>
-                <div class="flex flex-col items-center mr-5">
-                    <p>{{ item.quantity }}x</p>
-                    <p>₱ {{ item.price }}</p>
-                    <button @click="openParcelDetails(item)" class="mt-[2.7rem] px-4 py-2.5 p-2 bg-[#2969D6] font-bold text-white rounded-md text-center">Buy Again</button>
+                    <div class="w-[15rem]">
+                        <p class="lg:hidden mt-2 text-md">{{ item.title }}</p>
+                        <div class="float-end absolute bottom-0 right-0 mb-4 mr-4"> <!-- Positioning to bottom right corner -->
+                            <p class="mt-4">{{ item.quantity }}x ₱ {{ item.price }}</p>
+                            <button @click="openParcelDetails(item)" class="px-4 bg-[#2969D6] font-bold text-white rounded-md text-center">Buy Again</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -55,19 +80,21 @@
                 <p class="text-xs text-[#606060]">11-08-2023 03:50 PM</p>
             </div>
 
-            <div class="flex justify-between mt-[4.5rem] w-auto h-[154px] bg-[#E7EAEF] space-y-2">
-                <div class="flex flex-row gap-[3rem]">
-                    <img :src="selectedItem.imageSrc" :alt="selectedItem.alt"
-                        class="w-8 h-auto lg:w-[154px] lg:h-[154px]">
-                    <div class="w-[20rem]">
-                        <p class=" h-[2rem] mt-3 text-lg ">{{ selectedItem.title }}</p>
-                    </div>
-                </div>
-                <div class="flex flex-col  gap-[4.5rem] items-center mr-10">
-                    <p class="mt-4 text-md">{{ selectedItem.quantity }}x</p>
-                    <p class="text-md">₱ {{ selectedItem.price }}</p>
-                </div>
+            <div class="flex justify-between mt-[4.5rem] w-auto h-[154px] bg-[#E7EAEF] space-y-2 relative"> <!-- Add relative positioning -->
+    <div class="flex flex-row ">
+        <img :src="selectedItem.imageSrc" :alt="selectedItem.alt" class="h-auto w-[154px] lg:h-[154px]">
+        <div class="w-[20rem]">
+            <div>
+                <p class="h-[2rem] mt-3 text-md lg:text-lg">{{ selectedItem.title }}</p>
             </div>
+            <div class="absolute bottom-0 right-0 mb-4 mr-4"> <!-- Positioning to bottom right corner -->
+                <p class="mt-4 text-md">{{ selectedItem.quantity }}x</p>
+                <p class="text-md">₱ {{ selectedItem.price }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
 
             <div class="flex justify-between mt-3 w-auto h-[150px] bg-[#E7EAEF] space-y-2">
                 <div class="flex flex-row gap-[5rem]">

@@ -62,13 +62,39 @@
                                 </div>
                             </div>
                             <div class="hidden lg:block">
-                                <p class="font-bold text-3xl mb-4">Payment</p>
-                                <div class="border border-gray-200 py-5 pl-6">
-                                    <input type="radio" id="payment_ibayad" name="payment_method" value="ibayad"
-                                        class="mr-2" checked>
-                                    <label for="payment_ibayad">Ibayad</label>
-                                </div>
-                            </div>
+                <p class="font-bold text-3xl mb-4">Payment</p>
+                <div class="flex border rounded p-8 h-24" :class="{ 'bg-blue-100': selectedPaymentMethod === 'ibayad' }">
+    <div class="flex items-center pr-3">
+        <input id="payment_ibayad" aria-describedby="helper-radio-text" type="radio" value="ibayad" @click="toggleIbayad"
+               class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+               v-model="selectedPaymentMethod">
+    </div>
+    <div class="ms-2 text-sm">
+        <label for="payment_ibayad" class="font-semibold text-xl text-gray-700">
+            Ibayad</label>
+    </div>
+</div>
+
+<div class="mt-2 flex border rounded p-4 h-24" :class="{ 'bg-blue-100': selectedPaymentMethod === 'cod' }">
+    <div class="flex items-center pr-3">
+        <input id="payment_cod" name="payment_method" value="cod" @click="toggleCOD"
+               class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+               type="radio" v-model="selectedPaymentMethod">
+    </div>
+    <div class="ms-2 text-sm">
+        <label for="payment_cod" class="font-semibold text-l text-gray-700">
+            Cash On Delivery</label>
+        <p class="mt-2 font-bold text">Pay By Cash</p>
+        <p class="text-s">Pay Cash Upon Delivery</p>
+    </div>
+</div>
+
+
+
+
+                  
+              
+              </div>
                         </div>
                     </div>
                     <!-- FOR MOBILE -->
@@ -208,57 +234,64 @@
                 </div>
             </template>
             <template v-else>
-                <div class="lg:hidden">
-                    <nav
-                        class=" h-28 pt-16 pl-5  bg-[#132540] text-white text-xl font-semibold flex items-center  cursor-pointer lg:px-[100px] lg:h-20 lg:mt-[80px] lg:text-4xl lg:pt-0 ">
-                        <svg @click="navigateBack" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="3" stroke="white" class="h-5 pr-2 lg:mr-7 lg:w-10 lg:h-14">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18">
-                            </path>
-                        </svg> {{ navButtonText }}
-                    </nav>
-                    <div>
-                    </div>
-                    <div class="mt-[0rem] w-full h-full p-8">
+        <div class="lg:hidden">
+          <nav
+            class=" h-28 pt-16 pl-5  bg-[#132540] text-white text-xl font-semibold flex items-center  cursor-pointer lg:px-[100px] lg:h-20 lg:mt-[80px] lg:text-4xl lg:pt-0 ">
+            <svg @click="navigateBack" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+              stroke="white" class="h-5 pr-2 lg:mr-7 lg:w-10 lg:h-14">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18">
+              </path>
+            </svg> {{ navButtonText }}
+          </nav>
+          <div>
+          </div>
+          <div class="mt-[0rem] w-full h-full p-8">
                         <div className="grid grid-cols-1 grid-rows-4 gap-0">
-                            <div class="flex border rounded p-8 h-24" @click="activateRadioButton('gcash')">
-                                <div class="flex items-center pr-3">
-                                    <input id="gcash" aria-describedby="helper-radio-text" type="radio" value="gcash"
-                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                </div>
-                                <div class="ms-2 text-sm">
-                                    <label for="helper-radio" class="font-semibold text-xl text-gray-700">
-                                        Ibayad</label>
-                                </div>
-                            </div>
-                            <div class="flex pt-4">
-                                <img src="@/assets/images/Modal/voucher.svg" class="mb-6 w-6 h-6">
-                                <button
-                                    class="text-xs font-semibold cursor-pointer dark:text-gray-300 text-blue-500 -mt-12 pl-2">
-                                    Use
-                                    voucher</button>
-                            </div>
-                        </div>
-                        <div class="justify-center pt-3">
-                            <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
-                                @click="toggleComplete">Confirm Booking</button>
-                            <div v-if="showComplete"
-                                class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
-                                @click.self="closeModal">
-                                <div class="bg-white rounded-lg shadow-md p-2 lg:max-w-2xl h-2p-[20px]" @click.stop>
-                                    <div class="lg:w-[100%] p-4 rounded-lg text-center flex flex-col items-center">
-                                        <img src="@/assets/images/CategoryView/ToShop/check.png" class="mb-6">
-                                        <p class="font-bold text-2xl mb-6">Transaction Complete</p>
-                                        <router-link to="/category/eat"><button
-                                                class="text-white h-16 w-60 bg-blue-500 rounded-xl py-5"
-                                                @click="closeModal">Okay</button></router-link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            <div class="flex border rounded p-8 h-24" @click="selectedPaymentMethod = 'gcash'" :class="{ 'bg-blue-100': selectedPaymentMethod === 'gcash' }">
+    <div class="flex items-center pr-3">
+        <input id="gcash" aria-describedby="helper-radio-text" type="radio" value="ibayad"
+               class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+               v-model="selectedPaymentMethod">
+    </div>
+    <div class="ms-2 text-sm">
+        <label for="helper-radio" class="font-semibold text-xl text-gray-700">
+            Ibayad</label>
+    </div>
+</div>
+
+<div class="mt-2 flex border rounded p-4 h-24" @click="selectedPaymentMethod = 'ibayad'" :class="{ 'bg-blue-100': selectedPaymentMethod === 'ibayad' }">
+    <div class="flex items-center pr-3">
+        <input id="payment_ibayad" name="payment_method" value="cod"
+               class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+               type="radio" v-model="selectedPaymentMethod">
+    </div>
+    <div class="ms-2 text-sm">
+        <label for="payment_ibayad" class="font-semibold text-xl text-gray-700">
+            Cash On Delivery</label>
+        <p class="mt-2 font-bold text">Pay By Cash</p>
+        <p class="text-m">Pay Cash Upon Delivery</p>
+    </div>
+</div>
+            </div>
+            <div class="justify-center pt-3">
+              <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
+                @click="toggleComplete">Confirm Booking</button>
+              <div v-if="showComplete"
+                class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
+                @click.self="closeModal">
+                <div class="bg-white rounded-lg shadow-md p-2 lg:max-w-2xl h-2p-[20px]" @click.stop>
+                  <div class="lg:w-[100%] p-4 rounded-lg text-center flex flex-col items-center">
+                    <img src="@/assets/images/CategoryView/ToShop/check.png" class="mb-6">
+                    <p class="font-bold text-2xl mb-6">Transaction Complete</p>
+                    <router-link to="/category/eat"><button class="text-white h-16 w-60 bg-blue-500 rounded-xl py-5"
+                        @click="closeModal">Okay</button></router-link>
+                  </div>
                 </div>
-            </template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
         </div>
     </template>
     <template v-else>
@@ -333,6 +366,7 @@
 export default {
     data() {
         return {
+            selectedPaymentMethod: null,
             tours: [{
                 image: "src/assets/images/CategoryView/ToStay/book.png",
                 name: "Central Business District Tour",
@@ -428,9 +462,17 @@ export default {
             this.showConfirmation = true;
             this.showInformation = false;
         },
+        isPaymentMethodSelected(paymentMethod) {
+            return this.selectedPaymentMethod === paymentMethod;
+        },
         toggleComplete() {
-            this.showComplete = !this.showComplete;
+            console.log("toggleComplete() method called.");
+            if (!this.selectedPaymentMethod) {
+                alert("Please select a payment method before confirming booking.");
+                return;
+            }
             this.showConfirmation = false;
+            this.showComplete = !this.showComplete;
         },
         closeModal() {
             this.showInformation = false;

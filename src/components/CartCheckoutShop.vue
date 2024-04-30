@@ -24,7 +24,7 @@
                                     <p class="w-[12%] flex justify-center mb-4 font-bold ">Cost</p>
                                     <p class="w-[12%] flex justify-center mb-4 font-bold ">Total</p>
                                 </div>
-                                <div class="mb-5 overflow-y-scroll h-28 lg:h-full lg:overflow-hidden ">
+                                <div class="mb-5 overflow-y-scroll h-28 lg:h-full lg:overflow-hidden custom-scrollbar">
                                     <div v-if="!selectedItems || selectedItems.length === 0"
                                         class="text-center text-gray-500">
                                         Cart is empty
@@ -45,96 +45,80 @@
                         <!-- Information of user -->
                         <div class="relative hidden lg:block mx-6 px-3 lg:pl-32 mb-[30px] lg:mb-44">
                             <p class="mb-4 font-bold lg:text-3xl text-2xl">Your Information</p>
-                            <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-4">
+                            <div v-for="(user, index) in userInfo" :key="index"
+                                class="grid grid-cols-1 lg:grid-cols-2 lg:gap-4">
                                 <div class="flex lg:flex-col lg:items-start justify-start">
                                     <p class="mr-[110px] lg:mr-9 lg:mb-1 font-bold">Full Name</p>
-                                    <p class="font-normal mb-3 text-gray-600">Juan Dela Cruz</p>
+                                    <p class="font-normal mb-3 text-gray-600">{{ user.fullName }}</p>
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start">
                                     <p class="mr-[30px] w-10vw lg:pr-0 lg:mr-9 lg:mb-1 font-bold">E-mail Address</p>
-                                    <p class="font-normal mb-2 text-base text-gray-600">Juandelacruz@gmail.co
+                                    <p class="font-normal mb-2 text-base text-gray-600">{{ user.email }}
                                     </p>
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start justify-start">
                                     <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Phone Number</p>
-                                    <p class="font-normal mb-3 text-gray-600">09123456789</p>
+                                    <p class="font-normal mb-3 text-gray-600">{{ user.phoneNumber }}</p>
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start justify-start">
                                     <p class="mr-[128px] lg:mr-9 lg:mb-1 font-bold">Gender</p>
-                                    <p class="font-normal mb-3 text-gray-600">Male</p>
+                                    <p class="font-normal mb-3 text-gray-600">{{ user.gender }}</p>
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start justify-start">
                                     <p class="mr-[55px] lg:mr-9 lg:mb-1 font-bold">Citizen of Makati</p>
-                                    <p class="font-normal mb-3 text-gray-600">Yes</p>
+                                    <p class="font-normal mb-3 text-gray-600">{{ user.citizenofMakati }}</p>
                                 </div>
                             </div>
-                            <div class="flex border rounded p-8 h-24"
-                                :class="{ 'bg-blue-100': selectedPaymentMethod === 'ibayad' }">
-                                <div class="flex items-center pr-3">
-                                    <input id="payment_ibayad" aria-describedby="helper-radio-text" type="radio"
-                                        value="ibayad" @click="toggleIbayad"
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                                        v-model="selectedPaymentMethod">
-                                </div>
-                                <div class="ms-2 text-sm">
-                                    <label for="payment_ibayad" class="font-semibold text-xl text-gray-700">
-                                        Ibayad</label>
+                            <div class="hidden lg:block">
+                                <p class="font-bold text-3xl mb-4">Payment</p>
+                                <div class="border border-gray-200 py-5 pl-6">
+                                    <input type="radio" id="payment_ibayad" name="payment_method" value="ibayad"
+                                        class="mr-2" checked>
+                                    <label for="payment_ibayad">Ibayad</label>
                                 </div>
                             </div>
-                            <div class="mt-2 flex border rounded p-4 h-24"
-                                :class="{ 'bg-blue-100': selectedPaymentMethod === 'cod' }">
-                                <div class="flex items-center pr-3">
-                                    <input id="payment_cod" name="payment_method" value="cod" @click="toggleCOD"
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                                        type="radio" v-model="selectedPaymentMethod">
-                                </div>
-                                <div class="ms-2 text-sm">
-                                    <label for="payment_cod" class="font-semibold text-l text-gray-700">
-                                        Cash On Delivery</label>
-                                    <p class="mt-2 font-bold text">Pay By Cash</p>
-                                    <p class="text-s">Pay Cash Upon Delivery</p>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                     <!-- FOR MOBILE -->
                     <div class=" ml-4 bg-gray-400 h-0.5"></div>
                     <div class="ml-4 lg:hidden p-5 ">
                         <p class=" text-2xl font-bold pt-2">Your Information</p>
-                        <div className="grid grid-cols-2 grid-rows-5 pt-5 " style="word-wrap: break-word;">
+                        <div v-for="(user, index) in userInfo" :key="index" className="grid grid-cols-2 grid-rows-5 pt-5 "
+                            style="word-wrap: break-word;">
                             <div>
                                 <p class="text-base font-bold">Full Name</p>
                             </div>
                             <div>
-                                <p class="font-normal mb-2  text-gray-600 text-base">Juan Dela Cruz</p>
+                                <p class="font-normal mb-2  text-gray-600 text-base">{{ user.fullName }}</p>
                             </div>
                             <div>
                                 <p class=" text-base font-bold">E-mail Address</p>
                             </div>
                             <div>
-                                <p class="font-normal mb-2 text-base text-gray-600">Juandelacruz@gmail.com</p>
+                                <p class="font-normal mb-2 text-base text-gray-600">{{ user.email }}</p>
                             </div>
                             <div>
                                 <p class=" text-base font-bold">Phone Number</p>
                             </div>
                             <div>
-                                <p class="font-normal mb-2 text-gray-600 text-base">09123456789</p>
+                                <p class="font-normal mb-2 text-gray-600 text-base">{{ user.phoneNumber }}</p>
                             </div>
                             <div>
                                 <p class="text-base font-bold">Gender</p>
                             </div>
                             <div>
-                                <p class="font-normal mb-2 text-gray-600 text-base">Male</p>
+                                <p class="font-normal mb-2 text-gray-600 text-base">{{ user.gender }}</p>
                             </div>
                             <div>
                                 <p class=" text-base font-bold">Citizen of Makati</p>
                             </div>
                             <div>
-                                <p class="font-normal mb-2 text-gray-600 text-base">Yes</p>
+                                <p class="font-normal mb-2 text-gray-600 text-base">{{ user.citizenofMakati }}</p>
                             </div>
                         </div>
                     </div>
+
+
                     <!-- Start of Central Business District Tour -->
                     <div class="my-4 lg:w-[32%] lg:h-[30%] lg:right-10 lg:absolute relative lg:top-[3rem] w-screen">
                         <div class="border border-gray-400 rounded-xl p-5 ml-5 w-[90%] h-fit">
@@ -314,34 +298,25 @@
                     </div>
                     <div class="mt-[0rem] w-full h-full p-8">
                         <div className="grid grid-cols-1 grid-rows-4 gap-0">
-                            <div class="flex border rounded p-8 h-24" @click="selectedPaymentMethod = 'gcash'"
-                                :class="{ 'bg-blue-100': selectedPaymentMethod === 'gcash' }">
+                            <div class="flex border rounded p-8 h-24" @click="activateRadioButton('gcash')">
                                 <div class="flex items-center pr-3">
-                                    <input id="gcash" aria-describedby="helper-radio-text" type="radio" value="ibayad"
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                                        v-model="selectedPaymentMethod">
+                                    <input id="gcash" aria-describedby="helper-radio-text" type="radio" value="gcash"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 </div>
                                 <div class="ms-2 text-sm">
                                     <label for="helper-radio" class="font-semibold text-xl text-gray-700">
                                         Ibayad</label>
                                 </div>
                             </div>
-                            <div class="mt-2 flex border rounded p-4 h-24" @click="selectedPaymentMethod = 'ibayad'"
-                                :class="{ 'bg-blue-100': selectedPaymentMethod === 'ibayad' }">
-                                <div class="flex items-center pr-3">
-                                    <input id="payment_ibayad" name="payment_method" value="cod"
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                                        type="radio" v-model="selectedPaymentMethod">
-                                </div>
-                                <div class="ms-2 text-sm">
-                                    <label for="payment_ibayad" class="font-semibold text-xl text-gray-700">
-                                        Cash On Delivery</label>
-                                    <p class="mt-2 font-bold text">Pay By Cash</p>
-                                    <p class="text-m">Pay Cash Upon Delivery</p>
-                                </div>
+                            <div class="flex pt-4">
+                                <img src="@/assets/images/Modal/voucher.svg" class="mb-6 w-6 h-6">
+                                <button
+                                    class="text-xs font-semibold cursor-pointer dark:text-gray-300 text-blue-500 -mt-12 pl-2">
+                                    Use
+                                    voucher</button>
                             </div>
                         </div>
-                        <div class="justify-center pt-1">
+                        <div class="justify-center pt-3">
                             <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
                                 @click="toggleComplete">Confirm Booking</button>
                             <div v-if="showComplete"
@@ -432,15 +407,23 @@
 .fade-leave-to {
     opacity: 0;
 }
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 5px;
+    /* Width of the scrollbar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #4b5563;
+    /* Color of the scrollbar thumb */
+    border-radius: 2.5px;
+    /* Rounded corners */
+}
 </style>
 
 <script>
-import {
-    computed
-} from 'vue';
-import {
-    useCartStore
-} from '@/stores/toShopCart';
+import { computed } from 'vue';
+import { useCartStore } from '@/stores/toShopCart';
 export default {
     setup() {
         const cartStore = useCartStore();
@@ -469,9 +452,16 @@ export default {
     },
     data() {
         return {
-            selectedPaymentMethod: '', // Initialize with a default value
-            showComplete: false,
             showSummary: true,
+            userInfo: [
+                {
+                    fullName: "Juan Dela Cruz",
+                    email: "Juandelacruz@gmail.com",
+                    phoneNumber: "09123456789",
+                    gender: "Male",
+                    citizenofMakati: "Yes"
+                }
+            ],
             shops: [{
                 image: "src/assets/images/CategoryView/ToShop/kultura.png",
                 name: "Shop Makati",
@@ -506,6 +496,7 @@ export default {
             displayTotalLabel: 'Your Total (Php)',
             discountPrice: 0,
             showConfirmation: false,
+            showComplete: false,
             showPayment: true,
             showVoucher: false,
             navButtonText: 'Request to Order'
@@ -524,14 +515,35 @@ export default {
     },
     methods: {
         toggleVoucher(voucher) {
-            this.toggleVoucherVisibility();
-            this.toggleVoucherApplied(voucher);
-            this.updateDiscountPrice();
+            // Toggle the visibility of the voucher section
+            this.showVoucher = !this.showVoucher;
+            // this.showSummary = !this.showSummary;
+            // Toggle the 'applied' property of the voucher
+            voucher.applied = !voucher.applied;
+            // Log and check if true or false
+            console.log(`Voucher applied state: ${voucher.applied}`);
+            // Update discountPrice based on applied vouchers
+            this.discountPrice = this.vouchers.reduce((total, v) => {
+                console.log(`Voucher: ${v.code}, Applied: ${v.applied}, Amount: ${v.amount}`);
+                return v.applied ? total + v.amount : total; // Remove : Apply
+            }, 0);
+            // Update displayTotalLabel
+            this.displayTotalLabel = this.discountPrice ? 'Subtotal' : 'Your Total (Php)';
         },
         toggleVoucherWeb(voucher) {
-            this.toggleSummaryVisibility();
-            this.toggleVoucherApplied(voucher);
-            this.updateDiscountPrice();
+            // Toggle the visibility of the voucher section
+            this.showSummary = !this.showSummary;
+            // Toggle the 'applied' property of the voucher
+            voucher.applied = !voucher.applied;
+            // Log and check if true or false
+            console.log(`Voucher applied state: ${voucher.applied}`);
+            // Update discountPrice based on applied vouchers
+            this.discountPrice = this.vouchers.reduce((total, v) => {
+                console.log(`Voucher: ${v.code}, Applied: ${v.applied}, Amount: ${v.amount}`);
+                return v.applied ? total + v.amount : total; // Remove : Apply
+            }, 0);
+            // Update displayTotalLabel
+            this.displayTotalLabel = this.discountPrice ? 'Subtotal' : 'Your Total (Php)';
         },
         toggleBack() {
             this.showSummary = true;
@@ -540,33 +552,12 @@ export default {
             window.scrollTo(0, 0);
         },
         toggleConfirmation() {
-            if (!this.isPaymentMethodSelected(this.selectedPaymentMethod) || this.selectedPaymentMethod == '') {
-                alert("Please select a payment method before confirming booking.");
-                return;
-            }
             this.showConfirmation = true;
             this.showInformation = false;
         },
-        isPaymentMethodSelected(paymentMethod) {
-            return paymentMethod !== null && paymentMethod !== undefined;
-        },
-        toggleIbayad() {
-            console.log('Payment Method Cahnged');
-            this.selectedPaymentMethod = 'Ibayad';
-        },
-        toggleCOD() {
-            console.log('Payment Method Cahnged');
-            this.selectedPaymentMethod = 'COD';
-        },
         toggleComplete() {
-            if (!this.isPaymentMethodSelected(this.selectedPaymentMethod) || this.selectedPaymentMethod == '') {
-                alert("Please select a payment method before confirming booking.");
-                return;
-            }
-            console.log("toggleComplete() method called.");
-            console.log(this.selectedPaymentMethod);
-            this.showConfirmation = !this.showConfirmation;
             this.showComplete = !this.showComplete;
+            this.showConfirmation = false;
         },
         closeModal() {
             this.showInformation = false;
@@ -574,47 +565,41 @@ export default {
             this.showComplete = false;
         },
         togglePayment() {
+            // Toggle the showPayment flag
             this.showPayment = !this.showPayment;
+            // Update navButtonText based on showPayment flag
             this.navButtonText = this.showPayment ? 'Request to Order' : 'Payment';
         },
         navigateBack() {
             if (!this.showPayment) {
+                // If currently in the payment section, switch to the booking section
                 this.showPayment = true;
                 this.navButtonText = 'Request to Order';
             } else {
+                // this.$router.push('/category/eat');
+                // Go back to the previous page
                 this.$router.go(-1);
             }
         },
         activateRadioButton(id) {
             const radioBtn = document.getElementById(id);
             if (radioBtn) {
-                radioBtn.checked = !radioBtn.checked;
-                this.updatePaymentMethod();
+                if (radioBtn.checked) {
+                    radioBtn.checked = false; // If already checked, uncheck it
+                } else {
+                    // Uncheck all radio buttons
+                    document.querySelectorAll('input[type="radio"]').forEach(input => {
+                        input.checked = false;
+                    });
+                    radioBtn.checked = true; // Check the clicked radio button
+                }
             }
-        },
-        updateDiscountPrice() {
-            this.discountPrice = this.vouchers.reduce((total, v) => {
-                return v.applied ? total + v.amount : total;
-            }, 0);
-            this.displayTotalLabel = this.discountPrice ? 'Subtotal' : 'Your Total (Php)';
-        },
-        toggleVoucherVisibility() {
-            this.showVoucher = !this.showVoucher;
-        },
-        toggleSummaryVisibility() {
-            this.showSummary = !this.showSummary;
-        },
-        toggleVoucherApplied(voucher) {
-            voucher.applied = !voucher.applied;
-            console.log(`Voucher applied state: ${voucher.applied}`);
-        },
-        updatePaymentMethod() {
-            this.selectedPaymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
         }
     },
     watch: {
         showPayment(newValue) {
             if (!newValue) {
+                // If the condition is false (else block is rendered), scroll to the top of the page
                 this.scrollToTop();
             }
         },

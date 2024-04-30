@@ -1,9 +1,9 @@
 <template>
-    <div class="flex relative pt-[57px] md:pt-[80px] justify-center">
-        <div class="relative">
-            <div class="bg-[#102E61] h-[101%] lg:h-[105%]" style="position: absolute; top: 0; left: 0; width: 100%; ">
+    <div class="relative pt-[57px] md:pt-[80px] justify-center ">
+        <div class="relative ">
+            <div class="bg-[#102E61] h-[100%] lg:h-[100%]" style="position: absolute; top: 0px; left: 0; width: 100%; ">
             </div>
-            <div class="relative inset-0 sm:top-56 md:top-2 pl-0 md:pl-10 flex items-center z-[1]">
+            <div class=" z-[1]">
                 <div class="relative flex flex-col pl-0 lg:pl-10">
                     <div class="absolute lg:top-4 lg:left-3 top-4 z-[1]">
                         <router-link to="/category/eat">
@@ -17,39 +17,23 @@
                             </a>
                         </router-link>
                     </div>
-                    <div class="relative flex flex-col items-center">
-                        <div class=" lg:pr-[7rem]">
-                            <ContentCarousel :items="items" class="mb-10" />
-                        </div>
-
+                    <div class=" lg:pr-[7rem] justify-center flex w-full ">
+                        <ContentCarousel :items="items" class="mb-10 w-full lg:ml-9" />
                     </div>
-                    <!-- mobile -->
-                    <!-- <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 lg:p-5 px-5 py-3 shadow-lg">
+
+                    <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 p-5 shadow-lg z-50">
                         <div class="flex justify-between">
                             <div>
                                 <p class="text-md">Ordering made easy</p>
                                 <p class="text-lg font-bold">Just a click away</p>
                             </div>
-                            <router-link to="/checkouteat">
-                                <div class="w-[100%] px-2 mt-5">
-                                    <button
-                                        class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg p-4 w-[100%]">Check
-                                        Cart</button>
-                                </div>
-                            </router-link>
-                        </div>
-                    </div> -->
-                    <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 p-5 shadow-lg z-50">
-                        <div class="flex justify-between">
                             <div>
-                                <p class="text-md">Unbeatable Deals</p>
-                                <p class="text-lg font-bold">Shop with ease</p>
-                            </div>
-                            <div>
-                                <button @click="openCartModal"
-                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg">
-                                    Shop Now
-                                </button>
+                                <router-link to="/carteditbuyeat">
+
+                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg">
+                                        Shop Now
+                                    </button>
+                                </router-link>
                             </div>
                         </div>
                     </div>
@@ -292,18 +276,28 @@
                 </div>
                 <!-- mobile verrrrrrrrrrrrrrrrr -->
                 <!-- View Add to cart modal -->
-                <div v-if="showCart" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
+                <div v-if="showCart" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center "
                     @click.self="closeModal">
-                    <div class="bg-white lg:h-[760px] h-[620px] w-[900px]  rounded-2xl shadow-md p-2 mx-5" @click.stop>
-                        <div class="lg:w-[100%] p-4 rounded-lg">
-                            <div class="relative flex justify-end">
-                                <button class=" pr-4 pt-21 ">
+                    <div class="bg-white lg:h-[760px]  lg:w-auto lg:rounded-3xl h-full w-full shadow-md " @click.stop>
+                        <div class="lg:w-[100%] p-4 rounded-lg h-full">
+                            <div class="lg:block hidden relative  justify-end">
+                                <button class=" pr-4 pt-21 ml-[97%]">
                                     <svg @click="closeCart" xmlns="http://www.w3.org/2000/svg" fill="none"
                                         viewBox="0 0 20 30" stroke-width="5" stroke="black" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                                     </svg>
                                 </button>
+
                             </div>
+
+                            <button @click="closeCart" class=" lg:hidden pt-21 ml-2">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                                </svg>
+                            </button>
+
                             <div v-if="selectedProduct" class="lg:flex lg:justify-between w-[100%]">
                                 <!-- Web gallery -->
                                 <div class="hidden lg:block lg:w-[40%]">
@@ -330,17 +324,17 @@
                                     </div>
                                 </div>
                                 <!-- Mobile - gallery -->
-                                <div class="lg:hidden grid grid-cols-2 grid-rows-1 gap-4 mb-3">
-                                    <div class="w-[200px] ml-4">
-                                        <img :src="currentImage" class="h-52 w-full" />
+                                <div class="lg:hidden grid grid-cols-2 grid-rows-1 gap-4 my-8">
+                                    <div class="w-[245px] ml-4">
+                                        <img :src="currentImage" class="h-64 w-full rounded-lg" />
                                     </div>
-                                    <div class="grid-cols-1 ml-16">
+                                    <div class="grid-cols-1 ml-20">
                                         <template v-for="(image, index) in selectedProductImages" :key="index">
-                                            <img :src="image" class="h-12 w-16 mb-2" @click="updateCurrentImage(image)" />
+                                            <img :src="image" class="h-16 w-20 mb-2" @click="updateCurrentImage(image)" />
                                         </template>
 
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="black" class="w-14 h-8 mt-2 cursor-pointer"
+                                            stroke-width="1.5" stroke="black" class="w-[60px] h-10 mt-2 ml-2 cursor-pointer"
                                             @click="changeImage">
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                 d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -350,11 +344,11 @@
                                 <!-- right section -->
                                 <div class="lg:w-[60%] px-3">
                                     <div class="lg:flex lg:flex-col text-black">
-                                        <p class="font-bold text-left lg:text-3xl text-2xl mb-2" style="line-height: 1.2;">
+                                        <p class="font-bold text-left lg:text-3xl text-2xl my-6" style="line-height: 1.2;">
                                             {{ selectedProduct.title }}
                                         </p>
                                     </div>
-                                    <div class=" flex flex-col text-black mb-3">
+                                    <div class=" flex flex-col text-black mb-3 mt-4">
                                         <p class="font-bold text-xl">{{ selectedProduct.shop }}</p>
                                         <div class="lg:inline-flex hidden items-center justify-between"
                                             style="line-height: 2;">
@@ -370,18 +364,45 @@
 
                                             </div>
                                         </div>
-                                        <div class="border border-gray-200 lg:my-3"></div>
+                                        <div class="border border-gray-200 lg:my-3 my-2"></div>
                                         <!-- description -->
-                                        <div class="overflow-y-auto lg:overflow-y-visible h-[110px] lg:h-auto">
-                                            <div class="justify-between mb-2 grid gap-2 mt-1">
-                                                <p class="w-[100%] text-xs">• Made from canvas material</p>
-                                                <p class="w-[100%] text-xs">• Durable and lightweight bag</p>
-                                                <p class="w-[100%] text-xs">• Can be washed by hand or washing machine
+                                        <div class=" lg:h-auto">
+                                            <div class="justify-between mb-2 grid  gap-2 mt-5">
+                                                <p class="w-[100%]">• Made from canvas material</p>
+                                                <p class="w-[100%]">• Durable and lightweight bag</p>
+                                                <p class="w-[100%]">• Can be wash ed by hand or washing machine
                                                 </p>
-                                                <p class="w-[100%] text-xs">• Multi handle feature</p>
-                                                <p class="w-[100%] text-xs">• Can be used as a handbag or tote shoulder bag
+                                                <p class="w-[100%]">• Multi handle feature</p>
+                                                <p class="w-[100%]">• Can be used as a handbag or tote shoulder bag
                                                 </p>
-                                                <p class="w-[70%] text-xs">• Color: White</p>
+                                                <p class="w-[70%]">• Color: White</p>
+                                            </div>
+                                        </div>
+                                        <!-- Mobile - Quantity counter -->
+                                        <div class="p-2 mt-3">
+                                            <div class="lg:hidden flex items-center text-black my-6">
+                                                Quantity
+                                                <button @click="decreaseQuantity"
+                                                    class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
+                                                <span v-if="selectedProduct && selectedProduct.quantity" class="p-2"> {{
+                                                    selectedProduct.quantity
+                                                }}</span>
+                                                <button @click="increaseQuantity"
+                                                    class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">+</button>
+                                            </div>
+                                            <!-- buttons -->
+                                            <div class="flex justify-between">
+                                                <div class="w-[100%] flex justify-start ">
+                                                    <button @click="addToCart(selectedProduct)"
+                                                        class="text-blue-600 border-blue-500 border-2 rounded-lg py-2 w-[90%]">
+                                                        Add to Cart</button>
+                                                </div>
+                                                <div class="w-[100%] flex justify-end">
+                                                    <router-link to="/checkoutshop" class="w-full">
+                                                        <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]">
+                                                            Buy Now</button>
+                                                    </router-link>
+                                                </div>
                                             </div>
                                         </div>
                                         <!-- preview of reviews -->
@@ -419,31 +440,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Mobile - Quantity counter -->
-                            <div class="lg:hidden flex items-center text-black mb-4">
-                                Quantity
-                                <button @click="decreaseQuantity"
-                                    class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
-                                <span v-if="selectedProduct && selectedProduct.quantity" class="p-2"> {{
-                                    selectedProduct.quantity
-                                }}</span>
-                                <button @click="increaseQuantity"
-                                    class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">+</button>
-                            </div>
-                            <!-- buttons -->
-                            <div class="flex justify-between">
-                                <div class="w-[100%] flex justify-start">
-                                    <button @click="addToCart(selectedProduct)"
-                                        class="text-blue-600 border-blue-500 border-2 rounded-lg py-2 w-[90%]">
-                                        Add to Cart</button>
-                                </div>
-                                <div class="w-[100%] flex justify-end">
-                                    <router-link to="/checkouteat" class="w-full">
-                                        <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]">
-                                            Buy Now</button>
-                                    </router-link>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -616,18 +613,26 @@
         </div>
         <!-- Mobile- cart -->
         <template v-if="showCartModal">
-            <div class="lg:hidden fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
+            <div class="lg:hidden fixed inset-0 h-full w-full z-50 flex items-center justify-center"
                 @click.self="closeModal">
-                <div class="bg-white rounded-lg shadow-md p-2 max-w-md mx-5" @click.stop>
+                <div class="bg-white rounded-lg shadow-md h-full w-full p-2 " @click.stop>
                     <div class="lg:w-[100%] p-4 rounded-lg">
+                        <!-- Close button -->
+                        <button @click="closeModal" class="absolute top-0 left-0 m-4 text-gray-600 hover:text-gray-800">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                            </svg>
+                        </button>
                         <!-- Cart items -->
-                        <div class="flex justify-between mb-2">
+                        <div class="flex justify-between mb-2 mt-12 border-b-2">
                             <div class="w-[50%]">
                                 <p class="text-center font-bold">Number of items</p>
                                 <p class="text-center font-bold text-3xl">{{ totalItemsInCart }}</p>
                             </div>
                             <template v-if="!isCartEmpty">
-                                <div class="w-[120%]">
+                                <div class="w-[120%] mt-4">
                                     <!-- Update the click event handler to call handleEditCart function -->
                                     <button @click="handleEditCart"
                                         class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">
@@ -635,8 +640,8 @@
                                     </button>
                                 </div>
                             </template>
-
                         </div>
+
                         <div class="mb-5">
                             <p class="font-bold">List of items</p>
                             <template v-if="!isCartEmpty">
@@ -651,13 +656,12 @@
                             </template>
                         </div>
                         <!-- Buy Now button -->
-
                         <div v-if="!isCartEmpty">
                             <login-modal v-if="!authStore.isAuthenticated && showLoginModal"
                                 @close="showLoginModal = false"></login-modal>
                             <!-- Update the click event handler to call handleBuyNow function -->
                             <button @click="handleBuyNow"
-                                class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[90%]">
+                                class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[90%] mt-[100%]">
                                 Buy Now
                             </button>
                         </div>
@@ -665,6 +669,7 @@
                 </div>
             </div>
         </template>
+
     </div>
     <!--  -->
     <div class="relative flex flex-col">

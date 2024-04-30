@@ -94,7 +94,7 @@
                 <div class="my-4 lg:w-[100%]">
                     <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SELLERS</h1>
                     <!-- <div class="lg:flex justify-start text-white lg:w-[100%]"> -->
-                    <div class="grid grid-cols-2 md:grid-cols-3 justify-start text-white lg:w-[100%]">
+                    <div class="grid grid-cols-2 md:grid-cols-3 justify-start text-white lg:w-[70%]">
                         <!-- Cards in Best seller -->
                         <div v-for="(item, index) in bestProducts" :key="index"
                             class=" lg:w-auto lg:flex-auto bg-blue-950 lg:h-[15rem] h-[190px] m-1 p-2 lg:p-3 rounded-xl relative flex flex-col justify-between">
@@ -294,7 +294,7 @@
                                 <div class="hidden lg:block lg:w-[40%]">
                                     <div class="lg:flex justify-center items-center mb-3">
                                         <!-- Use currentImage to access the reactive value -->
-                                        <img :src="currentImage" class="h-[400px] w-full" />
+                                        <img :src="currentImage" class="h-[400px] object-fill rounded-lg w-full" />
                                     </div>
                                     <div class="lg:flex lg:justify-between grid grid-cols-1 grid-rows-2">
                                         <div class="lg:flex lg:justify-center items-center gap-4">
@@ -314,6 +314,7 @@
                                         </svg>
                                     </div>
                                 </div>
+
                                 <!-- Mobile - gallery -->
                                 <div class="lg:hidden grid grid-cols-2 grid-rows-1 gap-4 my-8">
                                     <div class="w-[235px] ml-4">
@@ -335,7 +336,8 @@
                                 <!-- right section -->
                                 <div class="lg:w-[60%] px-3">
                                     <div class="lg:flex lg:flex-col text-black">
-                                        <p class="font-bold text-left lg:text-3xl text-2xl my-6" style="line-height: 1.2;">
+                                        <p class="font-bold text-left lg:text-3xl text-2xl my-6 lg:my-0"
+                                            style="line-height: 1.2;">
                                             {{ selectedProduct.title }}
                                         </p>
                                     </div>
@@ -358,7 +360,7 @@
                                         <div class="border border-gray-200 lg:my-3 my-2"></div>
                                         <!-- description -->
                                         <div class=" lg:h-auto">
-                                            <div class="justify-between mb-2 grid  gap-2 mt-5">
+                                            <div class="justify-between mb-2 grid  gap-2 mt-5 lg:mt-0">
                                                 <p class="w-[100%]">• Made from canvas material</p>
                                                 <p class="w-[100%]">• Durable and lightweight bag</p>
                                                 <p class="w-[100%]">• Can be wash ed by hand or washing machine
@@ -369,33 +371,7 @@
                                                 <p class="w-[70%]">• Color: White</p>
                                             </div>
                                         </div>
-                                        <!-- Mobile - Quantity counter -->
-                                        <div class="p-2 mt-3">
-                                            <div class="lg:hidden flex items-center text-black my-6">
-                                                Quantity
-                                                <button @click="decreaseQuantity"
-                                                    class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
-                                                <span v-if="selectedProduct && selectedProduct.quantity" class="p-2"> {{
-                                                    selectedProduct.quantity
-                                                }}</span>
-                                                <button @click="increaseQuantity"
-                                                    class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">+</button>
-                                            </div>
-                                            <!-- buttons -->
-                                            <div class="flex justify-between">
-                                                <div class="w-[100%] flex justify-start ">
-                                                    <button @click="addToCart(selectedProduct)"
-                                                        class="text-blue-600 border-blue-500 border-2 rounded-lg py-2 w-[90%]">
-                                                        Add to Cart</button>
-                                                </div>
-                                                <div class="w-[100%] flex justify-end">
-                                                    <router-link to="/checkoutshop" class="w-full">
-                                                        <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]">
-                                                            Buy Now</button>
-                                                    </router-link>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                         <!-- preview of reviews -->
                                         <p class="lg:block hidden font-bold">Reviews</p>
                                         <button class="lg:block hidden" @click="toggleshowReviews">
@@ -428,6 +404,33 @@
                                                 </div>
                                             </div>
                                         </button>
+                                        <!-- Mobile - Quantity counter -->
+                                        <div class="p-2 mt-3">
+                                            <div class="lg:hidden flex items-center text-black my-6">
+                                                Quantity
+                                                <button @click="decreaseQuantity"
+                                                    class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
+                                                <span v-if="selectedProduct && selectedProduct.quantity" class="p-2"> {{
+                                                    selectedProduct.quantity
+                                                }}</span>
+                                                <button @click="increaseQuantity"
+                                                    class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">+</button>
+                                            </div>
+                                            <!-- buttons -->
+                                            <div class="flex justify-between">
+                                                <div class="w-[100%] flex justify-start ">
+                                                    <button @click="addToCart(selectedProduct)"
+                                                        class="text-blue-600 border-blue-500 border-2 rounded-lg py-2 w-[90%]">
+                                                        Add to Cart</button>
+                                                </div>
+                                                <div class="w-[100%] flex justify-end">
+                                                    <router-link to="/checkoutshop" class="w-full">
+                                                        <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]">
+                                                            Buy Now</button>
+                                                    </router-link>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -1,25 +1,20 @@
 <template>
-    <div class="lg:hidden bg-cover bg-center w-screen  h-[750px]"
+    <div class="bg-cover bg-center w-screen  h-[750px]"
         style="background-image: url('src/assets/images/CategoryView/ToShop/bgoverlay.png');">
-        <div class="p-5 overflow-y-auto h-[690px] ">
-            <div
-                className="grid grid-cols-2 grid-rows-1 gap-4 mt-20  w-331 h-14 bg-white rounded-tl-lg  rounded-tr-lg mb-3">
-                <div>
-                    <input type="checkbox" v-model="selectAll" @change="selectAllItems" id="selectAllCheckbox"
-                        class="ml-2 w-5 h-5 border-2 mt-7">
-                    <span class="mt-1 ml-1 text-xl font-semibold text-left ">
-                        Items</span>
-                </div>
-                <router-link to="/category/shop" class="justify-end flex m-2 ">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.9"
-                        stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        <div class="px-5 overflow-y-auto h-[690px]  ">
+            <div class="flex bg-white pl-3 lg:pl-5 rounded-r-xl w-36  lg:mt-28  mt-[20%] lg:w-56 -ml-6">
+                <button @click="goToPreviousPage" class="flex cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3.0"
+                        stroke="currentColor" class="w-6 h-6 mt-3 lg:w-10 lg:h-[30px]">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
                     </svg>
-                </router-link>
+                    <p class="text-[#102E61] text-lg font-black p-3 pr-4 lg:text-3xl">CART</p>
+                </button>
             </div>
-            <div class=" bg-white-200 mb-5 bg-white rounded-bl-lg rounded-br-lg">
+
+            <div class=" bg-white-200 mb-5 bg-white rounded-tl-lg  rounded-tr-lg mt-10">
                 <div class="flex items-center gap-4 mb-2 ">
-                    <div class=" text-xl font-semibold  mt-2 mb-3 border-b-2 w-full"><span class="ml-10">Little Tokyo</span>
+                    <div class=" text-xl font-semibold  p-3 mb-3 border-b-2 w-full"><span class=" ">Shop Makati</span>
                     </div>
                 </div>
                 <div class="flex items-center gap-4 mt-1">
@@ -152,5 +147,11 @@ export default {
             totalAmount
         };
     },
+    methods: {
+        goToPreviousPage() {
+            const router = this.$router;
+            router.go(-1); // Navigate to the most recent past page
+        }
+    }
 };
 </script>

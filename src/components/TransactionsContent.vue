@@ -1,27 +1,30 @@
 <template>
-  <div class="bg-[#102E61] w-full h-[700px] z-10">
-    <div class="bg-white p-6 pb-10 mx-auto -mt-[2rem] space-y-6 lg:w-[94%] rounded-lg hidden-scrollbar">
+    <div class="bg-[#102E61] w-full h-[700px] z-10">
+        <div class="bg-white p-6 pb-10 mx-auto -mt-[2rem] space-y-6 lg:w-[94%] rounded-lg hidden-scrollbar">
 
-        <div class="w-[100%] h-[35rem] z-10 space-y-2 overflow-y-auto hidden-scrollbar">
-            <div v-for="(item, index) in items" :key="index" class="flex justify-between mt-5 mx-auto w-[90%] h-[154px] bg-[#E7EAEF] space-y-2">
-                <div class="flex flex-row gap-[5rem]">
-                    <img :src="item.imageSrc" :alt="item.alt" class="w-8 h-auto lg:w-[154px] lg:h-[154px]">
-                    <div class="w-[25rem]">
-                        <p class="mt-6 h-[2rem] mt-3 text-lg">{{ item.title }}</p>
-                        <p class="mt-10 text-sm text-gray-500">{{ item.date }}</p> <!-- Display date here -->
-                        <p class="mt-2 [5rem] text-xs text-gray-500">{{ item.status }}</p>
+            <div class="w-[100%] h-[35rem] z-10 space-y-2 overflow-y-auto hidden-scrollbar">
+                <div v-for="(item, index) in items" :key="index"
+                    class="flex justify-between mt-5 mx-auto w-[90%] h-[154px] bg-[#E7EAEF] space-y-2">
+                    <div class="flex flex-row gap-[5rem]">
+                        <img :src="item.imageSrc" :alt="item.alt" class="w-8 h-auto lg:w-[154px] lg:h-[154px]">
+                        <div class="w-[25rem]">
+                            <p class="mt-6 h-[2rem] mt-3 text-lg">{{ item.title }}</p>
+                            <p class="mt-10 text-sm text-gray-500">{{ item.date }}</p> <!-- Display date here -->
+                            <p class="mt-2 [5rem] text-xs text-gray-500">{{ item.status }}</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center mr-5">
+                        <p>{{ item.quantity }}x</p>
+                        <p>₱ {{ item.price }}</p>
+                        <button @click="openParcelDetails(item)"
+                            class="mt-[2.7rem] px-4 py-2.5 p-2 bg-[#2969D6] font-bold text-white rounded-md text-center">Buy
+                            Again</button>
                     </div>
                 </div>
-                <div class="flex flex-col items-center mr-5">
-                    <p>{{ item.quantity }}x</p>
-                    <p>₱ {{ item.price }}</p>
-                    <button @click="openParcelDetails(item)" class="mt-[2.7rem] px-4 py-2.5 p-2 bg-[#2969D6] font-bold text-white rounded-md text-center">Buy Again</button>
-                </div>
             </div>
-        </div>
 
+        </div>
     </div>
-</div>
 
 
     <!-- Buy Again Modal -->
@@ -37,8 +40,8 @@
 
                 <div class="relative flex justify-end">
                     <button class="absolute ">
-                        <svg @click="closeParcelDetails" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke-width="5" stroke="black" class="w-auto h-5">
+                        <svg @click="closeParcelDetails" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="5" stroke="black" class="w-auto h-5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                         </svg>
                     </button>
@@ -57,8 +60,7 @@
 
             <div class="flex justify-between mt-[4.5rem] w-auto h-[154px] bg-[#E7EAEF] space-y-2">
                 <div class="flex flex-row gap-[3rem]">
-                    <img :src="selectedItem.imageSrc" :alt="selectedItem.alt"
-                        class="w-8 h-auto lg:w-[154px] lg:h-[154px]">
+                    <img :src="selectedItem.imageSrc" :alt="selectedItem.alt" class="w-8 h-auto lg:w-[154px] lg:h-[154px]">
                     <div class="w-[20rem]">
                         <p class=" h-[2rem] mt-3 text-lg ">{{ selectedItem.title }}</p>
                     </div>
@@ -89,7 +91,6 @@
 
         </div>
     </div>
-
 </template>
 
 <script scoped>

@@ -24,7 +24,7 @@
                                     <p class="w-[12%] flex justify-center mb-4 font-bold ">Cost</p>
                                     <p class="w-[12%] flex justify-center mb-4 font-bold ">Total</p>
                                 </div>
-                                <div class="mb-5 overflow-y-scroll h-28 lg:h-full lg:overflow-hidden custom-scrollbar">
+                                <div class="mb-5 overflow-y-scroll h-28 lg:h-full lg:overflow-hidden ">
                                     <div v-if="!selectedItems || selectedItems.length === 0"
                                         class="text-center text-gray-500">
                                         Cart is empty
@@ -68,47 +68,34 @@
                                     <p class="font-normal mb-3 text-gray-600">Yes</p>
                                 </div>
                             </div>
+                            <div class="flex border rounded p-8 h-24"
+                                :class="{ 'bg-blue-100': selectedPaymentMethod === 'ibayad' }">
+                                <div class="flex items-center pr-3">
+                                    <input id="payment_ibayad" aria-describedby="helper-radio-text" type="radio"
+                                        value="ibayad" @click="toggleIbayad"
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                        v-model="selectedPaymentMethod">
+                                </div>
+                                <div class="ms-2 text-sm">
+                                    <label for="payment_ibayad" class="font-semibold text-xl text-gray-700">
+                                        Ibayad</label>
+                                </div>
+                            </div>
+                            <div class="mt-2 flex border rounded p-4 h-24"
+                                :class="{ 'bg-blue-100': selectedPaymentMethod === 'cod' }">
+                                <div class="flex items-center pr-3">
+                                    <input id="payment_cod" name="payment_method" value="cod" @click="toggleCOD"
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                        type="radio" v-model="selectedPaymentMethod">
+                                </div>
+                                <div class="ms-2 text-sm">
+                                    <label for="payment_cod" class="font-semibold text-l text-gray-700">
+                                        Cash On Delivery</label>
+                                    <p class="mt-2 font-bold text">Pay By Cash</p>
+                                    <p class="text-s">Pay Cash Upon Delivery</p>
+                                </div>
+                            </div>
 
-
-                            <div class="flex border rounded p-8 h-24" :class="{ 'bg-blue-100': selectedPaymentMethod === 'ibayad' }">
-    <div class="flex items-center pr-3">
-        <input id="payment_ibayad" aria-describedby="helper-radio-text" type="radio" value="ibayad" @click="toggleIbayad"
-               class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-               v-model="selectedPaymentMethod">
-    </div>
-    <div class="ms-2 text-sm">
-        <label for="payment_ibayad" class="font-semibold text-xl text-gray-700">
-            Ibayad</label>
-    </div>
-</div>
-
-<div class="mt-2 flex border rounded p-4 h-24" :class="{ 'bg-blue-100': selectedPaymentMethod === 'cod' }">
-    <div class="flex items-center pr-3">
-        <input id="payment_cod" name="payment_method" value="cod" @click="toggleCOD"
-               class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-               type="radio" v-model="selectedPaymentMethod">
-    </div>
-    <div class="ms-2 text-sm">
-        <label for="payment_cod" class="font-semibold text-l text-gray-700">
-            Cash On Delivery</label>
-        <p class="mt-2 font-bold text">Pay By Cash</p>
-        <p class="text-s">Pay Cash Upon Delivery</p>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            
                         </div>
                     </div>
                     <!-- FOR MOBILE -->
@@ -148,8 +135,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <!-- Start of Central Business District Tour -->
                     <div class="my-4 lg:w-[32%] lg:h-[30%] lg:right-10 lg:absolute relative lg:top-[3rem] w-screen">
                         <div class="border border-gray-400 rounded-xl p-5 ml-5 w-[90%] h-fit">
@@ -172,7 +157,8 @@
                                         </div>
                                     </div>
                                     <div class="bg-gray-400 h-0.5"></div>
-                                    <p class="lg:mr-9 lg:mt-2 lg:font-sans lg:text-3xl font-bold text-lg pt-4 mb-5">Your Total
+                                    <p class="lg:mr-9 lg:mt-2 lg:font-sans lg:text-3xl font-bold text-lg pt-4 mb-5">Your
+                                        Total
                                     </p>
                                     <div class="items-center ml-3 mb-5">
                                         <div v-for="(cartItem, index) in selectedItems" :key="index"
@@ -328,58 +314,50 @@
                     </div>
                     <div class="mt-[0rem] w-full h-full p-8">
                         <div className="grid grid-cols-1 grid-rows-4 gap-0">
-                            <div class="flex border rounded p-8 h-24" @click="selectedPaymentMethod = 'gcash'" :class="{ 'bg-blue-100': selectedPaymentMethod === 'gcash' }">
-    <div class="flex items-center pr-3">
-        <input id="gcash" aria-describedby="helper-radio-text" type="radio" value="ibayad"
-               class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-               v-model="selectedPaymentMethod">
-    </div>
-    <div class="ms-2 text-sm">
-        <label for="helper-radio" class="font-semibold text-xl text-gray-700">
-            Ibayad</label>
-    </div>
-</div>
-
-<div class="mt-2 flex border rounded p-4 h-24" @click="selectedPaymentMethod = 'ibayad'" :class="{ 'bg-blue-100': selectedPaymentMethod === 'ibayad' }">
-    <div class="flex items-center pr-3">
-        <input id="payment_ibayad" name="payment_method" value="cod"
-               class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-               type="radio" v-model="selectedPaymentMethod">
-    </div>
-    <div class="ms-2 text-sm">
-        <label for="payment_ibayad" class="font-semibold text-xl text-gray-700">
-            Cash On Delivery</label>
-        <p class="mt-2 font-bold text">Pay By Cash</p>
-        <p class="text-m">Pay Cash Upon Delivery</p>
-    </div>
-</div>
-
-
-
-                            
-
-                            
-                          
+                            <div class="flex border rounded p-8 h-24" @click="selectedPaymentMethod = 'gcash'"
+                                :class="{ 'bg-blue-100': selectedPaymentMethod === 'gcash' }">
+                                <div class="flex items-center pr-3">
+                                    <input id="gcash" aria-describedby="helper-radio-text" type="radio" value="ibayad"
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                        v-model="selectedPaymentMethod">
+                                </div>
+                                <div class="ms-2 text-sm">
+                                    <label for="helper-radio" class="font-semibold text-xl text-gray-700">
+                                        Ibayad</label>
+                                </div>
+                            </div>
+                            <div class="mt-2 flex border rounded p-4 h-24" @click="selectedPaymentMethod = 'ibayad'"
+                                :class="{ 'bg-blue-100': selectedPaymentMethod === 'ibayad' }">
+                                <div class="flex items-center pr-3">
+                                    <input id="payment_ibayad" name="payment_method" value="cod"
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                        type="radio" v-model="selectedPaymentMethod">
+                                </div>
+                                <div class="ms-2 text-sm">
+                                    <label for="payment_ibayad" class="font-semibold text-xl text-gray-700">
+                                        Cash On Delivery</label>
+                                    <p class="mt-2 font-bold text">Pay By Cash</p>
+                                    <p class="text-m">Pay Cash Upon Delivery</p>
+                                </div>
+                            </div>
                         </div>
                         <div class="justify-center pt-1">
-    <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
-            @click="toggleComplete">Confirm Booking</button>
-    <div v-if="showComplete"
-         class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
-         @click.self="closeModal">
-        <div class="bg-white rounded-lg shadow-md p-2 lg:max-w-2xl h-2p-[20px]" @click.stop>
-            <div class="lg:w-[100%] p-4 rounded-lg text-center flex flex-col items-center">
-                <img src="@/assets/images/CategoryView/ToShop/check.png" class="mb-6">
-                <p class="font-bold text-2xl mb-6">Transaction Complete</p>
-                <router-link to="/category/eat"><button
-                        class="text-white h-16 w-60 bg-blue-500 rounded-xl py-5"
-                        @click="closeModal">Okay</button></router-link>
-            </div>
-        </div>
-    </div>
-</div>
-
-
+                            <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
+                                @click="toggleComplete">Confirm Booking</button>
+                            <div v-if="showComplete"
+                                class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
+                                @click.self="closeModal">
+                                <div class="bg-white rounded-lg shadow-md p-2 lg:max-w-2xl h-2p-[20px]" @click.stop>
+                                    <div class="lg:w-[100%] p-4 rounded-lg text-center flex flex-col items-center">
+                                        <img src="@/assets/images/CategoryView/ToShop/check.png" class="mb-6">
+                                        <p class="font-bold text-2xl mb-6">Transaction Complete</p>
+                                        <router-link to="/category/eat"><button
+                                                class="text-white h-16 w-60 bg-blue-500 rounded-xl py-5"
+                                                @click="closeModal">Okay</button></router-link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </template>
@@ -454,19 +432,15 @@
 .fade-leave-to {
     opacity: 0;
 }
-.custom-scrollbar::-webkit-scrollbar {
-    width: 5px; /* Width of the scrollbar */
-    }
-
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-        background-color: #4b5563; /* Color of the scrollbar thumb */
-        border-radius: 2.5px; /* Rounded corners */
-    }
 </style>
 
 <script>
-import { computed } from 'vue';
-import { useCartStore } from '@/stores/toShopCart';
+import {
+    computed
+} from 'vue';
+import {
+    useCartStore
+} from '@/stores/toShopCart';
 export default {
     setup() {
         const cartStore = useCartStore();
@@ -496,17 +470,7 @@ export default {
     data() {
         return {
             selectedPaymentMethod: '', // Initialize with a default value
-             showComplete: false,
-
-
-
-
-
-
-
-
-
-
+            showComplete: false,
             showSummary: true,
             shops: [{
                 image: "src/assets/images/CategoryView/ToShop/kultura.png",
@@ -542,7 +506,6 @@ export default {
             displayTotalLabel: 'Your Total (Php)',
             discountPrice: 0,
             showConfirmation: false,
-        
             showPayment: true,
             showVoucher: false,
             navButtonText: 'Request to Order'
@@ -560,110 +523,103 @@ export default {
         }
     },
     methods: {
-    toggleVoucher(voucher) {
-        this.toggleVoucherVisibility();
-        this.toggleVoucherApplied(voucher);
-        this.updateDiscountPrice();
-    },
-    toggleVoucherWeb(voucher) {
-        this.toggleSummaryVisibility();
-        this.toggleVoucherApplied(voucher);
-        this.updateDiscountPrice();
-    },
-    toggleBack() {
-        this.showSummary = true;
-    },
-    scrollToTop() {
-        window.scrollTo(0, 0);
-    },
-    toggleConfirmation() {
-        if (!this.isPaymentMethodSelected(this.selectedPaymentMethod) || this.selectedPaymentMethod=='') {
-            alert("Please select a payment method before confirming booking.");
-            return;
-        }
-        this.showConfirmation = true;
-        this.showInformation = false;
-    },
-    isPaymentMethodSelected(paymentMethod) {
-        return paymentMethod !== null && paymentMethod !== undefined;
-    },
-    toggleIbayad()
-    {
-        console.log('Payment Method Cahnged');
-        this.selectedPaymentMethod='Ibayad';
-
-    },
-    toggleCOD()
-    {
-        console.log('Payment Method Cahnged');
-        this.selectedPaymentMethod='COD';
-
-    },
-    toggleComplete() {
-        if (!this.isPaymentMethodSelected(this.selectedPaymentMethod) || this.selectedPaymentMethod=='') {
-            alert("Please select a payment method before confirming booking.");
-            return;
-        }
-        console.log("toggleComplete() method called.");
-        console.log(this.selectedPaymentMethod);
-  
-        this.showConfirmation = !this.showConfirmation;
-        this.showComplete = !this.showComplete;
-    },
-    closeModal() {
-        this.showInformation = false;
-        this.showConfirmation = false;
-        this.showComplete = false;
-    },
-    togglePayment() {
-        this.showPayment = !this.showPayment;
-        this.navButtonText = this.showPayment ? 'Request to Order' : 'Payment';
-    },
-    navigateBack() {
-        if (!this.showPayment) {
-            this.showPayment = true;
-            this.navButtonText = 'Request to Order';
-        } else {
-            this.$router.go(-1);
-        }
-    },
-    activateRadioButton(id) {
-        const radioBtn = document.getElementById(id);
-        if (radioBtn) {
-            radioBtn.checked = !radioBtn.checked;
-            this.updatePaymentMethod();
-        }
-    },
-    updateDiscountPrice() {
-        this.discountPrice = this.vouchers.reduce((total, v) => {
-            return v.applied ? total + v.amount : total;
-        }, 0);
-        this.displayTotalLabel = this.discountPrice ? 'Subtotal' : 'Your Total (Php)';
-    },
-    toggleVoucherVisibility() {
-        this.showVoucher = !this.showVoucher;
-    },
-    toggleSummaryVisibility() {
-        this.showSummary = !this.showSummary;
-    },
-    toggleVoucherApplied(voucher) {
-        voucher.applied = !voucher.applied;
-        console.log(`Voucher applied state: ${voucher.applied}`);
-    },
-    updatePaymentMethod() {
-        this.selectedPaymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
-    }
-},
-watch: {
-    showPayment(newValue) {
-        if (!newValue) {
-            this.scrollToTop();
+        toggleVoucher(voucher) {
+            this.toggleVoucherVisibility();
+            this.toggleVoucherApplied(voucher);
+            this.updateDiscountPrice();
+        },
+        toggleVoucherWeb(voucher) {
+            this.toggleSummaryVisibility();
+            this.toggleVoucherApplied(voucher);
+            this.updateDiscountPrice();
+        },
+        toggleBack() {
+            this.showSummary = true;
+        },
+        scrollToTop() {
+            window.scrollTo(0, 0);
+        },
+        toggleConfirmation() {
+            if (!this.isPaymentMethodSelected(this.selectedPaymentMethod) || this.selectedPaymentMethod == '') {
+                alert("Please select a payment method before confirming booking.");
+                return;
+            }
+            this.showConfirmation = true;
+            this.showInformation = false;
+        },
+        isPaymentMethodSelected(paymentMethod) {
+            return paymentMethod !== null && paymentMethod !== undefined;
+        },
+        toggleIbayad() {
+            console.log('Payment Method Cahnged');
+            this.selectedPaymentMethod = 'Ibayad';
+        },
+        toggleCOD() {
+            console.log('Payment Method Cahnged');
+            this.selectedPaymentMethod = 'COD';
+        },
+        toggleComplete() {
+            if (!this.isPaymentMethodSelected(this.selectedPaymentMethod) || this.selectedPaymentMethod == '') {
+                alert("Please select a payment method before confirming booking.");
+                return;
+            }
+            console.log("toggleComplete() method called.");
+            console.log(this.selectedPaymentMethod);
+            this.showConfirmation = !this.showConfirmation;
+            this.showComplete = !this.showComplete;
+        },
+        closeModal() {
+            this.showInformation = false;
+            this.showConfirmation = false;
+            this.showComplete = false;
+        },
+        togglePayment() {
+            this.showPayment = !this.showPayment;
+            this.navButtonText = this.showPayment ? 'Request to Order' : 'Payment';
+        },
+        navigateBack() {
+            if (!this.showPayment) {
+                this.showPayment = true;
+                this.navButtonText = 'Request to Order';
+            } else {
+                this.$router.go(-1);
+            }
+        },
+        activateRadioButton(id) {
+            const radioBtn = document.getElementById(id);
+            if (radioBtn) {
+                radioBtn.checked = !radioBtn.checked;
+                this.updatePaymentMethod();
+            }
+        },
+        updateDiscountPrice() {
+            this.discountPrice = this.vouchers.reduce((total, v) => {
+                return v.applied ? total + v.amount : total;
+            }, 0);
+            this.displayTotalLabel = this.discountPrice ? 'Subtotal' : 'Your Total (Php)';
+        },
+        toggleVoucherVisibility() {
+            this.showVoucher = !this.showVoucher;
+        },
+        toggleSummaryVisibility() {
+            this.showSummary = !this.showSummary;
+        },
+        toggleVoucherApplied(voucher) {
+            voucher.applied = !voucher.applied;
+            console.log(`Voucher applied state: ${voucher.applied}`);
+        },
+        updatePaymentMethod() {
+            this.selectedPaymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
         }
     },
-    totalAmount() {
-        this.updateInvalidVouchers();
-
-
+    watch: {
+        showPayment(newValue) {
+            if (!newValue) {
+                this.scrollToTop();
+            }
+        },
+        totalAmount() {
+            this.updateInvalidVouchers();
         }
     },
 };

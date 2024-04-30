@@ -14,9 +14,9 @@
   
 <script>
 
-import landingPageImage1 from '@/assets/images/CategoryView/ToShop/banner.jpeg';
-import landingPageImage2 from '@/assets/images/CategoryView/ToShop/glorietta.jpeg';
-import landingPageImage3 from '@/assets/images/CategoryView/ToShop/circuit.jpeg';
+import landingPageImage1 from '@/assets/images/CategoryView/ToShop/toshopcarousel1.png';
+import landingPageImage2 from '@/assets/images/CategoryView/ToShop/toshopcarousel2.png';
+import landingPageImage3 from '@/assets/images/CategoryView/ToShop/toshopcarousel3.png';
 
 
 export default {

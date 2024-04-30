@@ -3,7 +3,7 @@
     <div class="overflow-hidden">
       <div class="flex transition-transform duration-300" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
         <div v-for="(image, index) in images" :key="index" class="w-full flex-shrink-0">
-          <img :src="image" alt="carousel image" class="w-full h-[15rem] lg:h-[30rem]" />
+          <img :src="image" alt="carousel image" class="w-full h-[15rem] lg:h-[30rem] rounded-xl" />
         </div>
       </div>
     </div>

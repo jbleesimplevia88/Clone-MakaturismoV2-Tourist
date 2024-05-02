@@ -71,11 +71,35 @@
                             </div>
                             <div class="hidden lg:block">
                                 <p class="font-bold text-3xl mb-4">Payment</p>
-                                <div class="border border-gray-200 py-5 pl-6">
-                                    <input type="radio" id="payment_ibayad" name="payment_method" value="ibayad"
-                                        class="mr-2" checked>
-                                    <label for="payment_ibayad">Ibayad</label>
+                                <div class="flex border rounded p-8 h-24"
+                                    :class="{ 'bg-blue-100': selectedPaymentMethod === 'ibayad' }">
+                                    <div class="flex items-center pr-3">
+                                        <input id="payment_ibayad" aria-describedby="helper-radio-text" type="radio"
+                                            value="ibayad" @click="toggleIbayad"
+                                            class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                            v-model="selectedPaymentMethod">
+                                    </div>
+                                    <div class="ms-2 text-sm">
+                                        <label for="payment_ibayad" class="font-semibold text-xl text-gray-700">
+                                            Ibayad</label>
+                                    </div>
                                 </div>
+                                <div class="mt-2 flex border rounded p-4 h-24"
+                                    :class="{ 'bg-blue-100': selectedPaymentMethod === 'cod' }">
+                                    <div class="flex items-center pr-3">
+                                        <input id="payment_cod" name="payment_method" value="cod" @click="toggleCOD"
+                                            class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                            type="radio" v-model="selectedPaymentMethod">
+                                    </div>
+                                    <div class="ms-2 text-sm">
+                                        <label for="payment_cod" class="font-semibold text-l text-gray-700">
+                                            Cash On Delivery</label>
+                                        <p class="mt-2 font-bold text">Pay By Cash</p>
+                                        <p class="text-s">Pay Cash Upon Delivery</p>
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>

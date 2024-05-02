@@ -114,6 +114,7 @@
                                         {{ room }}
                                     </button>
                                 </div>
+
                                 <div @click="closeImagePreview" v-if="selectedRoom"
                                     class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 ">
                                     <div class="p-10 overflow-x-scroll hide-scrollbar rounded-lg" draggable="true"
@@ -124,6 +125,15 @@
                                             <img v-for="(image, index) in selectedRoomImages" :key="index" :src="image"
                                                 class="w-full  shadow-[#0504048c] shadow-md" alt="Room Image" />
                                         </div>
+                                        <button @click="selectedRoom = null" class="absolute top-48 right-0 p-2 m-3"
+                                            style="filter: drop-shadow(0px 5px 2px rgba(0, 0, 0, 0.404));">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#ffffff"
+                                                viewBox="0 0 30 30">
+                                                <path
+                                                    d="M 7 4 C 6.744125 4 6.4879687 4.0974687 6.2929688 4.2929688 L 4.2929688 6.2929688 C 3.9019687 6.6839688 3.9019687 7.3170313 4.2929688 7.7070312 L 11.585938 15 L 4.2929688 22.292969 C 3.9019687 22.683969 3.9019687 23.317031 4.2929688 23.707031 L 6.2929688 25.707031 C 6.6839688 26.098031 7.3170313 26.098031 7.7070312 25.707031 L 15 18.414062 L 22.292969 25.707031 C 22.682969 26.098031 23.317031 26.098031 23.707031 25.707031 L 25.707031 23.707031 C 26.098031 23.316031 26.098031 22.682969 25.707031 22.292969 L 18.414062 15 L 25.707031 7.7070312 C 26.098031 7.3170312 26.098031 6.6829688 25.707031 6.2929688 L 23.707031 4.2929688 C 23.316031 3.9019687 22.682969 3.9019687 22.292969 4.2929688 L 15 11.585938 L 7.7070312 4.2929688 C 7.5115312 4.0974687 7.255875 4 7 4 z">
+                                                </path>
+                                            </svg>
+                                        </button>
 
                                     </div>
                                 </div>
@@ -227,21 +237,7 @@
                             <option value="Double Deluxe room">Double Deluxe room</option>
                         </select>
                     </div>
-                    <div class="flex flex-col m-2">
-                        <label for="services" class="mb-2 font-bold">Other Services</label>
-                        <div class="relative">
-                            <button @click="toggleDropdown" class="border-2 border-black rounded-md p-2.5 w-full">
-                                {{ selectedServices.length ? selectedServices.join(', ') : 'Select Services' }}
-                            </button>
-                            <div v-if="isDropdownOpen"
-                                class="absolute bg-white border-2 border-black  mt-1 py-2 px-2 w-full rounded-md shadow-lg z-10">
-                                <div v-for="(service, index) in services" :key="index" class="flex items-center">
-                                    <input type="checkbox" :id="service" :value="service" v-model="selectedServices">
-                                    <label :for="service" class="ml-2">{{ service }}</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                     <router-link to="/checkoutbook">
                         <div class="w-[100%] px-2 mt-5">
                             <button class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Book

@@ -104,7 +104,7 @@
                 <div class="my-4 lg:w-[100%] relative">
                     <!-- <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">Rooms to offer</h1> -->
                     <div class="flex flex-wrap justify-between items-center mb-2 lg:w-[70%] ">
-                        <div class="lg:block ">
+                        <div>
                             <h1 class="font-bold mb-1">Rooms</h1>
                             <div class="flex flex-col">
                                 <div v-for="(room, index) in roomTypes" :key="index">
@@ -116,23 +116,22 @@
                                 </div>
                                 <div @click="closeImagePreview" v-if="selectedRoom"
                                     class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 ">
-                                    <div class="p-10 overflow-hidden rounded-lg" draggable="true"
+                                    <div class="p-10 overflow-x-scroll hide-scrollbar rounded-lg" draggable="true"
                                         @dragstart="dragStart($event)" @mousedown="startDrag($event)"
                                         @mousemove="dragging && drag($event)" @mouseup="endDrag()" @mouseleave="endDrag()"
                                         ref="container">
-                                        <div class="flex gap-6" style="cursor: grab">
+                                        <div class="flex gap-6 " style="cursor: grab">
                                             <img v-for="(image, index) in selectedRoomImages" :key="index" :src="image"
                                                 class="w-full  shadow-[#0504048c] shadow-md" alt="Room Image" />
                                         </div>
-                                        <button @click="selectedRoom = null"
-                                            class="absolute top-0 right-0 p-2 text-xl text-gray-700 hover:text-red-600 focus:outline-none">
-                                            &times;
-                                        </button>
+
                                     </div>
                                 </div>
+
                             </div>
 
                         </div>
+
                         <div class="hidden lg:absolute lg:top-[4.8rem] lg:right-40">
                             <h1 class="font-bold">Rooms</h1>
                             <div>
@@ -372,7 +371,11 @@
 </template>
 
 
-<style scoped></style>
+<style scoped>
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+</style>
 
 <script>
 import ContentCarousel from '@/components/ToStayCarousel.vue';

@@ -102,9 +102,9 @@
                     <p class="text-lg md:text-black text-left pl-2.5 pb-5">(02) 8820 1000</p>
                 </div>
                 <div class="my-4 lg:w-[100%] relative">
-                    <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">Rooms to offer</h1>
+                    <!-- <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">Rooms to offer</h1> -->
                     <div class="flex flex-wrap justify-between items-center mb-2 lg:w-[70%] ">
-                        <div class="lg:block hidden">
+                        <div class="lg:block ">
                             <h1 class="font-bold mb-1">Rooms</h1>
                             <div class="flex flex-col">
                                 <div v-for="(room, index) in roomTypes" :key="index">

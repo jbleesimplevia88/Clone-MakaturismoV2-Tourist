@@ -8,24 +8,22 @@
                     <div class="absolute lg:top-4 lg:left-3 top-4 z-[1]">
                         <router-link to="/category/stay">
                             <a class=" flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" style="filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));" stroke="currentColor" class="w-8 ml-5 lg:ml-0 lg:w-10 h-12 lg:h-10 hover:bg-gray-300 rounded-md p-1 cursor-pointer text-white">
-                                        style="filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));" stroke="currentColor"
-                                        class="w-8 ml-5 lg:ml-0 lg:w-10 h-12 lg:h-10 hover:bg-gray-300 rounded-md p-1 cursor-pointer text-white">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-                                    </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                    style="filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));" stroke="currentColor"
+                                    class="w-8 ml-5 lg:ml-0 lg:w-10 h-12 lg:h-10 hover:bg-gray-300 rounded-md p-1 cursor-pointer text-white">
+                                    style="filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));" stroke="currentColor"
+                                    class="w-8 ml-5 lg:ml-0 lg:w-10 h-12 lg:h-10 hover:bg-gray-300 rounded-md p-1
+                                    cursor-pointer text-white">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                                </svg>
                             </a>
                         </router-link>
                     </div>
                     <div class="relative flex flex-col items-center">
                         <div class=" lg:pr-[7rem]">
-                                <ContentCarousel :items="items" class="mb-10" />
-                            <!-- <div class="hidden col-span-2 md:grid md:grid-cols-2 gap-4 ">
-                                <img src="@/assets/images/CategoryView/ToStay/stay2.png" alt="" class="lg:w-[100%] lg:h-[90%]">
-                                <img src="@/assets/images/CategoryView/ToStay/stay3.png" alt="" class="lg:w-[100%] lg:h-[90%] rounded-tr-3xl">
-                                <img src="@/assets/images/CategoryView/ToStay/stay4.png" alt="" class="lg:w-[100%] lg:h-[90%]">
-                                <img src="@/assets/images/CategoryView/ToStay/stay5.png" alt="" class="lg:w-[100%] lg:h-[90%] rounded-br-3xl">
-                            </div> -->
+                            <ContentCarousel :items="items" class="mb-10" />
+
                         </div>
                         <!-- <div class="absolute bottom-2 right-[8rem] z-20 w-100">
                                 <button class="hidden lg:block p-2 bg-white rounded-lg shadow outline outline-2 text-md">
@@ -43,8 +41,9 @@
                             </div>
                             <router-link to="/checkoutbook">
                                 <div class="w-[100%] px-2 mt-5">
-                                    <button class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg p-4 w-[100%]">Book
-                                            Now</button>
+                                    <button
+                                        class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg p-4 w-[100%]">Book
+                                        Now</button>
                                 </div>
                             </router-link>
                         </div>
@@ -61,28 +60,31 @@
         <div class="my-4 lg:p-0 lg:w-[75%]">
             <div class="relative mx-6 px-3 lg:px-32 pt-5">
                 <p class="font-bold text-lg text-black text-left pb-5 pt-3 lg:pt-[5rem]">About this place</p>
-                <p class="text-lg text-justify text-black pb-5">Stay and relax in the amazing rooms of U Hotels Makati. Find your peace and enjoy the services this place can offer.</p>
+                <p class="text-lg text-justify text-black pb-5">Stay and relax in the amazing rooms of U Hotels Makati. Find
+                    your peace and enjoy the services this place can offer.</p>
                 <div class="hidden border border-gray-400 lg:w-[]">
                     <p class="text-center font-bold">Number of items</p>
                 </div>
                 <div class="flex flex-row">
                     <div class="pt-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-                            </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                        </svg>
                     </div>
                     <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">5091 P. Burgos, Makati, Metro Manila
                     </p>
                 </div>
                 <div class="flex flex-row">
                     <div class="pt-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                            </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
                     </div>
                     <div class="flex flex-col pl-2.5">
                         <p class="text-lg md:text-black text-left pb-5">Monday - Sunday</p>
@@ -91,63 +93,72 @@
                 </div>
                 <div class="flex flex-row">
                     <div class="pt-0.25">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
-                            </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                        </svg>
                     </div>
                     <p class="text-lg md:text-black text-left pl-2.5 pb-5">(02) 8820 1000</p>
                 </div>
                 <div class="my-4 lg:w-[100%] relative">
-                    <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">Rooms to offer</h1>
+                    <!-- <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">Rooms to offer</h1> -->
                     <div class="flex flex-wrap justify-between items-center mb-2 lg:w-[70%] ">
-                        <div class="lg:block hidden">
+                        <div>
                             <h1 class="font-bold mb-1">Rooms</h1>
                             <div class="flex flex-col">
-                                <div>
-                                    <p class="bg-gray-300 px-3 py-1 rounded-md inline-block mb-2">Regular room</p>
+                                <div v-for="(room, index) in roomTypes" :key="index">
+                                    <button
+                                        class="bg-gray-300 px-3 py-1 rounded-md inline-block mb-2 hover:bg-blue-700 hover:text-white"
+                                        @click="showRoomPreview(room)">
+                                        {{ room }}
+                                    </button>
                                 </div>
-                                <div>
-                                    <p class="bg-gray-300 px-3 py-1 rounded-md inline-block mb-2">Double room</p>
+                                <div @click="closeImagePreview" v-if="selectedRoom"
+                                    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 ">
+                                    <div class="p-10 overflow-x-scroll hide-scrollbar rounded-lg" draggable="true"
+                                        @dragstart="dragStart($event)" @mousedown="startDrag($event)"
+                                        @mousemove="dragging && drag($event)" @mouseup="endDrag()" @mouseleave="endDrag()"
+                                        ref="container">
+                                        <div class="flex gap-6 " style="cursor: grab">
+                                            <img v-for="(image, index) in selectedRoomImages" :key="index" :src="image"
+                                                class="w-full  shadow-[#0504048c] shadow-md" alt="Room Image" />
+                                        </div>
+
+                                    </div>
                                 </div>
-                                <div>
-                                    <p class="bg-gray-300 px-3 py-1 rounded-md inline-block mb-2">Suite room</p>
-                                </div>
-                                <div>
-                                    <p class="bg-gray-300 px-3 py-1 rounded-md inline-block mb-2">Deluxe room</p>
-                                </div>
-                                <div>
-                                    <p class="bg-gray-300 px-3 py-1 rounded-md inline-block mb-2">Double Deluxe room</p>
-                                </div>
+
                             </div>
+
                         </div>
+
                         <div class="hidden lg:absolute lg:top-[4.8rem] lg:right-40">
                             <h1 class="font-bold">Rooms</h1>
                             <div>
                                 <p class="flex items-center">
                                     <svg class="w-4 h-auto mr-2 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                                            <circle cx="10" cy="10" r="3" />
-                                        </svg> Regular room
+                                        <circle cx="10" cy="10" r="3" />
+                                    </svg> Regular room
                                 </p>
                                 <p class="flex items-center">
                                     <svg class="w-4 h-auto mr-2 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                                            <circle cx="10" cy="10" r="3" />
-                                        </svg> Double room
+                                        <circle cx="10" cy="10" r="3" />
+                                    </svg> Double room
                                 </p>
                                 <p class="flex items-center">
                                     <svg class="w-4 h-auto mr-2 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                                            <circle cx="10" cy="10" r="3" />
-                                        </svg> Suite room
+                                        <circle cx="10" cy="10" r="3" />
+                                    </svg> Suite room
                                 </p>
                                 <p class="flex items-center">
                                     <svg class="w-4 h-auto mr-2 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                                            <circle cx="10" cy="10" r="3" />
-                                        </svg> Deluxe room
+                                        <circle cx="10" cy="10" r="3" />
+                                    </svg> Deluxe room
                                 </p>
                                 <p class="flex items-center">
                                     <svg class="w-4 h-auto mr-2 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                                            <circle cx="10" cy="10" r="3" />
-                                        </svg> Double Deluxe room
+                                        <circle cx="10" cy="10" r="3" />
+                                    </svg> Double Deluxe room
                                 </p>
                             </div>
                         </div>
@@ -156,28 +167,28 @@
                             <div>
                                 <p class="flex items-center">
                                     <svg class="w-4 h-auto mr-2 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                                            <circle cx="10" cy="10" r="3" />
-                                        </svg> Gym
+                                        <circle cx="10" cy="10" r="3" />
+                                    </svg> Gym
                                 </p>
                                 <p class="flex items-center">
                                     <svg class="w-4 h-auto mr-2 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                                            <circle cx="10" cy="10" r="3" />
-                                        </svg> Free Parking
+                                        <circle cx="10" cy="10" r="3" />
+                                    </svg> Free Parking
                                 </p>
                                 <p class="flex items-center">
                                     <svg class="w-4 h-auto mr-2 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                                            <circle cx="10" cy="10" r="3" />
-                                        </svg> Pet Space
+                                        <circle cx="10" cy="10" r="3" />
+                                    </svg> Pet Space
                                 </p>
                                 <p class="flex items-center">
                                     <svg class="w-4 h-auto mr-2 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                                            <circle cx="10" cy="10" r="3" />
-                                        </svg> Free WIFI
+                                        <circle cx="10" cy="10" r="3" />
+                                    </svg> Free WIFI
                                 </p>
                                 <p class="flex items-center">
                                     <svg class="w-4 h-auto mr-2 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                                            <circle cx="10" cy="10" r="3" />
-                                        </svg> Air conditioned
+                                        <circle cx="10" cy="10" r="3" />
+                                    </svg> Air conditioned
                                 </p>
                             </div>
                         </div>
@@ -193,7 +204,8 @@
                         <div class="flex flex-col m-2">
                             <label for="Date" class="mb-2 font-bold">Date</label>
                             <!-- Set min attribute to restrict dates to 2024 and beyond -->
-                            <input type="date" id="selectedDate" class="border-2 border-black rounded-md p-2.5" min="2024-01-01">
+                            <input type="date" id="selectedDate" class="border-2 border-black rounded-md p-2.5"
+                                min="2024-01-01">
                         </div>
                     </div>
                     <div class="flex flex-col m-2">
@@ -204,18 +216,36 @@
                         <label for="" class=" mb-2 font-bold">Check Out</label>
                         <input type="time" class="border-2 border-black rounded-md p-2.5">
                     </div>
-                    <div class="flex flex-col m-2">
-                        <label for="" class=" mb-2 font-bold">Type of Room</label>
-                        <input type="text" class="border-2 border-black rounded-md p-2.5">
+                    <div class="flex flex-col m-2 ">
+                        <label for="roomType" class="mb-2 font-bold">Type of Room</label>
+                        <select id="roomType" v-model="selectedRoomType"
+                            class="border-2 border-black mt-1 rounded-md p-2.5">
+                            <option class="border-2 border-black mt-1 py-2 px-2 " value="Regular room">Regular room</option>
+                            <option value="Double room">Double room</option>
+                            <option value="Suite room">Suite room</option>
+                            <option value="Deluxe room">Deluxe room</option>
+                            <option value="Double Deluxe room">Double Deluxe room</option>
+                        </select>
                     </div>
                     <div class="flex flex-col m-2">
-                        <label for="" class=" mb-2 font-bold">Other Services</label>
-                        <input type="text" class="border-2 border-black rounded-md p-2.5">
+                        <label for="services" class="mb-2 font-bold">Other Services</label>
+                        <div class="relative">
+                            <button @click="toggleDropdown" class="border-2 border-black rounded-md p-2.5 w-full">
+                                {{ selectedServices.length ? selectedServices.join(', ') : 'Select Services' }}
+                            </button>
+                            <div v-if="isDropdownOpen"
+                                class="absolute bg-white border-2 border-black  mt-1 py-2 px-2 w-full rounded-md shadow-lg z-10">
+                                <div v-for="(service, index) in services" :key="index" class="flex items-center">
+                                    <input type="checkbox" :id="service" :value="service" v-model="selectedServices">
+                                    <label :for="service" class="ml-2">{{ service }}</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <router-link to="/checkoutbook">
                         <div class="w-[100%] px-2 mt-5">
                             <button class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Book
-                                        Now</button>
+                                Now</button>
                         </div>
                     </router-link>
                 </div>
@@ -227,10 +257,6 @@
             <div>
                 <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
                 <MapRenderer :latitude="latitude" :longitude="longitude" :name="name" />
-                <!-- <img src="@/assets/images/CategoryView/ToSee/Glorietta Map.jpg" alt="" class="pb-12 block lg:hidden">
-                    <div class="hidden lg:block lg:pb-10">
-                        <img src="@/assets/images/CategoryView/ToDo/Omniverse Web Map.png" alt="" class="w-[100%] h-[100%]">
-                    </div> -->
             </div>
             <hr style="border-top: 1px solid black">
             <div>
@@ -295,13 +321,15 @@
         </div>
         <div class="grid lg:grid-cols-2 lg:gap-[2rem] relative mx-6 px-3 lg:px-32 pt-5 pb-5">
             <!-- Feedback Content -->
-            <div class="relative border-2 border-gray-200 rounded-md px-3 py-3" v-for="(item, index) in paginatedItems" :key="index">
+            <div class="relative border-2 border-gray-200 rounded-md px-3 py-3" v-for="(item, index) in paginatedItems"
+                :key="index">
                 <div class="flex flex-row">
                     <div class="pt-[0.125rem]">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                            </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-12 h-12">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
                     </div>
                     <div class="flex flex-col">
                         <p class="relative left-2 text-black text-lg xl:text-xl font-medium pb-3">
@@ -319,20 +347,23 @@
         <div v-if="showSeeMoreButton || showSeeLessButton" class="flex items-center justify-center pr-[5rem] mt-5 mb-10">
             <div v-if="showSeeMoreButton">
                 <div>
-                    <div style="position: absolute; bottom: 0; left: 0; height: 24%; width: 100%; background: linear-gradient(to bottom, transparent 30%, #FFFFFF 79%, #FFFFFF 50%);">
+                    <div
+                        style="position: absolute; bottom: 0; left: 0; height: 24%; width: 100%; background: linear-gradient(to bottom, transparent 30%, #FFFFFF 79%, #FFFFFF 50%);">
                     </div>
                 </div>
                 <div class="absolute bottom-3">
-                    <button @click="seeMore" class="left-0 right-0 px-3 py-3 border-2 border-black text-black  rounded-md hover:bg-black hover:text-white transition-colors duration-300 text-nowrap text-xs">
-                            <span>See More</span>
-                        </button>
+                    <button @click="seeMore"
+                        class="left-0 right-0 px-3 py-3 border-2 border-black text-black  rounded-md hover:bg-black hover:text-white transition-colors duration-300 text-nowrap text-xs">
+                        <span>See More</span>
+                    </button>
                 </div>
             </div>
             <div v-if="showSeeLessButton" class="mb-10">
                 <div class="absolute bottom-8">
-                    <button @click="seeLess" class=" px-3 py-3 border-2 border-black text-black  rounded-md hover:bg-black hover:text-white transition-colors duration-300 text-nowrap text-xs">
-                            <span>See Less</span>
-                        </button>
+                    <button @click="seeLess"
+                        class=" px-3 py-3 border-2 border-black text-black  rounded-md hover:bg-black hover:text-white transition-colors duration-300 text-nowrap text-xs">
+                        <span>See Less</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -341,109 +372,181 @@
 
 
 <style scoped>
-
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
 </style>
 
-
 <script>
-    import ContentCarousel from '@/components/ToStayCarousel.vue';
-    import MapRenderer from "@/components/MapRenderer.vue";
-    export default {
-        props: {
-            latitude: Number,
-            longitude: Number,
-            name: String
-        },
-        components: {
-            ContentCarousel,
-            MapRenderer
-           
-        },
-        mounted() {
-            // Get today's date
-            const today = new Date().toISOString().split('T')[0];
-            // Set the min attribute of the date input to today's date
-            document.getElementById("selectedDate").setAttribute("min", today);
-        },
-        data() {
-            return {
-                items: [{
-                        name: 'Juan Dela Cruz',
-                        description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                        date: 'December 2023',
-                    },
-                    {
-                        name: 'Luis Paolo',
-                        description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                        date: 'December 2023',
-                    },
-                    {
-                        name: 'Luis Paolo',
-                        description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                        date: 'December 2023',
-                    },
-                    {
-                        name: 'Juan Dela Cruz',
-                        description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                        date: 'December 2023',
-                    },
-                    {
-                        name: 'Juan Dela Cruz',
-                        description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                        date: 'December 2023',
-                    },
-                    {
-                        name: 'Luis Paolo',
-                        description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                        date: 'December 2023',
-                    },
-                    {
-                        name: 'Luis Paolo',
-                        description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                        date: 'December 2023',
-                    },
-                    {
-                        name: 'Juan Dela Cruz',
-                        description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                        date: 'December 2023',
-                    },
+import ContentCarousel from '@/components/ToStayCarousel.vue';
+import MapRenderer from "@/components/MapRenderer.vue";
+export default {
+    props: {
+        latitude: Number,
+        longitude: Number,
+        name: String
+    },
+    components: {
+        ContentCarousel,
+        MapRenderer
+
+    },
+    mounted() {
+        // Get today's date
+        const today = new Date().toISOString().split('T')[0];
+        // Set the min attribute of the date input to today's date
+        document.getElementById("selectedDate").setAttribute("min", today);
+    },
+    data() {
+        return {
+            services: ['Gym', 'Free Parking', 'Pet Space', 'Free WIFI', 'Air conditioned'],
+            selectedServices: [],
+            isDropdownOpen: false,
+            items: [{
+                name: 'Juan Dela Cruz',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                date: 'December 2023',
+            },
+            {
+                name: 'Luis Paolo',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                date: 'December 2023',
+            },
+            {
+                name: 'Luis Paolo',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                date: 'December 2023',
+            },
+            {
+                name: 'Juan Dela Cruz',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                date: 'December 2023',
+            },
+            {
+                name: 'Juan Dela Cruz',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                date: 'December 2023',
+            },
+            {
+                name: 'Luis Paolo',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                date: 'December 2023',
+            },
+            {
+                name: 'Luis Paolo',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                date: 'December 2023',
+            },
+            {
+                name: 'Juan Dela Cruz',
+                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                date: 'December 2023',
+            },
+            ],
+            roomTypes: ['Regular room', 'Double room', 'Suite room', 'Deluxe room', 'Double Deluxe room'],
+            selectedRoom: null,
+            roomImages: {
+                'Regular room': [
+                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom1.jpg',
+                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom2.jpg',
+                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom3.jpg'
                 ],
-                currentPage: 0,
-                pageSize: 8,
-                showDropdown: false,
-                numFeedbackShown: 0,
-                showSeeLessButton: false,
-                categories: ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'],
-                locations: ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'],
-            };
-        },
-        computed: {
-            paginatedItems() {
-                // Return first 2 items initially and add additional items based on numFeedbackShown
-                return this.items.slice(0, 2 + this.numFeedbackShown);
+                'Double room': [
+                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom1.jpg',
+                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom2.jpg',
+                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom3.jpg'
+                ],
+                'Suite room': [
+                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom1.jpg',
+                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom2.jpg',
+                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom3.jpg'
+                ],
+                'Deluxe room': [
+                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom1.jpg',
+                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom2.jpg',
+                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom3.jpg'
+                ],
+                'Double Deluxe room': [
+                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom1.jpg',
+                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom2.jpg',
+                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom3.jpg'
+                ]
             },
-            // Check if there are more feedback items to show
-            showSeeMoreButton() {
-                return this.numFeedbackShown < this.items.length - 2;
-            }
+            dragging: false,
+            startX: 0,
+            scrollLeft: 0,
+            selectedRoomType: "",
+            currentPage: 0,
+            pageSize: 8,
+            showDropdown: false,
+            numFeedbackShown: 0,
+            showSeeLessButton: false,
+            categories: ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'],
+            locations: ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'],
+        };
+    },
+    computed: {
+        selectedRoomImages() {
+            return this.roomImages[this.selectedRoom] || [];
         },
-        methods: {
-            // Method to handle "See More" button click
-            seeMore() {
-                // Increment the number of feedback items to show
-                this.numFeedbackShown += 2; // Change this value as per your requirement
-                // Show See Less button if all items are shown
-                if (!this.showSeeMoreButton) {
-                    this.showSeeLessButton = true;
-                }
-            },
-            // Method to handle "See Less" button click
-            seeLess() {
-                // Reset the number of feedback items shown to initial value
-                this.numFeedbackShown = 0;
-                // Hide See Less button
-                this.showSeeLessButton = false;
+        paginatedItems() {
+            // Return first 2 items initially and add additional items based on numFeedbackShown
+            return this.items.slice(0, 2 + this.numFeedbackShown);
+        },
+        // Check if there are more feedback items to show
+        showSeeMoreButton() {
+            return this.numFeedbackShown < this.items.length - 2;
+        }
+    },
+    methods: {
+        closeImagePreview(event) {
+            if (!event.target.closest('.p-10')) {
+                console.log('Clicked outside preview, closing...');
+                this.selectedRoom = null;
+            } else {
+                console.log('Clicked inside preview, not closing...');
             }
         }
-    };
+        ,
+        showRoomPreview(room) {
+            this.selectedRoom = room;
+        },
+        startDrag(e) {
+            this.dragging = true;
+            this.startX = e.pageX - this.$refs.container.offsetLeft;
+            this.scrollLeft = this.$refs.container.scrollLeft;
+        },
+        drag(e) {
+            if (!this.dragging) return;
+            const x = e.pageX - this.$refs.container.offsetLeft;
+            const walk = (x - this.startX) * 2;
+            this.$refs.container.scrollLeft = this.scrollLeft - walk;
+        },
+        endDrag() {
+            this.dragging = false;
+        },
+        dragStart(event) {
+            event.preventDefault();
+        },
+        toggleDropdown() {
+            this.isDropdownOpen = !this.isDropdownOpen;
+        },
+        // Method to handle "See More" button click
+        seeMore() {
+            // Increment the number of feedback items to show
+            this.numFeedbackShown += 2; // Change this value as per your requirement
+            // Show See Less button if all items are shown
+            if (!this.showSeeMoreButton) {
+                this.showSeeLessButton = true;
+            }
+        },
+        // Method to handle "See Less" button click
+        seeLess() {
+            // Reset the number of feedback items shown to initial value
+            this.numFeedbackShown = 0;
+            // Hide See Less button
+            this.showSeeLessButton = false;
+        }
+    }
+};
 </script>

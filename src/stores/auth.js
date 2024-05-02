@@ -1,7 +1,7 @@
 // auth.js
 import { defineStore } from 'pinia';
 import { useRouter } from 'vue-router'; // Import useRouter from Vue Router
-
+import axios from 'axios';
 export const useAuthStore = defineStore({
   id: 'auth',
   state: () => ({
@@ -10,28 +10,30 @@ export const useAuthStore = defineStore({
     intendedRoute: '/', 
   }),
   actions: {
-    login(credentials, intendedRoute) {
-      const router = useRouter(); // Initialize router
-
-      // In a real-world scenario, you would typically perform authentication logic here
-      // For demonstration purposes, let's just check if the provided credentials are valid
-      if (credentials.username === 'admin' && credentials.password === 'password') {
-        this.isAuthenticated = true;
-        this.user = { username: credentials.username };
-        // Store authentication information in local storage
-        localStorage.setItem('auth', JSON.stringify({ isAuthenticated: true, user: this.user }));
-
-          // Redirect to the intended route if provided chceck if defined or may laman ung intended route
+    async login(credentials, intendedRoute) {
+      const router = useRouter();
+    
+      try {
+        const response = await axios.post('/loginTourist', credentials);
+        if (response.data.message === 'correct') {
+          this.isAuthenticated = true;
+          this.user = response.data.user;
+          localStorage.setItem('auth', JSON.stringify({ isAuthenticated: true, user: this.user, token: response.data.token }));
+    
+          
           if (intendedRoute && router) {
-            // Use router.push() to navigate programmatically
             router.push(intendedRoute);
           }
-
-        return true; // Authentication successful
-      } else {
-        return false; // Authentication failed
+          return true;
+        } else {
+          return false; 
+        }
+      } catch (error) {
+        console.error('Authentication error:', error);
+        return false;
       }
     },
+    
     
     logout() {
       // Remove authentication information from local storage
@@ -47,10 +49,12 @@ export const useAuthStore = defineStore({
       // Check if there's any stored authentication information
       const authInfo = localStorage.getItem('auth');
       if (authInfo) {
-        const { isAuthenticated, user } = JSON.parse(authInfo);
+        const { isAuthenticated, user, token } = JSON.parse(authInfo);
         this.isAuthenticated = isAuthenticated;
         this.user = user;
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`; // Set token for all future Axios requests
       }
     },
+    
   },
 });

@@ -1190,7 +1190,7 @@ import {
     RouterLink
 } from 'vue-router';
 import {
-    isMemoSame,
+   // isMemoSame,
     ref
 } from 'vue'
 import {
@@ -1750,7 +1750,7 @@ export default {
             formData.append('password', this.password);
 
  
-            const response = await axios.post('/signupTourist', formData);
+            const response = await axios.post('http://makatiapi.simplevia.com/api/signupTourist', formData);
                 if (response.data.success) {
                     Swal.fire({
                         title: 'Success!',

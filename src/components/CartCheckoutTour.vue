@@ -63,11 +63,35 @@
                             </div>
                             <div class="hidden lg:block">
                                 <p class="font-bold text-3xl mb-4">Payment</p>
-                                <div class="border border-gray-200 py-5 pl-6">
-                                    <input type="radio" id="payment_ibayad" name="payment_method" value="ibayad"
-                                        class="mr-2" checked>
-                                    <label for="payment_ibayad">Ibayad</label>
+                                <div class="flex border rounded p-8 h-24"
+                                    :class="{ 'bg-blue-100': selectedPaymentMethod === 'ibayad' }">
+                                    <div class="flex items-center pr-3">
+                                        <input id="payment_ibayad" aria-describedby="helper-radio-text" type="radio"
+                                            value="ibayad" @click="toggleIbayad"
+                                            class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                            v-model="selectedPaymentMethod">
+                                    </div>
+                                    <div class="ms-2 text-sm">
+                                        <label for="payment_ibayad" class="font-semibold text-xl text-gray-700">
+                                            Ibayad</label>
+                                    </div>
                                 </div>
+                                <div class="mt-2 flex border rounded p-4 h-24"
+                                    :class="{ 'bg-blue-100': selectedPaymentMethod === 'cod' }">
+                                    <div class="flex items-center pr-3">
+                                        <input id="payment_cod" name="payment_method" value="cod" @click="toggleCOD"
+                                            class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                            type="radio" v-model="selectedPaymentMethod">
+                                    </div>
+                                    <div class="ms-2 text-sm">
+                                        <label for="payment_cod" class="font-semibold text-l text-gray-700">
+                                            Cash On Delivery</label>
+                                        <p class="mt-2 font-bold text">Pay By Cash</p>
+                                        <p class="text-s">Pay Cash Upon Delivery</p>
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
@@ -221,22 +245,31 @@
                     </div>
                     <div class="mt-[0rem] w-full h-full p-8">
                         <div className="grid grid-cols-1 grid-rows-4 gap-0">
-                            <div class="flex border rounded p-8 h-24" @click="activateRadioButton('gcash')">
+                            <div class="flex border rounded p-8 h-24" @click="selectedPaymentMethod = 'gcash'"
+                                :class="{ 'bg-blue-100': selectedPaymentMethod === 'gcash' }">
                                 <div class="flex items-center pr-3">
-                                    <input id="gcash" aria-describedby="helper-radio-text" type="radio" value="gcash"
-                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <input id="gcash" aria-describedby="helper-radio-text" type="radio" value="ibayad"
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                        v-model="selectedPaymentMethod">
                                 </div>
                                 <div class="ms-2 text-sm">
                                     <label for="helper-radio" class="font-semibold text-xl text-gray-700">
                                         Ibayad</label>
                                 </div>
                             </div>
-                            <div class="flex pt-4">
-                                <img src="@/assets/images/Modal/voucher.svg" class="mb-6 w-6 h-6">
-                                <button
-                                    class="text-xs font-semibold cursor-pointer dark:text-gray-300 text-blue-500 -mt-12 pl-2">
-                                    Use
-                                    voucher</button>
+                            <div class="mt-2 flex border rounded p-4 h-24" @click="selectedPaymentMethod = 'ibayad'"
+                                :class="{ 'bg-blue-100': selectedPaymentMethod === 'ibayad' }">
+                                <div class="flex items-center pr-3">
+                                    <input id="payment_ibayad" name="payment_method" value="cod"
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                        type="radio" v-model="selectedPaymentMethod">
+                                </div>
+                                <div class="ms-2 text-sm">
+                                    <label for="payment_ibayad" class="font-semibold text-xl text-gray-700">
+                                        Cash On Delivery</label>
+                                    <p class="mt-2 font-bold text">Pay By Cash</p>
+                                    <p class="text-m">Pay Cash Upon Delivery</p>
+                                </div>
                             </div>
                         </div>
                         <div class="justify-center pt-3">
@@ -333,6 +366,7 @@
 export default {
     data() {
         return {
+            selectedPaymentMethod: null,
             tours: [{
                 image: "src/assets/images/CategoryView/ToStay/book.png",
                 name: "Central Business District Tour",
@@ -428,9 +462,17 @@ export default {
             this.showConfirmation = true;
             this.showInformation = false;
         },
+        isPaymentMethodSelected(paymentMethod) {
+            return this.selectedPaymentMethod === paymentMethod;
+        },
         toggleComplete() {
-            this.showComplete = !this.showComplete;
+            console.log("toggleComplete() method called.");
+            if (!this.selectedPaymentMethod) {
+                alert("Please select a payment method before confirming booking.");
+                return;
+            }
             this.showConfirmation = false;
+            this.showComplete = !this.showComplete;
         },
         closeModal() {
             this.showInformation = false;
@@ -464,7 +506,6 @@ export default {
                 this.showPayment = true;
                 this.navButtonText = 'Request to Order';
             } else {
-
                 this.$router.go(-1);
             }
         },

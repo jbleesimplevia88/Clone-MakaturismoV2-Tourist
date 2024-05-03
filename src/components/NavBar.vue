@@ -1071,6 +1071,7 @@
             </div>
         </div>
 
+    
     <div v-if="isCategoryPath($route.path)" class="hidden lg:inset-x-0 lg:bottom-0 lg:grid lg:grid-cols-6 lg:pl-20 lg:pr-20 lg:pt-2 lg:pb-2 lg:justify-center lg:text-black lg:bg-white lg:border-t  max-w-full">
         <!-- Location 1 -->
         <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center rounded-l-lg" :class="['location-card', locations[0].attrib, { 'active-effect': isActive(locations[0].link) }]">
@@ -1078,9 +1079,11 @@
                 <!-- Adjust height as needed -->
                 <div class="flex items-center justify-center h-10 max-w-full max-h-full">
                     <img :src="locations[0].imgSrc" :alt="locations[0].alt" class="p-[26px] max-w-full max-h-[230px]">
+                    <img :src="locations[0].imgSrc" :alt="locations[0].alt" class="p-[26px] max-w-full max-h-[230px]">
                     <!-- Adjust height as needed -->
                     <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden " style="margin: 0;">{{
             locations[0].mobile }}</span>
+                    <span class="font-bold text-1xl lg:-ml-5">{{ locations[0].mobile }}</span>
                     <span class="font-bold text-1xl lg:-ml-5">{{ locations[0].mobile }}</span>
                 </div>
             </RouterLink>
@@ -1092,9 +1095,11 @@
                 <!-- Adjust height as needed -->
                 <div class="flex items-center justify-center h-10">
                     <img :src="locations[1].imgSrc" :alt="locations[1].alt" class="p-[26px] max-w-full max-h-[180px]">
+                    <img :src="locations[1].imgSrc" :alt="locations[1].alt" class="p-[26px] max-w-full max-h-[180px]">
                     <!-- Adjust height as needed -->
                     <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
             locations[1].mobile }}</span>
+                    <span class="font-bold text-1xl lg:-ml-2">{{ locations[1].mobile }}</span>
                     <span class="font-bold text-1xl lg:-ml-2">{{ locations[1].mobile }}</span>
                 </div>
             </RouterLink>
@@ -1106,9 +1111,11 @@
                 <!-- Adjust height as needed -->
                 <div class="flex items-center justify-center h-10">
                     <img :src="locations[2].imgSrc" :alt="locations[2].alt" class="p-[26px] max-w-full max-h-[200px]">
+                    <img :src="locations[2].imgSrc" :alt="locations[2].alt" class="p-[26px] max-w-full max-h-[200px]">
                     <!-- Adjust height as needed -->
                     <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
             locations[2].mobile }}</span>
+                    <span class="font-bold text-1xl lg:-ml-4">{{ locations[2].mobile }}</span>
                     <span class="font-bold text-1xl lg:-ml-4">{{ locations[2].mobile }}</span>
                 </div>
             </RouterLink>
@@ -1120,9 +1127,11 @@
                 <!-- Adjust height as needed -->
                 <div class="flex items-center justify-center h-10">
                     <img :src="locations[3].imgSrc" :alt="locations[3].alt" class="p-[26px] max-w-full max-h-[200px]">
+                    <img :src="locations[3].imgSrc" :alt="locations[3].alt" class="p-[26px] max-w-full max-h-[200px]">
                     <!-- Adjust height as needed -->
                     <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
             locations[3].mobile }}</span>
+                    <span class="font-bold text-1xl lg:-ml-4">{{ locations[3].mobile }}</span>
                     <span class="font-bold text-1xl lg:-ml-4">{{ locations[3].mobile }}</span>
                 </div>
             </RouterLink>
@@ -1134,9 +1143,11 @@
                 <!-- Adjust height as needed -->
                 <div class="flex items-center justify-center h-10">
                     <img :src="locations[4].imgSrc" :alt="locations[4].alt" class="p-[26px] max-w-full max-h-[190px]">
+                    <img :src="locations[4].imgSrc" :alt="locations[4].alt" class="p-[26px] max-w-full max-h-[190px]">
                     <!-- Adjust height as needed -->
                     <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
             locations[4].mobile }}</span>
+                    <span class="font-bold text-1xl lg:-ml-4">{{ locations[4].mobile }}</span>
                     <span class="font-bold text-1xl lg:-ml-4">{{ locations[4].mobile }}</span>
                 </div>
             </RouterLink>
@@ -1148,9 +1159,11 @@
                 <!-- Adjust height as needed -->
                 <div class="flex items-center justify-center h-10">
                     <img :src="locations[5].imgSrc" :alt="locations[5].alt" class="p-[26px] max-w-full max-h-[210px]">
+                    <img :src="locations[5].imgSrc" :alt="locations[5].alt" class="p-[26px] max-w-full max-h-[210px]">
                     <!-- Adjust height as needed -->
                     <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
             locations[5].mobile }}</span>
+                    <span class="font-bold text-1x lg:-ml-4">{{ locations[5].mobile }}</span>
                     <span class="font-bold text-1x lg:-ml-4">{{ locations[5].mobile }}</span>
                 </div>
             </RouterLink>

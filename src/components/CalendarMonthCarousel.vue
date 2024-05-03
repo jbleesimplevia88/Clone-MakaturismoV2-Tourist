@@ -12,6 +12,8 @@
               style="background: linear-gradient(to bottom, transparent, #102E61 100%, #102E61 90%); height: 120px;">
               <!-- Name -->
               <h1 class="absolute right-0 font-bold text-xl bottom-14 left-5 mb-5">{{ slide.name }}</h1>
+
+              <h1 class="flex-end absolute right-0 font-bold text-xl mb-5 pr-5 pt-3">{{ slide.date }}</h1>
               <!-- Location -->
               <div class="flex items-center  location-info">
                 <img class="absolute right-0 text-xl bottom-9 left-5"
@@ -52,16 +54,16 @@ export default {
   data() {
     return {
       slides: [
-        { imgSrc: card1, name: "Glorietta", location: "Glorietta, Ayala Center, Makati City", link: "/category/see/glorietta" },
-        { imgSrc: card2, name: "Ayala Museum", location: "3rd flr,Circuit Lane, AP Reyes St., Makati, Metro Manila", link: "" },
-        { imgSrc: card3, name: "Greenbelt", location: "Esperanza St. corner Makati Ave., Ayala Center, Makati, Metro Manila", link: "" },
-        { imgSrc: card4, name: "Poblacion", location: "Poblacion 1210, Makati, Metro Manila", link: "" },
-        { imgSrc: card5, name: "Ayala Triangle", location: "Paseo De Roxas St Cor Makati Ave, Cor Ayala Ave, Makati, 1209 Metro Manila", link: "" },
-        { imgSrc: card6, name: "Guadalupe Church", location: "Guadalupe Commerical Complex, Makati, Metro Manila", link: "" },
-        { imgSrc: card7, name: "Salcedo Saturday Market", location: "Salcedo Village, Jaime C. Velasquez Park, Makati, Metro Manila", link: "" },
-        { imgSrc: card8, name: "Washington Sycip Park", location: "Legazpi Street, Legazpi Village, Makati, 1229 Metro Maynila", link: "" },
-        { imgSrc: card9, name: "New World Makati ", location: "Esperanza STreet corner Makati Avenue, Ayala Center, Makati, Metro Manila", link: "" },
-        { imgSrc: card10, name: "Makati Diamond Residences", location: "118 Legazpi Street, Legazpi Village, Makati, Metro Manila", link: "" },
+        { imgSrc: card1, name: "Glorietta", date:"01 April, '24", location: "Glorietta, Ayala Center, Makati City", link: "/category/see/glorietta" },
+        { imgSrc: card2, name: "Ayala Museum", date:"01 April, '24", location: "3rd flr,Circuit Lane, AP Reyes St., Makati, Metro Manila", link: "" },
+        { imgSrc: card3, name: "Greenbelt", date:"01 April, '24", location: "Esperanza St. corner Makati Ave., Ayala Center, Makati, Metro Manila", link: "" },
+        { imgSrc: card4, name: "Poblacion", date:"01 April, '24", location: "Poblacion 1210, Makati, Metro Manila", link: "" },
+        { imgSrc: card5, name: "Ayala Triangle", date:"01 April, '24", location: "Paseo De Roxas St Cor Makati Ave, Cor Ayala Ave, Makati, 1209 Metro Manila", link: "" },
+        { imgSrc: card6, name: "Guadalupe Church", date:"01 April, '24", location: "Guadalupe Commerical Complex, Makati, Metro Manila", link: "" },
+        { imgSrc: card7, name: "Salcedo Saturday Market", date:"01 April, '24", location: "Salcedo Village, Jaime C. Velasquez Park, Makati, Metro Manila", link: "" },
+        { imgSrc: card8, name: "Washington Sycip Park", date:"01 April, '24", location: "Legazpi Street, Legazpi Village, Makati, 1229 Metro Maynila", link: "" },
+        { imgSrc: card9, name: "New World Makati ", date:"01 April, '24", location: "Esperanza STreet corner Makati Avenue, Ayala Center, Makati, Metro Manila", link: "" },
+        { imgSrc: card10, name: "Makati Diamond Residences", date:"01 April, '24", location: "118 Legazpi Street, Legazpi Village, Makati, Metro Manila", link: "" },
       ],
       isMobile: window.innerWidth <= 768, // Adjust the breakpoint as needed
     };

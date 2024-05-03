@@ -1,13 +1,13 @@
 import { defineStore } from 'pinia';
 
-export const useCartStore = defineStore({
-    id: 'cartShop',
+export const useCartStoreEat = defineStore({
+    id: 'cartEat',
     state: () => ({
         cart: [],
         editCartProducts: [], 
         buyNowProducts: [], 
     }),
-
+ 
     actions: {
       addToCart(product) {
         const existingProductIndex = this.cart.findIndex(item => item.title === product.title);

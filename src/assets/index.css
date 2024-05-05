@@ -1,0 +1,12 @@
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Inter', sans-serif; /* Default font */
+  }
+  
+.poppins {
+    font-family: 'Poppins', sans-serif; /* Use Poppins for elements with class "poppins" */
+  }

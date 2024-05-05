@@ -422,7 +422,7 @@
                             </div>
                         </div>
 
-                        <div class="hidden lg:block lg:flex items-center justify-between mb-4">
+                        <div class="hidden lg:flex items-center justify-between mb-4">
                             <p class="text-xs">Don't have an account? <button @click="openPrivacyModal"
                                     class="text-xs font-bold text-blue-600">Sign Up</button></p>
                             <button @click="openForgotModal" class="text-xs text-blue-600 font-bold">Forgot

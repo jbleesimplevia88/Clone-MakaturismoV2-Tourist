@@ -14,22 +14,27 @@ export const useAuthStore = defineStore({
       const router = useRouter();
     
       try {
-        const response = await axios.post('/loginTourist', credentials);
+        const response = await axios.post('http://makatiapi.simplevia.com/api/loginTourist', credentials);
         if (response.data.message === 'correct') {
           this.isAuthenticated = true;
           this.user = response.data.user;
           localStorage.setItem('auth', JSON.stringify({ isAuthenticated: true, user: this.user, token: response.data.token }));
     
-          
           if (intendedRoute && router) {
             router.push(intendedRoute);
           }
           return true;
         } else {
+          // Handle other response messages if needed
           return false; 
         }
       } catch (error) {
-        console.error('Authentication error:', error);
+        if (error.response && error.response.status === 401) {
+          // Unauthorized, handle accordingly
+          console.error('Authentication failed: Unauthorized');
+        } else {
+          console.error('Authentication error:', error);
+        }
         return false;
       }
     },

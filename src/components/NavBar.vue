@@ -759,10 +759,15 @@
                             <p class=" text-xs">By using MAKATURISMO, you signify your agreement to <button
                                     @click="openTermsModal" class="text-xs font-bold text-blue-600">Terms and
                                     Conditions</button></p>
+                                    <div>
+                            <span v-if="signupError" class="text-red-500 text-xs">{{ signupError }}</span>
+                        </div>
                             <button type="submit"
                                 class="w-full lg:w-[10rem] font-bold mt-3 px-4 py-3 text-white disabled:bg-blue-400 bg-blue-600 rounded-md"
-                                :disabled="!isSignupFormValid" @click="signup">Sign Up</button>
+                                :disabled="!isSignupFormValid">Sign Up</button>
                         </div>
+
+                    
                     </form>
                 </div>
             </div>
@@ -985,7 +990,39 @@
             </div>
 
         </div>
+<!-- thank you modal -->
+<div v-if="showApproval" class="fixed inset-0 z-[10] flex items-center justify-center bg-gray-800 bg-opacity-30"
+                @click="closeApproval">
+                <!-- Modal Content -->
+                <div class="relative bg-white px-5 pb-7 shadow-xl mx-auto w-full max-w-xl rounded-2xl">
+                    <div class="mx-auto flex w-full max-w-xl flex-col">
+                        <div class="flex justify-center pt-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="#4BAA7C" class="w-[6rem] h-[6rem]">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
+                        </div>
+                        <div class="flex flex-col items-center justify-center text-center pt-3">
+                            <div class="font-semibold text-2xl text-gray-600">
+                                <p>Account for Approval</p>
+                            </div>
+                            <div class="flex flex-row text-lg font-medium text-gray-600 pb-12">
+                                <p>Thank you for registering with us using your email address!
+                                   Kindly check your email address to verify your account</p>
+                            </div>
+                        </div>
 
+                        <div class="flex justify-center">
+                            <button class="p-3 w-[92%] text-white text-xl bg-[#2969D6] rounded-lg border border-gray-500" @click="closeApproval">
+                                Okay
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           <!--  end of modal -->
         <!-- OTP -->
         <div v-if="showOTPModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
             <!-- Modal Content -->
@@ -1190,7 +1227,7 @@ import {
     RouterLink
 } from 'vue-router';
 import {
-    isMemoSame,
+   // isMemoSame,
     ref
 } from 'vue'
 import {
@@ -1206,6 +1243,7 @@ import grocery from '@/assets/images/MainNav/grocery-store.png';
 import locationImg from '@/assets/images/MainNav/location.png';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+
 
 export default {
     name: 'NavBar',
@@ -1249,12 +1287,12 @@ export default {
             rePassword: '',
             otpEmail: '',
             otpEmailError: '',
-
+            error:{ signup: ''},
             checkboxChecked: false,
             showPassword: false,
             showCPassword: false,
             passwordPolicy: [],
-
+            signupError: '',
             usernameError: '',
             lpasswordError: '',
             fnameError: '',
@@ -1710,7 +1748,10 @@ export default {
                 this.passwordPolicy.push('Password must not contain spaces');
             }
         },
-
+        closeApproval()
+        {
+            this.showApproval = false;
+        },
         validateForm() {
             // Validate fields only if the signup button is clicked
             if (this.signupClicked) {
@@ -1726,52 +1767,66 @@ export default {
         },
 
         async signup() {
-            this.signupClicked = true;
-            this.validateForm();
+    this.signupClicked = true;
 
-            if (!this.isSignupFormValid) {
-                Swal.fire({
-                    title: 'Invalid Form',
-                    text: 'Please check your entries and try again.',
-                    icon: 'warning',
-                    confirmButtonText: 'OK'
-                });
-                return;
+    // Validate the form fields
+    await this.validateForm();
+
+    // Check if the form is valid
+    if (!this.isSignupFormValid) {
+        // If the form is not valid, do not proceed with signup
+        return;
+    }
+
+    // Extract form data
+    const firstname = this.fname;
+    const lastname = this.lastname;
+    const email = this.email;
+    const contact = this.pnum;
+    const mi = this.mname;
+    const national = this.nationality;
+    const gender = this.gender;
+    const password = this.password;
+
+    const touristreg = { firstname, lastname, email, contact, mi, national, gender, password };
+
+    try {
+        // Make signup request to the server
+        const signupRes = await fetch("http://makatiapi.simplevia.com/api/signupTourist", {
+            method: 'POST',
+            body: JSON.stringify(touristreg),
+            headers: {
+                "Content-Type": 'application/json',
+                "Accept": 'application/json'
             }
+        });
 
-            const formData = new FormData();
-            formData.append('firstname', this.fname);
-            formData.append('lastname', this.lastname);
-            formData.append('mi', this.mname);
-            formData.append('email', this.email);
-            formData.append('contact', this.pnum);
-            formData.append('national', this.nationality);
-            formData.append('gender', this.gender);
-            formData.append('password', this.password);
+        if (signupRes.ok) {
+            // Signup successful
+           
+            this.showApproval = true;
+            this.showLoginModal = false;
+            this.showPrivacyModal = false;
+            this.showSignUpModal = false;
+        } else {
+            // Signup failed
+            const errorData = await signupRes.json();
+            if (errorData && errorData.message) {
+                // Display the error message
+                this.signupError = errorData.message;
+            } else {
+                this.signupError = 'An unexpected error occurred. Please try again later.';
+            }
+        }
+    } catch (error) {
+        console.error(error);
+        this.signupError = 'An unexpected error occurred. Please try again later.';
+    }
+},
 
- 
-            const response = await axios.post('/signupTourist', formData);
-                if (response.data.success) {
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Your account has been created successfully.',
-                        icon: 'success',
-                        confirmButtonText: 'OK'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            this.$router.push('/dashboard');
-                        }
-                    });
-                } else {
-                    Swal.fire({
-                        title: 'Signup Failed',
-                        text: response.data.message,
-                        icon: 'error',
-                        confirmButtonText: 'OK'
-                    });
-                }
-            
-        },
+
+
+
 
 
         // END OF SIGNUP VALIDATION

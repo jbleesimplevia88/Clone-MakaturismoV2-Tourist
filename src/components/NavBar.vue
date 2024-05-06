@@ -996,7 +996,7 @@
 
         </div>
 <!-- thank you modal -->
-<div v-if="showApproval" class="fixed inset-0 z-[10] flex items-center justify-center bg-gray-800 bg-opacity-30"
+<div v-if="showApprcoval" class="fixed inset-0 z-[10] flex items-center justify-center bg-gray-800 bg-opacity-30"
                 @click="closeApproval">
                 <!-- Modal Content -->
                 <div class="relative bg-white px-5 pb-7 shadow-xl mx-auto w-full max-w-xl rounded-2xl">

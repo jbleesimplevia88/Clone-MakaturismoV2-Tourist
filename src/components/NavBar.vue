@@ -1023,90 +1023,138 @@
             </div>
 
            <!--  end of modal -->
+
+
+           
         <!-- OTP -->
-        <div v-if="showOTPModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-            <!-- Modal Content -->
-            <div class="relative flex justify-end">
-                <button class="absolute pr-4 pt-4 ">
-                    <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke-width="5" stroke="black" class="w-7 h-7">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
+        <div v-if="showOTPModal" class=" fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+      <div class="relative bg-white lg:w-[70vw] w-[90vw] h-[30rem] rounded-3xl">
+        <img src="@/assets/images/Modal/Intersect.png" alt="" class="w-full absolute rounded-t-xl">
 
-            <div class="relative bg-white px-6 pb-9 shadow-xl mx-auto lg:w-full w-[90vw] h-fit max-w-3xl rounded-2xl">
-                <div class="mx-auto flex w-full max-w-3xl flex-col">
-                    <button class="relative flex pr-4 pt-10 justify-end">
-                        <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="5" stroke="black" class="w-7 h-7">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                    <div class="flex flex-col items-center justify-center text-center pt-5">
-                        <div class="font-semibold text-3xl">
-                            <p>Enter One-Time Password to verify your account</p>
-                        </div>
-                        <div class="flex flex-row text-lg font-medium text-black pb-8">
-                            <p>An OTP has been sent to your email for changing your password</p>
-                        </div>
-                    </div>
-                    <div>
-                        <form action="" method="post">
-                            <div class="flex flex-col space-y-10">
-                                <div class="flex flex-row items-center justify-center lg:gap-5 mx-auto w-full max-w-md">
-                                    <div class="w-[3rem] h-[5rem] outline outline-2 ">
-                                        <input
-                                            class=" w-full h-full flex flex-col items-center justify-center text-center outline-none border border-gray-200 text-3xl bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
-                                            type="text" name="" id="" placeholder="*">
-                                    </div>
-                                    <div class="w-[3rem] h-[5rem] outline outline-2">
-                                        <input
-                                            class="w-full h-full flex flex-col items-center justify-center text-center outline-none border border-gray-200 text-3xl bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
-                                            type="text" name="" id="" placeholder="*">
-                                    </div>
-                                    <div class="w-[3rem] h-[5rem] outline outline-2">
-                                        <input
-                                            class="w-full h-full flex flex-col items-center justify-center text-center outline-none border border-gray-200 text-3xl bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
-                                            type="text" name="" id="" placeholder="*">
-                                    </div>
-                                    <div class="w-[3rem] h-[5rem] outline outline-2">
-                                        <input
-                                            class="w-full h-full flex flex-col items-center justify-center text-center outline-none border border-gray-200 text-3xl bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
-                                            type="text" name="" id="" placeholder="*">
-                                    </div>
-                                    <div class="w-[3rem] h-[5rem] outline outline-2">
-                                        <input
-                                            class="w-full h-full flex flex-col items-center justify-center text-center outline-none border border-gray-200 text-3xl bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
-                                            type="text" name="" id="" placeholder="*">
-                                    </div>
-                                    <div class="w-[3rem] h-[5rem] outline outline-2">
-                                        <input
-                                            class="w-full h-full flex flex-col items-center justify-center text-center outline-none rounded-xl border border-gray-200 text-3xl bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
-                                            type="text" name="" id="" placeholder="*">
-                                    </div>
-                                </div>
+        <!-- Modal Content -->
+        <div class="relative z-10 top-0 flex justify-end">
+          <button class="absolute  pr-4 pt-4">
+            <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="5"
+              stroke="black" class="w-7 h-7">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
 
-                                <div class="flex flex-col space-y-2 items-center justify-center w-full">
-                                    <button
-                                        class=" text-center lg:w-[24rem] w-full rounded-xl py-3 bg-blue-700 text-white"
-                                        @click="closeOTP">
-                                        Verify
-                                    </button>
+        <div class="relative z-5 flex flex-col items-start justify-center h-full lg:ml-12">
+          <form 
+            class="lg:w-[35%] lg:mt-[10%] mt-[20%] mx-8 lg:mx-0 flex flex-col justify-between h-full">
+            <div class="mb-5">
+              <div class="flex items-center mb-12 w-[50%]">
+                
+                <button @click="openLoginModal" class="hidden text-blue-600"><img src="@/assets/images/Modal/back.png"
+                    style="width: 20px; height: 20px;" alt="" class="my-2 mr-2"></button>
+                <h2 class="lg:text-4xl text-2xl font-bold lg:mb-[10%] mb-[18%]">Change Password</h2>
+              </div>
+             
+              <div class="relative mb-4 w-full md:w-365">
+            
+                <div class="relative">
+                    <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 right-0 mx-5 my-1 mt-3"
+                                    style="width: 15px;" alt="Username Icon" />
+                   <input type="password" id="newpass" name="newpass" v-model="forgotnewpass" placeholder="Enter new password"
+                   class="w-full h-8 py-5 pl-10 border border-black rounded-xl">
 
-                                    <div
-                                        class="flex flex-row items-center justify-center text-center text-sm text-black">
-                                        <p>Didn't receive code?</p> <a
-                                            class="flex flex-row items-center font-medium text-blue-600" href="http://"
-                                            target="_blank" rel="noopener noreferrer">Resend code</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+
+
+
+
+                   <div class="relative mb-4 mt-4 w-full md:w-365">
+            
+            <div class="relative">
+                <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 right-0 mx-5 my-1 mt-3"
+                                style="width: 15px;" alt="Username Icon" />
+                    <input type="password" id="confirmpass" name="confirmpass" v-model="forgotconfirmpass" placeholder="Confirm Password"
+                    class="w-full h-8 py-5 pl-10 border border-black rounded-xl">
+                                           
+                     <span v-if="error.matchpassword" class="text-red-500 text-xs">{{ error.matchpassword }}</span>
                 </div>
             </div>
+              </div>
+            </div>
+            </div>
+            <div class="flex items-center justify-center text-center mb-[10%]">
+             <!--  <button @click="openOTPModal" :disabled="!isForgotFormValid"
+                class="lg:w-fit w-full px-4 py-2 text-white disabled:bg-blue-400 bg-blue-600 rounded-lg">Receive OTP
+              </button> -->
+              <button @click="verifyOtp" :disabled="!isForgotFormValid"
+                class="lg:w-fit w-full px-4 py-2 text-white disabled:bg-blue-400 bg-blue-600 rounded-lg">Submit
+              </button>
+
+            </div>
+          </form>
         </div>
+      </div>
+
+
+
+      <div v-if="forgotnewpassword" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+      <!-- Modal Content -->
+      <div class="relative flex justify-end">
+        <button class="absolute pr-4 pt-4 ">
+          <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="5"
+            stroke="black" class="w-7 h-7">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="relative bg-white px-6 pb-9 shadow-xl mx-auto lg:w-full w-[90vw] h-fit max-w-3xl rounded-2xl">
+        <div class="mx-auto flex w-full max-w-3xl flex-col">
+          <button class="relative flex pr-4 pt-10 justify-end">
+            <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="5"
+              stroke="black" class="w-7 h-7">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <div class="flex flex-col items-center justify-center text-center pt-5">
+            <div class="font-semibold text-3xl">
+              <p>Enter Otp sent your email</p>
+            </div>
+            <div class="flex flex-row text-lg font-medium text-black pb-8">
+             
+               
+            </div>
+          </div>
+          <div>
+            <form action="" method="post">
+              <div class="flex flex-col space-y-10">
+                <div class="flex flex-row items-center justify-center lg:gap-5 mx-auto w-full max-w-md">
+                       <div class="w-[15rem] h-[3rem]" style="border-radius: 10px;">
+                            <input type="number" name="otpcode" id="otpcode" v-model="otpcode" @input="checkInput" /> 
+                        <!--   <input type="password" id="newpass" name="newpass" v-model="forgotnewpass" placeholder="Enter new password">
+                          <input type="password" id="confirmpass" name="confirmpass" v-model="forgotconfirmpass" placeholder="Confirm Password"> -->
+                       </div>
+
+                      
+                </div>
+
+
+
+                <div class="flex flex-col space-y-2 items-center justify-center w-full">
+                 
+                  <p v-if="error.forgot" class="text-red-500 text-xs">{{error.forgot}}</p>
+                  <button class=" text-center lg:w-[24rem] w-full rounded-xl py-3 bg-blue-700 text-white"
+                    @click="changePassword">
+                    Submit
+                  </button>
+
+                  
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    </div>
     <div v-if="isCategoryPath($route.path)" class="hidden lg:inset-x-0 lg:bottom-0 lg:grid lg:grid-cols-6 lg:pl-20 lg:pr-20 lg:pt-2 lg:pb-2 lg:justify-center lg:text-black lg:bg-white lg:border-t  max-w-full">
         <!-- Location 1 -->
         <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center rounded-l-lg" :class="['location-card', locations[0].attrib, { 'active-effect': isActive(locations[0].link) }]">
@@ -1272,6 +1320,7 @@ export default {
             showOTPModal: false,
             showPrivacyModal: false,
             showTermsModal: false,
+            
 
             fname: '',
             mname: '',
@@ -1309,6 +1358,7 @@ export default {
 
             imageUrl: imageUrl,
             imageUrl2: imageUrl2,
+            forgotnewpassword: false,
 
             nationalityOptions: [
                 "Afghan",
@@ -1748,7 +1798,7 @@ export default {
         },
         closeApproval()
         {
-            this.showApproval = false;
+            this.showApproval =  !this.showApproval;
         },
         validateForm() {
             // Validate fields only if the signup button is clicked
@@ -1942,7 +1992,90 @@ export default {
             // Example: this.$router.push('/dashboard');
             // Reset form fields and close modal
             this.showOtpModal = false;
-        }
+        },
+        recieveotp(e){
+      e.preventDefault();
+      this.error = [];
+
+        console.log(this.otpEmail);
+
+        const email = this.otpEmail;
+        let getEmail = {email};
+        axios.post('http://localhost:8000/api/sendotp', getEmail).then((response) => {
+         
+          console.log(response.data);
+            if(response.data.result == 'true'){
+              this.showOTPModal = true;
+            }else {
+              this.error.sendemail = 'Email doesnt match our records';
+            }
+        });
+    },
+    verifyOtp(e){
+
+      e.preventDefault();
+      this.error = [];
+    
+       const password = this.forgotnewpass;
+      const confirmpassword = this.forgotconfirmpass;
+      const email = this.otpEmail;
+      let getOtp = { email, password, confirmpassword};
+      axios.post('http://localhost:8000/api/verifyotp', getOtp).then((response) => {
+          console.log(response.data);
+        /*  console.log(response.data.message);
+          console.log(response.data.email);
+          console.log(response.data.verify);*/
+          if(response.data.otp){
+              this.forgotnewpassword = true;
+
+          }
+
+      }).catch((error) => {
+          console.log(error.response.data.message);
+          this.error.matchpassword = error.response.data.message;
+      });
+
+
+
+    },
+
+    changePassword(event){
+      event.preventDefault();
+
+      this.error = [];
+
+     // console.log(this.forgotnewpass);
+     // console.log(this.forgotconfirmpass);
+    const password = this.forgotnewpass;
+  
+      const email = this.otpEmail;
+       const otp = this.otpcode;
+
+     // console.log(email);
+      //const email = 'clemence@gmail.com';
+      let forgot = { email, otp, password };
+
+      console.log(forgot);
+      axios.post('http://localhost:8000/api/changepass', forgot).then((response) => {
+        console.log(response.data);
+        console.log(response.data.password);
+        console.log(response.data.message);
+      }).catch((error) => {
+        console.log(error);
+        console.log(error.response.data.message);
+       this.error.forgot = error.response.data.message;
+
+      });
+
+    },
+
+
+
+
+
+
+
+
     },
     setup() {
         const authStore = useAuthStore();

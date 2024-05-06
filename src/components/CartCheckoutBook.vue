@@ -32,6 +32,11 @@
                   <p class="font-normal mb-3 overflow-hidden whitespace-nowrap lg:overflow-visible lg:whitespace-normal"
                     style="text-overflow: ellipsis;">&#8226; Service 1</p>
                 </div>
+                <div class="flex lg:flex-col lg:items-start justify-start">
+                  <p class="mr-[46px] lg:mr-9 lg:mb-1 font-bold">Other Request</p>
+                  <p class="font-normal mb-3 overflow-hidden whitespace-nowrap lg:overflow-visible lg:whitespace-normal"
+                    style="text-overflow: ellipsis;">N/A</p>
+                </div>
               </div>
             </div>
             <!-- Information of user -->
@@ -168,9 +173,11 @@
                 <div class="flex items-center my-7  ">
                   <img src="@/assets/images/CategoryView/ToShop/voucher.png" class="lg:w-8 h-8 mr-2">
                   <button class="hidden lg:block text-white bg-blue-500 rounded-xl px-3 py-2 text-xs font-semibold"
-                  @click="toggleVoucherWeb(index)">Use Voucher</button>
+                    @click="toggleVoucherWeb">Use Voucher</button>
+
+
                   <button class="lg:hidden text-white bg-blue-500 rounded-xl px-3 py-2 text-xs font-semibold"
-                  @click="toggleVoucherWeb(index)">Use Voucher</button>
+                    @click="toggleVoucherWeb(index)">Use Voucher</button>
                 </div>
                 <div class="flex justify-between">
                   <!-- Change "Your Total (Php)" to "Subtotal" if a voucher is applied -->
@@ -577,7 +584,9 @@ export default {
     invalidVouchers() {
       return this.vouchers.filter(voucher => voucher.amount >= this.totalAmount);
     },
-
+    finalPrice() {
+      return this.totalAmount - this.discountPrice;
+    }
 
 
   },
@@ -616,15 +625,19 @@ export default {
         }
       }
     },
-    toggleVoucher(index) {
+    toggleVoucher(voucher) {
       this.toggleVoucherVisibility();
-      this.toggleVoucherApplied(index);
+      this.toggleVoucherApplied(voucher);
       this.updateDiscountPrice();
     },
-    toggleVoucherWeb(index) {
+    toggleVoucherWeb(voucher) {
       this.toggleSummaryVisibility();
-      this.toggleVoucherApplied(index);
+      this.toggleVoucherApplied(voucher);
       this.updateDiscountPrice();
+    },
+    toggleVoucherApplied(voucher) {
+      voucher.applied = !voucher.applied;
+      console.log(`Voucher applied state: ${voucher.applied}`);
     },
     toggleBack() {
       this.showSummary = true;
@@ -658,39 +671,17 @@ export default {
       this.navButtonText = this.showPayment ? 'Request to Order' : 'Payment';
     },
     updateDiscountPrice() {
-      // Check if stayXyzData is defined before accessing its properties
-      if (this.stayStore.stayXyzData) {
-        // Calculate the discountPrice based on applied vouchers
-        this.discountPrice = this.vouchers.reduce((total, v) => {
-          return v.applied ? total + v.amount : total;
-        }, 0);
-
-        // Update the label based on whether discountPrice is applied
-        this.displayTotalLabel = this.discountPrice ? 'Subtotal' : 'Your Total (Php)';
-
-        // Recalculate the finalPrice whenever discountPrice changes
-        this.finalPrice = parseFloat(this.stayStore.stayXyzData.roomTypePrice) - this.discountPrice;
-      } else {
-        console.error('stayXyzData is undefined. Cannot calculate discountPrice.');
-      }
-    }
-    ,
+      this.discountPrice = this.vouchers.reduce((total, v) => {
+        return v.applied ? total + v.amount : total;
+      }, 0);
+      this.displayTotalLabel = this.discountPrice ? 'Subtotal' : 'Your Total (Php)';
+    },
 
     toggleVoucherVisibility() {
       this.showVoucher = !this.showVoucher;
     },
     toggleSummaryVisibility() {
       this.showSummary = !this.showSummary;
-    },
-    toggleVoucherWeb(index) {
-      // Check if the index is valid
-      if (index >= 0 && index < this.vouchers.length) {
-        this.toggleSummaryVisibility();
-        this.toggleVoucherApplied(index);
-        this.updateDiscountPrice();
-      } else {
-        console.error(`Invalid voucher index ${index} for toggling voucher.`);
-      }
     },
 
     updatePaymentMethod() {

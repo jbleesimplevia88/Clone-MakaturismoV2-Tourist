@@ -1,5 +1,5 @@
 <template>
-    <div class="flex relative pt-[57px] md:pt-[80px] justify-center">
+    <div class="flex relative pt-[57px] md:pt-[80px] justify-center -z-50">
         <div class="relative">
             <div class="bg-[#102E61] h-[101%] lg:h-[105%]" style="position: absolute; top: 0; left: 0; width: 100%; ">
             </div>
@@ -21,16 +21,10 @@
                         </router-link>
                     </div>
                     <div class="relative flex flex-col items-center">
-                        <div class=" lg:pr-[7rem]">
+                        <div class=" lg:pr-[7rem] x">
                             <ContentCarousel :items="items" class="mb-10" />
                         </div>
-                        <!-- <div class="absolute bottom-2 right-[8rem] z-20 w-100">
-                                        <button class="hidden lg:block p-2 bg-white rounded-lg shadow outline outline-2 text-md">
-                                            <img src="@/assets/images/Content/9dots.png" alt="" class="w-10 h-10">
-                                            Show
-                                            All
-                                            Photos</button>
-                                    </div> -->
+
                     </div>
                     <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 lg:p-5 px-5 py-3 shadow-lg">
                         <div class="flex justify-between">
@@ -353,6 +347,7 @@
             </div>
         </div>
     </div>
+    <login-modal v-if="!authStore.isAuthenticated && showLoginModal" @close="showLoginModal = false"></login-modal>
 </template>
 
 
@@ -365,6 +360,8 @@
 <script>
 import ContentCarousel from '@/components/ToStayCarousel.vue';
 import MapRenderer from "@/components/MapRenderer.vue";
+import LoginModal from '@/components/LoginModal.vue';
+
 import {
     useStayStore
 } from '@/stores/toStayCart';
@@ -399,48 +396,49 @@ export default defineComponent({
         const showDropdown = ref(false);
         const numFeedbackShown = ref(0);
         const showSeeLessButton = ref(false);
+        const showLoginModal = ref(false);
         const isDropdownOpen = ref(false);
         const services = ['Gym', 'Free Parking', 'Pet Space', 'Free WIFI', 'Air conditioned'];
         const items = [{
-                name: 'Juan Dela Cruz',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                date: 'December 2023',
-            },
-            {
-                name: 'Luis Paolo',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                date: 'December 2023',
-            },
-            {
-                name: 'Luis Paolo',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                date: 'December 2023',
-            },
-            {
-                name: 'Juan Dela Cruz',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                date: 'December 2023',
-            },
-            {
-                name: 'Juan Dela Cruz',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                date: 'December 2023',
-            },
-            {
-                name: 'Luis Paolo',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                date: 'December 2023',
-            },
-            {
-                name: 'Luis Paolo',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                date: 'December 2023',
-            },
-            {
-                name: 'Juan Dela Cruz',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                date: 'December 2023',
-            },
+            name: 'Juan Dela Cruz',
+            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+            date: 'December 2023',
+        },
+        {
+            name: 'Luis Paolo',
+            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+            date: 'December 2023',
+        },
+        {
+            name: 'Luis Paolo',
+            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+            date: 'December 2023',
+        },
+        {
+            name: 'Juan Dela Cruz',
+            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+            date: 'December 2023',
+        },
+        {
+            name: 'Juan Dela Cruz',
+            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+            date: 'December 2023',
+        },
+        {
+            name: 'Luis Paolo',
+            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+            date: 'December 2023',
+        },
+        {
+            name: 'Luis Paolo',
+            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+            date: 'December 2023',
+        },
+        {
+            name: 'Juan Dela Cruz',
+            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+            date: 'December 2023',
+        },
         ];
         const roomTypes = ['Regular room', 'Double room', 'Suite room', 'Deluxe room', 'Double Deluxe room'];
         const roomImages = [{
@@ -501,6 +499,12 @@ export default defineComponent({
             }
         };
         const bookNow = () => {
+            if (!authStore.isAuthenticated) {
+                authStore.setIntendedRoute(router.currentRoute.value.path);
+                showLoginModal.value = true;
+                return;
+            }
+
             if (!dateFrom.value || !dateTo.value || !selectedRoomType.value) {
                 alert("Please select Date and Room Type.");
                 return;
@@ -513,7 +517,9 @@ export default defineComponent({
             selectHotel(hotel);
             router.push('/checkoutbook');
         };
-
+        const closeLoginModal = () => {
+            showLoginModal.value = false;
+        };
         const selectedRoomImages = computed(() => {
             return roomImages[selectedRoom.value] || [];
         });
@@ -577,6 +583,7 @@ export default defineComponent({
         };
 
         return {
+            showLoginModal,
             cartStay, // Return the cartStay object
             router,
             authStore,
@@ -624,7 +631,9 @@ export default defineComponent({
     },
     components: {
         ContentCarousel,
-        MapRenderer
+        MapRenderer,
+        LoginModal,
+
     },
 });
 </script>

@@ -9,9 +9,6 @@ export const useStayStore = defineStore({
       image: '',
       mapLocation: '',
       barangay: '',
-      dateFrom: '',
-      dateTo: '',
-      roomType: '',
     },
     stayXyzData: {
       dateFrom: '',
@@ -41,9 +38,6 @@ export const useStayStore = defineStore({
         image: '',
         mapLocation: '',
         barangay: '',
-        dateFrom: '',
-        dateTo: '',
-        roomType: '',
       };
       this.stayXyzData = {
         dateFrom: '',
@@ -53,10 +47,7 @@ export const useStayStore = defineStore({
     },
   },
   getters: {
-    selectedHotelDetails: (state) => {
-      const { dateFrom, dateTo, roomType, ...rest } = state.selectedHotel;
-      return rest;
-    },
+    selectedHotelDetails: (state) => state.selectedHotel,
     isHotelSelected: (state) => state.selectedHotel.name !== '',
     getStayXyzData: (state) => state.stayXyzData,
   },

@@ -1,29 +1,34 @@
 <template>
-    <nav class="fixed top-0 z-10 w-full">
-        <div class="flex items-center justify-between w-full py-2 bg-white shadow md:px-20">
-            <!-- Left side - Logo -->
-            <div class="flex items-center pl-4">
-                <RouterLink to="/" class="flex items-center">
-                    <img src="@/assets/images/Header/makati_logo.png" alt="banner"
+        <nav class="fixed top-0 z-10 w-full">
+            <div class="flex items-center justify-between w-full py-2 bg-white shadow md:px-20">
+                <!-- Left side - Logo -->
+                <div class="flex items-center pl-4">
+                    <RouterLink to="/" class="flex items-center">
+                        <img src="@/assets/images/Header/makati_logo.png" alt="banner"
+                       
                         class="w-8 h-auto mr-3 md:block md:w-16 md:h-auto">
-                    <img src="@/assets/images/Header/makaturismo.png" alt="logo" class="w-auto h-10 md:w-24 md:h-auto">
-                </RouterLink>
-            </div>
-            <!-- Right side - Calendar and Login -->
-            <div class="flex items-center space-x-4">
-                <RouterLink to="/searchfilter" class=" lg:hidden flex items-center">
-                    <span
+                        <img src="@/assets/images/Header/makaturismo.png" alt="logo" class="w-auto h-10 md:w-24 md:h-auto">
+                    </RouterLink>
+                </div>
+                <!-- Right side - Calendar and Login -->
+                <div class="flex items-center space-x-4">
+                    <RouterLink to="/searchfilter" class=" lg:hidden flex items-center">
+                        <span
+                       
                         class=" flex items-center whitespace-nowrap px-3 py-[0.25rem] text-surface [&>svg]:h-5 [&>svg]:w-5"
+                       
                         id="button-addon2">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                           
                             stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round"
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                               
                                 d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                        </svg>
-                    </span>
-                </RouterLink>
+                            </svg>
+                        </span>
+                    </RouterLink>
 
-                <div class=" hidden lg:block relative  " ref="searchContainer">
+                <adiv class=" hidden lg:block relative  " ref="searchContainer">
                     <input v-if="showInput" type="search"
                         class=" relative m-0 block flex-auto rounded border border-solid border-neutral-200 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none"
                         placeholder="Search" aria-label="Search" id="exampleFormControlInput2"
@@ -32,13 +37,13 @@
                         class="flex items-center whitespace-nowrap px-3 py-[0.25rem] text-surface [&>svg]:h-5 [&>svg]:w-5"
                         id="button-addon2">
 
-                        <svg class="" v-show="!showInput" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="3" stroke="currentColor">
+                        <svg class="" v-show="!showInput" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                         </svg>
                     </span>
-                </div>
+                </adiv>
                 <!-- Calendar -->
                 <RouterLink to="/calendar" class="hidden text-white md:inline-block"><img
                         src="@/assets/images/Header/calendar.png" alt="logo" class="w-auto h-6 mx-2"></RouterLink>
@@ -48,8 +53,8 @@
                 <div v-if="authStore.isAuthenticated">
                     <div class="hidden lg:flex items-center space-x-6">
                         <!-- Notification Icon -->
-                        <svg @click="toggleNotif" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                            class="w-6 h-6">
+                        <svg @click="toggleNotif" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor" class="w-6 h-6">
                             <path fill-rule="evenodd"
                                 d="M5.25 9a6.75 6.75 0 0 1 13.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 0 1-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 1 1-7.48 0 24.585 24.585 0 0 1-4.831-1.244.75.75 0 0 1-.298-1.205A8.217 8.217 0 0 0 5.25 9.75V9Zm4.502 8.9a2.25 2.25 0 1 0 4.496 0 25.057 25.057 0 0 1-4.496 0Z"
                                 clip-rule="evenodd" />
@@ -168,8 +173,8 @@
                                     <button class=" hover:bg-blue-600 flex items-center w-full p-3 bg-white rounded-xl"
                                         @click="toggleDropdown(null)">
                                         <span class="ml-[0.2rem]">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                                class="w-7 h-7">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                fill="currentColor" class="w-7 h-7">
                                                 <path fill-rule="evenodd"
                                                     d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
                                                     clip-rule="evenodd" />
@@ -199,8 +204,8 @@
                                     <button class=" hover:bg-blue-600 flex items-center w-full p-3 bg-white rounded-xl"
                                         @click="toggleDropdown(null)">
                                         <span class="ml-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                                class="w-6 h-6">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                fill="currentColor" class="w-6 h-6">
                                                 <path
                                                     d="M2.25 2.25a.75.75 0 0 0 0 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 0 0-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 0 0 0-1.5H5.378A2.25 2.25 0 0 1 7.5 15h11.218a.75.75 0 0 0 .674-.421 60.358 60.358 0 0 0 2.96-7.228.75.75 0 0 0-.525-.965A60.864 60.864 0 0 0 5.68 4.509l-.232-.867A1.875 1.875 0 0 0 3.636 2.25H2.25ZM3.75 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM16.5 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" />
                                             </svg>
@@ -422,7 +427,7 @@
                             </div>
                         </div>
 
-                        <div class="hidden lg:block lg:flex items-center justify-between mb-4">
+                        <div class="hidden lg:flex items-center justify-between mb-4">
                             <p class="text-xs">Don't have an account? <button @click="openPrivacyModal"
                                     class="text-xs font-bold text-blue-600">Sign Up</button></p>
                             <button @click="openForgotModal" class="text-xs text-blue-600 font-bold">Forgot
@@ -438,7 +443,8 @@
                         <div class="lg:hidden lg:mt-10 text-center">
                             <button type="submit" :disabled="!isLoginFormValid" @click="login"
                                 class="lg:w-[8rem] w-full lg:px-4 py-2 lg:mb-10 text-white disabled:bg-blue-400  bg-blue-600 rounded-md">Login</button>
-                            <button @click="openForgotModal" class="text-xs text-blue-600 mt-1">Forgot Password?</button>
+                            <button @click="openForgotModal" class="text-xs text-blue-600 mt-1">Forgot
+                                Password?</button>
                             <button @click="openPrivacyModal"
                                 class="w-full mt-8 py-2 border border-blue-400 text-blue-600 bg-white rounded-md">Sign
                                 Up</button>
@@ -483,19 +489,19 @@
                             <div class="flex flex-col">
                                 <p class="font-bold text-center text-2xl lg:text-3xl mb-5">Privacy Policy</p>
                                 <p class="font-bold mb-5">Collection of Personal Information:</p>
-                                <p class="mb-5 text-sm text-justify">We may collect personal information from you when you
-                                    interact
+                                <p class="mb-5 text-sm text-justify">We may collect personal information from you when
+                                    you interact
                                     with
                                     our website,
                                     products, or services. This information may include but is not limited to your name,
                                     email address,
                                     mailing
-                                    address, phone number, and payment details. We collect this information to provide you
-                                    with our
+                                    address, phone number, and payment details. We collect this information to provide
+                                    you with our
                                     services and to improve and customize your experience with us.</p>
                                 <p class="font-bold mb-5">Use of Personal Information:</p>
-                                <p class="mb-5 text-sm text-justify">We use the personal information we collect for various
-                                    purposes,
+                                <p class="mb-5 text-sm text-justify">We use the personal information we collect for
+                                    various purposes,
                                     including:</p>
                                 <p class="mb-5 text-sm">1. Providing and personalizing our services <br>
                                     2. Processing transactions <br>
@@ -509,17 +515,17 @@
                                 <p class="mb-5 text-sm text-justify">We take the security of your personal information
                                     seriously and
                                     have implemented
-                                    appropriate measures to protect it from unauthorized access, disclosure, alteration, or
-                                    destruction.
+                                    appropriate measures to protect it from unauthorized access, disclosure, alteration,
+                                    or destruction.
                                     However, please note
-                                    that no method of transmission over the internet or electronic storage is 100% secure,
-                                    and we cannot
+                                    that no method of transmission over the internet or electronic storage is 100%
+                                    secure, and we cannot
                                     guarantee absolute security.</p>
 
                                 <p class="font-bold mb-5">Sharing of Personal Information:</p>
 
-                                <p class="mb-5 text-sm text-justify">We may share your personal information with third-party
-                                    service
+                                <p class="mb-5 text-sm text-justify">We may share your personal information with
+                                    third-party service
                                     providers who assist
                                     us in providing our services, conducting our business, or servicing you. We may also
                                     share your
@@ -528,22 +534,22 @@
 
                                 <p class="font-bold mb-5">Your Rights:</p>
 
-                                <p class="mb-5 text-sm text-justify">You have the right to access, update, or delete your
-                                    personal
+                                <p class="mb-5 text-sm text-justify">You have the right to access, update, or delete
+                                    your personal
                                     information. You may
-                                    also have the right to object to or restrict certain types of processing. If you would
-                                    like to
+                                    also have the right to object to or restrict certain types of processing. If you
+                                    would like to
                                     exercise any of these
                                     rights, please contact us using the information provided below.</p>
 
                                 <p class="font-bold mb-5">Changes to this Privacy Policy:</p>
 
-                                <p class="mb-5 text-sm text-justify">We reserve the right to update or modify this Privacy
-                                    Policy at
+                                <p class="mb-5 text-sm text-justify">We reserve the right to update or modify this
+                                    Privacy Policy at
                                     any
                                     time. Any changes
-                                    will be effective immediately upon posting the updated Privacy Policy on our website.
-                                </p>
+                                    will be effective immediately upon posting the updated Privacy Policy on our
+                                    website.</p>
                                 <!-- contents -->
                             </div>
                         </div>
@@ -619,7 +625,8 @@
                                     class="text-red-500 text-md">*</span></label>
                             <div class="w-full flex flex-col items-start justify-center">
                                 <input id="lastname" type="text" v-model="lastname" placeholder="Enter Last Name"
-                                    class="border border-gray-500 rounded-xl w-full py-3 px-3" @input="validateLastname">
+                                    class="border border-gray-500 rounded-xl w-full py-3 px-3"
+                                    @input="validateLastname">
                                 <span v-if="lastnameError" class="text-red-500 text-xs">{{ lastnameError }}</span>
                             </div>
                         </div>
@@ -631,7 +638,8 @@
 
                                 <div class="w-full flex flex-col items-start justify-center">
                                     <input id="email" type="text" v-model="email" placeholder="Enter Email Address"
-                                        class="border border-gray-500 rounded-xl w-full py-3 px-3" @input="validateEmail">
+                                        class="border border-gray-500 rounded-xl w-full py-3 px-3"
+                                        @input="validateEmail">
                                     <span v-if="emailError" class="text-red-500 text-xs">{{ emailError }}</span>
                                 </div>
                             </div>
@@ -643,7 +651,8 @@
                                     <div class="flex ">
                                         <!-- Text box for dialing code -->
                                         <input type="text" v-model="dialingCode" readonly
-                                            class="border border-gray-500 rounded-l-xl w-[3.5rem] py-3 px-3" value="+63">
+                                            class="border border-gray-500 rounded-l-xl w-[3.5rem] py-3 px-3"
+                                            value="+63">
                                         <input id="pnum" type="tel" v-model="pnum" placeholder="Enter Phone Number"
                                             class="border border-gray-500 rounded-r-xl w-full py-3 px-3" maxlength="10"
                                             @input="validatePhoneNumber">
@@ -665,7 +674,8 @@
                                                 :value="nation">{{ nation }}
                                             </option>
                                         </select>
-                                        <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
+                                        <div
+                                            class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
                                             <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                                 fill="currentColor">
                                                 <path fill-rule="evenodd"
@@ -674,7 +684,8 @@
                                             </svg>
                                         </div>
                                     </div>
-                                    <span v-if="nationalityError" class="text-red-500 text-xs">{{ nationalityError }}</span>
+                                    <span v-if="nationalityError" class="text-red-500 text-xs">{{ nationalityError
+                                        }}</span>
                                 </div>
                             </div>
                             <!-- Gender -->
@@ -691,7 +702,8 @@
                                             <option value="female">Female</option>
                                             <option value="prefer_not_to_say">Prefer not to say</option>
                                         </select>
-                                        <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
+                                        <div
+                                            class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
                                             <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                                 fill="currentColor">
                                                 <path fill-rule="evenodd"
@@ -713,9 +725,9 @@
                                     <img v-if="showPassword" src="@/assets/images/Modal/view.png"
                                         class="absolute right-3 mx-3 my-4" style="width: 15px; cursor: pointer;"
                                         alt="Eye Icon" @click="togglePasswordVisibility">
-                                    <img v-else src="@/assets/images/Modal/hidden.png" class="absolute  right-3 mx-3 my-4"
-                                        style="width: 15px; cursor: pointer;" alt="Eye Icon"
-                                        @click="togglePasswordVisibility">
+                                    <img v-else src="@/assets/images/Modal/hidden.png"
+                                        class="absolute  right-3 mx-3 my-4" style="width: 15px; cursor: pointer;"
+                                        alt="Eye Icon" @click="togglePasswordVisibility">
                                     <input id="password" v-model="password" placeholder="Enter Password"
                                         @input="checkPasswordPolicy" :type="showPassword ? 'text' : 'password'"
                                         class="border border-gray-500 rounded-xl w-full py-3 px-3 ">
@@ -738,9 +750,9 @@
                                     <img v-if="showCPassword" src="@/assets/images/Modal/view.png"
                                         class="absolute right-3 mx-3 my-4" style="width: 15px; cursor: pointer;"
                                         alt="Eye Icon" @click="toggleCPasswordVisibility">
-                                    <img v-else src="@/assets/images/Modal/hidden.png" class="absolute  right-3 mx-3 my-4"
-                                        style="width: 15px; cursor: pointer;" alt="Eye Icon"
-                                        @click="toggleCPasswordVisibility">
+                                    <img v-else src="@/assets/images/Modal/hidden.png"
+                                        class="absolute  right-3 mx-3 my-4" style="width: 15px; cursor: pointer;"
+                                        alt="Eye Icon" @click="toggleCPasswordVisibility">
                                     <input id="rePassword" v-model="rePassword" placeholder="Confirm Password"
                                         @input="validateRePassword" :type="showCPassword ? 'text' : 'password'"
                                         class="border border-gray-500 rounded-xl w-full py-3 px-3 ">
@@ -752,10 +764,15 @@
                             <p class=" text-xs">By using MAKATURISMO, you signify your agreement to <button
                                     @click="openTermsModal" class="text-xs font-bold text-blue-600">Terms and
                                     Conditions</button></p>
+                                    <div>
+                            <span v-if="signupError" class="text-red-500 text-xs">{{ signupError }}</span>
+                        </div>
                             <button type="submit"
                                 class="w-full lg:w-[10rem] font-bold mt-3 px-4 py-3 text-white disabled:bg-blue-400 bg-blue-600 rounded-md"
-                                :disabled="!isSignupFormValid" @click="signup">Sign Up</button>
+                                :disabled="!isSignupFormValid">Sign Up</button>
                         </div>
+
+                    
                     </form>
                 </div>
             </div>
@@ -794,88 +811,92 @@
                             <div class="flex flex-col">
                                 <p class=" mb-5">Welcome to <span class="font-bold">MAKATURISMO</span>, a local tourism
                                     website that
-                                    connects users, businesses, advertisers, and showcases various products and services. By
-                                    accessing
+                                    connects users, businesses, advertisers, and showcases various products and
+                                    services. By accessing
                                     and
                                     using this website, you agree to comply with the following terms and conditions:</p>
 
                                 <p class="font-bold ">1. Acceptance of Terms</p>
-                                <p class="ml-4 mb-5 text-sm text-justify">By using this website, you acknowledge that you
-                                    have read,
+                                <p class="ml-4 mb-5 text-sm text-justify">By using this website, you acknowledge that
+                                    you have read,
                                     understood, and agree to be bound by these terms and conditions. If you do not agree
                                     with any part
                                     of
                                     these terms, please refrain from using this website.</p>
 
                                 <p class="font-bold ">2. User Accounts:</p>
-                                <p class="ml-4 text-sm text-justify">a. To access certain features on the website, you may
-                                    be required
-                                    to create a user account. You must provide accurate and complete information during the
-                                    registration
+                                <p class="ml-4 text-sm text-justify">a. To access certain features on the website, you
+                                    may be required
+                                    to create a user account. You must provide accurate and complete information during
+                                    the registration
                                     process.</p>
                                 <p class="ml-4 text-sm text-justify">b. You are responsible for maintaining the
                                     confidentiality of
                                     your
                                     account credentials and ensuring the security of your account.</p>
-                                <p class="ml-4 mb-5 text-sm text-justify">c. You are solely responsible for all activities
-                                    conducted
+                                <p class="ml-4 mb-5 text-sm text-justify">c. You are solely responsible for all
+                                    activities conducted
                                     through your account, and you must notify us immediately of any unauthorized use or
                                     security breach.
                                 </p>
 
                                 <p class="font-bold ">3. User Responsibilities:</p>
-                                <p class="ml-4 text-sm text-justify">a. Users must be at least 18 years old or have parental
-                                    consent
+                                <p class="ml-4 text-sm text-justify">a. Users must be at least 18 years old or have
+                                    parental consent
                                     to
                                     use this website.</p>
                                 <p class="ml-4 text-sm text-justify">b.Users shall not engage in any illegal, abusive,
                                     defamatory, or
                                     harmful activities while using the website.</p>
-                                <p class="ml-4 mb-5 text-sm text-justify">c. Users must respect the intellectual property
-                                    rights of
+                                <p class="ml-4 mb-5 text-sm text-justify">c. Users must respect the intellectual
+                                    property rights of
                                     others, including businesses and advertisers featured on the website.</p>
 
                                 <p class="font-bold ">4. Businesses and Advertisers:</p>
-                                <p class="ml-4 text-sm text-justify">a. Businesses and advertisers must provide accurate and
+                                <p class="ml-4 text-sm text-justify">a. Businesses and advertisers must provide accurate
+                                    and
                                     up-to-date
                                     information about their products and services.</p>
-                                <p class="ml-4 text-sm text-justify">b. We reserve the right to approve or reject business
-                                    listings
+                                <p class="ml-4 text-sm text-justify">b. We reserve the right to approve or reject
+                                    business listings
                                     and
                                     advertisements based on our guidelines and policies.</p>
-                                <p class="ml-4 mb-5 text-sm text-justify">c. Businesses and advertisers must comply with all
+                                <p class="ml-4 mb-5 text-sm text-justify">c. Businesses and advertisers must comply with
+                                    all
                                     applicable
                                     laws and regulations.</p>
 
                                 <p class="font-bold ">5. Products and Services:</p>
-                                <p class="ml-4 text-sm text-justify">a. The website may feature products and services from
-                                    various
-                                    businesses. We do not endorse or guarantee the quality of these products and services.
-                                </p>
-                                <p class="ml-4 text-sm text-justify">b. Users are solely responsible for any transactions or
+                                <p class="ml-4 text-sm text-justify">a. The website may feature products and services
+                                    from various
+                                    businesses. We do not endorse or guarantee the quality of these products and
+                                    services.</p>
+                                <p class="ml-4 text-sm text-justify">b. Users are solely responsible for any
+                                    transactions or
                                     interactions they enter into with businesses through this website.</p>
-                                <p class="ml-4 mb-5 text-sm text-justify">c. We are not liable for any losses, damages, or
-                                    disputes
+                                <p class="ml-4 mb-5 text-sm text-justify">c. We are not liable for any losses, damages,
+                                    or disputes
                                     arising from transactions between users and businesses.</p>
 
                                 <p class="font-bold ">6. Content Submission:</p>
                                 <p class="ml-4 text-sm text-justify">a. Users may submit content to the website, such as
                                     reviews,
-                                    comments, or images. By doing so, you grant us the right to use, modify, and display the
-                                    content on
+                                    comments, or images. By doing so, you grant us the right to use, modify, and display
+                                    the content on
                                     the website. </p>
-                                <p class="ml-4 mb-5 text-sm text-justify">b. Users must not submit content that is unlawful,
+                                <p class="ml-4 mb-5 text-sm text-justify">b. Users must not submit content that is
+                                    unlawful,
                                     defamatory,
                                     or infringes upon the rights of others.</p>
 
                                 <p class="font-bold ">7. Intellectual Property:</p>
-                                <p class="ml-4 text-sm text-justify">a. All content and materials on this website, including
-                                    logos,
-                                    trademarks, text, images, and software, are the property of Love Laguna or its licensors
-                                    and are
+                                <p class="ml-4 text-sm text-justify">a. All content and materials on this website,
+                                    including logos,
+                                    trademarks, text, images, and software, are the property of Love Laguna or its
+                                    licensors and are
                                     protected by intellectual property laws. </p>
-                                <p class="ml-4 mb-5 text-sm text-justify">b. Users must not use, reproduce, or distribute
-                                    any content
+                                <p class="ml-4 mb-5 text-sm text-justify">b. Users must not use, reproduce, or
+                                    distribute any content
                                     from this website without obtaining proper authorization.</p>
 
                                 <p class="font-bold ">8. Disclaimer of Liability</p>
@@ -887,8 +908,8 @@
                                     information provided. </p>
                                 <p class="ml-4 mb-5 text-sm text-justify">b. We shall not be liable for any direct,
                                     indirect,
-                                    incidental, consequential, or punitive damages arising from the use or inability to use
-                                    the website
+                                    incidental, consequential, or punitive damages arising from the use or inability to
+                                    use the website
                                     or
                                     its content</p>
 
@@ -896,14 +917,14 @@
                                 <p class="ml-4 text-sm text-justify">a. We reserve the right to modify or terminate the
                                     website and
                                     these terms and conditions at any time without prior notice </p>
-                                <p class="ml-4 mb-5 text-sm text-justify">b. Continue use of the website after any changes
-                                    to the
+                                <p class="ml-4 mb-5 text-sm text-justify">b. Continue use of the website after any
+                                    changes to the
                                     terms
                                     constitutes your acceptance of the revised terms</p>
 
                                 <p class="font-bold ">10. Governing Law and Jurisdiction</p>
-                                <p class="ml-4 text-sm text-justify">a. These terms and conditions shall be governed by and
-                                    construed
+                                <p class="ml-4 text-sm text-justify">a. These terms and conditions shall be governed by
+                                    and construed
                                     in
                                     accordance with the laws of the Philippines </p>
                                 <p class="ml-4 mb-5 text-sm text-justify">b. Any disputes arising from the use of the
@@ -948,12 +969,14 @@
                                         class="my-2 mr-2"></button>
                                 <h2 class="lg:text-4xl text-2xl font-bold lg:mb-[10%] mb-[18%]">Change Password</h2>
                             </div>
-                            <p class="mb-5 text-sm">Enter your email to receive an OTP for access to changing passoword</p>
+                            <p class="mb-5 text-sm">Enter your email to receive an OTP for access to changing passoword
+                            </p>
 
                             <div class="relative mb-2">
                                 <div class="relative">
-                                    <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-3 my-3"
-                                        style="width: 15px;" alt="Username Icon" />
+                                    <img src="@/assets/images/Modal/profile.png"
+                                        class="absolute inset-y-0 left-0 mx-3 my-3" style="width: 15px;"
+                                        alt="Username Icon" />
                                     <input type="text" id="otpEmail" v-model="otpEmail" @input="validateOtpEmail"
                                         class="w-full h-10 pl-10 border border-black rounded-lg" placeholder="Email">
                                     <span v-if="otpEmailError" class="text-red-500 text-xs">{{ otpEmailError }}</span>
@@ -972,7 +995,39 @@
             </div>
 
         </div>
+<!-- thank you modal -->
+<div v-if="showApproval" class="fixed inset-0 z-[10] flex items-center justify-center bg-gray-800 bg-opacity-30"
+                @click="closeApproval">
+                <!-- Modal Content -->
+                <div class="relative bg-white px-5 pb-7 shadow-xl mx-auto w-full max-w-xl rounded-2xl">
+                    <div class="mx-auto flex w-full max-w-xl flex-col">
+                        <div class="flex justify-center pt-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="#4BAA7C" class="w-[6rem] h-[6rem]">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
+                        </div>
+                        <div class="flex flex-col items-center justify-center text-center pt-3">
+                            <div class="font-semibold text-2xl text-gray-600">
+                                <p>Account for Approval</p>
+                            </div>
+                            <div class="flex flex-row text-lg font-medium text-gray-600 pb-12">
+                                <p>Thank you for registering with us using your email address!
+                                   Kindly check your email address to verify your account</p>
+                            </div>
+                        </div>
 
+                        <div class="flex justify-center">
+                            <button class="p-3 w-[92%] text-white text-xl bg-[#2969D6] rounded-lg border border-gray-500" @click="closeApproval">
+                                Okay
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           <!--  end of modal -->
         <!-- OTP -->
         <div v-if="showOTPModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
             <!-- Modal Content -->
@@ -1038,12 +1093,14 @@
                                 </div>
 
                                 <div class="flex flex-col space-y-2 items-center justify-center w-full">
-                                    <button class=" text-center lg:w-[24rem] w-full rounded-xl py-3 bg-blue-700 text-white"
+                                    <button
+                                        class=" text-center lg:w-[24rem] w-full rounded-xl py-3 bg-blue-700 text-white"
                                         @click="closeOTP">
                                         Verify
                                     </button>
 
-                                    <div class="flex flex-row items-center justify-center text-center text-sm text-black">
+                                    <div
+                                        class="flex flex-row items-center justify-center text-center text-sm text-black">
                                         <p>Didn't receive code?</p> <a
                                             class="flex flex-row items-center font-medium text-blue-600" href="http://"
                                             target="_blank" rel="noopener noreferrer">Resend code</a>
@@ -1055,103 +1112,102 @@
                 </div>
             </div>
         </div>
+    <div v-if="isCategoryPath($route.path)" class="hidden lg:inset-x-0 lg:bottom-0 lg:grid lg:grid-cols-6 lg:pl-20 lg:pr-20 lg:pt-2 lg:pb-2 lg:justify-center lg:text-black lg:bg-white lg:border-t  max-w-full">
+        <!-- Location 1 -->
+        <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center rounded-l-lg" :class="['location-card', locations[0].attrib, { 'active-effect': isActive(locations[0].link) }]">
+            <RouterLink :to="locations[0].link">
+                <!-- Adjust height as needed -->
+                <div class="flex items-center justify-center h-10 max-w-full max-h-full">
+                    <img :src="locations[0].imgSrc" :alt="locations[0].alt" class="p-[26px] max-w-full max-h-[230px]">
 
-        <div v-if="isCategoryPath($route.path)"
-            class="hidden lg:inset-x-0 lg:bottom-0 lg:grid lg:grid-cols-6 lg:pl-20 lg:pr-20 lg:pt-2 lg:pb-2 lg:justify-center lg:text-black lg:bg-white lg:border-t  max-w-full">
-            <!-- Location 1 -->
-            <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center rounded-l-lg"
-                :class="['location-card', locations[0].attrib, { 'active-effect': isActive(locations[0].link) }]">
-                <RouterLink :to="locations[0].link">
                     <!-- Adjust height as needed -->
-                    <div class="flex items-center justify-center h-10 max-w-full max-h-full">
-                        <img :src="locations[0].imgSrc" :alt="locations[0].alt" class="p-[26px] max-w-full max-h-[230px]">
-                        <!-- Adjust height as needed -->
-                        <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden " style="margin: 0;">{{
-                            locations[0].mobile }}</span>
-                        <span class="font-bold text-1xl lg:-ml-5">{{ locations[0].mobile }}</span>
-                    </div>
-                </RouterLink>
-            </div>
+                    <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden " style="margin: 0;">{{
+            locations[0].mobile }}</span>
+                    <span class="font-bold text-1xl lg:-ml-5">{{ locations[0].mobile }}</span>
 
-            <!-- Location 2 -->
-            <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center"
-                :class="['location-card', locations[1].attrib, { 'active-effect': isActive(locations[1].link) }]"
-                style="margin: 0; width: 100%; height: auto;">
-                <RouterLink :to="locations[1].link">
-                    <!-- Adjust height as needed -->
-                    <div class="flex items-center justify-center h-10">
-                        <img :src="locations[1].imgSrc" :alt="locations[1].alt" class="p-[26px] max-w-full max-h-[180px]">
-                        <!-- Adjust height as needed -->
-                        <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-                            locations[1].mobile }}</span>
-                        <span class="font-bold text-1xl lg:-ml-2">{{ locations[1].mobile }}</span>
-                    </div>
-                </RouterLink>
-            </div>
+                </div>
+            </RouterLink>
+        </div>
 
-            <!-- Location 3 -->
-            <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center"
-                :class="['location-card', locations[2].attrib, { 'active-effect': isActive(locations[2].link) }]"
-                style="margin: 0; width: 100%; height: auto;">
-                <RouterLink :to="locations[2].link">
-                    <!-- Adjust height as needed -->
-                    <div class="flex items-center justify-center h-10">
-                        <img :src="locations[2].imgSrc" :alt="locations[2].alt" class="p-[26px] max-w-full max-h-[200px]">
-                        <!-- Adjust height as needed -->
-                        <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-                            locations[2].mobile }}</span>
-                        <span class="font-bold text-1xl lg:-ml-4">{{ locations[2].mobile }}</span>
-                    </div>
-                </RouterLink>
-            </div>
+        <!-- Location 2 -->
+        <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center" :class="['location-card', locations[1].attrib, { 'active-effect': isActive(locations[1].link) }]" style="margin: 0; width: 100%; height: auto;">
+            <RouterLink :to="locations[1].link">
+                <!-- Adjust height as needed -->
+                <div class="flex items-center justify-center h-10">
+                    <img :src="locations[1].imgSrc" :alt="locations[1].alt" class="p-[26px] max-w-full max-h-[180px]">
 
-            <!-- Location 4 -->
-            <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center"
-                :class="['location-card', locations[3].attrib, { 'active-effect': isActive(locations[3].link) }]"
-                style="margin: 0; width: 100%; height: auto;">
-                <RouterLink :to="locations[3].link">
                     <!-- Adjust height as needed -->
-                    <div class="flex items-center justify-center h-10">
-                        <img :src="locations[3].imgSrc" :alt="locations[3].alt" class="p-[26px] max-w-full max-h-[200px]">
-                        <!-- Adjust height as needed -->
-                        <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-                            locations[3].mobile }}</span>
-                        <span class="font-bold text-1xl lg:-ml-4">{{ locations[3].mobile }}</span>
-                    </div>
-                </RouterLink>
-            </div>
+                    <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
+            locations[1].mobile }}</span>
+                    <span class="font-bold text-1xl lg:-ml-2">{{ locations[1].mobile }}</span>
 
-            <!-- Location 5 -->
-            <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center"
-                :class="['location-card', locations[4].attrib, { 'active-effect': isActive(locations[4].link) }]"
-                style="margin: 0; width: 100%; height: auto;">
-                <RouterLink :to="locations[4].link">
-                    <!-- Adjust height as needed -->
-                    <div class="flex items-center justify-center h-10">
-                        <img :src="locations[4].imgSrc" :alt="locations[4].alt" class="p-[26px] max-w-full max-h-[190px]">
-                        <!-- Adjust height as needed -->
-                        <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-                            locations[4].mobile }}</span>
-                        <span class="font-bold text-1xl lg:-ml-4">{{ locations[4].mobile }}</span>
-                    </div>
-                </RouterLink>
-            </div>
+                </div>
+            </RouterLink>
+        </div>
 
-            <!-- Location 6 -->
-            <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center rounded-r-lg"
-                :class="['location-card', locations[5].attrib, { 'active-effect': isActive(locations[5].link) }]"
-                style="margin: 0; width: 100%; height: auto;">
-                <RouterLink :to="locations[5].link">
+        <!-- Location 3 -->
+        <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center" :class="['location-card', locations[2].attrib, { 'active-effect': isActive(locations[2].link) }]" style="margin: 0; width: 100%; height: auto;">
+            <RouterLink :to="locations[2].link">
+                <!-- Adjust height as needed -->
+                <div class="flex items-center justify-center h-10">
+                    <img :src="locations[2].imgSrc" :alt="locations[2].alt" class="p-[26px] max-w-full max-h-[200px]">
+
                     <!-- Adjust height as needed -->
-                    <div class="flex items-center justify-center h-10">
-                        <img :src="locations[5].imgSrc" :alt="locations[5].alt" class="p-[26px] max-w-full max-h-[210px]">
-                        <!-- Adjust height as needed -->
-                        <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-                            locations[5].mobile }}</span>
-                        <span class="font-bold text-1x lg:-ml-4">{{ locations[5].mobile }}</span>
-                    </div>
-                </RouterLink>
-            </div>
+                    <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
+            locations[2].mobile }}</span>
+                    <span class="font-bold text-1xl lg:-ml-4">{{ locations[2].mobile }}</span>
+
+                </div>
+            </RouterLink>
+        </div>
+
+        <!-- Location 4 -->
+        <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center" :class="['location-card', locations[3].attrib, { 'active-effect': isActive(locations[3].link) }]" style="margin: 0; width: 100%; height: auto;">
+            <RouterLink :to="locations[3].link">
+                <!-- Adjust height as needed -->
+                <div class="flex items-center justify-center h-10">
+                    <img :src="locations[3].imgSrc" :alt="locations[3].alt" class="p-[26px] max-w-full max-h-[200px]">
+
+                    <!-- Adjust height as needed -->
+                    <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
+            locations[3].mobile }}</span>
+                    <span class="font-bold text-1xl lg:-ml-4">{{ locations[3].mobile }}</span>
+
+                </div>
+            </RouterLink>
+        </div>
+
+        <!-- Location 5 -->
+        <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center" :class="['location-card', locations[4].attrib, { 'active-effect': isActive(locations[4].link) }]" style="margin: 0; width: 100%; height: auto;">
+            <RouterLink :to="locations[4].link">
+                <!-- Adjust height as needed -->
+                <div class="flex items-center justify-center h-10">
+                    <img :src="locations[4].imgSrc" :alt="locations[4].alt" class="p-[26px] max-w-full max-h-[190px]">
+
+                    <!-- Adjust height as needed -->
+                    <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
+            locations[4].mobile }}</span>
+                    <span class="font-bold text-1xl lg:-ml-4">{{ locations[4].mobile }}</span>
+
+                </div>
+            </RouterLink>
+        </div>
+
+        <!-- Location 6 -->
+        <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center rounded-r-lg" :class="['location-card', locations[5].attrib, { 'active-effect': isActive(locations[5].link) }]" style="margin: 0; width: 100%; height: auto;">
+            <RouterLink :to="locations[5].link">
+                <!-- Adjust height as needed -->
+                <div class="flex items-center justify-center h-10">
+                    <img :src="locations[5].imgSrc" :alt="locations[5].alt" class="p-[26px] max-w-full max-h-[210px]">
+
+                    <!-- Adjust height as needed -->
+                    <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
+            locations[5].mobile }}</span>
+                    <span class="font-bold text-1x lg:-ml-4">{{ locations[5].mobile }}</span>
+
+                </div>
+            </RouterLink>
+        </div>
 
             <!-- Repeat the above structure for each location, changing the indices accordingly -->
         </div>
@@ -1176,6 +1232,7 @@ import {
     RouterLink
 } from 'vue-router';
 import {
+   // isMemoSame,
     ref
 } from 'vue'
 import {
@@ -1189,6 +1246,7 @@ import house from '@/assets/images/MainNav/house.png';
 import food from '@/assets/images/MainNav/food.png';
 import grocery from '@/assets/images/MainNav/grocery-store.png';
 import locationImg from '@/assets/images/MainNav/location.png';
+
 
 export default {
     name: 'NavBar',
@@ -1232,12 +1290,12 @@ export default {
             rePassword: '',
             otpEmail: '',
             otpEmailError: '',
-
+            error:{ signup: ''},
             checkboxChecked: false,
             showPassword: false,
             showCPassword: false,
             passwordPolicy: [],
-
+            signupError: '',
             usernameError: '',
             lpasswordError: '',
             fnameError: '',
@@ -1693,7 +1751,10 @@ export default {
                 this.passwordPolicy.push('Password must not contain spaces');
             }
         },
-
+        closeApproval()
+        {
+            this.showApproval = false;
+        },
         validateForm() {
             // Validate fields only if the signup button is clicked
             if (this.signupClicked) {
@@ -1708,25 +1769,67 @@ export default {
             }
         },
 
-        signup() {
-            // Your sign-up logic here
-            // After successful sign-up, you might want to redirect the user
-            // Example: this.$router.push('/dashboard');
-            this.signupClicked = true;
+        async signup() {
+    this.signupClicked = true;
 
-            // Validate form
-            this.validateForm();
+    // Validate the form fields
+    await this.validateForm();
 
-            // If form is valid, proceed with signup logic
-            if (this.isSignupFormValid) {
-                console.log('Signing up...');
+    // Check if the form is valid
+    if (!this.isSignupFormValid) {
+        // If the form is not valid, do not proceed with signup
+        return;
+    }
 
-                this.showSignUpModal = false;
-                this.showLoginModal = false;
+    // Extract form data
+    const firstname = this.fname;
+    const lastname = this.lastname;
+    const email = this.email;
+    const contact = this.pnum;
+    const mi = this.mname;
+    const national = this.nationality;
+    const gender = this.gender;
+    const password = this.password;
+
+    const touristreg = { firstname, lastname, email, contact, mi, national, gender, password };
+
+    try {
+        // Make signup request to the server
+        const signupRes = await fetch("http://makatiapi.simplevia.com/api/signupTourist", {
+            method: 'POST',
+            body: JSON.stringify(touristreg),
+            headers: {
+                "Content-Type": 'application/json',
+                "Accept": 'application/json'
             }
-            // Refresh the page
+        });
 
-        },
+        if (signupRes.ok) {
+            // Signup successful
+           
+            this.showApproval = true;
+            this.showLoginModal = false;
+            this.showPrivacyModal = false;
+            this.showSignUpModal = false;
+        } else {
+            // Signup failed
+            const errorData = await signupRes.json();
+            if (errorData && errorData.message) {
+                // Display the error message
+                this.signupError = errorData.message;
+            } else {
+                this.signupError = 'An unexpected error occurred. Please try again later.';
+            }
+        }
+    } catch (error) {
+        console.error(error);
+        this.signupError = 'An unexpected error occurred. Please try again later.';
+    }
+},
+
+
+
+
 
         // END OF SIGNUP VALIDATION
 
@@ -1904,7 +2007,8 @@ export default {
     }
 };
 </script>
-<style scoped>.bg-img {
+<style scoped>
+.bg-img {
     background-size: 300px 500px;
 }
 

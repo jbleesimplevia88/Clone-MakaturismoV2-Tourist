@@ -25,7 +25,8 @@
                 </div>
                 <div class="flex lg:flex-col lg:items-start justify-start">
                   <p class="mr-[46px] lg:mr-9 lg:mb-1 font-bold">Number of Person</p>
-                  <p class="font-normal mb-3">3</p>
+                  <p class="font-normal mb-3">Adults: {{selectedHotel.adultsQuantity}}</p>
+      <p class="font-normal mb-3">Children: {{selectedHotel.childrenQuantity}}</p>
                 </div>
                 <div class="flex lg:flex-col lg:items-start justify-start">
                   <p class="mr-[46px] lg:mr-9 lg:mb-1 font-bold">Services Included</p>

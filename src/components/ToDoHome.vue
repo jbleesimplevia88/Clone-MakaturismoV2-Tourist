@@ -206,18 +206,10 @@
             <!-- Pagination controls -->
             <div class="grid grid-cols-2">
                 <div class="flex justify-start items-center">
-<<<<<<< HEAD
-                    <p class="text-center text-white">
-                        Showing
-                        <span class="text-[#29BFD6]">{{ paginationStartIndex }} - {{ paginationEndIndex }}</span>
-                        results from
-                        <span class="text-[#29BFD6]">{{ totalRecords }}</span> records
-=======
                     <p class="text-center text-white">Showing <span class="text-[#29BFD6]">{{ paginationStartIndex }} -
                             {{
                             paginationEndIndex }}</span> results from <span class="text-[#29BFD6]">{{ totalRecords
                             }}</span> records
->>>>>>> fc0e8de (remove the extra product)
                     </p>
                 </div>
                 <div class="flex justify-end items-center mt-4">

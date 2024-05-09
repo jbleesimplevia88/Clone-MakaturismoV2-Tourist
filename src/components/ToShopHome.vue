@@ -354,6 +354,33 @@ export default {
                 // link: "/category/shop/makati", // Change the link to the route path
                 // mapLocation: "https://www.google.com/maps/dir//532-C+Gen.+M.+Hizon,+Makati,+1233+Metro+Manila/@14.5429672,121.0127257,21z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9007d90d0c5:0x9fe2a1087ad72ff4!2m2!1d121.0127104!2d14.5428967?entry=ttuWWI"
             },
+            {
+                name: 'Bangkal Thrift Market',
+                description: 'Discover hidden gems and budget-friendly finds at Bangkal Thrift Market. This bustling market is a treasure trove of pre-loved items, antiques, vintage clothing, and unique collectibles. Get ready to embark on a delightful treasure hunt at Bangkal Thrift Market.',
+                category: 'Souvenir',
+                location: 'Bangkal',
+                image: item8,
+                // link: "/category/shop/makati", // Change the link to the route path
+                // mapLocation: "https://www.google.com/maps/dir//532-C+Gen.+M.+Hizon,+Makati,+1233+Metro+Manila/@14.5429672,121.0127257,21z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9007d90d0c5:0x9fe2a1087ad72ff4!2m2!1d121.0127104!2d14.5428967?entry=ttuWWI"
+            },
+            {
+                name: 'Bangkal Thrift Market',
+                description: 'Discover hidden gems and budget-friendly finds at Bangkal Thrift Market. This bustling market is a treasure trove of pre-loved items, antiques, vintage clothing, and unique collectibles. Get ready to embark on a delightful treasure hunt at Bangkal Thrift Market.',
+                category: 'Souvenir',
+                location: 'Bangkal',
+                image: item8,
+                // link: "/category/shop/makati", // Change the link to the route path
+                // mapLocation: "https://www.google.com/maps/dir//532-C+Gen.+M.+Hizon,+Makati,+1233+Metro+Manila/@14.5429672,121.0127257,21z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9007d90d0c5:0x9fe2a1087ad72ff4!2m2!1d121.0127104!2d14.5428967?entry=ttuWWI"
+            },
+            {
+                name: 'Bangkal Thrift Market',
+                description: 'Discover hidden gems and budget-friendly finds at Bangkal Thrift Market. This bustling market is a treasure trove of pre-loved items, antiques, vintage clothing, and unique collectibles. Get ready to embark on a delightful treasure hunt at Bangkal Thrift Market.',
+                category: 'Souvenir',
+                location: 'Bangkal',
+                image: item8,
+                // link: "/category/shop/makati", // Change the link to the route path
+                // mapLocation: "https://www.google.com/maps/dir//532-C+Gen.+M.+Hizon,+Makati,+1233+Metro+Manila/@14.5429672,121.0127257,21z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9007d90d0c5:0x9fe2a1087ad72ff4!2m2!1d121.0127104!2d14.5428967?entry=ttuWWI"
+            },
             ],
             categories: ['Mall', 'Strip Mall', 'Museum Shop', 'Gift Shop', 'Souvenir'],
             locations: [
@@ -407,7 +434,6 @@ export default {
         };
     },
     computed: {
-        // Add a computed property to filter items based on the selected category
         filteredItems() {
             let filteredItems = this.items.slice(); // Create a shallow copy of items
 
@@ -436,26 +462,34 @@ export default {
                 }
             }
 
-            return filteredItems;
-        },
-        paginatedItems() {
+            // Paginate the filtered items
             const startIndex = this.currentPage * this.pageSize;
-            return this.items.slice(startIndex, startIndex + this.pageSize);
+            const endIndex = startIndex + this.pageSize;
+            return filteredItems.slice(startIndex, endIndex);
         },
 
+
         pageCount() {
-            return Math.ceil(this.filteredItems.length / this.pageSize);
+            return Math.ceil(this.totalRecords / this.pageSize);
         },
+
         paginationStartIndex() {
-            return this.currentPage * this.pageSize + 1;
+            if (this.filteredItems.length === 0) {
+                return 0; // or any other appropriate value if you want to indicate that no items are displayed
+            } else {
+                return 1;
+            }
         },
+
         paginationEndIndex() {
-            const end = (this.currentPage + 1) * this.pageSize;
-            return Math.min(end, this.totalRecords);
+            const end = Math.min((this.currentPage + 1) * this.pageSize, this.filteredItems.length);
+            return end;
         },
+
         totalRecords() {
-            return this.filteredItems.length;
+            return this.items.length;
         },
+
     },
     watch: {
         selectedCategory(newValue, oldValue) {
@@ -486,10 +520,13 @@ export default {
             console.log('Selected location:', this.selectedLocation);
             this.currentPage = 0; // Reset currentPage when filter is applied
             this.showDropdown = false;
-
+            // Call the computed property to update filteredItems
+            console.log('Filtered Items: ', this.filteredItems);
         },
         nextPage() {
-            this.currentPage++;
+            if (this.currentPage < this.pageCount - 1) {
+                this.currentPage++;
+            }
         },
         prevPage() {
             this.currentPage--;

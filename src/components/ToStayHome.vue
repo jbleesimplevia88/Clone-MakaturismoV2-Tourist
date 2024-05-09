@@ -121,18 +121,19 @@
                         <div
                             class="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-[#102E61] to-transparent">
                         </div>
-                        <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{ item.name }}
+                        <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{
+                            item.name }}
                         </p>
-                        <p class="absolute bottom-2 left-2 text-white text-xs">{{ item.category }}</p>
+                        <p class="absolute bottom-2 left-2 text-white text-xs">{{ Array.isArray(item.category) ?
+                            item.category.join(', ') : item.category }}</p>
                     </div>
                     <div class="p-2 w-full">
                         <p class="text-white text-xs line-clamp-3">{{ item.description }}</p>
-                        <p class="text-white text-xs line-clamp-3">{{ item.mapLocation }}</p>
                     </div>
                     <div class="p-1 flex justify-end items-center">
                         <button @click="seeMore(item)"
                             class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
-                            <span> See More</span>
+                            <span>See More</span>
                             <span class="ml-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
                                     stroke="currentColor" class="w-4 h-4">
@@ -146,26 +147,30 @@
             <!-- Pagination controls -->
             <div class="grid grid-cols-2">
                 <div class="flex justify-start items-center">
-                    <p class="text-center text-white">
-                        Showing
-                        <span class="text-[#29BFD6]">{{ paginationStartIndex }} - {{ paginationEndIndex }}</span> results
-                        from
-                        <span class="text-[#29BFD6]">{{ totalRecords }}</span> records
+                    <p class="text-center text-white">Showing <span class="text-[#29BFD6]">{{ paginationStartIndex }} -
+                            {{
+                                paginationEndIndex }}</span> results from <span class="text-[#29BFD6]">{{ totalRecords
+    }}</span> records
                     </p>
                 </div>
                 <div class="flex justify-end items-center mt-4">
-                    <button @click="prevPage" :disabled="currentPage === 0" class="text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    <button @click="prevPage" :disabled="currentPage === 0" class="text-white"><svg
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                         </svg>
                     </button>
-                    <button v-for="pageNumber in pageCount" :key="pageNumber" @click="goToPage(pageNumber - 1)"
-                        :class="{ 'px-3 py-1 border border-white m-1 rounded-md transition-colors duration-300 bg-white text-[#132540]': currentPage + 1 === pageNumber, 'text-white': currentPage + 1 !== pageNumber }">
-                        {{ pageNumber }}
-                    </button>
-                    <button @click="nextPage" :disabled="currentPage === pageCount - 1" class="text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    <button v-if="currentPage != pageCount - pageCount" @click="goToPage(currentPage - 1)"
+                        class="px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300">{{
+                            currentPage }}</button>
+                    <button
+                        class="px-3 py-1 border border-white m-1 rounded-md transition-colors duration-300 bg-white text-[#132540]">{{
+                            currentPage + 1 }}</button>
+                    <button v-if="currentPage != pageCount - 1" @click="goToPage(currentPage + 1)"
+                        class="px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300">{{
+                            currentPage + 2 }}</button>
+                    <button @click="nextPage" :disabled="currentPage === pageCount - 1" class="text-white"><svg
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                         </svg>
@@ -336,6 +341,84 @@ export default defineComponent({
                 link: '/category/stay/xyz',
                 mapLocation: 'https://www.google.com/maps/place/Robinsons+Magnolia/@14.6335521,121.0264341,13.96z/data=!4m9!1m2!2m1!1smaps!3m5!1s0x3397b79b49092343:0x50d5834dbfbd5426!8m2!3d14.6148379!4d121.038122!16s%2Fg%2F11hdqp4d_p?entry=ttu',
                 barangay: 'Bangkal',
+                dates: [{
+                    date: '2024-04-01'
+                },
+                {
+                    date: '2024-04-02'
+                },
+                {
+                    date: '2024-04-03'
+                },
+                {
+                    date: '2024-04-04'
+                },
+                ],
+                rooms: [{
+                    type: 'Standard Room',
+                    quantity: 3, // Specify the quantity of available rooms
+                    capacity: {
+                        adults: 2,
+                        children: 1
+                    }
+                },
+                {
+                    type: 'Deluxe Room',
+                    quantity: 5, // Specify the quantity of available rooms
+                    capacity: {
+                        adults: 3,
+                        children: 2
+                    }
+                },
+                ]
+            },
+            {
+                name: 'Casino Suites',
+                description: 'Experience comfort and convenience at Casino Suites, where modern amenities and personalized service await you. Located in the heart of Makati, this hotel provides easy access to the citys vibrant attractions and business district. Unwind in well-appointed rooms and enjoy a memorable stay at Casino Suites.',
+                category: 'Accommodation/Hotel',
+                image: item1,
+                link: '',
+                mapLocation: '',
+                barangay: 'Carmona',
+                dates: [{
+                    date: '2024-04-01'
+                },
+                {
+                    date: '2024-04-02'
+                },
+                {
+                    date: '2024-04-03'
+                },
+                {
+                    date: '2024-04-04'
+                },
+                ],
+                rooms: [{
+                    type: 'Standard Room',
+                    quantity: 3, // Specify the quantity of available rooms
+                    capacity: {
+                        adults: 2,
+                        children: 1
+                    }
+                },
+                {
+                    type: 'Deluxe Room',
+                    quantity: 5, // Specify the quantity of available rooms
+                    capacity: {
+                        adults: 3,
+                        children: 2
+                    }
+                },
+                ]
+            },
+            {
+                name: 'Casino Suites',
+                description: 'Experience comfort and convenience at Casino Suites, where modern amenities and personalized service await you. Located in the heart of Makati, this hotel provides easy access to the citys vibrant attractions and business district. Unwind in well-appointed rooms and enjoy a memorable stay at Casino Suites.',
+                category: 'Accommodation/Hotel',
+                image: item1,
+                link: '',
+                mapLocation: '',
+                barangay: 'Carmona',
                 dates: [{
                     date: '2024-04-01'
                 },
@@ -678,35 +761,10 @@ export default defineComponent({
         };
     },
     computed: {
-        // filteredItems() {
-        //     return this.items.filter(item => {
-        //         const matchesSearch = item.name.toLowerCase().includes(this.searchQuery.toLowerCase());
-        //         const matchesBarangay = !this.barangay || this.barangay === 'All' || item.barangay === this.barangay;
-        //         const fromDate = this.dateFrom ? new Date(this.dateFrom) : null;
-        //         const toDate = this.dateTo ? new Date(this.dateTo) : null;
-        //         if (this.barangay && this.dateFrom && this.dateTo) {
-        //             const isBarangayAndDateMatch = matchesBarangay && item.dates.some(dateObj => {
-        //                 const itemDate = new Date(dateObj.date);
-        //                 return itemDate >= fromDate && itemDate <= toDate;
-        //             });
-        //             return matchesSearch && isBarangayAndDateMatch;
-        //         }
-        //         if (!fromDate && !toDate && (this.barangay === 'All' || !this.barangay)) {
-        //             return matchesSearch && matchesBarangay;
-        //         }
-        //         const itemDates = item.dates || [];
-        //         if (itemDates.length === 0) {
-        //             return false;
-        //         }
-        //         const isDateRangeWithinAvailableRange = itemDates.some(dateObj => {
-        //             const itemDate = new Date(dateObj.date);
-        //             return (!fromDate || itemDate >= fromDate) && (!toDate || itemDate <= toDate);
-        //         });
-        //         return matchesSearch && matchesBarangay && isDateRangeWithinAvailableRange;
-        //     });
-        // },
+
         filteredItems() {
-            return this.items.filter(item => {
+            // Filter the items based on the search criteria
+            let filtered = this.items.filter(item => {
                 if (!item || !item.dates || !Array.isArray(item.dates) || !item.rooms || !Array.isArray(item.rooms)) {
                     // Handle case where item, item.dates, or item.rooms is undefined or not an array
                     return false;
@@ -731,28 +789,39 @@ export default defineComponent({
                 });
                 return matchesSearch && matchesBarangay && meetsRoomCriteria && isDateRangeWithinAvailableRange;
             });
+
+            // Paginate the filtered items
+            const startIndex = this.currentPage * this.pageSize;
+            const endIndex = startIndex + this.pageSize;
+            filtered = filtered.slice(startIndex, endIndex);
+
+            return filtered;
         },
+
         minEndDate() {
             // Return the selected start date plus one day
             return this.dateFrom ? new Date(this.dateFrom.getTime() + 24 * 60 * 60 * 1000) : null;
         },
-        paginatedItems() {
-            const startIndex = this.currentPage * this.pageSize;
-            return this.items.slice(startIndex, startIndex + this.pageSize);
-        },
         pageCount() {
-            return Math.ceil(this.items.length / this.pageSize);
+            return Math.ceil(this.totalRecords / this.pageSize);
         },
         paginationStartIndex() {
-            return this.currentPage * this.pageSize + 1;
+            if (this.filteredItems.length === 0) {
+                return 0; // or any other appropriate value if you want to indicate that no items are displayed
+            } else {
+                return 1;
+            }
         },
+
         paginationEndIndex() {
-            const end = (this.currentPage + 1) * this.pageSize;
-            return end > this.totalRecords ? this.totalRecords : end;
+            const end = Math.min((this.currentPage + 1) * this.pageSize, this.filteredItems.length);
+            return end;
         },
+
         totalRecords() {
             return this.items.length;
         },
+
         disableDateTo() {
             // Disable "Date (To)" if "Date (From)" is selected after "Date (To)"
             return this.dateFrom && this.dateTo && new Date(this.dateFrom) > new Date(this.dateTo);
@@ -783,8 +852,18 @@ export default defineComponent({
             const [year, month, day] = dateString.split('-');
             return `${year}-${month}-${day}`;
         },
+        handleApplyFilter() {
+            this.applyButtonClicked = true;
+
+            this.currentPage = 0; // Reset currentPage when filter is applied
+            this.showDropdown = false;
+            // Call the computed property to update filteredItems
+            console.log('Filtered Items: ', this.filteredItems);
+        },
         nextPage() {
-            this.currentPage++;
+            if (this.currentPage < this.pageCount - 1) {
+                this.currentPage++;
+            }
         },
         prevPage() {
             this.currentPage--;

@@ -15,11 +15,10 @@
             </div>
             <div
                 class="relative sm:absolute inset-0 sm:top-56 md:top-[23rem] flex text-center lg:text-left justify-center items-center z-[1]">
-
                 <p
                     class="pt-[6rem] text-[17px] sm:text-sm md:text-xl md:pt-[2rem] lg:text-[1.7rem] text-wrap leading lg:leading-10 text-white">
-                    Makati is a cosmopolitan city that offers a variety of activities that people of all ages can
-                    enjoy.<br />Whether you love to stay indoors or outdoors, day or night, the city surely has something to
+                    Makati is a cosmopolitan city that offers a variety of activities that people of all ages can enjoy.
+                    <br />Whether you love to stay indoors or outdoors, day or night, the city surely has something to
                     offer.
                 </p>
             </div>
@@ -45,8 +44,6 @@
                     <!-- Dropdown menu -->
                     <div v-if="showDropdown"
                         class="z-[1] origin-top-left relative md:absolute left-0 mt-2 w-[400x] md:w-[868px] lg:w-[1150px] rounded-2xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-
-
                         <div role="menu" aria-orientation="horizontal" aria-labelledby="options-menu" @click.stop>
                             <div class="grid grid-cols-3 border-b-2 p-3 font-bold ml-5 mr-5">
                                 <div>
@@ -101,7 +98,6 @@
                 </div>
                 <!-- End of Filter dropdown -->
             </div>
-
             <div class="pb-10 lg:hidden" ref="mobileDropdown">
                 <!-- Filter dropdown MOBILE-->
                 <div class="relative text-left ">
@@ -161,19 +157,15 @@
                 </div>
                 <!-- End of Filter dropdown -->
             </div>
-
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
                 <div v-for="(item, index) in filteredItems" :key="index"
                     class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
-
-
                     <div class="relative">
                         <img class="w-full h-[250px] object-cover rounded-t" :src="item.image" alt="">
                         <div
                             class="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-[#102E61] to-transparent">
                         </div>
-                        <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{ item.name }}
-                        </p>
+                        <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{ item.name }}</p>
                         <p class="absolute bottom-2 left-2 text-white text-xs">{{ Array.isArray(item.category) ?
                             item.category.join(', ') : item.category }}</p>
                     </div>
@@ -193,7 +185,6 @@
                         </button>
                     </div>
                 </div>
-
             </div>
             <div v-if="filteredItems.length === 0" class="text-white text-center font p-14">
                 <p>We're sorry, but we couldn't find any activity that matches your selected filter. Try adjusting your
@@ -204,8 +195,8 @@
                 <div class="flex justify-start items-center">
                     <p class="text-center text-white">
                         Showing
-                        <span class="text-[#29BFD6]">{{ paginationStartIndex }} - {{ paginationEndIndex }}</span>
-                        results from
+                        <span class="text-[#29BFD6]">{{ paginationStartIndex }} - {{ paginationEndIndex }}</span> results
+                        from
                         <span class="text-[#29BFD6]">{{ totalRecords }}</span> records
                     </p>
                 </div>
@@ -217,7 +208,7 @@
                         </svg>
                     </button>
                     <button v-for="pageNumber in pageCount" :key="pageNumber" @click="goToPage(pageNumber - 1)"
-                        :class="{ 'px-3 py-1 border border-white m-1 rounded-md transition-colors duration-300 bg-white text-[#132540]': currentPage + 1 === pageNumber, 'text-white': currentPage + 1 !== pageNumber }">
+                        :class="{ 'px-3 py-1 border border-white m-1 rounded-md transition-colors duration-300 bg-white text-[#132540]': currentPage === pageNumber - 1, 'text-white': currentPage !== pageNumber - 1 }">
                         {{ pageNumber }}
                     </button>
                     <button @click="nextPage" :disabled="currentPage === pageCount - 1" class="text-white">
@@ -371,7 +362,6 @@ export default {
             ],
             categories: ['Entertainment', 'Fitness', 'Museum', 'Sightseeing Tour', 'Spa & Wellness', 'Gym', 'Cinema', 'Sports Arena', 'Theater', 'Game', 'Library', 'Gallery'],
             locations: [
-
                 'Ayala-Paseo de Roxas',
                 'Bangkal',
                 'Bel-air',
@@ -418,15 +408,8 @@ export default {
         };
     },
     computed: {
-        // Replace the paginatedItems computed property
-        paginatedItems() {
-            const startIndex = this.currentPage * this.pageSize;
-            return this.items.slice(startIndex, startIndex + this.pageSize);
-        },
-        // Update the filteredItems computed property to only filter items
         filteredItems() {
             let filteredItems = this.items.slice(); // Create a shallow copy of items
-
             // Apply filters only if the Apply button is clicked
             if (this.applyButtonClicked) {
                 // Filter by category
@@ -439,7 +422,6 @@ export default {
                         }
                     });
                 }
-
                 // Filter by location
                 if (this.selectedLocation && this.selectedLocation.length > 0 && this.selectedLocation[0] !== 'All') {
                     filteredItems = filteredItems.filter(item => {
@@ -451,24 +433,34 @@ export default {
                     });
                 }
             }
-
-            return filteredItems;
+            // Paginate the filtered items
+            const startIndex = this.currentPage * this.pageSize;
+            const endIndex = startIndex + this.pageSize;
+            return filteredItems.slice(startIndex, endIndex);
         },
         pageCount() {
-            return Math.ceil(this.filteredItems.length / this.pageSize);
+            return Math.ceil(this.totalRecords / this.pageSize);
         },
         paginationStartIndex() {
-            return this.currentPage * this.pageSize + 1;
+            if (this.filteredItems.length === 0) {
+                return 0; // or any other appropriate value if you want to indicate that no items are displayed
+            } else {
+                return 1;
+            }
         },
+
+        // paginationEndIndex() {
+        //     const end = Math.min((this.currentPage + 1) * this.pageSize, this.totalRecords);
+        //     return end;
+        // },
         paginationEndIndex() {
-            const end = (this.currentPage + 1) * this.pageSize;
-            return Math.min(end, this.totalRecords);
+            const end = Math.min((this.currentPage + 1) * this.pageSize, this.filteredItems.length);
+            return end;
         },
         totalRecords() {
-            return this.filteredItems.length;
+            return this.items.length;
         },
     },
-
     watch: {
         selectedCategory(newValue, oldValue) {
             // Update applyButtonClicked when category changes
@@ -498,11 +490,13 @@ export default {
             console.log('Selected location:', this.selectedLocation);
             this.currentPage = 0; // Reset currentPage when filter is applied
             this.showDropdown = false;
-
+            // Call the computed property to update filteredItems
+            console.log('Filtered Items: ', this.filteredItems);
         },
-
         nextPage() {
-            this.currentPage++;
+            if (this.currentPage < this.pageCount - 1) {
+                this.currentPage++;
+            }
         },
         prevPage() {
             this.currentPage--;
@@ -517,9 +511,7 @@ export default {
             if (!this.$refs.webDropdown.contains(event.target) && !this.$refs.mobileDropdown.contains(event.target)) {
                 this.showDropdown = false;
             }
-        }
-        ,
-
+        },
         seeMore(item) {
             const {
                 latitude,

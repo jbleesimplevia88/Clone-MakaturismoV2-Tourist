@@ -1,6 +1,6 @@
 <template>
   <swiper :modules="modules" :slides-per-view="isMobile ? 1 : 4" :slides-per-group="isMobile ? 1 : 2"
-    :space-between="20" navigation :pagination="{ clickable: true }" :scrollbar="{ draggable: false }" class="mx-5">
+    :space-between="20" navigation :pagination="{ clickable: true, dynamicBullets: true }" :scrollbar="{ draggable: false }" class="mx-5">
     <template v-for="(slide, index) in slides" :key="index">
       <swiper-slide class="">
         <!-- Image container -->
@@ -25,6 +25,7 @@
         </RouterLink>
       </swiper-slide>
     </template>
+    <div class="swiper-pagination"></div>
   </swiper>
 </template>
 
@@ -33,9 +34,6 @@ import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper/core
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
 import card1 from '@/assets/images/Top 10/Card 1.png';
 import card2 from '@/assets/images/Top 10/Card 2.png';

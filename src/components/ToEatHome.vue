@@ -354,10 +354,30 @@ export default {
                 link: "",
                 mapLocation: ""
             },
+            {
+                name: 'Brera Delicatessen',
+                description: "Satisfy your cravings for authentic Italian delicacies at Brera Delicatessen. This cozy trattoria serves up an array of traditional Italian dishes, from wood-fired pizzas to handcrafted pasta. With warm Italian hospitality and an inviting ambiance, Brera Delicatessen promises an unforgettable dining experience in Makati.",
+                category: 'Restaurant',
+                cuisine: 'Italian',
+                location: 'San Antonio Village',
+                image: item8,
+                link: "",
+                mapLocation: ""
+            },
+            {
+                name: 'Brera Delicatessen',
+                description: "Satisfy your cravings for authentic Italian delicacies at Brera Delicatessen. This cozy trattoria serves up an array of traditional Italian dishes, from wood-fired pizzas to handcrafted pasta. With warm Italian hospitality and an inviting ambiance, Brera Delicatessen promises an unforgettable dining experience in Makati.",
+                category: 'Restaurant',
+                cuisine: 'Italian',
+                location: 'San Antonio Village',
+                image: item8,
+                link: "",
+                mapLocation: ""
+            },
             ],
-            cuisines: ['All', 'American', 'Argentine', 'Asian', 'Australian', 'Chinese', 'European', 'Filipino', 'French', 'German', 'Halal', 'Indian', 'Irish', 'Italian', 'Argentine', 'Japanese', 'Korean', 'Mediterranean', 'Mexican', 'Singapore', 'Spanish', 'Swiss', 'Thai', 'Vietnamese'],
+            cuisines: [ 'American', 'Argentine', 'Asian', 'Australian', 'Chinese', 'European', 'Filipino', 'French', 'German', 'Halal', 'Indian', 'Irish', 'Italian', 'Argentine', 'Japanese', 'Korean', 'Mediterranean', 'Mexican', 'Singapore', 'Spanish', 'Swiss', 'Thai', 'Vietnamese'],
             locations: [
-                'All',
+                
                 'Ayala-Paseo de Roxas',
                 'Bangkal',
                 'Bel-air',
@@ -453,22 +473,27 @@ export default {
                 }
             }
 
-            return filteredItems;
-        },
-        paginatedItems() {
             const startIndex = this.currentPage * this.pageSize;
-            return this.items.slice(startIndex, startIndex + this.pageSize);
+            const endIndex = startIndex + this.pageSize;
+            return filteredItems.slice(startIndex, endIndex);
         },
+
         pageCount() {
-            return Math.ceil(this.items.length / this.pageSize);
+            return Math.ceil(this.totalRecords / this.pageSize);
         },
         paginationStartIndex() {
-            return this.currentPage * this.pageSize + 1;
+            if (this.filteredItems.length === 0) {
+                return 0; // or any other appropriate value if you want to indicate that no items are displayed
+            } else {
+                return 1;
+            }
         },
+
         paginationEndIndex() {
-            const end = (this.currentPage + 1) * this.pageSize;
-            return end > this.totalRecords ? this.totalRecords : end;
+            const end = Math.min((this.currentPage + 1) * this.pageSize, this.filteredItems.length);
+            return end;
         },
+
         totalRecords() {
             return this.items.length;
         },
@@ -477,14 +502,17 @@ export default {
         handleApplyFilter() {
             this.applyButtonClicked = true;
             console.log('Apply button clicked');
-            console.log('Selected cuisine:', this.selectedCuisine);
+            console.log('Selected category:', this.selectedCategory);
             console.log('Selected location:', this.selectedLocation);
             this.currentPage = 0; // Reset currentPage when filter is applied
             this.showDropdown = false;
-
+            // Call the computed property to update filteredItems
+            console.log('Filtered Items: ', this.filteredItems);
         },
         nextPage() {
-            this.currentPage++;
+            if (this.currentPage < this.pageCount - 1) {
+                this.currentPage++;
+            }
         },
         prevPage() {
             this.currentPage--;

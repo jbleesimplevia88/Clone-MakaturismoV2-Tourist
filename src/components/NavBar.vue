@@ -836,8 +836,7 @@
                         </div>
                         <div class="flex items-center justify-center text-center mb-[10%]">
                             <button @click="recieveotp" :disabled="!isForgotFormValid"
-                                class="lg:w-fit w-full px-4 py-2 text-white disabled:bg-blue-400 bg-blue-600 rounded-lg">Receive
-                                OTP
+                                class="lg:w-fit w-full px-4 py-2 text-white disabled:bg-blue-400 bg-blue-600 rounded-lg">Submit
                             </button>
                         </div>
                     </form>
@@ -1793,7 +1792,7 @@ export default {
             let getEmail = {
                 email
             };
-            axios.post('http://makatiapi.simplevia.com/api/sendotp', getEmail).then((response) => {
+            axios.post('/sendotp', getEmail).then((response) => {
                 console.log(response.data);
                 if (response.data.result == 'true') {
                     this.showOTPModal = true;

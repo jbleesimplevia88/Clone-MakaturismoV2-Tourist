@@ -6,7 +6,8 @@
             <div class="flex items-center pl-4">
                 <RouterLink to="/" class="flex items-center">
                     <img src="@/assets/images/Header/makati_logo.png" alt="banner"
-                        class="w-8 h-auto mr-3 md:block md:w-16 md:h-auto">
+                   
+                    class="w-8 h-auto mr-3 md:block md:w-16 md:h-auto">
                     <img src="@/assets/images/Header/makaturismo.png" alt="logo" class="w-auto h-10 md:w-24 md:h-auto">
                 </RouterLink>
             </div>
@@ -14,12 +15,16 @@
             <div class="flex items-center space-x-4">
                 <RouterLink to="/searchfilter" class=" lg:hidden flex items-center">
                     <span
-                        class=" flex items-center whitespace-nowrap px-3 py-[0.25rem] text-surface [&>svg]:h-5 [&>svg]:w-5"
-                        id="button-addon2">
+                   
+                    class=" flex items-center whitespace-nowrap px-3 py-[0.25rem] text-surface [&>svg]:h-5 [&>svg]:w-5"
+                   
+                    id="button-addon2">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                            stroke="currentColor">
+                       
+                        stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round"
-                                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                           
+                            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                         </svg>
                     </span>
                 </RouterLink>
@@ -1066,25 +1071,25 @@
 <style>
 /* Media query for mobile screens */
 @media (width: 375px) {
-    .bg-cover-mobile {
-        background-size: 200px;
-        height: 100%;
-        /* Adjust the height as needed */
-        background-position: center;
-    }
+.bg-cover-mobile {
+    background-size: 200px;
+    height: 100%;
+    /* Adjust the height as needed */
+    background-position: center;
+}
 }
 </style>
 
 <script>
 import {
-    RouterLink
+RouterLink
 } from 'vue-router';
 import {
     // isMemoSame,
     ref
 } from 'vue'
 import {
-    useAuthStore
+useAuthStore
 } from '@/stores/auth'
 import axios from 'axios';
 import imageUrl from '@/assets/images/Modal/Intersect.png';
@@ -1907,26 +1912,26 @@ export default {
 </script>
 <style scoped>
 .bg-img {
-    background-size: 300px 500px;
+background-size: 300px 500px;
 }
 
 .sidebar {
-    height: 100vh;
-    /* Set height to 100% of viewport height */
-    width: 250px;
-    /* Set desired width of sidebar */
-    background-color: #fff;
-    /* Set background color */
-    position: fixed;
-    /* Fix the position of sidebar */
-    top: 0;
-    /* Align to top */
-    right: -250px;
-    /* Initially position outside the viewport */
-    transition: right 0.3s ease;
-    /* Add transition effect */
-    padding: 20px;
-    /* Add padding */
+height: 100vh;
+/* Set height to 100% of viewport height */
+width: 250px;
+/* Set desired width of sidebar */
+background-color: #fff;
+/* Set background color */
+position: fixed;
+/* Fix the position of sidebar */
+top: 0;
+/* Align to top */
+right: -250px;
+/* Initially position outside the viewport */
+transition: right 0.3s ease;
+/* Add transition effect */
+padding: 20px;
+/* Add padding */
 }
 
 .sidebar.open {
@@ -1935,115 +1940,115 @@ export default {
 }
 
 .swiper-container {
-    height: 100%;
+height: 100%;
 }
 
 .active-effect img {
-    filter: invert(1);
-    transition: filter 0.3s ease;
+filter: invert(1);
+transition: filter 0.3s ease;
 }
 
 .active-effect span {
-    color: white;
+color: white;
 }
 
 .active-effect {
-    background-color: #008EE4;
-    color: white;
+background-color: #008EE4;
+color: white;
 }
 
 .active-effect-left {
-    background-color: #008EE4;
-    color: white;
-    border-top-left-radius: 0.5rem;
-    border-bottom-left-radius: 0.5rem;
+background-color: #008EE4;
+color: white;
+border-top-left-radius: 0.5rem;
+border-bottom-left-radius: 0.5rem;
 }
 
 .location-card {
-    padding: 2px;
-    margin: 0;
-    text-align: center;
+padding: 2px;
+margin: 0;
+text-align: center;
 }
 
 .location-card img {
-    width: 30%;
-    height: auto;
+width: 30%;
+height: auto;
 }
 
 .location-card:hover {
-    background-color: #008EE4;
-    /* Set your desired background color on hover */
-    transition: filter 0.3s ease;
+background-color: #008EE4;
+/* Set your desired background color on hover */
+transition: filter 0.3s ease;
 }
 
 .location-card:hover img {
-    filter: invert(1);
-    transition: filter 0.3s ease;
+filter: invert(1);
+transition: filter 0.3s ease;
 }
 
 .location-card h6 {
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 14px;
-    color: black;
-    /* Set your desired text color */
+margin-top: 10px;
+font-weight: bold;
+font-size: 14px;
+color: black;
+/* Set your desired text color */
 }
 
 .location-card:hover span {
-    color: white;
-    /* Set your desired text color on hover */
-    transition: filter 0.3s ease;
+color: white;
+/* Set your desired text color on hover */
+transition: filter 0.3s ease;
 }
 
 .m-location-card {
-    width: auto;
-    padding: 4px;
-    margin: 0;
-    text-align: center;
+width: auto;
+padding: 4px;
+margin: 0;
+text-align: center;
 }
 
 .m-location-card img {
-    width: 40%;
-    height: auto;
+width: 40%;
+height: auto;
 }
 
 .m-location-card:hover {
-    background-color: #008EE4;
-    /* Set your desired background color on hover */
-    transition: filter 0.3s ease;
+background-color: #008EE4;
+/* Set your desired background color on hover */
+transition: filter 0.3s ease;
 }
 
 .m-location-card:hover img {
-    filter: invert(1);
-    transition: filter 0.3s ease;
+filter: invert(1);
+transition: filter 0.3s ease;
 }
 
 .m-location-card h6 {
-    font-size: 12px;
-    color: black;
-    /* Set your desired text color */
+font-size: 12px;
+color: black;
+/* Set your desired text color */
 }
 
 .m-location-card:hover h6 {
-    color: white;
-    /* Set your desired text color on hover */
-    transition: filter 0.3s ease;
+color: white;
+/* Set your desired text color on hover */
+transition: filter 0.3s ease;
 }
 
 .z-neg-1 {
-    z-index: -1;
+z-index: -1;
 }
 
 .hidden-scrollbar::-webkit-scrollbar {
-    width: 2px;
-    /* WebKit */
-    height: 25px;
-    background-color: transparent;
+width: 2px;
+/* WebKit */
+height: 25px;
+background-color: transparent;
 }
 
 .hidden-scrollbar::-webkit-scrollbar-thumb {
-    background-color: black;
-    /* WebKit */
+background-color: black;
+/* WebKit */
 }
 
 /* .slide-enter-active,
@@ -2060,12 +2065,12 @@ export default {
 /*  */
 .slide-enter-active,
 .slide-leave-active {
-    transition: 0.3s linear;
+transition: 0.3s linear;
 }
 
 .slide-enter,
 .slide-leave-to {
-    transform: translateX(100%);
+transform: translateX(100%);
 }
 
 .slide-enter-to,

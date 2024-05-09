@@ -1,9 +1,9 @@
 <template>
-    <div class="flex relative pt-[57px] md:pt-[80px] justify-center">
+    <div class="flex relative pt-[57px] md:pt-[80px] justify-center ">
         <div class="relative">
             <div class="bg-[#102E61] h-[101%] lg:h-[105%]" style="position: absolute; top: 0; left: 0; width: 100%; ">
             </div>
-            <div class="relative inset-0 sm:top-56 md:top-2 pl-0 md:pl-10 flex items-center z-[1]">
+            <div class="relative inset-0 sm:top-56 md:top-2 pl-0 md:pl-10 flex items-center -z-12 ">
                 <div class="relative flex flex-col pl-0 lg:pl-10">
                     <div class="absolute lg:top-4 lg:left-3 top-4 z-[1]">
                         <router-link to="/category/stay">
@@ -21,18 +21,12 @@
                         </router-link>
                     </div>
                     <div class="relative flex flex-col items-center">
-                        <div class=" lg:pr-[7rem]">
+                        <div class=" lg:pr-[7rem] x">
                             <ContentCarousel :items="items" class="mb-10" />
-
                         </div>
-                        <!-- <div class="absolute bottom-2 right-[8rem] z-20 w-100">
-                                <button class="hidden lg:block p-2 bg-white rounded-lg shadow outline outline-2 text-md">
-                                    <img src="@/assets/images/Content/9dots.png" alt="" class="w-10 h-10">
-                                    Show
-                                    All
-                                    Photos</button>
-                            </div> -->
+
                     </div>
+
                     <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 lg:p-5 px-5 py-3 shadow-lg">
                         <div class="flex justify-between">
                             <div>
@@ -40,7 +34,7 @@
                                 <p class="text-lg font-bold">Start here</p>
                             </div>
                             <router-link to="/checkoutbook">
-                                <div class="w-[100%] px-2 mt-5">
+                                <div class="w-[100%] px-2 mt-5 cursor-pointer">
                                     <button
                                         class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg p-4 w-[100%]">Book
                                         Now</button>
@@ -105,23 +99,25 @@
                     <!-- <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">Rooms to offer</h1> -->
                     <div class="flex flex-wrap justify-between items-center mb-2 lg:w-[70%] ">
                         <div>
+
                             <h1 class="font-bold mb-1">Rooms</h1>
                             <div class="flex flex-col">
                                 <div v-for="(room, index) in roomTypes" :key="index">
                                     <button
                                         class="bg-gray-300 px-3 py-1 rounded-md inline-block mb-2 hover:bg-blue-700 hover:text-white"
-                                        @click="showRoomPreview(room)">
-                                        {{ room }}
+                                        @click="showRoomPreview(room.name)">
+                                        {{ room.name }}
                                     </button>
                                 </div>
 
                                 <div @click="closeImagePreview" v-if="selectedRoom"
-                                    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 ">
+                                    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
                                     <div class="p-10 overflow-x-scroll hide-scrollbar rounded-lg" draggable="true"
                                         @dragstart="dragStart($event)" @mousedown="startDrag($event)"
                                         @mousemove="dragging && drag($event)" @mouseup="endDrag()" @mouseleave="endDrag()"
                                         ref="container">
                                         <div class="flex gap-6 " style="cursor: grab">
+
                                             <img v-for="(image, index) in selectedRoomImages" :key="index" :src="image"
                                                 class="w-full  shadow-[#0504048c] shadow-md" alt="Room Image" />
                                         </div>
@@ -134,14 +130,10 @@
                                                 </path>
                                             </svg>
                                         </button>
-
                                     </div>
                                 </div>
-
                             </div>
-
                         </div>
-
                         <div class="hidden lg:absolute lg:top-[4.8rem] lg:right-40">
                             <h1 class="font-bold">Rooms</h1>
                             <div>
@@ -209,41 +201,34 @@
         <div class="hidden lg:block">
             <div class="my-4 lg:w-[30%] lg:h-[30%] right-10 absolute top-[8rem]">
                 <div class="lg:w-[75%] border border-gray-300 p-4 rounded-lg shadow">
-                    <!-- center this div -->
-                    <div class="mb-5">
-                        <div class="flex flex-col m-2">
-                            <label for="Date" class="mb-2 font-bold">Date</label>
-                            <!-- Set min attribute to restrict dates to 2024 and beyond -->
-                            <input type="date" id="selectedDate" class="border-2 border-black rounded-md p-2.5"
-                                min="2024-01-01">
-                        </div>
+                    <!-- Start Date Datepicker with Placeholder -->
+                    <div class="flex flex-col m-2">
+                        <label for="" class="mb-2 font-bold">From</label>
+                        <input type="date" id="dateFrom" v-model="dateFrom" @input="handleDateInput('from')"
+                            class="border-2 border-black rounded-md p-2.5">
+                        <p v-if="startDateError" class="text-red-500">{{ startDateError }}</p>
+                    </div>
+                    <!-- End Date Datepicker with Placeholder -->
+                    <div class="flex flex-col m-2">
+                        <label for="" class="mb-2 font-bold">To</label>
+                        <input type="date" id="dateTo" v-model="dateTo" @input="handleDateInput('to')"
+                            class="border-2 border-black rounded-md p-2.5">
+                        <p v-if="endDateError" class="text-red-500">{{ endDateError }}</p>
                     </div>
                     <div class="flex flex-col m-2">
-                        <label for="" class=" mb-2 font-bold">Check In</label>
-                        <input type="time" class="border-2 border-black rounded-md p-2.5">
-                    </div>
-                    <div class="flex flex-col m-2">
-                        <label for="" class=" mb-2 font-bold">Check Out</label>
-                        <input type="time" class="border-2 border-black rounded-md p-2.5">
-                    </div>
-                    <div class="flex flex-col m-2 ">
                         <label for="roomType" class="mb-2 font-bold">Type of Room</label>
                         <select id="roomType" v-model="selectedRoomType"
                             class="border-2 border-black mt-1 rounded-md p-2.5">
-                            <option class="border-2 border-black mt-1 py-2 px-2 " value="Regular room">Regular room</option>
-                            <option value="Double room">Double room</option>
-                            <option value="Suite room">Suite room</option>
-                            <option value="Deluxe room">Deluxe room</option>
-                            <option value="Double Deluxe room">Double Deluxe room</option>
+                            <option v-for="(roomType, index) in roomTypes" :key="index" :value="roomType.name">
+                                {{ roomType.name }}
+                            </option>
                         </select>
                     </div>
-
-                    <router-link to="/checkoutbook">
-                        <div class="w-[100%] px-2 mt-5">
-                            <button class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Book
-                                Now</button>
-                        </div>
-                    </router-link>
+                    <div class="w-[100%] px-2 mt-5">
+                        <button @click="bookNow"
+                            class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Book
+                            Now</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -364,6 +349,7 @@
             </div>
         </div>
     </div>
+    <login-modal v-if="!authStore.isAuthenticated && showLoginModal" @close="showLoginModal = false"></login-modal>
 </template>
 
 
@@ -376,7 +362,288 @@
 <script>
 import ContentCarousel from '@/components/ToStayCarousel.vue';
 import MapRenderer from "@/components/MapRenderer.vue";
-export default {
+import LoginModal from '@/components/LoginModal.vue';
+
+import {
+    useStayStore
+} from '@/stores/toStayCart';
+import {
+    defineComponent,
+    ref,
+    computed
+} from 'vue';
+import {
+    useAuthStore
+} from '@/stores/auth';
+import {
+    useRouter
+} from 'vue-router';
+
+export default defineComponent({
+
+    setup() {
+        const cartStay = useStayStore();
+        const router = useRouter();
+        const authStore = useAuthStore();
+        const dateFrom = ref('');
+        const dateTo = ref('');
+        const selectedRoomType = ref('');
+        const startDateError = ref(null);
+        const endDateError = ref(null);
+        const selectedRoom = ref(null); // Define selectedRoom here
+        const dragging = ref(false);
+        const startX = ref(0);
+        const scrollLeft = ref(0);
+        const currentPage = ref(0);
+        const pageSize = ref(8);
+        const showDropdown = ref(false);
+        const numFeedbackShown = ref(0);
+        const showSeeLessButton = ref(false);
+        const showLoginModal = ref(false);
+        const isDropdownOpen = ref(false);
+        const services = ['Gym', 'Free Parking', 'Pet Space', 'Free WIFI', 'Air conditioned'];
+        const items = [{
+            name: 'Juan Dela Cruz',
+            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+            date: 'December 2023',
+        },
+        {
+            name: 'Luis Paolo',
+            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+            date: 'December 2023',
+        },
+        {
+            name: 'Luis Paolo',
+            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+            date: 'December 2023',
+        },
+        {
+            name: 'Juan Dela Cruz',
+            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+            date: 'December 2023',
+        },
+        {
+            name: 'Juan Dela Cruz',
+            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+            date: 'December 2023',
+        },
+        {
+            name: 'Luis Paolo',
+            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+            date: 'December 2023',
+        },
+        {
+            name: 'Luis Paolo',
+            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+            date: 'December 2023',
+        },
+        {
+            name: 'Juan Dela Cruz',
+            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+            date: 'December 2023',
+        },
+        ];
+        const roomTypes = [
+            { name: 'Regular room', price: 5000 },
+            { name: 'Double room', price: 6000 },
+            { name: 'Suite room', price: 8000 },
+            { name: 'Deluxe room', price: 7000 },
+            { name: 'Double Deluxe room', price: 9000 }
+        ];
+
+
+        const roomImages = {
+            'Regular room': [
+                '/src/assets/images/CategoryView/ToShop/ToShopregularroom1.jpg',
+                '/src/assets/images/CategoryView/ToShop/ToShopregularroom2.jpg',
+                '/src/assets/images/CategoryView/ToShop/ToShopregularroom3.jpg'
+            ],
+            'Double room': [
+                '/src/assets/images/CategoryView/ToShop/ToShopregularroom1.jpg',
+                '/src/assets/images/CategoryView/ToShop/ToShopregularroom2.jpg',
+                '/src/assets/images/CategoryView/ToShop/ToShopregularroom3.jpg'
+            ],
+            'Suite room': [
+                '/src/assets/images/CategoryView/ToShop/ToShopregularroom1.jpg',
+                '/src/assets/images/CategoryView/ToShop/ToShopregularroom2.jpg',
+                '/src/assets/images/CategoryView/ToShop/ToShopregularroom3.jpg'
+            ],
+            'Deluxe room': [
+                '/src/assets/images/CategoryView/ToShop/ToShopregularroom1.jpg',
+                '/src/assets/images/CategoryView/ToShop/ToShopregularroom2.jpg',
+                '/src/assets/images/CategoryView/ToShop/ToShopregularroom3.jpg'
+            ],
+            'Double Deluxe room': [
+                '/src/assets/images/CategoryView/ToShop/ToShopregularroom1.jpg',
+                '/src/assets/images/CategoryView/ToShop/ToShopregularroom2.jpg',
+                '/src/assets/images/CategoryView/ToShop/ToShopregularroom3.jpg'
+            ]
+        };
+        const categories = ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'];
+        const locations = ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'];
+
+
+        const selectHotel = (hotel) => {
+            const stayXyzData = {
+                dateFrom: hotel.dateFrom || '',
+                dateTo: hotel.dateTo || '',
+                roomType: hotel.roomType || '',
+                roomTypeName: selectedRoomType.value, // Store selected room type name
+                roomTypePrice: roomTypes.find(type => type.name === selectedRoomType.value)?.price || 0 // Store selected room type price
+            };
+            cartStay.selectStayXyzData(stayXyzData); // Call selectStayXyzData from the store and pass stayXyzData
+            const hotelDetails = {
+                ...hotel,
+                ...stayXyzData,
+            };
+            cartStay.selectHotel(hotelDetails);
+        };
+
+        const handleDateInput = (type) => {
+            if (type === 'from' && dateTo.value && dateFrom.value > dateTo.value) {
+                startDateError.value = "Start date cannot be greater than end date";
+                endDateError.value = '';
+                dateFrom.value = '';
+            } else if (type === 'to' && dateFrom.value && dateTo.value < dateFrom.value) {
+                endDateError.value = "End date cannot be earlier than start date";
+                startDateError.value = '';
+                dateTo.value = '';
+            } else {
+                startDateError.value = null;
+                endDateError.value = null;
+            }
+        };
+        const bookNow = () => {
+            if (!authStore.isAuthenticated) {
+                authStore.setIntendedRoute(router.currentRoute.value.path);
+                showLoginModal.value = true;
+                return;
+            }
+
+            if (!dateFrom.value || !dateTo.value || !selectedRoomType.value) {
+                alert("Please select Date and Room Type.");
+                return;
+            }
+            const hotel = {
+                dateFrom: dateFrom.value,
+                dateTo: dateTo.value,
+                roomType: selectedRoomType.value,
+            };
+            selectHotel(hotel);
+            router.push('/checkoutbook');
+        };
+        const closeLoginModal = () => {
+            showLoginModal.value = false;
+        };
+
+        const paginatedItems = computed(() => {
+            return items.slice(0, 2 + numFeedbackShown.value);
+        });
+
+        const showSeeMoreButton = computed(() => {
+            return numFeedbackShown.value < items.length - 2;
+        });
+
+
+        const closeImagePreview = (event) => {
+            if (!event.target.closest('.p-10')) {
+                console.log('Clicked outside preview, closing...');
+                selectedRoom.value = null;
+            } else {
+                console.log('Clicked inside preview, not closing...');
+            }
+        };
+        const selectedRoomImages = computed(() => {
+            return roomImages[selectedRoom.value] || [];
+        });
+
+        const showRoomPreview = (roomName) => {
+            selectedRoom.value = roomName;
+        };
+
+        const startDrag = (e) => {
+            dragging.value = true;
+            startX.value = e.pageX - $refs.container.offsetLeft;
+            scrollLeft.value = $refs.container.scrollLeft;
+        };
+
+        const drag = (e) => {
+            if (!dragging.value) return;
+            const x = e.pageX - $refs.container.offsetLeft;
+            const walk = (x - startX.value) * 2;
+            $refs.container.scrollLeft = scrollLeft.value - walk;
+        };
+
+        const endDrag = () => {
+            dragging.value = false;
+        };
+
+        const dragStart = (event) => {
+            event.preventDefault();
+        };
+
+        const toggleDropdown = () => {
+            isDropdownOpen.value = !isDropdownOpen.value;
+        };
+        const seeMore = () => {
+            numFeedbackShown.value += 2; // Change this value as per your requirement
+            if (!showSeeMoreButton.value) {
+                showSeeLessButton.value = true;
+            }
+        };
+
+        const seeLess = () => {
+            numFeedbackShown.value = 0;
+            showSeeLessButton.value = false;
+        };
+
+        return {
+            showLoginModal,
+            cartStay, // Return the cartStay object
+            router,
+            authStore,
+            dateFrom,
+            dateTo,
+            selectedRoomType,
+            startDateError,
+            endDateError,
+            selectedRoom, // Add selectedRoom to the returned object
+            handleDateInput,
+            bookNow,
+            dragging,
+            startX,
+            scrollLeft,
+            currentPage,
+            pageSize,
+            showDropdown,
+            numFeedbackShown,
+            showSeeLessButton,
+            isDropdownOpen,
+            services,
+            items,
+            roomTypes,
+            roomImages,
+            categories,
+            locations,
+            selectedRoomImages,
+            paginatedItems,
+            showSeeMoreButton,
+            closeImagePreview,
+            showRoomPreview,
+            startDrag,
+            drag,
+            endDrag,
+            dragStart,
+            toggleDropdown,
+            seeMore,
+            seeLess,
+            showRoomPreview,
+            selectedRoom,
+
+
+        };
+    },
+
     props: {
         latitude: Number,
         longitude: Number,
@@ -384,165 +651,9 @@ export default {
     },
     components: {
         ContentCarousel,
-        MapRenderer
+        MapRenderer,
+        LoginModal,
 
     },
-    mounted() {
-        // Get today's date
-        const today = new Date().toISOString().split('T')[0];
-        // Set the min attribute of the date input to today's date
-        document.getElementById("selectedDate").setAttribute("min", today);
-    },
-    data() {
-        return {
-            services: ['Gym', 'Free Parking', 'Pet Space', 'Free WIFI', 'Air conditioned'],
-            selectedServices: [],
-            isDropdownOpen: false,
-            items: [{
-                name: 'Juan Dela Cruz',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                date: 'December 2023',
-            },
-            {
-                name: 'Luis Paolo',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                date: 'December 2023',
-            },
-            {
-                name: 'Luis Paolo',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                date: 'December 2023',
-            },
-            {
-                name: 'Juan Dela Cruz',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                date: 'December 2023',
-            },
-            {
-                name: 'Juan Dela Cruz',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                date: 'December 2023',
-            },
-            {
-                name: 'Luis Paolo',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                date: 'December 2023',
-            },
-            {
-                name: 'Luis Paolo',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                date: 'December 2023',
-            },
-            {
-                name: 'Juan Dela Cruz',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                date: 'December 2023',
-            },
-            ],
-            roomTypes: ['Regular room', 'Double room', 'Suite room', 'Deluxe room', 'Double Deluxe room'],
-            selectedRoom: null,
-            roomImages: {
-                'Regular room': [
-                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom1.jpg',
-                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom2.jpg',
-                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom3.jpg'
-                ],
-                'Double room': [
-                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom1.jpg',
-                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom2.jpg',
-                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom3.jpg'
-                ],
-                'Suite room': [
-                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom1.jpg',
-                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom2.jpg',
-                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom3.jpg'
-                ],
-                'Deluxe room': [
-                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom1.jpg',
-                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom2.jpg',
-                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom3.jpg'
-                ],
-                'Double Deluxe room': [
-                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom1.jpg',
-                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom2.jpg',
-                    '/src/assets/images/CategoryView/ToShop/ToShopregularroom3.jpg'
-                ]
-            },
-            dragging: false,
-            startX: 0,
-            scrollLeft: 0,
-            selectedRoomType: "",
-            currentPage: 0,
-            pageSize: 8,
-            showDropdown: false,
-            numFeedbackShown: 0,
-            showSeeLessButton: false,
-            categories: ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'],
-            locations: ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'],
-        };
-    },
-    computed: {
-        selectedRoomImages() {
-            return this.roomImages[this.selectedRoom] || [];
-        },
-        paginatedItems() {
-            // Return first 2 items initially and add additional items based on numFeedbackShown
-            return this.items.slice(0, 2 + this.numFeedbackShown);
-        },
-        // Check if there are more feedback items to show
-        showSeeMoreButton() {
-            return this.numFeedbackShown < this.items.length - 2;
-        }
-    },
-    methods: {
-        closeImagePreview(event) {
-            if (!event.target.closest('.p-10')) {
-                console.log('Clicked outside preview, closing...');
-                this.selectedRoom = null;
-            } else {
-                console.log('Clicked inside preview, not closing...');
-            }
-        }
-        ,
-        showRoomPreview(room) {
-            this.selectedRoom = room;
-        },
-        startDrag(e) {
-            this.dragging = true;
-            this.startX = e.pageX - this.$refs.container.offsetLeft;
-            this.scrollLeft = this.$refs.container.scrollLeft;
-        },
-        drag(e) {
-            if (!this.dragging) return;
-            const x = e.pageX - this.$refs.container.offsetLeft;
-            const walk = (x - this.startX) * 2;
-            this.$refs.container.scrollLeft = this.scrollLeft - walk;
-        },
-        endDrag() {
-            this.dragging = false;
-        },
-        dragStart(event) {
-            event.preventDefault();
-        },
-        toggleDropdown() {
-            this.isDropdownOpen = !this.isDropdownOpen;
-        },
-        // Method to handle "See More" button click
-        seeMore() {
-            // Increment the number of feedback items to show
-            this.numFeedbackShown += 2; // Change this value as per your requirement
-            // Show See Less button if all items are shown
-            if (!this.showSeeMoreButton) {
-                this.showSeeLessButton = true;
-            }
-        },
-        // Method to handle "See Less" button click
-        seeLess() {
-            // Reset the number of feedback items shown to initial value
-            this.numFeedbackShown = 0;
-            // Hide See Less button
-            this.showSeeLessButton = false;
-        }
-    }
-};
+});
 </script>

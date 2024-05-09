@@ -10,7 +10,7 @@
             <img class="w-full h-[300px] md:h-[700px]" src="@/assets/images/CategoryView/ToTour/banner.jpeg" alt="" />
             <div class="flex items-center justify-center absolute top-5 md:top-20 z-[1] bg-white pl-3 lg:pl-5 rounded-r-xl">
                 <p class="text-[#102E61] text-sm sm:text-4xl font-bold p-3 pr-4 md:p-5 md:pr-7 ">
-                    MAKATOUR
+                    MAKATURISMO
                 </p>
             </div>
             <div
@@ -427,20 +427,29 @@ export default {
                     });
                 }
             }
-            return filteredItems;
+            const startIndex = this.currentPage * this.pageSize;
+            const endIndex = startIndex + this.pageSize;
+            return filteredItems.slice(startIndex, endIndex);
+
         },
         pageCount() {
-            return Math.ceil(this.filteredItems.length / this.pageSize);
+            return Math.ceil(this.totalRecords / this.pageSize);
         },
         paginationStartIndex() {
-            return this.currentPage * this.pageSize + 1;
+            if (this.filteredItems.length === 0) {
+                return 0; // or any other appropriate value if you want to indicate that no items are displayed
+            } else {
+                return 1;
+            }
         },
+
         paginationEndIndex() {
-            const end = (this.currentPage + 1) * this.pageSize;
-            return Math.min(end, this.totalRecords);
+            const end = Math.min((this.currentPage + 1) * this.pageSize, this.filteredItems.length);
+            return end;
         },
+
         totalRecords() {
-            return this.filteredItems.length;
+            return this.items.length;
         },
     },
     mounted() {
@@ -457,9 +466,13 @@ export default {
             console.log('Selected location:', this.selectedLocation);
             this.currentPage = 0; // Reset currentPage when filter is applied
             this.showDropdown = false;
+            // Call the computed property to update filteredItems
+            console.log('Filtered Items: ', this.filteredItems);
         },
         nextPage() {
-            this.currentPage++;
+            if (this.currentPage < this.pageCount - 1) {
+                this.currentPage++;
+            }
         },
         prevPage() {
             this.currentPage--;

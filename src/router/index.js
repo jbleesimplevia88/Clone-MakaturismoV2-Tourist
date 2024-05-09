@@ -41,7 +41,9 @@ const router = createRouter({
     {
       path: '/profile',
       name: 'profile',
-      component: () => import('../views/ProfileView.vue')
+      component: () => import('../views/ProfileView.vue'),
+      meta: { requiresAuth: true }
+
     },
     {
       path: '/searchfilter',
@@ -97,17 +99,22 @@ const router = createRouter({
             {
               path: '/checkouteat',
               name: 'cartcheckouteat',
-              component: () => import('../components/CartCheckoutEat.vue')
+              component: () => import('../components/CartCheckoutEat.vue'),
+              meta: { requiresAuth: true }
+
             },
             {
               path: '/checkoutbook',
               name: 'cartcheckoutbook',
-              component: () => import('../components/CartCheckoutBook.vue')
+              component: () => import('../components/CartCheckoutBook.vue'),
+              meta: { requiresAuth: true }
+
             },
             {
               path: '/checkouttour',
               name: 'cartcheckouttour',
-              component: () => import('../components/CartCheckoutTour.vue')
+              component: () => import('../components/CartCheckoutTour.vue'),
+              // meta: { requiresAuth: true }
             },
             
           ]

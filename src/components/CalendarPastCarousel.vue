@@ -1,6 +1,6 @@
 <template>
-  <swiper :modules="modules" :slides-per-view="isMobile ? 1 : 4" :slides-per-group="isMobile ? 1 : 2"
-    :space-between="20" navigation :pagination="{ clickable: true }" :scrollbar="{ draggable: false }" class="mx-5">
+  <swiper :modules="modules" :slides-per-view="isMobile ? 1 : 4" :slides-per-group="isMobile ? 1 : 2" :space-between="20"
+    navigation :pagination="{ clickable: true, dynamicBullets: true }" :scrollbar="{ draggable: false }" class="mx-5">
     <template v-for="(slide, index) in slides" :key="index">
       <swiper-slide class="">
         <!-- Image container -->
@@ -14,8 +14,8 @@
               <h1 class="absolute right-0 font-bold text-xl bottom-14 left-5 mb-5">{{ slide.name }}</h1>
               <!-- Location -->
               <div class="flex items-center  location-info">
-                <img class="absolute right-0 text-xl bottom-9 left-5"
-                  style="filter: invert(1); width:auto; height:20px;" src="@/assets/images/Carousel/pin.png" alt="">
+                <img class="absolute right-0 text-xl bottom-9 left-5" style="filter: invert(1); width:auto; height:20px;"
+                  src="@/assets/images/Carousel/pin.png" alt="">
                 <span class="absolute right-0 text-sm bottom-8 left-11">{{ slide.location }}</span>
               </div>
             </div>
@@ -23,6 +23,7 @@
         </RouterLink>
       </swiper-slide>
     </template>
+    <div class="swiper-pagination"></div>
   </swiper>
 </template>
 

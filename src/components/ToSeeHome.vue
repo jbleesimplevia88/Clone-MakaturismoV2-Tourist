@@ -430,12 +430,6 @@ export default {
         },
     },
     computed: {
-        // Replace the paginatedItems computed property
-        paginatedItems() {
-            const startIndex = this.currentPage * this.pageSize;
-            return this.items.slice(startIndex, startIndex + this.pageSize);
-        },
-        // Update the filteredItems computed property to only filter items
         filteredItems() {
             let filteredItems = this.items.slice(); // Create a shallow copy of items
 
@@ -464,21 +458,37 @@ export default {
                 }
             }
 
-            return filteredItems;
+            // Paginate the filtered items
+            const startIndex = this.currentPage * this.pageSize;
+            const endIndex = startIndex + this.pageSize;
+            return filteredItems.slice(startIndex, endIndex);
         },
+
+
         pageCount() {
-            return Math.ceil(this.filteredItems.length / this.pageSize);
+            return Math.ceil(this.totalRecords / this.pageSize);
         },
+
+        // paginationStartIndex() {
+        //     return this.currentPage * this.pageSize + 1;
+        // },
         paginationStartIndex() {
-            return this.currentPage * this.pageSize + 1;
+            if (this.filteredItems.length === 0) {
+                return 0; // or any other appropriate value if you want to indicate that no items are displayed
+            } else {
+                return 1;
+            }
         },
+
         paginationEndIndex() {
-            const end = (this.currentPage + 1) * this.pageSize;
-            return Math.min(end, this.totalRecords);
+            const end = Math.min((this.currentPage + 1) * this.pageSize, this.filteredItems.length);
+            return end;
         },
+
         totalRecords() {
-            return this.filteredItems.length;
+            return this.items.length;
         },
+
     },
     mounted() {
         document.addEventListener('click', this.handleGlobalClick);
@@ -494,10 +504,13 @@ export default {
             console.log('Selected location:', this.selectedLocation);
             this.currentPage = 0; // Reset currentPage when filter is applied
             this.showDropdown = false;
-
+            // Call the computed property to update filteredItems
+            console.log('Filtered Items: ', this.filteredItems);
         },
         nextPage() {
-            this.currentPage++;
+            if (this.currentPage < this.pageCount - 1) {
+                this.currentPage++;
+            }
         },
         prevPage() {
             this.currentPage--;

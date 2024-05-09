@@ -14,7 +14,7 @@ export const useAuthStore = defineStore({
       const router = useRouter();
     
       try {
-        const response = await axios.post('http://makatiapi.simplevia.com/api/loginTourist', credentials);
+        const response = await axios.post('/loginTourist', credentials);
         if (response.data.message === 'correct') {
           this.isAuthenticated = true;
           this.user = response.data.user;

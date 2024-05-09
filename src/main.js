@@ -11,6 +11,7 @@ axios.defaults.headers.common['Content-Type'] = 'application/json';
 
 const pinia = createPinia()
 const app = createApp(App);
+app.config.globalProperties.$axios = axios;
 
 
 app.use(pinia)

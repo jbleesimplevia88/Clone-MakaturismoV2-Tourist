@@ -28,664 +28,582 @@
                         </svg>
                     </span>
                 </RouterLink>
-
-            <adiv class=" hidden lg:block relative  " ref="searchContainer">
-                <input v-if="showInput" type="search"
-                    class=" relative m-0 block flex-auto rounded border border-solid border-neutral-200 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none"
-                    placeholder="Search" aria-label="Search" id="exampleFormControlInput2"
-                    aria-describedby="button-addon2" ref="searchInput" />
-                <span @click="toggleInputVisibility"
-                    class="flex items-center whitespace-nowrap px-3 py-[0.25rem] text-surface [&>svg]:h-5 [&>svg]:w-5"
-                    id="button-addon2">
-
-                    <svg class="" v-show="!showInput" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                    </svg>
-                </span>
-            </adiv>
-            <!-- Calendar -->
-            <RouterLink to="/calendar" class="hidden text-white md:inline-block"><img
-                    src="@/assets/images/Header/calendar.png" alt="logo" class="w-auto h-6 mx-2"></RouterLink>
-
-            <!-- WHEN USER IS LOGGED IN-->
-
-            <div v-if="authStore.isAuthenticated">
-                <div class="hidden lg:flex items-center space-x-6">
-                    <!-- Notification Icon -->
-                    <svg @click="toggleNotif" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                        fill="currentColor" class="w-6 h-6">
-                        <path fill-rule="evenodd"
-                            d="M5.25 9a6.75 6.75 0 0 1 13.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 0 1-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 1 1-7.48 0 24.585 24.585 0 0 1-4.831-1.244.75.75 0 0 1-.298-1.205A8.217 8.217 0 0 0 5.25 9.75V9Zm4.502 8.9a2.25 2.25 0 1 0 4.496 0 25.057 25.057 0 0 1-4.496 0Z"
-                            clip-rule="evenodd" />
-                    </svg>
-
-                    <!-- Notification Modal -->
-                    <div v-if="showNotifModal"
+                <adiv class=" hidden lg:block relative  " ref="searchContainer">
+                    <input v-if="showInput" type="search"
+                        class=" relative m-0 block flex-auto rounded border border-solid border-neutral-200 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none"
+                        placeholder="Search" aria-label="Search" id="exampleFormControlInput2"
+                        aria-describedby="button-addon2" ref="searchInput" />
+                    <span @click="toggleInputVisibility"
+                        class="flex items-center whitespace-nowrap px-3 py-[0.25rem] text-surface [&>svg]:h-5 [&>svg]:w-5"
+                        id="button-addon2">
+                        <svg class="" v-show="!showInput" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="3" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                        </svg>
+                    </span>
+                </adiv>
+                <!-- Calendar -->
+                <RouterLink to="/calendar" class="hidden text-white md:inline-block"><img
+                        src="@/assets/images/Header/calendar.png" alt="logo" class="w-auto h-6 mx-2"></RouterLink>
+                <!-- WHEN USER IS LOGGED IN-->
+                <div v-if="authStore.isAuthenticated">
+                    <div class="hidden lg:flex items-center space-x-6">
+                        <!-- Notification Icon -->
+                        <svg @click="toggleNotif" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="w-6 h-6">
+                            <path fill-rule="evenodd"
+                                d="M5.25 9a6.75 6.75 0 0 1 13.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 0 1-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 1 1-7.48 0 24.585 24.585 0 0 1-4.831-1.244.75.75 0 0 1-.298-1.205A8.217 8.217 0 0 0 5.25 9.75V9Zm4.502 8.9a2.25 2.25 0 1 0 4.496 0 25.057 25.057 0 0 1-4.496 0Z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <!-- Notification Modal -->
+                        <div v-if="showNotifModal"
+                            class="absolute top-[6.5rem] right-[1.2rem] bg-gray-100 shadow text-black rounded-lg w-[325px]">
+                            <div class="p-4" role="none">
+                                <p class="pb-3 text-xl font-bold">Notifications</p>
+                                <!-- Notification Tray -->
+                                <div class="w-full pt-30 bg-[#F2F2F2]">
+                                    <div v-for="(notification, index) in bookingItems" :key="index"
+                                        class="rounded-2xl p-1 flex bg-white hover:bg-blue-600 cursor-pointer w-100 mb-4"
+                                        @click="openNotifModal(notification)">
+                                        <!-- SVG Icon -->
+                                        <svg data-v-c3ceb15a="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                            fill="currentColor" class="w-6 h-6 mr-2">
+                                            <path data-v-c3ceb15a="" fill-rule="evenodd"
+                                                d="M5.25 9a6.75 6.75 0 0 1 13.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 0 1-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 1 1-7.48 0 24.585 24.585 0 0 1-4.831-1.244.75.75 0 0 1-.298-1.205A8.217 8.217 0 0 0 5.25 9.75V9Zm4.502 8.9a2.25 2.25 0 1 0 4.496 0 25.057 25.057 0 0 1-4.496 0Z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                        <!-- Notification Content -->
+                                        <span class="text-lg">{{ notification }}</span>
+                                    </div>
+                                </div>
+                                <!-- Booking Confirmation Modal -->
+                                <div v-if="showBookingConfirmationModal"
+                                    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                                    <div class="bg-white p-4 rounded-lg">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <h2 class="text-xl font-semibold">Booking Confirmed</h2>
+                                            <button @click="closeBookingConfirmationModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke-width="1.9" stroke="currentColor" class="w-6 h-6">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M6 18 18 6M6 6l12 12"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <p>Thank you for booking with iBayad. </p>
+                                        <br><br>
+                                        <p>Your booking reference is: </p>
+                                        <p>An email sent to: <span class="font-bold">Juandelacruz@gmail.com</span></p>
+                                    </div>
+                                </div>
+                                <!-- Order Complete Modal -->
+                                <div v-if="showOrderCompleteModal"
+                                    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                                    <div class="bg-white p-4 rounded-lg">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <h2 class="text-xl font-semibold">Order Completed</h2>
+                                            <button @click="closeOrderCompleteModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke-width="1.9" stroke="currentColor" class="w-6 h-6">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M6 18 18 6M6 6l12 12"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <p>Thank you for booking with iBayad. </p>
+                                        <br><br>
+                                        <p>Your booking reference is: </p>
+                                        <p>An email sent to: <span class="font-bold">Juandelacruz@gmail.com</span></p>
+                                    </div>
+                                </div>
+                                <!-- Booking Complete Modal -->
+                                <div v-if="showBookingCompleteModal"
+                                    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                                    <div class="bg-white p-4 rounded-lg">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <h2 class="text-xl font-semibold">Booking Complete Modal</h2>
+                                            <button @click="closeBookingCompleteModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke-width="1.9" stroke="currentColor" class="w-6 h-6">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M6 18 18 6M6 6l12 12"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <p>Thank you for booking with iBayad. </p>
+                                        <br><br>
+                                        <p>Your booking reference is: </p>
+                                        <p>An email sent to: <span class="font-bold">Juandelacruz@gmail.com</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Person Icon -->
+                        <svg @click=togglepfp xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="w-6 h-6">
+                            <path fill-rule="evenodd"
+                                d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <!-- PFP Modal -->
+                    <div v-if="showPFPModal"
                         class="absolute top-[6.5rem] right-[1.2rem] bg-gray-100 shadow text-black rounded-lg w-[325px]">
                         <div class="p-4" role="none">
-                            <p class="pb-3 text-xl font-bold">Notifications</p>
-
-                            <!-- Notification Tray -->
-                            <div class="w-full pt-30 bg-[#F2F2F2]">
-                                <div v-for="(notification, index) in bookingItems" :key="index"
-                                    class="rounded-2xl p-1 flex bg-white hover:bg-blue-600 cursor-pointer w-100 mb-4"
-                                    @click="openNotifModal(notification)">
-                                    <!-- SVG Icon -->
-                                    <svg data-v-c3ceb15a="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                        fill="currentColor" class="w-6 h-6 mr-2">
-                                        <path data-v-c3ceb15a="" fill-rule="evenodd"
-                                            d="M5.25 9a6.75 6.75 0 0 1 13.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 0 1-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 1 1-7.48 0 24.585 24.585 0 0 1-4.831-1.244.75.75 0 0 1-.298-1.205A8.217 8.217 0 0 0 5.25 9.75V9Zm4.502 8.9a2.25 2.25 0 1 0 4.496 0 25.057 25.057 0 0 1-4.496 0Z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                    <!-- Notification Content -->
-                                    <span class="text-lg">{{ notification }}</span>
-                                </div>
-                            </div>
-
-                            <!-- Booking Confirmation Modal -->
-                            <div v-if="showBookingConfirmationModal"
-                                class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                                <div class="bg-white p-4 rounded-lg">
-                                    <div class="flex items-center justify-between mb-1">
-                                        <h2 class="text-xl font-semibold">Booking Confirmed</h2>
-
-
-                                        <button @click="closeBookingConfirmationModal">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.9" stroke="currentColor" class="w-6 h-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M6 18 18 6M6 6l12 12"></path>
+                            <p class="pb-3 text-xl font-bold">Account</p>
+                            <div class="pb-2 text-center">
+                                <RouterLink to="/profile">
+                                    <button class=" hover:bg-blue-600 flex items-center w-full p-3 bg-white rounded-xl"
+                                        @click="toggleDropdown(null)">
+                                        <span class="ml-[0.2rem]">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                                class="w-7 h-7">
+                                                <path fill-rule="evenodd"
+                                                    d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                                                    clip-rule="evenodd" />
                                             </svg>
-                                        </button>
-                                    </div>
-                                    <p>Thank you for booking with iBayad. </p>
-                                    <br><br>
-
-                                    <p>Your booking reference is: </p>
-                                    <p>An email sent to: <span class="font-bold">Juandelacruz@gmail.com</span></p>
-                                </div>
+                                        </span>
+                                        <span class="ml-2 text-sm">Profile</span>
+                                    </button>
+                                </RouterLink>
                             </div>
-
-                            <!-- Order Complete Modal -->
-                            <div v-if="showOrderCompleteModal"
-                                class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                                <div class="bg-white p-4 rounded-lg">
-                                    <div class="flex items-center justify-between mb-1">
-                                        <h2 class="text-xl font-semibold">Order Completed</h2>
-                                        <button @click="closeOrderCompleteModal">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.9" stroke="currentColor" class="w-6 h-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M6 18 18 6M6 6l12 12"></path>
+                            <div class="pb-2 text-center">
+                                <RouterLink to="/transactions">
+                                    <button class=" hover:bg-blue-600 flex items-center w-full p-3 bg-white rounded-xl"
+                                        @click="toggleDropdown(null)">
+                                        <span class="ml-2">
+                                            <img src="@/assets/images/Header/Transaction Icon.png" alt="transaction"
+                                                class="w-4 h-5">
+                                        </span>
+                                        <span class="ml-3 text-sm">Transactions</span>
+                                    </button>
+                                </RouterLink>
+                            </div>
+                            <div class="pb-2 text-center">
+                                <RouterLink to="/cart">
+                                    <button class=" hover:bg-blue-600 flex items-center w-full p-3 bg-white rounded-xl"
+                                        @click="toggleDropdown(null)">
+                                        <span class="ml-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                                class="w-6 h-6">
+                                                <path
+                                                    d="M2.25 2.25a.75.75 0 0 0 0 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 0 0-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 0 0 0-1.5H5.378A2.25 2.25 0 0 1 7.5 15h11.218a.75.75 0 0 0 .674-.421 60.358 60.358 0 0 0 2.96-7.228.75.75 0 0 0-.525-.965A60.864 60.864 0 0 0 5.68 4.509l-.232-.867A1.875 1.875 0 0 0 3.636 2.25H2.25ZM3.75 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM16.5 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" />
                                             </svg>
-                                        </button>
-                                    </div>
-                                    <p>Thank you for booking with iBayad. </p>
-                                    <br><br>
-
-                                    <p>Your booking reference is: </p>
-                                    <p>An email sent to: <span class="font-bold">Juandelacruz@gmail.com</span></p>
-                                </div>
+                                        </span>
+                                        <span class="ml-3 text-sm">Cart</span>
+                                    </button>
+                                </RouterLink>
                             </div>
-
-                            <!-- Booking Complete Modal -->
-                            <div v-if="showBookingCompleteModal"
-                                class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                                <div class="bg-white p-4 rounded-lg">
-                                    <div class="flex items-center justify-between mb-1">
-                                        <h2 class="text-xl font-semibold">Booking Complete Modal</h2>
-                                        <button @click="closeBookingCompleteModal">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.9" stroke="currentColor" class="w-6 h-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M6 18 18 6M6 6l12 12"></path>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <p>Thank you for booking with iBayad. </p>
-                                    <br><br>
-
-                                    <p>Your booking reference is: </p>
-                                    <p>An email sent to: <span class="font-bold">Juandelacruz@gmail.com</span></p>
+                            <RouterLink to="/">
+                                <div class="pt-4 pb-2 text-center">
+                                    <button @click="logout"
+                                        class="bg-[#102E61] w-full rounded-xl flex justify-center items-center p-2">
+                                        <span class="ml-2 text-white">Logout</span>
+                                    </button>
                                 </div>
-                            </div>
-
+                            </RouterLink>
                         </div>
                     </div>
-
-                    <!-- Person Icon -->
-                    <svg @click=togglepfp xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                        class="w-6 h-6">
-                        <path fill-rule="evenodd"
-                            d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
-                            clip-rule="evenodd" />
-                    </svg>
                 </div>
-
-                <!-- PFP Modal -->
-                <div v-if="showPFPModal"
-                    class="absolute top-[6.5rem] right-[1.2rem] bg-gray-100 shadow text-black rounded-lg w-[325px]">
-                    <div class="p-4" role="none">
-                        <p class="pb-3 text-xl font-bold">Account</p>
-                        <div class="pb-2 text-center">
-                            <RouterLink to="/profile">
-                                <button class=" hover:bg-blue-600 flex items-center w-full p-3 bg-white rounded-xl"
-                                    @click="toggleDropdown(null)">
-                                    <span class="ml-[0.2rem]">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                            fill="currentColor" class="w-7 h-7">
+                <div v-else>
+                    <div class="hidden lg:flex items-center space-x-4">
+                        <!-- Original Login Button -->
+                        <button @click="openLoginModal" class="text-blue-600">Login</button>
+                        <!-- Become a partner button -->
+                        <a class="hidden lg:block lg:bg-blue-500 lg:hover:bg-blue-700 lg:text-white lg:font-bold lg:py-2 lg:px-4 lg:border lg:border-blue-700 lg:rounded-lg"
+                            href="#">Become a partner</a>
+                    </div>
+                </div>
+                <!-- SIDEBAR NAVIGATION -->
+                <div class="relative lg:hidden">
+                    <!-- Hamburger Icon for Mobile View -->
+                    <div @click="toggleSidebar" class="lg:hidden pr-4">
+                        <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 6.19995H23" stroke="#222222" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M5 16.2H23" stroke="#222222" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M5 11.2H23" stroke="#222222" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <!-- Sidebar Navigation -->
+                    <transition name="slide">
+                        <div v-if="isSidebarOpen" class="absolute bg-white top-0 right-0 lg:hidden h-[100vh] w-[15rem]">
+                            <div>
+                                <!-- Close button -->
+                                <button @click="toggleSidebar" class="absolute top-0 left-0 m-4">
+                                    <svg width="28" height="24" viewBox="0 0 28 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5 6.19995H23" stroke="#222222" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M5 16.2H23" stroke="#222222" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M5 11.2H23" stroke="#222222" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                                <!-- Sidebar content goes here -->
+                                <div class="mx-4 flex flex-col justify-between h-full">
+                                    <h1 class="mt-[4rem] mb-4 font-bold text-xl">Dashboard</h1>
+                                    <ul class="flex flex-row pb-5 justify-items-center gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                            class="w-6 h-6">
+                                            <path
+                                                d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
+                                            <path
+                                                d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
+                                        </svg>
+                                        <li>
+                                            <router-link to="/">Home</router-link>
+                                        </li>
+                                    </ul>
+                                    <ul class="flex flex-row pb-5 justify-items-center gap-2 hover:bg-slate-100">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                            class="w-6 h-6">
                                             <path fill-rule="evenodd"
-                                                d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                                                d="M5.25 9a6.75 6.75 0 0 1 13.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 0 1-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 1 1-7.48 0 24.585 24.585 0 0 1-4.831-1.244.75.75 0 0 1-.298-1.205A8.217 8.217 0 0 0 5.25 9.75V9Zm4.502 8.9a2.25 2.25 0 1 0 4.496 0 25.057 25.057 0 0 1-4.496 0Z"
                                                 clip-rule="evenodd" />
                                         </svg>
-                                    </span>
-                                    <span class="ml-2 text-sm">Profile</span>
-                                </button>
-                            </RouterLink>
-                        </div>
-                        <div class="pb-2 text-center">
-
-                            <RouterLink to="/transactions">
-                                <button class=" hover:bg-blue-600 flex items-center w-full p-3 bg-white rounded-xl"
-                                    @click="toggleDropdown(null)">
-                                    <span class="ml-2">
+                                        <li>
+                                            <router-link to="/notification">Notifications</router-link>
+                                        </li>
+                                    </ul>
+                                    <ul class="flex flex-row pb-5 justify-items-center gap-2">
+                                        <img src="@/assets/images/Header/calendar.png" alt="logo" class="w-auto h-5 ">
+                                        <li>
+                                            <router-link to="/calendar">Calendar</router-link>
+                                        </li>
+                                    </ul>
+                                    <ul class="flex flex-row pb-5 justify-items-center pl-0.5 gap-2.5">
                                         <img src="@/assets/images/Header/Transaction Icon.png" alt="transaction"
                                             class="w-4 h-5">
-                                    </span>
-                                    <span class="ml-3 text-sm">Transactions</span>
-                                </button>
-                            </RouterLink>
-
-                        </div>
-                        <div class="pb-2 text-center">
-
-                            <RouterLink to="/cart">
-                                <button class=" hover:bg-blue-600 flex items-center w-full p-3 bg-white rounded-xl"
-                                    @click="toggleDropdown(null)">
-                                    <span class="ml-1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                            fill="currentColor" class="w-6 h-6">
+                                        <li>
+                                            <router-link to="/transactions">Transactions</router-link>
+                                        </li>
+                                    </ul>
+                                    <ul class="flex flex-row pb-5 justify-items-center gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                            class="w-5 h-6">
                                             <path
                                                 d="M2.25 2.25a.75.75 0 0 0 0 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 0 0-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 0 0 0-1.5H5.378A2.25 2.25 0 0 1 7.5 15h11.218a.75.75 0 0 0 .674-.421 60.358 60.358 0 0 0 2.96-7.228.75.75 0 0 0-.525-.965A60.864 60.864 0 0 0 5.68 4.509l-.232-.867A1.875 1.875 0 0 0 3.636 2.25H2.25ZM3.75 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM16.5 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" />
                                         </svg>
-                                    </span>
-                                    <span class="ml-3 text-sm">Cart</span>
-                                </button>
-                            </RouterLink>
-
-                        </div>
-                        <RouterLink to="/">
-                            <div class="pt-4 pb-2 text-center">
-                                <button @click="logout"
-                                    class="bg-[#102E61] w-full rounded-xl flex justify-center items-center p-2">
-                                    <span class="ml-2 text-white">Logout</span>
-                                </button>
-                            </div>
-                        </RouterLink>
-                    </div>
-                </div>
-            </div>
-
-            <div v-else>
-                <div class="hidden lg:flex items-center space-x-4">
-                    <!-- Original Login Button -->
-                    <button @click="openLoginModal" class="text-blue-600">Login</button>
-                    <!-- Become a partner button -->
-                    <a class="hidden lg:block lg:bg-blue-500 lg:hover:bg-blue-700 lg:text-white lg:font-bold lg:py-2 lg:px-4 lg:border lg:border-blue-700 lg:rounded-lg"
-                        href="#">Become a partner</a>
-                </div>
-            </div>
-
-            <!-- SIDEBAR NAVIGATION -->
-            <div class="relative lg:hidden">
-                <!-- Hamburger Icon for Mobile View -->
-                <div @click="toggleSidebar" class="lg:hidden pr-4">
-                    <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 6.19995H23" stroke="#222222" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <path d="M5 16.2H23" stroke="#222222" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <path d="M5 11.2H23" stroke="#222222" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </div>
-
-                <!-- Sidebar Navigation -->
-                <transition name="slide">
-
-                    <div v-if="isSidebarOpen" class="absolute bg-white top-0 right-0 lg:hidden h-[100vh] w-[15rem]">
-                        <div>
-                            <!-- Close button -->
-                            <button @click="toggleSidebar" class="absolute top-0 left-0 m-4">
-                                <svg width="28" height="24" viewBox="0 0 28 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M5 6.19995H23" stroke="#222222" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M5 16.2H23" stroke="#222222" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M5 11.2H23" stroke="#222222" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </button>
-
-                            <!-- Sidebar content goes here -->
-                            <div class="mx-4 flex flex-col justify-between h-full">
-                                <h1 class="mt-[4rem] mb-4 font-bold text-xl">Dashboard</h1>
-                                <ul class="flex flex-row pb-5 justify-items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                        class="w-6 h-6">
-                                        <path
-                                            d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
-                                        <path
-                                            d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
-                                    </svg>
-
-                                    <li>
-                                        <router-link to="/">Home</router-link>
-                                    </li>
-                                </ul>
-                                <ul class="flex flex-row pb-5 justify-items-center gap-2 hover:bg-slate-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                        class="w-6 h-6">
-                                        <path fill-rule="evenodd"
-                                            d="M5.25 9a6.75 6.75 0 0 1 13.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 0 1-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 1 1-7.48 0 24.585 24.585 0 0 1-4.831-1.244.75.75 0 0 1-.298-1.205A8.217 8.217 0 0 0 5.25 9.75V9Zm4.502 8.9a2.25 2.25 0 1 0 4.496 0 25.057 25.057 0 0 1-4.496 0Z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-
-                                    <li>
-                                        <router-link to="/notification">Notifications</router-link>
-                                    </li>
-                                </ul>
-                                <ul class="flex flex-row pb-5 justify-items-center gap-2">
-                                    <img src="@/assets/images/Header/calendar.png" alt="logo" class="w-auto h-5 ">
-                                    <li>
-                                        <router-link to="/calendar">Calendar</router-link>
-                                    </li>
-                                </ul>
-                                <ul class="flex flex-row pb-5 justify-items-center pl-0.5 gap-2.5">
-                                    <img src="@/assets/images/Header/Transaction Icon.png" alt="transaction"
-                                        class="w-4 h-5">
-                                    <li>
-                                        <router-link to="/transactions">Transactions</router-link>
-                                    </li>
-                                </ul>
-                                <ul class="flex flex-row pb-5 justify-items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                        class="w-5 h-6">
-                                        <path
-                                            d="M2.25 2.25a.75.75 0 0 0 0 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 0 0-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 0 0 0-1.5H5.378A2.25 2.25 0 0 1 7.5 15h11.218a.75.75 0 0 0 .674-.421 60.358 60.358 0 0 0 2.96-7.228.75.75 0 0 0-.525-.965A60.864 60.864 0 0 0 5.68 4.509l-.232-.867A1.875 1.875 0 0 0 3.636 2.25H2.25ZM3.75 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM16.5 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" />
-                                    </svg>
-                                    <li>
-                                        <router-link to="/cart">Cart</router-link>
-                                    </li>
-                                </ul>
-
-                                <ul @click="logout" class="flex flex-col pb-5 justify-items-center gap-2">
-                                    <!-- Only render the logout button if the user has not logged out -->
-                                    <div v-if="authStore.isAuthenticated">
-                                        <h1 class="mt-[25rem] mb-4 font-bold text-gray-500 text-opacity-30">Settings
-                                        </h1>
-
-                                        <ul class="flex flex-col pb-5 text-left">
+                                        <li>
+                                            <router-link to="/cart">Cart</router-link>
+                                        </li>
+                                    </ul>
+                                    <ul @click="logout" class="flex flex-col pb-5 justify-items-center gap-2">
+                                        <!-- Only render the logout button if the user has not logged out -->
+                                        <div v-if="authStore.isAuthenticated">
+                                            <h1 class="mt-[25rem] mb-4 font-bold text-gray-500 text-opacity-30">Settings
+                                            </h1>
+                                            <ul class="flex flex-col pb-5 text-left">
+                                                <div class="flex flex-row">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                        fill="currentColor" class="w-auto h-5">
+                                                        <path fill-rule="evenodd"
+                                                            d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                                                            clip-rule="evenodd" />
+                                                    </svg>
+                                                    <li class="pl-2">
+                                                        <router-link to="/profile">Profile</router-link>
+                                                    </li>
+                                                </div>
+                                            </ul>
                                             <div class="flex flex-row">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                    fill="currentColor" class="w-auto h-5">
-                                                    <path fill-rule="evenodd"
-                                                        d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
-                                                        clip-rule="evenodd" />
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke-width="1.5" stroke="currentColor" class="w-5 h-6">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
                                                 </svg>
-                                                <li class="pl-2">
-                                                    <router-link to="/profile">Profile</router-link>
-                                                </li>
+                                                <li class="pl-2">Logout</li>
                                             </div>
-                                        </ul>
-
-                                        <div class="flex flex-row">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" class="w-5 h-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
-                                            </svg>
-                                            <li class="pl-2">Logout</li>
                                         </div>
-                                    </div>
-                                    <div v-else>
-                                        <div class="absolute bottom-[5rem] left-0 w-full p-4 flex flex-col gap-1">
-                                            <div class="flex justify-center">
-                                                <button @click="openLoginModal"
-                                                    class="text-left text-blue-600 py-2 bottom-3">Login</button>
+                                        <div v-else>
+                                            <div class="absolute bottom-[5rem] left-0 w-full p-4 flex flex-col gap-1">
+                                                <div class="flex justify-center">
+                                                    <button @click="openLoginModal"
+                                                        class="text-left text-blue-600 py-2 bottom-3">Login</button>
+                                                </div>
+                                                <a class="bg-blue-500 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg text-center "
+                                                    href="#">Become a Partner</a>
                                             </div>
-
-                                            <a class="bg-blue-500 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg text-center "
-                                                href="#">Become a Partner</a>
                                         </div>
-                                    </div>
-                                </ul>
-
+                                    </ul>
+                                </div>
                             </div>
-
                         </div>
-                    </div>
-                </transition>
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- Login Modal -->
-    <div v-if="showLoginModal" class=" fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-        <div class="relative bg-white lg:w-[70vw] w-[90vw] h-fit rounded-3xl">
-            <img src="@/assets/images/Modal/Intersect.png" alt="" class="w-full lg:h-full absolute rounded-t-xl">
-
-            <!-- Modal Content -->
-            <div class="relative top-0 flex justify-end">
-                <button class="absolute  pr-4 pt-4">
-                    <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke-width="5" stroke="black" class="w-7 h-7">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-
-            <div
-                class="relative z-10 flex flex-col items-start justify-center h-fit lg:mt-[5rem] mt-[5rem] lg:ml-[6%] m-8">
-                <div class="mt-5 mb-5">
-                    <h2 class="text-2xl lg:text-3xl font-bold">Welcome!</h2>
-                    <p class="text-xs lg:text-sm">Please log in to your account.</p>
+                    </transition>
                 </div>
-
-                <form @submit.prevent="login" class=" lg:w-[40%] h-fit md:w-[40%] w-full mr-8">
-                    <!-- username -->
-                    <div class="relative mb-4 w-full md:w-365">
-                        <label for="username" class="block text-gray-700">Enter Username</label>
-                        <div class="relative">
-                            <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-5 my-3"
-                                style="width: 15px;" alt="Username Icon" />
-                            <input type="text" id="username" v-model="username" @input="validateUsername"
-                                class="w-full h-8 py-5 pl-10 border border-black rounded-xl" placeholder="Username">
-                            <span v-if="usernameError" class="text-red-500 text-xs">{{ usernameError }}</span>
-                        </div>
-                    </div>
-                    <!-- login password -->
-                    <div class="relative mb-4">
-                        <label for="lpassword" class="w-full text-gray-700">Enter Password</label>
-                        <div class="relative w-full">
-                            <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-5 my-3"
-                                style="width: 15px;" alt="Username Icon" />
-                            <img v-if="showPassword" src="@/assets/images/Modal/view.png"
-                                class="absolute inset-y-0 right-0 mx-3 my-3" style="width: 15px; cursor: pointer;"
-                                alt="Eye Icon" @click="togglePasswordVisibility">
-                            <img v-else src="@/assets/images/Modal/hidden.png"
-                                class="absolute inset-y-0 right-0 mx-3 my-3" style="width: 15px; cursor: pointer;"
-                                alt="Eye Icon" @click="togglePasswordVisibility">
-                            <input id="lpassword" v-model="lpassword" @input="validateLPassword"
-                                :type="showPassword ? 'text' : 'password'"
-                                class="w-full h-8 py-5 pl-10 border border-black rounded-xl" placeholder="Password">
-                            <span v-if="lpasswordError" class="text-red-500 text-xs">{{ lpasswordError }}</span>
-                        </div>
-                    </div>
-
-                    <div class="hidden lg:flex items-center justify-between mb-4">
-                        <p class="text-xs">Don't have an account? <button @click="openPrivacyModal"
-                                class="text-xs font-bold text-blue-600">Sign Up</button></p>
-                        <button @click="openForgotModal" class="text-xs text-blue-600 font-bold">Forgot
-                            Password?</button>
-                    </div>
-
-                    <div class="hidden lg:block lg:mt-10 text-center">
-                        <button type="submit"
-                            class="lg:w-[8rem] w-full lg:px-4 py-2 text-white disabled:bg-blue-400 bg-blue-600 rounded-md"
-                            :disabled="!isLoginFormValid" @click="login">Login</button>
-                    </div>
-
-                    <div class="lg:hidden lg:mt-10 text-center">
-                        <button type="submit" :disabled="!isLoginFormValid" @click="login"
-                            class="lg:w-[8rem] w-full lg:px-4 py-2 lg:mb-10 text-white disabled:bg-blue-400  bg-blue-600 rounded-md">Login</button>
-                        <button @click="openForgotModal" class="text-xs text-blue-600 mt-1">Forgot
-                            Password?</button>
-                        <button @click="openPrivacyModal"
-                            class="w-full mt-8 py-2 border border-blue-400 text-blue-600 bg-white rounded-md">Sign
-                            Up</button>
-                    </div>
-                </form>
             </div>
         </div>
-    </div>
-
-    <div v-if="showPrivacyModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-        <div class="relative p-7 bg-white w-[90%] lg:w-[75%] lg:h-[70%] rounded-xl">
-            <!-- Modal Content -->
-            <div class="relative flex justify-end">
-                <button class="absolute ">
-                    <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke-width="5" stroke="black" class="w-auto h-5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-
-            <div class="flex justify-center items-center">
-                <img src="@/assets/images/Header/makati_logo.png" alt="logo"
-                    class="w-auto h-8 mr-3 md:block md:w-auto md:h-10">
-                <img src="@/assets/images/Header/makaturismo.png" alt="banner" class="w-auto h-8 md:w-auto md:h-8">
-            </div>
-
-            <div class="flex items-center">
-                <button @click="openLoginModal" class="text-blue-600">
-                    <img src="@/assets/images/Header/back.svg" alt="backBtn"
-                        class="h-4 lg:h-5 w-auto ml-4 lg:ml-8 mr-2">
-                </button>
-            </div>
-
-            <div class="relative z-10 flex flex-col items-center h-full">
-                <form @submit.prevent="signup" class="w-[85%] lg:px-10 px-2 lg:mt-0 mt-5">
-                    <!-- <div class="mb-5">
-
-          </div> -->
-                    <!-- make it scrollable -->
-                    <div class="flex justify-between overflow-y-auto h-[230px] w-[100%] hidden-scrollbar mb-2">
-                        <div class="flex flex-col">
-                            <p class="font-bold text-center text-2xl lg:text-3xl mb-5">Privacy Policy</p>
-                            <p class="font-bold mb-5">Collection of Personal Information:</p>
-                            <p class="mb-5 text-sm text-justify">We may collect personal information from you when
-                                you interact
-                                with
-                                our website,
-                                products, or services. This information may include but is not limited to your name,
-                                email address,
-                                mailing
-                                address, phone number, and payment details. We collect this information to provide
-                                you with our
-                                services and to improve and customize your experience with us.</p>
-                            <p class="font-bold mb-5">Use of Personal Information:</p>
-                            <p class="mb-5 text-sm text-justify">We use the personal information we collect for
-                                various purposes,
-                                including:</p>
-                            <p class="mb-5 text-sm">1. Providing and personalizing our services <br>
-                                2. Processing transactions <br>
-                                3. Communicating with you <br>
-                                4. Improving our products and services <br>
-                                5. Marketing and promotional purposes <br>
-                                6. Complying with legal obligations</p>
-
-                            <p class="font-bold mb-5">Protection of Personal Information:</p>
-
-                            <p class="mb-5 text-sm text-justify">We take the security of your personal information
-                                seriously and
-                                have implemented
-                                appropriate measures to protect it from unauthorized access, disclosure, alteration,
-                                or destruction.
-                                However, please note
-                                that no method of transmission over the internet or electronic storage is 100%
-                                secure, and we cannot
-                                guarantee absolute security.</p>
-
-                            <p class="font-bold mb-5">Sharing of Personal Information:</p>
-
-                            <p class="mb-5 text-sm text-justify">We may share your personal information with
-                                third-party service
-                                providers who assist
-                                us in providing our services, conducting our business, or servicing you. We may also
-                                share your
-                                information when
-                                required by law or to protect our rights, property, or safety.</p>
-
-                            <p class="font-bold mb-5">Your Rights:</p>
-
-                            <p class="mb-5 text-sm text-justify">You have the right to access, update, or delete
-                                your personal
-                                information. You may
-                                also have the right to object to or restrict certain types of processing. If you
-                                would like to
-                                exercise any of these
-                                rights, please contact us using the information provided below.</p>
-
-                            <p class="font-bold mb-5">Changes to this Privacy Policy:</p>
-
-                            <p class="mb-5 text-sm text-justify">We reserve the right to update or modify this
-                                Privacy Policy at
-                                any
-                                time. Any changes
-                                will be effective immediately upon posting the updated Privacy Policy on our
-                                website.</p>
-                            <!-- contents -->
-                        </div>
+        <!-- Login Modal -->
+        <div v-if="showLoginModal" class=" fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+            <div class="relative bg-white lg:w-[70vw] w-[90vw] h-fit rounded-3xl">
+                <img src="@/assets/images/Modal/Intersect.png" alt="" class="w-full lg:h-full absolute rounded-t-xl">
+                <!-- Modal Content -->
+                <div class="relative top-0 flex justify-end">
+                    <button class="absolute  pr-4 pt-4">
+                        <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="5" stroke="black" class="w-7 h-7">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div
+                    class="relative z-10 flex flex-col items-start justify-center h-fit lg:mt-[5rem] mt-[5rem] lg:ml-[6%] m-8">
+                    <div class="mt-5 mb-5">
+                        <h2 class="text-2xl lg:text-3xl font-bold">Welcome!</h2>
+                        <p class="text-xs lg:text-sm">Please log in to your account.</p>
                     </div>
-                    <div>
-                        <div class="flex items-center mt-10">
-                            <input type="checkbox" id="myCheckbox" class="form-checkbox h-5 w-5 text-blue-600 mr-2"
-                                v-model="checkboxChecked">
-                            <label for="myCheckbox" class="mar">I have read and agreed to the above Privacy Policy
-                                Agreement</label>
+                    <form @submit.prevent="login" class=" lg:w-[40%] h-fit md:w-[40%] w-full mr-8">
+                        <!-- username -->
+                        <div class="relative mb-4 w-full md:w-365">
+                            <label for="username" class="block text-gray-700">Enter Username</label>
+                            <div class="relative">
+                                <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-5 my-3"
+                                    style="width: 15px;" alt="Username Icon" />
+                                <input type="text" id="username" v-model="username" @input="validateUsername"
+                                    class="w-full h-8 py-5 pl-10 border border-black rounded-xl" placeholder="Username">
+                                <span v-if="usernameError" class="text-red-500 text-xs">{{ usernameError }}</span>
+                            </div>
                         </div>
-
-                        <div class="text-center mt-5">
+                        <!-- login password -->
+                        <div class="relative mb-4">
+                            <label for="lpassword" class="w-full text-gray-700">Enter Password</label>
+                            <div class="relative w-full">
+                                <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 mx-5 my-3"
+                                    style="width: 15px;" alt="Username Icon" />
+                                <img v-if="showPassword" src="@/assets/images/Modal/view.png"
+                                    class="absolute inset-y-0 right-0 mx-3 my-3" style="width: 15px; cursor: pointer;"
+                                    alt="Eye Icon" @click="togglePasswordVisibility">
+                                <img v-else src="@/assets/images/Modal/hidden.png"
+                                    class="absolute inset-y-0 right-0 mx-3 my-3" style="width: 15px; cursor: pointer;"
+                                    alt="Eye Icon" @click="togglePasswordVisibility">
+                                <input id="lpassword" v-model="lpassword" @input="validateLPassword"
+                                    :type="showPassword ? 'text' : 'password'"
+                                    class="w-full h-8 py-5 pl-10 border border-black rounded-xl" placeholder="Password">
+                                <span v-if="lpasswordError" class="text-red-500 text-xs">{{ lpasswordError }}</span>
+                            </div>
+                        </div>
+                        <div class="hidden lg:flex items-center justify-between mb-4">
+                            <p class="text-xs">Don't have an account? <button @click="openPrivacyModal"
+                                    class="text-xs font-bold text-blue-600">Sign Up</button></p>
+                            <button @click="openForgotModal" class="text-xs text-blue-600 font-bold">Forgot
+                                Password?</button>
+                        </div>
+                        <div class="hidden lg:block lg:mt-10 text-center">
                             <button type="submit"
-                                class="disabled:bg-blue-400 lg:w-[50%] w-full px-4 py-4 text-white bg-blue-600 rounded-md"
-                                @click="openSignUpModal" :disabled="!checkboxChecked">Continue</button>
+                                class="lg:w-[8rem] w-full lg:px-4 py-2 text-white disabled:bg-blue-400 bg-blue-600 rounded-md"
+                                :disabled="!isLoginFormValid" @click="login">Login</button>
                         </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Sign Up Modal -->
-    <div v-if="showSignUpModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-        <div class="relative pr-8 pt-8 bg-white lg:w-3/4 w-11/12 lg:h-fit h-[75%] rounded-xl">
-            <img src="@/assets/images/Modal/bg2.png" alt=""
-                class=" bottom-0 right-0 lg:w-[50%] absolute rounded-tr-xl rounded-br-xl lg:h-full ">
-
-            <!-- Modal Content -->
-            <div class="relative top-0 flex justify-end">
-                <button class="absolute lg:pr-4 lg:pt-4 ">
-                    <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke-width="5" stroke="black" class="w-7 h-7">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-            <div class="lg:ml-[5rem] ml-8 my-5">
-                <div class="flex items-center gap-4">
-                    <button @click="openLoginModal" class="text-blue-600"><img src="@/assets/images/Modal/back.png"
-                            style="width: 20px; height: 20px;" alt="" class="my-2 mr-2"></button>
-                    <h2 class="text-4xl font-bold">Sign Up</h2>
+                        <div class="lg:hidden lg:mt-10 text-center">
+                            <button type="submit" :disabled="!isLoginFormValid" @click="login"
+                                class="lg:w-[8rem] w-full lg:px-4 py-2 lg:mb-10 text-white disabled:bg-blue-400  bg-blue-600 rounded-md">Login</button>
+                            <button @click="openForgotModal" class="text-xs text-blue-600 mt-1">Forgot
+                                Password?</button>
+                            <button @click="openPrivacyModal"
+                                class="w-full mt-8 py-2 border border-blue-400 text-blue-600 bg-white rounded-md">Sign
+                                Up</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-
-            <!-- Fill out the form starts here -->
-            <div class="relative z-10 flex flex-col items-start justify-center lg:h-full">
-                <form @submit.prevent="signup" @input="validateForm"
-                    class="lg:w-[62%] w-fit lg:mx-[5rem] mb-8 ml-8 text-sm lg:h-full h-[55vh] font-bold hidden-scrollbar"
-                    style="overflow-y: auto;">
-                    <div class="w-full grid grid-cols-1 lg:grid-cols-2">
-                        <!-- Firstname -->
-                        <div class="lg:flex items-center mb-3">
-                            <label for="fname" class="w-[9rem] block mb-2 ">First Name: <span
-                                    class="text-red-500 text-md">*</span></label>
-                            <div class="w-full flex flex-col items-start justify-center">
-                                <input id="fname" type="text" v-model="fname" placeholder="Enter First Name"
-                                    class="border border-gray-500 rounded-xl w-full py-3 px-3"
-                                    @input="validateFirstname">
-                                <span v-if="fnameError" class="text-red-500 text-xs">{{ fnameError }}</span>
+        </div>
+        <div v-if="showPrivacyModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+            <div class="relative p-7 bg-white w-[90%] lg:w-[75%] lg:h-[70%] rounded-xl">
+                <!-- Modal Content -->
+                <div class="relative flex justify-end">
+                    <button class="absolute ">
+                        <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="5" stroke="black" class="w-auto h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex justify-center items-center">
+                    <img src="@/assets/images/Header/makati_logo.png" alt="logo"
+                        class="w-auto h-8 mr-3 md:block md:w-auto md:h-10">
+                    <img src="@/assets/images/Header/makaturismo.png" alt="banner" class="w-auto h-8 md:w-auto md:h-8">
+                </div>
+                <div class="flex items-center">
+                    <button @click="openLoginModal" class="text-blue-600">
+                        <img src="@/assets/images/Header/back.svg" alt="backBtn"
+                            class="h-4 lg:h-5 w-auto ml-4 lg:ml-8 mr-2">
+                    </button>
+                </div>
+                <div class="relative z-10 flex flex-col items-center h-full">
+                    <form @submit.prevent="signup" class="w-[85%] lg:px-10 px-2 lg:mt-0 mt-5">
+                        <!-- <div class="mb-5">
+                  </div> -->
+                        <!-- make it scrollable -->
+                        <div class="flex justify-between overflow-y-auto h-[230px] w-[100%] hidden-scrollbar mb-2">
+                            <div class="flex flex-col">
+                                <p class="font-bold text-center text-2xl lg:text-3xl mb-5">Privacy Policy</p>
+                                <p class="font-bold mb-5">Collection of Personal Information:</p>
+                                <p class="mb-5 text-sm text-justify">We may collect personal information from you when you
+                                    interact with our website, products, or services. This information may include but is
+                                    not limited to your name, email address, mailing address, phone number, and payment
+                                    details. We collect this information to provide you with our services and to improve and
+                                    customize your experience with us.</p>
+                                <p class="font-bold mb-5">Use of Personal Information:</p>
+                                <p class="mb-5 text-sm text-justify">We use the personal information we collect for various
+                                    purposes, including:
+                                </p>
+                                <p class="mb-5 text-sm">1. Providing and personalizing our services <br> 2. Processing
+                                    transactions <br> 3. Communicating with you <br> 4. Improving our products and services
+                                    <br> 5. Marketing and promotional purposes <br> 6. Complying with legal
+                                    obligations
+                                </p>
+                                <p class="font-bold mb-5">Protection of Personal Information:</p>
+                                <p class="mb-5 text-sm text-justify">We take the security of your personal information
+                                    seriously and have implemented appropriate measures to protect it from unauthorized
+                                    access, disclosure, alteration, or destruction. However, please note that no method of
+                                    transmission
+                                    over the internet or electronic storage is 100% secure, and we cannot guarantee absolute
+                                    security.</p>
+                                <p class="font-bold mb-5">Sharing of Personal Information:</p>
+                                <p class="mb-5 text-sm text-justify">We may share your personal information with third-party
+                                    service providers who assist us in providing our services, conducting our business, or
+                                    servicing you. We may also share your information when required by law or to protect
+                                    our rights, property, or safety.</p>
+                                <p class="font-bold mb-5">Your Rights:</p>
+                                <p class="mb-5 text-sm text-justify">You have the right to access, update, or delete your
+                                    personal information. You may also have the right to object to or restrict certain types
+                                    of processing. If you would like to exercise any of these rights, please contact
+                                    us using the information provided below.</p>
+                                <p class="font-bold mb-5">Changes to this Privacy Policy:</p>
+                                <p class="mb-5 text-sm text-justify">We reserve the right to update or modify this Privacy
+                                    Policy at any time. Any changes will be effective immediately upon posting the updated
+                                    Privacy Policy on our website.
+                                </p>
+                                <!-- contents -->
                             </div>
                         </div>
-                        <!-- Middlename -->
-                        <div class="lg:flex items-center mb-3">
-                            <label for="mname" class="w-[9rem] lg:ml-3 lg:mr-3">Middle Initial:</label>
-                            <input id="mname" type="text" v-model="mname" placeholder="Enter Middle Initia"
-                                class="border border-gray-500 rounded-xl w-full py-3 px-3">
-                        </div>
-                    </div>
-                    <!-- Lastname -->
-                    <div class="lg:flex items-center mb-3 ">
-                        <label for="lastname" class="w-[7.4rem] block">Last Name: <span
-                                class="text-red-500 text-md">*</span></label>
-                        <div class="w-full flex flex-col items-start justify-center">
-                            <input id="lastname" type="text" v-model="lastname" placeholder="Enter Last Name"
-                                class="border border-gray-500 rounded-xl w-full py-3 px-3"
-                                @input="validateLastname">
-                            <span v-if="lastnameError" class="text-red-500 text-xs">{{ lastnameError }}</span>
-                        </div>
-                    </div>
-                    <div class="w-full grid grid-cols-1 lg:grid-cols-2 ">
-                        <!-- E-mail Address -->
-                        <div class="lg:flex items-center mb-3">
-                            <label for="email" class="w-[9rem] block mb-2 text-xs">Email Address: <span
-                                    class="text-red-500 text-md">*</span></label>
-
-                            <div class="w-full flex flex-col items-start justify-center">
-                                <input id="email" type="text" v-model="email" placeholder="Enter Email Address"
-                                    class="border border-gray-500 rounded-xl w-full py-3 px-3"
-                                    @input="validateEmail">
-                                <span v-if="emailError" class="text-red-500 text-xs">{{ emailError }}</span>
+                        <div>
+                            <div class="flex items-center mt-10">
+                                <input type="checkbox" id="myCheckbox" class="form-checkbox h-5 w-5 text-blue-600 mr-2"
+                                    v-model="checkboxChecked">
+                                <label for="myCheckbox" class="mar">I have read and agreed to the above Privacy Policy
+                                    Agreement</label>
+                            </div>
+                            <div class="text-center mt-5">
+                                <button type="submit"
+                                    class="disabled:bg-blue-400 lg:w-[50%] w-full px-4 py-4 text-white bg-blue-600 rounded-md"
+                                    @click="openSignUpModal" :disabled="!checkboxChecked">Continue</button>
                             </div>
                         </div>
-                        <!-- Phone Number -->
-                        <div class="lg:flex items-center mb-3">
-                            <label for="pnum" class="w-[7.9rem] mb-2 lg:ml-3 ">Phone No.: <span
-                                    class="text-red-500 text-md">*</span></label>
-                            <div class="flex flex-col items-start justify-between">
-                                <div class="flex ">
-                                    <!-- Text box for dialing code -->
-                                    <input type="text" v-model="dialingCode" readonly
-                                        class="border border-gray-500 rounded-l-xl w-[3.5rem] py-3 px-3"
-                                        value="+63">
-                                    <input id="pnum" type="tel" v-model="pnum" placeholder="Enter Phone Number"
-                                        class="border border-gray-500 rounded-r-xl w-full py-3 px-3" maxlength="10"
-                                        @input="validatePhoneNumber">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Sign Up Modal -->
+        <div v-if="showSignUpModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+            <div class="relative pr-8 pt-8 bg-white lg:w-3/4 w-11/12 lg:h-fit h-[75%] rounded-xl">
+                <img src="@/assets/images/Modal/bg2.png" alt=""
+                    class=" bottom-0 right-0 lg:w-[50%] absolute rounded-tr-xl rounded-br-xl lg:h-full ">
+                <!-- Modal Content -->
+                <div class="relative top-0 flex justify-end">
+                    <button class="absolute lg:pr-4 lg:pt-4 ">
+                        <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="5" stroke="black" class="w-7 h-7">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="lg:ml-[5rem] ml-8 my-5">
+                    <div class="flex items-center gap-4">
+                        <button @click="openLoginModal" class="text-blue-600"><img src="@/assets/images/Modal/back.png"
+                                style="width: 20px; height: 20px;" alt="" class="my-2 mr-2"></button>
+                        <h2 class="text-4xl font-bold">Sign Up</h2>
+                    </div>
+                </div>
+                <!-- Fill out the form starts here -->
+                <div class="relative z-10 flex flex-col items-start justify-center lg:h-full">
+                    <form @submit.prevent="signup" @input="validateForm"
+                        class="lg:w-[62%] w-fit lg:mx-[5rem] mb-8 ml-8 text-sm lg:h-full h-[55vh] font-bold hidden-scrollbar"
+                        style="overflow-y: auto;">
+                        <div class="w-full grid grid-cols-1 lg:grid-cols-2">
+                            <!-- Firstname -->
+                            <div class="lg:flex items-center mb-3">
+                                <label for="fname" class="w-[9rem] block mb-2 ">First Name: <span
+                                        class="text-red-500 text-md">*</span></label>
+                                <div class="w-full flex flex-col items-start justify-center">
+                                    <input id="fname" type="text" v-model="fname" placeholder="Enter First Name"
+                                        class="border border-gray-500 rounded-xl w-full py-3 px-3"
+                                        @input="validateFirstname">
+                                    <span v-if="fnameError" class="text-red-500 text-xs">{{ fnameError }}</span>
                                 </div>
-                                <span v-if="pnumError" class="text-red-500 text-xs">{{ pnumError }}</span>
+                            </div>
+                            <!-- Middlename -->
+                            <div class="lg:flex items-center mb-3">
+                                <label for="mname" class="w-[9rem] lg:ml-3 lg:mr-3">Middle Initial:</label>
+                                <input id="mname" type="text" v-model="mname" placeholder="Enter Middle Initial"
+                                    class="border border-gray-500 rounded-xl w-full py-3 px-3">
                             </div>
                         </div>
-                    </div>
-                    <div class="w-full grid lg:grid-cols-2 gap-2">
-                        <!-- Nationality -->
-                        <div class="lg:flex items-center mb-3">
-                            <label for="citizenship" class="w-[9rem] block mb-2">Nationality: <span
+                        <!-- Lastname -->
+                        <div class="lg:flex items-center mb-3 ">
+                            <label for="lastname" class="w-[7.4rem] block">Last Name: <span
                                     class="text-red-500 text-md">*</span></label>
                             <div class="w-full flex flex-col items-start justify-center">
-                                <div class="relative w-full">
-                                    <select id="nationality" v-model="nationality"
-                                        class="border border-gray-500 rounded-xl w-full py-3 px-3 appearance-none cursor-pointer">
-                                        <option v-for="(nation, index) in nationalityOptions" :key="index"
-                                            :value="nation">{{ nation }}
-                                        </option>
-                                    </select>
-                                    <div
-                                        class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
-                                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                            fill="currentColor">
-                                            <path fill-rule="evenodd"
-                                                d="M10 12a1 1 0 0 1-.707-.293l-4-4a1 1 0 1 1 1.414-1.414L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4A1 1 0 0 1 10 12z"
-                                                clip-rule="evenodd" />
-                                        </svg>
+                                <input id="lastname" type="text" v-model="lastname" placeholder="Enter Last Name"
+                                    class="border border-gray-500 rounded-xl w-full py-3 px-3" @input="validateLastname">
+                                <span v-if="lastnameError" class="text-red-500 text-xs">{{ lastnameError }}</span>
+                            </div>
+                        </div>
+                        <div class="w-full grid grid-cols-1 lg:grid-cols-2 ">
+                            <!-- E-mail Address -->
+                            <div class="lg:flex items-center mb-3">
+                                <label for="email" class="w-[9rem] block mb-2 text-xs">Email Address: <span
+                                        class="text-red-500 text-md">*</span></label>
+                                <div class="w-full flex flex-col items-start justify-center">
+                                    <input id="email" type="text" v-model="email" placeholder="Enter Email Address"
+                                        class="border border-gray-500 rounded-xl w-full py-3 px-3" @input="validateEmail">
+                                    <span v-if="emailError" class="text-red-500 text-xs">{{ emailError }}</span>
+                                </div>
+                            </div>
+                            <!-- Phone Number -->
+                            <div class="lg:flex items-center mb-3">
+                                <label for="pnum" class="w-[7.9rem] mb-2 lg:ml-3 ">Phone No.: <span
+                                        class="text-red-500 text-md">*</span></label>
+                                <div class="flex flex-col items-start justify-between">
+                                    <div class="flex ">
+                                        <!-- Text box for dialing code -->
+                                        <input type="text" v-model="dialingCode" readonly
+                                            class="border border-gray-500 rounded-l-xl w-[3.5rem] py-3 px-3" value="+63">
+                                        <input id="pnum" type="tel" v-model="pnum" placeholder="Enter Phone Number"
+                                            class="border border-gray-500 rounded-r-xl w-full py-3 px-3" maxlength="10"
+                                            @input="validatePhoneNumber">
                                     </div>
+                                    <span v-if="pnumError" class="text-red-500 text-xs">{{ pnumError }}</span>
                                 </div>
-                                <span v-if="nationalityError" class="text-red-500 text-xs">{{ nationalityError
+                            </div>
+                        </div>
+                        <div class="w-full grid lg:grid-cols-2 gap-2">
+                            <!-- Nationality -->
+                            <div class="lg:flex items-center mb-3">
+                                <label for="citizenship" class="w-[9rem] block mb-2">Nationality: <span
+                                        class="text-red-500 text-md">*</span></label>
+                                <div class="w-full flex flex-col items-start justify-center">
+                                    <div class="relative w-full">
+                                        <select id="nationality" v-model="nationality"
+                                            class="border border-gray-500 rounded-xl w-full py-3 px-3 appearance-none cursor-pointer">
+                                            <option v-for="(nation, index) in nationalityOptions" :key="index"
+                                                :value="nation">{{ nation }}
+                                            </option>
+                                        </select>
+                                        <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
+                                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                                fill="currentColor">
+                                                <path fill-rule="evenodd"
+                                                    d="M10 12a1 1 0 0 1-.707-.293l-4-4a1 1 0 1 1 1.414-1.414L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4A1 1 0 0 1 10 12z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <span v-if="nationalityError" class="text-red-500 text-xs">{{ nationalityError
                                     }}</span>
                                 </div>
                             </div>
@@ -909,7 +827,7 @@
                                         class="my-2 mr-2"></button>
                                 <h2 class="lg:text-4xl text-2xl font-bold lg:mb-[10%] mb-[18%]">Change Password</h2>
                             </div>
-                            <p class="mb-5 text-sm">Enter your email to receive an OTP for access to changing passoword
+                            <p class="mb-5 text-sm">Enter your email to change your password
                             </p>
                             <div class="relative mb-2">
                                 <div class="relative">
@@ -922,7 +840,7 @@
                             </div>
                         </div>
                         <div class="flex items-center justify-center text-center mb-[10%]">
-                            <button @click="recieveotp" :disabled="!isForgotFormValid"
+                            <button @click="recieveotp" :disabled="!isForgotFormValid" 
                                 class="lg:w-fit w-full px-4 py-2 text-white disabled:bg-blue-400 bg-blue-600 rounded-lg">Submit
                             </button>
                         </div>
@@ -932,7 +850,7 @@
         </div>
         <!-- thank you modal -->
         <div v-if="showApproval" class="fixed inset-0 z-[10] flex items-center justify-center bg-gray-800 bg-opacity-30"
-            @click="closeApproval">
+            >
             <!-- Modal Content -->
             <div class="relative bg-white px-5 pb-7 shadow-xl mx-auto w-full max-w-xl rounded-2xl">
                 <div class="mx-auto flex w-full max-w-xl flex-col">
@@ -961,193 +879,239 @@
                 </div>
             </div>
         </div>
-
-       <!--  end of modal -->
-    <!-- OTP -->
-    <div v-if="showOTPModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-        <!-- Modal Content -->
-        <div class="relative flex justify-end">
-            <button class="absolute pr-4 pt-4 ">
-                <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                    stroke-width="5" stroke="black" class="w-7 h-7">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                </svg>
-            </button>
-        </div>
-
-        <div class="relative bg-white px-6 pb-9 shadow-xl mx-auto lg:w-full w-[90vw] h-fit max-w-3xl rounded-2xl">
-            <div class="mx-auto flex w-full max-w-3xl flex-col">
-                <button class="relative flex pr-4 pt-10 justify-end">
-                    <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke-width="5" stroke="black" class="w-7 h-7">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                    </svg>
+        <!--  end of modal -->
+        <!-- OTP -->
+        <div v-if="showOTPModal" class=" fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+            <div class="relative bg-white lg:w-[70vw] w-[90vw] h-[30rem] rounded-3xl">
+                <img src="@/assets/images/Modal/Intersect.png" alt="" class="w-full absolute rounded-t-xl">
+                <!-- Modal Content -->
+                <div class="relative z-10 top-0 flex justify-end">
+                    <button class="absolute  pr-4 pt-4">
+                        <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="5" stroke="black" class="w-7 h-7">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+          
+       <div v-if="forgotnewpassword" class="relative z-5 flex flex-col items-start justify-center h-full lg:ml-12">
+    <form class="lg:w-[35%] lg:mt-[10%] mt-[20%] mx-8 lg:mx-0 flex flex-col justify-between h-full">
+        <div class="mb-5">
+            <div class="flex items-center mb-12 w-[50%]">
+                <button @click="openLoginModal" class="hidden text-blue-600">
+                    <img src="@/assets/images/Modal/back.png" style="width: 20px; height: 20px;" alt="" class="my-2 mr-2">
                 </button>
-                <div class="flex flex-col items-center justify-center text-center pt-5">
-                    <div class="font-semibold text-3xl">
-                        <p>Enter One-Time Password to verify your account</p>
-                    </div>
-                    <div class="flex flex-row text-lg font-medium text-black pb-8">
-                        <p>An OTP has been sent to your email for changing your password</p>
-                    </div>
-                </div>
-                <div>
-                    <form action="" method="post">
-                        <div class="flex flex-col space-y-10">
-                            <div class="flex flex-row items-center justify-center lg:gap-5 mx-auto w-full max-w-md">
-                                <div class="w-[3rem] h-[5rem] outline outline-2 ">
-                                    <input
-                                        class=" w-full h-full flex flex-col items-center justify-center text-center outline-none border border-gray-200 text-3xl bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
-                                        type="text" name="" id="" placeholder="*">
+                <h2 class="lg:text-4xl text-2xl font-bold lg:mb-[10%] mb-[18%]">Change Password</h2>
+            </div>
+            <div class="relative mb-4 w-full md:w-365">
+                <div class="relative">
+                    <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 right-0 mx-5 my-1 mt-3" style="width: 15px;" alt="Username Icon" />
+                    <input type="password" id="newpass" name="newpass" v-model="forgotnewpass" placeholder="Enter new password" @input="checkPasswordPolicyForgot" class="w-full h-8 py-5 pl-10 border border-black rounded-xl">
+                    <div v-if="passwordPolicyForgot.length > 0" class="text-red-500 text-xs">
+                                    <ul>
+                                        <li v-for="(policy, index) in passwordPolicyForgot" :key="index">{{ policy }}</li>
+                                    </ul>
                                 </div>
-                                <div class="w-[3rem] h-[5rem] outline outline-2">
-                                    <input
-                                        class="w-full h-full flex flex-col items-center justify-center text-center outline-none border border-gray-200 text-3xl bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
-                                        type="text" name="" id="" placeholder="*">
-                                </div>
-                                <div class="w-[3rem] h-[5rem] outline outline-2">
-                                    <input
-                                        class="w-full h-full flex flex-col items-center justify-center text-center outline-none border border-gray-200 text-3xl bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
-                                        type="text" name="" id="" placeholder="*">
-                                </div>
-                                <div class="w-[3rem] h-[5rem] outline outline-2">
-                                    <input
-                                        class="w-full h-full flex flex-col items-center justify-center text-center outline-none border border-gray-200 text-3xl bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
-                                        type="text" name="" id="" placeholder="*">
-                                </div>
-                                <div class="w-[3rem] h-[5rem] outline outline-2">
-                                    <input
-                                        class="w-full h-full flex flex-col items-center justify-center text-center outline-none border border-gray-200 text-3xl bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
-                                        type="text" name="" id="" placeholder="*">
-                                </div>
-                                <div class="w-[3rem] h-[5rem] outline outline-2">
-                                    <input
-                                        class="w-full h-full flex flex-col items-center justify-center text-center outline-none rounded-xl border border-gray-200 text-3xl bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
-                                        type="text" name="" id="" placeholder="*">
-                                </div>
-                            </div>
-
-                            <div class="flex flex-col space-y-2 items-center justify-center w-full">
-                                <button
-                                    class=" text-center lg:w-[24rem] w-full rounded-xl py-3 bg-blue-700 text-white"
-                                    @click="closeOTP">
-                                    Verify
-                                </button>
-
-                                <div
-                                    class="flex flex-row items-center justify-center text-center text-sm text-black">
-                                    <p>Didn't receive code?</p> <a
-                                        class="flex flex-row items-center font-medium text-blue-600" href="http://"
-                                        target="_blank" rel="noopener noreferrer">Resend code</a>
-                                </div>
-                            </div>
+                    
+  <div class="relative mb-4 mt-4 w-full md:w-365">
+                        <div class="relative">
+                            <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 right-0 mx-5 my-1 mt-3" style="width: 15px;" alt="Username Icon" />
+                            <input type="password" id="confirmpass" name="confirmpass" v-model="forgotconfirmpass" placeholder="Confirm Password" class="w-full h-8 py-5 pl-10 border border-black rounded-xl" @input="matchForgotpassword">
+                            <span v-if="matchpassword" class="text-red-500 text-xs">{{ forgotConfirmMessage }}</span>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-<div v-if="isCategoryPath($route.path)" class="hidden lg:inset-x-0 lg:bottom-0 lg:grid lg:grid-cols-6 lg:pl-20 lg:pr-20 lg:pt-2 lg:pb-2 lg:justify-center lg:text-black lg:bg-white lg:border-t  max-w-full">
-    <!-- Location 1 -->
-    <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center rounded-l-lg" :class="['location-card', locations[0].attrib, { 'active-effect': isActive(locations[0].link) }]">
-        <RouterLink :to="locations[0].link">
-            <!-- Adjust height as needed -->
-            <div class="flex items-center justify-center h-10 max-w-full max-h-full">
-                <img :src="locations[0].imgSrc" :alt="locations[0].alt" class="p-[26px] max-w-full max-h-[230px]">
+        <div class="flex items-center justify-center text-center mb-[10%]">
+            <button  :disabled="!isForgotPasswordValid" @click="verifyOtpAfterPassword" class="lg:w-fit w-full px-4 py-2 text-white disabled:bg-blue-400 bg-blue-600 rounded-lg">Submit</button>
+        </div>
+    </form>
+</div>
+</div>
 
-                <!-- Adjust height as needed -->
-                <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden " style="margin: 0;">{{
-        locations[0].mobile }}</span>
-                <span class="font-bold text-1xl lg:-ml-5">{{ locations[0].mobile }}</span>
-
+<div v-if="otpverifforgot" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+    <!-- Modal Content -->
+    <div class="relative bg-white px-6 pb-9 shadow-xl mx-auto lg:w-full w-[90vw] h-fit max-w-3xl rounded-2xl">
+        <button @click="closeOTP" class="absolute top-0 right-0 p-4">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="black" class="w-7 h-7">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <div class="flex flex-col items-center justify-center text-center pt-5">
+            <div class="font-semibold text-3xl">
+                <p>Enter One-Time OTP to verify your account</p>
             </div>
-        </RouterLink>
-    </div>
-
-    <!-- Location 2 -->
-    <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center" :class="['location-card', locations[1].attrib, { 'active-effect': isActive(locations[1].link) }]" style="margin: 0; width: 100%; height: auto;">
-        <RouterLink :to="locations[1].link">
-            <!-- Adjust height as needed -->
-            <div class="flex items-center justify-center h-10">
-                <img :src="locations[1].imgSrc" :alt="locations[1].alt" class="p-[26px] max-w-full max-h-[180px]">
-
-                <!-- Adjust height as needed -->
-                <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-        locations[1].mobile }}</span>
-                <span class="font-bold text-1xl lg:-ml-2">{{ locations[1].mobile }}</span>
-
+            <div class="flex flex-row text-lg font-medium text-black pb-8">
+                <p>An OTP has been sent to your email for changing your password</p>
             </div>
-        </RouterLink>
+        </div>
+        <div>
+            <form action="" method="post">
+                <div class="flex flex-col space-y-10">
+                     <div class="flex items-center justify-center gap-3">
+                            <input
+                                type="text"
+                                class="w-14 h-14 text-center text-2xl font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                                v-model="otpDigits[0]" pattern="\d*" maxlength="1" />
+                            <input
+                                type="text"
+                                class="w-14 h-14 text-center text-2xl font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                                v-model="otpDigits[1]" maxlength="1" />
+                            <input
+                                type="text"
+                                class="w-14 h-14 text-center text-2xl font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                                v-model="otpDigits[2]"   maxlength="1" />
+                            <input
+                                type="text"
+                                class="w-14 h-14 text-center text-2xl font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                                v-model="otpDigits[3]"  maxlength="1" />
+                                <input
+                                type="text"
+                                class="w-14 h-14 text-center text-2xl font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                                v-model="otpDigits[4]"  maxlength="1" />
+                                <input
+                                type="text"
+                                class="w-14 h-14 text-center text-2xl font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                                v-model="otpDigits[5]"  maxlength="1" />
+                        </div>
+                    <div class="flex flex-col space-y-2 items-center justify-center w-full">
+                        <p v-if="error.forgot" class="text-red-500 text-xs">{{ error.forgot }}</p>
+                        <button class="text-center lg:w-[24rem] w-full rounded-xl py-3 bg-blue-700 text-white" @click="changePassword">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
+    
+</div>
 
-    <!-- Location 3 -->
-    <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center" :class="['location-card', locations[2].attrib, { 'active-effect': isActive(locations[2].link) }]" style="margin: 0; width: 100%; height: auto;">
-        <RouterLink :to="locations[2].link">
-            <!-- Adjust height as needed -->
-            <div class="flex items-center justify-center h-10">
-                <img :src="locations[2].imgSrc" :alt="locations[2].alt" class="p-[26px] max-w-full max-h-[200px]">
 
-                <!-- Adjust height as needed -->
-                <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-        locations[2].mobile }}</span>
-                <span class="font-bold text-1xl lg:-ml-4">{{ locations[2].mobile }}</span>
 
+
+        </div>
+        
+<div v-if="showChangepass" class="fixed inset-0 z-[10] flex items-center justify-center bg-gray-800 bg-opacity-30"
+      >
+            <!-- Modal Content -->
+            <div class="relative bg-white px-5 pb-7 shadow-xl mx-auto w-full max-w-xl rounded-2xl">
+                <div class="mx-auto flex w-full max-w-xl flex-col">
+                    <div class="flex justify-center pt-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="#4BAA7C" class="w-[6rem] h-[6rem]">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                    </div>
+                    <div class="flex flex-col items-center justify-center text-center pt-3">
+                       
+                        <div class="flex flex-row text-lg font-medium text-gray-600 pb-12">
+                            <p>Thank you! You successfully changed your password</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <button class="p-3 w-[92%] text-white text-xl bg-[#2969D6] rounded-lg border border-gray-500"a
+                            @click="closeChangepass">
+                            Okay
+                        </button>
+                    </div>
+                </div>
             </div>
-        </RouterLink>
-    </div>
-
-    <!-- Location 4 -->
-    <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center" :class="['location-card', locations[3].attrib, { 'active-effect': isActive(locations[3].link) }]" style="margin: 0; width: 100%; height: auto;">
-        <RouterLink :to="locations[3].link">
-            <!-- Adjust height as needed -->
-            <div class="flex items-center justify-center h-10">
-                <img :src="locations[3].imgSrc" :alt="locations[3].alt" class="p-[26px] max-w-full max-h-[200px]">
-
-                <!-- Adjust height as needed -->
-                <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-        locations[3].mobile }}</span>
-                <span class="font-bold text-1xl lg:-ml-4">{{ locations[3].mobile }}</span>
-
+        </div>
+        <div v-if="isCategoryPath($route.path)"
+            class="hidden lg:inset-x-0 lg:bottom-0 lg:grid lg:grid-cols-6 lg:pl-20 lg:pr-20 lg:pt-2 lg:pb-2 lg:justify-center lg:text-black lg:bg-white lg:border-t  max-w-full">
+            <!-- Location 1 -->
+            <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center rounded-l-lg"
+                :class="['location-card', locations[0].attrib, { 'active-effect': isActive(locations[0].link) }]">
+                <RouterLink :to="locations[0].link">
+                    <!-- Adjust height as needed -->
+                    <div class="flex items-center justify-center h-10 max-w-full max-h-full">
+                        <img :src="locations[0].imgSrc" :alt="locations[0].alt" class="p-[26px] max-w-full max-h-[230px]">
+                        <!-- Adjust height as needed -->
+                        <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden " style="margin: 0;">{{
+                            locations[0].mobile }}</span>
+                        <span class="font-bold text-1xl lg:-ml-5">{{ locations[0].mobile }}</span>
+                    </div>
+                </RouterLink>
             </div>
-        </RouterLink>
-    </div>
-
-    <!-- Location 5 -->
-    <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center" :class="['location-card', locations[4].attrib, { 'active-effect': isActive(locations[4].link) }]" style="margin: 0; width: 100%; height: auto;">
-        <RouterLink :to="locations[4].link">
-            <!-- Adjust height as needed -->
-            <div class="flex items-center justify-center h-10">
-                <img :src="locations[4].imgSrc" :alt="locations[4].alt" class="p-[26px] max-w-full max-h-[190px]">
-
-                <!-- Adjust height as needed -->
-                <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-        locations[4].mobile }}</span>
-                <span class="font-bold text-1xl lg:-ml-4">{{ locations[4].mobile }}</span>
-
+            <!-- Location 2 -->
+            <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center"
+                :class="['location-card', locations[1].attrib, { 'active-effect': isActive(locations[1].link) }]"
+                style="margin: 0; width: 100%; height: auto;">
+                <RouterLink :to="locations[1].link">
+                    <!-- Adjust height as needed -->
+                    <div class="flex items-center justify-center h-10">
+                        <img :src="locations[1].imgSrc" :alt="locations[1].alt" class="p-[26px] max-w-full max-h-[180px]">
+                        <!-- Adjust height as needed -->
+                        <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
+                            locations[1].mobile }}</span>
+                        <span class="font-bold text-1xl lg:-ml-2">{{ locations[1].mobile }}</span>
+                    </div>
+                </RouterLink>
             </div>
-        </RouterLink>
-    </div>
-
-    <!-- Location 6 -->
-    <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center rounded-r-lg" :class="['location-card', locations[5].attrib, { 'active-effect': isActive(locations[5].link) }]" style="margin: 0; width: 100%; height: auto;">
-        <RouterLink :to="locations[5].link">
-            <!-- Adjust height as needed -->
-            <div class="flex items-center justify-center h-10">
-                <img :src="locations[5].imgSrc" :alt="locations[5].alt" class="p-[26px] max-w-full max-h-[210px]">
-
-                <!-- Adjust height as needed -->
-                <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
-        locations[5].mobile }}</span>
-                <span class="font-bold text-1x lg:-ml-4">{{ locations[5].mobile }}</span>
-
+            <!-- Location 3 -->
+            <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center"
+                :class="['location-card', locations[2].attrib, { 'active-effect': isActive(locations[2].link) }]"
+                style="margin: 0; width: 100%; height: auto;">
+                <RouterLink :to="locations[2].link">
+                    <!-- Adjust height as needed -->
+                    <div class="flex items-center justify-center h-10">
+                        <img :src="locations[2].imgSrc" :alt="locations[2].alt" class="p-[26px] max-w-full max-h-[200px]">
+                        <!-- Adjust height as needed -->
+                        <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
+                            locations[2].mobile }}</span>
+                        <span class="font-bold text-1xl lg:-ml-4">{{ locations[2].mobile }}</span>
+                    </div>
+                </RouterLink>
             </div>
-        </RouterLink>
-    </div>
-
-        <!-- Repeat the above structure for each location, changing the indices accordingly -->
-    </div>
-
-</nav>
+            <!-- Location 4 -->
+            <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center"
+                :class="['location-card', locations[3].attrib, { 'active-effect': isActive(locations[3].link) }]"
+                style="margin: 0; width: 100%; height: auto;">
+                <RouterLink :to="locations[3].link">
+                    <!-- Adjust height as needed -->
+                    <div class="flex items-center justify-center h-10">
+                        <img :src="locations[3].imgSrc" :alt="locations[3].alt" class="p-[26px] max-w-full max-h-[200px]">
+                        <!-- Adjust height as needed -->
+                        <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
+                            locations[3].mobile }}</span>
+                        <span class="font-bold text-1xl lg:-ml-4">{{ locations[3].mobile }}</span>
+                    </div>
+                </RouterLink>
+            </div>
+            <!-- Location 5 -->
+            <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center"
+                :class="['location-card', locations[4].attrib, { 'active-effect': isActive(locations[4].link) }]"
+                style="margin: 0; width: 100%; height: auto;">
+                <RouterLink :to="locations[4].link">
+                    <!-- Adjust height as needed -->
+                    <div class="flex items-center justify-center h-10">
+                        <img :src="locations[4].imgSrc" :alt="locations[4].alt" class="p-[26px] max-w-full max-h-[190px]">
+                        <!-- Adjust height as needed -->
+                        <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
+                            locations[4].mobile }}</span>
+                        <span class="font-bold text-1xl lg:-ml-4">{{ locations[4].mobile }}</span>
+                    </div>
+                </RouterLink>
+            </div>
+            <!-- Location 6 -->
+            <div class="m-location-card lg:m-0 m-[0] w-[100%] h-auto lg:location-card flex items-center rounded-r-lg"
+                :class="['location-card', locations[5].attrib, { 'active-effect': isActive(locations[5].link) }]"
+                style="margin: 0; width: 100%; height: auto;">
+                <RouterLink :to="locations[5].link">
+                    <!-- Adjust height as needed -->
+                    <div class="flex items-center justify-center h-10">
+                        <img :src="locations[5].imgSrc" :alt="locations[5].alt" class="p-[26px] max-w-full max-h-[210px]">
+                        <!-- Adjust height as needed -->
+                        <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
+                            locations[5].mobile }}</span>
+                        <span class="font-bold text-1x lg:-ml-4">{{ locations[5].mobile }}</span>
+                    </div>
+                </RouterLink>
+            </div>
+            <!-- Repeat the above structure for each location, changing the indices accordingly -->
+        </div>
+    </nav>
 </template>
 
 <style>
@@ -1200,6 +1164,10 @@ export default {
                 "Order Complete",
                 "Booking Complete"
             ],
+            isForgotPasswordValid: false,
+            showChangepass: false,
+            showApproval: false,
+            otpDigits: ['', '', '', '', '', ''], 
             forgotnewpassword: false,
             showBookingConfirmationModal: false,
             showOrderCompleteModal: false,
@@ -1211,8 +1179,12 @@ export default {
             showSignUpModal: false,
             showForgotModal: false,
             showOTPModal: false,
+            otpverifforgot: false,
+            passwordPolicyForgot: [],
             showPrivacyModal: false,
             showTermsModal: false,
+            otpcode: '',
+            otpVerify: '',
             fname: '',
             mname: '',
             lastname: '',
@@ -1228,6 +1200,8 @@ export default {
             error: {
                 signup: ''
             },
+            matchpassword: false,
+            forgotConfirmMessage: '',
             checkboxChecked: false,
             showPassword: false,
             showCPassword: false,
@@ -1526,6 +1500,7 @@ export default {
                 this.passwordPolicy.length === 0
             );
         },
+  
         isForgotFormValid() {
             return this.otpEmail.trim() !== '' && this.otpEmailError === '';
         },
@@ -1544,8 +1519,23 @@ export default {
         );
     },
     methods: {
-
-
+        isForgotPasswordValid() {
+            return (
+                this.forgotnewpass.trim() !== '' &&
+                this.forgotconfirmpass.trim() !== '' &&
+                this.passwordPolicyForgot.length === 0
+            );
+        },
+        closeChangepass()
+        {
+            
+            this.forgotnewpass= '';
+            this.otpEmail= '';
+            this.orgotconfirmpass = '';
+            this.otpDigits = [];
+            this.showChangepass = false;
+            this.showOTPModal = false;
+        },
 
         openNotifModal(notification) {
             switch (notification) {
@@ -1678,29 +1668,47 @@ export default {
         checkPasswordPolicyForgot() {
             this.passwordPolicyForgot = [];
             // Check password length
-            if (this.password.length < 8) {
+            if (this.forgotnewpass.length < 8) {
                 this.passwordPolicyForgot.push('Password should be at least 8 characters long');
+                this.isForgotPasswordValid=false;
             }
             // Check if password is alphanumeric
-            if (!/^(?=.*[0-9])(?=.*[a-zA-Z])/.test(this.password)) {
+            if (!/^(?=.*[0-9])(?=.*[a-zA-Z])/.test(this.forgotnewpass)) {
                 this.passwordPolicyForgot.push('Password should be alphanumeric');
+                this.isForgotPasswordValid=false;
             }
             // Check if password contains a special character
-            if (!/[^a-zA-Z0-9]/.test(this.password)) {
+            if (!/[^a-zA-Z0-9]/.test(this.forgotnewpass)) {
                 this.passwordPolicyForgot.push('Password must contain a special character');
+                this.isForgotPasswordValid=false;
             }
             // Check if password contains at least one capital letter
-            if (!/[A-Z]/.test(this.password)) {
+            if (!/[A-Z]/.test(this.forgotnewpass)) {
                 this.passwordPolicyForgot.push('Password must have at least one capital letter');
+                this.isForgotPasswordValid=false;
             }
             // Check if password has no spaces
-            if (/\s/.test(this.password)) {
+            if (/\s/.test(this.forgotnewpass)) {
                 this.passwordPolicyForgot.push('Password must not contain spaces');
+                this.isForgotPasswordValid=false;
             }
+            else
+            {
+                if(this.forgotconfirmpass='')
+                {
+                    this.isForgotPasswordValid=false;
+                }
+            }
+            
         },
         closeApproval() {
-            this.showApproval = !this.showApproval;
+           
+            this.showApproval = false;
+            console.log(this.showApproval);
+            console.log('working');
         },
+      
+   
         validateForm() {
             // Validate fields only if the signup button is clicked
             if (this.signupClicked) {
@@ -1751,6 +1759,7 @@ export default {
                     console.log(signupRes.user.id);
                     // Signup successful
                     this.showApproval = true;
+                    this.showChangepass = true;
                     this.showLoginModal = false;
                     this.showPrivacyModal = false;
                     this.showSignUpModal = false;
@@ -1882,9 +1891,12 @@ export default {
                 email
             };
             axios.post('/sendotp', getEmail).then((response) => {
-                console.log(response.data);
+         
                 if (response.data.result == 'true') {
+                this.showForgotModal = false;
                     this.showOTPModal = true;
+                    this.forgotnewpassword=true;
+                  
                 } else {
                     this.error.sendemail = 'Email doesnt match our records';
                 }
@@ -1894,6 +1906,7 @@ export default {
         verifyOtpAfterPassword(e) {
             e.preventDefault();
             this.error = [];
+          
             const password = this.forgotnewpass;
             const confirmpassword = this.forgotconfirmpass;
             const email = this.otpEmail;
@@ -1904,27 +1917,46 @@ export default {
             };
             axios.post('http://makatiapi.simplevia.com/api/verifyotp', getOtp)
 
-            this.forgotnewpassword = true;
 
-            // .then((response) => {
-            //     console.log(response.data);
-            //     if (response.data.otp) {
-            //         this.forgotnewpassword = true;
-            //     }
-            // })
-            // .catch((error) => {
-            //     console.log(error.response.data.message);
-            //     this.error.matchpassword = error.response.data.message;
-            // });
+            .then((response) => {
+                console.log(response.data);
+                if (response.data.otp) {
+          
+                    this.forgotnewpassword = false;
+                    this.otpverifforgot = true;
+                }
+            })
+            .catch((error) => {
+                console.log(error.response.data.message);
+                this.error.matchpassword = error.response.data.message;
+            });
+        },
+        
+        matchForgotpassword()
+        {
+        
+            if(this.forgotconfirmpass!=this.forgotnewpass)
+            {
+                this.matchpassword=true;
+                this.forgotConfirmMessage="Password do not match."
+                this.isForgotPasswordValid=false;
+            }
+            else{
+                this.matchpassword=false;
+                this.forgotConfirmMessage="";
+                this.isForgotPasswordValid=true;
+            }
+  
         },
         changePassword(event) {
             event.preventDefault();
             this.error = [];
+            
             // console.log(this.forgotnewpass);
             // console.log(this.forgotconfirmpass);
             const password = this.forgotnewpass;
             const email = this.otpEmail;
-            const otp = this.otpcode;
+            const otp = this.otpDigits.join('');
             // console.log(email);
             //const email = 'clemence@gmail.com';
             let forgot = {
@@ -1935,8 +1967,10 @@ export default {
             console.log(forgot);
             axios.post('http://makatiapi.simplevia.com/api/changepass', forgot).then((response) => {
                 console.log(response.data);
-                console.log(response.data.password);
-                console.log(response.data.message);
+                this.otpverifforgot=false;
+                this.showOTPModal = false;
+                this.showChangepass=true;
+                
             }).catch((error) => {
                 console.log(error);
                 console.log(error.response.data.message);
@@ -1988,12 +2022,16 @@ export default {
     },
     mounted() {
         document.addEventListener('click', this.closeInputField);
+     
     },
+
     beforeUnmount() {
         document.removeEventListener('click', this.closeInputField);
-    }
+    },
+
 };
 </script>
+
 <style scoped>
 .bg-img {
 background-size: 300px 500px;

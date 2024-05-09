@@ -152,7 +152,7 @@
                                     <img :src="shop.image" class="w-[100%] lg:w-[40%] h-[6rem] rounded-lg">
                                     <div class="ml-1 flex flex-col">
                                         <div>
-                                            <p class="font-bold">{{ shop.name }}</p>
+                                            <p class="font-bold">s{{ shop.name }}</p>
                                         </div>
                                         <div>
                                             <p class="mb-5 mt-2 text-gray-400">{{ shop.type }}</p>

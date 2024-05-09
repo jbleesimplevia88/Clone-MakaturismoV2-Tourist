@@ -178,74 +178,7 @@
 
 
 
-<style scoped>
-/* Custom scrollbar */
-.custom-scrollbar::-webkit-scrollbar {
-    width: 15px;
-}
 
-.custom-scrollbar::-webkit-scrollbar-track {
-    background-color: #b3afaf89;
-    border-radius: 10px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background-color: #102E61;
-    border-radius: 10px;
-}
-
-.slide-up-enter-active,
-.slide-up-leave-active {
-    transition: transform .5s ease;
-}
-
-.dropdown-enter-active,
-.dropdown-leave-active {
-    transition: transform 0.5s;
-}
-
-.dropdown-enter {
-    transform: translateY(-100%);
-}
-
-.dropdown-leave-to {
-    transform: translateY(100%);
-}
-
-/*  */
-.dropdown-container {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-toggle {
-    cursor: pointer;
-}
-
-.modal {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #f5f5f5;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-}
-
-.quantity-button {
-    cursor: pointer;
-}
-
-.selected {
-    border-color: black;
-    border-width: 1.8px;
-}
-
-.category-description {
-    color: #999;
-    /* Add color or other styles for description */
-    font-size: 12px;
-    /* Adjust font size as needed */
-}
-</style>
 <script>
 import item1 from '@/assets/images/CategoryView/ToStay/casino.jpeg';
 import item2 from '@/assets/images/CategoryView/ToStay/xyz.png';
@@ -257,22 +190,42 @@ import item7 from '@/assets/images/CategoryView/ToStay/prince.jpeg';
 import item8 from '@/assets/images/CategoryView/ToStay/howzat.jpeg';
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
-import { useStayStore } from '@/stores/toStayCart';
-import { defineComponent, ref } from 'vue';
-import { useAuthStore } from '@/stores/auth';
-import { useRouter } from 'vue-router';
-
+import {
+    useStayStore
+} from '@/stores/toStayCart';
+import {
+    defineComponent,
+    ref
+} from 'vue';
+import {
+    useAuthStore
+} from '@/stores/auth';
+import {
+    useRouter
+} from 'vue-router';
 export default defineComponent({
     setup() {
         const cartStay = useStayStore();
         const router = useRouter();
         const authStore = useAuthStore();
-
+        const guests = ref([
+            { name: 'Room', quantity: 0 },
+            { name: 'Adult', quantity: 0, description: 'Ages 18 and above' },
+            { name: 'Children', quantity: 0, description: 'Ages 0-17' },
+        ]);
         const addToCart = (selectedHotel) => {
             cartStay.selectHotel(selectedHotel);
         };
-
         const seeMore = (item) => {
+            // Pass the quantities to the setSelectedHotelQuantities action
+            const roomsQuantity = guests.value.find(guest => guest.name === 'Room').quantity;
+            const adultsQuantity = guests.value.find(guest => guest.name === 'Adult').quantity;
+            const childrenQuantity = guests.value.find(guest => guest.name === 'Children').quantity;
+
+            // Pass the quantities to the setSelectedHotelQuantities action
+            cartStay.setSelectedHotelQuantities(roomsQuantity, adultsQuantity, childrenQuantity);
+
+            // Select the hotel and navigate to the details page
             cartStay.selectHotel(item);
             const { latitude, longitude } = extractLatLong(item.mapLocation);
             if (latitude !== null && longitude !== null) {
@@ -288,6 +241,7 @@ export default defineComponent({
                 console.error('Latitude or longitude not available');
             }
         };
+
 
         const extractLatLong = (mapLocation) => {
             const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
@@ -315,12 +269,12 @@ export default defineComponent({
                 longitude: null,
             };
         };
-
         return {
             cartStay,
             router,
             authStore,
             addToCart,
+            guests,
             seeMore,
         };
     },
@@ -373,99 +327,314 @@ export default defineComponent({
                 'West Rembo',
             ],
             showModal: false,
-            guests: [
-                { name: 'Room', quantity: 0 },
-                { name: 'Adult', quantity: 0, description: 'Ages 18 and above' },
-                { name: 'Children', quantity: 0, description: 'Ages 0-17' },
-            ],
-            items: [
-                {
-                    name: 'XYZ Hotel',
-                    description:
-                        "Immerse yourself in the modern elegance of U Hotels Makati. With contemporary designs and thoughtful amenities, this hotel offers a delightful stay in the heart of the city. Enjoy personalized service and easy access to Makati's attractions at U Hotels Makati.",
-                    category: 'Accommodation/Hotel',
-                    image: item2,
-                    link: '/category/stay/xyz',
-                    mapLocation:
-                        'https://www.google.com/maps/place/Robinsons+Magnolia/@14.6335521,121.0264341,13.96z/data=!4m9!1m2!2m1!1smaps!3m5!1s0x3397b79b49092343:0x50d5834dbfbd5426!8m2!3d14.6148379!4d121.038122!16s%2Fg%2F11hdqp4d_p?entry=ttu',
-                    barangay: 'Bangkal',
-                    dates: [
-                        { date: '2024-04-01' },
-                        { date: '2024-04-02' },
-                        { date: '2024-04-03' },
-                        { date: '2024-04-04' },
-                    ],
+
+            items: [{
+                name: 'XYZ Hotel',
+                description: "Immerse yourself in the modern elegance of U Hotels Makati. With contemporary designs and thoughtful amenities, this hotel offers a delightful stay in the heart of the city. Enjoy personalized service and easy access to Makati's attractions at U Hotels Makati.",
+                category: 'Accommodation/Hotel',
+                image: item2,
+                link: '/category/stay/xyz',
+                mapLocation: 'https://www.google.com/maps/place/Robinsons+Magnolia/@14.6335521,121.0264341,13.96z/data=!4m9!1m2!2m1!1smaps!3m5!1s0x3397b79b49092343:0x50d5834dbfbd5426!8m2!3d14.6148379!4d121.038122!16s%2Fg%2F11hdqp4d_p?entry=ttu',
+                barangay: 'Bangkal',
+                dates: [{
+                    date: '2024-04-01'
                 },
                 {
-                    name: 'Casino Suites',
-                    description:
-                        'Experience comfort and convenience at Casino Suites, where modern amenities and personalized service await you. Located in the heart of Makati, this hotel provides easy access to the citys vibrant attractions and business district. Unwind in well-appointed rooms and enjoy a memorable stay at Casino Suites.',
-                    category: 'Accommodation/Hotel',
-                    image: item1,
-                    link: '',
-                    mapLocation: '',
-                    barangay: 'Carmona',
-                    dates: [
-                        { date: '2024-04-01' },
-                        { date: '2024-04-02' },
-                        { date: '2024-04-03' },
-                        { date: '2024-04-04' },
-                    ],
+                    date: '2024-04-02'
                 },
                 {
-                    name: 'Hotel Durban',
-                    description:
-                        'Experience urban comfort and chic accommodations at Hotel Durban. With its stylish interiors and top-notch amenities, this hotel is a favorite among modern travelers. Whether youre in town for business or leisure, Hotel Durban ensures a pleasant and memorable stay in Makati.',
-                    category: 'Accommodation/Hotel',
-                    image: item3,
-                    link: '',
-                    mapLocation: '',
+                    date: '2024-04-03'
                 },
                 {
-                    name: 'Astoria Greenbelt',
-                    description:
-                        'Experience luxury and sophistication at Astoria Greenbelt. This upscale hotel boasts well-appointed rooms, first-class amenities, and top-notch service. Located near Greenbelt Mall, Astoria Greenbelt offers a convenient base for exploring the city while enjoying the finest accommodations.',
-                    category: 'Accommodation/Hotel',
-                    image: item4,
-                    link: '',
-                    mapLocation: '',
+                    date: '2024-04-04'
+                },
+                ],
+                rooms: [{
+                    type: 'Standard Room',
+                    quantity: 3, // Specify the quantity of available rooms
+                    capacity: {
+                        adults: 2,
+                        children: 1
+                    }
                 },
                 {
-                    name: 'Carlmig Homes',
-                    description:
-                        'Discover a home away from home at Carlmig Homes. This cozy boutique hotel offers warm hospitality and comfortable accommodations for travelers seeking a peaceful retreat. Whether youre visiting for business or leisure, Carlmig Homes ensures a relaxed and pleasant stay in Makati.',
-                    category: 'Accommodation/Guest House',
-                    image: item5,
-                    link: '',
-                    mapLocation: '',
+                    type: 'Deluxe Room',
+                    quantity: 5, // Specify the quantity of available rooms
+                    capacity: {
+                        adults: 3,
+                        children: 2
+                    }
+                },
+                ]
+            },
+            {
+                name: 'Casino Suites',
+                description: 'Experience comfort and convenience at Casino Suites, where modern amenities and personalized service await you. Located in the heart of Makati, this hotel provides easy access to the citys vibrant attractions and business district. Unwind in well-appointed rooms and enjoy a memorable stay at Casino Suites.',
+                category: 'Accommodation/Hotel',
+                image: item1,
+                link: '',
+                mapLocation: '',
+                barangay: 'Carmona',
+                dates: [{
+                    date: '2024-04-01'
                 },
                 {
-                    name: 'Gomez House',
-                    description:
-                        'Step into a world of heritage and nostalgia at Gomez House. This charming guesthouse, with its restored vintage interiors, offers a unique experience that transports you back in time. Enjoy a blend of old-world charm and modern comforts at Gomez House.',
-                    category: 'Accommodation/Guest House',
-                    image: item6,
-                    link: '',
-                    mapLocation: '',
+                    date: '2024-04-02'
                 },
                 {
-                    name: 'Prince Plaza Hotel',
-                    description:
-                        'Indulge in spacious suites and exceptional service at Prince Plaza Hotel. Located in the heart of Makatis business district, this hotel offers a homey ambiance with all the amenities you need for a comfortable stay. Enjoy the convenience of its prime location and a warm welcome at Prince Plaza Hotel.',
-                    category: 'Accommodation/Hotel',
-                    image: item7,
-                    link: '',
-                    mapLocation: '',
+                    date: '2024-04-03'
                 },
                 {
-                    name: 'Howzat Inn',
-                    description:
-                        'Discover a budget-friendly and cozy stay at Howzat Inn. This charming inn provides comfortable accommodations without breaking the bank. With its strategic location and warm hospitality, Howzat Inn ensures a memorable and enjoyable stay in Makati.',
-                    category: 'Accommodation/Inn',
-                    image: item8,
-                    link: '',
-                    mapLocation: '',
+                    date: '2024-04-04'
                 },
+                ],
+                rooms: [{
+                    type: 'Standard Room',
+                    quantity: 3, // Specify the quantity of available rooms
+                    capacity: {
+                        adults: 2,
+                        children: 1
+                    }
+                },
+                {
+                    type: 'Deluxe Room',
+                    quantity: 5, // Specify the quantity of available rooms
+                    capacity: {
+                        adults: 3,
+                        children: 2
+                    }
+                },
+                ]
+            },
+            {
+                name: 'Hotel Durban',
+                description: 'Experience urban comfort and chic accommodations at Hotel Durban. With its stylish interiors and top-notch amenities, this hotel is a favorite among modern travelers. Whether youre in town for business or leisure, Hotel Durban ensures a pleasant and memorable stay in Makati.',
+                category: 'Accommodation/Hotel',
+                image: item3,
+                link: '',
+                mapLocation: '',
+                dates: [{
+                    date: '2024-04-01'
+                },
+                {
+                    date: '2024-04-02'
+                },
+                {
+                    date: '2024-04-03'
+                },
+                {
+                    date: '2024-04-04'
+                },
+                ],
+                rooms: [{
+                    type: 'Standard Room',
+                    quantity: 3, // Specify the quantity of available rooms
+                    capacity: {
+                        adults: 2,
+                        children: 1
+                    }
+                },
+                {
+                    type: 'Deluxe Room',
+                    quantity: 5, // Specify the quantity of available rooms
+                    capacity: {
+                        adults: 3,
+                        children: 2
+                    }
+                },
+                ]
+            },
+            {
+                name: 'Astoria Greenbelt',
+                description: 'Experience luxury and sophistication at Astoria Greenbelt. This upscale hotel boasts well-appointed rooms, first-class amenities, and top-notch service. Located near Greenbelt Mall, Astoria Greenbelt offers a convenient base for exploring the city while enjoying the finest accommodations.',
+                category: 'Accommodation/Hotel',
+                image: item4,
+                link: '',
+                mapLocation: '',
+                dates: [{
+                    date: '2024-04-01'
+                },
+                {
+                    date: '2024-04-02'
+                },
+                {
+                    date: '2024-04-03'
+                },
+                {
+                    date: '2024-04-04'
+                },
+                ],
+                rooms: [{
+                    type: 'Standard Room',
+                    quantity: 3, // Specify the quantity of available rooms
+                    capacity: {
+                        adults: 2,
+                        children: 1
+                    }
+                },
+                {
+                    type: 'Deluxe Room',
+                    quantity: 5, // Specify the quantity of available rooms
+                    capacity: {
+                        adults: 3,
+                        children: 2
+                    }
+                },
+                ]
+            },
+            {
+                name: 'Carlmig Homes',
+                description: 'Discover a home away from home at Carlmig Homes. This cozy boutique hotel offers warm hospitality and comfortable accommodations for travelers seeking a peaceful retreat. Whether youre visiting for business or leisure, Carlmig Homes ensures a relaxed and pleasant stay in Makati.',
+                category: 'Accommodation/Guest House',
+                image: item5,
+                link: '',
+                mapLocation: '',
+                dates: [{
+                    date: '2024-04-01'
+                },
+                {
+                    date: '2024-04-02'
+                },
+                {
+                    date: '2024-04-03'
+                },
+                {
+                    date: '2024-04-04'
+                },
+                ],
+                rooms: [{
+                    type: 'Standard Room',
+                    quantity: 3, // Specify the quantity of available rooms
+                    capacity: {
+                        adults: 2,
+                        children: 1
+                    }
+                },
+                {
+                    type: 'Deluxe Room',
+                    quantity: 5, // Specify the quantity of available rooms
+                    capacity: {
+                        adults: 3,
+                        children: 2
+                    }
+                },
+                ]
+            },
+            {
+                name: 'Gomez House',
+                description: 'Step into a world of heritage and nostalgia at Gomez House. This charming guesthouse, with its restored vintage interiors, offers a unique experience that transports you back in time. Enjoy a blend of old-world charm and modern comforts at Gomez House.',
+                category: 'Accommodation/Guest House',
+                image: item6,
+                link: '',
+                mapLocation: '',
+                dates: [{
+                    date: '2024-04-01'
+                },
+                {
+                    date: '2024-04-02'
+                },
+                {
+                    date: '2024-04-03'
+                },
+                {
+                    date: '2024-04-04'
+                },
+                ],
+                rooms: [{
+                    type: 'Standard Room',
+                    quantity: 3, // Specify the quantity of available rooms
+                    capacity: {
+                        adults: 2,
+                        children: 1
+                    }
+                },
+                {
+                    type: 'Deluxe Room',
+                    quantity: 5, // Specify the quantity of available rooms
+                    capacity: {
+                        adults: 3,
+                        children: 2
+                    }
+                },
+                ]
+            },
+            {
+                name: 'Prince Plaza Hotel',
+                description: 'Indulge in spacious suites and exceptional service at Prince Plaza Hotel. Located in the heart of Makatis business district, this hotel offers a homey ambiance with all the amenities you need for a comfortable stay. Enjoy the convenience of its prime location and a warm welcome at Prince Plaza Hotel.',
+                category: 'Accommodation/Hotel',
+                image: item7,
+                link: '',
+                mapLocation: '',
+                dates: [{
+                    date: '2024-04-01'
+                },
+                {
+                    date: '2024-04-02'
+                },
+                {
+                    date: '2024-04-03'
+                },
+                {
+                    date: '2024-04-04'
+                },
+                ],
+                rooms: [{
+                    type: 'Standard Room',
+                    quantity: 1, // Specify the quantity of available rooms
+                    capacity: {
+                        adults: 1,
+                        children: 1
+                    }
+                },
+                {
+                    type: 'Deluxe Room',
+                    quantity: 5, // Specify the quantity of available rooms
+                    capacity: {
+                        adults: 3,
+                        children: 2
+                    }
+                },
+                ]
+            },
+            {
+                name: 'Howzat Inn',
+                description: 'Discover a budget-friendly and cozy stay at Howzat Inn. This charming inn provides comfortable accommodations without breaking the bank. With its strategic location and warm hospitality, Howzat Inn ensures a memorable and enjoyable stay in Makati.',
+                category: 'Accommodation/Inn',
+                image: item8,
+                link: '',
+                mapLocation: '',
+                barangay: 'Kasilawan',
+                dates: [{
+                    date: '2024-04-01'
+                },
+                {
+                    date: '2024-04-02'
+                },
+                {
+                    date: '2024-04-03'
+                },
+                {
+                    date: '2024-04-04'
+                },
+                ],
+                rooms: [{
+                    type: 'Standard Room',
+                    quantity: 3, // Specify the quantity of available rooms
+                    capacity: {
+                        adults: 2,
+                        children: 1
+                    }
+                },
+                {
+                    type: 'Deluxe Room',
+                    quantity: 10, // Specify the quantity of available rooms
+                    capacity: {
+                        adults: 3,
+                        children: 2
+                    }
+                },
+                ]
+            },
             ],
             currentPage: 0,
             pageSize: 8,
@@ -509,31 +678,58 @@ export default defineComponent({
         };
     },
     computed: {
+        // filteredItems() {
+        //     return this.items.filter(item => {
+        //         const matchesSearch = item.name.toLowerCase().includes(this.searchQuery.toLowerCase());
+        //         const matchesBarangay = !this.barangay || this.barangay === 'All' || item.barangay === this.barangay;
+        //         const fromDate = this.dateFrom ? new Date(this.dateFrom) : null;
+        //         const toDate = this.dateTo ? new Date(this.dateTo) : null;
+        //         if (this.barangay && this.dateFrom && this.dateTo) {
+        //             const isBarangayAndDateMatch = matchesBarangay && item.dates.some(dateObj => {
+        //                 const itemDate = new Date(dateObj.date);
+        //                 return itemDate >= fromDate && itemDate <= toDate;
+        //             });
+        //             return matchesSearch && isBarangayAndDateMatch;
+        //         }
+        //         if (!fromDate && !toDate && (this.barangay === 'All' || !this.barangay)) {
+        //             return matchesSearch && matchesBarangay;
+        //         }
+        //         const itemDates = item.dates || [];
+        //         if (itemDates.length === 0) {
+        //             return false;
+        //         }
+        //         const isDateRangeWithinAvailableRange = itemDates.some(dateObj => {
+        //             const itemDate = new Date(dateObj.date);
+        //             return (!fromDate || itemDate >= fromDate) && (!toDate || itemDate <= toDate);
+        //         });
+        //         return matchesSearch && matchesBarangay && isDateRangeWithinAvailableRange;
+        //     });
+        // },
         filteredItems() {
             return this.items.filter(item => {
+                if (!item || !item.dates || !Array.isArray(item.dates) || !item.rooms || !Array.isArray(item.rooms)) {
+                    // Handle case where item, item.dates, or item.rooms is undefined or not an array
+                    return false;
+                }
                 const matchesSearch = item.name.toLowerCase().includes(this.searchQuery.toLowerCase());
                 const matchesBarangay = !this.barangay || this.barangay === 'All' || item.barangay === this.barangay;
                 const fromDate = this.dateFrom ? new Date(this.dateFrom) : null;
                 const toDate = this.dateTo ? new Date(this.dateTo) : null;
-                if (this.barangay && this.dateFrom && this.dateTo) {
-                    const isBarangayAndDateMatch = matchesBarangay && item.dates.some(dateObj => {
-                        const itemDate = new Date(dateObj.date);
-                        return itemDate >= fromDate && itemDate <= toDate;
-                    });
-                    return matchesSearch && isBarangayAndDateMatch;
-                }
-                if (!fromDate && !toDate && (this.barangay === 'All' || !this.barangay)) {
-                    return matchesSearch && matchesBarangay;
-                }
-                const itemDates = item.dates || [];
-                if (itemDates.length === 0) {
-                    return false;
-                }
-                const isDateRangeWithinAvailableRange = itemDates.some(dateObj => {
+                const meetsRoomCriteria = item.rooms.some(room => {
+                    const totalRoomsNeeded = this.guests.find(guest => guest.name === 'Room').quantity;
+                    const totalAdultsNeeded = this.guests.find(guest => guest.name === 'Adult').quantity;
+                    const totalChildrenNeeded = this.guests.find(guest => guest.name === 'Children').quantity;
+                    const totalAdultsCapacity = room.quantity * room.capacity.adults;
+                    const totalChildrenCapacity = room.quantity * room.capacity.children;
+                    return room.quantity >= totalRoomsNeeded &&
+                        totalAdultsCapacity >= totalAdultsNeeded &&
+                        totalChildrenCapacity >= totalChildrenNeeded;
+                });
+                const isDateRangeWithinAvailableRange = item.dates.some(dateObj => {
                     const itemDate = new Date(dateObj.date);
                     return (!fromDate || itemDate >= fromDate) && (!toDate || itemDate <= toDate);
                 });
-                return matchesSearch && matchesBarangay && isDateRangeWithinAvailableRange;
+                return matchesSearch && matchesBarangay && meetsRoomCriteria && isDateRangeWithinAvailableRange;
             });
         },
         minEndDate() {
@@ -602,8 +798,6 @@ export default defineComponent({
         applyFilter(category) {
             console.log('Selected category:', category);
         },
-
-
         toggleModal() {
             this.showModal = !this.showModal;
         },
@@ -643,3 +837,73 @@ export default defineComponent({
     },
 });
 </script>
+
+
+<style scoped>
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 15px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background-color: #b3afaf89;
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #102E61;
+    border-radius: 10px;
+}
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+    transition: transform .5s ease;
+}
+
+.dropdown-enter-active,
+.dropdown-leave-active {
+    transition: transform 0.5s;
+}
+
+.dropdown-enter {
+    transform: translateY(-100%);
+}
+
+.dropdown-leave-to {
+    transform: translateY(100%);
+}
+
+/*  */
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.modal {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f5f5f5;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.quantity-button {
+    cursor: pointer;
+}
+
+.selected {
+    border-color: black;
+    border-width: 1.8px;
+}
+
+.category-description {
+    color: #999;
+    /* Add color or other styles for description */
+    font-size: 12px;
+    /* Adjust font size as needed */
+}
+</style>

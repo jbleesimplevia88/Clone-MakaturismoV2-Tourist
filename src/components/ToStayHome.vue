@@ -19,12 +19,12 @@
                     class="pt-[6rem] text-[17px] sm:text-sm md:text-xl lg:text-[1.7rem] px-0 lg:px-[8rem] text-wrap leading lg:leading-10 text-white">
                     Are you planning to travel but don’t know where to stay? Fret no more, Makati has a wide range of
                     accommodation establishments that caters to all kinds of travelers. From budget friendly hostels to
-                    luxury hotels, you’ll definitely find a place to stay in the city.
+                    luxury hotels, you’ll definitely find a place to stay
+                    in the city.
                 </p>
             </div>
         </div>
     </div>
-
     <div class="mx-auto px-3 lg:px-32 pb-5 pt-5" style="background-color: #102E61;">
         <!-- New Filter -->
         <div class="lg:mx-[120px] mx-[60px] pb-3 flex flex-col px-5 bg-[#f5f5f5] rounded-lg">
@@ -37,11 +37,10 @@
                             d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                     </svg>
                 </div>
-                <input type="search" id="default-search" class="w-full p-4 ps-10 text-sm text-gray-900"
-                    placeholder="Search Accomodations" />
+                <input v-model="searchQuery" @click="focusSearch" type="search" id="default-search"
+                    class="w-full p-4 ps-10 text-sm text-gray-900" placeholder="Search Accommodations" />
             </div>
-
-            <div class="lg:flex items-center justify-between lg:grid-cols-3 lg:space-x-4">
+            <div class="lg:flex items-center justify-between lg:grid-cols-3 lg:space-x-4" id="FilterBar">
                 <!-- Barangay -->
                 <div class="lg:flex items-center w-full mb-3">
                     <div class="w-full flex flex-col items-start justify-center">
@@ -63,19 +62,18 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Start Date Datepicker with Placeholder -->
                 <div class="lg:flex items-center w-full">
-                    <vue-date-picker v-model="selecStartDate" class="w-full h-[3.8rem]" :format="dateFormat"
-                        :placeholder="startPlaceholder"></vue-date-picker>
+                    <p class="text-lg font-bold">Date (From):</p>
+                    <input type="date" id="dateFrom" v-model="dateFrom" @input="handleDateInput"
+                        class="w-full px-4 py-2 my-2 border border-gray-400 rounded-xl">
                 </div>
-
                 <!-- End Date Datepicker with Placeholder -->
                 <div class="lg:flex items-center w-full">
-                    <vue-date-picker v-model="selecEndDate" class="w-full h-[3.8rem]" :format="dateFormat"
-                        :placeholder="endPlaceholder" :min-date="minEndDate" :disabled="!selecStartDate"></vue-date-picker>
+                    <p class="text-lg font-bold">Date (To):</p>
+                    <input type="date" id="dateTo" v-model="dateTo" @input="handleDateInput"
+                        class="w-full px-4 py-2 my-2 border border-gray-400 rounded-xl">
                 </div>
-
                 <!-- guests -->
                 <div class="lg:flex  w-full mb-3 py-3 px-3 bg-white dropdown-container border border-gray-200 rounded-sm">
                     <div class="dropdown-toggle" @click="toggleModal">Select Options </div>
@@ -103,43 +101,38 @@
                     </div>
                 </div>
             </div>
-
             <div class="flex items-center justify-center">
                 <button type="submit" @click="search"
                     class="lg:w-[8rem] w-full lg:px-4 py-2 text-white disabled:bg-blue-400  bg-blue-600 rounded-md">SEARCH</button>
             </div>
-
-
         </div>
-
-
-
-
-
         <div>
             <div class="mt-8 pb-10">
-         
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div v-for="(item, index) in paginatedItems" :key="index"
+                <div v-if="filteredItems.length === 0 && !isInvalidDateRange" class="text-center text-red-500">No data
+                    found.
+                </div>
+                <div v-else-if="isInvalidDateRange" class="text-center text-red-500">Please select a valid date range.</div>
+                <div v-for="(item, index) in filteredItems" :key="index"
                     class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
                     <div class="relative">
                         <img class="w-full h-[250px] object-cover rounded-t" :src="item.image" alt="">
                         <div
                             class="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-[#102E61] to-transparent">
                         </div>
-                        <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{
-                            item.name }}
+                        <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{ item.name }}
                         </p>
                         <p class="absolute bottom-2 left-2 text-white text-xs">{{ item.category }}</p>
                     </div>
                     <div class="p-2 w-full">
                         <p class="text-white text-xs line-clamp-3">{{ item.description }}</p>
+                        <p class="text-white text-xs line-clamp-3">{{ item.mapLocation }}</p>
                     </div>
                     <div class="p-1 flex justify-end items-center">
                         <button @click="seeMore(item)"
                             class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
-                            <span>Read More</span>
+                            <span> See More</span>
                             <span class="ml-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
                                     stroke="currentColor" class="w-4 h-4">
@@ -155,8 +148,8 @@
                 <div class="flex justify-start items-center">
                     <p class="text-center text-white">
                         Showing
-                        <span class="text-[#29BFD6]">{{ paginationStartIndex }} - {{ paginationEndIndex }}</span>
-                        results from
+                        <span class="text-[#29BFD6]">{{ paginationStartIndex }} - {{ paginationEndIndex }}</span> results
+                        from
                         <span class="text-[#29BFD6]">{{ totalRecords }}</span> records
                     </p>
                 </div>
@@ -227,7 +220,6 @@
 
 .dropdown-toggle {
     cursor: pointer;
-
 }
 
 .modal {
@@ -235,7 +227,6 @@
     top: 100%;
     left: 0;
     background-color: #f5f5f5;
-
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
@@ -255,8 +246,6 @@
     /* Adjust font size as needed */
 }
 </style>
-
-
 <script>
 import item1 from '@/assets/images/CategoryView/ToStay/casino.jpeg';
 import item2 from '@/assets/images/CategoryView/ToStay/xyz.png';
@@ -266,202 +255,338 @@ import item5 from '@/assets/images/CategoryView/ToStay/carlmig.jpeg';
 import item6 from '@/assets/images/CategoryView/ToStay/gomez.jpeg';
 import item7 from '@/assets/images/CategoryView/ToStay/prince.jpeg';
 import item8 from '@/assets/images/CategoryView/ToStay/howzat.jpeg';
-
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
+import { useStayStore } from '@/stores/toStayCart';
+import { defineComponent, ref } from 'vue';
+import { useAuthStore } from '@/stores/auth';
+import { useRouter } from 'vue-router';
 
-export default {
-    components: { VueDatePicker },
+export default defineComponent({
+    setup() {
+        const cartStay = useStayStore();
+        const router = useRouter();
+        const authStore = useAuthStore();
 
+        const addToCart = (selectedHotel) => {
+            cartStay.selectHotel(selectedHotel);
+        };
+
+        const seeMore = (item) => {
+            cartStay.selectHotel(item);
+            const { latitude, longitude } = extractLatLong(item.mapLocation);
+            if (latitude !== null && longitude !== null) {
+                router.push({
+                    name: 'xyz',
+                    query: {
+                        latitude,
+                        longitude,
+                        name: item.name,
+                    },
+                });
+            } else {
+                console.error('Latitude or longitude not available');
+            }
+        };
+
+        const extractLatLong = (mapLocation) => {
+            const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
+            const match = mapLocation.match(regex);
+            if (match && match.length >= 3) {
+                const latitude = parseFloat(match[1]);
+                const longitude = parseFloat(match[2]);
+                return {
+                    latitude,
+                    longitude,
+                };
+            }
+            const altRegex = /!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/;
+            const altMatch = mapLocation.match(altRegex);
+            if (altMatch && altMatch.length >= 3) {
+                const latitude = parseFloat(altMatch[1]);
+                const longitude = parseFloat(altMatch[2]);
+                return {
+                    latitude,
+                    longitude,
+                };
+            }
+            return {
+                latitude: null,
+                longitude: null,
+            };
+        };
+
+        return {
+            cartStay,
+            router,
+            authStore,
+            addToCart,
+            seeMore,
+        };
+    },
+    components: {
+        VueDatePicker,
+    },
     data() {
         return {
             barangay: '',
-            selecStartDate: null,
-            selecEndDate: null,
+            selectedBarangay: 'All',
+            dateFrom: '',
+            dateTo: '',
             startPlaceholder: 'Select Start Date',
             endPlaceholder: 'Select End Date',
             dateFormat: 'yyyy-MM-dd',
+            searchQuery: '',
             barangaysInMakati: [
-                "Bangkal",
-                "Bel-Air",
-                "Carmona",
-                "Cembo",
-                "Comembo",
-                "Dasmarinas",
-                "East Rembo",
-                "Forbes Park",
-                "Guadalupe Nuevo",
-                "Guadalupe Viejo",
-                "Kasilawan",
-                "La Paz",
-                "Magallanes",
-                "Olympia",
-                "Palanan",
-                "Pembo",
-                "Pinagkaisahan",
-                "Pio del Pilar",
-                "Pitogo",
-                "Poblacion",
-                "Post Proper Northside",
-                "Post Proper Southside",
-                "Rizal",
-                "San Antonio",
-                "San Isidro",
-                "San Lorenzo",
-                "Santa Cruz",
-                "Singkamas",
-                "South Cembo",
-                "Tejeros",
-                "Urdaneta",
-                "Valenzuela",
-                "West Rembo"
+                'Bangkal',
+                'Bel-Air',
+                'Carmona',
+                'Cembo',
+                'Comembo',
+                'Dasmarinas',
+                'East Rembo',
+                'Forbes Park',
+                'Guadalupe Nuevo',
+                'Guadalupe Viejo',
+                'Kasilawan',
+                'La Paz',
+                'Magallanes',
+                'Olympia',
+                'Palanan',
+                'Pembo',
+                'Pinagkaisahan',
+                'Pio del Pilar',
+                'Pitogo',
+                'Poblacion',
+                'Post Proper Northside',
+                'Post Proper Southside',
+                'Rizal',
+                'San Antonio',
+                'San Isidro',
+                'San Lorenzo',
+                'Santa Cruz',
+                'Singkamas',
+                'South Cembo',
+                'Tejeros',
+                'Urdaneta',
+                'Valenzuela',
+                'West Rembo',
             ],
             showModal: false,
             guests: [
                 { name: 'Room', quantity: 0 },
-                { name: 'Adult', quantity: 0, description: 'Ages 18 and above' }, // Add description for Adult
-                { name: 'Children', quantity: 0, description: 'Ages 0-17' } // Add description for Children
+                { name: 'Adult', quantity: 0, description: 'Ages 18 and above' },
+                { name: 'Children', quantity: 0, description: 'Ages 0-17' },
             ],
-
             items: [
                 {
                     name: 'XYZ Hotel',
-                    description: "Immerse yourself in the modern elegance of U Hotels Makati. With contemporary designs and thoughtful amenities, this hotel offers a delightful stay in the heart of the city. Enjoy personalized service and easy access to Makati's attractions at U Hotels Makati.                    ",
+                    description:
+                        "Immerse yourself in the modern elegance of U Hotels Makati. With contemporary designs and thoughtful amenities, this hotel offers a delightful stay in the heart of the city. Enjoy personalized service and easy access to Makati's attractions at U Hotels Makati.",
                     category: 'Accommodation/Hotel',
                     image: item2,
-                    link: "/category/stay/xyz",
-                    mapLocation: "https://www.google.com/maps/dir//5091+P+Burgos,+Makati,+Metro+Manila/@14.5670312,121.0309181,19.36z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9ab7c183931:0xaee4b3ae67f7f4d7!2m2!1d121.0310417!2d14.5668763?entry=ttu"
+                    link: '/category/stay/xyz',
+                    mapLocation:
+                        'https://www.google.com/maps/place/Robinsons+Magnolia/@14.6335521,121.0264341,13.96z/data=!4m9!1m2!2m1!1smaps!3m5!1s0x3397b79b49092343:0x50d5834dbfbd5426!8m2!3d14.6148379!4d121.038122!16s%2Fg%2F11hdqp4d_p?entry=ttu',
+                    barangay: 'Bangkal',
+                    dates: [
+                        { date: '2024-04-01' },
+                        { date: '2024-04-02' },
+                        { date: '2024-04-03' },
+                        { date: '2024-04-04' },
+                    ],
                 },
                 {
                     name: 'Casino Suites',
-                    description: "Experience comfort and convenience at Casino Suites, where modern amenities and personalized service await you. Located in the heart of Makati, this hotel provides easy access to the city's vibrant attractions and business district. Unwind in well-appointed rooms and enjoy a memorable stay at Casino Suites.",
+                    description:
+                        'Experience comfort and convenience at Casino Suites, where modern amenities and personalized service await you. Located in the heart of Makati, this hotel provides easy access to the citys vibrant attractions and business district. Unwind in well-appointed rooms and enjoy a memorable stay at Casino Suites.',
                     category: 'Accommodation/Hotel',
                     image: item1,
-                    link: "",
-                    mapLocation: ""
+                    link: '',
+                    mapLocation: '',
+                    barangay: 'Carmona',
+                    dates: [
+                        { date: '2024-04-01' },
+                        { date: '2024-04-02' },
+                        { date: '2024-04-03' },
+                        { date: '2024-04-04' },
+                    ],
                 },
-
                 {
                     name: 'Hotel Durban',
-                    description: "Experience urban comfort and chic accommodations at Hotel Durban. With its stylish interiors and top-notch amenities, this hotel is a favorite among modern travelers. Whether you're in town for business or leisure, Hotel Durban ensures a pleasant and memorable stay in Makati.",
+                    description:
+                        'Experience urban comfort and chic accommodations at Hotel Durban. With its stylish interiors and top-notch amenities, this hotel is a favorite among modern travelers. Whether youre in town for business or leisure, Hotel Durban ensures a pleasant and memorable stay in Makati.',
                     category: 'Accommodation/Hotel',
                     image: item3,
-                    link: "",
-                    mapLocation: ""
+                    link: '',
+                    mapLocation: '',
                 },
                 {
                     name: 'Astoria Greenbelt',
-                    description: "Experience luxury and sophistication at Astoria Greenbelt. This upscale hotel boasts well-appointed rooms, first-class amenities, and top-notch service. Located near Greenbelt Mall, Astoria Greenbelt offers a convenient base for exploring the city while enjoying the finest accommodations.",
+                    description:
+                        'Experience luxury and sophistication at Astoria Greenbelt. This upscale hotel boasts well-appointed rooms, first-class amenities, and top-notch service. Located near Greenbelt Mall, Astoria Greenbelt offers a convenient base for exploring the city while enjoying the finest accommodations.',
                     category: 'Accommodation/Hotel',
                     image: item4,
-                    link: "",
-                    mapLocation: ""
+                    link: '',
+                    mapLocation: '',
                 },
                 {
                     name: 'Carlmig Homes',
-                    description: "Discover a home away from home at Carlmig Homes. This cozy boutique hotel offers warm hospitality and comfortable accommodations for travelers seeking a peaceful retreat. Whether you're visiting for business or leisure, Carlmig Homes ensures a relaxed and pleasant stay in Makati.",
+                    description:
+                        'Discover a home away from home at Carlmig Homes. This cozy boutique hotel offers warm hospitality and comfortable accommodations for travelers seeking a peaceful retreat. Whether youre visiting for business or leisure, Carlmig Homes ensures a relaxed and pleasant stay in Makati.',
                     category: 'Accommodation/Guest House',
                     image: item5,
-                    link: "",
-                    mapLocation: ""
+                    link: '',
+                    mapLocation: '',
                 },
                 {
                     name: 'Gomez House',
-                    description: "Step into a world of heritage and nostalgia at Gomez House. This charming guesthouse, with its restored vintage interiors, offers a unique experience that transports you back in time. Enjoy a blend of old-world charm and modern comforts at Gomez House.",
+                    description:
+                        'Step into a world of heritage and nostalgia at Gomez House. This charming guesthouse, with its restored vintage interiors, offers a unique experience that transports you back in time. Enjoy a blend of old-world charm and modern comforts at Gomez House.',
                     category: 'Accommodation/Guest House',
                     image: item6,
-                    link: "",
-                    mapLocation: ""
+                    link: '',
+                    mapLocation: '',
                 },
                 {
                     name: 'Prince Plaza Hotel',
-                    description: "Indulge in spacious suites and exceptional service at Prince Plaza Hotel. Located in the heart of Makati's business district, this hotel offers a homey ambiance with all the amenities you need for a comfortable stay. Enjoy the convenience of its prime location and a warm welcome at Prince Plaza Hotel.",
+                    description:
+                        'Indulge in spacious suites and exceptional service at Prince Plaza Hotel. Located in the heart of Makatis business district, this hotel offers a homey ambiance with all the amenities you need for a comfortable stay. Enjoy the convenience of its prime location and a warm welcome at Prince Plaza Hotel.',
                     category: 'Accommodation/Hotel',
                     image: item7,
-                    link: "",
-                    mapLocation: ""
+                    link: '',
+                    mapLocation: '',
                 },
                 {
                     name: 'Howzat Inn',
-                    description: "Discover a budget-friendly and cozy stay at Howzat Inn. This charming inn provides comfortable accommodations without breaking the bank. With its strategic location and warm hospitality, Howzat Inn ensures a memorable and enjoyable stay in Makati.",
+                    description:
+                        'Discover a budget-friendly and cozy stay at Howzat Inn. This charming inn provides comfortable accommodations without breaking the bank. With its strategic location and warm hospitality, Howzat Inn ensures a memorable and enjoyable stay in Makati.',
                     category: 'Accommodation/Inn',
                     image: item8,
-                    link: "",
-                    mapLocation: ""
+                    link: '',
+                    mapLocation: '',
                 },
-                {
-                    name: 'Howzat Inn',
-                    description: "Discover a budget-friendly and cozy stay at Howzat Inn. This charming inn provides comfortable accommodations without breaking the bank. With its strategic location and warm hospitality, Howzat Inn ensures a memorable and enjoyable stay in Makati.",
-                    category: 'Accommodation/Inn',
-                    image: item8,
-                    link: "",
-                    mapLocation: ""
-                },
-
             ],
             currentPage: 0,
             pageSize: 8,
             showDropdown: false,
-            categories: ['All', 'Apartelle', 'Condotelle', 'Home Stay Site', 'Hostel', 'Hotel', 'Serviced Residences', 'Tourist Inn',],
-            locations: ['Bangkal', 'Bel-Air', 'Carmona', 'Dasmariñas', 'Forbes Park', 'Guadalupe Nuevo', 'Guadalupe Viejo', 'Kasilawan', 'La Paz', 'Magallanes', 'olympia', 'Palanan', 'Pinagkaisahan', 'Pio Del Pilar', 'Poblacion', 'San Antonio', 'San Isidro', 'San Lorenzo', 'Santa Cruz', 'Singkamas', 'Tejeros', 'Urdaneta', 'Valenzuela'],
+            categories: [
+                'All',
+                'Apartelle',
+                'Condotelle',
+                'Home Stay Site',
+                'Hostel',
+                'Hotel',
+                'Serviced Residences',
+                'Tourist Inn',
+            ],
+            locations: [
+                'All',
+                'Bangkal',
+                'Bel-Air',
+                'Carmona',
+                'Dasmariñas',
+                'Forbes Park',
+                'Guadalupe Nuevo',
+                'Guadalupe Viejo',
+                'Kasilawan',
+                'La Paz',
+                'Magallanes',
+                'olympia',
+                'Palanan',
+                'Pinagkaisahan',
+                'Pio Del Pilar',
+                'Poblacion',
+                'San Antonio',
+                'San Isidro',
+                'San Lorenzo',
+                'Santa Cruz',
+                'Singkamas',
+                'Tejeros',
+                'Urdaneta',
+                'Valenzuela',
+            ],
         };
     },
     computed: {
+        filteredItems() {
+            return this.items.filter(item => {
+                const matchesSearch = item.name.toLowerCase().includes(this.searchQuery.toLowerCase());
+                const matchesBarangay = !this.barangay || this.barangay === 'All' || item.barangay === this.barangay;
+                const fromDate = this.dateFrom ? new Date(this.dateFrom) : null;
+                const toDate = this.dateTo ? new Date(this.dateTo) : null;
+                if (this.barangay && this.dateFrom && this.dateTo) {
+                    const isBarangayAndDateMatch = matchesBarangay && item.dates.some(dateObj => {
+                        const itemDate = new Date(dateObj.date);
+                        return itemDate >= fromDate && itemDate <= toDate;
+                    });
+                    return matchesSearch && isBarangayAndDateMatch;
+                }
+                if (!fromDate && !toDate && (this.barangay === 'All' || !this.barangay)) {
+                    return matchesSearch && matchesBarangay;
+                }
+                const itemDates = item.dates || [];
+                if (itemDates.length === 0) {
+                    return false;
+                }
+                const isDateRangeWithinAvailableRange = itemDates.some(dateObj => {
+                    const itemDate = new Date(dateObj.date);
+                    return (!fromDate || itemDate >= fromDate) && (!toDate || itemDate <= toDate);
+                });
+                return matchesSearch && matchesBarangay && isDateRangeWithinAvailableRange;
+            });
+        },
         minEndDate() {
             // Return the selected start date plus one day
-            return this.selecStartDate ? new Date(this.selecStartDate.getTime() + 24 * 60 * 60 * 1000) : null;
+            return this.dateFrom ? new Date(this.dateFrom.getTime() + 24 * 60 * 60 * 1000) : null;
         },
-        // Replace the paginatedItems computed property
         paginatedItems() {
             const startIndex = this.currentPage * this.pageSize;
             return this.items.slice(startIndex, startIndex + this.pageSize);
         },
-        // Update the filteredItems computed property to only filter items
-        filteredItems() {
-            let filteredItems = this.items.slice(); // Create a shallow copy of items
-
-            // Apply filters only if the Apply button is clicked
-            if (this.applyButtonClicked) {
-                // Filter by category
-                if (this.selectedCategory && this.selectedCategory.length > 0 && this.selectedCategory[0] !== 'All') {
-                    filteredItems = filteredItems.filter(item => {
-                        if (Array.isArray(item.category)) {
-                            return this.selectedCategory.some(cat => item.category.includes(cat));
-                        } else {
-                            return this.selectedCategory.includes(item.category);
-                        }
-                    });
-                }
-
-                // Filter by location
-                if (this.selectedLocation && this.selectedLocation.length > 0 && this.selectedLocation[0] !== 'All') {
-                    filteredItems = filteredItems.filter(item => {
-                        if (Array.isArray(item.location)) {
-                            return this.selectedLocation.some(loc => item.location.includes(loc));
-                        } else {
-                            return this.selectedLocation.includes(item.location);
-                        }
-                    });
-                }
-            }
-
-            return filteredItems;
-        },
         pageCount() {
-            return Math.ceil(this.filteredItems.length / this.pageSize);
+            return Math.ceil(this.items.length / this.pageSize);
         },
         paginationStartIndex() {
             return this.currentPage * this.pageSize + 1;
         },
         paginationEndIndex() {
             const end = (this.currentPage + 1) * this.pageSize;
-            return Math.min(end, this.totalRecords);
+            return end > this.totalRecords ? this.totalRecords : end;
         },
         totalRecords() {
-            return this.filteredItems.length;
+            return this.items.length;
+        },
+        disableDateTo() {
+            // Disable "Date (To)" if "Date (From)" is selected after "Date (To)"
+            return this.dateFrom && this.dateTo && new Date(this.dateFrom) > new Date(this.dateTo);
+        },
+        isInvalidDateRange() {
+            return this.dateFrom && this.dateTo && new Date(this.dateFrom) > new Date(this.dateTo);
         },
     },
     methods: {
+        getAvailableDates(item) {
+            const from = new Date(this.dateFrom);
+            const to = new Date(this.dateTo);
+            const available = [];
+            if (from && to && from <= to) {
+                const currentDate = new Date(from);
+                while (currentDate <= to) {
+                    const formattedDate = currentDate.toISOString().split('T')[0];
+                    if (!item.dates.find(d => d.date === formattedDate)) {
+                        available.push(formattedDate);
+                    }
+                    currentDate.setDate(currentDate.getDate() + 1);
+                }
+            }
+            return available;
+        },
+        convertDateFormat(dateString) {
+            // Convert date format from yyyy-MM-dd to yyyy-MM-dd
+            const [year, month, day] = dateString.split('-');
+            return `${year}-${month}-${day}`;
+        },
         nextPage() {
             this.currentPage++;
         },
@@ -477,33 +602,8 @@ export default {
         applyFilter(category) {
             console.log('Selected category:', category);
         },
-        seeMore(item) {
-            const { latitude, longitude } = this.extractLatLong(item.mapLocation);
-            if (latitude !== null && longitude !== null) {
-                this.$router.push({ name: 'xyz', query: { latitude, longitude, name: item.name } });
-            } else {
-                console.error('Latitude or longitude not available');
-            }
-        },
-        extractLatLong(mapLocation) {
-            const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
-            const match = mapLocation.match(regex);
-            if (match && match.length >= 3) {
-                const latitude = parseFloat(match[1]);
-                const longitude = parseFloat(match[2]);
-                return { latitude, longitude };
-            }
 
-            const altRegex = /!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/;
-            const altMatch = mapLocation.match(altRegex);
-            if (altMatch && altMatch.length >= 3) {
-                const latitude = parseFloat(altMatch[1]);
-                const longitude = parseFloat(altMatch[2]);
-                return { latitude, longitude };
-            }
 
-            return { latitude: null, longitude: null };
-        },
         toggleModal() {
             this.showModal = !this.showModal;
         },
@@ -514,7 +614,32 @@ export default {
             if (category.quantity > 0) {
                 category.quantity--;
             }
+        },
+        focusSearch() {
+            this.$refs.searchInput.focus();
+        },
+        handleDateInput() {
+            // Log the selected date
+            console.log('Selected date (From):', this.dateFrom);
+            console.log('Selected date (To):', this.dateTo);
+            // Clear error message when the user makes a new selection
+            this.$forceUpdate();
+        },
+        handleDateFromInput() {
+            // If Date (From) is set after Date (To), reset Date (To)
+            if (this.dateFrom && this.dateTo && new Date(this.dateFrom) > new Date(this.dateTo)) {
+                this.dateTo = '';
+            }
+        },
+        handleDateToInput() {
+            // If Date (To) is set before Date (From), reset Date (From)
+            if (this.dateFrom && this.dateTo && new Date(this.dateTo) < new Date(this.dateFrom)) {
+                this.dateFrom = '';
+            }
+        },
+        search() {
+            // Placeholder for search method
         }
     },
-};
+});
 </script>

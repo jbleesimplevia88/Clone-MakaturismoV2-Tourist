@@ -973,7 +973,31 @@
             </div>
 
         </div>
-
+<!-- thank you modal -->
+<div v-if="showApprcoval" class="fixed inset-0 z-[10] flex items-center justify-center bg-gray-800 bg-opacity-30"
+                @click="closeApproval">
+                <!-- Modal Content -->
+                <div class="relative bg-white px-5 pb-7 shadow-xl mx-auto w-full max-w-xl rounded-2xl">
+                    <div class="mx-auto flex w-full max-w-xl flex-col">
+                        <div class="flex justify-center pt-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="#4BAA7C" class="w-[6rem] h-[6rem]">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
+                        </div>
+                        <div class="flex flex-col items-center justify-center text-center pt-3">
+                            <div class="font-semibold text-2xl text-gray-600">
+                                <p>Account for Approval</p>
+                            </div>
+                            <div class="flex flex-row text-lg font-medium text-gray-600 pb-12">
+                                <p>Thank you for registering with us using your email address!
+                                   Kindly check your email address to verify your account</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <!-- OTP -->
         <div v-if="showOTPModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
             <!-- Modal Content -->

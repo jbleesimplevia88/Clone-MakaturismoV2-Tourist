@@ -14,6 +14,8 @@ export const useStayStore = defineStore({
       dateFrom: '',
       dateTo: '',
       roomType: '',
+      roomTypeName: '', // New property to store the room type name
+      roomTypePrice: 0,
     },
   }),
   actions: {
@@ -29,6 +31,8 @@ export const useStayStore = defineStore({
         dateFrom: data.dateFrom || '',
         dateTo: data.dateTo || '',
         roomType: data.roomType || '',
+        roomTypeName: data.roomTypeName || '', // Assign room type name
+        roomTypePrice: data.roomTypePrice || 0,
       };
     },
     clearSelectedHotel() {
@@ -43,6 +47,8 @@ export const useStayStore = defineStore({
         dateFrom: '',
         dateTo: '',
         roomType: '',
+        roomTypeName: '', // Clear room type name
+        roomTypePrice: 0, // Clear room type price
       };
     },
   },

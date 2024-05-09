@@ -1,9 +1,9 @@
 <template>
-    <div class="flex relative pt-[57px] md:pt-[80px] justify-center -z-50">
+    <div class="flex relative pt-[57px] md:pt-[80px] justify-center ">
         <div class="relative">
             <div class="bg-[#102E61] h-[101%] lg:h-[105%]" style="position: absolute; top: 0; left: 0; width: 100%; ">
             </div>
-            <div class="relative inset-0 sm:top-56 md:top-2 pl-0 md:pl-10 flex items-center z-[1]">
+            <div class="relative inset-0 sm:top-56 md:top-2 pl-0 md:pl-10 flex items-center -z-12 ">
                 <div class="relative flex flex-col pl-0 lg:pl-10">
                     <div class="absolute lg:top-4 lg:left-3 top-4 z-[1]">
                         <router-link to="/category/stay">
@@ -26,6 +26,7 @@
                         </div>
 
                     </div>
+
                     <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 lg:p-5 px-5 py-3 shadow-lg">
                         <div class="flex justify-between">
                             <div>
@@ -33,7 +34,7 @@
                                 <p class="text-lg font-bold">Start here</p>
                             </div>
                             <router-link to="/checkoutbook">
-                                <div class="w-[100%] px-2 mt-5">
+                                <div class="w-[100%] px-2 mt-5 cursor-pointer">
                                     <button
                                         class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg p-4 w-[100%]">Book
                                         Now</button>
@@ -98,22 +99,25 @@
                     <!-- <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">Rooms to offer</h1> -->
                     <div class="flex flex-wrap justify-between items-center mb-2 lg:w-[70%] ">
                         <div>
+
                             <h1 class="font-bold mb-1">Rooms</h1>
                             <div class="flex flex-col">
                                 <div v-for="(room, index) in roomTypes" :key="index">
                                     <button
                                         class="bg-gray-300 px-3 py-1 rounded-md inline-block mb-2 hover:bg-blue-700 hover:text-white"
-                                        @click="showRoomPreview(room)">
-                                        {{ room }}
+                                        @click="showRoomPreview(room.name)">
+                                        {{ room.name }}
                                     </button>
                                 </div>
+
                                 <div @click="closeImagePreview" v-if="selectedRoom"
-                                    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 ">
+                                    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
                                     <div class="p-10 overflow-x-scroll hide-scrollbar rounded-lg" draggable="true"
                                         @dragstart="dragStart($event)" @mousedown="startDrag($event)"
                                         @mousemove="dragging && drag($event)" @mouseup="endDrag()" @mouseleave="endDrag()"
                                         ref="container">
                                         <div class="flex gap-6 " style="cursor: grab">
+
                                             <img v-for="(image, index) in selectedRoomImages" :key="index" :src="image"
                                                 class="w-full  shadow-[#0504048c] shadow-md" alt="Room Image" />
                                         </div>
@@ -211,15 +215,13 @@
                             class="border-2 border-black rounded-md p-2.5">
                         <p v-if="endDateError" class="text-red-500">{{ endDateError }}</p>
                     </div>
-                    <div class="flex flex-col m-2 ">
+                    <div class="flex flex-col m-2">
                         <label for="roomType" class="mb-2 font-bold">Type of Room</label>
                         <select id="roomType" v-model="selectedRoomType"
                             class="border-2 border-black mt-1 rounded-md p-2.5">
-                            <option class="border-2 border-black mt-1 py-2 px-2 " value="Regular room">Regular room</option>
-                            <option value="Double room">Double room</option>
-                            <option value="Suite room">Suite room</option>
-                            <option value="Deluxe room">Deluxe room</option>
-                            <option value="Double Deluxe room">Double Deluxe room</option>
+                            <option v-for="(roomType, index) in roomTypes" :key="index" :value="roomType.name">
+                                {{ roomType.name }}
+                            </option>
                         </select>
                     </div>
                     <div class="w-[100%] px-2 mt-5">
@@ -378,6 +380,7 @@ import {
 } from 'vue-router';
 
 export default defineComponent({
+
     setup() {
         const cartStay = useStayStore();
         const router = useRouter();
@@ -440,8 +443,16 @@ export default defineComponent({
             date: 'December 2023',
         },
         ];
-        const roomTypes = ['Regular room', 'Double room', 'Suite room', 'Deluxe room', 'Double Deluxe room'];
-        const roomImages = [{
+        const roomTypes = [
+            { name: 'Regular room', price: 5000 },
+            { name: 'Double room', price: 6000 },
+            { name: 'Suite room', price: 8000 },
+            { name: 'Deluxe room', price: 7000 },
+            { name: 'Double Deluxe room', price: 9000 }
+        ];
+
+
+        const roomImages = {
             'Regular room': [
                 '/src/assets/images/CategoryView/ToShop/ToShopregularroom1.jpg',
                 '/src/assets/images/CategoryView/ToShop/ToShopregularroom2.jpg',
@@ -467,15 +478,18 @@ export default defineComponent({
                 '/src/assets/images/CategoryView/ToShop/ToShopregularroom2.jpg',
                 '/src/assets/images/CategoryView/ToShop/ToShopregularroom3.jpg'
             ]
-        }];
+        };
         const categories = ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'];
         const locations = ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'];
+
 
         const selectHotel = (hotel) => {
             const stayXyzData = {
                 dateFrom: hotel.dateFrom || '',
                 dateTo: hotel.dateTo || '',
                 roomType: hotel.roomType || '',
+                roomTypeName: selectedRoomType.value, // Store selected room type name
+                roomTypePrice: roomTypes.find(type => type.name === selectedRoomType.value)?.price || 0 // Store selected room type price
             };
             cartStay.selectStayXyzData(stayXyzData); // Call selectStayXyzData from the store and pass stayXyzData
             const hotelDetails = {
@@ -484,6 +498,7 @@ export default defineComponent({
             };
             cartStay.selectHotel(hotelDetails);
         };
+
         const handleDateInput = (type) => {
             if (type === 'from' && dateTo.value && dateFrom.value > dateTo.value) {
                 startDateError.value = "Start date cannot be greater than end date";
@@ -520,9 +535,6 @@ export default defineComponent({
         const closeLoginModal = () => {
             showLoginModal.value = false;
         };
-        const selectedRoomImages = computed(() => {
-            return roomImages[selectedRoom.value] || [];
-        });
 
         const paginatedItems = computed(() => {
             return items.slice(0, 2 + numFeedbackShown.value);
@@ -532,6 +544,7 @@ export default defineComponent({
             return numFeedbackShown.value < items.length - 2;
         });
 
+
         const closeImagePreview = (event) => {
             if (!event.target.closest('.p-10')) {
                 console.log('Clicked outside preview, closing...');
@@ -540,9 +553,12 @@ export default defineComponent({
                 console.log('Clicked inside preview, not closing...');
             }
         };
+        const selectedRoomImages = computed(() => {
+            return roomImages[selectedRoom.value] || [];
+        });
 
-        const showRoomPreview = (room) => {
-            selectedRoom.value = room;
+        const showRoomPreview = (roomName) => {
+            selectedRoom.value = roomName;
         };
 
         const startDrag = (e) => {
@@ -569,7 +585,6 @@ export default defineComponent({
         const toggleDropdown = () => {
             isDropdownOpen.value = !isDropdownOpen.value;
         };
-
         const seeMore = () => {
             numFeedbackShown.value += 2; // Change this value as per your requirement
             if (!showSeeMoreButton.value) {
@@ -621,9 +636,14 @@ export default defineComponent({
             dragStart,
             toggleDropdown,
             seeMore,
-            seeLess
+            seeLess,
+            showRoomPreview,
+            selectedRoom,
+
+
         };
     },
+
     props: {
         latitude: Number,
         longitude: Number,

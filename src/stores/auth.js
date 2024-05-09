@@ -7,26 +7,26 @@ export const useAuthStore = defineStore({
   state: () => ({
     isAuthenticated: false,
     user: null,
-    intendedRoute: '/', 
+    intendedRoute: '/',
   }),
   actions: {
     async login(credentials, intendedRoute) {
       const router = useRouter();
-    
+
       try {
         const response = await axios.post('/loginTourist', credentials);
         if (response.data.message === 'correct') {
           this.isAuthenticated = true;
           this.user = response.data.user;
           localStorage.setItem('auth', JSON.stringify({ isAuthenticated: true, user: this.user, token: response.data.token }));
-    
+
           if (intendedRoute && router) {
             router.push(intendedRoute);
           }
           return true;
         } else {
           // Handle other response messages if needed
-          return false; 
+          return false;
         }
       } catch (error) {
         if (error.response && error.response.status === 401) {
@@ -38,8 +38,8 @@ export const useAuthStore = defineStore({
         return false;
       }
     },
-    
-    
+
+
     logout() {
       // Remove authentication information from local storage
       localStorage.removeItem('auth');
@@ -60,6 +60,6 @@ export const useAuthStore = defineStore({
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`; // Set token for all future Axios requests
       }
     },
-    
+
   },
 });

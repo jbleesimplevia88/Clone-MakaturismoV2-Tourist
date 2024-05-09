@@ -6,7 +6,8 @@
             <div class="flex items-center pl-4">
                 <RouterLink to="/" class="flex items-center">
                     <img src="@/assets/images/Header/makati_logo.png" alt="banner"
-                        class="w-8 h-auto mr-3 md:block md:w-16 md:h-auto">
+                   
+                    class="w-8 h-auto mr-3 md:block md:w-16 md:h-auto">
                     <img src="@/assets/images/Header/makaturismo.png" alt="logo" class="w-auto h-10 md:w-24 md:h-auto">
                 </RouterLink>
             </div>
@@ -14,12 +15,16 @@
             <div class="flex items-center space-x-4">
                 <RouterLink to="/searchfilter" class=" lg:hidden flex items-center">
                     <span
-                        class=" flex items-center whitespace-nowrap px-3 py-[0.25rem] text-surface [&>svg]:h-5 [&>svg]:w-5"
-                        id="button-addon2">
+                   
+                    class=" flex items-center whitespace-nowrap px-3 py-[0.25rem] text-surface [&>svg]:h-5 [&>svg]:w-5"
+                   
+                    id="button-addon2">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                            stroke="currentColor">
+                       
+                        stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round"
-                                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                           
+                            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                         </svg>
                     </span>
                 </RouterLink>
@@ -534,7 +539,7 @@
                             <!-- Middlename -->
                             <div class="lg:flex items-center mb-3">
                                 <label for="mname" class="w-[9rem] lg:ml-3 lg:mr-3">Middle Initial:</label>
-                                <input id="mname" type="text" v-model="mname" placeholder="Enter Middle Initia"
+                                <input id="mname" type="text" v-model="mname" placeholder="Enter Middle Initial"
                                     class="border border-gray-500 rounded-xl w-full py-3 px-3">
                             </div>
                         </div>
@@ -822,7 +827,7 @@
                                         class="my-2 mr-2"></button>
                                 <h2 class="lg:text-4xl text-2xl font-bold lg:mb-[10%] mb-[18%]">Change Password</h2>
                             </div>
-                            <p class="mb-5 text-sm">Enter your email to receive an OTP for access to changing passoword
+                            <p class="mb-5 text-sm">Enter your email to change your password
                             </p>
                             <div class="relative mb-2">
                                 <div class="relative">
@@ -835,9 +840,8 @@
                             </div>
                         </div>
                         <div class="flex items-center justify-center text-center mb-[10%]">
-                            <button @click="recieveotp" :disabled="!isForgotFormValid"
-                                class="lg:w-fit w-full px-4 py-2 text-white disabled:bg-blue-400 bg-blue-600 rounded-lg">Receive
-                                OTP
+                            <button @click="recieveotp" :disabled="!isForgotFormValid" 
+                                class="lg:w-fit w-full px-4 py-2 text-white disabled:bg-blue-400 bg-blue-600 rounded-lg">Submit
                             </button>
                         </div>
                     </form>
@@ -846,7 +850,7 @@
         </div>
         <!-- thank you modal -->
         <div v-if="showApproval" class="fixed inset-0 z-[10] flex items-center justify-center bg-gray-800 bg-opacity-30"
-            @click="closeApproval">
+            >
             <!-- Modal Content -->
             <div class="relative bg-white px-5 pb-7 shadow-xl mx-auto w-full max-w-xl rounded-2xl">
                 <div class="mx-auto flex w-full max-w-xl flex-col">
@@ -862,13 +866,13 @@
                             <p>Account for Approval</p>
                         </div>
                         <div class="flex flex-row text-lg font-medium text-gray-600 pb-12">
-                            <p>Thank you for registering with us using your email address! Kindly check your email address
-                                to verify your account</p>
+                            <p>Thank you for registering with us using your email address!
+                               Kindly check your email address to verify your account</p>
                         </div>
                     </div>
+
                     <div class="flex justify-center">
-                        <button class="p-3 w-[92%] text-white text-xl bg-[#2969D6] rounded-lg border border-gray-500"
-                            @click="closeApproval">
+                        <button class="p-3 w-[92%] text-white text-xl bg-[#2969D6] rounded-lg border border-gray-500" @click="closeApproval">
                             Okay
                         </button>
                     </div>
@@ -890,7 +894,7 @@
                     </button>
                 </div>
           
-       <div v-if="!forgotnewpassword" class="relative z-5 flex flex-col items-start justify-center h-full lg:ml-12">
+       <div v-if="forgotnewpassword" class="relative z-5 flex flex-col items-start justify-center h-full lg:ml-12">
     <form class="lg:w-[35%] lg:mt-[10%] mt-[20%] mx-8 lg:mx-0 flex flex-col justify-between h-full">
         <div class="mb-5">
             <div class="flex items-center mb-12 w-[50%]">
@@ -903,70 +907,116 @@
                 <div class="relative">
                     <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 right-0 mx-5 my-1 mt-3" style="width: 15px;" alt="Username Icon" />
                     <input type="password" id="newpass" name="newpass" v-model="forgotnewpass" placeholder="Enter new password" @input="checkPasswordPolicyForgot" class="w-full h-8 py-5 pl-10 border border-black rounded-xl">
-
+                    <div v-if="passwordPolicyForgot.length > 0" class="text-red-500 text-xs">
+                                    <ul>
+                                        <li v-for="(policy, index) in passwordPolicyForgot" :key="index">{{ policy }}</li>
+                                    </ul>
+                                </div>
+                    
   <div class="relative mb-4 mt-4 w-full md:w-365">
                         <div class="relative">
                             <img src="@/assets/images/Modal/profile.png" class="absolute inset-y-0 left-0 right-0 mx-5 my-1 mt-3" style="width: 15px;" alt="Username Icon" />
-                            <input type="password" id="confirmpass" name="confirmpass" v-model="forgotconfirmpass" placeholder="Confirm Password" class="w-full h-8 py-5 pl-10 border border-black rounded-xl">
-                            <span v-if="error.matchpassword" class="text-red-500 text-xs">{{ error.matchpassword }}</span>
+                            <input type="password" id="confirmpass" name="confirmpass" v-model="forgotconfirmpass" placeholder="Confirm Password" class="w-full h-8 py-5 pl-10 border border-black rounded-xl" @input="matchForgotpassword">
+                            <span v-if="matchpassword" class="text-red-500 text-xs">{{ forgotConfirmMessage }}</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="flex items-center justify-center text-center mb-[10%]">
-            <button @click="verifyOtpAfterPassword" class="lg:w-fit w-full px-4 py-2 text-white disabled:bg-blue-400 bg-blue-600 rounded-lg">Submit</button>
+            <button  :disabled="!isForgotPasswordValid" @click="verifyOtpAfterPassword" class="lg:w-fit w-full px-4 py-2 text-white disabled:bg-blue-400 bg-blue-600 rounded-lg">Submit</button>
         </div>
     </form>
 </div>
 </div>
 
-<div v-if="forgotnewpassword" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+<div v-if="otpverifforgot" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
     <!-- Modal Content -->
-    <div class="relative flex justify-end">
-        <button class="absolute pr-4 pt-4 ">
-            <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="5" stroke="black" class="w-7 h-7">
+    <div class="relative bg-white px-6 pb-9 shadow-xl mx-auto lg:w-full w-[90vw] h-fit max-w-3xl rounded-2xl">
+        <button @click="closeOTP" class="absolute top-0 right-0 p-4">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="black" class="w-7 h-7">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
         </button>
-    </div>
-    <div class="relative bg-white px-6 pb-9 shadow-xl mx-auto lg:w-full w-[90vw] h-fit max-w-3xl rounded-2xl">
-        <div class="mx-auto flex w-full max-w-3xl flex-col">
-            <button class="relative flex pr-4 pt-10 justify-end">
-                <svg @click="closeOTP" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="5" stroke="black" class="w-7 h-7">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                </svg>
-            </button>
-            <div class="flex flex-col items-center justify-center text-center pt-5">
-                <div class="font-semibold text-3xl">
-                    <p>Enter One-Time OTP to verify your account</p>
-                </div>
-                <div class="flex flex-row text-lg font-medium text-black pb-8">
-                    <p>An OTP has been sent to your email for changing your password</p>
-                </div>
+        <div class="flex flex-col items-center justify-center text-center pt-5">
+            <div class="font-semibold text-3xl">
+                <p>Enter One-Time OTP to verify your account</p>
             </div>
-            <div>
-                <form action="" method="post">
-                    <div class="flex flex-col space-y-10">
-                        <div class="flex flex-row items-center justify-center lg:gap-5 mx-auto w-full max-w-md">
-                            <div class="w-[15rem] h-[3rem]" style="border-radius: 10px;">
-                                <input type="number" name="otpcode" id="otpcode" v-model="otpcode" @input="checkInput" />
-                            </div>
-                        </div>
-                        <div class="flex flex-col space-y-2 items-center justify-center w-full">
-                            <p v-if="error.forgot" class="text-red-500 text-xs">{{ error.forgot }}</p>
-                            <button class="text-center lg:w-[24rem] w-full rounded-xl py-3 bg-blue-700 text-white" @click="changePassword">
-                                Submit
-                            </button>
-                        </div>
-                    </div>
-                </form>
+            <div class="flex flex-row text-lg font-medium text-black pb-8">
+                <p>An OTP has been sent to your email for changing your password</p>
             </div>
         </div>
+        <div>
+            <form action="" method="post">
+                <div class="flex flex-col space-y-10">
+                     <div class="flex items-center justify-center gap-3">
+                            <input
+                                type="text"
+                                class="w-14 h-14 text-center text-2xl font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                                v-model="otpDigits[0]" pattern="\d*" maxlength="1" />
+                            <input
+                                type="text"
+                                class="w-14 h-14 text-center text-2xl font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                                v-model="otpDigits[1]" maxlength="1" />
+                            <input
+                                type="text"
+                                class="w-14 h-14 text-center text-2xl font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                                v-model="otpDigits[2]"   maxlength="1" />
+                            <input
+                                type="text"
+                                class="w-14 h-14 text-center text-2xl font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                                v-model="otpDigits[3]"  maxlength="1" />
+                                <input
+                                type="text"
+                                class="w-14 h-14 text-center text-2xl font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                                v-model="otpDigits[4]"  maxlength="1" />
+                                <input
+                                type="text"
+                                class="w-14 h-14 text-center text-2xl font-extrabold text-slate-900 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded p-4 outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                                v-model="otpDigits[5]"  maxlength="1" />
+                        </div>
+                    <div class="flex flex-col space-y-2 items-center justify-center w-full">
+                        <p v-if="error.forgot" class="text-red-500 text-xs">{{ error.forgot }}</p>
+                        <button class="text-center lg:w-[24rem] w-full rounded-xl py-3 bg-blue-700 text-white" @click="changePassword">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
+    
 </div>
 
 
+
+
+        </div>
+        
+<div v-if="showChangepass" class="fixed inset-0 z-[10] flex items-center justify-center bg-gray-800 bg-opacity-30"
+      >
+            <!-- Modal Content -->
+            <div class="relative bg-white px-5 pb-7 shadow-xl mx-auto w-full max-w-xl rounded-2xl">
+                <div class="mx-auto flex w-full max-w-xl flex-col">
+                    <div class="flex justify-center pt-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="#4BAA7C" class="w-[6rem] h-[6rem]">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                    </div>
+                    <div class="flex flex-col items-center justify-center text-center pt-3">
+                       
+                        <div class="flex flex-row text-lg font-medium text-gray-600 pb-12">
+                            <p>Thank you! You successfully changed your password</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <button class="p-3 w-[92%] text-white text-xl bg-[#2969D6] rounded-lg border border-gray-500"a
+                            @click="closeChangepass">
+                            Okay
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div v-if="isCategoryPath($route.path)"
             class="hidden lg:inset-x-0 lg:bottom-0 lg:grid lg:grid-cols-6 lg:pl-20 lg:pr-20 lg:pt-2 lg:pb-2 lg:justify-center lg:text-black lg:bg-white lg:border-t  max-w-full">
@@ -1067,25 +1117,25 @@
 <style>
 /* Media query for mobile screens */
 @media (width: 375px) {
-    .bg-cover-mobile {
-        background-size: 200px;
-        height: 100%;
-        /* Adjust the height as needed */
-        background-position: center;
-    }
+.bg-cover-mobile {
+    background-size: 200px;
+    height: 100%;
+    /* Adjust the height as needed */
+    background-position: center;
+}
 }
 </style>
 
 <script>
 import {
-    RouterLink
+RouterLink
 } from 'vue-router';
 import {
-    // isMemoSame,
-    ref
+// isMemoSame,
+ref
 } from 'vue'
 import {
-    useAuthStore
+useAuthStore
 } from '@/stores/auth'
 import axios from 'axios';
 import imageUrl from '@/assets/images/Modal/Intersect.png';
@@ -1096,7 +1146,9 @@ import house from '@/assets/images/MainNav/house.png';
 import food from '@/assets/images/MainNav/food.png';
 import grocery from '@/assets/images/MainNav/grocery-store.png';
 import locationImg from '@/assets/images/MainNav/location.png';
-import { useSignUpStore } from '@/stores/signUp';
+import Swal from 'sweetalert2';
+import axios from 'axios';
+
 export default {
     name: 'NavBar',
     components: {
@@ -1112,6 +1164,10 @@ export default {
                 "Order Complete",
                 "Booking Complete"
             ],
+            isForgotPasswordValid: false,
+            showChangepass: false,
+            showApproval: false,
+            otpDigits: ['', '', '', '', '', ''], 
             forgotnewpassword: false,
             showBookingConfirmationModal: false,
             showOrderCompleteModal: false,
@@ -1123,8 +1179,12 @@ export default {
             showSignUpModal: false,
             showForgotModal: false,
             showOTPModal: false,
+            otpverifforgot: false,
+            passwordPolicyForgot: [],
             showPrivacyModal: false,
             showTermsModal: false,
+            otpcode: '',
+            otpVerify: '',
             fname: '',
             mname: '',
             lastname: '',
@@ -1140,6 +1200,8 @@ export default {
             error: {
                 signup: ''
             },
+            matchpassword: false,
+            forgotConfirmMessage: '',
             checkboxChecked: false,
             showPassword: false,
             showCPassword: false,
@@ -1438,6 +1500,7 @@ export default {
                 this.passwordPolicy.length === 0
             );
         },
+  
         isForgotFormValid() {
             return this.otpEmail.trim() !== '' && this.otpEmailError === '';
         },
@@ -1456,8 +1519,23 @@ export default {
         );
     },
     methods: {
-
-
+        isForgotPasswordValid() {
+            return (
+                this.forgotnewpass.trim() !== '' &&
+                this.forgotconfirmpass.trim() !== '' &&
+                this.passwordPolicyForgot.length === 0
+            );
+        },
+        closeChangepass()
+        {
+            
+            this.forgotnewpass= '';
+            this.otpEmail= '';
+            this.orgotconfirmpass = '';
+            this.otpDigits = [];
+            this.showChangepass = false;
+            this.showOTPModal = false;
+        },
 
         openNotifModal(notification) {
             switch (notification) {
@@ -1590,29 +1668,47 @@ export default {
         checkPasswordPolicyForgot() {
             this.passwordPolicyForgot = [];
             // Check password length
-            if (this.password.length < 8) {
+            if (this.forgotnewpass.length < 8) {
                 this.passwordPolicyForgot.push('Password should be at least 8 characters long');
+                this.isForgotPasswordValid=false;
             }
             // Check if password is alphanumeric
-            if (!/^(?=.*[0-9])(?=.*[a-zA-Z])/.test(this.password)) {
+            if (!/^(?=.*[0-9])(?=.*[a-zA-Z])/.test(this.forgotnewpass)) {
                 this.passwordPolicyForgot.push('Password should be alphanumeric');
+                this.isForgotPasswordValid=false;
             }
             // Check if password contains a special character
-            if (!/[^a-zA-Z0-9]/.test(this.password)) {
+            if (!/[^a-zA-Z0-9]/.test(this.forgotnewpass)) {
                 this.passwordPolicyForgot.push('Password must contain a special character');
+                this.isForgotPasswordValid=false;
             }
             // Check if password contains at least one capital letter
-            if (!/[A-Z]/.test(this.password)) {
+            if (!/[A-Z]/.test(this.forgotnewpass)) {
                 this.passwordPolicyForgot.push('Password must have at least one capital letter');
+                this.isForgotPasswordValid=false;
             }
             // Check if password has no spaces
-            if (/\s/.test(this.password)) {
+            if (/\s/.test(this.forgotnewpass)) {
                 this.passwordPolicyForgot.push('Password must not contain spaces');
+                this.isForgotPasswordValid=false;
             }
+            else
+            {
+                if(this.forgotconfirmpass='')
+                {
+                    this.isForgotPasswordValid=false;
+                }
+            }
+            
         },
         closeApproval() {
-            this.showApproval = !this.showApproval;
+           
+            this.showApproval = false;
+            console.log(this.showApproval);
+            console.log('working');
         },
+      
+   
         validateForm() {
             // Validate fields only if the signup button is clicked
             if (this.signupClicked) {
@@ -1663,6 +1759,7 @@ export default {
                     console.log(signupRes.user.id);
                     // Signup successful
                     this.showApproval = true;
+                    this.showChangepass = true;
                     this.showLoginModal = false;
                     this.showPrivacyModal = false;
                     this.showSignUpModal = false;
@@ -1793,10 +1890,13 @@ export default {
             let getEmail = {
                 email
             };
-            axios.post('http://makatiapi.simplevia.com/api/sendotp', getEmail).then((response) => {
-                console.log(response.data);
+            axios.post('/sendotp', getEmail).then((response) => {
+         
                 if (response.data.result == 'true') {
+                this.showForgotModal = false;
                     this.showOTPModal = true;
+                    this.forgotnewpassword=true;
+                  
                 } else {
                     this.error.sendemail = 'Email doesnt match our records';
                 }
@@ -1806,6 +1906,7 @@ export default {
         verifyOtpAfterPassword(e) {
             e.preventDefault();
             this.error = [];
+          
             const password = this.forgotnewpass;
             const confirmpassword = this.forgotconfirmpass;
             const email = this.otpEmail;
@@ -1816,27 +1917,46 @@ export default {
             };
             axios.post('http://makatiapi.simplevia.com/api/verifyotp', getOtp)
 
-            this.forgotnewpassword = true;
 
-            // .then((response) => {
-            //     console.log(response.data);
-            //     if (response.data.otp) {
-            //         this.forgotnewpassword = true;
-            //     }
-            // })
-            // .catch((error) => {
-            //     console.log(error.response.data.message);
-            //     this.error.matchpassword = error.response.data.message;
-            // });
+            .then((response) => {
+                console.log(response.data);
+                if (response.data.otp) {
+          
+                    this.forgotnewpassword = false;
+                    this.otpverifforgot = true;
+                }
+            })
+            .catch((error) => {
+                console.log(error.response.data.message);
+                this.error.matchpassword = error.response.data.message;
+            });
+        },
+        
+        matchForgotpassword()
+        {
+        
+            if(this.forgotconfirmpass!=this.forgotnewpass)
+            {
+                this.matchpassword=true;
+                this.forgotConfirmMessage="Password do not match."
+                this.isForgotPasswordValid=false;
+            }
+            else{
+                this.matchpassword=false;
+                this.forgotConfirmMessage="";
+                this.isForgotPasswordValid=true;
+            }
+  
         },
         changePassword(event) {
             event.preventDefault();
             this.error = [];
+            
             // console.log(this.forgotnewpass);
             // console.log(this.forgotconfirmpass);
             const password = this.forgotnewpass;
             const email = this.otpEmail;
-            const otp = this.otpcode;
+            const otp = this.otpDigits.join('');
             // console.log(email);
             //const email = 'clemence@gmail.com';
             let forgot = {
@@ -1847,8 +1967,10 @@ export default {
             console.log(forgot);
             axios.post('http://makatiapi.simplevia.com/api/changepass', forgot).then((response) => {
                 console.log(response.data);
-                console.log(response.data.password);
-                console.log(response.data.message);
+                this.otpverifforgot=false;
+                this.showOTPModal = false;
+                this.showChangepass=true;
+                
             }).catch((error) => {
                 console.log(error);
                 console.log(error.response.data.message);
@@ -1900,177 +2022,185 @@ export default {
     },
     mounted() {
         document.addEventListener('click', this.closeInputField);
+     
     },
+
     beforeUnmount() {
         document.removeEventListener('click', this.closeInputField);
-    }
+    },
+
 };
 </script>
+
 <style scoped>
 .bg-img {
-    background-size: 300px 500px;
+background-size: 300px 500px;
 }
 
 .sidebar {
-    height: 100vh;
-    /* Set height to 100% of viewport height */
-    width: 250px;
-    /* Set desired width of sidebar */
-    background-color: #fff;
-    /* Set background color */
-    position: fixed;
-    /* Fix the position of sidebar */
-    top: 0;
-    /* Align to top */
-    right: -250px;
-    /* Initially position outside the viewport */
-    transition: right 0.3s ease;
-    /* Add transition effect */
-    padding: 20px;
-    /* Add padding */
+height: 100vh;
+/* Set height to 100% of viewport height */
+width: 250px;
+/* Set desired width of sidebar */
+background-color: #fff;
+/* Set background color */
+position: fixed;
+/* Fix the position of sidebar */
+top: 0;
+/* Align to top */
+right: -250px;
+/* Initially position outside the viewport */
+transition: right 0.3s ease;
+/* Add transition effect */
+padding: 20px;
+/* Add padding */
 }
 
 .sidebar.open {
-    right: 0;
-    /* Move sidebar into view */
+right: 0;
+/* Move sidebar into view */
+
 }
 
 .swiper-container {
-    height: 100%;
+height: 100%;
 }
 
 .active-effect img {
-    filter: invert(1);
-    transition: filter 0.3s ease;
+filter: invert(1);
+transition: filter 0.3s ease;
 }
 
 .active-effect span {
-    color: white;
+color: white;
 }
 
 .active-effect {
-    background-color: #008EE4;
-    color: white;
+background-color: #008EE4;
+color: white;
 }
 
 .active-effect-left {
-    background-color: #008EE4;
-    color: white;
-    border-top-left-radius: 0.5rem;
-    border-bottom-left-radius: 0.5rem;
+background-color: #008EE4;
+color: white;
+border-top-left-radius: 0.5rem;
+border-bottom-left-radius: 0.5rem;
 }
 
 .location-card {
-    padding: 2px;
-    margin: 0;
-    text-align: center;
+padding: 2px;
+margin: 0;
+text-align: center;
 }
 
 .location-card img {
-    width: 30%;
-    height: auto;
+width: 30%;
+height: auto;
 }
 
 .location-card:hover {
-    background-color: #008EE4;
-    /* Set your desired background color on hover */
-    transition: filter 0.3s ease;
+background-color: #008EE4;
+/* Set your desired background color on hover */
+transition: filter 0.3s ease;
 }
 
 .location-card:hover img {
-    filter: invert(1);
-    transition: filter 0.3s ease;
+filter: invert(1);
+transition: filter 0.3s ease;
 }
 
 .location-card h6 {
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 14px;
-    color: black;
-    /* Set your desired text color */
+margin-top: 10px;
+font-weight: bold;
+font-size: 14px;
+color: black;
+/* Set your desired text color */
 }
 
 .location-card:hover span {
-    color: white;
-    /* Set your desired text color on hover */
-    transition: filter 0.3s ease;
+color: white;
+/* Set your desired text color on hover */
+transition: filter 0.3s ease;
 }
 
 .m-location-card {
-    width: auto;
-    padding: 4px;
-    margin: 0;
-    text-align: center;
+width: auto;
+padding: 4px;
+margin: 0;
+text-align: center;
 }
 
 .m-location-card img {
-    width: 40%;
-    height: auto;
+width: 40%;
+height: auto;
 }
 
 .m-location-card:hover {
-    background-color: #008EE4;
-    /* Set your desired background color on hover */
-    transition: filter 0.3s ease;
+background-color: #008EE4;
+/* Set your desired background color on hover */
+transition: filter 0.3s ease;
 }
 
 .m-location-card:hover img {
-    filter: invert(1);
-    transition: filter 0.3s ease;
+filter: invert(1);
+transition: filter 0.3s ease;
 }
 
 .m-location-card h6 {
-    font-size: 12px;
-    color: black;
-    /* Set your desired text color */
+font-size: 12px;
+color: black;
+/* Set your desired text color */
 }
 
 .m-location-card:hover h6 {
-    color: white;
-    /* Set your desired text color on hover */
-    transition: filter 0.3s ease;
+color: white;
+/* Set your desired text color on hover */
+transition: filter 0.3s ease;
 }
 
 .z-neg-1 {
-    z-index: -1;
+z-index: -1;
 }
 
 .hidden-scrollbar::-webkit-scrollbar {
-    width: 2px;
-    /* WebKit */
-    height: 25px;
-    background-color: transparent;
+width: 2px;
+/* WebKit */
+height: 25px;
+background-color: transparent;
 }
 
 .hidden-scrollbar::-webkit-scrollbar-thumb {
-    background-color: black;
-    /* WebKit */
+background-color: black;
+/* WebKit */
 }
 
 /* .slide-enter-active,
-    .slide-leave-active {
-      transition: transform 0.3s ease-in-out;
-    }
-    .slide-enter,
-    .slide-leave-to {
-      transform: translateX(100%);
-    }
-    .slide-enter-to {
-      transform: translateX(-10%);
-    } */
-/*  */
-.slide-enter-active,
 .slide-leave-active {
-    transition: 0.3s linear;
+transition: transform 0.3s ease-in-out;
 }
 
 .slide-enter,
 .slide-leave-to {
-    transform: translateX(100%);
+transform: translateX(100%);
+}
+
+.slide-enter-to {
+transform: translateX(-10%);
+} */
+
+/*  */
+.slide-enter-active,
+.slide-leave-active {
+transition: 0.3s linear;
+}
+
+.slide-enter,
+.slide-leave-to {
+transform: translateX(100%);
 }
 
 .slide-enter-to,
 .slide-leave {
-    transform: translateX(0);
-}
-</style>
+transform: translateX(0);
+
+}</style>

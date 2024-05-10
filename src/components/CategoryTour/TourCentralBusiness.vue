@@ -92,13 +92,52 @@
                                 d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
                         </svg>
                     </div>
-                    <p class="text-lg md:text-black text-left pl-2.5 pb-5">8-7000</p>
+                    <p class="text-lg md:text-black text-left pl-2.5 pb-5">(632) 8870-1000</p>
                 </div>
                 <div class="my-4 lg:w-[100%] relative">
                     <div>
                         <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
                         <MapRenderer :latitude="latitude" :longitude="longitude" :name="name" />
                     </div>
+<!-- 
+                    Form in Mobile -->
+<div class="lg:hidden">
+
+    <div class="lg:w-[75%] border border-gray-300 p-4 rounded-lg shadow mt-4">
+    <div class="mb-5">
+        <div class="flex flex-col m-2">
+            <label for="Date" class="mb-2 font-bold">Date of Tour</label>
+            <input type="date" v-model="selectedDate" class="border-2 border-black rounded-md p-2.5"
+                :min="minDate" @change="checkDate">
+        </div>
+
+        <div class="flex flex-col m-2">
+            <label for="tourTimeInput" class="mb-2 font-bold">Time of Tour</label>
+            <!-- Set id attribute for easy access in JavaScript -->
+            <span>10:00 AM - 11:00 AM</span>
+        </div>
+        <div class="flex flex-col m-2">
+            <label for="" class=" mb-2 font-bold">Number of Person</label>
+            <input type="text" class="border-2 border-black rounded-md p-2.5">
+        </div>
+        <div class="flex flex-col m-2">
+            <label for="" class=" mb-2 font-bold">Services</label>
+            <input type="text" class="border-2 border-black rounded-md p-2.5" value="Tour">
+        </div>
+        <router-link to="/checkouttour">
+                        <div class="w-[100%]">
+                            <button
+                                class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Reserve</button>
+                        </div>
+                    </router-link>
+    </div>
+</div>
+
+</div>
+
+
+
+                    
                 </div>
             </div>
         </div>

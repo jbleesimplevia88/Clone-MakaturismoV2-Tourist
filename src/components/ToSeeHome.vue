@@ -45,59 +45,60 @@
                     </button>
                     <!-- Dropdown menu -->
                     <div v-if="showDropdown"
-                        class="z-[1] origin-top-left relative md:absolute left-0 mt-2 w-[400x] md:w-[768px] xl:w-[1000px] 2xl:w-[1093px] rounded-2xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <div role="menu" aria-orientation="horizontal" aria-labelledby="options-menu">
-                            <div class="grid grid-cols-3 border-b-2 p-3 font-bold ml-5 mr-5">
-                                <div>
-                                    <h2>What to see</h2>
-                                </div>
-                                <div>
-                                    <h1>Explored by area</h1>
-                                </div>
-                                <div class="flex justify-end">
-                                    <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                                    </svg>
-                                </div>
+             class="z-[1] origin-top-left relative md:absolute left-0 mt-2 w-[400x] md:w-[868px] lg:w-[1150px] rounded-2xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+            <div role="menu" aria-orientation="horizontal" aria-labelledby="options-menu" @click.stop>
+                <div class="grid grid-cols-3 border-b-2 p-3 font-bold ml-5 mr-5">
+                    <div>
+                        <h2>What to do</h2>
+                    </div>
+                    <div>
+                        <h1>Explored by Area</h1>
+                    </div>
+                    <div class="flex justify-end">
+                        <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg" fill="none"
+                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 grid-row-3 mt-5">
+                    <div class="relative px-2 w-[85%] -mt-2">
+                        <div class="absolute"
+                             style="border-right: 1px solid #0000004D; top: 15%; bottom: 15%; right: 0;">
+                        </div>
+                        <div class="grid grid-rows-8 grid-flow-col gap-4 ml-4 p-2">
+                            <div v-for="(category, index) in categories" :key="'category-' + index">
+                                <label :for="'categoryCheckbox-' + index" class="flex items-center">
+                                    <input type="radio" :id="'categoryCheckbox-' + index" :value="category"
+                                           v-model="selectedCategory">
+                                    <span class="ml-2 m-0 p-0 uppercase text-[12px] font-bold">{{ category }}</span>
+                                </label>
                             </div>
-                            <div class="grid grid-cols-3 grid-row-3 mt-5">
-                                <div class="relative px-2">
-                                    <div class="absolute"
-                                        style="border-right: 1px solid #0000004D; top: 15%; bottom: 15%; right: 0;">
-                                    </div>
-                                    <div class="grid grid-rows-8 grid-flow-col gap-4 ml-4 p-2">
-                                        <div v-for="(category, index) in categories" :key="'category-' + index">
-                                            <label :for="'categoryCheckbox-' + index" class="flex items-center">
-                                                <input type="checkbox" :id="'categoryCheckbox-' + index" :value="category"
-                                                    v-model="selectedCategory">
-                                                <span class="ml-2 m-0 p-0 uppercase text-[12px] font-bold">{{ category
-                                                }}</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-span-2 px-2">
-                                    <div
-                                        class="grid grid-rows-12 grid-flow-row-dense lg:grid-rows-8 md:grid-flow-col gap-4 mr-4 p-2">
-                                        <div v-for="(location, index) in locations" :key="'location-' + index">
-                                            <label :for="'locationCheckbox-' + index" class="flex items-left">
-                                                <input type="checkbox" :id="'locationCheckbox-' + index" :value="location"
-                                                    v-model="selectedLocation" class="-mt-12">
-                                                <span class="ml-2  -mt-2 uppercase text-[12px] font-bold h-16 w-24">{{
-                                                    location }}</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-center justify-center border-t-2 ml-5 mr-5 mt-5">
-                                <button @click="handleApplyFilter"
-                                    class="m-4 p-1 text-white bg-[#102E61] w-72 rounded-xl">Apply</button>
+                        </div>
+                    </div>
+                    <div class="col-span-2 px-2 w-full -ml-10">
+                        <!-- Location filter -->
+                        <div class="grid grid-rows-8 grid-flow-col gap-0 ">
+
+                            <div v-for="(location, index) in locations" :key="'location-' + index">
+                                <label :for="'locationRadio-' + index" class="flex items-left">
+                                    <input type="radio" :id="'locationRadio-' + index" :value="location"
+                                           v-model="selectedLocation" class="-mt-12">
+                                    <span class="ml-2  -mt-2 uppercase text-[12px] font-bold h-16 w-24">{{ location }}</span>
+                                </label>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="text-center justify-center border-t-2 ml-5 mr-5 mt-5">
+                    <button @click="handleApplyFilter"
+                            class="m-4 p-1 text-white bg-[#102E61] w-72 rounded-xl">Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
                 <!-- End of Filter dropdown -->
                 <!-- Filter dropdown MOBILE-->
                 <div class="pb-10 lg:hidden" ref="mobileDropdown">
@@ -139,7 +140,7 @@
                                     <div class="grid gap-4 ml-4 p-2 grid-cols-2">
                                         <div v-for="(category, index) in categories" :key="'category-' + index">
                                             <label :for="'categoryCheckbox-' + index" class="flex items-center">
-                                                <input type="checkbox" :id="'categoryCheckbox-' + index"
+                                                <input type="radio" :id="'categoryCheckbox-' + index"
                                                     :value="category" v-model="selectedCategory">
                                                 <span class="ml-2 m-0 p-0 uppercase font-bold">{{ category }}</span>
                                             </label>
@@ -149,18 +150,16 @@
                                     <hr class="mt-6 mb-6 border-gray-300">
                                     <div class="grid grid-cols-2 border-b-2 p-3 font-bold ml-5 mr-5">
                                         <div>
-    <h2 class="ml-1 whitespace-nowrap" style="font-size: 15px;">Explored by area</h2>
-</div>
-
-
+                                            <h2 class="mb-2 ml-1 whitespace-nowrap" style="font-size: 15px;">Explored by area</h2>
+                                        </div>
                                         <!-- Empty div for alignment -->
                                         <div></div>
                                     </div>
                                     <!-- Explored by area (Barangay) filter -->
                                     <div class="grid gap-4 ml-4 p-2 grid-cols-2">
                                         <div v-for="(location, index) in locations" :key="'location-' + index">
-                                            <label :for="'locationCheckbox-' + index" class="flex items-center">
-                                                <input type="checkbox" :id="'locationCheckbox-' + index"
+                                            <label :for="'locationRadio-' + index" class="flex items-center">
+                                                <input type="radio" :id="'locationRadio-' + index"
                                                     :value="location" v-model="selectedLocation">
                                                 <span class="ml-2 m-0 p-0 uppercase font-bold">{{ location }}</span>
                                             </label>
@@ -177,7 +176,9 @@
             </div>
         </transition>
     </div>
-    </div>
+</div>
+
+
                 <!-- End  Filter dropdown MOBILE  -->
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">

@@ -24,18 +24,13 @@ export const useAuthStore = defineStore({
             router.push(intendedRoute);
           }
           return true;
-        } else {
-          // Handle other response messages if needed
-          return false;
         }
       } catch (error) {
         if (error.response && error.response.status === 401) {
           // Unauthorized, handle accordingly
           console.error('Authentication failed: Unauthorized');
-        } else {
-          console.error('Authentication error:', error);
         }
-        return false;
+        return { status: false, message: error.response.data.message };
       }
     },
 

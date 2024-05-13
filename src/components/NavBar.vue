@@ -393,10 +393,13 @@
                             <button @click="openForgotModal" class="text-xs text-blue-600 font-bold">Forgot
                                 Password?</button>
                         </div>
+                        <span v-if="loginErrorMessage" class="font-semibold text-red-500 text-xs">{{ loginErrorMessage  }}</span>
                         <div class="hidden lg:block lg:mt-10 text-center">
                             <button type="submit"
                                 class="lg:w-[8rem] w-full lg:px-4 py-2 text-white disabled:bg-blue-400 bg-blue-600 rounded-md"
                                 :disabled="!isLoginFormValid" @click="login">Login</button>
+                                
+
                         </div>
                         <div class="lg:hidden lg:mt-10 text-center">
                             <button type="submit" :disabled="!isLoginFormValid" @click="login"
@@ -1207,6 +1210,8 @@ export default {
             signupError: '',
             usernameError: '',
             lpasswordError: '',
+
+          
             fnameError: '',
             lastnameError: '',
             phoneNumberError: '',
@@ -1984,23 +1989,30 @@ export default {
         const showPFPModal = ref(false);
         const showNotif = ref(false);
         const isSidebarOpen = ref(false);
+        let loginPasswordError = ref(false); // Declare loginPasswordError as a ref
+        const loginErrorMessage = ref(''); // Declare loginErrorMessage as a ref
         const openModal = () => {
             showLoginModal.value = true;
         };
         const closeModal = () => {
             showLoginModal.value = false;
         };
-        const login = () => {
-            const credentials = {
-                username: username.value,
-                password: lpassword.value
-            };
-            const loginSuccess = authStore.login(credentials);
-            if (loginSuccess) {
-                console.log('logging in...');
-                closeModal(); // Close the modal if login is successful
+        const login = async () => {
+    loginPasswordError.value = false;
+    const credentials = {
+        username: username.value,
+        password: lpassword.value
+    };
+    const response = await authStore.login(credentials);
+   
+            if (response.status === false) {
+                console.log(response);
+                loginErrorMessage.value = response.message;
+            } else {
+                closeModal();
             }
-        };
+};
+
         const logout = () => {
             authStore.logout(); // Call the logout action from the store
             // Additional logout logic, such as redirecting to the login page, can be added here
@@ -2015,7 +2027,8 @@ export default {
             openModal,
             login,
             logout,
-            authStore
+            authStore,
+            loginErrorMessage
         };confirm
     },
     mounted() {
@@ -2034,6 +2047,7 @@ export default {
 .bg-img {
 background-size: 300px 500px;
 }
+
 
 .sidebar {
 height: 100vh;

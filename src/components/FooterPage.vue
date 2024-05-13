@@ -80,6 +80,14 @@
               <img src="@/assets/images/Footer/Vector.png" alt="(632) 8870-1000" class="inline-block mr-2 mb-2">
               <p class="mb-2 text-sm md:text-base">(632) 8870-1000</p>
             </div>
+
+            <h6 class="mb-2 text-sm md:text-base">MAKATI TOURIST CENTER</h6>
+            <div class="flex items-center">
+              <img src="@/assets/images/Footer/loc.png" alt="Makaturismo.sample@gmail.com"
+                class="inline-block mr-2 mb-2">
+              <p class="mb-2 text-sm md:text-base">Makaturismo.sample@gmail.com</p>
+            </div>
+         
           </div>
         </div>
         <div class="footer-section sm:w-1/4  ml-80" id="section2">
@@ -185,12 +193,21 @@
                   Makaturismo.sample@gmail.com
                 </p>
               </div>
-              <div class="flex items-center">
+              <div class="flex items-center mb-2">
                 <img src="@/assets/images/Footer/Vector.png" alt="(632) 8870-1000" class="inline-block mr-2 mb-2">
                 <p class="mb-2 text-sm md:text-base">(632) 8870-1000</p>
               </div>
+              <div class="  w-full sm:w-1/2 mb-6 mt-4 sm:mb-0">
+              <h6 class="mb-2 text-xl md:text-base">MAKATI TOURIST CENTER</h6>
+              <div class="flex items-center">
+                <img src="@/assets/images/Footer/loc.png" alt="(632) 8870-1000" class="inline-block mr-2 mb-2">
+                <p class="mb-2 text-sm md:text-base whitespace-nowrap">Glorietta 2, Palm Drive Entrance</p>
+
+              </div>
+              </div>
+              
             </div>
-            <div class="w-full sm:w-1/2 mb-4 sm:mb-0">
+            <div class="mb-2 w-full sm:w-1/2 mb-10 sm:mb-0">
               <h6 class="mb-2 text-sm md:text-base">Other Related Site</h6>
               <p class="mb-2 text-sm md:text-base">
                 <img src="@/assets/images/Footer/makati.png" alt="(makati.gov.ph)" class="inline-block mr-2 mb-2">
@@ -199,8 +216,8 @@
             </div>
             <!-- Section 3 -->
             <!-- Section 4 -->
-            <div class="w-full sm:w-1/2">
-              <h6 class="mb-2 text-sm md:text-base">FAQ</h6>
+            <div class="mb-4 w-full sm:w-1/2">
+              <h6 class="mb-0 text-sm md:text-base">FAQ</h6>
             </div>
           </div>
         </div>

@@ -238,6 +238,44 @@
             <div>
                 <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
                 <MapRenderer :latitude="latitude" :longitude="longitude" :name="name" />
+            
+            </div>
+
+            <div class="lg:hidden mt-2 mb-4">
+
+<div class="lg:w-[75%] border border-gray-300 p-4 rounded-lg shadow mt-4">
+
+    <div class="flex flex-col m-2">
+                        <label for="" class="mb-2 font-bold">From</label>
+                        <input type="date" id="dateFrom" v-model="dateFrom" @input="handleDateInput('from')"
+                            class="border-2 border-black rounded-md p-2.5">
+                        <p v-if="startDateError" class="text-red-500">{{ startDateError }}</p>
+                    </div>
+                    <!-- End Date Datepicker with Placeholder -->
+                    <div class="flex flex-col m-2">
+                        <label for="" class="mb-2 font-bold">To</label>
+                        <input type="date" id="dateTo" v-model="dateTo" @input="handleDateInput('to')"
+                            class="border-2 border-black rounded-md p-2.5">
+                        <p v-if="endDateError" class="text-red-500">{{ endDateError }}</p>
+                    </div>
+                    <div class="flex flex-col m-2">
+                        <label for="roomType" class="mb-2 font-bold">Type of Room</label>
+                        <select id="roomType" v-model="selectedRoomType"
+                            class="border-2 border-black mt-1 rounded-md p-2.5">
+                            <option v-for="(roomType, index) in roomTypes" :key="index" :value="roomType.name">
+                                {{ roomType.name }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="w-[100%] px-2 mt-5">
+                        <button @click="bookNow"
+                            class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Book
+                            Now</button>
+                    </div>
+
+
+</div>
+
             </div>
             <hr style="border-top: 1px solid black">
             <div>

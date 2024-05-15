@@ -197,9 +197,7 @@
 /* Optional: Show scrollbar on hover */
 </style>
 <script setup>
-import { ref, onMounted } from 'vue';
-import { useAuthStore } from '@/stores/auth';
-import axios from 'axios';
+import { ref, onBeforeMount } from 'vue';
 import { useProfileStore } from '@/stores/profile'
 
 const id = ref(0);
@@ -219,17 +217,9 @@ const confirmPasswordError = ref('');
 const profileStore = useProfileStore();
 
 
-
-
-
-onMounted(() => {
-    fetchUser();
-});
-
 const fetchUser = async () => {
     try {
-        const user = await profileStore.users();
-
+        const user =  await profileStore.users();
         if (user.data) {
             id.value = user.data.id;
             firstName.value = user.data.firstname;
@@ -307,4 +297,10 @@ const cancelForm = () => {
 
     console.log('Form cancelled!');
 };
+
+onBeforeMount( async () => {
+   await fetchUser();
+});
+
+
 </script>

@@ -189,51 +189,109 @@
 </style>
 <script>
 import { RouterLink } from 'vue-router';
-
+import {
+useAuthStore
+} from '@/stores/auth'
+import axios from 'axios';
 export default {
     data() {
         return {
-            firstName: 'Juan',
-            lastName: 'Dela Cruz',
-            email: 'juandelacruz@email.com',
-            phone: '09876543212',
-            gender: '', // No pre-filled value for gender
-            nationality: 'Filipino',
-            password: '1234567890',
-            confirmPassword: '1234567890',
-            phoneError: '',
-            passwordError: '',
-            confirmPasswordError: ''
+            id: 0,
+            firstName: '', // Define firstName
+            lastName: '', // Define lastName
+            email: '', // Define email
+            phone: '', // Define phone
+            gender: '', // Define gender
+            nationality: '', // Define nationality
+            password: '', // Define password
+            confirmPassword: '', // Define confirmPassword
+            phoneError: '', // Define phoneError
+            passwordError: '', // Define passwordError
+            profilephoto: '',
+            confirmPasswordError: '', // Define confirmPasswordError
+     
         }
     },
-    methods: {
-        submitForm() {
-            // Reset error messages
-            this.phoneError = '';
-            this.passwordError = '';
-            this.confirmPasswordError = '';
-            // Validate phone number
-            if (!/^09\d{9}$/.test(this.phone)) {
-                this.phoneError = 'Phone number must be 11 digits and start with 09';
-                return;
-            }
-            // Validate password
-            if (!/(?=.*[a-zA-Z])(?=.*\d)(?=.*[^a-zA-Z\d\s]).{8,}/.test(this.password)) {
-                this.passwordError = 'Password must contain at least one letter, one number, one special character, and be at least 8 characters long';
-                return;
-            }
-            // Validate password and confirm password
-            if (this.password !== this.confirmPassword) {
-                this.confirmPasswordError = 'Password and confirm password must match';
-                return;
-            }
-            // Handle form submission here if all validations pass
-            console.log('Form submitted!');
-        },
-        cancelForm() {
-            // Handle form cancellation here
-            console.log('Form cancelled!');
+    mounted() {
+    const authStore = useAuthStore(); // Access the Vuex store for authentication
+    const userId = authStore.userauth; // Get the user ID from the Vuex store
+
+    // Make API request to fetch user details using the user ID
+    axios.post('/userDetails', { userId })
+        .then(response => {
+            // Parse user details from the response
+            const userDetails = JSON.parse(response.data.userdetails);
+            console.log(userDetails);
+            // Update component data with user details
+            this.id=userDetails.id;
+            this.firstName = userDetails.firstname;
+            this.lastName = userDetails.lastname;
+            this.email = userDetails.email;
+            this.phone = userDetails.contact;
+            this.gender = userDetails.gender;
+            this.nationality = userDetails.national;
+            this.password = userDetails.password;
+            this.profilephoto = userDetails.profilephoto;
+            this.confirmPassword = userDetails.password; // Assuming confirmPassword is the same as password
+        })
+        .catch(error => {
+            console.error('Error fetching user details:', error);
+            // Handle error, e.g., display a message to the user
+        });
+},
+
+methods: {
+    submitForm() {
+        // Reset error messages
+   
+        
+        // Validate phone number
+        if (!/^09\d{9}$/.test(this.phone)) {
+            this.phoneError = 'Phone number must be 11 digits and start with 09';
+            return;
         }
+        
+        // Validate password
+        if (!/(?=.*[a-zA-Z])(?=.*\d)(?=.*[^a-zA-Z\d\s]).{8,}/.test(this.password)) {
+            this.passwordError = 'Password must contain at least one letter, one number, one special character, and be at least 8 characters long';
+            return;
+        }
+        
+        // Validate password and confirm password
+        if (this.password !== this.confirmPassword) {
+            this.confirmPasswordError = 'Password and confirm password must match';
+            return;
+        }
+        
+        // Prepare data payload
+        const data = {
+            id: this.id,
+            lastname: this.lastName,
+            firstname: this.firstName,
+            email: this.email,
+            national: this.nationality,
+            gender: this.gender,
+            contact: this.phone,
+            password: this.password,
+            profilephoto: this.profilephoto
+        };
+        console.log(data);
+        // Make API request to update user details
+        axios.post('/updateTourist', data)
+            .then(response => {
+                console.log('User details updated successfully:', response.data);
+                // Optionally, you can display a success message or perform any other actions upon successful update
+            })
+            .catch(error => {
+                console.error('Error updating user details:', error);
+                // Handle error, e.g., display a message to the user
+            });
+    },
+    cancelForm() {
+        // Handle form cancellation here
+        console.log('Form cancelled!'); 
     }
+}
+
 };
 </script>

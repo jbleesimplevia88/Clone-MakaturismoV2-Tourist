@@ -15,81 +15,70 @@
         <!-- /Profile router -->
         <!-- MOBILE-->
         <div class="pt-36 justify-center flex lg:hidden">
-            <img src="@/assets/images/MainNav/card.svg" alt="" class="w-60"
-                style="box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.868);">
-        </div>
-        <div class="rounded-t-xl p-10 mt-7 bg-white lg:hidden">
-            <div class="grid place-items-center">
-                <div>
-                    <span>Add Profile Picture</span>
-                    <div class="border rounded-lg border-black bg-white w-[145px] my-5 relative">
-                        <input type="file" class="hidden" id="imageInput" accept="image/*" @change="handleImageChange">
-                        <label for="imageInput" class="cursor-pointer">
-                            <img v-if="previewImage" :src="previewImage" alt="Profile Picture" class="w-full h-full object-cover">
-                            <img v-else src="@/assets/images/MainNav/profilepic.svg" alt="Profile Picture" class="w-full h-full object-cover">
-                        </label>
-                    </div>
-                </div>
+    <img src="@/assets/images/MainNav/card.svg" alt="" class="w-40" style="box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.868);">
+</div>
+<div class="p-6 mt-7 bg-white lg:hidden">
+    <div class="grid place-items-center">
+        <div>
+            <span>Add Profile Picture</span>
+            <div class="border rounded-lg border-black bg-white w-[120px] my-3">
+                <input type="file" class="hidden" id="imageInput" accept="image/*" @change="handleImageChange">
+                <label for="imageInput" class="cursor-pointer">
+                    <img v-if="previewImage" :src="previewImage" alt="Profile Picture" class="w-full h-full object-cover">
+                    <img v-else src="@/assets/images/MainNav/profilepic.svg" alt="Profile Picture" class="w-full h-full object-cover">
+                </label>
             </div>
-            <form @submit.prevent="submitForm" class="mb-32 bg-white rounded-b-xl px-40 py-8 h-full">
-                <div class="mb-4">
-                    <label for="firstName" class="block font-bold mb-1">First Name<span
-                            style="color: red;">*</span></label>
-                    <input required type="text" id="firstName" v-model="firstName" :placeholder="firstName || 'Juan'"
-                        class="w-full px-3 py-2 border rounded-lg">
-                </div>
-                <div class="mb-4">
-                    <label for="lastName" class="block font-bold mb-1">Last Name<span
-                            style="color: red;">*</span></label>
-                    <input required type="text" id="lastName" v-model="lastName" :placeholder="lastName || 'Dela Cruz'"
-                        class="w-full px-3 py-2 border rounded-lg">
-                </div>
-                <div class="mb-4">
-                    <label for="email" class="block font-bold mb-1">Email Address<span
-                            style="color: red;">*</span></label>
-                    <input required type="email" id="email" v-model="email"
-                        :placeholder="email || 'juandelacruz@email.com'" autocomplete="email"
-                        class="w-full px-3 py-2 border rounded-lg">
-                </div>
-                <div class="mb-4">
-                    <label for="phone" class="block font-bold mb-1">Phone Number</label>
-                    <input type="tel" id="phone" v-model="phone" :placeholder="phone || '09876543212'"
-                        class="w-full px-3 py-2 border rounded-lg">
-                    <span v-if="phoneError" class="text-red-500">{{ phoneError }}</span>
-                </div>
-                <div class="mb-4">
-                    <label for="gender" class="block font-bold mb-1">Gender</label>
-                    <select id="gender" v-model="gender" class="w-full px-3 py-2 border rounded-lg">
-                        <option value="">Select Gender</option>
-                        <option value="female">Female</option>
-                        <option value="male">Male</option>
-                        <option value="preferNotToSay">Prefer not to say</option>
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <label for="nationality" class="block font-bold mb-1">Nationality</label>
-                    <input type="text" id="nationality" v-model="nationality" :placeholder="nationality || 'Filipino'"
-                        class="w-full px-3 py-2 border rounded-lg">
-                </div>
-                <div class="mb-4">
-                    <label for="password" class="block font-bold mb-1">Password</label>
-                    <input type="password" id="password" v-model="password" :placeholder="password || '1234567890'"
-                        autocomplete="new-password" class="w-full px-3 py-2 border rounded-lg">
-                    <span v-if="passwordError" class="text-red-500">{{ passwordError }}</span>
-                </div>
-                <div class="mb-4">
-                    <label for="confirmPassword" class="block font-bold mb-1">Confirm Password</label>
-                    <input type="password" id="confirmPassword" v-model="confirmPassword"
-                        :placeholder="confirmPassword || '1234567890'" autocomplete="new-password"
-                        class="w-full px-3 py-2 border rounded-lg">
-                    <span v-if="confirmPasswordError" class="text-red-500">{{ confirmPasswordError }}</span>
-                </div>
-                <div class="flex justify-center">
-                    <button type="button" class="text-black px-4 py-2 rounded" @click="cancelForm">Cancel</button>
-                    <button type="submit" class="bg-blue-500 text-white font-semibold px-4 py-2 rounded ">Save</button>
-                </div>
-            </form>
         </div>
+    </div>
+    <form @submit.prevent="submitForm" class="mb-10">
+        <div class="mb-3">
+            <label for="firstName" class="block font-bold mb-1">First Name<span style="color: red;">*</span></label>
+            <input required type="text" id="firstName" v-model="firstName" :placeholder="firstName || 'Juan'" class="w-full px-3 py-2 border rounded-lg">
+        </div>
+        <div class="mb-3">
+            <label for="lastName" class="block font-bold mb-1">Last Name<span style="color: red;">*</span></label>
+            <input required type="text" id="lastName" v-model="lastName" :placeholder="lastName || 'Dela Cruz'" class="w-full px-3 py-2 border rounded-lg">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="block font-bold mb-1">Email Address<span style="color: red;">*</span></label>
+            <input required type="email" id="email" v-model="email" :placeholder="email || 'juandelacruz@email.com'" autocomplete="email" class="w-full px-3 py-2 border rounded-lg">
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="block font-bold mb-1">Phone Number</label>
+            <input type="tel" id="phone" v-model="phone" :placeholder="phone || '09876543212'" class="w-full px-3 py-2 border rounded-lg">
+            <span v-if="phoneError" class="text-red-500">{{ phoneError }}</span>
+        </div>
+        <div class="mb-3">
+            <label for="gender" class="block font-bold mb-1">Gender</label>
+            <select id="gender" v-model="gender" class="w-full px-3 py-2 border rounded-lg">
+                <option value="">Select Gender</option>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+                <option value="preferNotToSay">Prefer not to say</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="nationality" class="block font-bold mb-1">Nationality</label>
+            <input type="text" id="nationality" v-model="nationality" :placeholder="nationality || 'Filipino'" class="w-full px-3 py-2 border rounded-lg">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="block font-bold mb-1">Password</label>
+            <input type="password" id="password" v-model="password" :placeholder="password || '1234567890'" autocomplete="new-password" class="w-full px-3 py-2 border rounded-lg">
+            <span v-if="passwordError" class="text-red-500">{{ passwordError }}</span>
+        </div>
+        <div class="mb-3">
+            <label for="confirmPassword" class="block font-bold mb-1">Confirm Password</label>
+            <input type="password" id="confirmPassword" v-model="confirmPassword" :placeholder="confirmPassword || '1234567890'" autocomplete="new-password" class="w-full px-3 py-2 border rounded-lg">
+            <span v-if="confirmPasswordError" class="text-red-500">{{ confirmPasswordError }}</span>
+        </div>
+        <div class="flex justify-center">
+            <button type="button" class="text-black px-4 py-2 rounded" @click="cancelForm">Cancel</button>
+            <button type="submit" class="bg-blue-500 text-white font-semibold px-4 py-2 rounded ml-4">Save</button>
+        </div>
+    </form>
+</div>
+
+
         <!-- /MOBILE-->
         <!-- WEB-->
         <div class=" p-10 hidden lg:block mt-44">

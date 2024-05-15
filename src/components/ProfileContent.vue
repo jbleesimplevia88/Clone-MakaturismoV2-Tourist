@@ -217,7 +217,7 @@ export default {
     const userId = authStore.userauth; // Get the user ID from the Vuex store
 
     // Make API request to fetch user details using the user ID
-    axios.post('http://makatiapi.simplevia.com/api/userDetails', { userId })
+    axios.post('/userDetails', { userId })
         .then(response => {
             // Parse user details from the response
             const userDetails = JSON.parse(response.data.userdetails);
@@ -277,7 +277,7 @@ methods: {
         };
         console.log(data);
         // Make API request to update user details
-        axios.post('http://makatiapi.simplevia.com/api/updateTourist', data)
+        axios.post('/updateTourist', data)
             .then(response => {
                 console.log('User details updated successfully:', response.data);
                 // Optionally, you can display a success message or perform any other actions upon successful update
@@ -289,7 +289,7 @@ methods: {
     },
     cancelForm() {
         // Handle form cancellation here
-        console.log('Form cancelled!');
+        console.log('Form cancelled!'); 
     }
 }
 

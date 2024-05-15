@@ -1149,7 +1149,7 @@ import house from '@/assets/images/MainNav/house.png';
 import food from '@/assets/images/MainNav/food.png';
 import grocery from '@/assets/images/MainNav/grocery-store.png';
 import locationImg from '@/assets/images/MainNav/location.png';
-
+import { useSignUpStore } from '@/stores/signUp';
 export default {
     name: 'NavBar',
     components: {

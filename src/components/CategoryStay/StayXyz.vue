@@ -24,22 +24,19 @@
                         <div class=" lg:pr-[7rem] x">
                             <ContentCarousel :items="items" class="mb-10" />
                         </div>
-
                     </div>
 
-                    <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 lg:p-5 px-5 py-3 shadow-lg">
+                    <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 lg:p-5 px-5 py-3 shadow-lg z-50">
                         <div class="flex justify-between">
-                            <div>
+                            <div class="w-[80%]">
                                 <p class="text-md">Secure your stay</p>
                                 <p class="text-lg font-bold">Start here</p>
                             </div>
-                            <router-link to="/checkoutbook">
-                                <div class="w-[100%] px-2 mt-5 cursor-pointer">
-                                    <button
-                                        class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg p-4 w-[100%]">Book
-                                        Now</button>
-                                </div>
-                            </router-link>
+                            <div class="w-[70%] px-2 mt-5 cursor-pointer">
+                                <button @click="bookNow"
+                                    class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg p-4 w-[80%]">Book
+                                    Now</button>
+                            </div>
                         </div>
                     </div>
                     <div class="flex flex-col pl-8 lg:pl-8 lg:order-first">
@@ -204,14 +201,14 @@
                     <!-- Start Date Datepicker with Placeholder -->
                     <div class="flex flex-col m-2">
                         <label for="" class="mb-2 font-bold">From</label>
-                        <input type="date" id="dateFrom" v-model="dateFrom" @input="handleDateInput('from')"
+                        <input type="date" id="dateFrom" v-model="dateFrom" @input="handleDateInput('from')" :min="minDate"
                             class="border-2 border-black rounded-md p-2.5">
                         <p v-if="startDateError" class="text-red-500">{{ startDateError }}</p>
                     </div>
                     <!-- End Date Datepicker with Placeholder -->
                     <div class="flex flex-col m-2">
                         <label for="" class="mb-2 font-bold">To</label>
-                        <input type="date" id="dateTo" v-model="dateTo" @input="handleDateInput('to')"
+                        <input type="date" id="dateTo" v-model="dateTo" @input="handleDateInput('to')" :min="minDate"
                             class="border-2 border-black rounded-md p-2.5">
                         <p v-if="endDateError" class="text-red-500">{{ endDateError }}</p>
                     </div>
@@ -238,14 +235,14 @@
             <div>
                 <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
                 <MapRenderer :latitude="latitude" :longitude="longitude" :name="name" />
-            
+
             </div>
 
             <div class="lg:hidden mt-2 mb-4">
 
-<div class="lg:w-[75%] border border-gray-300 p-4 rounded-lg shadow mt-4">
+                <div class="lg:w-[75%] border border-gray-300 p-4 rounded-lg shadow mt-4">
 
-    <div class="flex flex-col m-2">
+                    <div class="flex flex-col m-2">
                         <label for="" class="mb-2 font-bold">From</label>
                         <input type="date" id="dateFrom" v-model="dateFrom" @input="handleDateInput('from')"
                             class="border-2 border-black rounded-md p-2.5">
@@ -267,14 +264,14 @@
                             </option>
                         </select>
                     </div>
-                    <div class="w-[100%] px-2 mt-5">
+                    <!-- <div class="w-[100%] px-2 mt-5">
                         <button @click="bookNow"
                             class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Book
                             Now</button>
-                    </div>
+                    </div> -->
 
 
-</div>
+                </div>
 
             </div>
             <hr style="border-top: 1px solid black">
@@ -420,6 +417,7 @@ import {
 export default defineComponent({
 
     setup() {
+
         const cartStay = useStayStore();
         const router = useRouter();
         const authStore = useAuthStore();
@@ -537,20 +535,6 @@ export default defineComponent({
             cartStay.selectHotel(hotelDetails);
         };
 
-        const handleDateInput = (type) => {
-            if (type === 'from' && dateTo.value && dateFrom.value > dateTo.value) {
-                startDateError.value = "Start date cannot be greater than end date";
-                endDateError.value = '';
-                dateFrom.value = '';
-            } else if (type === 'to' && dateFrom.value && dateTo.value < dateFrom.value) {
-                endDateError.value = "End date cannot be earlier than start date";
-                startDateError.value = '';
-                dateTo.value = '';
-            } else {
-                startDateError.value = null;
-                endDateError.value = null;
-            }
-        };
         const bookNow = () => {
             if (!authStore.isAuthenticated) {
                 authStore.setIntendedRoute(router.currentRoute.value.path);
@@ -634,8 +618,27 @@ export default defineComponent({
             numFeedbackShown.value = 0;
             showSeeLessButton.value = false;
         };
+        const minDate = computed(() => {
+            const today = new Date().toISOString().split('T')[0];
+            return today;
+        });
 
+        const handleDateInput = (type) => {
+            if (type === 'from' && dateTo.value && dateFrom.value > dateTo.value) {
+                startDateError.value = 'Start date cannot be greater than end date';
+                endDateError.value = '';
+                dateFrom.value = '';
+            } else if (type === 'to' && dateFrom.value && dateTo.value < dateFrom.value) {
+                endDateError.value = 'End date cannot be earlier than start date';
+                startDateError.value = '';
+                dateTo.value = '';
+            } else {
+                startDateError.value = null;
+                endDateError.value = null;
+            }
+        };
         return {
+            minDate,
             showLoginModal,
             cartStay, // Return the cartStay object
             router,

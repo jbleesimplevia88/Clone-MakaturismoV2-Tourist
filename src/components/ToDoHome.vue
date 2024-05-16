@@ -121,7 +121,7 @@
                                 <div role="menu" aria-orientation="horizontal" aria-labelledby="options-menu">
                                     <div class="grid grid-cols-2 border-b-2 p-3 font-bold ml-5 mr-5">
                                         <div>
-                                            <h2 class="ml-5">Filters</h2>
+                                            <h2 class="ml-5">What to do</h2>
                                         </div>
                                         <div class="flex justify-end">
                                             <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -143,6 +143,15 @@
                                                         }}</span>
                                                     </label>
                                                 </div>
+                                                <hr data-v-add5c92e="" class="mt-6 mb-6 border-gray-300">
+                                                <h2 class="ml-5 font-bold mb-2">Explored by area</h2>
+                                                <div v-for="(location, index) in locations" :key="'location-' + index">
+    <label :for="'locationCheckbox-' + index" class="flex items-center">
+        <input type="checkbox" :id="'locationCheckbox-' + index" :value="location" v-model="selectedLocation">
+        <span class="ml-2 m-0 p-0 uppercase font-bold">{{ location }}</span>
+    </label>
+</div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -362,42 +371,29 @@ export default {
             ],
             categories: ['Entertainment', 'Fitness', 'Museum', 'Sightseeing Tour', 'Spa & Wellness', 'Gym', 'Cinema', 'Sports Arena', 'Theater', 'Game', 'Library', 'Gallery'],
             locations: [
-                'Ayala-Paseo de Roxas',
-                'Bangkal',
+            'Bangkal',
                 'Bel-air',
+                'Carmona',
                 'Cembo',
-                'Comembo',
-                'Dasmarinas Village North',
-                'Dasmarinas Village South',
-                'Forbes Park North',
-                'Forbes Park South',
-                'Fort Bonifacio Naval Station',
-                'Fort Bonifacio (Camp)',
-                'Greenbelt',
+                'Dasmarinas',
+                'Forbes Park',
                 'Guadalupe Nuevo',
-                'Guadalupe Viejo',
                 'Kasilawan',
-                'La Paz -Singkamas -Tejeros',
-                'Legaspi Village',
-                'Magallanes Village',
-                'Makati Commercial Center',
-                'Makati CPO + Buendia Ave',
-                'Olympia & Carmona',
+                'La Paz',
+                'Magallanes',
+                'Olympia',
                 'Palanan',
-                'Pasong Tamo & Ecology Village',
-                'Pembo',
-                'Pinagkaisahan-Pitogo',
+                'Pinagkaisahan',
                 'Pio del Pilar',
                 'Poblacion',
-                'Rembo (East)',
-                'Rembo (West)',
-                'Salcedo Village',
-                'San Antonio Village',
+                'San Antonio',
                 'San Isidro',
-                'San Lorenzo Village',
+                'San Lorenzo ',
                 'Sta. Cruz',
-                'Urdaneta Village',
-                'Valenzuela, Santiago, Rizal'
+                'Singkamas',
+                'Tejeros',
+                'Urdaneta',
+                'Valenzuela'
             ],
             currentPage: 0,
             pageSize: 8,

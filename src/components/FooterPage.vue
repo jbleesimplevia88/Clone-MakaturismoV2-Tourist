@@ -74,18 +74,18 @@
             <div class="flex items-center">
               <img src="@/assets/images/Footer/email.png" alt="Makaturismo.sample@gmail.com"
                 class="inline-block mr-2 mb-2">
-              <p class="mb-2 text-sm md:text-base">Makaturismo.sample@gmail.com</p>
+              <p class="mb-2 text-sm md:text-base">tourism.makati@gmail.com</p>
             </div>
             <div class="flex items-center">
               <img src="@/assets/images/Footer/Vector.png" alt="(632) 8870-1000" class="inline-block mr-2 mb-2">
-              <p class="mb-2 text-sm md:text-base">(632) 8870-1000</p>
+              <p class="mb-2 text-sm md:text-base">8870-1196/1992</p>
             </div>
 
             <h6 class="mb-2 text-sm md:text-base">MAKATI TOURIST CENTER</h6>
             <div class="flex items-center">
               <img src="@/assets/images/Footer/loc.png" alt="Makaturismo.sample@gmail.com"
                 class="inline-block mr-2 mb-2">
-              <p class="mb-2 text-sm md:text-base">Makaturismo.sample@gmail.com</p>
+              <p class="mb-2 text-sm md:text-base">Glorietta 2, Palm Drive</p>
             </div>
          
           </div>
@@ -187,7 +187,7 @@
                 <p class="mb-2 text-sm md:text-base">Makati City</p>
               </div>
               <div class="flex items-center" style="max-width: 200px;">
-                <img src="@/assets/images/Footer/email.png" alt="Makaturismo.sample@gmail.com"
+                <img src="@/assets/images/Footer/email.png" alt="tourism.makati@gmail.com"
                   class="inline-block mr-2 mb-2">
                 <p class="mb-2 text-xs md:text-base text-custom-size ">
                   Makaturismo.sample@gmail.com
@@ -195,13 +195,13 @@
               </div>
               <div class="flex items-center mb-2">
                 <img src="@/assets/images/Footer/Vector.png" alt="(632) 8870-1000" class="inline-block mr-2 mb-2">
-                <p class="mb-2 text-sm md:text-base">(632) 8870-1000</p>
+                <p class="mb-2 text-sm md:text-base">8870-1196/1992</p>
               </div>
               <div class="  w-full sm:w-1/2 mb-6 mt-4 sm:mb-0">
               <h6 class="mb-2 text-xl md:text-base">MAKATI TOURIST CENTER</h6>
               <div class="flex items-center">
                 <img src="@/assets/images/Footer/loc.png" alt="(632) 8870-1000" class="inline-block mr-2 mb-2">
-                <p class="mb-2 text-sm md:text-base whitespace-nowrap">Glorietta 2, Palm Drive Entrance</p>
+                <p class="mb-2 text-sm md:text-base whitespace-nowrap">Glorietta 2, Palm Drive </p>
 
               </div>
               </div>

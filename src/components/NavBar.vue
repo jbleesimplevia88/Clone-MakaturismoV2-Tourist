@@ -994,8 +994,7 @@
 
         </div>
         
-<div v-if="showChangepass" class="fixed inset-0 z-[10] flex items-center justify-center bg-gray-800 bg-opacity-30"
-      >
+<div v-if="showChangepass" class="fixed inset-0 z-[10] flex items-center justify-center bg-gray-800 bg-opacity-30">
             <!-- Modal Content -->
             <div class="relative bg-white px-5 pb-7 shadow-xl mx-auto w-full max-w-xl rounded-2xl">
                 <div class="mx-auto flex w-full max-w-xl flex-col">
@@ -1007,13 +1006,12 @@
                         </svg>
                     </div>
                     <div class="flex flex-col items-center justify-center text-center pt-3">
-                       
                         <div class="flex flex-row text-lg font-medium text-gray-600 pb-12">
                             <p>Thank you! You successfully changed your password</p>
                         </div>
                     </div>
                     <div class="flex justify-center">
-                        <button class="p-3 w-[92%] text-white text-xl bg-[#2969D6] rounded-lg border border-gray-500"a
+                        <button class="p-3 w-[92%] text-white text-xl bg-[#2969D6] rounded-lg border border-gray-500"
                             @click="closeChangepass">
                             Okay
                         </button>

@@ -99,45 +99,38 @@
                         <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
                         <MapRenderer :latitude="latitude" :longitude="longitude" :name="name" />
                     </div>
-<!-- 
-                    Form in Mobile -->
-<div class="lg:hidden">
+                    <!-- 
+                        Form in Mobile -->
+                    <div class="lg:hidden">
+                        <div class="lg:w-[75%] border border-gray-300 p-4 rounded-lg shadow mt-4">
+                            <div class="mb-5">
+                                <div class="flex flex-col m-2">
+                                    <label for="Date" class="mb-2 font-bold">Date of Tour</label>
+                                    <input type="date" v-model="selectedDate" class="border-2 border-black rounded-md p-2.5"
+                                        :min="minDate" @change="checkDate">
+                                </div>
+                                <div class="flex flex-col m-2">
+                                    <label for="" class=" mb-2 font-bold">Number of Person</label>
+                                    <input type="number" v-model="numberOfPersons"
+                                        class="border-2 border-black rounded-md p-2.5">
+                                </div>
+                                <div class="flex flex-col m-2">
+                                    <label for="tourTimeInput" class="mb-2 font-bold">Time of Tour</label>
+                                    <!-- Set id attribute for easy access in JavaScript -->
+                                    <span>10:00 AM - 11:00 AM</span>
+                                </div>
 
-    <div class="lg:w-[75%] border border-gray-300 p-4 rounded-lg shadow mt-4">
-    <div class="mb-5">
-        <div class="flex flex-col m-2">
-            <label for="Date" class="mb-2 font-bold">Date of Tour</label>
-            <input type="date" v-model="selectedDate" class="border-2 border-black rounded-md p-2.5"
-                :min="minDate" @change="checkDate">
-        </div>
-
-        <div class="flex flex-col m-2">
-            <label for="tourTimeInput" class="mb-2 font-bold">Time of Tour</label>
-            <!-- Set id attribute for easy access in JavaScript -->
-            <span>10:00 AM - 11:00 AM</span>
-        </div>
-        <div class="flex flex-col m-2">
-            <label for="" class=" mb-2 font-bold">Number of Person</label>
-            <input type="text" class="border-2 border-black rounded-md p-2.5">
-        </div>
-        <div class="flex flex-col m-2">
-            <label for="" class=" mb-2 font-bold">Services</label>
-            <input type="text" class="border-2 border-black rounded-md p-2.5" value="Tour">
-        </div>
-        <router-link to="/checkouttour">
-                        <div class="w-[100%]">
-                            <button
-                                class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Reserve</button>
+                                <div class="flex flex-col m-2">
+                                    <label for="" class=" mb-2 font-bold">Services</label>
+                                    <span>Tour</span>
+                                </div>
+                                <div class="w-[100%]">
+                                    <button @click="reserve"
+                                        class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Reserve</button>
+                                </div>
+                            </div>
                         </div>
-                    </router-link>
-    </div>
-</div>
-
-</div>
-
-
-
-                    
+                    </div>
                 </div>
             </div>
         </div>
@@ -151,28 +144,26 @@
                             <input type="date" v-model="selectedDate" class="border-2 border-black rounded-md p-2.5"
                                 :min="minDate" @change="checkDate">
                         </div>
+                        <div class="flex flex-col m-2">
+                            <label for="" class=" mb-2 font-bold">Number of Person</label>
+                            <input type="number" v-model="numberOfPersons" class="border-2 border-black rounded-md p-2.5">
+                        </div>
 
                         <div class="flex flex-col m-2">
                             <label for="tourTimeInput" class="mb-2 font-bold">Time of Tour</label>
                             <!-- Set id attribute for easy access in JavaScript -->
                             <span>10:00 AM - 11:00 AM</span>
                         </div>
-                        <div class="flex flex-col m-2">
-                            <label for="" class=" mb-2 font-bold">Number of Person</label>
-                            <input type="text" class="border-2 border-black rounded-md p-2.5">
-                        </div>
+
                         <div class="flex flex-col m-2">
                             <label for="" class=" mb-2 font-bold">Services</label>
-                            <input type="text" class="border-2 border-black rounded-md p-2.5" value="Tour">
+                            <span>Tour</span>
                         </div>
-
                     </div>
-                    <router-link to="/checkouttour">
-                        <div class="w-[100%]">
-                            <button
-                                class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Reserve</button>
-                        </div>
-                    </router-link>
+                    <div class="w-[100%]">
+                        <button @click="reserve"
+                            class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Reserve</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -289,6 +280,7 @@
             </div>
         </div>
     </div>
+    <login-modal v-if="!authStore.isAuthenticated && showLoginModal" @close="showLoginModal = false"></login-modal>
 </template>
 
 
@@ -298,8 +290,24 @@
 <script>
 import ContentCarousel from '@/components/TourCarousel.vue';
 import MapRenderer from "@/components/MapRenderer.vue";
+import LoginModal from '@/components/LoginModal.vue';
 
-export default {
+import {
+    useTourStore
+} from '@/stores/toTourCart';
+import {
+    defineComponent, ref
+
+} from 'vue';
+import {
+    useAuthStore
+} from '@/stores/auth';
+import {
+    useRouter
+} from 'vue-router';
+
+
+export default defineComponent({
     props: {
         latitude: Number,
         longitude: Number,
@@ -308,19 +316,61 @@ export default {
     components: {
         ContentCarousel,
         MapRenderer,
+        LoginModal
     },
-    mounted() {
-        // Get today's date
-        const today = new Date().toISOString().split('T')[0];
-        // Set the min attribute of the date input to today's date
-        document.getElementById("selectedDate").setAttribute("min", today);
-        // Debugging: Check if the component is mounted and time input is found
-        console.log("Component mounted");
-        const timeInput = document.getElementById("tourTimeInput");
-        console.log("Time input element:", timeInput);
-        // Set the minimum and maximum allowed time
-        timeInput.setAttribute("min", "11:00");
-        timeInput.setAttribute("max", "19:30");
+    setup() {
+        const cartTour = useTourStore();
+        const router = useRouter();
+        const authStore = useAuthStore();
+        const selectedDate = ref('');
+        const numberOfPersons = ref(0);
+        const showLoginModal = ref(false);
+        const closeLoginModal = () => {
+            showLoginModal.value = false;
+        };
+        const reserve = () => {
+            if (!authStore.isAuthenticated) {
+                authStore.setIntendedRoute(router.currentRoute.value.path);
+                showLoginModal.value = true;
+                return;
+            }
+
+            // Check if the selectedDate is valid
+            if (!selectedDate.value || selectedDate.value.trim() === '') {
+                alert("Please select a date.");
+                return;
+            }
+
+            // Check if numberOfPersons is valid
+            const numberOfPersonsValue = parseInt(numberOfPersons.value);
+            if (isNaN(numberOfPersonsValue) || numberOfPersonsValue <= 0) {
+                alert("Please enter a valid number of persons.");
+                return;
+            }
+
+            // Update reservation details individually
+            cartTour.reserveTour({
+                date: selectedDate.value,
+                numberOfPersons: numberOfPersonsValue,
+            });
+
+            // Proceed to checkout
+            router.push('/checkouttour');
+        };
+
+
+
+        return {
+            showLoginModal,
+            closeLoginModal,
+            cartTour,
+            router,
+            authStore,
+            selectedDate,
+            numberOfPersons,
+            reserve,
+
+        }
     },
     data() {
         return {
@@ -408,5 +458,5 @@ export default {
             this.showSeeLessButton = false;
         }
     }
-};
+});
 </script>

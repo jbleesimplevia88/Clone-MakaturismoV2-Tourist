@@ -17,22 +17,22 @@
                             <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-4">
                                 <div class="flex lg:flex-col lg:items-start justify-start">
                                     <p class="mr-[90px] lg:mb-1 font-bold ">Date of Tour</p>
-                                    <p class="font-normal mb-3 ">07/24/2023</p>
+                                    <p class="font-normal mb-3 ">{{ reservationDetails.date }}</p>
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start justify-start">
                                     <p class=" lg:mb-1 font-bold " style="margin-right: min(max(88px), 119px);">Time of
                                         Tour
                                     </p>
-                                    <p class="font-normal mb-3">1:00 PM - 3:00 PM</p>
+                                    <p class="font-normal mb-3">10:00 AM - 11:00 AM</p>
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start justify-start">
                                     <p class="mr-[46px] lg:mr-9 lg:mb-1 font-bold">Number of Person</p>
-                                    <p class="font-normal mb-3">3</p>
+                                    <p class="font-normal mb-3">{{ reservationDetails.numberOfPersons }}</p>
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start justify-start">
                                     <p class="mr-[46px] lg:mr-9 lg:mb-1 font-bold">Services Included</p>
                                     <p class="font-normal mb-3 overflow-hidden whitespace-nowrap lg:overflow-visible lg:whitespace-normal"
-                                        style="text-overflow: ellipsis;">&#8226; Service 1</p>
+                                        style="text-overflow: ellipsis;">Tour</p>
                                 </div>
                             </div>
                         </div>
@@ -133,31 +133,30 @@
                         </div>
                     </div>
                     <!-- Start of Central Business District Tour -->
-                    <div v-for="(tour, index) in tours" :key="index"
-                        class="my-4 lg:w-[32%] lg:h-[30%] lg:right-10 lg:absolute relative lg:top-[3rem] w-screen">
+                    <div class="my-4 lg:w-[32%] lg:h-[30%] lg:right-10 lg:absolute relative lg:top-[3rem] w-screen">
                         <div class="border border-gray-400 rounded-xl p-5 ml-5 w-[90%]  h-fit">
                             <div class="lg:flex items-center mb-5">
-                                <img :src="tour.image" class="w-[100%] lg:w-[40%] h-[6rem] rounded-lg">
+                                <img :src="selectedTour.image" class="w-[100%] lg:w-[40%] h-[6rem] rounded-lg">
                                 <div class="ml-1 flex flex-col">
                                     <div>
-                                        <p class="font-bold">{{ tour.name }}</p>
+                                        <p class="font-bold">{{ selectedTour.name }}</p>
                                     </div>
                                     <div>
-                                        <p class="mb-5 mt-2 text-gray-400">{{ tour.type }}</p>
+                                        <p class="mb-5 mt-2 text-gray-400">{{ selectedTour.category }}</p>
                                     </div>
                                     <div class="flex">
-                                        <p class="font-semibold text-sm mt-0">{{ tour.rating }} Ratings</p>
-                                        <p class="text-sm text-gray-400">({{ tour.reviews }} Review)</p>
+                                        <p class="font-semibold text-sm mt-0">5.0 Ratings</p>
+                                        <p class="text-sm text-gray-400">(500 Reviews)</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="bg-gray-400 h-0.5"></div>
                             <p class="lg:mr-9 lg:mt-2  lg:font-sans  lg:text-3xl font-bold  text-lg pt-4">Your Total</p>
-                            <div class="items-center mb-5">
-                                <div v-for="(item, index) in tour.items" :key="index"
+                            <div class="items-center my-5">
+                                <div 
                                     class="flex justify-between mb-2 w-[100%]">
-                                    <p class="w-[70%]">{{ item.name }}</p>
-                                    <p class="text-gray-400">{{ item.price }}</p>
+                                    <p class="w-[70%]">1 Tour Session</p>
+                                    <p class="text-gray-400">Free</p>
                                 </div>
                                 <p class="lg:font-poppins font-sans text-base font-bold text-right underline hidden">
                                     Price
@@ -165,25 +164,8 @@
                                 </p>
                             </div>
                             <div class="bg-gray-400 h-0.5 w-[100%]"></div>
-                            <div class="flex items-center my-7  ">
-                                <img src="@/assets/images/CategoryView/ToShop/voucher.png" class="lg:w-8 h-8 mr-2">
-                                <button class="text-white bg-blue-500 rounded-xl px-3 py-2 text-xs font-semibold"
-                                    @click="toggleVoucher">Use Voucher</button>
-                            </div>
-                            <div class="flex justify-between">
-                                <!-- Change "Your Total (Php)" to "Subtotal" if discount is applied -->
-                                <p class="font-poppins font-sans font-bold text-lg pt-4">{{ displayTotalLabel }}</p>
-                                <p class="font-poppins font-sans text-base font-bold pt-4">{{ totalPrice }}</p>
-                            </div>
-                            <div v-if="discountPrice" class="flex justify-between text-[#9bbf2f]">
-                                <p class="font-poppins font-sans font-bold text-lg pt-4">Special Discount:</p>
-                                <p class="font-poppins font-sans text-base font-bold pt-4">- ₱ {{ discountPrice }}</p>
-                            </div>
-                            <div class="bg-gray-400 h-0.5 mt-2"></div>
-                            <div v-if="anyVoucherApplied" class="flex justify-between ">
-                                <p class="font-poppins font-sans font-bold text-lg pt-4">Total (in PHP):</p>
-                                <p class="font-poppins font-sans text-xl font-bold pt-4">{{ finalPrice }}</p>
-                            </div>
+                         
+                          
                             <p class="lg:font-poppins font-sans text-base font-bold text-right underline hidden">Price
                                 Breakdown
                             </p>
@@ -197,7 +179,7 @@
                             <div class="justify-center lg:block hidden pt-6">
                                 <button
                                     class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
-                                    @click="toggleConfirmation">Proceed to Payment</button>
+                                    @click="toggleConfirmation">Confirm Booking</button>
                             </div>
                             <div v-if="showConfirmation"
                                 class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
@@ -363,7 +345,25 @@
 </style>
 
 <script>
-export default {
+import {
+    useTourStore
+} from '@/stores/toTourCart';
+import {
+    defineComponent,
+
+} from 'vue';
+
+
+export default defineComponent({
+    setup() {
+        const cartTour = useTourStore();
+        return {
+            selectedTour: cartTour.selectedTour,
+            reservationDetails: cartTour.reservationDetails,
+
+        };
+    },
+
     data() {
         return {
             selectedPaymentMethod: null,
@@ -524,5 +524,5 @@ export default {
             }
         }
     },
-};
+});
 </script>

@@ -65,13 +65,13 @@
                 <!-- Start Date Datepicker with Placeholder -->
                 <div class="lg:flex items-center w-full">
                     <p class="text-lg font-bold">Date (From):</p>
-                    <input type="date" id="dateFrom" v-model="dateFrom" @input="handleDateInput"
-                        class="w-full px-4 py-2 my-2 border border-gray-400 rounded-xl">
+                    <input type="date" id="dateFrom" v-model="dateFrom" @input="handleDateInput" :min="todayDate"
+                        :disabled="disableDays" class="w-full px-4 py-2 my-2 border border-gray-400 rounded-xl">
                 </div>
                 <!-- End Date Datepicker with Placeholder -->
                 <div class="lg:flex items-center w-full">
                     <p class="text-lg font-bold">Date (To):</p>
-                    <input type="date" id="dateTo" v-model="dateTo" @input="handleDateInput"
+                    <input type="date" id="dateTo" v-model="dateTo" @input="handleDateInput" :min="todayDate"
                         class="w-full px-4 py-2 my-2 border border-gray-400 rounded-xl">
                 </div>
                 <!-- guests -->
@@ -288,6 +288,7 @@ export default defineComponent({
     },
     data() {
         return {
+            todayDate: new Date().toISOString().split('T')[0],
             barangay: '',
             selectedBarangay: 'All',
             dateFrom: '',

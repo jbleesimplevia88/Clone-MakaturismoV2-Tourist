@@ -15,7 +15,7 @@
             <div class="relative mx-6 px-3 lg:pl-32 mb-[30px]">
               <p class="mb-4 font-bold lg:text-3xl text-2xl">Your Trip</p>
               <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-4">
-                <div class="flex lg:flex-col lg:items-start justify-start">
+                <div class="flex lg:flex-col lg:items-start justify-start ">
                   <p class="mr-[90px] lg:mb-1 font-bold ">Date of Check-In</p>
                   <p class="font-normal mb-3 "> {{ stayXyzData.dateFrom }}</p>
                 </div>
@@ -25,8 +25,8 @@
                 </div>
                 <div class="flex lg:flex-col lg:items-start justify-start">
                   <p class="mr-[46px] lg:mr-9 lg:mb-1 font-bold">Number of Person</p>
-                  <p class="font-normal mb-3">Adults: {{selectedHotel.adultsQuantity}}</p>
-      <p class="font-normal mb-3">Children: {{selectedHotel.childrenQuantity}}</p>
+                  <p class="font-normal mb-3">Adults: {{ selectedHotel.adultsQuantity }}</p>
+                  <p class="font-normal mb-3">Children: {{ selectedHotel.childrenQuantity }}</p>
                 </div>
                 <div class="flex lg:flex-col lg:items-start justify-start">
                   <p class="mr-[46px] lg:mr-9 lg:mb-1 font-bold">Services Included</p>
@@ -246,7 +246,7 @@
                 <!-- Voucher section -->
                 <!-- <button class="text-white bg-blue-500 rounded-xl px-3 py-2 text-xs font-semibold" @click="toggleBack">Back</button> -->
                 <svg @click="toggleBack" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                  stroke-width="3" stroke="black" class="lg:mr-5 lg:w-5 lg:h-10">
+                  stroke-width="3" stroke="black" class="lg:mr-5 lg:w-5 lg:h-10 h-6">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18">
                   </path>
                 </svg>

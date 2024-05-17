@@ -14,90 +14,85 @@
 
         <!-- /Profile router -->
         <!-- MOBILE-->
-        <div class="pt-36 justify-center flex lg:hidden ">
-            <img src="@/assets/images/MainNav/card.svg" alt="" class="w-60"
-                style="box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.868);">
-        </div>
-        <div class="rounded-t-xl p-10 mt-7 bg-white lg:hidden">
-            <div class="grid place-items-center">
-                <div>
-                    <span>Add Profile Picture</span>
-                    <div class="border rounded-lg border-black bg-white w-[145px] my-5">
-                        <input type="file" class="hidden" id="imageInput" accept="image/*" @change="handleImageChange">
-                        <label for="imageInput" class="cursor-pointer">
-                            <img src="@/assets/images/MainNav/profilepic.svg" alt="" class="w-60 p-8">
-                        </label>
-                    </div>
-                </div>
+        <div class="pt-36 justify-center flex lg:hidden">
+    <img src="@/assets/images/MainNav/card.svg" alt="" class="w-40" style="box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.868);">
+</div>
+<div class="p-6 mt-7 bg-white lg:hidden">
+    <div class="grid place-items-center">
+        <div>
+            <span>Add Profile Picture</span>
+            <div class="border rounded-lg border-black bg-white w-[120px] my-3">
+                <input type="file" class="hidden" id="imageInput" accept="image/*" @change="handleImageChange">
+                <label for="imageInput" class="cursor-pointer">
+                    <img v-if="previewImage" :src="previewImage" alt="Profile Picture" class="w-full h-full object-cover">
+                    <img v-else src="@/assets/images/MainNav/profilepic.svg" alt="Profile Picture" class="w-full h-full object-cover">
+                </label>
             </div>
-            <form @submit.prevent="submitForm">
-                <div class="mb-4">
-                    <label for="firstName" class="block font-bold mb-1">First Name<span style="color: red;">*</span></label>
-                    <input required type="text" id="firstName" v-model="firstName" :placeholder="firstName || 'Juan'"
-                        class="w-full px-3 py-2 border rounded-lg">
-                </div>
-                <div class="mb-4">
-                    <label for="lastName" class="block font-bold mb-1">Last Name<span style="color: red;">*</span></label>
-                    <input required type="text" id="lastName" v-model="lastName" :placeholder="lastName || 'Dela Cruz'"
-                        class="w-full px-3 py-2 border rounded-lg">
-                </div>
-                <div class="mb-4">
-                    <label for="email" class="block font-bold mb-1">Email Address<span style="color: red;">*</span></label>
-                    <input required type="email" id="email" v-model="email" :placeholder="email || 'juandelacruz@email.com'"
-                        autocomplete="email" class="w-full px-3 py-2 border rounded-lg">
-                </div>
-                <div class="mb-4">
-                    <label for="phone" class="block font-bold mb-1">Phone Number</label>
-                    <input type="tel" id="phone" v-model="phone" :placeholder="phone || '09876543212'"
-                        class="w-full px-3 py-2 border rounded-lg">
-                    <span v-if="phoneError" class="text-red-500">{{ phoneError }}</span>
-                </div>
-                <div class="mb-4">
-                    <label for="gender" class="block font-bold mb-1">Gender</label>
-                    <select id="gender" v-model="gender" class="w-full px-3 py-2 border rounded-lg">
-                        <option value="">Select Gender</option>
-                        <option value="female">Female</option>
-                        <option value="male">Male</option>
-                        <option value="preferNotToSay">Prefer not to say</option>
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <label for="nationality" class="block font-bold mb-1">Nationality</label>
-                    <input type="text" id="nationality" v-model="nationality" :placeholder="nationality || 'Filipino'"
-                        class="w-full px-3 py-2 border rounded-lg">
-                </div>
-                <div class="mb-4">
-                    <label for="password" class="block font-bold mb-1">Password</label>
-                    <input type="password" id="password" v-model="password" :placeholder="password || '1234567890'"
-                        autocomplete="new-password" class="w-full px-3 py-2 border rounded-lg">
-                    <span v-if="passwordError" class="text-red-500">{{ passwordError }}</span>
-                </div>
-                <div class="mb-4">
-                    <label for="confirmPassword" class="block font-bold mb-1">Confirm Password</label>
-                    <input type="password" id="confirmPassword" v-model="confirmPassword"
-                        :placeholder="confirmPassword || '1234567890'" autocomplete="new-password"
-                        class="w-full px-3 py-2 border rounded-lg">
-                    <span v-if="confirmPasswordError" class="text-red-500">{{ confirmPasswordError }}</span>
-                </div>
-                <div class="flex justify-center">
-                    <button type="button" class="text-black px-4 py-2 rounded" @click="cancelForm">Cancel</button>
-                    <button type="submit" class="bg-blue-500 text-white font-semibold px-4 py-2 rounded ">Save</button>
-                </div>
-            </form>
         </div>
+    </div>
+    <form @submit.prevent="submitForm" class="mb-10">
+        <div class="mb-3">
+            <label for="firstName" class="block font-bold mb-1">First Name<span style="color: red;">*</span></label>
+            <input required type="text" id="firstName" v-model="firstName" :placeholder="firstName || 'Juan'" class="w-full px-3 py-2 border rounded-lg">
+        </div>
+        <div class="mb-3">
+            <label for="lastName" class="block font-bold mb-1">Last Name<span style="color: red;">*</span></label>
+            <input required type="text" id="lastName" v-model="lastName" :placeholder="lastName || 'Dela Cruz'" class="w-full px-3 py-2 border rounded-lg">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="block font-bold mb-1">Email Address<span style="color: red;">*</span></label>
+            <input required type="email" id="email" v-model="email" :placeholder="email || 'juandelacruz@email.com'" autocomplete="email" class="w-full px-3 py-2 border rounded-lg">
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="block font-bold mb-1">Phone Number</label>
+            <input type="tel" id="phone" v-model="phone" :placeholder="phone || '09876543212'" class="w-full px-3 py-2 border rounded-lg">
+            <span v-if="phoneError" class="text-red-500">{{ phoneError }}</span>
+        </div>
+        <div class="mb-3">
+            <label for="gender" class="block font-bold mb-1">Gender</label>
+            <select id="gender" v-model="gender" class="w-full px-3 py-2 border rounded-lg">
+                <option value="">Select Gender</option>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+                <option value="preferNotToSay">Prefer not to say</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="nationality" class="block font-bold mb-1">Nationality</label>
+            <input type="text" id="nationality" v-model="nationality" :placeholder="nationality || 'Filipino'" class="w-full px-3 py-2 border rounded-lg">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="block font-bold mb-1">Password</label>
+            <input type="password" id="password" v-model="password" :placeholder="password || '1234567890'" autocomplete="new-password" class="w-full px-3 py-2 border rounded-lg">
+            <span v-if="passwordError" class="text-red-500">{{ passwordError }}</span>
+        </div>
+        <div class="mb-3">
+            <label for="confirmPassword" class="block font-bold mb-1">Confirm Password</label>
+            <input type="password" id="confirmPassword" v-model="confirmPassword" :placeholder="confirmPassword || '1234567890'" autocomplete="new-password" class="w-full px-3 py-2 border rounded-lg">
+            <span v-if="confirmPasswordError" class="text-red-500">{{ confirmPasswordError }}</span>
+        </div>
+        <div class="flex justify-center">
+            <button type="button" class="text-black px-4 py-2 rounded" @click="cancelForm">Cancel</button>
+            <button type="submit" class="bg-blue-500 text-white font-semibold px-4 py-2 rounded ml-4">Save</button>
+        </div>
+    </form>
+</div>
+
+
         <!-- /MOBILE-->
         <!-- WEB-->
         <div class=" p-10 hidden lg:block mt-44">
             <!-- Add Profile Picture -->
             <div class="grid place-items-center grid-cols-2  bg-white rounded-t-xl ">
-                <div class="mt-10 text-center  ml-40">
-                    <div class="border rounded-lg border-black bg-white w-[165px] my-5">
+                <div class="mt-10 text-center ml-40">
+                    <div class="border rounded-lg border-black bg-white w-[165px] my-5 relative">
                         <input type="file" class="hidden" id="imageInput" accept="image/*" @change="handleImageChange">
                         <label for="imageInput" class="cursor-pointer">
-                            <img src="@/assets/images/MainNav/profilepic.svg" alt="" class="w-60 p-8">
+                            <img v-if="previewImage" :src="previewImage" alt="Profile Picture" class="w-full h-full object-cover">
+                            <img v-else src="@/assets/images/MainNav/profilepic.svg" alt="Profile Picture" class="w-full h-full object-cover">
                         </label>
                     </div>
-                    <span class="font-semibold ">Add Profile Picture</span>
+                    <span class="font-semibold">Add Profile Picture</span>
                 </div>
                 <div class="mr-40 mt-10">
                     <img src="@/assets/images/MainNav/card.svg" alt="" class="w-full rounded-xl"
@@ -112,7 +107,9 @@
                 <hr class="my-4 border-t border-gray-300 w-full pb-10 ">
 
                 <div class="grid grid-cols-2 grid-rows-1 gap-4 ">
+
                     <div>
+
                         <div class="mb-4">
                             <label for="firstName" class="block font-bold mb-1">First Name<span
                                     style="color: red;">*</span></label>
@@ -137,8 +134,9 @@
                         </div>
                         <div class="mb-4">
                             <label for="password" class="block font-bold mb-1">Password</label>
-                            <input type="password" id="password" v-model="password" :placeholder="password || '1234567890'"
-                                autocomplete="new-password" class="w-full px-3 py-2 border rounded-lg">
+                            <input type="password" id="password" v-model="password"
+                                :placeholder="password || '1234567890'" autocomplete="new-password"
+                                class="w-full px-3 py-2 border rounded-lg">
                             <span v-if="passwordError" class="text-red-500">{{ passwordError }}</span>
                         </div>
                     </div>
@@ -187,111 +185,111 @@
 
 /* Optional: Show scrollbar on hover */
 </style>
-<script>
-import { RouterLink } from 'vue-router';
-import {
-useAuthStore
-} from '@/stores/auth'
-import axios from 'axios';
-export default {
-    data() {
-        return {
-            id: 0,
-            firstName: '', // Define firstName
-            lastName: '', // Define lastName
-            email: '', // Define email
-            phone: '', // Define phone
-            gender: '', // Define gender
-            nationality: '', // Define nationality
-            password: '', // Define password
-            confirmPassword: '', // Define confirmPassword
-            phoneError: '', // Define phoneError
-            passwordError: '', // Define passwordError
-            profilephoto: '',
-            confirmPasswordError: '', // Define confirmPasswordError
-     
-        }
-    },
-    mounted() {
-    const authStore = useAuthStore(); // Access the Vuex store for authentication
-    const userId = authStore.userauth; // Get the user ID from the Vuex store
+<script setup>
+import { ref, onBeforeMount } from 'vue';
+import { useProfileStore } from '@/stores/profile'
 
-    // Make API request to fetch user details using the user ID
-    axios.post('/userDetails', { userId })
-        .then(response => {
-            // Parse user details from the response
-            const userDetails = JSON.parse(response.data.userdetails);
-            console.log(userDetails);
-            // Update component data with user details
-            this.id=userDetails.id;
-            this.firstName = userDetails.firstname;
-            this.lastName = userDetails.lastname;
-            this.email = userDetails.email;
-            this.phone = userDetails.contact;
-            this.gender = userDetails.gender;
-            this.nationality = userDetails.national;
-            this.password = userDetails.password;
-            this.profilephoto = userDetails.profilephoto;
-            this.confirmPassword = userDetails.password; // Assuming confirmPassword is the same as password
-        })
-        .catch(error => {
-            console.error('Error fetching user details:', error);
-            // Handle error, e.g., display a message to the user
-        });
-},
+const id = ref(0);
+const firstName = ref('');
+const lastName = ref('');
+const email = ref('');
+const phone = ref('');
+const gender = ref('');
+const nationality = ref('');
+const password = ref('');
+const confirmPassword = ref('');
+const phoneError = ref('');
+const passwordError = ref('');
+const profilephoto = ref('');
+const previewImage = ref('');
+const confirmPasswordError = ref('');
+const profileStore = useProfileStore();
 
-methods: {
-    submitForm() {
-        // Reset error messages
-   
-        
-        // Validate phone number
-        if (!/^09\d{9}$/.test(this.phone)) {
-            this.phoneError = 'Phone number must be 11 digits and start with 09';
-            return;
+
+const fetchUser = async () => {
+    try {
+        const user =  await profileStore.users();
+        if (user.data) {
+            id.value = user.data.id;
+            firstName.value = user.data.firstname;
+            lastName.value = user.data.lastname;
+            email.value = user.data.email;
+            phone.value = user.data.contact;
+            gender.value = user.data.gender;
+            nationality.value = user.data.national;
+            password.value = user.data.password;
+            profilephoto.value = user.data.profilephoto;
+            confirmPassword.value = user.data.password;
         }
-        
-        // Validate password
-        if (!/(?=.*[a-zA-Z])(?=.*\d)(?=.*[^a-zA-Z\d\s]).{8,}/.test(this.password)) {
-            this.passwordError = 'Password must contain at least one letter, one number, one special character, and be at least 8 characters long';
-            return;
-        }
-        
-        // Validate password and confirm password
-        if (this.password !== this.confirmPassword) {
-            this.confirmPasswordError = 'Password and confirm password must match';
-            return;
-        }
-        
-        // Prepare data payload
-        const data = {
-            id: this.id,
-            lastname: this.lastName,
-            firstname: this.firstName,
-            email: this.email,
-            national: this.nationality,
-            gender: this.gender,
-            contact: this.phone,
-            password: this.password,
-            profilephoto: this.profilephoto
-        };
-        console.log(data);
-        // Make API request to update user details
-        axios.post('/updateTourist', data)
-            .then(response => {
-                console.log('User details updated successfully:', response.data);
-                // Optionally, you can display a success message or perform any other actions upon successful update
-            })
-            .catch(error => {
-                console.error('Error updating user details:', error);
-                // Handle error, e.g., display a message to the user
-            });
-    },
-    cancelForm() {
-        // Handle form cancellation here
-        console.log('Form cancelled!'); 
+    } catch (error) {
+        console.error('Error fetching user details:', error);
     }
-}
-
 };
+
+
+const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            previewImage.value = e.target.result;
+        };
+        reader.readAsDataURL(file);
+        profilephoto.value = file;
+    }
+};
+
+const submitForm = async () => {
+    phoneError.value = '';
+    passwordError.value = '';
+    confirmPasswordError.value = '';
+
+    if (!/^09\d{9}$/.test(phone.value)) {
+        phoneError.value = 'Phone number must be 11 digits and start with 09';
+        return;
+    }
+
+    if (!/(?=.*[a-zA-Z])(?=.*\d)(?=.*[^a-zA-Z\d\s]).{8,}/.test(password.value)) {
+        passwordError.value = 'Password must contain at least one letter, one number, one special character, and be at least 8 characters long';
+        return;
+    }
+
+    if (password.value !== confirmPassword.value) {
+        confirmPasswordError.value = 'Password and confirm password must match';
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('id', id.value);
+    formData.append('lastname', lastName.value);
+    formData.append('firstname', firstName.value);
+    formData.append('email', email.value);
+    formData.append('national', nationality.value);
+    formData.append('gender', gender.value);
+    formData.append('contact', phone.value);
+    formData.append('password', password.value);
+
+    if (profilephoto.value) {
+        formData.append('profilephoto', profilephoto.value);
+    }
+
+    try {
+        const updateRes = await profileStore.updateUser(formData);
+        console.log(updateRes);
+    } catch (error) {
+        console.error('Error updating user profile:', error);
+    }
+};
+
+
+const cancelForm = () => {
+
+    console.log('Form cancelled!');
+};
+
+onBeforeMount( async () => {
+   await fetchUser();
+});
+
+
 </script>

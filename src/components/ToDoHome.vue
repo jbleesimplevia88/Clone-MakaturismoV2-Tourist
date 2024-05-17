@@ -27,14 +27,14 @@
     <div class="mx-auto px-3 lg:px-32 pb-5" style="background-color: #102E61;">
         <div>
             <!-- Filter dropdown WEB-->
-            <div class="pb-10  hidden lg:block">
+            <div class="pb-10 hidden lg:block">
                 <div class="relative text-left" @click.stop ref="webDropdown">
                     <button
                         class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
                         @click="toggleDropdown">
                         <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
                             </svg>
@@ -54,7 +54,8 @@
                                 </div>
                                 <div class="flex justify-end">
                                     <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                        class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                                     </svg>
                                 </div>
@@ -66,11 +67,10 @@
                                     </div>
                                     <div class="grid grid-rows-8 grid-flow-col gap-4 ml-4 p-2">
                                         <div v-for="(category, index) in categories" :key="'category-' + index">
-                                            <label :for="'categoryCheckbox-' + index" class="flex items-center">
-                                                <input type="checkbox" :id="'categoryCheckbox-' + index" :value="category"
-                                                    v-model="selectedCategory">
-                                                <span class="ml-2 m-0 p-0 uppercase text-[12px] font-bold">{{ category
-                                                }}</span>
+                                            <label :for="'categoryRadio-' + index" class="flex items-center">
+                                                <input type="radio" :id="'categoryRadio-' + index" :value="category"
+                                                    v-model="selectedCategory" name="category">
+                                                <span class="ml-2 m-0 p-0 uppercase text-[12px] font-bold">{{ category }}</span>
                                             </label>
                                         </div>
                                     </div>
@@ -79,11 +79,10 @@
                                     <!-- Location filter -->
                                     <div class="grid grid-rows-7 grid-flow-col ">
                                         <div v-for="(location, index) in locations" :key="'location-' + index">
-                                            <label :for="'locationCheckbox-' + index" class="flex items-left">
-                                                <input type="checkbox" :id="'locationCheckbox-' + index" :value="location"
-                                                    v-model="selectedLocation" class="-mt-12">
-                                                <span class="ml-2  -mt-2 uppercase text-[12px] font-bold h-16 w-24">{{
-                                                    location }}</span>
+                                            <label :for="'locationRadio-' + index" class="flex items-left">
+                                                <input type="radio" :id="'locationRadio-' + index" :value="location"
+                                                    v-model="selectedLocation" name="location" class="-mt-12">
+                                                <span class="ml-2  -mt-2 uppercase text-[12px] font-bold h-16 w-24">{{ location }}</span>
                                             </label>
                                         </div>
                                     </div>
@@ -105,8 +104,8 @@
                         class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
                         @click="toggleDropdown">
                         <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
                             </svg>
@@ -121,13 +120,12 @@
                                 <div role="menu" aria-orientation="horizontal" aria-labelledby="options-menu">
                                     <div class="grid grid-cols-2 border-b-2 p-3 font-bold ml-5 mr-5">
                                         <div>
-                                            <h2 class="ml-5">Filters</h2>
+                                            <h2 class="ml-5">What to do</h2>
                                         </div>
                                         <div class="flex justify-end">
                                             <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M6 18 18 6M6 6l12 12" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                                             </svg>
                                         </div>
                                     </div>
@@ -135,12 +133,19 @@
                                         <div class="relative px-2">
                                             <div class="grid gap-4 ml-4 p-2">
                                                 <div v-for="(category, index) in categories" :key="'category-' + index">
-                                                    <label :for="'categoryCheckbox-' + index" class="flex items-center">
-                                                        <input type="checkbox" :id="'categoryCheckbox-' + index"
-                                                            :value="category" v-model="selectedCategory">
-                                                        <span class="ml-2 m-0 p-0 uppercase font-bold">{{
-                                                            category
-                                                        }}</span>
+                                                    <label :for="'categoryRadio-' + index" class="flex items-center">
+                                                        <input type="radio" :id="'categoryRadio-' + index" :value="category"
+                                                            v-model="selectedCategory" name="category">
+                                                        <span class="ml-2 m-0 p-0 uppercase font-bold">{{ category }}</span>
+                                                    </label>
+                                                </div>
+                                                <hr data-v-add5c92e="" class="mt-6 mb-6 border-gray-300">
+                                                <h2 class="ml-5 font-bold mb-2">Explored by area</h2>
+                                                <div v-for="(location, index) in locations" :key="'location-' + index">
+                                                    <label :for="'locationRadio-' + index" class="flex items-center">
+                                                        <input type="radio" :id="'locationRadio-' + index" :value="location"
+                                                            v-model="selectedLocation" name="location">
+                                                        <span class="ml-2 m-0 p-0 uppercase font-bold">{{ location }}</span>
                                                     </label>
                                                 </div>
                                             </div>
@@ -177,8 +182,8 @@
                             class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
                             <span>Read More</span>
                             <span class="ml-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
-                                    stroke="currentColor" class="w-4 h-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                                 </svg>
                             </span>
@@ -222,6 +227,7 @@
         </div>
     </div>
 </template>
+
 <style scoped>
 /* Custom scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
@@ -257,7 +263,10 @@
 }
 </style>
 
-<script >
+<script  setup>
+import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue';
+import { useRouter } from 'vue-router';
+
 import item1 from '@/assets/images/CategoryView/ToDo/omni.jpg';
 import item2 from '@/assets/images/CategoryView/ToDo/hop.jpg';
 import item3 from '@/assets/images/CategoryView/ToDo/zitro.jpg';
@@ -266,16 +275,10 @@ import item5 from '@/assets/images/CategoryView/ToDo/two.jpg';
 import item6 from '@/assets/images/CategoryView/ToDo/white.png';
 import item7 from '@/assets/images/CategoryView/ToDo/urban.jpg';
 import item8 from '@/assets/images/CategoryView/ToDo/touch.png';
-import {
-    ref,
-    computed
-} from 'vue';
-import {
-    useSearchStore
-} from '@/stores/search';
 
+const router = useRouter();
 
- const items = ref([
+const items = ref([
     {
         name: 'Omniverse Museum',
         description: "Discover a fusion of art and technology at the Omniverse Museum in Makati. Step into a world of interactive exhibits, mind-bending installations, and awe-inspiring virtual reality experiences. This unique museum promises a captivating journey through the realms of creativity and innovation. Whether you're an art enthusiast or a tech-savvy explorer, the Omniverse Museum is a must-visit destination for an extraordinary adventure.",
@@ -307,7 +310,7 @@ import {
         name: 'Zeria',
         description: "Get ready for an immersive and thrilling experience at Zeria, Makati's premier escape room destination. Gather your friends, family, or colleagues and put your problem-solving skills to the test in a series of mind-bending puzzles and challenges. Each escape room presents a unique storyline, making Zeria an ideal place for team building, bonding, or simply having a blast with your loved ones.",
         category: ['Entertainment', 'Game'],
-        location: 'San Antonio Village	',
+        location: 'San Antonio Village',
         image: item4,
         link: "",
         mapLocation: ""
@@ -368,233 +371,169 @@ import {
     },
 ]);
 
-export function toDoItem() {
-    return items;
-}
+const categories = ['Entertainment', 'Fitness', 'Museum', 'Sightseeing Tour', 'Spa & Wellness', 'Gym', 'Cinema', 'Sports Arena', 'Theater', 'Game', 'Library', 'Gallery'];
+const locations = [
+    'Bangkal',
+    'Bel-air',
+    'Carmona',
+    'Cembo',
+    'Dasmarinas',
+    'Forbes Park',
+    'Guadalupe Nuevo',
+    'Kasilawan',
+    'La Paz',
+    'Magallanes',
+    'Olympia',
+    'Palanan',
+    'Pinagkaisahan',
+    'Pio del Pilar',
+    'Poblacion',
+    'San Antonio',
+    'San Isidro',
+    'San Lorenzo ',
+    'Sta. Cruz',
+    'Singkamas',
+    'Tejeros',
+    'Urdaneta',
+    'Valenzuela'
+];
 
-// Define search functionality
-const searchStore = useSearchStore();
-const filteredItems = computed(() =>
-    items.value.filter(item =>
-        item.name.toLowerCase().includes(searchStore.query.toLowerCase())
-    )
-);
-// Update search query on input change
-const handleInput = event => {
-    searchStore.setQuery(event.target.value);
+const currentPage = ref(0);
+const pageSize = ref(8);
+const showDropdown = ref(false);
+const selectedCategory = ref(null);
+const selectedLocation = ref(null);
+const applyButtonClicked = ref(false);
+
+const filteredItems = computed(() => {
+    let filteredItems = items.value.slice(); // Create a shallow copy of items
+    // Apply filters only if the Apply button is clicked
+    if (applyButtonClicked.value) {
+        // Filter by category
+        if (selectedCategory.value) {
+            filteredItems = filteredItems.filter(item => {
+                if (Array.isArray(item.category)) {
+                    return item.category.includes(selectedCategory.value);
+                } else {
+                    return item.category === selectedCategory.value;
+                }
+            });
+        }
+        // Filter by location
+        if (selectedLocation.value) {
+            filteredItems = filteredItems.filter(item => {
+                return item.location === selectedLocation.value;
+            });
+        }
+    }
+    // Paginate the filtered items
+    const startIndex = currentPage.value * pageSize.value;
+    const endIndex = startIndex + pageSize.value;
+    return filteredItems.slice(startIndex, endIndex);
+});
+
+const pageCount = computed(() => Math.ceil(totalRecords.value / pageSize.value));
+const paginationStartIndex = computed(() => {
+    if (filteredItems.value.length === 0) {
+        return 0; // or any other appropriate value if you want to indicate that no items are displayed
+    } else {
+        return 1;
+    }
+});
+const paginationEndIndex = computed(() => {
+    const end = Math.min((currentPage.value + 1) * pageSize.value, filteredItems.value.length);
+    return end;
+});
+const totalRecords = computed(() => items.value.length);
+
+watch(selectedCategory, (newValue, oldValue) => {
+    // Update applyButtonClicked when category changes
+    if (newValue !== oldValue) {
+        applyButtonClicked.value = false;
+    }
+});
+
+watch(selectedLocation, (newValue, oldValue) => {
+    // Update applyButtonClicked when location changes
+    if (newValue !== oldValue) {
+        applyButtonClicked.value = false;
+    }
+});
+
+onMounted(() => {
+    document.addEventListener('click', handleGlobalClick);
+});
+
+onBeforeUnmount(() => {
+    document.removeEventListener('click', handleGlobalClick);
+});
+
+const handleApplyFilter = () => {
+    applyButtonClicked.value = true;
+    currentPage.value = 0; // Reset currentPage when filter is applied
+    showDropdown.value = false;
 };
 
-export default {
-    setup() {
+const nextPage = () => {
+    if (currentPage.value < pageCount.value - 1) {
+        currentPage.value++;
+    }
+};
 
+const prevPage = () => {
+    currentPage.value--;
+};
 
+const goToPage = (pageNumber) => {
+    currentPage.value = pageNumber;
+};
 
-        return {
-            items,
-            filteredItems,
-            handleInput
-        }
-    },
-    data() {
-        return {
-            categories: ['Entertainment', 'Fitness', 'Museum', 'Sightseeing Tour', 'Spa & Wellness', 'Gym', 'Cinema', 'Sports Arena', 'Theater', 'Game', 'Library', 'Gallery'],
-            locations: [
-                'Ayala-Paseo de Roxas',
-                'Bangkal',
-                'Bel-air',
-                'Cembo',
-                'Comembo',
-                'Dasmarinas Village North',
-                'Dasmarinas Village South',
-                'Forbes Park North',
-                'Forbes Park South',
-                'Fort Bonifacio Naval Station',
-                'Fort Bonifacio (Camp)',
-                'Greenbelt',
-                'Guadalupe Nuevo',
-                'Guadalupe Viejo',
-                'Kasilawan',
-                'La Paz -Singkamas -Tejeros',
-                'Legaspi Village',
-                'Magallanes Village',
-                'Makati Commercial Center',
-                'Makati CPO + Buendia Ave',
-                'Olympia & Carmona',
-                'Palanan',
-                'Pasong Tamo & Ecology Village',
-                'Pembo',
-                'Pinagkaisahan-Pitogo',
-                'Pio del Pilar',
-                'Poblacion',
-                'Rembo (East)',
-                'Rembo (West)',
-                'Salcedo Village',
-                'San Antonio Village',
-                'San Isidro',
-                'San Lorenzo Village',
-                'Sta. Cruz',
-                'Urdaneta Village',
-                'Valenzuela, Santiago, Rizal'
-            ],
-            currentPage: 0,
-            pageSize: 8,
-            showDropdown: false,
-            selectedCategory: [],
-            selectedLocation: [],
-            applyButtonClicked: false,
-        };
-    },
-    computed: {
-        filteredItems() {
-            let filteredItems = this.items.slice(); // Create a shallow copy of items
-            // Apply filters only if the Apply button is clicked
-            if (this.applyButtonClicked) {
-                // Filter by category
-                if (this.selectedCategory && this.selectedCategory.length > 0 && this.selectedCategory[0] !== 'All') {
-                    filteredItems = filteredItems.filter(item => {
-                        if (Array.isArray(item.category)) {
-                            return this.selectedCategory.some(cat => item.category.includes(cat));
-                        } else {
-                            return this.selectedCategory.includes(item.category);
-                        }
-                    });
-                }
-                // Filter by location
-                if (this.selectedLocation && this.selectedLocation.length > 0 && this.selectedLocation[0] !== 'All') {
-                    filteredItems = filteredItems.filter(item => {
-                        if (Array.isArray(item.location)) {
-                            return this.selectedLocation.some(loc => item.location.includes(loc));
-                        } else {
-                            return this.selectedLocation.includes(item.location);
-                        }
-                    });
-                }
-            }
-            // Paginate the filtered items
-            const startIndex = this.currentPage * this.pageSize;
-            const endIndex = startIndex + this.pageSize;
-            return filteredItems.slice(startIndex, endIndex);
-        },
-        pageCount() {
-            return Math.ceil(this.totalRecords / this.pageSize);
-        },
-        paginationStartIndex() {
-            if (this.filteredItems.length === 0) {
-                return 0; // or any other appropriate value if you want to indicate that no items are displayed
-            } else {
-                return 1;
-            }
-        },
-        // paginationEndIndex() {
-        //     const end = Math.min((this.currentPage + 1) * this.pageSize, this.totalRecords);
-        //     return end;
-        // },
-        paginationEndIndex() {
-            const end = Math.min((this.currentPage + 1) * this.pageSize, this.filteredItems.length);
-            return end;
-        },
-        totalRecords() {
-            return this.items.length;
-        },
-    },
-    watch: {
-        selectedCategory(newValue, oldValue) {
-            // Update applyButtonClicked when category changes
-            if (newValue !== oldValue) {
-                this.applyButtonClicked = false;
-            }
-        },
-        selectedLocation(newValue, oldValue) {
-            // Update applyButtonClicked when location changes
-            if (newValue !== oldValue) {
-                console.log('Location radio button clicked');
-                this.applyButtonClicked = false;
-            }
-        },
-    },
-    mounted() {
-        document.addEventListener('click', this.handleGlobalClick);
-    },
-    beforeDestroy() {
-        document.removeEventListener('click', this.handleGlobalClick);
-    },
-    methods: {
-        handleApplyFilter() {
-            this.applyButtonClicked = true;
-            console.log('Apply button clicked');
-            console.log('Selected category:', this.selectedCategory);
-            console.log('Selected location:', this.selectedLocation);
-            this.currentPage = 0; // Reset currentPage when filter is applied
-            this.showDropdown = false;
-            // Call the computed property to update filteredItems
-            console.log('Filtered Items: ', this.filteredItems);
-        },
-        nextPage() {
-            if (this.currentPage < this.pageCount - 1) {
-                this.currentPage++;
-            }
-        },
-        prevPage() {
-            this.currentPage--;
-        },
-        goToPage(pageNumber) {
-            this.currentPage = pageNumber;
-        },
-        toggleDropdown() {
-            this.showDropdown = !this.showDropdown;
-        },
-        handleGlobalClick(event) {
-            if (!this.$refs.webDropdown.contains(event.target) && !this.$refs.mobileDropdown.contains(event.target)) {
-                this.showDropdown = false;
-            }
-        },
-        seeMore(item) {
-            const {
+const toggleDropdown = () => {
+    showDropdown.value = !showDropdown.value;
+};
+
+const handleGlobalClick = (event) => {
+    const webDropdown = ref(null);
+    const mobileDropdown = ref(null);
+    if (!webDropdown.value.contains(event.target) && !mobileDropdown.value.contains(event.target)) {
+        showDropdown.value = false;
+    }
+};
+
+const seeMore = (item) => {
+    const { latitude, longitude } = extractLatLong(item.mapLocation);
+    if (latitude !== null && longitude !== null) {
+        // Pass the name parameter in the query object
+        router.push({
+            name: 'omniverse',
+            query: {
                 latitude,
-                longitude
-            } = this.extractLatLong(item.mapLocation);
-            if (latitude !== null && longitude !== null) {
-                // Pass the name parameter in the query object
-                this.$router.push({
-                    name: 'omniverse',
-                    query: {
-                        latitude,
-                        longitude,
-                        name: item.name
-                    }
-                });
-            } else {
-                console.error('Latitude or longitude not available');
+                longitude,
+                name: item.name
             }
-        },
-        extractLatLong(mapLocation) {
-            const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
-            const match = mapLocation.match(regex);
-            if (match && match.length >= 3) {
-                const latitude = parseFloat(match[1]);
-                const longitude = parseFloat(match[2]);
-                return {
-                    latitude,
-                    longitude
-                };
-            }
-            // Try another regex pattern for different URL formats
-            const altRegex = /!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/;
-            const altMatch = mapLocation.match(altRegex);
-            if (altMatch && altMatch.length >= 3) {
-                const latitude = parseFloat(altMatch[1]);
-                const longitude = parseFloat(altMatch[2]);
-                return {
-                    latitude,
-                    longitude
-                };
-            }
-            // If no match is found, return null values
-            return {
-                latitude: null,
-                longitude: null
-            };
-        }
-    },
+        });
+    } else {
+        console.error('Latitude or longitude not available');
+    }
+};
+
+const extractLatLong = (mapLocation) => {
+    const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
+    const match = mapLocation.match(regex);
+    if (match && match.length >= 3) {
+        const latitude = parseFloat(match[1]);
+        const longitude = parseFloat(match[2]);
+        return { latitude, longitude };
+    }
+    // Try another regex pattern for different URL formats
+    const altRegex = /!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/;
+    const altMatch = mapLocation.match(altRegex);
+    if (altMatch && altMatch.length >= 3) {
+        const latitude = parseFloat(altMatch[1]);
+        const longitude = parseFloat(altMatch[2]);
+        return { latitude, longitude };
+    }
+    // If no match is found, return null values
+    return { latitude: null, longitude: null };
 };
 </script>

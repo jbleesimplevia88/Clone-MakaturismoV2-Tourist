@@ -263,7 +263,7 @@
 }
 </style>
 
-<script setup>
+<script  setup>
 import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue';
 import { useRouter } from 'vue-router';
 

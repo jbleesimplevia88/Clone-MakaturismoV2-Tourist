@@ -1,5 +1,6 @@
 <template>
-    <div class="flex flex-col min-h-screen">
+    <!-- Mobile View -->
+    <div class="flex flex-col min-h-screen z-50 lg:hidden">
         <!-- Your other components -->
         <!-- Search input -->
         <div class="flex mt-3 space-x-3 relative items-center justify-center">
@@ -27,12 +28,38 @@
                 </li>
             </ul>
         </div>
-        <!-- Your other components -->
+    </div>
+
+    <!-- Desktop View -->
+    <div class="flex-col lg:block hidden search-container relative">
+        <input v-if="showInput" type="search" @input="handleInput" @focus="showResults = true" @blur="handleBlur"
+            class="relative m-0 block flex-auto rounded border border-solid border-neutral-200 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none"
+            placeholder="Search" aria-label="Search" id="exampleFormControlInput2" aria-describedby="button-addon2"
+            ref="searchInput" />
+        <span @click="toggleInputVisibility"
+            class="flex items-center whitespace-nowrap px-3 py-[0.25rem] text-surface [&>svg]:h-5 [&>svg]:w-5"
+            id="button-addon2">
+            <svg v-show="!showInput" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+        </span>
+        <div v-if="showResults && searchStore.query"
+            class="absolute left-0 right-0 mt-1 bg-white border border-gray-300 rounded shadow-lg z-50 w-full"
+            style="max-height: 240px; overflow-y: auto;">
+            <ul>
+                <li v-for="slide in filteredItems" :key="slide.name + '-' + slide.location" class="p-2 hover:bg-gray-100">
+                    <router-link :to="slide.link">
+                        {{ slide.name }} - {{ slide.location }}
+                    </router-link>
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
-
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, nextTick, onMounted, onBeforeUnmount } from 'vue';
 import { useSearchStore } from '@/stores/search';
 import { slides } from '@/components/CalendarMonthCarousel.vue';
 import { toShopItem } from '@/components/ToShopHome.vue';
@@ -48,15 +75,50 @@ const toSeeItems = toSeeItem();
 const toEatItems = toEatItem();
 const toTourItems = toTourItem();
 
+const showInput = ref(false);
+const showResults = ref(false);
+const searchInput = ref(null);
 
-// Function to clean items by removing items with missing or empty fields
+const toggleInputVisibility = () => {
+    showInput.value = !showInput.value;
+    if (showInput.value) {
+        nextTick(() => {
+            if (searchInput.value) {
+                searchInput.value.focus();
+            }
+        });
+    } else {
+        showResults.value = false;
+    }
+};
+
+const closeInputField = (event) => {
+    if (!event.target.closest('.search-container')) {
+        showInput.value = false;
+        showResults.value = false;
+    }
+};
+
+const handleBlur = () => {
+    setTimeout(() => {
+        showResults.value = false;
+    }, 100); // Timeout to allow click on results before hiding
+};
+
+onMounted(() => {
+    document.addEventListener('click', closeInputField);
+});
+
+onBeforeUnmount(() => {
+    document.removeEventListener('click', closeInputField);
+});
+
 const cleanItems = (items) => {
     return items.filter(item => {
         return item && item.name && item.location && item.link && item.mapLocation;
     });
 };
 
-// Combine both cleaned items and slides into a single array for searching
 const allData = computed(() => {
     const cleanedToDoItems = cleanItems(toDoItems.value);
     const cleanedToShopItems = cleanItems(toShopItems.value);
@@ -68,16 +130,13 @@ const allData = computed(() => {
     return combinedData;
 });
 
-// Filter the combined data based on the search query
 const filteredItems = computed(() => {
     const filtered = allData.value.filter(item => {
-        if (!item) return false; // Skip null or undefined values
+        if (!item) return false;
 
         const query = searchStore.query.toLowerCase();
+        if (!searchStore.query) return true;
 
-        if (!searchStore.query) return true; // Show all items if no search query provided
-
-        // Convert item.category to lowercase string for comparison
         let categoryLowerCase = '';
         if (Array.isArray(item.category)) {
             categoryLowerCase = item.category.map(cat => cat.toLowerCase()).join(' ');
@@ -93,12 +152,23 @@ const filteredItems = computed(() => {
         );
     });
 
-    console.log(filtered); // Log the filtered items
+    console.log(filtered);
     return filtered;
 });
 
-// Handle input change to update the search query
 const handleInput = (event) => {
     searchStore.setQuery(event.target.value);
+    showResults.value = true;
 };
 </script>
+<style scoped>
+.search-container {
+    position: relative;
+}
+
+/* Hide scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+</style>
+  

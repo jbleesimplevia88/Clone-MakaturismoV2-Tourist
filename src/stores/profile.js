@@ -21,9 +21,12 @@ export const useProfileStore = defineStore('profileStore', {
                 }
             }
         },
-        async updateUser(data){
+        async updateUser(formData){
             try{
-                const response = await axios.post('/updateTourist',data);
+                const response = await axios.post('/updateTourist', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'                   }
+                });
                 if (response.data) {
                     return true;
                 }

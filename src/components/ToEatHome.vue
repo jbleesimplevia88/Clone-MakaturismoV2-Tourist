@@ -34,8 +34,8 @@
                         class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
                         @click="toggleDropdown">
                         <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
                             </svg>
@@ -55,23 +55,23 @@
                                 </div>
                                 <div class="flex justify-end">
                                     <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                        class="w-6 h-6">
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                                     </svg>
                                 </div>
                             </div>
                             <div class="grid grid-cols-3 grid-row-3 mt-5">
-                                <div class="relative px-2  -mt-2 -mr-10"  style="border-right: 1px solid #0000004D;top:5%; bottom: 15%; right: 0;">
-                                    <div class="absolute" style=" bottom: 15%; right: 0;"
-                                       >
+                                <div class="relative px-2  -mt-2 -mr-10"
+                                    style="border-right: 1px solid #0000004D;top:5%; bottom: 15%; right: 0;">
+                                    <div class="absolute" style=" bottom: 15%; right: 0;">
                                     </div>
                                     <div class="grid grid-rows-8 grid-flow-col gap-4 ml-4 p-2">
                                         <div v-for="(category, index) in categories" :key="'category-' + index">
                                             <label :for="'categoryRadio-' + index" class="flex items-center">
                                                 <input type="radio" :id="'categoryRadio-' + index" :value="category"
                                                     v-model="selectedCategory" name="category">
-                                                <span class="ml-2 m-0 p-0 uppercase text-[12px] font-bold">{{ category }}</span>
+                                                <span class="ml-2 m-0 p-0 uppercase text-[12px] font-bold">{{ category
+                                                }}</span>
                                             </label>
                                         </div>
                                     </div>
@@ -83,7 +83,8 @@
                                             <label :for="'locationRadio-' + index" class="flex items-left">
                                                 <input type="radio" :id="'locationRadio-' + index" :value="location"
                                                     v-model="selectedLocation" name="location" class="-mt-12">
-                                                <span class="ml-2  -mt-2 uppercase text-[12px] font-bold h-16 w-24">{{ location }}</span>
+                                                <span class="ml-2  -mt-2 uppercase text-[12px] font-bold h-16 w-24">{{
+                                                    location }}</span>
                                             </label>
                                         </div>
                                     </div>
@@ -105,8 +106,8 @@
                         class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
                         @click="toggleDropdown">
                         <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
                             </svg>
@@ -126,7 +127,8 @@
                                         <div class="flex justify-end">
                                             <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M6 18 18 6M6 6l12 12" />
                                             </svg>
                                         </div>
                                     </div>
@@ -183,8 +185,8 @@
                             class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
                             <span>Read More</span>
                             <span class="ml-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                                    stroke="currentColor" class="w-4 h-4">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                                 </svg>
                             </span>
@@ -280,106 +282,106 @@ import item8 from '@/assets/images/CategoryView/ToEat/brera.jpeg';
 const router = useRouter();
 
 const items = ref([
-{
-                name: 'Little Tokyo',
-                description: "Savor the authentic flavors of Japan in the heart of Makati at Little Tokyo. This culinary enclave offers a delightful array of Japanese restaurants and eateries, serving up delicious sushi, ramen, tempura, and more. Whether you're a sushi aficionado or a ramen lover, Little Tokyo promises a delectable dining experience in a charming Japanese setting.",
-                category: 'Restaurant/Food District',
-                cuisine: 'Japanese',
-                location: 'Pio del Pilar',
-                image: item1,
-                link: "/category/eat/LittleTokyo",
-                mapLocation: "https://www.google.com/maps/dir//2277+Chino+Roces+Ave,+Pasong+Tamo+Corner+Amorsolo+Street,+Makati,+Legazpi+Village,+Makati,+Metro+Manila/@14.5533656,121.014666,20.18z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9127a40d8f3:0x167c252a58dad21c!2m2!1d121.0146986!2d14.5535301?entry=ttu"
-            },
-            {
-                name: 'La Nuova Pastelaria',
-                description: "Transport your taste buds to Italy at La Nouva Pastelaria. This charming Italian cafe and bakery offers a delectable selection of pastries, pasta, and pizza, all made with authentic Italian flair. Sip on freshly brewed coffee while savoring the delightful flavors of Italy at La Nouva Pastelaria.",
-                category: 'Restaurant/Bakery',
-                cuisine: 'Italian',
-                location: 'Forbes Park South',
-                image: item2,
-                link: "",
-                mapLocation: ""
-            },
-            {
-                name: 'Tapenade',
-                description: 'Embark on a culinary journey through Mediterranean flavors at Tapenade. This vibrant restaurant showcases a buffet of Mediterranean-inspired dishes, from fresh salads and seafood to succulent meats and delectable desserts. With a lively ambiance and an array of flavorful options, Tapenade is a favorite among food enthusiasts.',
-                category: 'Restaurant',
-                cuisine: 'Mediterranean',
-                location: 'Ayala-Paseo de Roxas',
-                image: item3,
-                link: "",
-                mapLocation: ""
-            },
-            {
-                name: 'Salon De Ning',
-                description: "Transport yourself to a bygone era of opulence and luxury at Salon De Ning. This glamorous restaurant pays homage to the elegance of the 1930s Shanghai, with a menu inspired by Asian and Western cuisines. Experience the nostalgia of a bygone era while enjoying a sumptuous meal at Salon De Ning.",
-                category: 'Restaurant',
-                cuisine: 'Asian',
-                location: 'Ayala-Paseo de Roxas',
-                image: item4,
-                link: "",
-                mapLocation: ""
-            },
-            {
-                name: 'Maple',
-                description: "Indulge in a delightful fusion of flavors at Maple. This contemporary restaurant boasts a menu inspired by global cuisines, featuring creative dishes made with locally sourced ingredients. From scrumptious breakfast options to savory mains and delectable desserts, Maple is the perfect spot for a memorable dining experience.",
-                category: 'Restaurant',
-                cuisine: 'American',
-                location: 'Dasmarinas Village North',
-                image: item5,
-                link: "",
-                mapLocation: ""
-            },
-            {
-                name: 'The Bar at The Peninsula Manila',
-                description: "Experience sophistication and elegance at The Bar. This upscale dining venue offers a refined menu of international and Filipino cuisines, complemented by an extensive selection of fine wines and spirits. Whether it's a romantic dinner or a celebratory meal, The Bar ensures a delightful culinary experience in a luxurious setting.",
-                category: 'Restaurant',
-                cuisine: ['Asian', 'Filipino', 'Chinese', 'Japanese', 'Italian'],
-                location: 'Ayala-Paseo de Roxas',
-                image: item6,
-                link: "",
-                mapLocation: ""
-            },
-            {
-                name: 'Old Manila at The Peninsula Manila',
-                description: "Elevate your dining experience at Old Manila, a culinary gem that celebrates modern European cuisine. With a focus on premium ingredients and artful presentation, each dish is a masterpiece that delights both the palate and the eye. Indulge in a gastronomic adventure at Old Manila and experience the art of fine dining.",
-                category: 'Restaurant',
-                cuisine: ['European', 'French'],
-                location: 'Ayala-Paseo de Roxas',
-                image: item7,
-                link: "",
-                mapLocation: ""
-            },
-            {
-                name: 'Brera Delicatessen',
-                description: "Satisfy your cravings for authentic Italian delicacies at Brera Delicatessen. This cozy trattoria serves up an array of traditional Italian dishes, from wood-fired pizzas to handcrafted pasta. With warm Italian hospitality and an inviting ambiance, Brera Delicatessen promises an unforgettable dining experience in Makati.",
-                category: 'Restaurant',
-                cuisine: 'Italian',
-                location: 'San Antonio Village',
-                image: item8,
-                link: "",
-                mapLocation: ""
-            },
-            {
-                name: 'Brera Delicatessen',
-                description: "Satisfy your cravings for authentic Italian delicacies at Brera Delicatessen. This cozy trattoria serves up an array of traditional Italian dishes, from wood-fired pizzas to handcrafted pasta. With warm Italian hospitality and an inviting ambiance, Brera Delicatessen promises an unforgettable dining experience in Makati.",
-                category: 'Restaurant',
-                cuisine: 'Italian',
-                location: 'San Antonio Village',
-                image: item8,
-                link: "",
-                mapLocation: ""
-            },
-            {
-                name: 'Brera Delicatessen',
-                description: "Satisfy your cravings for authentic Italian delicacies at Brera Delicatessen. This cozy trattoria serves up an array of traditional Italian dishes, from wood-fired pizzas to handcrafted pasta. With warm Italian hospitality and an inviting ambiance, Brera Delicatessen promises an unforgettable dining experience in Makati.",
-                category: 'Restaurant',
-                cuisine: 'Italian',
-                location: 'San Antonio Village',
-                image: item8,
-                link: "",
-                mapLocation: ""
-            },
+    {
+        name: 'Little Tokyo',
+        description: "Savor the authentic flavors of Japan in the heart of Makati at Little Tokyo. This culinary enclave offers a delightful array of Japanese restaurants and eateries, serving up delicious sushi, ramen, tempura, and more. Whether you're a sushi aficionado or a ramen lover, Little Tokyo promises a delectable dining experience in a charming Japanese setting.",
+        category: 'Restaurant/Food District',
+        cuisine: 'Japanese',
+        location: 'Pio del Pilar',
+        image: item1,
+        link: "/category/eat/LittleTokyo",
+        mapLocation: "https://www.google.com/maps/dir//2277+Chino+Roces+Ave,+Pasong+Tamo+Corner+Amorsolo+Street,+Makati,+Legazpi+Village,+Makati,+Metro+Manila/@14.5533656,121.014666,20.18z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9127a40d8f3:0x167c252a58dad21c!2m2!1d121.0146986!2d14.5535301?entry=ttu"
+    },
+    {
+        name: 'La Nuova Pastelaria',
+        description: "Transport your taste buds to Italy at La Nouva Pastelaria. This charming Italian cafe and bakery offers a delectable selection of pastries, pasta, and pizza, all made with authentic Italian flair. Sip on freshly brewed coffee while savoring the delightful flavors of Italy at La Nouva Pastelaria.",
+        category: 'Restaurant/Bakery',
+        cuisine: 'Italian',
+        location: 'Forbes Park South',
+        image: item2,
+        link: "",
+        mapLocation: ""
+    },
+    {
+        name: 'Tapenade',
+        description: 'Embark on a culinary journey through Mediterranean flavors at Tapenade. This vibrant restaurant showcases a buffet of Mediterranean-inspired dishes, from fresh salads and seafood to succulent meats and delectable desserts. With a lively ambiance and an array of flavorful options, Tapenade is a favorite among food enthusiasts.',
+        category: 'Restaurant',
+        cuisine: 'Mediterranean',
+        location: 'Ayala-Paseo de Roxas',
+        image: item3,
+        link: "",
+        mapLocation: ""
+    },
+    {
+        name: 'Salon De Ning',
+        description: "Transport yourself to a bygone era of opulence and luxury at Salon De Ning. This glamorous restaurant pays homage to the elegance of the 1930s Shanghai, with a menu inspired by Asian and Western cuisines. Experience the nostalgia of a bygone era while enjoying a sumptuous meal at Salon De Ning.",
+        category: 'Restaurant',
+        cuisine: 'Asian',
+        location: 'Ayala-Paseo de Roxas',
+        image: item4,
+        link: "",
+        mapLocation: ""
+    },
+    {
+        name: 'Maple',
+        description: "Indulge in a delightful fusion of flavors at Maple. This contemporary restaurant boasts a menu inspired by global cuisines, featuring creative dishes made with locally sourced ingredients. From scrumptious breakfast options to savory mains and delectable desserts, Maple is the perfect spot for a memorable dining experience.",
+        category: 'Restaurant',
+        cuisine: 'American',
+        location: 'Dasmarinas Village North',
+        image: item5,
+        link: "",
+        mapLocation: ""
+    },
+    {
+        name: 'The Bar at The Peninsula Manila',
+        description: "Experience sophistication and elegance at The Bar. This upscale dining venue offers a refined menu of international and Filipino cuisines, complemented by an extensive selection of fine wines and spirits. Whether it's a romantic dinner or a celebratory meal, The Bar ensures a delightful culinary experience in a luxurious setting.",
+        category: 'Restaurant',
+        cuisine: ['Asian', 'Filipino', 'Chinese', 'Japanese', 'Italian'],
+        location: 'Ayala-Paseo de Roxas',
+        image: item6,
+        link: "",
+        mapLocation: ""
+    },
+    {
+        name: 'Old Manila at The Peninsula Manila',
+        description: "Elevate your dining experience at Old Manila, a culinary gem that celebrates modern European cuisine. With a focus on premium ingredients and artful presentation, each dish is a masterpiece that delights both the palate and the eye. Indulge in a gastronomic adventure at Old Manila and experience the art of fine dining.",
+        category: 'Restaurant',
+        cuisine: ['European', 'French'],
+        location: 'Ayala-Paseo de Roxas',
+        image: item7,
+        link: "",
+        mapLocation: ""
+    },
+    {
+        name: 'Brera Delicatessen',
+        description: "Satisfy your cravings for authentic Italian delicacies at Brera Delicatessen. This cozy trattoria serves up an array of traditional Italian dishes, from wood-fired pizzas to handcrafted pasta. With warm Italian hospitality and an inviting ambiance, Brera Delicatessen promises an unforgettable dining experience in Makati.",
+        category: 'Restaurant',
+        cuisine: 'Italian',
+        location: 'San Antonio Village',
+        image: item8,
+        link: "",
+        mapLocation: ""
+    },
+    {
+        name: 'Brera Delicatessen',
+        description: "Satisfy your cravings for authentic Italian delicacies at Brera Delicatessen. This cozy trattoria serves up an array of traditional Italian dishes, from wood-fired pizzas to handcrafted pasta. With warm Italian hospitality and an inviting ambiance, Brera Delicatessen promises an unforgettable dining experience in Makati.",
+        category: 'Restaurant',
+        cuisine: 'Italian',
+        location: 'San Antonio Village',
+        image: item8,
+        link: "",
+        mapLocation: ""
+    },
+    {
+        name: 'Brera Delicatessen',
+        description: "Satisfy your cravings for authentic Italian delicacies at Brera Delicatessen. This cozy trattoria serves up an array of traditional Italian dishes, from wood-fired pizzas to handcrafted pasta. With warm Italian hospitality and an inviting ambiance, Brera Delicatessen promises an unforgettable dining experience in Makati.",
+        category: 'Restaurant',
+        cuisine: 'Italian',
+        location: 'San Antonio Village',
+        image: item8,
+        link: "",
+        mapLocation: ""
+    },
 ]);
 
 const categories = ['American', 'Argentine', 'Asian', 'Australian', 'Chinese', 'European', 'Filipino', 'French', 'German', 'Halal', 'Indian', 'Irish', 'Italian', 'Argentine', 'Japanese', 'Korean', 'Mediterranean', 'Mexican', 'Singapore', 'Spanish', 'Swiss', 'Thai', 'Vietnamese'];
@@ -547,4 +549,117 @@ const extractLatLong = (mapLocation) => {
     // If no match is found, return null values
     return { latitude: null, longitude: null };
 };
+</script>
+
+
+<!-- I NEED THS SEPARATE SCRIPT AS WE CANNOT USE ES MODULE UNDER SCRIPT SETUP -->
+<script>
+
+const items = ref([
+    {
+        name: 'Little Tokyo',
+        description: "Savor the authentic flavors of Japan in the heart of Makati at Little Tokyo. This culinary enclave offers a delightful array of Japanese restaurants and eateries, serving up delicious sushi, ramen, tempura, and more. Whether you're a sushi aficionado or a ramen lover, Little Tokyo promises a delectable dining experience in a charming Japanese setting.",
+        category: 'Restaurant/Food District',
+        cuisine: 'Japanese',
+        location: 'Pio del Pilar',
+        image: item1,
+        link: "/category/eat/LittleTokyo",
+        mapLocation: "https://www.google.com/maps/dir//2277+Chino+Roces+Ave,+Pasong+Tamo+Corner+Amorsolo+Street,+Makati,+Legazpi+Village,+Makati,+Metro+Manila/@14.5533656,121.014666,20.18z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9127a40d8f3:0x167c252a58dad21c!2m2!1d121.0146986!2d14.5535301?entry=ttu"
+    },
+    {
+        name: 'La Nuova Pastelaria',
+        description: "Transport your taste buds to Italy at La Nouva Pastelaria. This charming Italian cafe and bakery offers a delectable selection of pastries, pasta, and pizza, all made with authentic Italian flair. Sip on freshly brewed coffee while savoring the delightful flavors of Italy at La Nouva Pastelaria.",
+        category: 'Restaurant/Bakery',
+        cuisine: 'Italian',
+        location: 'Forbes Park South',
+        image: item2,
+        link: "/category/eat/LittleTokyo",
+        mapLocation: "https://www.google.com/maps/dir//2277+Chino+Roces+Ave,+Pasong+Tamo+Corner+Amorsolo+Street,+Makati,+Legazpi+Village,+Makati,+Metro+Manila/@14.5533656,121.014666,20.18z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9127a40d8f3:0x167c252a58dad21c!2m2!1d121.0146986!2d14.5535301?entry=ttu"
+    },
+    {
+        name: 'Tapenade',
+        description: 'Embark on a culinary journey through Mediterranean flavors at Tapenade. This vibrant restaurant showcases a buffet of Mediterranean-inspired dishes, from fresh salads and seafood to succulent meats and delectable desserts. With a lively ambiance and an array of flavorful options, Tapenade is a favorite among food enthusiasts.',
+        category: 'Restaurant',
+        cuisine: 'Mediterranean',
+        location: 'Ayala-Paseo de Roxas',
+        image: item3,
+        link: "/category/eat/LittleTokyo",
+        mapLocation: "https://www.google.com/maps/dir//2277+Chino+Roces+Ave,+Pasong+Tamo+Corner+Amorsolo+Street,+Makati,+Legazpi+Village,+Makati,+Metro+Manila/@14.5533656,121.014666,20.18z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9127a40d8f3:0x167c252a58dad21c!2m2!1d121.0146986!2d14.5535301?entry=ttu"
+    },
+    {
+        name: 'Salon De Ning',
+        description: "Transport yourself to a bygone era of opulence and luxury at Salon De Ning. This glamorous restaurant pays homage to the elegance of the 1930s Shanghai, with a menu inspired by Asian and Western cuisines. Experience the nostalgia of a bygone era while enjoying a sumptuous meal at Salon De Ning.",
+        category: 'Restaurant',
+        cuisine: 'Asian',
+        location: 'Ayala-Paseo de Roxas',
+        image: item4,
+        link: "/category/eat/LittleTokyo",
+        mapLocation: "https://www.google.com/maps/dir//2277+Chino+Roces+Ave,+Pasong+Tamo+Corner+Amorsolo+Street,+Makati,+Legazpi+Village,+Makati,+Metro+Manila/@14.5533656,121.014666,20.18z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9127a40d8f3:0x167c252a58dad21c!2m2!1d121.0146986!2d14.5535301?entry=ttu"
+    },
+    {
+        name: 'Maple',
+        description: "Indulge in a delightful fusion of flavors at Maple. This contemporary restaurant boasts a menu inspired by global cuisines, featuring creative dishes made with locally sourced ingredients. From scrumptious breakfast options to savory mains and delectable desserts, Maple is the perfect spot for a memorable dining experience.",
+        category: 'Restaurant',
+        cuisine: 'American',
+        location: 'Dasmarinas Village North',
+        image: item5,
+        link: "/category/eat/LittleTokyo",
+        mapLocation: "https://www.google.com/maps/dir//2277+Chino+Roces+Ave,+Pasong+Tamo+Corner+Amorsolo+Street,+Makati,+Legazpi+Village,+Makati,+Metro+Manila/@14.5533656,121.014666,20.18z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9127a40d8f3:0x167c252a58dad21c!2m2!1d121.0146986!2d14.5535301?entry=ttu"
+    },
+    {
+        name: 'The Bar at The Peninsula Manila',
+        description: "Experience sophistication and elegance at The Bar. This upscale dining venue offers a refined menu of international and Filipino cuisines, complemented by an extensive selection of fine wines and spirits. Whether it's a romantic dinner or a celebratory meal, The Bar ensures a delightful culinary experience in a luxurious setting.",
+        category: 'Restaurant',
+        cuisine: ['Asian', 'Filipino', 'Chinese', 'Japanese', 'Italian'],
+        location: 'Ayala-Paseo de Roxas',
+        image: item6,
+        link: "/category/eat/LittleTokyo",
+        mapLocation: "https://www.google.com/maps/dir//2277+Chino+Roces+Ave,+Pasong+Tamo+Corner+Amorsolo+Street,+Makati,+Legazpi+Village,+Makati,+Metro+Manila/@14.5533656,121.014666,20.18z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9127a40d8f3:0x167c252a58dad21c!2m2!1d121.0146986!2d14.5535301?entry=ttu"
+    },
+    {
+        name: 'Old Manila at The Peninsula Manila',
+        description: "Elevate your dining experience at Old Manila, a culinary gem that celebrates modern European cuisine. With a focus on premium ingredients and artful presentation, each dish is a masterpiece that delights both the palate and the eye. Indulge in a gastronomic adventure at Old Manila and experience the art of fine dining.",
+        category: 'Restaurant',
+        cuisine: ['European', 'French'],
+        location: 'Ayala-Paseo de Roxas',
+        image: item7,
+        link: "/category/eat/LittleTokyo",
+        mapLocation: "https://www.google.com/maps/dir//2277+Chino+Roces+Ave,+Pasong+Tamo+Corner+Amorsolo+Street,+Makati,+Legazpi+Village,+Makati,+Metro+Manila/@14.5533656,121.014666,20.18z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9127a40d8f3:0x167c252a58dad21c!2m2!1d121.0146986!2d14.5535301?entry=ttu"
+    },
+    {
+        name: 'Brera Delicatessen',
+        description: "Satisfy your cravings for authentic Italian delicacies at Brera Delicatessen. This cozy trattoria serves up an array of traditional Italian dishes, from wood-fired pizzas to handcrafted pasta. With warm Italian hospitality and an inviting ambiance, Brera Delicatessen promises an unforgettable dining experience in Makati.",
+        category: 'Restaurant',
+        cuisine: 'Italian',
+        location: 'San Antonio Village',
+        image: item8,
+        link: "/category/eat/LittleTokyo",
+        mapLocation: "https://www.google.com/maps/dir//2277+Chino+Roces+Ave,+Pasong+Tamo+Corner+Amorsolo+Street,+Makati,+Legazpi+Village,+Makati,+Metro+Manila/@14.5533656,121.014666,20.18z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9127a40d8f3:0x167c252a58dad21c!2m2!1d121.0146986!2d14.5535301?entry=ttu"
+    },
+    {
+        name: 'Brera Delicatessen',
+        description: "Satisfy your cravings for authentic Italian delicacies at Brera Delicatessen. This cozy trattoria serves up an array of traditional Italian dishes, from wood-fired pizzas to handcrafted pasta. With warm Italian hospitality and an inviting ambiance, Brera Delicatessen promises an unforgettable dining experience in Makati.",
+        category: 'Restaurant',
+        cuisine: 'Italian',
+        location: 'San Antonio Village',
+        image: item8,
+        link: "/category/eat/LittleTokyo",
+        mapLocation: "https://www.google.com/maps/dir//2277+Chino+Roces+Ave,+Pasong+Tamo+Corner+Amorsolo+Street,+Makati,+Legazpi+Village,+Makati,+Metro+Manila/@14.5533656,121.014666,20.18z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9127a40d8f3:0x167c252a58dad21c!2m2!1d121.0146986!2d14.5535301?entry=ttu"
+    },
+    {
+        name: 'Brera Delicatessen',
+        description: "Satisfy your cravings for authentic Italian delicacies at Brera Delicatessen. This cozy trattoria serves up an array of traditional Italian dishes, from wood-fired pizzas to handcrafted pasta. With warm Italian hospitality and an inviting ambiance, Brera Delicatessen promises an unforgettable dining experience in Makati.",
+        category: 'Restaurant',
+        cuisine: 'Italian',
+        location: 'San Antonio Village',
+        image: item8,
+        link: "/category/eat/LittleTokyo",
+        mapLocation: "https://www.google.com/maps/dir//2277+Chino+Roces+Ave,+Pasong+Tamo+Corner+Amorsolo+Street,+Makati,+Legazpi+Village,+Makati,+Metro+Manila/@14.5533656,121.014666,20.18z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9127a40d8f3:0x167c252a58dad21c!2m2!1d121.0146986!2d14.5535301?entry=ttu"
+    },
+]);
+
+export function toEatItem() {
+    return items;
+}
+
 </script>

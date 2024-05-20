@@ -33,8 +33,8 @@
                         class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
                         @click="toggleDropdown">
                         <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
                             </svg>
@@ -54,8 +54,7 @@
                                 </div>
                                 <div class="flex justify-end">
                                     <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                        class="w-6 h-6">
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                                     </svg>
                                 </div>
@@ -70,7 +69,8 @@
                                             <label :for="'categoryRadio-' + index" class="flex items-center">
                                                 <input type="radio" :id="'categoryRadio-' + index" :value="category"
                                                     v-model="selectedCategory" name="category">
-                                                <span class="ml-2 m-0 p-0 uppercase text-[12px] font-bold">{{ category }}</span>
+                                                <span class="ml-2 m-0 p-0 uppercase text-[12px] font-bold">{{ category
+                                                }}</span>
                                             </label>
                                         </div>
                                     </div>
@@ -82,7 +82,8 @@
                                             <label :for="'locationRadio-' + index" class="flex items-left">
                                                 <input type="radio" :id="'locationRadio-' + index" :value="location"
                                                     v-model="selectedLocation" name="location" class="-mt-12">
-                                                <span class="ml-2  -mt-2 uppercase text-[12px] font-bold h-16 w-24">{{ location }}</span>
+                                                <span class="ml-2  -mt-2 uppercase text-[12px] font-bold h-16 w-24">{{
+                                                    location }}</span>
                                             </label>
                                         </div>
                                     </div>
@@ -104,8 +105,8 @@
                         class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
                         @click="toggleDropdown">
                         <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
                             </svg>
@@ -125,7 +126,8 @@
                                         <div class="flex justify-end">
                                             <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M6 18 18 6M6 6l12 12" />
                                             </svg>
                                         </div>
                                     </div>
@@ -182,8 +184,8 @@
                             class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
                             <span>Read More</span>
                             <span class="ml-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                                    stroke="currentColor" class="w-4 h-4">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                                 </svg>
                             </span>
@@ -464,14 +466,14 @@ onMounted(() => {
     document.addEventListener('click', handleGlobalClick);
 
     axios.post('http://makatiapi.simplevia.com/api/getAlltodo')
-  .then(response => {
-    // Handle the response data
-    console.log(response.data); // Output the data to the console
-  })
-  .catch(error => {
-    // Handle any errors
-    console.error('Error fetching data:', error);
-  });
+        .then(response => {
+            // Handle the response data
+            console.log(response.data); // Output the data to the console
+        })
+        .catch(error => {
+            // Handle any errors
+            console.error('Error fetching data:', error);
+        });
 });
 
 onBeforeUnmount(() => {
@@ -546,4 +548,103 @@ const extractLatLong = (mapLocation) => {
     // If no match is found, return null values
     return { latitude: null, longitude: null };
 };
+</script>
+
+<!-- I NEED THS SEPARATE SCRIPT AS WE CANNOT USE ES MODULE UNDER SCRIPT SETUP -->
+<script>
+const items = ref([
+    {
+        name: 'Omniverse Museum',
+        description: "Discover a fusion of art and technology at the Omniverse Museum in Makati. Step into a world of interactive exhibits, mind-bending installations, and awe-inspiring virtual reality experiences. This unique museum promises a captivating journey through the realms of creativity and innovation. Whether you're an art enthusiast or a tech-savvy explorer, the Omniverse Museum is a must-visit destination for an extraordinary adventure.",
+        category: 'Museum',
+        location: 'Makati Commercial Center',
+        image: item1,
+        link: "/category/do/omniverse",
+        mapLocation: "https://www.google.com/maps/dir//Omniverse+Museum+Japan+Town+4%2FF+Glorietta+2,+Ayala+Center+Makati+Palm+Dr,+Makati+Ave,+Makati,+1224+Metro+Manila/@14.5509998,121.0236327,17.09z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c97f24c8a707:0x936b4a8c37308563!2m2!1d121.0254416!2d14.5509171?entry=ttu"
+    },
+    {
+        name: 'Hop-On, Hop-Off Tour',
+        description: "Embark on a convenient and flexible sightseeing adventure with the Hop-On, Hop-Off Tour in Makati. Climb aboard an open-top double-decker bus and enjoy panoramic views as you explore the city's iconic landmarks and vibrant neighborhoods. Hop off at any stop that catches your interest, and hop back on when you're ready to move on to the next exciting destination. This tour offers the freedom to create your itinerary and make the most of your time in Makati.",
+        category: 'Sightseeing Tour',
+        location: 'Makati Commercial Center',
+        image: item2,
+        link: "/category/do/omniverse",
+        mapLocation: "https://www.google.com/maps/dir//Omniverse+Museum+Japan+Town+4%2FF+Glorietta+2,+Ayala+Center+Makati+Palm+Dr,+Makati+Ave,+Makati,+1224+Metro+Manila/@14.5509998,121.0236327,17.09z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c97f24c8a707:0x936b4a8c37308563!2m2!1d121.0254416!2d14.5509171?entry=ttu"
+    },
+    {
+        name: 'Zitro Massage and Spa',
+        description: "Indulge in ultimate relaxation and rejuvenation at Zitro Massage and Spa. This serene oasis offers a variety of therapeutic treatments, from traditional massages to modern wellness therapies. Surrender to the skilled hands of expert therapists and let your stress melt away. With a tranquil ambiance and a range of pampering options, Zitro Massage and Spa provides the perfect escape from the bustling city life.",
+        category: 'Spa & Wellness',
+        location: 'Pio del Pilar',
+        image: item3,
+        link: "/category/do/omniverse",
+        mapLocation: "https://www.google.com/maps/dir//Omniverse+Museum+Japan+Town+4%2FF+Glorietta+2,+Ayala+Center+Makati+Palm+Dr,+Makati+Ave,+Makati,+1224+Metro+Manila/@14.5509998,121.0236327,17.09z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c97f24c8a707:0x936b4a8c37308563!2m2!1d121.0254416!2d14.5509171?entry=ttu"
+    },
+    {
+        name: 'Zeria',
+        description: "Get ready for an immersive and thrilling experience at Zeria, Makati's premier escape room destination. Gather your friends, family, or colleagues and put your problem-solving skills to the test in a series of mind-bending puzzles and challenges. Each escape room presents a unique storyline, making Zeria an ideal place for team building, bonding, or simply having a blast with your loved ones.",
+        category: ['Entertainment', 'Game'],
+        location: 'San Antonio Village',
+        image: item4,
+        link: "/category/do/omniverse",
+        mapLocation: "https://www.google.com/maps/dir//Omniverse+Museum+Japan+Town+4%2FF+Glorietta+2,+Ayala+Center+Makati+Palm+Dr,+Makati+Ave,+Makati,+1224+Metro+Manila/@14.5509998,121.0236327,17.09z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c97f24c8a707:0x936b4a8c37308563!2m2!1d121.0254416!2d14.5509171?entry=ttu"
+    },
+    {
+        name: 'Two Seasons Spa',
+        description: "Treat yourself to a tranquil escape at Two Seasons Spa. With a selection of massages, facials, and body treatments, this spa offers a rejuvenating experience that caters to your specific needs. Let the stress fade away as you unwind in the serene atmosphere of Two Seasons Spa, leaving you feeling invigorated and revitalized.",
+        category: 'Spa & Wellness',
+        location: 'Comembo',
+        image: item5,
+        link: "/category/do/omniverse",
+        mapLocation: "https://www.google.com/maps/dir//Omniverse+Museum+Japan+Town+4%2FF+Glorietta+2,+Ayala+Center+Makati+Palm+Dr,+Makati+Ave,+Makati,+1224+Metro+Manila/@14.5509998,121.0236327,17.09z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c97f24c8a707:0x936b4a8c37308563!2m2!1d121.0254416!2d14.5509171?entry=ttu"
+    },
+    {
+        name: 'White Palace Spa',
+        description: "Experience pure bliss and luxury at White Palace Spa. Indulge in their extensive menu of spa services, including invigorating massages, facials, and body treatments. Step into an ambiance of serenity and let the experienced therapists take care of your well-being. White Palace Spa offers a sanctuary of tranquility, making it the perfect escape from the hustle and bustle of city life.",
+        category: 'Spa & Wellness',
+        location: 'Palanan',
+        image: item6,
+        link: "/category/do/omniverse",
+        mapLocation: "https://www.google.com/maps/dir//Omniverse+Museum+Japan+Town+4%2FF+Glorietta+2,+Ayala+Center+Makati+Palm+Dr,+Makati+Ave,+Makati,+1224+Metro+Manila/@14.5509998,121.0236327,17.09z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c97f24c8a707:0x936b4a8c37308563!2m2!1d121.0254416!2d14.5509171?entry=ttu"
+    },
+    {
+        name: 'Urband Break Wellness',
+        description: 'Escape the daily grind and discover a holistic approach to wellness at Urban Break Wellness. From yoga and meditation classes to natural healing therapies, this wellness center is dedicated to promoting mind-body harmony. Reconnect with your inner self and find rejuvenation amidst the urban landscape of Makati at Urban Break Wellness.',
+        category: 'Spa & Wellness',
+        location: 'Kasilawan',
+        image: item7,
+        link: "/category/do/omniverse",
+        mapLocation: "https://www.google.com/maps/dir//Omniverse+Museum+Japan+Town+4%2FF+Glorietta+2,+Ayala+Center+Makati+Palm+Dr,+Makati+Ave,+Makati,+1224+Metro+Manila/@14.5509998,121.0236327,17.09z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c97f24c8a707:0x936b4a8c37308563!2m2!1d121.0254416!2d14.5509171?entry=ttu"
+    },
+    {
+        name: 'Touch of Hands Spa',
+        description: 'Pamper yourself with a blissful retreat at Touch of Hands Spa. With a range of massage therapies and spa treatments, this haven of relaxation will leave you feeling refreshed and renewed. Surrender to the healing touch of their skilled therapists and experience the ultimate pampering session at Touch of Hands Spa.',
+        category: 'Spa & Wellness',
+        location: 'Cembo',
+        image: item8,
+        link: "/category/do/omniverse",
+        mapLocation: "https://www.google.com/maps/dir//Omniverse+Museum+Japan+Town+4%2FF+Glorietta+2,+Ayala+Center+Makati+Palm+Dr,+Makati+Ave,+Makati,+1224+Metro+Manila/@14.5509998,121.0236327,17.09z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c97f24c8a707:0x936b4a8c37308563!2m2!1d121.0254416!2d14.5509171?entry=ttu"
+    },
+    {
+        name: 'Product 9',
+        description: 'Description of Product 9',
+        category: 'Museum',
+        location: 'Dasmarinas Village South',
+        image: 'https://via.placeholder.com/300',
+        link: "/category/do/omniverse",
+        mapLocation: "https://www.google.com/maps/dir//Omniverse+Museum+Japan+Town+4%2FF+Glorietta+2,+Ayala+Center+Makati+Palm+Dr,+Makati+Ave,+Makati,+1224+Metro+Manila/@14.5509998,121.0236327,17.09z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c97f24c8a707:0x936b4a8c37308563!2m2!1d121.0254416!2d14.5509171?entry=ttu"
+    },
+    {
+        name: 'Product 10',
+        description: 'Description of Product 10',
+        category: 'Museum',
+        location: 'Bangkal',
+        image: 'https://via.placeholder.com/300',
+        link: "/category/do/omniverse",
+        mapLocation: "https://www.google.com/maps/dir//Omniverse+Museum+Japan+Town+4%2FF+Glorietta+2,+Ayala+Center+Makati+Palm+Dr,+Makati+Ave,+Makati,+1224+Metro+Manila/@14.5509998,121.0236327,17.09z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c97f24c8a707:0x936b4a8c37308563!2m2!1d121.0254416!2d14.5509171?entry=ttu"
+    },
+]);
+export function toDoItem() {
+    return items;
+}
 </script>

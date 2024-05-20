@@ -533,3 +533,100 @@ const extractLatLong = (mapLocation) => {
     return { latitude: null, longitude: null };
 };
 </script>
+
+<!-- I NEED THS SEPARATE SCRIPT AS WE CANNOT USE ES MODULE UNDER SCRIPT SETUP -->
+<script>
+
+const items = ref([
+{
+                    name: 'Glorietta',
+                    description: "Experience the ultimate shopping and entertainment extravaganza at Glorietta. This expansive retail complex boasts a diverse mix of shops, dining options, and entertainment facilities. Whether you're in search of fashion, gadgets, or indulgent treats, Glorietta is the go-to destination for an exciting day out.",
+                    category: 'Mall',
+                    location: 'Ayala-Paseo de Roxas',
+                    image: item1,
+                    link: "/category/see/glorietta",
+                    mapLocation: "https://www.google.com/maps/dir//Glorietta,+Palm+Drive,+Makati,+Metro+Manila/@14.5529213,121.0184921,16z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9f912a3727f:0xc4541051d1e0072!2m2!1d121.0246671!2d14.5508815?entry=ttu"
+                },
+                {
+                    name: 'Leon Gallery Fine Art',
+                    description: "Delve into the rich heritage of Philippine art at Leon Gallery Fine Art. With an impressive collection of historical and contemporary masterpieces, this gallery provides a glimpse into the cultural tapestry of the Philippines. Admire the artistic expression of generations of Filipino artists and immerse yourself in the country's artistic journey.",
+                    category: 'Art Gallery',
+                    location: 'Legaspi Village',
+                    image: item2,
+                    link: "/category/see/glorietta",
+                    mapLocation: "https://www.google.com/maps/dir//Glorietta,+Palm+Drive,+Makati,+Metro+Manila/@14.5529213,121.0184921,16z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9f912a3727f:0xc4541051d1e0072!2m2!1d121.0246671!2d14.5508815?entry=ttu"
+                },
+                {
+                    name: 'Galleria Nicolas',
+                    description: 'Discover hidden gems and budget-friendly finds at Bangkal Thrift Market. This bustling market is a treasure trove of pre-loved items, antiques, vintage clothing, and unique collectibles. Get ready to embark on a delightful treasure hunt at Bangkal Thrift Market.',
+                    category: 'Art Gallery',
+                    location: 'Makati CPO + Buendia Ave',
+                    image: item3,
+                    link: "/category/see/glorietta",
+                    mapLocation: "https://www.google.com/maps/dir//Glorietta,+Palm+Drive,+Makati,+Metro+Manila/@14.5529213,121.0184921,16z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9f912a3727f:0xc4541051d1e0072!2m2!1d121.0246671!2d14.5508815?entry=ttu"
+                },
+                {
+                    name: 'Victory Makati',
+                    description: "Explore the realm of visual storytelling at Victory Makati. Immerse yourself in powerful images that tell stories of the city and its people at Victory Makati.",
+                    category: 'Church',
+                    location: 'Ayala-Paseo de Roxas',
+                    image: item4,
+                    link: "/category/see/glorietta",
+                    mapLocation: "https://www.google.com/maps/dir//Glorietta,+Palm+Drive,+Makati,+Metro+Manila/@14.5529213,121.0184921,16z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9f912a3727f:0xc4541051d1e0072!2m2!1d121.0246671!2d14.5508815?entry=ttu"
+                },
+                {
+                    name: 'The Happy Gallery, Inc.',
+                    description: "Experience joy and creativity through a diverse collection of art at The Happy Gallery, Inc. Showcasing a blend of paintings, sculptures, and multimedia artworks, this gallery celebrates the beauty of life and the power of imagination. Step into a realm of happiness and inspiration as you explore the artistry of renowned and up-and-coming artists.",
+                    category: 'Art Gallery',
+                    // cant find happy gallery, inc under google
+                    location: 'Makati Commercial Center',
+                    image: item5,
+                    link: "/category/see/glorietta",
+                    mapLocation: "https://www.google.com/maps/dir//Glorietta,+Palm+Drive,+Makati,+Metro+Manila/@14.5529213,121.0184921,16z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9f912a3727f:0xc4541051d1e0072!2m2!1d121.0246671!2d14.5508815?entry=ttu"
+                },
+                {
+                    name: 'Heritage Art Center',
+                    description: "Celebrate the beauty of Philippine heritage at Heritage Art Center. This cultural haven features an array of traditional artworks, crafts, and artifacts that showcase the country's diverse cultural roots. From intricate tribal crafts to Filipino folk art, this center is a treasure trove of historical and cultural significance.",
+                    category: 'Art Gallery',
+                    location: 'Makati Commercial Center',
+                    image: item6,
+                    link: "/category/see/glorietta",
+                    mapLocation: "https://www.google.com/maps/dir//Glorietta,+Palm+Drive,+Makati,+Metro+Manila/@14.5529213,121.0184921,16z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9f912a3727f:0xc4541051d1e0072!2m2!1d121.0246671!2d14.5508815?entry=ttu"
+                },
+                {
+                    name: 'Eskinita Art Gallery',
+                    description: "Experience the vibrant and eclectic spirit of Filipino urban art at Eskinita Art Gallery. Celebrating street art and graffiti culture, this gallery showcases works that reflect the dynamic urban landscape of the Philippines. Get inspired by the bold and colorful expressions of Filipino street artists at Eskinita Art Gallery.",
+                    category: 'Art Gallery',
+                    location: 'Bangkal',
+                    image: item7,
+                    link: "/category/see/glorietta",
+                    mapLocation: "https://www.google.com/maps/dir//Glorietta,+Palm+Drive,+Makati,+Metro+Manila/@14.5529213,121.0184921,16z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9f912a3727f:0xc4541051d1e0072!2m2!1d121.0246671!2d14.5508815?entry=ttu"
+                },
+                {
+                    name: 'Altro Mondo Corp.',
+                    description: "Journey into the world of contemporary art at Altro Mondo Corp. This gallery showcases a diverse range of contemporary works, from paintings and sculptures to mixed-media art. Immerse yourself in the artistry of talented contemporary artists from the Philippines and around the globe at Altro Mondo Corp.",
+                    category: 'Art Gallery',
+                    location: 'Salcedo Village',
+                    image: item8,
+                    link: "/category/see/glorietta",
+                    mapLocation: "https://www.google.com/maps/dir//Glorietta,+Palm+Drive,+Makati,+Metro+Manila/@14.5529213,121.0184921,16z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9f912a3727f:0xc4541051d1e0072!2m2!1d121.0246671!2d14.5508815?entry=ttu"
+                },
+                {
+                    name: 'Altro Mondo Corp.',
+                    description: "Journey into the world of contemporary art at Altro Mondo Corp. This gallery showcases a diverse range of contemporary works, from paintings and sculptures to mixed-media art. Immerse yourself in the artistry of talented contemporary artists from the Philippines and around the globe at Altro Mondo Corp.",
+                    category: 'Art Gallery',
+                    location: 'Salcedo Village',
+                    image: item8,
+                    link: "/category/see/glorietta",
+                    mapLocation: "https://www.google.com/maps/dir//Glorietta,+Palm+Drive,+Makati,+Metro+Manila/@14.5529213,121.0184921,16z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9f912a3727f:0xc4541051d1e0072!2m2!1d121.0246671!2d14.5508815?entry=ttu"
+                },
+
+	
+]);
+
+
+export function toSeeItem() {
+    return items;
+}
+
+</script>

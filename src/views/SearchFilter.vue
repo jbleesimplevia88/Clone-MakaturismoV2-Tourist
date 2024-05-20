@@ -36,9 +36,18 @@ import { ref, computed } from 'vue';
 import { useSearchStore } from '@/stores/search';
 import { slides } from '@/components/CalendarMonthCarousel.vue';
 import { toShopItem } from '@/components/ToShopHome.vue';
+import { toDoItem } from '@/components/ToDoHome.vue';
+import { toSeeItem } from '@/components/ToSeeHome.vue';
+import { toEatItem } from '@/components/ToEatHome.vue';
+import { toTourItem } from '@/components/ToTourHome.vue';
 
 const searchStore = useSearchStore();
 const toShopItems = toShopItem();
+const toDoItems = toDoItem();
+const toSeeItems = toSeeItem();
+const toEatItems = toEatItem();
+const toTourItems = toTourItem();
+
 
 // Function to clean items by removing items with missing or empty fields
 const cleanItems = (items) => {
@@ -49,8 +58,13 @@ const cleanItems = (items) => {
 
 // Combine both cleaned items and slides into a single array for searching
 const allData = computed(() => {
+    const cleanedToDoItems = cleanItems(toDoItems.value);
     const cleanedToShopItems = cleanItems(toShopItems.value);
-    const combinedData = [...cleanedToShopItems, ...slides];
+    const cleanedToSeeItems = cleanItems(toSeeItems.value);
+    const cleanedToEatItems = cleanItems(toEatItems.value);
+    const cleanedToTourItems = cleanItems(toTourItems.value);
+
+    const combinedData = [...cleanedToShopItems, ...cleanedToEatItems, ...cleanedToDoItems, ...cleanedToTourItems, ...cleanedToSeeItems, ...slides];
     return combinedData;
 });
 

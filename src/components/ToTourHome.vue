@@ -34,8 +34,8 @@
                         class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
                         @click="toggleDropdown">
                         <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
                             </svg>
@@ -55,8 +55,7 @@
                                 </div>
                                 <div class="flex justify-end">
                                     <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                        class="w-6 h-6">
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                                     </svg>
                                 </div>
@@ -71,7 +70,8 @@
                                             <label :for="'categoryRadio-' + index" class="flex items-center">
                                                 <input type="radio" :id="'categoryRadio-' + index" :value="category"
                                                     v-model="selectedCategory" name="category">
-                                                <span class="ml-2 m-0 p-0 uppercase text-[12px] font-bold">{{ category }}</span>
+                                                <span class="ml-2 m-0 p-0 uppercase text-[12px] font-bold">{{ category
+                                                }}</span>
                                             </label>
                                         </div>
                                     </div>
@@ -83,7 +83,8 @@
                                             <label :for="'locationRadio-' + index" class="flex items-left">
                                                 <input type="radio" :id="'locationRadio-' + index" :value="location"
                                                     v-model="selectedLocation" name="location" class="-mt-12">
-                                                <span class="ml-2  -mt-2 uppercase text-[12px] font-bold h-16 w-24">{{ location }}</span>
+                                                <span class="ml-2  -mt-2 uppercase text-[12px] font-bold h-16 w-24">{{
+                                                    location }}</span>
                                             </label>
                                         </div>
                                     </div>
@@ -105,8 +106,8 @@
                         class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none"
                         @click="toggleDropdown">
                         <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
                             </svg>
@@ -126,7 +127,8 @@
                                         <div class="flex justify-end">
                                             <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M6 18 18 6M6 6l12 12" />
                                             </svg>
                                         </div>
                                     </div>
@@ -183,8 +185,8 @@
                             class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
                             <span>Read More</span>
                             <span class="ml-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                                    stroke="currentColor" class="w-4 h-4">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                                 </svg>
                             </span>
@@ -277,70 +279,70 @@ import item6 from '@/assets/images/CategoryView/ToTour/garden.jpeg';
 const router = useRouter();
 
 const items = ref([
-{
-                name: "Central Business District Tour",
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                category: 'District Tour',
-                location: 'Makati Commercial Center',
-                image: item5,
-                link: "/category/tour/central",
-                mapLocation: "https://www.google.com/maps/dir//Makati+Business+Central+Foods+Corp.,+Makati+Ave,+Makati,+Metro+Manila/@14.5524615,121.023803,18.45z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c91ac93d6d43:0x4810cea98136073a!2m2!1d121.0237498!2d14.552239?entry=ttu"
-            },
-            {
-                name: 'Walkway Tour with Legazpi Market',
-                description: "Embark on a gastronomic journey and cultural immersion with the Walkway Tour featuring Legazpi Market. Explore the vibrant Legazpi Market, a popular weekend market offering a diverse selection of local products and mouthwatering treats. This guided tour will take you through a culinary adventure, introducing you to the rich flavors and aromas of Philippine cuisine.",
-                category: 'Market Tour',
-                location: 'Legaspi Village',
-                image: item1,
-                link: "",
-                mapLocation: ""
-            },
-            {
-                name: 'Walkway Tour with Salcedo Market',
-                description: "Experience the best of Salcedo Market through a captivating Walkway Tour. Wander through the bustling market stalls filled with fresh produce, artisanal goods, and delectable street food. Discover the local flavors and culinary delights that make Salcedo Market a must-visit destination for foodies and culture enthusiasts.",
-                category: 'Market Tour',
-                location: 'Salcedo Village',
-                image: item2,
-                link: "",
-                mapLocation: ""
-            },
-            {
-                name: "Poblacion Walk Tour",
-                description: "Embark on an unforgettable adventure through the vibrant streets of Poblacion with our Poblacion Walk Tour. Immerse yourself in the bohemian atmosphere of Makati's hip and artistic neighborhood as you explore trendy cafes, bars, and galleries. Engage with the friendly locals, discover the local art scene, and indulge in diverse culinary delights. As the sun sets, experience the lively nightlife and dance the night away. Let the energy of Poblacion ignite your senses and leave you with cherished memories.",
-                category: 'City Tour',
-                location: 'Poblacion',
-                image: item3,
-                link: "",
-                mapLocation: ""
-            },
-            {
-                name: "Poblacion Heritage Tour",
-                description: "Travel back in time with our Poblacion Heritage Tour and unravel the historical treasures of Makati's oldest district. Explore well-preserved ancestral houses, iconic churches, and colonial landmarks that narrate the city's storied past. Walk along cobbled streets and immerse yourself in the nostalgic charm of bygone eras. Connect with the local community and gain insights into the traditions that have endured through generations. Discover the roots of Makati's cultural identity and witness the enduring legacy of Poblacion's history and heritage.",
-                category: ['District Tour', 'Church Tour'],
-                location: 'Poblacion',
-                image: item4,
-                link: "",
-                mapLocation: ""
-            },
-            {
-                name: "The Garden Way of the Cross of St. Alphonsus Mary de Liguori Church Tour",
-                description: "Discover the spiritual side of Makati with The Garden Way of the Cross of St. Alphonsus Mary de Liguori Church Tour. This unique tour takes you through the serene and contemplative garden, featuring life-sized sculptures depicting the Passion of Christ.",
-                category: 'Church Tour',
-                location: 'Magallanes Village',
-                image: item6,
-                link: "",
-                mapLocation: ""
-            },
-            {
-                name: "The Garden Way of the Cross of St. Alphonsus Mary de Liguori Church Tour",
-                description: "Discover the spiritual side of Makati with The Garden Way of the Cross of St. Alphonsus Mary de Liguori Church Tour. This unique tour takes you through the serene and contemplative garden, featuring life-sized sculptures depicting the Passion of Christ.",
-                category: 'Church Tour',
-                location: 'Magallanes Village',
-                image: item6,
-                link: "",
-                mapLocation: ""
-            }
-			,
+    {
+        name: "Central Business District Tour",
+        description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+        category: 'District Tour',
+        location: 'Makati Commercial Center',
+        image: item5,
+        link: "/category/tour/central",
+        mapLocation: "https://www.google.com/maps/dir//Makati+Business+Central+Foods+Corp.,+Makati+Ave,+Makati,+Metro+Manila/@14.5524615,121.023803,18.45z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c91ac93d6d43:0x4810cea98136073a!2m2!1d121.0237498!2d14.552239?entry=ttu"
+    },
+    {
+        name: 'Walkway Tour with Legazpi Market',
+        description: "Embark on a gastronomic journey and cultural immersion with the Walkway Tour featuring Legazpi Market. Explore the vibrant Legazpi Market, a popular weekend market offering a diverse selection of local products and mouthwatering treats. This guided tour will take you through a culinary adventure, introducing you to the rich flavors and aromas of Philippine cuisine.",
+        category: 'Market Tour',
+        location: 'Legaspi Village',
+        image: item1,
+        link: "",
+        mapLocation: ""
+    },
+    {
+        name: 'Walkway Tour with Salcedo Market',
+        description: "Experience the best of Salcedo Market through a captivating Walkway Tour. Wander through the bustling market stalls filled with fresh produce, artisanal goods, and delectable street food. Discover the local flavors and culinary delights that make Salcedo Market a must-visit destination for foodies and culture enthusiasts.",
+        category: 'Market Tour',
+        location: 'Salcedo Village',
+        image: item2,
+        link: "",
+        mapLocation: ""
+    },
+    {
+        name: "Poblacion Walk Tour",
+        description: "Embark on an unforgettable adventure through the vibrant streets of Poblacion with our Poblacion Walk Tour. Immerse yourself in the bohemian atmosphere of Makati's hip and artistic neighborhood as you explore trendy cafes, bars, and galleries. Engage with the friendly locals, discover the local art scene, and indulge in diverse culinary delights. As the sun sets, experience the lively nightlife and dance the night away. Let the energy of Poblacion ignite your senses and leave you with cherished memories.",
+        category: 'City Tour',
+        location: 'Poblacion',
+        image: item3,
+        link: "",
+        mapLocation: ""
+    },
+    {
+        name: "Poblacion Heritage Tour",
+        description: "Travel back in time with our Poblacion Heritage Tour and unravel the historical treasures of Makati's oldest district. Explore well-preserved ancestral houses, iconic churches, and colonial landmarks that narrate the city's storied past. Walk along cobbled streets and immerse yourself in the nostalgic charm of bygone eras. Connect with the local community and gain insights into the traditions that have endured through generations. Discover the roots of Makati's cultural identity and witness the enduring legacy of Poblacion's history and heritage.",
+        category: ['District Tour', 'Church Tour'],
+        location: 'Poblacion',
+        image: item4,
+        link: "",
+        mapLocation: ""
+    },
+    {
+        name: "The Garden Way of the Cross of St. Alphonsus Mary de Liguori Church Tour",
+        description: "Discover the spiritual side of Makati with The Garden Way of the Cross of St. Alphonsus Mary de Liguori Church Tour. This unique tour takes you through the serene and contemplative garden, featuring life-sized sculptures depicting the Passion of Christ.",
+        category: 'Church Tour',
+        location: 'Magallanes Village',
+        image: item6,
+        link: "",
+        mapLocation: ""
+    },
+    {
+        name: "The Garden Way of the Cross of St. Alphonsus Mary de Liguori Church Tour",
+        description: "Discover the spiritual side of Makati with The Garden Way of the Cross of St. Alphonsus Mary de Liguori Church Tour. This unique tour takes you through the serene and contemplative garden, featuring life-sized sculptures depicting the Passion of Christ.",
+        category: 'Church Tour',
+        location: 'Magallanes Village',
+        image: item6,
+        link: "",
+        mapLocation: ""
+    }
+    ,
 ]);
 
 const categories = ['District Tour', 'Church Tour', 'Museum Tour', 'City Tour', 'Market Tour'];
@@ -508,4 +510,82 @@ const extractLatLong = (mapLocation) => {
     // If no match is found, return null values
     return { latitude: null, longitude: null };
 };
+</script>
+
+<!-- I NEED THS SEPARATE SCRIPT AS WE CANNOT USE ES MODULE UNDER SCRIPT SETUP -->
+<script>
+
+const items = ref([
+    {
+        name: "Central Business District Tour",
+        description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+        category: 'District Tour',
+        location: 'Makati Commercial Center',
+        image: item5,
+        link: "/category/tour/central",
+        mapLocation: "https://www.google.com/maps/dir//Makati+Business+Central+Foods+Corp.,+Makati+Ave,+Makati,+Metro+Manila/@14.5524615,121.023803,18.45z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c91ac93d6d43:0x4810cea98136073a!2m2!1d121.0237498!2d14.552239?entry=ttu"
+    },
+    {
+        name: 'Walkway Tour with Legazpi Market',
+        description: "Embark on a gastronomic journey and cultural immersion with the Walkway Tour featuring Legazpi Market. Explore the vibrant Legazpi Market, a popular weekend market offering a diverse selection of local products and mouthwatering treats. This guided tour will take you through a culinary adventure, introducing you to the rich flavors and aromas of Philippine cuisine.",
+        category: 'Market Tour',
+        location: 'Legaspi Village',
+        image: item1,
+        link: "/category/tour/central",
+        mapLocation: "https://www.google.com/maps/dir//Makati+Business+Central+Foods+Corp.,+Makati+Ave,+Makati,+Metro+Manila/@14.5524615,121.023803,18.45z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c91ac93d6d43:0x4810cea98136073a!2m2!1d121.0237498!2d14.552239?entry=ttu"
+    },
+    {
+        name: 'Walkway Tour with Salcedo Market',
+        description: "Experience the best of Salcedo Market through a captivating Walkway Tour. Wander through the bustling market stalls filled with fresh produce, artisanal goods, and delectable street food. Discover the local flavors and culinary delights that make Salcedo Market a must-visit destination for foodies and culture enthusiasts.",
+        category: 'Market Tour',
+        location: 'Salcedo Village',
+        image: item2,
+        link: "/category/tour/central",
+        mapLocation: "https://www.google.com/maps/dir//Makati+Business+Central+Foods+Corp.,+Makati+Ave,+Makati,+Metro+Manila/@14.5524615,121.023803,18.45z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c91ac93d6d43:0x4810cea98136073a!2m2!1d121.0237498!2d14.552239?entry=ttu"
+    },
+    {
+        name: "Poblacion Walk Tour",
+        description: "Embark on an unforgettable adventure through the vibrant streets of Poblacion with our Poblacion Walk Tour. Immerse yourself in the bohemian atmosphere of Makati's hip and artistic neighborhood as you explore trendy cafes, bars, and galleries. Engage with the friendly locals, discover the local art scene, and indulge in diverse culinary delights. As the sun sets, experience the lively nightlife and dance the night away. Let the energy of Poblacion ignite your senses and leave you with cherished memories.",
+        category: 'City Tour',
+        location: 'Poblacion',
+        image: item3,
+        link: "/category/tour/central",
+        mapLocation: "https://www.google.com/maps/dir//Makati+Business+Central+Foods+Corp.,+Makati+Ave,+Makati,+Metro+Manila/@14.5524615,121.023803,18.45z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c91ac93d6d43:0x4810cea98136073a!2m2!1d121.0237498!2d14.552239?entry=ttu"
+    },
+    {
+        name: "Poblacion Heritage Tour",
+        description: "Travel back in time with our Poblacion Heritage Tour and unravel the historical treasures of Makati's oldest district. Explore well-preserved ancestral houses, iconic churches, and colonial landmarks that narrate the city's storied past. Walk along cobbled streets and immerse yourself in the nostalgic charm of bygone eras. Connect with the local community and gain insights into the traditions that have endured through generations. Discover the roots of Makati's cultural identity and witness the enduring legacy of Poblacion's history and heritage.",
+        category: ['District Tour', 'Church Tour'],
+        location: 'Poblacion',
+        image: item4,
+        link: "/category/tour/central",
+        mapLocation: "https://www.google.com/maps/dir//Makati+Business+Central+Foods+Corp.,+Makati+Ave,+Makati,+Metro+Manila/@14.5524615,121.023803,18.45z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c91ac93d6d43:0x4810cea98136073a!2m2!1d121.0237498!2d14.552239?entry=ttu"
+    },
+    {
+        name: "The Garden Way of the Cross of St. Alphonsus Mary de Liguori Church Tour",
+        description: "Discover the spiritual side of Makati with The Garden Way of the Cross of St. Alphonsus Mary de Liguori Church Tour. This unique tour takes you through the serene and contemplative garden, featuring life-sized sculptures depicting the Passion of Christ.",
+        category: 'Church Tour',
+        location: 'Magallanes Village',
+        image: item6,
+        link: "/category/tour/central",
+        mapLocation: "https://www.google.com/maps/dir//Makati+Business+Central+Foods+Corp.,+Makati+Ave,+Makati,+Metro+Manila/@14.5524615,121.023803,18.45z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c91ac93d6d43:0x4810cea98136073a!2m2!1d121.0237498!2d14.552239?entry=ttu"
+    },
+    {
+        name: "The Garden Way of the Cross of St. Alphonsus Mary de Liguori Church Tour",
+        description: "Discover the spiritual side of Makati with The Garden Way of the Cross of St. Alphonsus Mary de Liguori Church Tour. This unique tour takes you through the serene and contemplative garden, featuring life-sized sculptures depicting the Passion of Christ.",
+        category: 'Church Tour',
+        location: 'Magallanes Village',
+        image: item6,
+        link: "/category/tour/central",
+        mapLocation: "https://www.google.com/maps/dir//Makati+Business+Central+Foods+Corp.,+Makati+Ave,+Makati,+Metro+Manila/@14.5524615,121.023803,18.45z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c91ac93d6d43:0x4810cea98136073a!2m2!1d121.0237498!2d14.552239?entry=ttu"
+    }
+    ,
+]);
+
+
+
+export function toTourItem() {
+    return items;
+}
+
 </script>

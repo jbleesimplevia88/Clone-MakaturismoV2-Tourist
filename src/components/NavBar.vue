@@ -28,21 +28,12 @@
                         </svg>
                     </span>
                 </RouterLink>
-                <adiv class=" hidden lg:block relative  " ref="searchContainer">
-                    <input v-if="showInput" type="search"
-                        class=" relative m-0 block flex-auto rounded border border-solid border-neutral-200 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none"
-                        placeholder="Search" aria-label="Search" id="exampleFormControlInput2"
-                        aria-describedby="button-addon2" ref="searchInput" />
-                    <span @click="toggleInputVisibility"
-                        class="flex items-center whitespace-nowrap px-3 py-[0.25rem] text-surface [&>svg]:h-5 [&>svg]:w-5"
-                        id="button-addon2">
-                        <svg class="" v-show="!showInput" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="3" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                        </svg>
-                    </span>
-                </adiv>
+                <div class=" hidden lg:block relative  " ref="searchContainer">
+            
+
+                    <SearchFilter />
+
+                </div>
                 <!-- Calendar -->
                 <RouterLink to="/calendar" class="hidden text-white md:inline-block"><img
                         src="@/assets/images/Header/calendar.png" alt="logo" class="w-auto h-6 mx-2"></RouterLink>
@@ -1152,10 +1143,13 @@ import food from '@/assets/images/MainNav/food.png';
 import grocery from '@/assets/images/MainNav/grocery-store.png';
 import locationImg from '@/assets/images/MainNav/location.png';
 import { useSignUpStore } from '@/stores/signUp';
+import SearchFilter from '@/views/SearchFilter.vue';
+
 export default {
     name: 'NavBar',
     components: {
         RouterLink,
+        SearchFilter
     },
     data() {
         return {

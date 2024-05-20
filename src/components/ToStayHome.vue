@@ -494,6 +494,7 @@ export default defineComponent({
                 name: 'Hotel Durban',
                 description: 'Experience urban comfort and chic accommodations at Hotel Durban. With its stylish interiors and top-notch amenities, this hotel is a favorite among modern travelers. Whether youre in town for business or leisure, Hotel Durban ensures a pleasant and memorable stay in Makati.',
                 category: 'Accommodation/Hotel',
+                barangay:'Bangkal',
                 image: item3,
                 link: '',
                 mapLocation: '',

@@ -210,9 +210,13 @@
                     <div class="hidden lg:flex items-center space-x-4">
                         <!-- Original Login Button -->
                         <button @click="openLoginModal" class="text-blue-600">Login</button>
+                        
                         <!-- Become a partner button -->
-                        <a class="hidden lg:block lg:bg-blue-500 lg:hover:bg-blue-700 lg:text-white lg:font-bold lg:py-2 lg:px-4 lg:border lg:border-blue-700 lg:rounded-lg"
-                            href="#">Become a partner</a>
+                 <a class="hidden lg:block lg:bg-blue-500 lg:hover:bg-blue-700 lg:text-white lg:font-bold lg:py-2 lg:px-4 lg:border lg:border-blue-700 lg:rounded-lg"
+    href="http://bizmakati.simplevia.com/" target="_blank">
+    Become a partner
+</a>
+
                     </div>
                 </div>
                 <!-- SIDEBAR NAVIGATION -->
@@ -1760,7 +1764,7 @@ export default {
                     console.log(signupRes.user.id);
                     // Signup successful
                     this.showApproval = true;
-                    this.showChangepass = true;
+                    this.showChangepass = false;
                     this.showLoginModal = false;
                     this.showPrivacyModal = false;
                     this.showSignUpModal = false;

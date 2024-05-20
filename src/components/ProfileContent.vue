@@ -241,12 +241,9 @@
       formData.append('photo', model.photo);
     }
   
-    try {
       const updateRes = await profileStore.updateUser(formData);
-      console.log(updateRes);
-    } catch (error) {
-      console.error('Error updating user profile:', error);
-    }
+    
+  
   };
   
   const cancelForm = () => {

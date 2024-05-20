@@ -263,10 +263,10 @@
 }
 </style>
 
-<script setup>
+<script  setup>
 import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue';
 import { useRouter } from 'vue-router';
-
+import axios from 'axios';
 import item1 from '@/assets/images/CategoryView/ToDo/omni.jpg';
 import item2 from '@/assets/images/CategoryView/ToDo/hop.jpg';
 import item3 from '@/assets/images/CategoryView/ToDo/zitro.jpg';
@@ -462,6 +462,16 @@ watch(selectedLocation, (newValue, oldValue) => {
 
 onMounted(() => {
     document.addEventListener('click', handleGlobalClick);
+
+    axios.post('http://makatiapi.simplevia.com/api/getAlltodo')
+  .then(response => {
+    // Handle the response data
+    console.log(response.data); // Output the data to the console
+  })
+  .catch(error => {
+    // Handle any errors
+    console.error('Error fetching data:', error);
+  });
 });
 
 onBeforeUnmount(() => {

@@ -72,7 +72,7 @@
               <p class="mb-2 text-sm md:text-base">Makati City</p>
             </div>
             <div class="flex items-center">
-              <img src="@/assets/images/Footer/email.png" alt="Makaturismo.sample@gmail.com"
+              <img src="@/assets/images/Footer/email.png" alt="tourism.makati@gmail.com"
                 class="inline-block mr-2 mb-2">
               <p class="mb-2 text-sm md:text-base">tourism.makati@gmail.com</p>
             </div>

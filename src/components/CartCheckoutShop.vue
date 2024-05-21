@@ -52,22 +52,16 @@
                                     <p class="font-normal mb-3 text-gray-600">{{ user.fullName }}</p>
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start">
-                                    <p class="mr-[30px] w-10vw lg:pr-0 lg:mr-9 lg:mb-1 font-bold">E-mail Address</p>
+                                    <p class="mr-[30px] w-10vw lg:pr-0 lg:mr-9 lg:mb-1 font-bold ">E-mail Address</p>
                                     <p class="font-normal mb-2 text-base text-gray-600">{{ user.email }}
                                     </p>
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start justify-start">
                                     <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Phone Number</p>
-                                    <p class="font-normal mb-3 text-gray-600">{{ user.phoneNumber }}</p>
+                                    <p class="font-normal mb-10 text-gray-600">{{ user.phoneNumber }}</p>
                                 </div>
-                                <div class="flex lg:flex-col lg:items-start justify-start">
-                                    <p class="mr-[128px] lg:mr-9 lg:mb-1 font-bold">Gender</p>
-                                    <p class="font-normal mb-3 text-gray-600">{{ user.gender }}</p>
-                                </div>
-                                <div class="flex lg:flex-col lg:items-start justify-start">
-                                    <p class="mr-[55px] lg:mr-9 lg:mb-1 font-bold">Citizen of Makati</p>
-                                    <p class="font-normal mb-3 text-gray-600">{{ user.citizenofMakati }}</p>
-                                </div>
+                               
+                                
                             </div>
                             <div class="hidden lg:block">
                                 <p class="font-bold text-3xl mb-4">Payment</p>
@@ -106,45 +100,37 @@
                     <!-- FOR MOBILE -->
                     <div class=" ml-4 bg-gray-400 h-0.5"></div>
                     <div class="ml-4 lg:hidden p-5 ">
-                        <p class=" text-2xl font-bold pt-2">Your Information</p>
-                        <div v-for="(user, index) in userInfo" :key="index" className="grid grid-cols-2 grid-rows-5 pt-5 "
+                        <p class=" text-2xl font-bold pt-3">Your Information</p>
+                        <div v-for="(user, index) in userInfo" :key="index" className="grid grid-cols-2 grid-rows-3 pt-5 "
                             style="word-wrap: break-word;">
                             <div>
                                 <p class="text-base font-bold">Full Name</p>
                             </div>
                             <div>
-                                <p class="font-normal mb-2  text-gray-600 text-base">{{ user.fullName }}</p>
+                                <p class="font-normal mb-3  text-gray-600 text-base">{{ user.fullName }}</p>
                             </div>
                             <div>
                                 <p class=" text-base font-bold">E-mail Address</p>
                             </div>
                             <div>
-                                <p class="font-normal mb-2 text-base text-gray-600">{{ user.email }}</p>
+                                <p class="font-normal mb-3 text-base text-gray-600 whitespace-nowrap">{{ user.email }}</p>
                             </div>
                             <div>
                                 <p class=" text-base font-bold">Phone Number</p>
                             </div>
                             <div>
-                                <p class="font-normal mb-2 text-gray-600 text-base">{{ user.phoneNumber }}</p>
+                                <p class="font-normal mb-3 text-gray-600 text-base">{{ user.phoneNumber }}</p>
                             </div>
-                            <div>
-                                <p class="text-base font-bold">Gender</p>
-                            </div>
-                            <div>
-                                <p class="font-normal mb-2 text-gray-600 text-base">{{ user.gender }}</p>
-                            </div>
-                            <div>
-                                <p class=" text-base font-bold">Citizen of Makati</p>
-                            </div>
-                            <div>
-                                <p class="font-normal mb-2 text-gray-600 text-base">{{ user.citizenofMakati }}</p>
-                            </div>
+                        
+                       
+                          
                         </div>
-                    </div>
-                </div>
-                <!-- Start of Central Business District Tour -->
-                <div class="my-4 lg:w-[32%] lg:h-[30%] lg:right-10 lg:absolute relative lg:top-[13rem] w-screen">
-                    <div class="border border-gray-400 rounded-xl p-5 ml-5 w-[90%] h-fit">
+                    </div class>
+              
+                
+            </div class="mb-30">
+                <div class="my-2 lg:w-[32%] lg:h-[100%] lg:right-10 lg:absolute relative lg:top-[13rem] w-screen">
+                    <div class="border border-gray-500 rounded-xl p-5 ml-5 w-[90%] h-fit mb-6">
                         <!-- summary -->
                         <div v-if="showSummary">
                             <div v-for="(shop, index) in shops" :key="index">
@@ -152,7 +138,7 @@
                                     <img :src="shop.image" class="w-[100%] lg:w-[40%] h-[6rem] rounded-lg">
                                     <div class="ml-1 flex flex-col">
                                         <div>
-                                            <p class="font-bold">s{{ shop.name }}</p>
+                                            <p class="font-bold">{{ shop.name }}</p>
                                         </div>
                                         <div>
                                             <p class="mb-5 mt-2 text-gray-400">{{ shop.type }}</p>
@@ -214,6 +200,11 @@
                                         class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
                                         @click="togglePayment">Place Payment</button>
                                 </div>
+
+
+
+
+                                
                                 <!-- For Web -->
                                 <div class="justify-center lg:block hidden pt-6">
                                     <button
@@ -542,8 +533,7 @@ export default {
                 fullName: "Juan Dela Cruz",
                 email: "Juandelacruz@gmail.com",
                 phoneNumber: "09123456789",
-                gender: "Male",
-                citizenofMakati: "Yes"
+            
             }],
             shops: [{
                 image: "src/assets/images/CategoryView/ToShop/kultura.png",

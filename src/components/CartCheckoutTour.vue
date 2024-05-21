@@ -52,54 +52,16 @@
                                     <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Phone Number</p>
                                     <p class="font-normal mb-3 text-gray-600">09123456789</p>
                                 </div>
-                                <div class="flex lg:flex-col lg:items-start justify-start">
-                                    <p class="mr-[128px] lg:mr-9 lg:mb-1 font-bold">Gender</p>
-                                    <p class="font-normal mb-3 text-gray-600">Male</p>
-                                </div>
-                                <div class="flex lg:flex-col lg:items-start justify-start">
-                                    <p class="mr-[55px] lg:mr-9 lg:mb-1 font-bold">Citizen of Makati</p>
-                                    <p class="font-normal mb-3 text-gray-600">Yes</p>
-                                </div>
+                              
                             </div>
-                            <div class="hidden lg:block">
-                                <p class="font-bold text-3xl mb-4">Payment</p>
-                                <div class="flex border rounded p-8 h-24"
-                                    :class="{ 'bg-blue-100': selectedPaymentMethod === 'ibayad' }">
-                                    <div class="flex items-center pr-3">
-                                        <input id="payment_ibayad" aria-describedby="helper-radio-text" type="radio"
-                                            value="ibayad" @click="toggleIbayad"
-                                            class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                                            v-model="selectedPaymentMethod">
-                                    </div>
-                                    <div class="ms-2 text-sm">
-                                        <label for="payment_ibayad" class="font-semibold text-xl text-gray-700">
-                                            Ibayad</label>
-                                    </div>
-                                </div>
-                                <div class="mt-2 flex border rounded p-4 h-24"
-                                    :class="{ 'bg-blue-100': selectedPaymentMethod === 'cod' }">
-                                    <div class="flex items-center pr-3">
-                                        <input id="payment_cod" name="payment_method" value="cod" @click="toggleCOD"
-                                            class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                                            type="radio" v-model="selectedPaymentMethod">
-                                    </div>
-                                    <div class="ms-2 text-sm">
-                                        <label for="payment_cod" class="font-semibold text-l text-gray-700">
-                                            Cash On Delivery</label>
-                                        <p class="mt-2 font-bold text">Pay By Cash</p>
-                                        <p class="text-s">Pay Cash Upon Delivery</p>
-                                    </div>
-                                </div>
-
-
-                            </div>
+                           
                         </div>
                     </div>
                     <!-- FOR MOBILE -->
                     <div class=" lg:hidden p-5 ">
                         <div class="mt-5 bg-gray-400 h-0.5"></div>
                         <p class=" text-2xl font-bold pt-6">Your Information</p>
-                        <div className="grid grid-cols-2 grid-rows-5 pt-5 " style="word-wrap: break-word;">
+                        <div className="grid grid-cols-2 grid-rows-3 pt-5 " style="word-wrap: break-word;">
                             <div>
                                 <p class="text-base font-bold">Full Name</p>
                             </div>
@@ -118,18 +80,7 @@
                             <div>
                                 <p class="font-normal mb-2 text-gray-600 text-base">09123456789</p>
                             </div>
-                            <div>
-                                <p class="text-base font-bold">Gender</p>
-                            </div>
-                            <div>
-                                <p class="font-normal mb-2 text-gray-600 text-base">Male</p>
-                            </div>
-                            <div>
-                                <p class=" text-base font-bold">Citizen of Makati</p>
-                            </div>
-                            <div>
-                                <p class="font-normal mb-2 text-gray-600 text-base">Yes</p>
-                            </div>
+                            
                         </div>
                     </div>
                     <!-- Start of Central Business District Tour -->
@@ -173,24 +124,20 @@
                             <div class="flex justify-center lg:hidden pt-6">
                                 <button v-if="showPayment"
                                     class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
-                                    @click="togglePayment">Place Payment</button>
+                                    @click="toggleComplete">Place Payment</button>
                             </div>
                             <!-- For Web -->
                             <div class="justify-center lg:block hidden pt-6">
                                 <button
                                     class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
-                                    @click="toggleConfirmation">Confirm Booking</button>
+                                    @click="toggleComplete">Confirm Booking</button>
                             </div>
                             <div v-if="showConfirmation"
                                 class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
                                 @click.self="closeModal">
                                 <div class="bg-white rounded-lg shadow-md p-2 lg:max-w-2xl h-2p-[20px]" @click.stop>
                                     <div class="lg:w-[100%] p-4 rounded-lg text-center flex flex-col items-center">
-                                        <img src="@/assets/images/CategoryView/ToShop/check.png" class="mb-6">
-                                        <p class="font-bold text-2xl mb-6">Redirecting you...</p>
-                                        <p class="font-normal text-2xl mb-6">Your booking transaction is being
-                                            processed.
-                                            Please wait for the confirmation in your notification</p>
+                                      
                                         <button class="text-white bg-blue-500 rounded-xl w-[100%] py-5"
                                             @click="toggleComplete">Okay</button>
                                     </div>
@@ -466,11 +413,7 @@ export default defineComponent({
             return this.selectedPaymentMethod === paymentMethod;
         },
         toggleComplete() {
-            console.log("toggleComplete() method called.");
-            if (!this.selectedPaymentMethod) {
-                alert("Please select a payment method before confirming booking.");
-                return;
-            }
+          
             this.showConfirmation = false;
             this.showComplete = !this.showComplete;
         },

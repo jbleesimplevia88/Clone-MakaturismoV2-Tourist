@@ -57,14 +57,7 @@
                   <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Phone Number</p>
                   <p class="font-normal mb-3 text-gray-600">{{ user.phoneNumber }}</p>
                 </div>
-                <div class="flex lg:flex-col lg:items-start justify-start">
-                  <p class="mr-[128px] lg:mr-9 lg:mb-1 font-bold">Gender</p>
-                  <p class="font-normal mb-3 text-gray-600">{{ user.gender }}</p>
-                </div>
-                <div class="flex lg:flex-col lg:items-start justify-start">
-                  <p class="mr-[55px] lg:mr-9 lg:mb-1 font-bold">Citizen of Makati</p>
-                  <p class="font-normal mb-3 text-gray-600">{{ user.citizenofMakati }}</p>
-                </div>
+             
               </div>
               <div class="hidden lg:block">
                 <p class="font-bold text-3xl mb-4">Payment</p>
@@ -101,7 +94,7 @@
           <div class=" ml-4 bg-gray-400 h-0.5"></div>
           <div class="ml-4 lg:hidden p-5 ">
             <p class=" text-2xl font-bold pt-2">Your Information</p>
-            <div v-for="(user, index) in userInfo" :key="index" className="grid grid-cols-2 grid-rows-5 pt-5 "
+            <div v-for="(user, index) in userInfo" :key="index" className="grid grid-cols-2 grid-rows-3 pt-5 "
               style="word-wrap: break-word;">
               <div>
                 <p class="text-base font-bold">Full Name</p>
@@ -113,7 +106,7 @@
                 <p class=" text-base font-bold">E-mail Address</p>
               </div>
               <div>
-                <p class="font-normal mb-2 text-base text-gray-600">{{ user.email }}</p>
+                <p class="font-normal mb-2 text-base text-gray-600 whitespace-nowrap">{{ user.email }}</p>
               </div>
               <div>
                 <p class=" text-base font-bold">Phone Number</p>
@@ -121,18 +114,7 @@
               <div>
                 <p class="font-normal mb-2 text-gray-600 text-base">{{ user.phoneNumber }}</p>
               </div>
-              <div>
-                <p class="text-base font-bold">Gender</p>
-              </div>
-              <div>
-                <p class="font-normal mb-2 text-gray-600 text-base">{{ user.gender }}</p>
-              </div>
-              <div>
-                <p class=" text-base font-bold">Citizen of Makati</p>
-              </div>
-              <div>
-                <p class="font-normal mb-2 text-gray-600 text-base">{{ user.citizenofMakati }}</p>
-              </div>
+          
             </div>
           </div>
         </div>
@@ -516,8 +498,7 @@ export default {
         fullName: "Juan Dela Cruz",
         email: "Juandelacruz@gmail.com",
         phoneNumber: "09123456789",
-        gender: "Male",
-        citizenofMakati: "Yes"
+       
       }],
       hotels: [{
         image: "src/assets/images/CategoryView/ToStay/xyz.png",

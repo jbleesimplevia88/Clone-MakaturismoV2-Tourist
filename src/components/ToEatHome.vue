@@ -48,10 +48,10 @@
                         <div role="menu" aria-orientation="horizontal" aria-labelledby="options-menu" @click.stop>
                             <div class="grid grid-cols-3 border-b-2 p-3 font-bold ml-10">
                                 <div class="">
-                                    <h2>Where to Eat</h2>
+                                    <h2>Category</h2>
                                 </div>
                                 <div>
-                                    <h1>Barangays</h1>
+                                    <h1>Explore by Area</h1>
                                 </div>
                                 <div class="flex justify-end">
                                     <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -122,7 +122,7 @@
                                 <div role="menu" aria-orientation="horizontal" aria-labelledby="options-menu">
                                     <div class="grid grid-cols-2 border-b-2 p-3 font-bold ml-5 mr-5">
                                         <div>
-                                            <h2 class="ml-5">What to do</h2>
+                                            <h2 class="ml-5">Category</h2>
                                         </div>
                                         <div class="flex justify-end">
                                             <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -143,7 +143,7 @@
                                                     </label>
                                                 </div>
                                                 <hr data-v-add5c92e="" class="mt-6 mb-6 border-gray-300">
-                                                <h2 class="ml-5 font-bold mb-2">Explored by area</h2>
+                                                <h2 class="ml-5 font-bold mb-2">Explore by Area</h2>
                                                 <div v-for="(location, index) in locations" :key="'location-' + index">
                                                     <label :for="'locationRadio-' + index" class="flex items-center">
                                                         <input type="radio" :id="'locationRadio-' + index" :value="location"
@@ -384,7 +384,7 @@ const items = ref([
     },
 ]);
 
-const categories = ['American', 'Argentine', 'Asian', 'Australian', 'Chinese', 'European', 'Filipino', 'French', 'German', 'Halal', 'Indian', 'Irish', 'Italian', 'Argentine', 'Japanese', 'Korean', 'Mediterranean', 'Mexican', 'Singapore', 'Spanish', 'Swiss', 'Thai', 'Vietnamese'];
+const categories = ['American', 'Argentine', 'Asian', 'Australian', 'Chinese', 'European', 'Filipino', 'French', 'German', 'Halal', 'Indian', 'Irish', 'Italian','Japanese', 'Korean', 'Mediterranean', 'Mexican', 'Singapore', 'Spanish', 'Swiss', 'Thai', 'Vietnamese'];
 const locations = [
     'Bangkal',
     'Bel-air',

@@ -45,12 +45,12 @@
                     <div v-if="showDropdown"
                         class="z-[1] origin-top-left relative md:absolute left-0 mt-2 w-[400x] md:w-[868px] lg:w-[1150px] rounded-2xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                         <div role="menu" aria-orientation="horizontal" aria-labelledby="options-menu" @click.stop>
-                            <div class="grid grid-cols-3 border-b-2 p-3 font-bold ml-5 mr-5">
+                            <div class="grid grid-cols-3 border-b-2 p-3 font-bold ml-5 mr-16">
                                 <div>
-                                    <h2>What to do</h2>
+                                    <h2>Category</h2>
                                 </div>
                                 <div>
-                                    <h1>Barangays</h1>
+                                    <h1>Explore by Area</h1>
                                 </div>
                                 <div class="flex justify-end">
                                     <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -121,7 +121,7 @@
                                 <div role="menu" aria-orientation="horizontal" aria-labelledby="options-menu">
                                     <div class="grid grid-cols-2 border-b-2 p-3 font-bold ml-5 mr-5">
                                         <div>
-                                            <h2 class="ml-5">What to do</h2>
+                                            <h2 class="ml-5">Category</h2>
                                         </div>
                                         <div class="flex justify-end">
                                             <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -142,7 +142,7 @@
                                                     </label>
                                                 </div>
                                                 <hr data-v-add5c92e="" class="mt-6 mb-6 border-gray-300">
-                                                <h2 class="ml-5 font-bold mb-2">Explored by area</h2>
+                                                <h2 class="ml-5 font-bold mb-2">Explore by Area</h2>
                                                 <div v-for="(location, index) in locations" :key="'location-' + index">
                                                     <label :for="'locationRadio-' + index" class="flex items-center">
                                                         <input type="radio" :id="'locationRadio-' + index" :value="location"

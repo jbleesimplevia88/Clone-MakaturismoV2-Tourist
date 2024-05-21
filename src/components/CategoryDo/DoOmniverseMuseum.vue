@@ -3,8 +3,8 @@
         <div class="relative">
             <div class="bg-[#102E61] h-[101%] lg:h-[105%]" style="position: absolute; top: 0; left: 0; width: 100%; ">
             </div>
-            <div class="relative inset-0 sm:top-56 md:top-2 pl-0 md:pl-10 flex items-center z-[1]">
-                <div class="relative flex flex-col pl-0 lg:pl-10">
+            <div class="relative inset-0 sm:top-56 md:top-2 pl-0 md:pl-8 flex items-center z-[1]">
+                <div class="relative flex flex-col lg:pl-8">
                     <div class="absolute lg:top-4 lg:left-3 top-4 z-[1]">
                         <router-link to="/category/do">
 

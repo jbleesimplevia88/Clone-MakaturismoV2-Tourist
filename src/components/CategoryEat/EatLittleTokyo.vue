@@ -30,7 +30,8 @@
                             <div>
                                 <router-link to="/carteditbuyeat">
 
-                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg">
+                                    <button
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg">
                                         Shop Now
                                     </button>
                                 </router-link>
@@ -49,10 +50,13 @@
         <div class="my-4 lg:p-0 lg:w-[75%]">
             <div class="relative mx-6 px-3 lg:px-32 pt-5">
                 <p class="font-bold text-lg text-black text-left pb-5 pt-3 lg:pt-[5rem]">About this place</p>
-                <p class="text-lg text-justify text-black pb-5">Savor the authentic flavors of Japan in the heart of Makati
-                    at Little Tokyo. This culinary enclave offers a delightful array of Japanese restaurants and eateries,
+                <p class="text-lg text-justify text-black pb-5">Savor the authentic flavors of Japan in the heart of
+                    Makati
+                    at Little Tokyo. This culinary enclave offers a delightful array of Japanese restaurants and
+                    eateries,
                     serving up delicious sushi, ramen, tempura, and more. Whether you're a sushi
-                    aficionado or a ramen lover, Little Tokyo promises a delectable dining experience in a charming Japanese
+                    aficionado or a ramen lover, Little Tokyo promises a delectable dining experience in a charming
+                    Japanese
                     setting.
                 </p>
                 <div class="hidden border border-gray-400 lg:w-[]">
@@ -186,7 +190,8 @@
                         <div class="lg:hidden grid-flow-row">
                             <!-- First column -->
                             <div class="flex flex-col">
-                                <div v-for="(item, index) in otherProducts.slice(0, 3)" :key="index" class="card-wrapper">
+                                <div v-for="(item, index) in otherProducts.slice(0, 3)" :key="index"
+                                    class="card-wrapper">
                                     <!-- Your card content goes here -->
                                     <div
                                         class="card bg-blue-950 w-[100%] border-2 h-[170px] m-1 p-4 rounded-xl relative flex justify-between">
@@ -200,10 +205,10 @@
                                             </div>
                                             <div class="w-[80%]">
                                                 <p class="grid grid-cols-1 text-sm font-medium text-white mb-2 ml-2"> {{
-                                                    item.title }}
+                            item.title }}
                                                 </p>
                                                 <p class="text-sm font-medium text-white p-2 w-[55%] mb-[38px]">₱ {{
-                                                    item.price }}
+                            item.price }}
                                                 </p>
                                                 <button @click="addToCart(item)"
                                                     class="text-xs bg-blue-600 rounded-lg py-1 text-white px-3 w-full ml-2">Add
@@ -216,17 +221,20 @@
                             </div>
                             <!-- Second column -->
                             <div class="flex flex-col">
-                                <div v-for="(item, index) in otherProducts.slice(3, 6)" :key="index" class="card-wrapper">
+                                <div v-for="(item, index) in otherProducts.slice(3, 6)" :key="index"
+                                    class="card-wrapper">
                                     <!-- Your card content goes here -->
                                     <!-- WEB VERION -->
                                     <div
                                         class="hidden lg:block card bg-blue-950 w-[100%] border-2 h-[190px] m-1 p-4 rounded-xl relative justify-between">
                                         <div class="flex justify-between w-[100%]">
                                             <div class="w-[40%]">
-                                                <img class="rounded-md lg:h-full" :src="item.image[0]" alt="" width="90%">
+                                                <img class="rounded-md lg:h-full" :src="item.image[0]" alt=""
+                                                    width="90%">
                                             </div>
                                             <div class="w-[60%]">
-                                                <p class="grid grid-cols-1 text-xs text-white mb-4 ml-2"> {{ item.title }}
+                                                <p class="grid grid-cols-1 text-xs text-white mb-4 ml-2"> {{ item.title
+                                                    }}
                                                 </p>
                                                 <p class="text-xs text-white p-2 w-[55%]">₱ {{ item.price }}</p>
                                                 <div class="flex justify-between items-center mt-3 mb-2">
@@ -254,10 +262,10 @@
                                             </div>
                                             <div class="w-[80%]">
                                                 <p class="grid grid-cols-1 text-sm font-medium text-white mb-2 ml-2"> {{
-                                                    item.title }}
+                            item.title }}
                                                 </p>
                                                 <p class="text-sm font-medium text-white p-2 w-[55%] mb-[38px]">₱ {{
-                                                    item.price }}
+                            item.price }}
                                                 </p>
                                                 <button @click="addToCart(item)"
                                                     class="text-xs bg-blue-600 rounded-lg py-1 text-white px-3 w-full ml-2">Add
@@ -276,7 +284,8 @@
                 </div>
                 <!-- mobile verrrrrrrrrrrrrrrrr -->
                 <!-- View Add to cart modal -->
-                <div v-if="showCart" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center "
+                <div v-if="showCart"
+                    class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center "
                     @click.self="closeModal">
                     <div class="bg-white lg:h-[760px]  lg:w-auto lg:rounded-3xl h-full w-full shadow-md " @click.stop>
                         <div class="lg:w-[100%] p-4 rounded-lg h-full">
@@ -331,12 +340,13 @@
                                     </div>
                                     <div class="grid-cols-1 ml-20">
                                         <template v-for="(image, index) in selectedProductImages" :key="index">
-                                            <img :src="image" class="h-16 w-20 mb-2" @click="updateCurrentImage(image)" />
+                                            <img :src="image" class="h-16 w-20 mb-2"
+                                                @click="updateCurrentImage(image)" />
                                         </template>
 
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="black" class="w-[60px] h-10 mt-2 ml-2 cursor-pointer"
-                                            @click="changeImage">
+                                            stroke-width="1.5" stroke="black"
+                                            class="w-[60px] h-10 mt-2 ml-2 cursor-pointer" @click="changeImage">
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                 d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                         </svg>
@@ -420,8 +430,8 @@
                                                 <button @click="decreaseQuantity"
                                                     class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
                                                 <span v-if="selectedProduct && selectedProduct.quantity" class="p-2"> {{
-                                                    selectedProduct.quantity
-                                                }}</span>
+                            selectedProduct.quantity
+                        }}</span>
                                                 <button @click="increaseQuantity"
                                                     class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">+</button>
                                             </div>
@@ -433,10 +443,9 @@
                                                         Add to Cart</button>
                                                 </div>
                                                 <div class="w-[100%] flex justify-end">
-                                                    <router-link to="/checkoutshop" class="w-full">
-                                                        <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]">
-                                                            Buy Now</button>
-                                                    </router-link>
+                                                    <button @click="buyNow(selectedProduct)"
+                                                        class="text-white bg-blue-600 rounded-lg py-3 w-[95%]">
+                                                        Buy Now</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -454,7 +463,8 @@
                     <div class="toast-container">
                         <div v-if="showToast" class="toast" role="alert">
                             <!-- Toast content -->
-                            <div class="toast-content flex items-center p-4 text-black-500 bg-green-300 rounded-lg shadow ">
+                            <div
+                                class="toast-content flex items-center p-4 text-black-500 bg-green-300 rounded-lg shadow ">
                                 <!-- Toast icon -->
                                 <div
                                     class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
@@ -472,8 +482,8 @@
                                     class="ml-3 -mx-1 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8"
                                     aria-label="Close">
                                     <span class="sr-only">Close</span>
-                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 14 14">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="none" viewBox="0 0 14 14">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                                     </svg>
@@ -508,7 +518,8 @@
                                         <p class="flex text-xs">03-10-2024 11:30</p>
                                     </div>
                                     <div class="flex justify-between mb-2">
-                                        <p class="w-[100%] text-md">I will buy again. The seller is kind and accommodating
+                                        <p class="w-[100%] text-md">I will buy again. The seller is kind and
+                                            accommodating
                                             with my requests. Transaction is smooth. ❤️
                                         </p>
                                     </div>
@@ -521,7 +532,8 @@
                                         <p class="flex text-xs">03-10-2024 11:30</p>
                                     </div>
                                     <div class="flex justify-between mb-2">
-                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating
+                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and
+                                            accommodating
                                             with my requests. Transaction is smooth. ❤️
                                         </p>
                                     </div>
@@ -534,7 +546,8 @@
                                         <p class="flex text-xs">03-10-2024 11:30</p>
                                     </div>
                                     <div class="flex justify-between mb-2">
-                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating
+                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and
+                                            accommodating
                                             with my requests. Transaction is smooth. ❤️
                                         </p>
                                     </div>
@@ -547,7 +560,8 @@
                                         <p class="flex text-xs">03-10-2024 11:30</p>
                                     </div>
                                     <div class="flex justify-between mb-2">
-                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating
+                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and
+                                            accommodating
                                             with my requests. Transaction is smooth. ❤️
                                         </p>
                                     </div>
@@ -560,7 +574,8 @@
                                         <p class="flex text-xs">03-10-2024 11:30</p>
                                     </div>
                                     <div class="flex justify-between mb-2">
-                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating
+                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and
+                                            accommodating
                                             with my requests. Transaction is smooth. ❤️
                                         </p>
                                     </div>
@@ -573,7 +588,8 @@
                                         <p class="flex text-xs">03-10-2024 11:30</p>
                                     </div>
                                     <div class="flex justify-between mb-2">
-                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating
+                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and
+                                            accommodating
                                             with my requests. Transaction is smooth. ❤️
                                         </p>
                                     </div>
@@ -648,7 +664,8 @@
                         <div class="mb-5">
                             <p class="font-bold">List of items</p>
                             <template v-if="!isCartEmpty">
-                                <div v-for="(cartItem, index) in cart" :key="index" class="flex justify-between mb-2 pr-4">
+                                <div v-for="(cartItem, index) in cart" :key="index"
+                                    class="flex justify-between mb-2 pr-4">
                                     <p class="w-[70%]">{{ cartItem.title }}</p>
                                     <p>x{{ cartItem.quantity }}</p>
                                 </div>
@@ -745,8 +762,8 @@
         </div>
         <!-- Feedback Content -->
         <div class="grid lg:grid-cols-2 lg:gap-[2rem] relative mx-6 px-3 lg:px-32 pt-5">
-            <div class="relative border-2 border-gray-200 rounded-md px-3 py-3" v-for="( item, index ) in  paginatedItems "
-                :key="index">
+            <div class="relative border-2 border-gray-200 rounded-md px-3 py-3"
+                v-for="( item, index ) in  paginatedItems " :key="index">
                 <div class="flex flex-row">
                     <div class="pt-[0.125rem]">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -768,7 +785,8 @@
                 </div>
             </div>
         </div>
-        <div v-if="showSeeMoreButton || showSeeLessButton" class="flex items-center justify-center pr-[5rem] mt-5 mb-10">
+        <div v-if="showSeeMoreButton || showSeeLessButton"
+            class="flex items-center justify-center pr-[5rem] mt-5 mb-10">
             <div v-if="showSeeMoreButton">
                 <div>
                     <div
@@ -1055,8 +1073,26 @@ export default defineComponent({
             }
         };
 
+        const buyNow = (item, isFromEditCart = false) => {
+            if (!authStore.isAuthenticated) {
+                authStore.setIntendedRoute(router.currentRoute.value.path);
+                showLoginModal.value = true;
+                return;
+            }
 
+            // Add the item to the cart in the Pinia store
+            cartStore.addToCart(item, isFromEditCart);
 
+            // Clear the editCartProducts and buyNowProducts arrays
+            editCartProducts.value = [];
+            buyNowProducts.value = [];
+
+            // Add the item to the buyNowProducts array
+            buyNowProducts.value.push(item);
+
+            // Navigate to the CartCheckoutShop component
+            router.push('/checkouteat');
+        };
 
         const addToBuyNowAndCheckCart = () => {
             if (!authStore.isAuthenticated) {
@@ -1178,6 +1214,7 @@ export default defineComponent({
             toastMessage.value = "";
         };
         return {
+            buyNow,
             handleEditCart,
             handleBuyNow,
             addToBuyNowAndCheckCart,

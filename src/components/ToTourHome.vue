@@ -330,7 +330,7 @@ const toggleDropdown = () => {
 };
 
 const handleGlobalClick = (event) => {
-    const webDropdown = ref(null);
+    // const webDropdown = ref(null);
     const mobileDropdown = ref(null);
     if (!webDropdown.value.contains(event.target) && !mobileDropdown.value.contains(event.target)) {
         showDropdown.value = false;
@@ -346,7 +346,8 @@ const seeMore = (item) => {
             query: {
                 latitude,
                 longitude,
-                name: item.name
+                name: item.name,
+                
             }
         });
     } else {

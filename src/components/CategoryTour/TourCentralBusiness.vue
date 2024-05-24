@@ -347,7 +347,7 @@ export default defineComponent({
                 alert("Please enter a valid number of persons.");
                 return;
             }
-
+            // cartTour.selectTour(){}
             // Update reservation details individually
             cartTour.reserveTour({
                 date: selectedDate.value,

@@ -1,6 +1,9 @@
 <script>
-import { ref, onBeforeUnmount, computed } from 'vue';
+import { ref, onBeforeUnmount } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper/core';
 import card1 from '@/assets/images/Top 10/Card 1.png';
 import card2 from '@/assets/images/Top 10/Card 2.png';
@@ -12,7 +15,6 @@ import card7 from '@/assets/images/Top 10/Card 7.png';
 import card8 from '@/assets/images/Top 10/Card 8.png';
 import card9 from '@/assets/images/Top 10/Card 9.png';
 import card10 from '@/assets/images/Top 10/Card 10.png';
-// Import Swiper styles
 
 // Setup Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -30,7 +32,6 @@ export const slides = [
   { imgSrc: card10, name: "Makati Diamond Residences", date: "01 April, '24", location: "118 Legazpi Street, Legazpi Village, Makati, Metro Manila", link: "" },
 ];
 
-
 const isMobile = ref(window.innerWidth <= 768);
 const updateIsMobile = () => {
   isMobile.value = window.innerWidth <= 768;
@@ -44,13 +45,26 @@ onBeforeUnmount(() => {
 
 const modules = [Navigation, Pagination, Scrollbar, A11y];
 
+export default {
+  components: {
+    Swiper,
+    SwiperSlide
+  },
+  setup() {
+    return {
+      slides,
+      isMobile,
+      modules
+    };
+  }
+};
 </script>
 
 <template>
   <swiper :modules="modules" :slides-per-view="isMobile ? 1 : 4" :slides-per-group="isMobile ? 1 : 2" :space-between="20"
     navigation :pagination="{ clickable: true, dynamicBullets: true }" :scrollbar="{ draggable: false }" class="mx-5">
     <template v-for="(slide, index) in slides" :key="index">
-      <swiper-slide class="">
+      <swiper-slide>
         <RouterLink :to="slide.link">
           <div class="relative my-8 mb-[3rem] w-350 h-350">
             <img :src="slide.imgSrc" alt="" class="object-cover w-full h-full">

@@ -432,9 +432,10 @@
                                                         Add to Cart</button>
                                                 </div>
                                                 <div class="w-[100%] flex justify-end">
-                                                    <button @click="buyNow(selectedProduct)"
-                                                        class="text-white bg-blue-600 rounded-lg py-3 w-[95%]">
-                                                        Buy Now</button>
+                                                  
+                                                        <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]" @click="handleBuyNow()">
+                                                            Buy Now</button>
+                                             
                                                 </div>
                                             </div>
                                         </div>

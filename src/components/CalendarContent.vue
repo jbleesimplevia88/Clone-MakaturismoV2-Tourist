@@ -44,9 +44,10 @@ import CalendarPastCarousel from '@/components/CalendarPastCarousel.vue';
 
 export default {
   components: {
+
+    CalendarPastCarousel,
     CalendarMonthCarousel,
-    CalendarPastCarousel
-  },
+ },
   data() {
     return {
       isMobile: window.innerWidth <= 768, // Adjust the breakpoint as needed

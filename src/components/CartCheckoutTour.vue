@@ -317,7 +317,7 @@ export default defineComponent({
         return {
             selectedPaymentMethod: null,
             tours: [{
-                image: "src/assets/images/CategoryView/ToStay/book.png",
+                image: "src/assets/images/CategoryView/ToTour/tour.png",
                 name: "Central Business District Tour",
                 type: "Guided Tour",
                 rating: "5.0",

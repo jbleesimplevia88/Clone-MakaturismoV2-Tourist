@@ -6,7 +6,7 @@ export const useTourStore = defineStore({
     selectedTour: {
       name: '',
       category: '',
-      image: '',
+      image: '@/assets/images/CategoryView/ToTour/central.jpeg',
       mapLocation: '',
       location: '',
     },
@@ -18,6 +18,7 @@ export const useTourStore = defineStore({
   actions: {
     selectTour(tourDetails) {
       this.selectedTour = tourDetails;
+      console.log(this.selectedTour);
     },
     reserveTour(reservationDetails) {
       this.reservationDetails = reservationDetails;

@@ -241,7 +241,7 @@
                             <!-- Middlename -->
                             <div class="lg:flex items-center mb-3">
                                 <label for="mname" class="w-[9rem] lg:ml-3 lg:mr-3">Middle Initial:</label>
-                                <input id="mname" type="text" v-model="mname" placeholder="Enter Middle Initia"
+                                <input id="mname" type="text" v-model="mname" placeholder="Enter Middle Initial"
                                     class="border border-gray-500 rounded-xl w-full py-3 px-3">
                             </div>
                         </div>

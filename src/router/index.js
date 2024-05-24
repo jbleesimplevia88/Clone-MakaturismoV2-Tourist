@@ -20,7 +20,7 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView
-      
+
     },
     {
       path: '/calendar',
@@ -36,7 +36,7 @@ const router = createRouter({
       path: '/loginmodal',
       name: 'loginmodal',
       component: () => import('../components/LoginModal.vue')
-      
+
     },
     {
       path: '/profile',
@@ -69,55 +69,55 @@ const router = createRouter({
       path: '/cart',
       name: 'cart',
       component: () => import('../views/CartView.vue'),
-          children: [
-            {
-              path: '/cart',
-              name: 'carthome',
-              component: () => import('../components/CartHome.vue')
-            },
-            {
-              path: '/carteditbuyshop',
-              name: 'carteditbuyshop',
-              component: () => import('../components/CartEditBuyShop.vue')
-            },
-            {
-              path: '/carteditbuyeat',
-              name: 'carteditbuyeat',
-              component: () => import('../components/CartEditBuyEat.vue')
-            },
-            {
-              path: '/carteat',
-              name: 'carthomeeat',
-              component: () => import('../components/CartHomeEat.vue')
-            },
-            {
-              path: '/checkoutshop',
-              name: 'cartcheckoutshop',
-              component: () => import('../components/CartCheckoutShop.vue'),
-              meta: { requiresAuth: true }
-            },
-            {
-              path: '/checkouteat',
-              name: 'cartcheckouteat',
-              component: () => import('../components/CartCheckoutEat.vue'),
-              meta: { requiresAuth: true }
+      children: [
+        {
+          path: '/cart',
+          name: 'carthome',
+          component: () => import('../components/CartHome.vue')
+        },
+        {
+          path: '/carteditbuyshop',
+          name: 'carteditbuyshop',
+          component: () => import('../components/CartEditBuyShop.vue')
+        },
+        {
+          path: '/carteditbuyeat',
+          name: 'carteditbuyeat',
+          component: () => import('../components/CartEditBuyEat.vue')
+        },
+        {
+          path: '/carteat',
+          name: 'carthomeeat',
+          component: () => import('../components/CartHomeEat.vue')
+        },
+        {
+          path: '/checkoutshop',
+          name: 'cartcheckoutshop',
+          component: () => import('../components/CartCheckoutShop.vue'),
+          meta: { requiresAuth: true }
+        },
+        {
+          path: '/checkouteat',
+          name: 'cartcheckouteat',
+          component: () => import('../components/CartCheckoutEat.vue'),
+          meta: { requiresAuth: true }
 
-            },
-            {
-              path: '/checkoutbook',
-              name: 'cartcheckoutbook',
-              component: () => import('../components/CartCheckoutBook.vue'),
-              meta: { requiresAuth: true }
+        },
+        {
+          path: '/checkoutbook',
+          name: 'cartcheckoutbook',
+          component: () => import('../components/CartCheckoutBook.vue'),
+          meta: { requiresAuth: true }
 
-            },
-            {
-              path: '/checkouttour',
-              name: 'cartcheckouttour',
-              component: () => import('../components/CartCheckoutTour.vue'),
-              // meta: { requiresAuth: true }
-            },
-            
-          ]
+        },
+        {
+          path: '/checkouttour',
+          name: 'cartcheckouttour',
+          component: () => import('../components/CartCheckoutTour.vue'),
+          // meta: { requiresAuth: true }
+        },
+
+      ]
     },
     {
       path: '/category',
@@ -130,13 +130,16 @@ const router = createRouter({
           component: () => import('../components/ToDo.vue'),
           children: [
             {
-              path: 'omniverse',
+              path: 'omniverse/:id',
               name: 'omniverse',
               component: () => import('../components/CategoryDo/DoOmniverseMuseum.vue'),
               props: route => ({
                 latitude: parseFloat(route.query.latitude),
                 longitude: parseFloat(route.query.longitude),
-                name: route.query.name, 
+                item: route.query.item,
+                imageList: route.query.imageList,
+
+
 
               })
             },
@@ -154,13 +157,13 @@ const router = createRouter({
               props: route => ({
                 latitude: parseFloat(route.query.latitude),
                 longitude: parseFloat(route.query.longitude),
-                name: route.query.name, 
+                name: route.query.name,
 
               })
             },
           ]
         },
-        
+
         {
           path: 'see',
           name: 'see',
@@ -178,7 +181,7 @@ const router = createRouter({
               props: route => ({
                 latitude: parseFloat(route.query.latitude),
                 longitude: parseFloat(route.query.longitude),
-                name: route.query.name, 
+                name: route.query.name,
               })
             },
           ]
@@ -195,7 +198,7 @@ const router = createRouter({
               props: route => ({
                 latitude: parseFloat(route.query.latitude),
                 longitude: parseFloat(route.query.longitude),
-                name: route.query.name, 
+                name: route.query.name,
               })
             },
           ]
@@ -212,7 +215,7 @@ const router = createRouter({
               props: route => ({
                 latitude: parseFloat(route.query.latitude),
                 longitude: parseFloat(route.query.longitude),
-                name: route.query.name, 
+                name: route.query.name,
               })
             },
           ]
@@ -221,7 +224,7 @@ const router = createRouter({
           path: 'tour',
           name: 'tour',
           component: () => import('../components/ToTour.vue'),
-          children:[
+          children: [
             {
               path: 'central',
               name: 'central',
@@ -229,7 +232,7 @@ const router = createRouter({
               props: route => ({
                 latitude: parseFloat(route.query.latitude),
                 longitude: parseFloat(route.query.longitude),
-                name: route.query.name, 
+                name: route.query.name,
               })
             },
           ]
@@ -240,8 +243,8 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const authStore = useAuthStore(); 
-  authStore.initialize(); 
+  const authStore = useAuthStore();
+  authStore.initialize();
   // Check if the route requires authentication
   if (to.meta.requiresAuth) {
     // Check if the user is authenticated

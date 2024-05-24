@@ -52,9 +52,9 @@
                                     <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Phone Number</p>
                                     <p class="font-normal mb-3 text-gray-600">09123456789</p>
                                 </div>
-                              
+
                             </div>
-                           
+
                         </div>
                     </div>
                     <!-- FOR MOBILE -->
@@ -80,7 +80,7 @@
                             <div>
                                 <p class="font-normal mb-2 text-gray-600 text-base">09123456789</p>
                             </div>
-                            
+
                         </div>
                     </div>
                     <!-- Start of Central Business District Tour -->
@@ -104,8 +104,7 @@
                             <div class="bg-gray-400 h-0.5"></div>
                             <p class="lg:mr-9 lg:mt-2  lg:font-sans  lg:text-3xl font-bold  text-lg pt-4">Your Total</p>
                             <div class="items-center my-5">
-                                <div 
-                                    class="flex justify-between mb-2 w-[100%]">
+                                <div class="flex justify-between mb-2 w-[100%]">
                                     <p class="w-[70%]">1 Tour Session</p>
                                     <p class="text-gray-400">Free</p>
                                 </div>
@@ -115,8 +114,8 @@
                                 </p>
                             </div>
                             <div class="bg-gray-400 h-0.5 w-[100%]"></div>
-                         
-                          
+
+
                             <p class="lg:font-poppins font-sans text-base font-bold text-right underline hidden">Price
                                 Breakdown
                             </p>
@@ -137,7 +136,7 @@
                                 @click.self="closeModal">
                                 <div class="bg-white rounded-lg shadow-md p-2 lg:max-w-2xl h-2p-[20px]" @click.stop>
                                     <div class="lg:w-[100%] p-4 rounded-lg text-center flex flex-col items-center">
-                                      
+
                                         <button class="text-white bg-blue-500 rounded-xl w-[100%] py-5"
                                             @click="toggleComplete">Okay</button>
                                     </div>
@@ -166,7 +165,8 @@
                         class=" h-28 pt-16 pl-5  bg-[#132540] text-white text-xl font-semibold flex items-center  cursor-pointer lg:px-[100px] lg:h-20 lg:mt-[80px] lg:text-4xl lg:pt-0 ">
                         <svg @click="navigateBack" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke-width="3" stroke="white" class="h-5 pr-2 lg:mr-7 lg:w-10 lg:h-14">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18">
                             </path>
                         </svg> {{ navButtonText }}
                     </nav>
@@ -202,7 +202,8 @@
                             </div>
                         </div>
                         <div class="justify-center pt-3">
-                            <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
+                            <button
+                                class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
                                 @click="toggleComplete">Confirm Booking</button>
                             <div v-if="showComplete"
                                 class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
@@ -241,7 +242,8 @@
                     <div class="absolute grid grid-rows-3 text-left ml-14 mt-1">
                         <span class="font-semibold">{{ voucher.code }}</span>
                         <span class="font-bold">P{{ voucher.amount }}</span>
-                        <button type="submit" class="text-sm font-bold ml-52 cursor-pointer" @click="toggleVoucher(index)">
+                        <button type="submit" class="text-sm font-bold ml-52 cursor-pointer"
+                            @click="toggleVoucher(index)">
                             {{ voucher.applied ? 'Remove' : 'Apply' }}
                         </button>
                     </div>
@@ -413,7 +415,7 @@ export default defineComponent({
             return this.selectedPaymentMethod === paymentMethod;
         },
         toggleComplete() {
-          
+
             this.showConfirmation = false;
             this.showComplete = !this.showComplete;
         },

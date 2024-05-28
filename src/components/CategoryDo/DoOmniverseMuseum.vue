@@ -345,54 +345,54 @@ export default {
         return {
             imageUrls: [],
             items: [
-                {
-                    name: 'Juan Dela Cruz',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                    date: 'December 2023',
+                // {
+                //     name: 'Juan Dela Cruz',
+                //     description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                //     date: 'December 2023',
 
-                },
-                {
-                    name: 'Luis Paolo',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                    date: 'December 2023',
+                // },
+                // {
+                //     name: 'Luis Paolo',
+                //     description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                //     date: 'December 2023',
 
-                },
-                {
-                    name: 'Luis Paolo',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                    date: 'December 2023',
+                // },
+                // {
+                //     name: 'Luis Paolo',
+                //     description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                //     date: 'December 2023',
 
-                },
-                {
-                    name: 'Juan Dela Cruz',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                    date: 'December 2023',
+                // },
+                // {
+                //     name: 'Juan Dela Cruz',
+                //     description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                //     date: 'December 2023',
 
-                },
-                {
-                    name: 'Juan Dela Cruz',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                    date: 'December 2023',
+                // },
+                // {
+                //     name: 'Juan Dela Cruz',
+                //     description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                //     date: 'December 2023',
 
-                },
-                {
-                    name: 'Luis Paolo',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                    date: 'December 2023',
+                // },
+                // {
+                //     name: 'Luis Paolo',
+                //     description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                //     date: 'December 2023',
 
-                },
-                {
-                    name: 'Luis Paolo',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                    date: 'December 2023',
+                // },
+                // {
+                //     name: 'Luis Paolo',
+                //     description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
+                //     date: 'December 2023',
 
-                },
-                {
-                    name: 'Juan Dela Cruz',
-                    description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                    date: 'December 2023',
+                // },
+                // {
+                //     name: 'Juan Dela Cruz',
+                //     description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
+                //     date: 'December 2023',
 
-                },
+                // },
             ],
             currentPage: 0,
             pageSize: 8,

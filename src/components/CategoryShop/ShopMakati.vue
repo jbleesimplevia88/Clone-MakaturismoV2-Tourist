@@ -50,11 +50,15 @@
         <div class="my-4 lg:p-0 lg:w-[75%]">
             <div class="relative mx-6 px-3 lg:px-32 pt-5">
                 <p class="font-bold text-lg text-black text-left pb-5 pt-3 lg:pt-[5rem]">About this place</p>
+<<<<<<< HEAD
                 <p class="text-lg text-justify text-black pb-5">From handmade souvenirs, eco-friendly Barongs and
                     fashionable Filipiniana to artisanal chocolates and more, Makati Shop continues its mission to
                     embrace
                     our heritage and keep them relevant; support communities and help grow small businesses;
                     protect the environment and elevate pride in our identity.</p>
+=======
+                <p class="text-lg text-justify text-black pb-5">{{ shopData.description }}</p>
+>>>>>>> repoBeta/main
                 <div class="hidden border border-gray-400 lg:w-[]">
                     <p class="text-center font-bold">Number of items</p>
                 </div>
@@ -120,6 +124,7 @@
                 </div>
                 <!-- Other Items -->
                 <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">OTHER ITEMS</h1>
+                
                 <div class="flex w-[100%]">
                     <div class="flex justify-between items-center mb-2 space-x-5">
                         <!-- WEB VERSION OTHER ITEMS -->
@@ -419,8 +424,13 @@
                                                 <button @click="decreaseQuantity"
                                                     class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
                                                 <span v-if="selectedProduct && selectedProduct.quantity" class="p-2"> {{
+<<<<<<< HEAD
                             selectedProduct.quantity
                         }}</span>
+=======
+                                                    selectedProduct.quantity
+                                                    }}</span>
+>>>>>>> repoBeta/main
                                                 <button @click="increaseQuantity"
                                                     class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">+</button>
                                             </div>
@@ -432,10 +442,11 @@
                                                         Add to Cart</button>
                                                 </div>
                                                 <div class="w-[100%] flex justify-end">
-                                                  
-                                                        <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]" @click="handleBuyNow()">
-                                                            Buy Now</button>
-                                             
+
+                                                    <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]"
+                                                        @click="handleBuyNow()">
+                                                        Buy Now</button>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -646,7 +657,7 @@
         <div class="relative mx-6 px-3 lg:px-32 pb-5 pt-5">
             <div>
                 <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
-                <MapRenderer :latitude="latitude" :longitude="longitude" :name="name" />
+                <MapRenderer :latitude="latitude" :longitude="longitude" :name="shopData.storename" />
             </div>
             <hr style="border-top: 1px solid black">
             <div>
@@ -712,7 +723,11 @@
         <!-- Feedback Content -->
         <div class="grid lg:grid-cols-2 lg:gap-[2rem] relative mx-6 px-3 lg:px-32 pt-5">
             <div class="relative border-2 border-gray-200 rounded-md px-3 py-3"
+<<<<<<< HEAD
                 v-for="( item, index ) in  paginatedItems " :key="index">
+=======
+                v-for="( item, index ) in paginatedItems " :key="index">
+>>>>>>> repoBeta/main
                 <div class="flex flex-row">
                     <div class="pt-[0.125rem]">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -806,10 +821,11 @@
 
 
 
-<script>
+<script setup>
 import ContentCarousel from '@/components/ToShopCarousel.vue';
 import MapRenderer from "@/components/MapRenderer.vue";
 import LoginModal from '@/components/LoginModal.vue';
+<<<<<<< HEAD
 import {
     defineComponent,
     ref,
@@ -1210,5 +1226,228 @@ export default defineComponent({
             closeReviews,
         };
     }
+=======
+import { ref, computed, watch, onBeforeMount, onMounted } from 'vue';
+import { useAuthStore } from '@/stores/auth';
+import { useCartStore } from '@/stores/toShopCart';
+import { useRouter } from 'vue-router';
+
+
+defineProps({
+  latitude: Number,
+  longitude: Number,
+  name: String,
+>>>>>>> repoBeta/main
 });
+
+const cartStore = useCartStore();
+const router = useRouter();
+const authStore = useAuthStore();
+
+const cart = computed(() => cartStore.cart);
+const shopData = computed(() => cartStore.shopData);
+const editCartProducts = ref([]);
+const buyNowProducts = ref([]);
+const selectedProduct = ref(null);
+const showToast = ref(false);
+const toastMessage = ref("");
+const currentIndex = ref(0);
+const currentPage = ref(0);
+const count = ref(0);
+const showCart = ref(false);
+const showCartModal = ref(false);
+const showReviews = ref(false);
+const showAddtoCart = ref(false);
+const showLoginModal = ref(false);
+const showSeeLessButton = ref(false);
+const selectedProductImages = ref([]);
+const selectedProductIsFromBestProducts = ref(false);
+const numFeedbackShown = ref(0);
+
+const items = [
+  // ... (same items array as provided)
+];
+
+const bestProducts = [
+  // ... (same bestProducts array as provided)
+];
+
+const otherProducts = [
+  // ... (same otherProducts array as provided)
+];
+
+const categories = ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'];
+const locations = ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'];
+
+const handleEditCart = () => {
+  if (!authStore.isAuthenticated) {
+    authStore.setIntendedRoute('/cart');
+    showLoginModal.value = true;
+  } else {
+    router.push('/cart');
+  }
+};
+
+const handleBuyNow = () => {
+  if (!authStore.isAuthenticated) {
+    authStore.setIntendedRoute('/checkoutshop');
+    showLoginModal.value = true;
+  } else {
+    addToBuyNow(selectedProduct.value);
+    router.push('/checkoutshop');
+  }
+};
+
+const addToCart = (item, isFromEditCart = false) => {
+  if (!authStore.isAuthenticated) {
+    authStore.setIntendedRoute(router.currentRoute.value.path);
+    showLoginModal.value = true;
+    return;
+  }
+  const cartArray = isFromEditCart ? editCartProducts : buyNowProducts;
+  cartStore.addToCart(item, isFromEditCart);
+  cartArray.value = cartStore.cart.slice();
+  showCartModal.value = false;
+  if (item !== null) {
+    item.quantity = 1;
+  }
+  showToastWithMessage("Item has been added to cart");
+  if (!isFromEditCart && showAddtoCart.value) {
+    addToBuyNow(item);
+  }
+};
+
+const addToBuyNowAndCheckCart = () => {
+  if (!authStore.isAuthenticated) {
+    authStore.setIntendedRoute('/checkoutshop');
+    showLoginModal.value = true;
+  } else {
+    addToBuyNow(selectedProduct.value);
+  }
+};
+
+const addToBuyNow = (item) => {
+  buyNowProducts.value.push(item);
+};
+
+const totalItemsInCart = computed(() => {
+  return cartStore.cart.reduce((total, item) => total + item.quantity, 0);
+});
+
+watch(cartStore.cart, (newCart) => {
+  editCartProducts.value = [...newCart];
+}, { deep: true });
+
+watch(selectedProduct, (newValue) => {
+  const isBestProduct = bestProducts.some(product => product.title === newValue.title);
+  selectedProductImages.value = newValue ? (isBestProduct ? newValue.image : newValue.image) || [] : [];
+  selectedProductIsFromBestProducts.value = isBestProduct;
+});
+
+const changeImage = () => {
+  currentIndex.value = (currentIndex.value + 1) % selectedProductImages.value.length;
+};
+
+const updateCurrentImage = (image) => {
+  currentIndex.value = selectedProductImages.value.findIndex(img => img === image);
+  currentImage.value = image;
+};
+
+const currentImage = computed(() => {
+  return selectedProductImages.value[currentIndex.value] || '';
+});
+
+const clearCartAndNavigate = () => {
+  cartStore.clearCart();
+};
+
+const isCartEmpty = computed(() => {
+  return cartStore.cart.length === 0;
+});
+
+const paginatedItems = computed(() => {
+  return items.slice(0, 2 + numFeedbackShown.value);
+});
+
+const showSeeMoreButton = computed(() => {
+  return numFeedbackShown.value < items.length - 2;
+});
+
+const seeMore = () => {
+  numFeedbackShown.value += 2;
+  if (!showSeeMoreButton.value) {
+    showSeeLessButton.value = true;
+  }
+};
+
+const seeLess = () => {
+  numFeedbackShown.value = 0;
+  showSeeLessButton.value = false;
+};
+
+const increment = () => {
+  count.value++;
+};
+
+const decrement = () => {
+  if (count.value > 0) {
+    count.value--;
+  }
+};
+
+const toggleshowCart = (item) => {
+  selectedProduct.value = item;
+  showCart.value = true;
+};
+
+const openCartModal = () => {
+  showCartModal.value = true;
+};
+
+const closeLoginModal = () => {
+  showLoginModal.value = false;
+};
+
+const closeCart = () => {
+  showCart.value = false;
+};
+
+const closeModal = () => {
+  showCartModal.value = false;
+};
+
+const toggleshowReviews = () => {
+  showReviews.value = true;
+  showCart.value = false;
+};
+
+const closeReviews = () => {
+  showReviews.value = false;
+  showCart.value = true;
+};
+
+const increaseQuantity = () => {
+  selectedProduct.value.quantity++;
+};
+
+const decreaseQuantity = () => {
+  if (selectedProduct.value.quantity > 1) {
+    selectedProduct.value.quantity--;
+  }
+};
+
+const showToastWithMessage = (message) => {
+  toastMessage.value = message;
+  showToast.value = true;
+  setTimeout(() => {
+    showToast.value = false;
+    toastMessage.value = "";
+  }, 3000);
+};
+
+const hideToast = () => {
+  showToast.value = false;
+  toastMessage.value = "";
+};
 </script>
+

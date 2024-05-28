@@ -290,6 +290,9 @@ import item6 from '@/assets/images/CategoryView/ToShop/century.jpeg';
 import item7 from '@/assets/images/CategoryView/ToShop/glorietta.jpeg';
 import item8 from '@/assets/images/CategoryView/ToShop/bangkal.jpeg';
 import axios from 'axios';
+import { useCartStore } from '@/stores/toShopCart';
+
+const useToShop  = useCartStore();
 const router = useRouter();
 
 const model = reactive({
@@ -557,15 +560,14 @@ const handleGlobalClick = (event) => {
 };
 
 const seeMore = (item) => {
-    console.log(item);
+     useToShop.getShopData(item);
     const { latitude, longitude } = extractLatLong(item.maplink);
     if (latitude !== null && longitude !== null) {
         router.push({
             name: 'makati',
             query: {
                 latitude,
-                longitude,
-                item: JSON.stringify(item) 
+                longitude, 
             }
         });
     } else {

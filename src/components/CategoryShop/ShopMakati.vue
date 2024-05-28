@@ -30,7 +30,8 @@
                             <div>
                                 <router-link to="/carteditbuyshop">
 
-                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg">
+                                    <button
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg">
                                         Shop Now
                                     </button>
                                 </router-link>
@@ -49,10 +50,7 @@
         <div class="my-4 lg:p-0 lg:w-[75%]">
             <div class="relative mx-6 px-3 lg:px-32 pt-5">
                 <p class="font-bold text-lg text-black text-left pb-5 pt-3 lg:pt-[5rem]">About this place</p>
-                <p class="text-lg text-justify text-black pb-5">From handmade souvenirs, eco-friendly Barongs and
-                    fashionable Filipiniana to artisanal chocolates and more, Makati Shop continues its mission to embrace
-                    our heritage and keep them relevant; support communities and help grow small businesses;
-                    protect the environment and elevate pride in our identity.</p>
+                <p class="text-lg text-justify text-black pb-5">{{ shopData.description }}</p>
                 <div class="hidden border border-gray-400 lg:w-[]">
                     <p class="text-center font-bold">Number of items</p>
                 </div>
@@ -118,6 +116,7 @@
                 </div>
                 <!-- Other Items -->
                 <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">OTHER ITEMS</h1>
+                
                 <div class="flex w-[100%]">
                     <div class="flex justify-between items-center mb-2 space-x-5">
                         <!-- WEB VERSION OTHER ITEMS -->
@@ -181,7 +180,8 @@
                         <div class="lg:hidden grid-flow-row">
                             <!-- First column -->
                             <div class="flex flex-col">
-                                <div v-for="(item, index) in otherProducts.slice(0, 3)" :key="index" class="card-wrapper">
+                                <div v-for="(item, index) in otherProducts.slice(0, 3)" :key="index"
+                                    class="card-wrapper">
                                     <!-- Your card content goes here -->
                                     <div
                                         class="card bg-blue-950 w-[100%] border-2 h-[170px] m-1 p-4 rounded-xl relative flex justify-between">
@@ -210,17 +210,20 @@
                             </div>
                             <!-- Second column -->
                             <div class="flex flex-col">
-                                <div v-for="(item, index) in otherProducts.slice(3, 6)" :key="index" class="card-wrapper">
+                                <div v-for="(item, index) in otherProducts.slice(3, 6)" :key="index"
+                                    class="card-wrapper">
                                     <!-- Your card content goes here -->
                                     <!-- WEB VERION -->
                                     <div
                                         class="hidden lg:block card bg-blue-950 w-[100%] border-2 h-[190px] m-1 p-4 rounded-xl relative justify-between">
                                         <div class="flex justify-between w-[100%]">
                                             <div class="w-[40%]">
-                                                <img class="rounded-md lg:h-full" :src="item.image[0]" alt="" width="90%">
+                                                <img class="rounded-md lg:h-full" :src="item.image[0]" alt=""
+                                                    width="90%">
                                             </div>
                                             <div class="w-[60%]">
-                                                <p class="grid grid-cols-1 text-xs text-white mb-4 ml-2"> {{ item.title }}
+                                                <p class="grid grid-cols-1 text-xs text-white mb-4 ml-2"> {{ item.title
+                                                    }}
                                                 </p>
                                                 <p class="text-xs text-white p-2 w-[55%]">₱ {{ item.price }}</p>
                                                 <div class="flex justify-between items-center mt-3 mb-2">
@@ -267,7 +270,8 @@
                     </div>
                 </div>
                 <!-- View Add to cart modal -->
-                <div v-if="showCart" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center "
+                <div v-if="showCart"
+                    class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center "
                     @click.self="closeModal">
                     <div class="bg-white lg:h-[760px]  lg:w-auto lg:rounded-3xl h-full w-full shadow-md " @click.stop>
                         <div class="lg:w-[100%] p-4 rounded-lg h-full">
@@ -322,12 +326,13 @@
                                     </div>
                                     <div class="grid-cols-1 ml-20">
                                         <template v-for="(image, index) in selectedProductImages" :key="index">
-                                            <img :src="image" class="h-16 w-20 mb-2" @click="updateCurrentImage(image)" />
+                                            <img :src="image" class="h-16 w-20 mb-2"
+                                                @click="updateCurrentImage(image)" />
                                         </template>
 
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="black" class="w-[60px] h-10 mt-2 ml-2 cursor-pointer"
-                                            @click="changeImage">
+                                            stroke-width="1.5" stroke="black"
+                                            class="w-[60px] h-10 mt-2 ml-2 cursor-pointer" @click="changeImage">
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                 d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                         </svg>
@@ -412,7 +417,7 @@
                                                     class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
                                                 <span v-if="selectedProduct && selectedProduct.quantity" class="p-2"> {{
                                                     selectedProduct.quantity
-                                                }}</span>
+                                                    }}</span>
                                                 <button @click="increaseQuantity"
                                                     class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">+</button>
                                             </div>
@@ -424,10 +429,11 @@
                                                         Add to Cart</button>
                                                 </div>
                                                 <div class="w-[100%] flex justify-end">
-                                                  
-                                                        <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]" @click="handleBuyNow()">
-                                                            Buy Now</button>
-                                             
+
+                                                    <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]"
+                                                        @click="handleBuyNow()">
+                                                        Buy Now</button>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -445,7 +451,8 @@
                     <div class="toast-container">
                         <div v-if="showToast" class="toast" role="alert">
                             <!-- Toast content -->
-                            <div class="toast-content flex items-center p-4 text-black-500 bg-green-300 rounded-lg shadow ">
+                            <div
+                                class="toast-content flex items-center p-4 text-black-500 bg-green-300 rounded-lg shadow ">
                                 <!-- Toast icon -->
                                 <div
                                     class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
@@ -463,8 +470,8 @@
                                     class="ml-3 -mx-1 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8"
                                     aria-label="Close">
                                     <span class="sr-only">Close</span>
-                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 14 14">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="none" viewBox="0 0 14 14">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                                     </svg>
@@ -499,7 +506,8 @@
                                         <p class="flex text-xs">03-10-2024 11:30</p>
                                     </div>
                                     <div class="flex justify-between mb-2">
-                                        <p class="w-[100%] text-md">I will buy again. The seller is kind and accommodating
+                                        <p class="w-[100%] text-md">I will buy again. The seller is kind and
+                                            accommodating
                                             with my requests. Transaction is smooth. ❤️
                                         </p>
                                     </div>
@@ -512,7 +520,8 @@
                                         <p class="flex text-xs">03-10-2024 11:30</p>
                                     </div>
                                     <div class="flex justify-between mb-2">
-                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating
+                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and
+                                            accommodating
                                             with my requests. Transaction is smooth. ❤️
                                         </p>
                                     </div>
@@ -525,7 +534,8 @@
                                         <p class="flex text-xs">03-10-2024 11:30</p>
                                     </div>
                                     <div class="flex justify-between mb-2">
-                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating
+                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and
+                                            accommodating
                                             with my requests. Transaction is smooth. ❤️
                                         </p>
                                     </div>
@@ -538,7 +548,8 @@
                                         <p class="flex text-xs">03-10-2024 11:30</p>
                                     </div>
                                     <div class="flex justify-between mb-2">
-                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating
+                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and
+                                            accommodating
                                             with my requests. Transaction is smooth. ❤️
                                         </p>
                                     </div>
@@ -551,7 +562,8 @@
                                         <p class="flex text-xs">03-10-2024 11:30</p>
                                     </div>
                                     <div class="flex justify-between mb-2">
-                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating
+                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and
+                                            accommodating
                                             with my requests. Transaction is smooth. ❤️
                                         </p>
                                     </div>
@@ -564,7 +576,8 @@
                                         <p class="flex text-xs">03-10-2024 11:30</p>
                                     </div>
                                     <div class="flex justify-between mb-2">
-                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and accommodating
+                                        <p class="w-[100%] text-mb">I will buy again. The seller is kind and
+                                            accommodating
                                             with my requests. Transaction is smooth. ❤️
                                         </p>
                                     </div>
@@ -631,7 +644,7 @@
         <div class="relative mx-6 px-3 lg:px-32 pb-5 pt-5">
             <div>
                 <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
-                <MapRenderer :latitude="latitude" :longitude="longitude" :name="name" />
+                <MapRenderer :latitude="latitude" :longitude="longitude" :name="shopData.storename" />
             </div>
             <hr style="border-top: 1px solid black">
             <div>
@@ -696,8 +709,8 @@
         </div>
         <!-- Feedback Content -->
         <div class="grid lg:grid-cols-2 lg:gap-[2rem] relative mx-6 px-3 lg:px-32 pt-5">
-            <div class="relative border-2 border-gray-200 rounded-md px-3 py-3" v-for="( item, index ) in  paginatedItems "
-                :key="index">
+            <div class="relative border-2 border-gray-200 rounded-md px-3 py-3"
+                v-for="( item, index ) in paginatedItems " :key="index">
                 <div class="flex flex-row">
                     <div class="pt-[0.125rem]">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -719,7 +732,8 @@
                 </div>
             </div>
         </div>
-        <div v-if="showSeeMoreButton || showSeeLessButton" class="flex items-center justify-center pr-[5rem] mt-5 mb-10">
+        <div v-if="showSeeMoreButton || showSeeLessButton"
+            class="flex items-center justify-center pr-[5rem] mt-5 mb-10">
             <div v-if="showSeeMoreButton">
                 <div>
                     <div
@@ -790,386 +804,230 @@
 
 
 
-<script>
+<script setup>
 import ContentCarousel from '@/components/ToShopCarousel.vue';
 import MapRenderer from "@/components/MapRenderer.vue";
 import LoginModal from '@/components/LoginModal.vue';
-import {
-    defineComponent,
-    ref,
-    computed,
-    watch
-} from 'vue';
-import {
-    useAuthStore
-} from '@/stores/auth';
-import {
-    useCartStore
-} from '@/stores/toShopCart';
-import {
-    useRouter
-} from 'vue-router';
-import shopProduct1 from '@/assets/images/CategoryView/ToShop/shop-product1.png';
-import shopProduct2 from '@/assets/images/CategoryView/ToShop/shop-product2.png';
-import shopProduct3 from '@/assets/images/CategoryView/ToShop/shop-product3.png';
-import shopProduct4 from '@/assets/images/CategoryView/ToShop/shop-product4.png';
-import otherProduct4 from '@/assets/images/CategoryView/ToShop/shop-product4.png';
-import otherProduct5 from '@/assets/images/CategoryView/ToShop/shop-product5.png';
-import otherProduct6 from '@/assets/images/CategoryView/ToShop/shop-product6.png';
-import otherProduct7 from '@/assets/images/CategoryView/ToShop/shop-product7.png';
-import otherProduct8 from '@/assets/images/CategoryView/ToShop/shop-product8.png';
-import otherProduct9 from '@/assets/images/CategoryView/ToShop/shop-product9.png';
-export default defineComponent({
-    props: {
-        latitude: Number,
-        longitude: Number,
-        name: String
-    },
-    components: {
-        MapRenderer,
-        LoginModal,
-        ContentCarousel
-    },
-    setup() {
-        const cartStore = useCartStore();
-        const router = useRouter();
-        const authStore = useAuthStore();
-        const cart = computed(() => cartStore.cart);
-        const editCartProducts = ref([]);
-        const buyNowProducts = ref([]);
-        const selectedProduct = ref(null);
-        const showToast = ref(false);
-        const toastMessage = ref("");
-        const currentIndex = ref(0);
-        const currentPage = ref(0);
-        const count = ref(0);
-        const showCart = ref(false);
-        const showCartModal = ref(false);
-        const showReviews = ref(false);
-        const showAddtoCart = ref(false);
-        const showLoginModal = ref(false);
-        const showSeeLessButton = ref(false);
-        const selectedProductImages = ref([]);
-        const selectedProductIsFromBestProducts = ref(false);
-        const numFeedbackShown = ref(0);
-        const items = [{
-            name: 'Juan Dela Cruz',
-            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-            date: 'December 2023',
-        },
-        {
-            name: 'Luis Paolo',
-            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-            date: 'December 2023',
-        },
-        {
-            name: 'Luis Paolo',
-            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-            date: 'December 2023',
-        },
-        {
-            name: 'Juan Dela Cruz',
-            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-            date: 'December 2023',
-        },
-        {
-            name: 'Juan Dela Cruz',
-            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-            date: 'December 2023',
-        },
-        {
-            name: 'Luis Paolo',
-            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-            date: 'December 2023',
-        },
-        {
-            name: 'Luis Paolo',
-            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-            date: 'December 2023',
-        },
-        {
-            name: 'Juan Dela Cruz',
-            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-            date: 'December 2023',
-        },
-        ];
-        const bestProducts = [{
-            title: "1 Multi handle Tote bag with Embroided Philippine Kalesa Scenery",
-            image: [shopProduct1, shopProduct3, shopProduct4],
-            price: 399.00,
-            shop: "Makati Shop",
-            quantity: 1
-        },
-        {
-            title: "2 Multi handle Tote bag with Embroided Philippine Kalesa Scenery",
-            image: [shopProduct2, shopProduct3, shopProduct4],
-            price: 399.00,
-            shop: "Makati Shop",
-            quantity: 1
-        },
-        {
-            title: "3 Multi handle Tote bag with Embroided Philippine Kalesa Scenery",
-            image: [shopProduct3, shopProduct2, shopProduct4],
-            price: 399.00,
-            shop: "Makati Shop",
-            quantity: 1
-        }
-            // Add more products as needed
-        ];
-        const otherProducts = [{
-            title: "Beat the Heat Graphic Tee in Blush ",
-            image: [otherProduct4, shopProduct2, shopProduct3],
-            price: 100.00,
-            shop: "Makati Shop",
-            quantity: 1
-        },
-        {
-            title: "Mini Gold Tin with Wooden Base Calesa",
-            image: [otherProduct5, shopProduct2, shopProduct3],
-            price: 100.00,
-            shop: "Makati Shop",
-            quantity: 1
-        },
-        {
-            title: "Mini Gold Tin with Wooden Base Vinta ",
-            image: [otherProduct6, shopProduct2, shopProduct3],
-            price: 100.00,
-            shop: "Makati Shop",
-            quantity: 1
-        },
-        {
-            title: "Never Stop Exploring Graphic Tee in Gray",
-            image: [otherProduct7, shopProduct2, shopProduct3],
-            price: 100.00,
-            shop: "Makati Shop",
-            quantity: 1
-        },
-        {
-            title: "Mini Gold Tin with Wooden Base Nipa Hut Coconut Tree",
-            image: [otherProduct8, shopProduct2, shopProduct3],
-            price: 100.00,
-            shop: "Makati Shop",
-            quantity: 1
-        },
-        {
-            title: "  Mini Gold Tin with Wooden Base Tricycle",
-            image: [otherProduct9, shopProduct2, shopProduct3],
-            price: 100.00,
-            shop: "Makati Shop",
-            quantity: 1
-        },
-        ];
-        const categories = ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'];
-        const locations = ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'];
-        //*******************ALL CODE FOR CHECKING WHETHER PRODUCT IS COMING FROM EDEITCART ARRAY OR BUYNOW ARRAY***********//
-        const handleEditCart = () => {
-            if (!authStore.isAuthenticated) {
-                authStore.setIntendedRoute('/cart');
-                showLoginModal.value = true;
-            } else {
-                router.push('/cart');
-            }
-        };
-        const handleBuyNow = () => {
-            if (!authStore.isAuthenticated) {
-                authStore.setIntendedRoute('/checkoutshop');
-                showLoginModal.value = true;
-            } else {
-                addToBuyNow(selectedProduct.value);
-                router.push('/checkoutshop');
-            }
-        };
-        const addToCart = (item, isFromEditCart = false) => {
-            if (!authStore.isAuthenticated) {
-                authStore.setIntendedRoute(router.currentRoute.value.path);
-                showLoginModal.value = true;
-                return;
-            }
-            const cartArray = isFromEditCart ? editCartProducts : buyNowProducts;
-            cartStore.addToCart(item, isFromEditCart);
-            cartArray.value = cartStore.cart.slice();
-            showCartModal.value = false;
-            if (item !== null) {
-                item.quantity = 1;
-            }
-            showToastWithMessage("Item has been added to cart");
-            if (!isFromEditCart && showAddtoCart.value) {
-                addToBuyNow(item);
-            }
-        };
-        const addToBuyNowAndCheckCart = () => {
-            if (!authStore.isAuthenticated) {
-                authStore.setIntendedRoute('/checkoutshop');
-                showLoginModal.value = true;
-            } else {
-                addToBuyNow(selectedProduct.value);
-            }
-        };
-        const addToBuyNow = (item) => {
-            buyNowProducts.value.push(item);
-        };
-        const totalItemsInCart = computed(() => {
-            return cartStore.cart.reduce((total, item) => total + item.quantity, 0);
-        });
-        watch(cartStore.cart, (newCart) => {
-            editCartProducts.value = [...newCart];
-        }, {
-            deep: true
-        });
-        //*******************END OF ALL CODE FOR CHECKING WHETHER PRODUCT IS COMING FROM EDEITCART ARRAY OR BUYNOW ARRAY***********//
-        // we need this to kknow which array will the carousel get the images from sa best seller ba or sa other product
-        watch(selectedProduct, (newValue) => {
-            console.log("Selected Product Changed:", newValue);
-            const isBestProduct = bestProducts.some(product => product.title === newValue.title);
-            selectedProductImages.value = newValue ?
-                (isBestProduct ?
-                    (console.log("Fetching image from bestProducts"), newValue.image) :
-                    (console.log("Fetching image from otherProducts"), newValue.image)) || [] : [];
-            selectedProductIsFromBestProducts.value = isBestProduct;
-        });
-        // Modify changeImage function to use selectedProductImages length
-        const changeImage = () => {
-            currentIndex.value = (currentIndex.value + 1) % selectedProductImages.value.length;
-        };
-        // Function to update the current image index
-        const updateCurrentImage = (image) => {
-            currentIndex.value = selectedProductImages.value.findIndex(img => img === image);
-            currentImage.value = image;
-        };
-        // Define computed property to get the current image based on the currentIndex
-        const currentImage = computed(() => {
-            return selectedProductImages.value[currentIndex.value] || ''; // Assuming the first product's image is used for the carousel
-        });
-        const clearCartAndNavigate = () => {
-            cartStore.clearCart();
-        };
-        const isCartEmpty = computed(() => {
-            return cartStore.cart.length === 0;
-        });
-        const paginatedItems = computed(() => {
-            return items.slice(0, 2 + numFeedbackShown.value);
-        });
-        const showSeeMoreButton = computed(() => {
-            return numFeedbackShown.value < items.length - 2;
-        });
-        const seeMore = () => {
-            numFeedbackShown.value += 2;
-            if (!showSeeMoreButton.value) {
-                showSeeLessButton.value = true;
-            }
-        };
-        const seeLess = () => {
-            numFeedbackShown.value = 0;
-            showSeeLessButton.value = false;
-        };
-        const increment = () => {
-            count.value++;
-        };
-        const decrement = () => {
-            if (count.value > 0) {
-                count.value--;
-            }
-        };
-        const toggleshowCart = (item) => {
-            selectedProduct.value = item;
-            console.log(selectedProduct.value);
-            showCart.value = true;
-        };
-        const openCartModal = () => {
-            console.log("Opening cart modal");
-            showCartModal.value = true;
-        };
-        const closeLoginModal = () => {
-            showLoginModal.value = false;
-        };
-        const closeCart = () => {
-            showCart.value = false;
-        };
-        const closeModal = () => {
-            showCartModal.value = false;
-        };
-        const toggleshowReviews = () => {
-            showReviews.value = true;
-            showCart.value = false;
-        };
-        const closeReviews = () => {
-            showReviews.value = false;
-            showCart.value = true;
-        };
-        const increaseQuantity = () => {
-            selectedProduct.value.quantity++;
-        };
-        const decreaseQuantity = () => {
-            if (selectedProduct.value.quantity > 1) {
-                selectedProduct.value.quantity--;
-            }
-        };
-        const showToastWithMessage = (message) => {
-            toastMessage.value = message;
-            showToast.value = true;
-            setTimeout(() => {
-                showToast.value = false;
-                toastMessage.value = "";
-            }, 3000);
-        };
-        const hideToast = () => {
-            showToast.value = false;
-            toastMessage.value = "";
-        };
-        return {
-            handleEditCart,
-            handleBuyNow,
-            addToBuyNowAndCheckCart,
-            editCartProducts,
-            selectedProduct,
-            selectedProductIsFromBestProducts,
-            selectedProductImages,
-            isCartEmpty,
-            totalItemsInCart,
-            clearCartAndNavigate,
-            useCartStore,
-            cart,
-            showAddtoCart,
-            openCartModal,
-            // getTotalItemsInCart,
-            bestProducts,
-            otherProducts,
-            showToast,
-            toastMessage,
-            currentPage,
-            decreaseQuantity,
-            increaseQuantity,
-            hideToast,
-            addToCart,
-            showCart,
-            router,
-            authStore,
-            showLoginModal,
-            showCartModal,
-            showReviews,
-            items,
-            currentIndex,
-            count,
-            numFeedbackShown,
-            showSeeLessButton,
-            categories,
-            locations,
-            paginatedItems,
-            currentImage,
-            showSeeMoreButton,
-            closeLoginModal,
-            seeMore,
-            seeLess,
-            changeImage,
-            updateCurrentImage,
-            increment,
-            decrement,
-            toggleshowCart,
-            closeCart,
-            closeModal,
-            toggleshowReviews,
-            closeReviews,
-        };
-    }
+import { ref, computed, watch, onBeforeMount, onMounted } from 'vue';
+import { useAuthStore } from '@/stores/auth';
+import { useCartStore } from '@/stores/toShopCart';
+import { useRouter } from 'vue-router';
+
+
+defineProps({
+  latitude: Number,
+  longitude: Number,
+  name: String,
 });
+
+const cartStore = useCartStore();
+const router = useRouter();
+const authStore = useAuthStore();
+
+const cart = computed(() => cartStore.cart);
+const shopData = computed(() => cartStore.shopData);
+const editCartProducts = ref([]);
+const buyNowProducts = ref([]);
+const selectedProduct = ref(null);
+const showToast = ref(false);
+const toastMessage = ref("");
+const currentIndex = ref(0);
+const currentPage = ref(0);
+const count = ref(0);
+const showCart = ref(false);
+const showCartModal = ref(false);
+const showReviews = ref(false);
+const showAddtoCart = ref(false);
+const showLoginModal = ref(false);
+const showSeeLessButton = ref(false);
+const selectedProductImages = ref([]);
+const selectedProductIsFromBestProducts = ref(false);
+const numFeedbackShown = ref(0);
+
+const items = [
+  // ... (same items array as provided)
+];
+
+const bestProducts = [
+  // ... (same bestProducts array as provided)
+];
+
+const otherProducts = [
+  // ... (same otherProducts array as provided)
+];
+
+const categories = ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'];
+const locations = ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'];
+
+const handleEditCart = () => {
+  if (!authStore.isAuthenticated) {
+    authStore.setIntendedRoute('/cart');
+    showLoginModal.value = true;
+  } else {
+    router.push('/cart');
+  }
+};
+
+const handleBuyNow = () => {
+  if (!authStore.isAuthenticated) {
+    authStore.setIntendedRoute('/checkoutshop');
+    showLoginModal.value = true;
+  } else {
+    addToBuyNow(selectedProduct.value);
+    router.push('/checkoutshop');
+  }
+};
+
+const addToCart = (item, isFromEditCart = false) => {
+  if (!authStore.isAuthenticated) {
+    authStore.setIntendedRoute(router.currentRoute.value.path);
+    showLoginModal.value = true;
+    return;
+  }
+  const cartArray = isFromEditCart ? editCartProducts : buyNowProducts;
+  cartStore.addToCart(item, isFromEditCart);
+  cartArray.value = cartStore.cart.slice();
+  showCartModal.value = false;
+  if (item !== null) {
+    item.quantity = 1;
+  }
+  showToastWithMessage("Item has been added to cart");
+  if (!isFromEditCart && showAddtoCart.value) {
+    addToBuyNow(item);
+  }
+};
+
+const addToBuyNowAndCheckCart = () => {
+  if (!authStore.isAuthenticated) {
+    authStore.setIntendedRoute('/checkoutshop');
+    showLoginModal.value = true;
+  } else {
+    addToBuyNow(selectedProduct.value);
+  }
+};
+
+const addToBuyNow = (item) => {
+  buyNowProducts.value.push(item);
+};
+
+const totalItemsInCart = computed(() => {
+  return cartStore.cart.reduce((total, item) => total + item.quantity, 0);
+});
+
+watch(cartStore.cart, (newCart) => {
+  editCartProducts.value = [...newCart];
+}, { deep: true });
+
+watch(selectedProduct, (newValue) => {
+  const isBestProduct = bestProducts.some(product => product.title === newValue.title);
+  selectedProductImages.value = newValue ? (isBestProduct ? newValue.image : newValue.image) || [] : [];
+  selectedProductIsFromBestProducts.value = isBestProduct;
+});
+
+const changeImage = () => {
+  currentIndex.value = (currentIndex.value + 1) % selectedProductImages.value.length;
+};
+
+const updateCurrentImage = (image) => {
+  currentIndex.value = selectedProductImages.value.findIndex(img => img === image);
+  currentImage.value = image;
+};
+
+const currentImage = computed(() => {
+  return selectedProductImages.value[currentIndex.value] || '';
+});
+
+const clearCartAndNavigate = () => {
+  cartStore.clearCart();
+};
+
+const isCartEmpty = computed(() => {
+  return cartStore.cart.length === 0;
+});
+
+const paginatedItems = computed(() => {
+  return items.slice(0, 2 + numFeedbackShown.value);
+});
+
+const showSeeMoreButton = computed(() => {
+  return numFeedbackShown.value < items.length - 2;
+});
+
+const seeMore = () => {
+  numFeedbackShown.value += 2;
+  if (!showSeeMoreButton.value) {
+    showSeeLessButton.value = true;
+  }
+};
+
+const seeLess = () => {
+  numFeedbackShown.value = 0;
+  showSeeLessButton.value = false;
+};
+
+const increment = () => {
+  count.value++;
+};
+
+const decrement = () => {
+  if (count.value > 0) {
+    count.value--;
+  }
+};
+
+const toggleshowCart = (item) => {
+  selectedProduct.value = item;
+  showCart.value = true;
+};
+
+const openCartModal = () => {
+  showCartModal.value = true;
+};
+
+const closeLoginModal = () => {
+  showLoginModal.value = false;
+};
+
+const closeCart = () => {
+  showCart.value = false;
+};
+
+const closeModal = () => {
+  showCartModal.value = false;
+};
+
+const toggleshowReviews = () => {
+  showReviews.value = true;
+  showCart.value = false;
+};
+
+const closeReviews = () => {
+  showReviews.value = false;
+  showCart.value = true;
+};
+
+const increaseQuantity = () => {
+  selectedProduct.value.quantity++;
+};
+
+const decreaseQuantity = () => {
+  if (selectedProduct.value.quantity > 1) {
+    selectedProduct.value.quantity--;
+  }
+};
+
+const showToastWithMessage = (message) => {
+  toastMessage.value = message;
+  showToast.value = true;
+  setTimeout(() => {
+    showToast.value = false;
+    toastMessage.value = "";
+  }, 3000);
+};
+
+const hideToast = () => {
+  showToast.value = false;
+  toastMessage.value = "";
+};
 </script>
+

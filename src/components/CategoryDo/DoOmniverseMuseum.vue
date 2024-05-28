@@ -4,7 +4,7 @@
             <div class="bg-[#102E61] h-[101%] lg:h-[105%]" style="position: absolute; top: 0; left: 0; width: 100%; ">
             </div>
             <div class="relative inset-0 sm:top-56 md:top-2 pl-0 md:pl-10 flex items-center z-[1]">
-                <div class="relative flex flex-col pl-0 lg:pl-10">
+                <div class="relative flex flex-col pl-0 lg:pl-14">
                     <div class="absolute lg:top-4 lg:left-3 top-4 z-[1]">
                         <router-link to="/category/do">
 
@@ -18,21 +18,26 @@
                             </a>
                         </router-link>
                     </div>
-                   <div class="relative flex flex-col items-center">
-    <div class="lg:pr-[4rem]">
-      <ContentCarousel :items="items" class="mb-10" />
+                    <div class="relative flex flex-col items-center ml-18 mt-8 mb-12 mr-18">
+             
+            
+                               
+                    <div class=" lg:pr-[7rem]">
+                                    <Carousel  :imageUrls="imageUrls" />
 
-
-                            <!-- <div class="hidden col-span-2 md:grid md:grid-cols-2 gap-4 ">
-                                <img src="@/assets/images/CategoryView/ToDo/Wonder Woman.png" alt=""
+                         <!--    <img src="@/assets/images/CategoryView/ToDo/omni.jpg" alt=""
+                                class="col-span-3 w-[100%] h-full lg:w-[97%] lg:h-[95%] rounded-l-3xl"> -->
+                            <div class="hidden col-span-2 md:grid md:grid-cols-2 gap-4 ">
+                             
+                                <!-- <img src="@/assets/images/CategoryView/ToDo/Wonder Woman.png" alt=""
                                     class="lg:w-[100%] lg:h-[90%]">
                                 <img src="@/assets/images/CategoryView/ToDo/Avengers.png" alt=""
                                     class="lg:w-[100%] lg:h-[90%] rounded-tr-3xl">
                                 <img src="@/assets/images/CategoryView/ToDo/Iron Man Set.png" alt=""
                                     class="lg:w-[100%] lg:h-[90%]">
                                 <img src="@/assets/images/CategoryView/ToDo/Iron Man Set.png" alt=""
-                                    class="lg:w-[100%] lg:h-[90%] rounded-br-3xl">
-                            </div> -->
+                                    class="lg:w-[100%] lg:h-[90%] rounded-br-3xl"> -->
+                            </div>
                         </div>
                         <!-- <div class="absolute bottom-2 right-[8rem] z-20 w-100">
 
@@ -46,23 +51,22 @@
 
 
                     <div class="flex flex-col pl-8 lg:pl-8 lg:order-first">
-                        <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">Omniverse</h1>
-                        <p class="text-md text-white text-left pb-5">Museum</p>
+                        <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">{{storedetails.storename}}</h1>
+                        <p class="text-md text-white text-left pb-5"></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+      
+
+
     <div class="relative mx-6 px-3 lg:px-32 pt-5">
 
 
         <p class="font-bold text-lg text-black text-left pb-5 pt-3 lg:pt-[5rem]">About this place</p>
-        <p class="text-lg text-justify text-black pb-5">Discover a fusion of art and technology at the Omniverse Museum
-            in Makati. Step into a world of interactive exhibits, mind-bending installations, and awe-inspiring virtual
-            reality experiences. This unique museum promises a captivating journey through the realms of creativity and
-            innovation. Whether you're an art enthusiast or a tech-savvy explorer, the Omniverse Museum is a must-visit
-            destination for an extraordinary adventure.</p>
+        <p class="text-lg text-justify text-black pb-5">{{storedetails.description}}</p>
 
 
         <div class="flex flex-row">
@@ -74,8 +78,7 @@
                         d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                 </svg>
             </div>
-            <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">Omniverse Museum Japan Town 4/F Glorietta 2,
-                Ayala Center Makati Palm Dr, Makati Ave, Makati, 1224 Metro Manila</p>
+            <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">{{storedetails.address}}</p>
         </div>
 
         <div class="flex flex-row">
@@ -88,7 +91,7 @@
 
             </div>
             <div class="flex flex-col pl-2.5">
-                <p class="text-lg md:text-black text-left pb-5">Tuesday to Sunday | 12:00 PM to 8:00 PM</p>
+                <p class="text-lg md:text-black text-left pb-5">{{storedetails.storehours}}</p>
 
             </div>
         </div>
@@ -104,12 +107,17 @@
                 </svg>
 
             </div>
-            <p class="text-lg md:text-black text-left pl-2.5 pb-5">0915 009 1034</p>
+            <p class="text-lg md:text-black text-left pl-2.5 pb-5">{{storedetails.storecontact}}</p>
         </div>
 
-     
+        <h1 class="font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SPOT IN HERE IN {{storedetails.storename}}</h1>
 
-    
+      <!--   <ContentCarousel class="mb-10" /> -->
+
+   <!--      start carousel -->
+
+
+    <!--     end of carousel -->
 
 
     </div>
@@ -119,14 +127,47 @@
         <div class="relative mx-6 px-3 lg:px-32 pb-2 pt-5">
             <div>
                 <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
+               
                 <MapRenderer :latitude="latitude" :longitude="longitude" :name="name" />
+
             </div>
             <hr style="border-top: 1px solid black">
             <div>
 
-                <h1 class="font-bold text-lg text-black text-left pt-10 pb-4">5.0 Ratings (500 Reviews)</h1>
-                <div class="grid lg:grid-cols-2">
+                <h1 class="font-bold text-lg text-black text-left pt-10 pb-4" v-for="(item, index) in storereviews"
+                :key="index">{{item.overall}} Ratings ({{item.countreview}} reviews)
+                <div v-if="item.countreview === 0">
+                    No reviews yet
+                </div>
 
+            </h1>
+
+                
+                
+                <div class="grid lg:grid-cols-2" v-for="(item, index) in storeratings"
+                :key="index">
+
+
+
+                    <div class="flex justify-evenly">
+                        <p class=" ext-lgmdext-black text-left pb-5">{{item.productid}}</p>
+                        <div class="my-2 mx-2 flex font-bold">
+                            <div class="h-2 w-[14rem] rounded-full bg-black">
+                                <div class="flex h-full rounded-md bg-brand-500" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        <p class=" ext-lgmdext-black text-left pb-5">{{item.averagerate}}</p>
+                    </div>
+
+                  <!--   <div class="flex justify-evenly">
+                        <p class=" ext-lgmdext-black text-left pb-5">Factor 1</p>
+                        <div class="my-2 mx-2 flex font-bold">
+                            <div class="h-2 w-[14rem] rounded-full bg-black">
+                                <div class="flex h-full rounded-md bg-brand-500" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        <p class=" ext-lgmdext-black text-left pb-5">5.0</p>
+                    </div>
 
 
                     <div class="flex justify-evenly">
@@ -149,7 +190,6 @@
                         <p class=" ext-lgmdext-black text-left pb-5">5.0</p>
                     </div>
 
-
                     <div class="flex justify-evenly">
                         <p class=" ext-lgmdext-black text-left pb-5">Factor 1</p>
                         <div class="my-2 mx-2 flex font-bold">
@@ -168,27 +208,7 @@
                             </div>
                         </div>
                         <p class=" ext-lgmdext-black text-left pb-5">5.0</p>
-                    </div>
-
-                    <div class="flex justify-evenly">
-                        <p class=" ext-lgmdext-black text-left pb-5">Factor 1</p>
-                        <div class="my-2 mx-2 flex font-bold">
-                            <div class="h-2 w-[14rem] rounded-full bg-black">
-                                <div class="flex h-full rounded-md bg-brand-500" style="width: 30%"></div>
-                            </div>
-                        </div>
-                        <p class=" ext-lgmdext-black text-left pb-5">5.0</p>
-                    </div>
-
-                    <div class="flex justify-evenly">
-                        <p class=" ext-lgmdext-black text-left pb-5">Factor 1</p>
-                        <div class="my-2 mx-2 flex font-bold">
-                            <div class="h-2 w-[14rem] rounded-full bg-black">
-                                <div class="flex h-full rounded-md bg-brand-500" style="width: 30%"></div>
-                            </div>
-                        </div>
-                        <p class=" ext-lgmdext-black text-left pb-5">5.0</p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -196,8 +216,32 @@
         <div class="grid lg:grid-cols-2 lg:gap-[2rem] relative mx-6 px-3 lg:px-32 pt-5">
             <!-- Feedback Content -->
 
+             <div class="relative border-2 border-gray-200 rounded-md px-3 py-3"  v-for="(item, index) in storeratings"
+                :key="index">
 
-            <div class="relative border-2 border-gray-200 rounded-md px-3 py-3" v-for="(item, index) in paginatedItems"
+                <div class="flex flex-row">
+                    <div class="pt-[0.125rem]">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-12 h-12">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="relative left-2 text-black text-lg xl:text-xl font-medium pb-3">
+                            {{ item.Comments }}
+                        </p>
+                        <p class="relative bottom-4 left-2 text-gray-600 text-lg">
+                        </p>
+                    </div>
+                </div>
+
+                <div class="p-2 w-full">
+                    <p class="text-justify text-black text-md leading-7"></p>
+                </div>
+            </div>
+
+           <!--  <div class="relative border-2 border-gray-200 rounded-md px-3 py-3" v-for="(item, index) in paginatedItems"
                 :key="index">
 
                 <div class="flex flex-row">
@@ -220,7 +264,7 @@
                 <div class="p-2 w-full">
                     <p class="text-justify text-black text-md leading-7">{{ item.description }}</p>
                 </div>
-            </div>
+            </div> -->
         </div>
 
 
@@ -263,25 +307,43 @@
 
 
 <script>
-import ContentCarousel from '@/components/ToDoCarousel.vue';
-import MapRenderer from "@/components/MapRenderer.vue";
+import landingPageImage1 from '@/assets/images/Banner/banner-1.png';
+import landingPageImage2 from '@/assets/images/Banner/banner-2.png';
+import landingPageImage3 from '@/assets/images/Banner/banner-3.png';
+import landingPageImage4 from '@/assets/images/Banner/banner-4.png';
+import landingPageImage5 from '@/assets/images/Banner/banner-5.png';
 
+import MapRenderer from "@/components/MapRenderer.vue";
+import Carousel from "@/components/ToDoCarousel.vue";
 
 
 
 
 export default {
-  props: {
-    latitude: Number,
-    longitude: Number,
-    name: String
-  },
-  components: {
-     ContentCarousel,
-    MapRenderer
-  },
- data() {
+    props: {
+        latitude: Number,
+        longitude: Number,
+        item: String,
+        imageList: String,
+    },
+    components: {
+        Carousel,
+        MapRenderer
+    },
+    mounted() {
+        this.imageArray = this.imageList;
+    console.log("list", this.imageArray);
+    this.shopId = this.$route.params.id;
+    console.log("id", this.shopId);
+    this.imageUrls = this.imageArray.split('|');
+    console.log(this.imageUrls);
+        //this.getId(this.$route.params.id);
+ 
+    },
+
+    data() {
         return {
+            imageUrls: [],
             items: [
                 {
                     name: 'Juan Dela Cruz',
@@ -337,15 +399,40 @@ export default {
             showDropdown: false,
             categories: ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'],
             locations: ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'],
+            // New property to track number of feedback items shown
             numFeedbackShown: 0,
-            showSeeLessButton: false
+            showSeeLessButton: false,
+            shopId: '',
+            omniverse:'',
+            id: '',
+            storedetails: '',
+            storeratings: '',
+            storereviews: '',
+
+            imageArray: '',
+            rateCustomerstatus: '',
+            localimageUrl: `${import.meta.env.VITE_STORAGE_BASE_URL}/`,
+            apiurlimage: 'http://makatiapi.simplevia.com/storage/uploadedfiles',
+             images: [
+                landingPageImage1,
+                landingPageImage2,
+                landingPageImage3,
+                landingPageImage4,
+                landingPageImage5
+              ],
+              currentIndex: 0
+
         };
+    },
+
+    created(){
+        this.id = this.$route.params.id;
+
     },
     computed: {
         paginatedItems() {
             // Return first 2 items initially and add additional items based on numFeedbackShown
             return this.items.slice(0, 2 + this.numFeedbackShown);
-       
         },
         // Check if there are more feedback items to show
         showSeeMoreButton() {
@@ -353,6 +440,18 @@ export default {
         }
     },
     methods: {
+         prev() {
+            if (this.currentIndex > 0) {
+      this.currentIndex--; // Decrease currentIndex
+    }
+        
+        },
+        next() {
+            if (this.currentIndex < this.imageUrls.length - 1) {
+      this.currentIndex++; // Increase currentIndex
+    }
+        },
+      
         // Method to handle "See More" button click
         seeMore() {
             // Increment the number of feedback items to show
@@ -369,6 +468,7 @@ export default {
             // Hide See Less button
             this.showSeeLessButton = false;
         }
-    },
+
+    }
 };
 </script>

@@ -57,14 +57,7 @@
                   <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Phone Number</p>
                   <p class="font-normal mb-3 text-gray-600">{{ user.phoneNumber }}</p>
                 </div>
-                <div class="flex lg:flex-col lg:items-start justify-start">
-                  <p class="mr-[128px] lg:mr-9 lg:mb-1 font-bold">Gender</p>
-                  <p class="font-normal mb-3 text-gray-600">{{ user.gender }}</p>
-                </div>
-                <div class="flex lg:flex-col lg:items-start justify-start">
-                  <p class="mr-[55px] lg:mr-9 lg:mb-1 font-bold">Citizen of Makati</p>
-                  <p class="font-normal mb-3 text-gray-600">{{ user.citizenofMakati }}</p>
-                </div>
+             
               </div>
               <div class="hidden lg:block">
                 <p class="font-bold text-3xl mb-4">Payment</p>
@@ -80,20 +73,7 @@
                       Ibayad</label>
                   </div>
                 </div>
-                <div class="mt-2 flex border rounded p-4 h-24"
-                  :class="{ 'bg-blue-100': selectedPaymentMethod === 'cod' }">
-                  <div class="flex items-center pr-3">
-                    <input id="payment_cod" name="payment_method" value="cod" @click="toggleCOD"
-                      class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                      type="radio" v-model="selectedPaymentMethod">
-                  </div>
-                  <div class="ms-2 text-sm">
-                    <label for="payment_cod" class="font-semibold text-l text-gray-700">
-                      Cash On Delivery</label>
-                    <p class="mt-2 font-bold text">Pay By Cash</p>
-                    <p class="text-s">Pay Cash Upon Delivery</p>
-                  </div>
-                </div>
+              
               </div>
             </div>
           </div>
@@ -113,7 +93,7 @@
                 <p class=" text-base font-bold">E-mail Address</p>
               </div>
               <div>
-                <p class="font-normal mb-2 text-base text-gray-600">{{ user.email }}</p>
+                <p class="font-normal mb-2 text-base text-gray-600 whitespace-nowrap">{{ user.email }}</p>
               </div>
               <div>
                 <p class=" text-base font-bold">Phone Number</p>
@@ -121,18 +101,7 @@
               <div>
                 <p class="font-normal mb-2 text-gray-600 text-base">{{ user.phoneNumber }}</p>
               </div>
-              <div>
-                <p class="text-base font-bold">Gender</p>
-              </div>
-              <div>
-                <p class="font-normal mb-2 text-gray-600 text-base">{{ user.gender }}</p>
-              </div>
-              <div>
-                <p class=" text-base font-bold">Citizen of Makati</p>
-              </div>
-              <div>
-                <p class="font-normal mb-2 text-gray-600 text-base">{{ user.citizenofMakati }}</p>
-              </div>
+          
             </div>
           </div>
         </div>
@@ -319,19 +288,7 @@
                     Ibayad</label>
                 </div>
               </div>
-              <div class="mt-2 flex border rounded p-4 h-24" :class="{ 'bg-blue-100': selectedPaymentMethod === 'cod' }">
-                <div class="flex items-center pr-3">
-                  <input id="payment_cod" name="payment_method" value="cod" @click="toggleCOD"
-                    class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                    type="radio" v-model="selectedPaymentMethod">
-                </div>
-                <div class="ms-2 text-sm">
-                  <label for="payment_cod" class="font-semibold text-l text-gray-700">
-                    Cash On Delivery</label>
-                  <p class="mt-2 font-bold text">Pay By Cash</p>
-                  <p class="text-s">Pay Cash Upon Delivery</p>
-                </div>
-              </div>
+            
             </div>
             <div class="justify-center pt-3">
               <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
@@ -516,8 +473,7 @@ export default {
         fullName: "Juan Dela Cruz",
         email: "Juandelacruz@gmail.com",
         phoneNumber: "09123456789",
-        gender: "Male",
-        citizenofMakati: "Yes"
+       
       }],
       hotels: [{
         image: "src/assets/images/CategoryView/ToStay/xyz.png",

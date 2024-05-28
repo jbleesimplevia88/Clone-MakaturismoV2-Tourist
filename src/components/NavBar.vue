@@ -201,9 +201,13 @@
                     <div class="hidden lg:flex items-center space-x-4">
                         <!-- Original Login Button -->
                         <button @click="openLoginModal" class="text-blue-600">Login</button>
+                        
                         <!-- Become a partner button -->
-                        <a class="hidden lg:block lg:bg-blue-500 lg:hover:bg-blue-700 lg:text-white lg:font-bold lg:py-2 lg:px-4 lg:border lg:border-blue-700 lg:rounded-lg"
-                            href="#">Become a partner</a>
+                 <a class="hidden lg:block lg:bg-blue-500 lg:hover:bg-blue-700 lg:text-white lg:font-bold lg:py-2 lg:px-4 lg:border lg:border-blue-700 lg:rounded-lg"
+    href="http://bizmakati.simplevia.com/" target="_blank">
+    Become a partner
+</a>
+
                     </div>
                 </div>
                 <!-- SIDEBAR NAVIGATION -->
@@ -406,7 +410,7 @@
             </div>
         </div>
         <div v-if="showPrivacyModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-            <div class="relative p-7 bg-white w-[90%] lg:w-[75%] lg:h-[70%] rounded-xl">
+            <div class="relative p-7 bg-white w-[90%] lg:w-[75%] lg:h-[60%] rounded-xl">
                 <!-- Modal Content -->
                 <div class="relative flex justify-end">
                     <button class="absolute ">
@@ -432,7 +436,7 @@
                         <!-- <div class="mb-5">
                   </div> -->
                         <!-- make it scrollable -->
-                        <div class="flex justify-between overflow-y-auto h-[230px] w-[100%] hidden-scrollbar mb-2">
+                        <div class="flex justify-between overflow-y-auto h-[290px] w-[100%] hidden-scrollbar mb-0">
                             <div class="flex flex-col">
                                 <p class="font-bold text-center text-2xl lg:text-3xl mb-5">Privacy Policy</p>
                                 <p class="font-bold mb-5">Collection of Personal Information:</p>
@@ -476,13 +480,13 @@
                             </div>
                         </div>
                         <div>
-                            <div class="flex items-center mt-10">
+                            <div class="flex items-center mt-8">
                                 <input type="checkbox" id="myCheckbox" class="form-checkbox h-5 w-5 text-blue-600 mr-2"
                                     v-model="checkboxChecked">
                                 <label for="myCheckbox" class="mar">I have read and agreed to the above Privacy Policy
                                     Agreement</label>
                             </div>
-                            <div class="text-center mt-5">
+                            <div class="text-center mt-8">
                                 <button type="submit"
                                     class="disabled:bg-blue-400 lg:w-[50%] w-full px-4 py-4 text-white bg-blue-600 rounded-md"
                                     @click="openSignUpModal" :disabled="!checkboxChecked">Continue</button>
@@ -790,7 +794,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="text-center mt-10">
+                        <div class="text-center mt-8">
                             <button type="submit" class="lg:w-[50%] w-full px-4 py-4 text-white bg-blue-600 rounded-md"
                                 @click="closeTC">Continue</button>
                         </div>
@@ -1754,7 +1758,7 @@ export default {
                     console.log(signupRes.user.id);
                     // Signup successful
                     this.showApproval = true;
-                    this.showChangepass = true;
+                    this.showChangepass = false;
                     this.showLoginModal = false;
                     this.showPrivacyModal = false;
                     this.showSignUpModal = false;

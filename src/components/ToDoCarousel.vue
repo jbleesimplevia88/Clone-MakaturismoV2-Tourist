@@ -2,8 +2,8 @@
   <div class="relative">
     <div class="overflow-hidden">
       <div class="flex transition-transform duration-300" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
-        <div v-for="(image, index) in images" :key="index" class="w-full flex-shrink-0">
-          <img :src="image" alt="carousel image" class="w-full h-[15rem] lg:h-[30rem] rounded-xl" />
+        <div v-for="(imageUrl, index) in imageUrls" :key="index" class="w-full flex-shrink-0">
+          <img :src="`${localimageUrl}${imageUrl}`" alt="carousel image" class="w-full h-[15rem] lg:h-[30rem] rounded-xl" />
         </div>
       </div>
     </div>
@@ -11,20 +11,18 @@
 </template>
 
 <script>
-import landingPageImage1 from '@/assets/images/CategoryView/ToDo/omnii.png';
-import landingPageImage2 from '@/assets/images/CategoryView/ToDo/ave.png';
-import landingPageImage3 from '@/assets/images/CategoryView/ToDo/iron.png';
-
 export default {
+  props: {
+    imageUrls: {
+      type: Array,
+      required: true
+    }
+  },
   data() {
     return {
-      images: [
-        landingPageImage1,
-        landingPageImage2,
-        landingPageImage3,
-      ],
       currentIndex: 0,
-      intervalId: null
+      intervalId: null,
+      localimageUrl: `${import.meta.env.VITE_STORAGE_BASE_URL}/`,
     };
   },
   mounted() {
@@ -39,10 +37,10 @@ export default {
       }, 3000); // Change image every 3 seconds
     },
     prev() {
-      this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+      this.currentIndex = (this.currentIndex - 1 + this.imageUrls.length) % this.imageUrls.length;
     },
     next() {
-      this.currentIndex = (this.currentIndex + 1) % this.images.length;
+      this.currentIndex = (this.currentIndex + 1) % this.imageUrls.length;
     }
   },
   beforeUnmount() {

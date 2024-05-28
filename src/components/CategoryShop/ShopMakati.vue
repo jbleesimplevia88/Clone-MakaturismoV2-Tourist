@@ -4,7 +4,7 @@
             <div class="bg-[#102E61] h-[101%] lg:h-[110%]" style="position: absolute; top: 0px; left: 0; width: 100%; ">
             </div>
             <div class=" z-[1]">
-                <div class="relative flex flex-col pl-0 lg:pl-10">
+                <div class="relative flex flex-col lg:pl-28">
                     <div class="absolute lg:top-4 lg:left-3 top-4 z-[1]">
                         <router-link to="/category/shop">
                             <a class=" flex items-center">
@@ -424,10 +424,10 @@
                                                         Add to Cart</button>
                                                 </div>
                                                 <div class="w-[100%] flex justify-end">
-                                                    <router-link to="/checkoutshop" class="w-full">
-                                                        <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]">
+                                                  
+                                                        <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]" @click="handleBuyNow()">
                                                             Buy Now</button>
-                                                    </router-link>
+                                             
                                                 </div>
                                             </div>
                                         </div>

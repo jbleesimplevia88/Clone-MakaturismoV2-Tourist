@@ -1,4 +1,5 @@
 <template>
+  
   <div class="inline-block mt-10 ml-0 text-white bg-[#2969D6] min-w-min"
     style="border-top-right-radius: 15px; border-bottom-right-radius: 15px;">
     <!-- Apply 'text-5xl' for small screens and 'text-3xl' for medium screens and above -->
@@ -43,9 +44,10 @@ import CalendarPastCarousel from '@/components/CalendarPastCarousel.vue';
 
 export default {
   components: {
+
+    CalendarPastCarousel,
     CalendarMonthCarousel,
-    CalendarPastCarousel
-  },
+ },
   data() {
     return {
       isMobile: window.innerWidth <= 768, // Adjust the breakpoint as needed

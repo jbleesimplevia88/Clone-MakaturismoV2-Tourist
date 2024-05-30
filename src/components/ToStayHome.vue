@@ -114,18 +114,18 @@
                     found.
                 </div>
                 <div v-else-if="isInvalidDateRange" class="text-center text-red-500">Please select a valid date range.</div>
-                <div v-for="(item, index) in filteredItems" :key="index"
+                <div v-for="(item, index) in todostay" :key="index"
                     class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
                     <div class="relative">
                         <img class="w-full h-[250px] object-cover rounded-t" :src="item.image" alt="">
                         <div
                             class="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-[#102E61] to-transparent">
                         </div>
-                        <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{
+                        <!-- <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{
                             item.name }}
                         </p>
                         <p class="absolute bottom-2 left-2 text-white text-xs">{{ Array.isArray(item.category) ?
-                            item.category.join(', ') : item.category }}</p>
+                            item.category.join(', ') : item.category }}</p> -->
                     </div>
                     <div class="p-2 w-full">
                         <p class="text-white text-xs line-clamp-3">{{ item.description }}</p>
@@ -185,6 +185,7 @@
 
 
 <script>
+import axios from 'axios';
 import item1 from '@/assets/images/CategoryView/ToStay/casino.jpeg';
 import item2 from '@/assets/images/CategoryView/ToStay/xyz.png';
 import item3 from '@/assets/images/CategoryView/ToStay/durban.jpeg';
@@ -297,6 +298,7 @@ export default defineComponent({
             endPlaceholder: 'Select End Date',
             dateFormat: 'yyyy-MM-dd',
             searchQuery: '',
+            todostay:'',
             barangaysInMakati: [
                 'Bangkal',
                 'Bel-Air',
@@ -832,6 +834,13 @@ export default defineComponent({
             return this.dateFrom && this.dateTo && new Date(this.dateFrom) > new Date(this.dateTo);
         },
     },
+
+
+    mounted() {
+       
+       this.displaytoStay();
+   },
+
     methods: {
         getAvailableDates(item) {
             const from = new Date(this.dateFrom);
@@ -911,6 +920,21 @@ export default defineComponent({
             if (this.dateFrom && this.dateTo && new Date(this.dateTo) < new Date(this.dateFrom)) {
                 this.dateFrom = '';
             }
+        },
+
+        displaytoStay() {
+
+            axios.post("/getAlltostay").then((response) => {
+                   console.log(response.data.message);
+                    const todoparse = JSON.parse(response.data.message);
+                    this.todostay = todoparse;
+                    console.log(this.todostay);
+
+                                  
+            }).catch((error) => {
+                console.log(error);
+            });
+
         },
         search() {
             // Placeholder for search method

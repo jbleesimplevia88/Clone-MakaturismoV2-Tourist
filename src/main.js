@@ -8,7 +8,11 @@ import axios from 'axios'
 
 
 axios.defaults.baseURL = `${import.meta.env.VITE_TOURIST_API_URL}`;
+<<<<<<< HEAD
 // axios.defaults.baseURL = `${import.meta.env.VITE_API_ENDPOINT}`;
+=======
+// axios.defaults.baseURL = `${import.meta.env.VITE_TOURIST_API_URL}`;
+>>>>>>> 35bb6c0 (to do show)
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 
 const token = localStorage.getItem('token');

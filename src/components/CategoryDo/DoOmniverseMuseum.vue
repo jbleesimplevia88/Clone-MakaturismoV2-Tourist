@@ -316,6 +316,11 @@ import landingPageImage5 from '@/assets/images/Banner/banner-5.png';
 import MapRenderer from "@/components/MapRenderer.vue";
 import Carousel from "@/components/ToDoCarousel.vue";
 import axios from 'axios';
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 35bb6c0 (to do show)
 
 
 export default {

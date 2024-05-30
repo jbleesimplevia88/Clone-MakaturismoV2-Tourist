@@ -237,7 +237,7 @@
                                                         class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%]">Add to
                                                         Cart</button>
                                                 </div>
-                                            </div>
+                                            </div>desc
                                         </div>
                                     </div>
                                     <!-- END WEB VERSION -->

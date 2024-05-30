@@ -190,7 +190,7 @@
                             <div class="text-center mt-40">
                                 <button type="submit"
                                     class="disabled:bg-blue-400 lg:w-[50%] w-full px-4 py-4 text-white bg-blue-600 rounded-md"
-                                    @click="openSignUpModal" :disabled="!checkboxChecked">Continueee</button>
+                                    @click="openSignUpModal" :disabled="!checkboxChecked">Continue</button>
                             </div>
                         </div>
                     </form>

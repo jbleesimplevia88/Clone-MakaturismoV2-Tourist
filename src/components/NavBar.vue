@@ -716,8 +716,8 @@
                 <div class="relative z-10 flex flex-col items-center h-full">
                     <form @submit.prevent="signup" class="w-[85%] lg:px-10 px-2 lg:mt-0 mt-5">
                         <!-- make it scrollable -->
-                        <p class="font-bold text-center text-2xl lg:text-3xl mb-5">Terms and Conditions</p>
-                        <div class="flex justify-between overflow-y-auto h-[230px] w-[100%] hidden-scrollbar mb-2">
+                        <p class="font-bold text-center text-2xl lg:text-3xl mb-10">Terms and Conditions</p>
+                        <div class="flex justify-between overflow-y-auto h-[230px] w-[100%] hidden-scrollbar mb-10">
                             <div class="flex flex-col">
                                 <p class=" mb-5">Welcome to <span class="font-bold">MAKATURISMO</span>, a local tourism
                                     website that connects users, businesses, advertisers, and showcases various products and
@@ -792,9 +792,10 @@
                                 <p class="ml-4 mb-5 text-sm text-justify">b. Any disputes arising from the use of the
                                     website shall be subject to the exclusive jurisdiction of the courts in the Philippines.
                                 </p>
+                                
                             </div>
                         </div>
-                        <div class="text-center mt-8">
+                        <div class="text-center mt-20">
                             <button type="submit" class="lg:w-[50%] w-full px-4 py-4 text-white bg-blue-600 rounded-md"
                                 @click="closeTC">Continue</button>
                         </div>

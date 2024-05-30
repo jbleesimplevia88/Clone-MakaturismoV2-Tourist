@@ -198,7 +198,7 @@ const router = createRouter({
               component: () => import('../components/ToSeeHome.vue')
             },
             {
-              path: 'glorietta',
+              path: 'glorietta/:id',
               name: 'glorietta',
               component: () => import('../components/CategorySee/SeeGlorietta.vue'),
               props: route => ({

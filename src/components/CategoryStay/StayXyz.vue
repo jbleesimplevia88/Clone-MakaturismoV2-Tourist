@@ -21,10 +21,16 @@
                         </router-link>
                     </div>
                     <div class="relative flex flex-col items-center">
-                        <div class=" lg:pr-[7rem] x">
-                            <ContentCarousel :items="items" class="mb-10" />
+                        
+      
+                        <div class=" lg:pr-[7rem]">                            <Carousel  :imageUrls="imageUrls" />
                         </div>
-                    </div>
+                        </div>
+
+                        
+                
+
+
 
                     <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 lg:p-5 px-5 py-3 shadow-lg z-50">
                         <div class="flex justify-between">
@@ -47,51 +53,69 @@
             </div>
         </div>
     </div>
+
+
+
+    <div class="flex flex-col pl-8 lg:pl-8 lg:order-first">
+                        <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">{{storedetails.storename}}</h1>
+                        <p class="text-md text-white text-left pb-5"></p>
+                    </div>
+
+
+
     <div class="flex flex-wrap justify-between items-center mb-2 relative">
         <div class="my-4 lg:p-0 lg:w-[75%]">
             <div class="relative mx-6 px-3 lg:px-32 pt-5">
-                <p class="font-bold text-lg text-black text-left pb-5 pt-3 lg:pt-[5rem]">About this place</p>
-                <p class="text-lg text-justify text-black pb-5">Stay and relax in the amazing rooms of U Hotels Makati. Find
-                    your peace and enjoy the services this place can offer.</p>
-                <div class="hidden border border-gray-400 lg:w-[]">
-                    <p class="text-center font-bold">Number of items</p>
-                </div>
-                <div class="flex flex-row">
-                    <div class="pt-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-                        </svg>
-                    </div>
-                    <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">5091 P. Burgos, Makati, Metro Manila
-                    </p>
-                </div>
-                <div class="flex flex-row">
-                    <div class="pt-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
-                    </div>
-                    <div class="flex flex-col pl-2.5">
-                        <p class="text-lg md:text-black text-left pb-5">Monday - Sunday</p>
-                        <p class="text-lg md:text-black text-left pb-5">11:00 AM - 7:30 PM</p>
-                    </div>
-                </div>
-                <div class="flex flex-row">
-                    <div class="pt-0.25">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
-                        </svg>
-                    </div>
-                    <p class="text-lg md:text-black text-left pl-2.5 pb-5">(02) 8820 1000</p>
-                </div>
+
+
+<p class="font-bold text-lg text-black text-left pb-5 pt-3 lg:pt-[5rem]">About this place</p>
+<p class="text-lg text-justify text-black pb-5">{{storedetails.description}}</p>
+
+
+<div class="flex flex-row">
+    <div class="pt-3">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+        </svg>
+    </div>
+    <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">{{storedetails.address}}</p>
+</div>
+
+<div class="flex flex-row">
+    <div class="pt-1">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+
+    </div>
+    <div class="flex flex-col pl-2.5">
+        <p class="text-lg md:text-black text-left pb-5">{{storedetails.storehours}}</p>
+
+    </div>
+</div>
+
+
+
+<div class="flex flex-row">
+    <div class="pt-0.25">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+        </svg>
+
+    </div>
+    <p class="text-lg md:text-black text-left pl-2.5 pb-5">{{storedetails.storecontact}}</p>
+</div>
+
+
+
+                
                 <div class="my-4 lg:w-[100%] relative">
                     <!-- <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">Rooms to offer</h1> -->
                     <div class="flex flex-wrap justify-between items-center mb-2 lg:w-[70%] ">

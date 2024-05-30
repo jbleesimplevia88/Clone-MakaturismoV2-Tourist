@@ -179,7 +179,8 @@ const router = createRouter({
               props: route => ({
                 latitude: parseFloat(route.query.latitude),
                 longitude: parseFloat(route.query.longitude),
-                name: route.query.name,
+                ItemId: route.query.ItemId,
+                name: route.query.name
 
               })
             },

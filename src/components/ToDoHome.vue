@@ -378,6 +378,7 @@ const displayTodo = async () => {
 const seeMore = (item) => {
     console.log(item.pictureimage);
     console.log(item.busid);
+    console.log(item.storename);
     const { latitude, longitude } = extractLatLong(item.maplink);
     if (latitude !== null && longitude !== null) {
         // Pass the name parameter in the query object
@@ -388,6 +389,8 @@ const seeMore = (item) => {
                 latitude,
                 longitude,
                 item: item,
+                name: item.storename,
+                id: item.busid,
                 imageList: item.pictureimage,
                
             }

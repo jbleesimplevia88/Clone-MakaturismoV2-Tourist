@@ -8,13 +8,13 @@ import axios from 'axios'
 
 
 axios.defaults.baseURL = `${import.meta.env.VITE_LOCAL_BASE_URL}`;
-// axios.defaults.baseURL = `${import.meta.env.VITE_TOURIST_API_URL}`;
+// axios.defaults.baseURL = `${import.meta.env.VITE_API_ENDPOINT}`;
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 
 const token = localStorage.getItem('token');
 if (token) {
-    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-  }
+  axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+}
 
 const pinia = createPinia()
 const app = createApp(App);

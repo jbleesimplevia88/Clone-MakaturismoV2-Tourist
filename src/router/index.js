@@ -136,11 +136,33 @@ const router = createRouter({
               props: route => ({
                 latitude: parseFloat(route.query.latitude),
                 longitude: parseFloat(route.query.longitude),
-                item: route.query.item,
+                name: route.query.name,
                 imageList: route.query.imageList,
 
 
 
+              })
+            },
+          ]
+        },
+        {
+          
+          path: 'eat',
+          name: 'eat',
+          component: () => import('../components/ToEat.vue'),
+          children: [
+            {
+              
+              path: 'LittleTokyo/:id',
+              name: 'Little Tokyo',
+              component: () => import('../components/CategoryEat/EatLittleTokyo.vue'),
+              props: route => ({
+                latitude: parseFloat(route.query.latitude),
+                longitude: parseFloat(route.query.longitude),
+                name: route.query.name,
+                imageList: route.query.imageList,
+
+                
               })
             },
           ]
@@ -182,27 +204,17 @@ const router = createRouter({
                 latitude: parseFloat(route.query.latitude),
                 longitude: parseFloat(route.query.longitude),
                 name: route.query.name,
+                imageList: route.query.imageList,
               })
             },
           ]
         },
-        {
-          path: 'eat',
-          name: 'eat',
-          component: () => import('../components/ToEat.vue'),
-          children: [
-            {
-              path: 'LittleTokyo',
-              name: 'Little Tokyo',
-              component: () => import('../components/CategoryEat/EatLittleTokyo.vue'),
-              props: route => ({
-                latitude: parseFloat(route.query.latitude),
-                longitude: parseFloat(route.query.longitude),
-                name: route.query.name,
-              })
-            },
-          ]
-        },
+
+
+      
+
+
+        
         {
           path: 'stay',
           name: 'stay',
@@ -215,6 +227,7 @@ const router = createRouter({
               props: route => ({
                 latitude: parseFloat(route.query.latitude),
                 longitude: parseFloat(route.query.longitude),
+
                 name: route.query.name,
               })
             },

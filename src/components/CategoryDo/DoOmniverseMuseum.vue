@@ -315,14 +315,14 @@ import landingPageImage5 from '@/assets/images/Banner/banner-5.png';
 
 import MapRenderer from "@/components/MapRenderer.vue";
 import Carousel from "@/components/ToDoCarousel.vue";
-
-
+import axios from 'axios';
 
 
 export default {
     props: {
         latitude: Number,
         longitude: Number,
+        name: String,
         item: String,
         imageList: String,
     },
@@ -333,10 +333,13 @@ export default {
     mounted() {
         this.imageArray = this.imageList;
     console.log("list", this.imageArray);
-    this.shopId = this.$route.params.id;
-    console.log("id", this.shopId);
+    // this.shopId = this.$route.params.id;
+    this.id = this.$route.params.id;
+    console.log("id", this.id);
     this.imageUrls = this.imageArray.split('|');
     console.log(this.imageUrls);
+    console.log(this.name);
+    this.getId();
         //this.getId(this.$route.params.id);
  
     },
@@ -452,6 +455,34 @@ export default {
     }
         },
       
+
+        getId(){
+            console.log(this.id);     
+            axios.get(`/getStore/${this.id}`).then((response) => {
+                console.log(response.data.overall);
+                console.log(response.data.ratestatus);
+                
+                const storeparse = JSON.parse(response.data.message);
+                const rateparse = JSON.parse(response.data.ratings);
+                const reviewparse = JSON.parse(response.data.overall);
+                this.storedetails = storeparse;
+                this.storeratings = rateparse;
+                this.storereviews = reviewparse;
+                console.log(this.storereviews);
+                console.log(this.storeratings);
+                console.log(this.storedetails.pictureimage);
+                const removeChar = String(this.storedetails.pictureimage).replace(/[|]/g,',');
+                console.log(removeChar);
+                const separator = ",";
+                const arrImage = removeChar.split(separator);
+                this.imageArray = arrImage.filter(elm => elm);
+                console.log(this.imageArray);
+
+            }).catch((error) => {
+                console.log(error);
+            });
+
+        },
         // Method to handle "See More" button click
         seeMore() {
             // Increment the number of feedback items to show

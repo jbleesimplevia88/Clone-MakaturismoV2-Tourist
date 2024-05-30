@@ -223,6 +223,7 @@ export default defineComponent({
             cartStay.selectHotel(selectedHotel);
         };
         const seeMore = (item) => {
+            console.log(item.storename);
             // Pass the quantities to the setSelectedHotelQuantities action
             const roomsQuantity = guests.value.find(guest => guest.name === 'Room').quantity;
             const adultsQuantity = guests.value.find(guest => guest.name === 'Adult').quantity;
@@ -233,14 +234,18 @@ export default defineComponent({
 
             // Select the hotel and navigate to the details page
             cartStay.selectHotel(item);
-            const { latitude, longitude } = extractLatLong(item.mapLocation);
+            const { latitude, longitude } = extractLatLong(item.maplink);
             if (latitude !== null && longitude !== null) {
                 router.push({
                     name: 'xyz',
+                    params: {id:item.busid},
                     query: {
                         latitude,
-                        longitude,
-                        name: item.name,
+                longitude,
+                name: item.storename,
+                id: item.busid,
+             
+
                     },
                 });
             } else {

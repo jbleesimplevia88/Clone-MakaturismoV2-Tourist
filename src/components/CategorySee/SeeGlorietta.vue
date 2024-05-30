@@ -50,7 +50,7 @@
 
 
 
-                    <<div class="flex flex-col pl-8 lg:pl-8 lg:order-first">
+                    <div class="flex flex-col pl-8 lg:pl-8 lg:order-first">
                         <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">{{storedetails.storename}}</h1>
                         <p class="text-md text-white text-left pb-5"></p>
                     </div>
@@ -308,8 +308,10 @@ import MapRenderer from "@/components/MapRenderer.vue";
 export default {
   props: {
     latitude: Number,
-    longitude: Number,
-    name: String
+        longitude: Number,
+        name: String,
+        item: String,
+        imageList: String,
   },
   components: {
     Carousel,
@@ -323,6 +325,8 @@ export default {
     console.log("id", this.shopId);
     this.imageUrls = this.imageArray.split('|');
     console.log(this.imageUrls);
+    console.log(this.name);
+    this.getId();
         //this.getId(this.$route.params.id);
  
     },
@@ -424,6 +428,45 @@ export default {
         }
     },
     methods: {
+        prev() {
+            if (this.currentIndex > 0) {
+      this.currentIndex--; // Decrease currentIndex
+    }
+        
+        },
+        next() {
+            if (this.currentIndex < this.imageUrls.length - 1) {
+      this.currentIndex++; // Increase currentIndex
+    }
+        },
+      
+
+        getId(){
+            console.log(this.id);     
+            axios.get(`/getStore/${this.id}`).then((response) => {
+                console.log(response.data.overall);
+                console.log(response.data.ratestatus);
+                
+                const storeparse = JSON.parse(response.data.message);
+                const rateparse = JSON.parse(response.data.ratings);
+                const reviewparse = JSON.parse(response.data.overall);
+                this.storedetails = storeparse;
+                this.storeratings = rateparse;
+                this.storereviews = reviewparse;
+                console.log(this.storereviews);
+                console.log(this.storeratings);
+                console.log(this.storedetails.pictureimage);
+                const removeChar = String(this.storedetails.pictureimage).replace(/[|]/g,',');
+                console.log(removeChar);
+                const separator = ",";
+                const arrImage = removeChar.split(separator);
+                this.imageArray = arrImage.filter(elm => elm);
+                console.log(this.imageArray);
+
+            }).catch((error) => {
+                console.log(error);
+            });
+        },
         // Method to handle "See More" button click
         seeMore() {
             // Increment the number of feedback items to show

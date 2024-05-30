@@ -109,7 +109,6 @@
                                 <p class="font-normal mb-2 text-gray-600 text-base">{{ user.phoneNumber }}</p>
                             </div>
                         
-                       
                           
                         </div>
                     </div>
@@ -121,13 +120,13 @@
                         <div v-if="showSummary">
                             <div v-for="(shop, index) in shops" :key="index">
                                 <div class="lg:flex items-center mb-5">
-                                    <img :src="shop.image" class="w-[100%] lg:w-[40%] h-[6rem] rounded-lg">
+                                    <img :src="getImageUrl(firstImageUrl)" class="w-[100%] lg:w-[40%] h-[6rem] rounded-lg">
                                     <div class="ml-1 flex flex-col">
                                         <div>
-                                            <p class="font-bold">{{ shop.name }}</p>
+                                            <p class="font-bold">{{ shopData.storename }}</p>
                                         </div>
                                         <div>
-                                            <p class="mb-5 mt-2 text-gray-400">{{ shop.type }}</p>
+                                            <p class="mb-5 mt-2 text-gray-400">{{ shopData.category }}</p>
                                         </div>
                                         <div class="flex">
                                             <p class="font-semibold text-sm mt-0">{{ shop.rating }} Ratings</p>
@@ -463,188 +462,188 @@
 }
 </style>
 
-<script>
-import {
-    computed
-} from 'vue';
-import {
-    useCartStoreEat
-} from '@/stores/toEatCart';
-export default {
-    setup() {
-        const cartStore = useCartStoreEat();
-        const selectedItems = computed(() => {
-            // If the user is editing the cart
-            if (cartStore.editCartProducts.length > 0) {
-                return cartStore.editCartProducts.filter(item => item.selected);
-            }
-            // If the user is buying now
-            else if (cartStore.buyNowProducts.length > 0) {
-                return cartStore.buyNowProducts.filter(item => item.selected);
-            }
-            return cartStore.cart.filter(item => item.selected);
-        });
-        const totalItemsInCart = computed(() => {
-            return selectedItems.value.reduce((total, item) => total + item.quantity, 0);
-        });
-        const totalAmount = computed(() => {
-            return selectedItems.value.reduce((total, item) => total + (item.quantity * item.price), 0);
-        });
-        return {
-            selectedItems,
-            totalItemsInCart,
-            totalAmount
-        };
-    },
-    data() {
-        return {
-            selectedPaymentMethod: null,
-            showComplete: false,
-            showSummary: true,
-            userInfo: [{
-                fullName: "Juan Dela Cruz",
-                email: "Juandelacruz@gmail.com",
-                phoneNumber: "09123456789",
-                gender: "Male",
-                citizenofMakati: "Yes"
-            }],
-            shops: [{
-                image: "src/assets/images/CategoryView/ToEat/tokyo.png",
-                name: "Little Toyo",
-                type: "Restaurant",
-                rating: "5.0",
-                reviews: "500",
-            }],
-            vouchers: [{
-                code: 'DISCOUNT999',
-                amount: 999.00,
-                applied: false
-            },
-            {
-                code: 'DISCOUNT100',
-                amount: 100.00,
-                applied: false
-            },
-            {
-                code: 'DISCOUNT50',
-                amount: 50.00,
-                applied: false
-            },
-            {
-                code: 'DISCOUNT200',
-                amount: 200.00,
-                applied: false
-            }
-            ],
-            voucher: {
-                applied: false
-            },
-            displayTotalLabel: 'Your Total (Php)',
-            discountPrice: 0,
-            showConfirmation: false,
-            showPayment: true,
-            showVoucher: false,
-            navButtonText: 'Request to Order'
-        };
-    },
-    computed: {
-        validVouchers() {
-            return this.vouchers.filter(voucher => voucher.amount < this.totalAmount);
-        },
-        invalidVouchers() {
-            return this.vouchers.filter(voucher => voucher.amount >= this.totalAmount);
-        },
-        finalPrice() {
-            return this.totalAmount - this.discountPrice;
-        }
-    },
-    methods: {
-        toggleVoucher(voucher) {
-            this.toggleVoucherVisibility();
-            this.toggleVoucherApplied(voucher);
-            this.updateDiscountPrice();
-        },
-        toggleVoucherWeb(voucher) {
-            this.toggleSummaryVisibility();
-            this.toggleVoucherApplied(voucher);
-            this.updateDiscountPrice();
-        },
-        toggleBack() {
-            this.showSummary = true;
-        },
-        scrollToTop() {
-            window.scrollTo(0, 0);
-        },
-        toggleConfirmation() {
-            this.showConfirmation = true;
-            this.showInformation = false;
-        },
-        isPaymentMethodSelected(paymentMethod) {
-            return this.selectedPaymentMethod === paymentMethod;
-        },
-        toggleComplete() {
-            console.log("toggleComplete() method called.");
-            if (!this.selectedPaymentMethod) {
-                alert("Please select a payment method before confirming booking.");
-                return;
-            }
-            this.showConfirmation = false;
-            this.showComplete = !this.showComplete;
-        },
-        closeModal() {
-            this.showInformation = false;
-            this.showConfirmation = false;
-            this.showComplete = false;
-        },
-        togglePayment() {
-            this.showPayment = !this.showPayment;
-            this.navButtonText = this.showPayment ? 'Request to Order' : 'Payment';
-        },
-        navigateBack() {
-            if (!this.showPayment) {
-                this.showPayment = true;
-                this.navButtonText = 'Request to Order';
-            } else {
-                this.$router.go(-1);
-            }
-        },
-        activateRadioButton(id) {
-            const radioBtn = document.getElementById(id);
-            if (radioBtn) {
-                radioBtn.checked = !radioBtn.checked;
-                this.updatePaymentMethod();
-            }
-        },
-        updateDiscountPrice() {
-            this.discountPrice = this.vouchers.reduce((total, v) => {
-                return v.applied ? total + v.amount : total;
-            }, 0);
-            this.displayTotalLabel = this.discountPrice ? 'Subtotal' : 'Your Total (Php)';
-        },
-        toggleVoucherVisibility() {
-            this.showVoucher = !this.showVoucher;
-        },
-        toggleSummaryVisibility() {
-            this.showSummary = !this.showSummary;
-        },
-        toggleVoucherApplied(voucher) {
-            voucher.applied = !voucher.applied;
-            console.log(`Voucher applied state: ${voucher.applied}`);
-        },
-        updatePaymentMethod() {
-            const selectedRadio = document.querySelector('input[name="payment_method"]:checked');
-            this.selectedPaymentMethod = selectedRadio ? selectedRadio.value : null;
-        }
-    },
-    watch: {
-        showPayment(newValue) {
-            if (!newValue) {
-                this.scrollToTop();
-            }
-        },
-        totalAmount() {
-            this.updateInvalidVouchers();
-        }
-    }
+<script setup>
+import { computed, ref, watch } from 'vue';
+import { useCartStoreEat } from '@/stores/toEatCart';
+import { useRouter } from 'vue-router';
+
+const cartStore = useCartStoreEat();
+const router = useRouter();
+
+const selectedPaymentMethod = ref(null);
+const showComplete = ref(false);
+const showSummary = ref(true);
+const shops = ref([{}]);
+
+const selectedItems = computed(() => {
+  if (cartStore.editCartProducts.length > 0) {
+    return cartStore.editCartProducts.filter(item => item.selected);
+  } else if (cartStore.buyNowProducts.length > 0) {
+    return cartStore.buyNowProducts.filter(item => item.selected);
+  }
+  return cartStore.cart.filter(item => item.selected);
+});
+
+const totalItemsInCart = computed(() => {
+  return selectedItems.value.reduce((total, item) => total + item.quantity, 0);
+});
+
+const totalAmount = computed(() => {
+  return selectedItems.value.reduce((total, item) => total + (item.quantity * item.price), 0);
+});
+
+const shopData = computed(() => cartStore.shopData);
+
+const userInfo = ref([
+  {
+    fullName: "Juan Dela Cruz",
+    email: "Juandelacruz@gmail.com",
+    phoneNumber: "09123456789",
+    gender: "Male",
+    citizenofMakati: "Yes"
+  }
+]);
+
+const vouchers = ref([
+  { code: 'DISCOUNT999', amount: 999.00, applied: false },
+  { code: 'DISCOUNT100', amount: 100.00, applied: false },
+  { code: 'DISCOUNT50', amount: 50.00, applied: false },
+  { code: 'DISCOUNT200', amount: 200.00, applied: false }
+]);
+
+const getFirstImageUrl = (pictureimage) => {
+  if (!pictureimage) return '';
+  const images = pictureimage.split('|').filter(img => img.trim() !== '');
+  return images.length > 0 ? images[0] : '';
 };
+
+const firstImageUrl = computed(() => getFirstImageUrl(shopData.value.pictureimage));
+
+const getImageUrl = (fileName) => {
+  return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
+};
+
+const voucher = ref({ applied: false });
+const displayTotalLabel = ref('Your Total (Php)');
+const discountPrice = ref(0);
+const showConfirmation = ref(false);
+const showPayment = ref(true);
+const showVoucher = ref(false);
+const navButtonText = ref('Request to Order');
+
+const validVouchers = computed(() => {
+  return vouchers.value.filter(voucher => voucher.amount < totalAmount.value);
+});
+
+const invalidVouchers = computed(() => {
+  return vouchers.value.filter(voucher => voucher.amount >= totalAmount.value);
+});
+
+const finalPrice = computed(() => {
+  return totalAmount.value - discountPrice.value;
+});
+
+function toggleVoucher(voucher) {
+  toggleVoucherVisibility();
+  toggleVoucherApplied(voucher);
+  updateDiscountPrice();
+}
+
+function toggleVoucherWeb(voucher) {
+  toggleSummaryVisibility();
+  toggleVoucherApplied(voucher);
+  updateDiscountPrice();
+}
+
+function toggleBack() {
+  showSummary.value = true;
+}
+
+function scrollToTop() {
+  window.scrollTo(0, 0);
+}
+
+function toggleConfirmation() {
+  showConfirmation.value = true;
+}
+
+function isPaymentMethodSelected(paymentMethod) {
+  return selectedPaymentMethod.value === paymentMethod;
+}
+
+function toggleComplete() {
+  if (!selectedPaymentMethod.value) {
+    alert("Please select a payment method before confirming booking.");
+    return;
+  }
+  showConfirmation.value = false;
+  showComplete.value = !showComplete.value;
+}
+
+function closeModal() {
+  showConfirmation.value = false;
+  showComplete.value = false;
+}
+
+function togglePayment() {
+  showPayment.value = !showPayment.value;
+  navButtonText.value = showPayment.value ? 'Request to Order' : 'Payment';
+}
+
+function navigateBack() {
+  if (!showPayment.value) {
+    showPayment.value = true;
+    navButtonText.value = 'Request to Order';
+  } else {
+    router.go(-1);
+  }
+}
+
+function activateRadioButton(id) {
+  const radioBtn = document.getElementById(id);
+  if (radioBtn) {
+    radioBtn.checked = !radioBtn.checked;
+    updatePaymentMethod();
+  }
+}
+
+function updateDiscountPrice() {
+  discountPrice.value = vouchers.value.reduce((total, v) => {
+    return v.applied ? total + v.amount : total;
+  }, 0);
+  displayTotalLabel.value = discountPrice.value ? 'Subtotal' : 'Your Total (Php)';
+}
+
+function toggleVoucherVisibility() {
+  showVoucher.value = !showVoucher.value;
+}
+
+function toggleSummaryVisibility() {
+  showSummary.value = !showSummary.value;
+}
+
+function toggleVoucherApplied(voucher) {
+  voucher.applied = !voucher.applied;
+}
+
+function updatePaymentMethod() {
+  const selectedRadio = document.querySelector('input[name="payment_method"]:checked');
+  selectedPaymentMethod.value = selectedRadio ? selectedRadio.value : null;
+}
+
+function updateInvalidVouchers() {
+  // Add your logic here if needed
+}
+
+// Watchers
+watch(showPayment, newValue => {
+  if (!newValue) {
+    scrollToTop();
+  }
+});
+
+watch(totalAmount, () => {
+  updateInvalidVouchers();
+});
 </script>
+

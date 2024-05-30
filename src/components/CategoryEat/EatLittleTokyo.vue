@@ -20,7 +20,6 @@
                     <div class=" lg:pr-[7rem] justify-center flex w-full ">
                         <ContentCarousel :items="items" class="mb-10 w-full lg:ml-9" />
                     </div>
-
                     <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 p-5 shadow-lg z-50">
                         <div class="flex justify-between">
                             <div>
@@ -29,7 +28,6 @@
                             </div>
                             <div>
                                 <router-link to="/carteditbuyeat">
-
                                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg">
                                         Shop Now
                                     </button>
@@ -38,7 +36,8 @@
                         </div>
                     </div>
                     <div class="flex flex-col pl-8 lg:pl-8 lg:order-first">
-                        <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">Little Tokyo</h1>
+                        <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">{{ storedetails.storename }}
+                        </h1>
                         <p class="text-md text-white text-left pb-5">Restaurant/Food District</p>
                     </div>
                 </div>
@@ -49,12 +48,7 @@
         <div class="my-4 lg:p-0 lg:w-[75%]">
             <div class="relative mx-6 px-3 lg:px-32 pt-5">
                 <p class="font-bold text-lg text-black text-left pb-5 pt-3 lg:pt-[5rem]">About this place</p>
-                <p class="text-lg text-justify text-black pb-5">Savor the authentic flavors of Japan in the heart of Makati
-                    at Little Tokyo. This culinary enclave offers a delightful array of Japanese restaurants and eateries,
-                    serving up delicious sushi, ramen, tempura, and more. Whether you're a sushi
-                    aficionado or a ramen lover, Little Tokyo promises a delectable dining experience in a charming Japanese
-                    setting.
-                </p>
+                <p class="text-lg text-justify text-black pb-5">{{ storedetails.description }}</p>
                 <div class="hidden border border-gray-400 lg:w-[]">
                     <p class="text-center font-bold">Number of items</p>
                 </div>
@@ -68,7 +62,7 @@
                                 d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                         </svg>
                     </div>
-                    <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">N/A</p>
+                    <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">{{ storedetails.address }}</p>
                 </div>
                 <div class="flex flex-row">
                     <div class="pt-1">
@@ -79,7 +73,9 @@
                         </svg>
                     </div>
                     <div class="flex flex-col pl-2.5">
-                        <p class="text-lg md:text-black text-left pb-5">N/A</p>
+                        <p class="text-lg md:text-black text-left pb-5">{{ storedetails.storehours }} | {{
+                            storedetails.storesched }}
+                        </p>
                     </div>
                 </div>
                 <div class="flex flex-row">
@@ -90,14 +86,13 @@
                                 d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
                         </svg>
                     </div>
-                    <p class="text-lg md:text-black text-left pl-2.5 pb-5">N/A</p>
+                    <p class="text-lg md:text-black text-left pl-2.5 pb-5">{{ storedetails.storecontact }}</p>
                 </div>
                 <!-- BEst seller -->
                 <div class="my-4 lg:w-[100%]">
                     <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SELLERS</h1>
                     <!-- <div class="lg:flex justify-start text-white lg:w-[100%]"> -->
                     <div class="grid grid-cols-2 md:grid-cols-3 justify-start text-white lg:w-[70%]">
-
                         <!-- Cards in Best seller -->
                         <div v-for="(item, index) in bestProducts" :key="index"
                             class=" lg:w-auto lg:flex-auto bg-blue-950 lg:h-[15rem] h-[190px] m-1 p-2 lg:p-3 rounded-xl relative flex flex-col justify-between">
@@ -124,34 +119,33 @@
                 <div class="flex w-[100%]">
                     <div class="flex justify-between items-center mb-2 space-x-5">
                         <!-- WEB VERSION OTHER ITEMS -->
-
-                        <!-- First column -->
-                        <div class="flex-col lg:block hidden">
-                            <div v-for="(item, index) in otherProducts.slice(0, 3)" :key="index" class="card-wrapper">
-                                <!-- Your card content goes here -->
-                                <div
-                                    class="card bg-blue-950 w-[100%] border-2 m-1 p-2 rounded-xl relative flex flex-col justify-between">
-                                    <div class="flex justify-between  w-[100%]">
-                                        <div class="w-[40%]">
-                                            <img class="rounded-md " :key="index" :src="item.image[0]" alt="">
-                                        </div>
-                                        <div class="w-[60%]">
-                                            <p class="text-xs text-white p-2 w-[75%]">{{ item.title }}</p>
-                                            <p class="text-xs text-white p-2 w-[55%]">₱ {{ item.price }}</p>
-                                            <div class="flex justify-between items-center mt-4 mb-2">
-                                                <button @click="toggleshowCart(item)"
-                                                    class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%] text-white mt-12">See
-                                                    More</button>
-                                                <button @click="addToCart(item)"
-                                                    class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%] text-white mt-12">Add
-                                                    to
-                                                    Cart</button>
-                                            </div>
+                        <div v-for="(product, index) in model.productsArray" :key="index" class="card-wrapper">
+                            <!-- Your card content goes here -->
+                            <div
+                                class="card bg-blue-950 w-[100%] border-2 m-1 p-2 rounded-xl relative flex flex-col justify-between">
+                                <div class="flex justify-between w-[100%]">
+                                    <div class="w-[40%]">
+                                        <!-- Assuming product has an image array, you can display the first image -->
+                                        <img class="rounded-md" :src="getImageUrl(product.uploadedphotos.split('|')[0])"
+                                            alt="">
+                                    </div>
+                                    <div class="w-[60%]">
+                                        <p class="text-xs text-white p-2 w-[75%]">{{ product.productname }}</p>
+                                        <p class="text-xs text-white p-2 w-[55%]">₱ {{ product.productprice }}</p>
+                                        <!-- Add any additional fields you want to display -->
+                                        <div class="flex justify-between items-center mt-4 mb-2">
+                                            <button @click="toggleshowCart(product)"
+                                                class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%] text-white mt-12">See
+                                                More</button>
+                                            <button @click="addToCart(product)"
+                                                class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%] text-white mt-12">Add
+                                                to Cart</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <!-- Second column -->
                         <div class="flex-col lg:block hidden">
                             <div v-for="(item, index) in otherProducts.slice(3, 6)" :key="index" class="card-wrapper">
@@ -180,7 +174,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <!-- END WEB VERSION OTHER ITEMS -->
                         <!-- MOBILE VERSION OTHER ITEMS -->
                         <div class="lg:hidden grid-flow-row">
@@ -271,7 +264,6 @@
                             </div>
                         </div>
                         <!-- END MOBILE VERSION OTHER ITEMS -->
-
                     </div>
                 </div>
                 <!-- mobile verrrrrrrrrrrrrrrrr -->
@@ -287,9 +279,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                                     </svg>
                                 </button>
-
                             </div>
-
                             <button @click="closeCart" class=" lg:hidden pt-21 ml-2">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -300,30 +290,38 @@
 
                             <div v-if="selectedProduct" class="lg:flex lg:justify-between w-[100%]">
                                 <!-- Web gallery -->
+                                <!-- <div class="hidden lg:block lg:w-[40%]">
+                                    <div class="flex justify-center items-center">
+                                        <img v-for="(image, index) in selectedProduct.uploadedphotos.split('|')"
+                                            :key="index" :src="getImageUrl(image)" alt="Product Image"
+                                            class="max-w-[200px] max-h-[200px]">
+                                    </div>
+                                </div> -->
                                 <div class="hidden lg:block lg:w-[40%]">
                                     <div class="lg:flex justify-center items-center mb-3">
-                                        <!-- Use currentImage to access the reactive value -->
+                                        <!-- Display the currentImage in a larger view -->
                                         <img :src="currentImage" class="h-[400px] object-fill rounded-lg w-full" />
                                     </div>
                                     <div class="lg:flex lg:justify-between grid grid-cols-1 grid-rows-2">
                                         <div class="lg:flex lg:justify-center items-center gap-4">
-                                            <!-- Loop through selectedProductImages and access image directly -->
-                                            <template v-for="(image, index) in selectedProductImages" :key="index">
-                                                <img :src="image" class="h-20 w-20 mb-2"
-                                                    @click="updateCurrentImage(image)" />
-                                            </template>
+                                            <!-- Loop through selectedProductImages and display thumbnails -->
+                                            <img v-for="(image, index) in selectedProductImages" :key="index"
+                                                :src="getImageUrl(image)" class="h-20 w-20 mb-2 cursor-pointer"
+                                                @click="updateCurrentImage(index)" />
                                         </div>
-                                        <svg @click="changeImage" class="w-10 h-8 mt-6 cursor-pointer mr-3"
-                                            viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <rect x="2" y="2" width="40" height="40" rx="20" stroke="black"
-                                                stroke-width="3" />
-                                            <path
-                                                d="M35.332 22L36.3927 23.0607L37.4534 22L36.3927 20.9393L35.332 22ZM10.332 20.5C9.5036 20.5 8.83203 21.1716 8.83203 22C8.83203 22.8284 9.5036 23.5 10.332 23.5V20.5ZM26.3927 33.0607L36.3927 23.0607L34.2714 20.9393L24.2714 30.9393L26.3927 33.0607ZM36.3927 20.9393L26.3927 10.9393L24.2714 13.0607L34.2714 23.0607L36.3927 20.9393ZM35.332 20.5L10.332 20.5V23.5L35.332 23.5V20.5Z"
-                                                fill="black" />
-                                        </svg>
+                                        <div class="flex justify-center gap-4 mt-4">
+                                            <!-- Button to navigate to the next image -->
+                                            <svg @click="nextImage" class="w-10 h-8 cursor-pointer" viewBox="0 0 44 44"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <rect x="2" y="2" width="40" height="40" rx="20" stroke="black"
+                                                    stroke-width="3" />
+                                                <path
+                                                    d="M28.5 22L27.5 21L28.5 20L29.5 21L28.5 22ZM14.5 22L13.5 21L14.5 20L15.5 21L14.5 22ZM15.5 21L27.5 21L27.5 23L15.5 23L15.5 21Z"
+                                                    fill="black" />
+                                            </svg>
+                                        </div>
                                     </div>
                                 </div>
-
                                 <!-- Mobile - gallery -->
                                 <div class="lg:hidden grid grid-cols-2 grid-rows-1 gap-4 my-8">
                                     <div class="w-[235px] ml-4">
@@ -342,42 +340,38 @@
                                         </svg>
                                     </div>
                                 </div>
+
                                 <!-- right section -->
                                 <div class="lg:w-[60%] px-3">
                                     <div class="lg:flex lg:flex-col text-black">
                                         <p class="font-bold text-left lg:text-3xl text-2xl my-6 lg:my-0"
                                             style="line-height: 1.2;">
-                                            {{ selectedProduct.title }}
+                                            {{ selectedProduct.productname }}
                                         </p>
                                     </div>
                                     <div class=" flex flex-col text-black mb-3 mt-4">
-                                        <p class="font-bold text-xl">{{ selectedProduct.shop }}</p>
+                                        <p class="font-bold text-xl">{{ storedetails.storename }}</p>
                                         <div class="lg:inline-flex hidden items-center justify-between"
                                             style="line-height: 2;">
-                                            <div class="text-2xl">₱{{ selectedProduct.price }}</div>
+                                            <div class="text-2xl">₱{{ selectedProduct.productprice }}</div>
                                             <div class="flex items-center">
-                                                <p>Quantity</p>
-                                                <button @click="decreaseQuantity"
-                                                    class="ml-4 px-4 py-1 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
+    <p>Quantity</p>
+    <button @click="decreaseQuantity"
+            class="ml-4 px-4 py-1 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
 
-                                                <span class="px-4">{{ selectedProduct.quantity }}</span>
-                                                <button @click="increaseQuantity"
-                                                    class=" px-4 py-1 bg-gray-200 text-gray-700 rounded-r-lg">+</button>
+    <span class="px-4">{{ selectedProduct ? selectedProduct.quantity : 1 }}</span> <!-- Display the current quantity -->
 
-                                            </div>
+    <button @click="increaseQuantity"
+            class="px-4 py-1 bg-gray-200 text-gray-700 rounded-r-lg">+</button>
+</div>
+
                                         </div>
                                         <div class="border border-gray-200 lg:my-3 my-2"></div>
                                         <!-- description -->
                                         <div class=" lg:h-auto">
                                             <div class="justify-between mb-2 grid  gap-2 mt-5 lg:mt-0">
-                                                <p class="w-[100%]">• Made from canvas material</p>
-                                                <p class="w-[100%]">• Durable and lightweight bag</p>
-                                                <p class="w-[100%]">• Can be wash ed by hand or washing machine
-                                                </p>
-                                                <p class="w-[100%]">• Multi handle feature</p>
-                                                <p class="w-[100%]">• Can be used as a handbag or tote shoulder bag
-                                                </p>
-                                                <p class="w-[70%]">• Color: White</p>
+                                                <p class="w-[100%]">{{ selectedProduct.description }}</p>
+
                                             </div>
                                         </div>
 
@@ -592,6 +586,18 @@
                         <!-- center this div -->
                         <p class="text-center font-bold">Number of items</p>
                         <p class="text-center font-bold text-3xl">{{ totalItemsInCart }}</p>
+                        <div><template v-if="!isCartEmpty">
+                                    <div class="w-[120%]">
+                                        <!-- Update the click event handler to call handleEditCart function -->
+                                        <button @click="handleEditCart"
+                                            class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[70%]">
+                                            Edit Cart
+                                        </button>
+                                    </div>
+                                </template>
+                            </div>
+                       
+                       
                         <div class="cart-list-scroll mb-5" style="height: 29rem; overflow-y: auto;">
                             <!-- Set specific height and add scrollbar -->
                             <p class="font-bold mb-5">List of items</p>
@@ -844,393 +850,288 @@
 </style>
 
 
-<script>
+<script setup>
+import {
+    ref,
+    computed,
+    watch,
+    reactive,
+    defineProps
+} from 'vue';
+import axios from 'axios';
+import {
+    useRoute, useRouter
+} from 'vue-router';
 import ContentCarousel from '@/components/ToEatCarousel.vue';
 import MapRenderer from "@/components/MapRenderer.vue";
 import LoginModal from '@/components/LoginModal.vue';
-import {
-    defineComponent,
-    ref,
-    computed,
-    watch
-} from 'vue';
 import {
     useAuthStore
 } from '@/stores/auth';
 import {
     useCartStoreEat
 } from '@/stores/toEatCart';
-import {
-    useRouter
-} from 'vue-router';
-import eatProduct1 from '@/assets/images/CategoryView/ToEat/best1.png';
-import eatProduct2 from '@/assets/images/CategoryView/ToEat/best2.png';
-import eatProduct3 from '@/assets/images/CategoryView/ToEat/best3.jpg';
-import otherProduct4 from '@/assets/images/CategoryView/ToEat/other1.jpg';
-import otherProduct5 from '@/assets/images/CategoryView/ToEat/other2.png';
-import otherProduct6 from '@/assets/images/CategoryView/ToEat/other3.png';
-import otherProduct7 from '@/assets/images/CategoryView/ToEat/other4.jpg';
-import otherProduct8 from '@/assets/images/CategoryView/ToEat/other5.png';
-import otherProduct9 from '@/assets/images/CategoryView/ToEat/other6.png';
+const props = defineProps({
+    latitude: Number,
+    longitude: Number,
+    name: String,
+    id: Number,
+    item: String,
+    imageList: String,
+});
+const model = reactive({
+    productsArray: [],
+});
+const cartStore = useCartStoreEat();
+const authStore = useAuthStore();
+const route = useRoute();
+const router = useRouter(); // Initialize router
+
+const cart = computed(() => cartStore.cart);
+const shopData = computed(() => cartStore.shopData);
+const editCartProducts = ref([]);
+const buyNowProducts = ref([]);
+const selectedProduct = ref(null);
+const showToast = ref(false);
+const toastMessage = ref("");
+const currentIndex = ref(0);
+const currentPage = ref(0);
+const count = ref(0);
+const showCart = ref(false);
+const showCartModal = ref(false);
+const showReviews = ref(false);
+const showAddtoCart = ref(false);
+const showLoginModal = ref(false);
+const showSeeLessButton = ref(false);
+const selectedProductIsFromBestProducts = ref(false);
+const numFeedbackShown = ref(0);
+const id = ref('');
+const storedetails = ref('');
+const imageArray = ref([]);
+const currentImageIndex = ref(0);
+const selectedProductImages = ref([]);
+const currentImage = ref('');
+
+// Function to get the image URL
+const getImageUrl = (fileName) => {
+    return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
+};
+
+const getId = () => {
+    console.log('Fetching product with ID:', id.value);
+    console.log('Available products:', model.productsArray);
+
+    axios.get(`/getStore/${id.value}`).then((response) => {
+        const storeparse = JSON.parse(response.data.message);
+        storedetails.value = storeparse;
+        model.productsArray = JSON.parse(response.data.getProducts);
 
 
+        console.log('Selected product:', selectedProduct.value);
 
-export default defineComponent({
-    props: {
-        latitude: Number,
-        longitude: Number,
-        name: String
-    },
-    components: {
-        MapRenderer,
-        LoginModal,
-        ContentCarousel
-    },
-    setup() {
-        const cartStore = useCartStoreEat();
-        const router = useRouter();
-        const authStore = useAuthStore();
-        const cart = computed(() => cartStore.cart);
-        const editCartProducts = ref([]);
-        const buyNowProducts = ref([]);
-        const selectedProduct = ref(null);
-        const showToast = ref(false);
-        const toastMessage = ref("");
-        const currentIndex = ref(0);
-        const currentPage = ref(0);
-        const count = ref(0);
-        const showCart = ref(false);
-        const showCartModal = ref(false);
-        const showReviews = ref(false);
-        const showAddtoCart = ref(false);
-        const showLoginModal = ref(false);
-        const showSeeLessButton = ref(false);
-        const selectedProductImages = ref([]);
-        const selectedProductIsFromBestProducts = ref(false);
-        const numFeedbackShown = ref(0);
-        const items = [{
-            name: 'Juan Dela Cruz',
-            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-            date: 'December 2023',
-        },
-        {
-            name: 'Luis Paolo',
-            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-            date: 'December 2023',
-        },
-        {
-            name: 'Luis Paolo',
-            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-            date: 'December 2023',
-        },
-        {
-            name: 'Juan Dela Cruz',
-            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-            date: 'December 2023',
-        },
-        {
-            name: 'Juan Dela Cruz',
-            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-            date: 'December 2023',
-        },
-        {
-            name: 'Luis Paolo',
-            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-            date: 'December 2023',
-        },
-        {
-            name: 'Luis Paolo',
-            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-            date: 'December 2023',
-        },
-        {
-            name: 'Juan Dela Cruz',
-            description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-            date: 'December 2023',
-        },
-        ];
-        const bestProducts = [{
-            title: "Spicy Maguro",
-            image: [eatProduct1, eatProduct2, eatProduct3],
-            price: 100.00,
-            shop: "Little Tokyo",
-            quantity: 1
-        },
-        {
-            title: "Modern Ika Tama",
-            image: [eatProduct2, eatProduct3, eatProduct1],
-            price: 399.00,
-            shop: "Little Tokyo",
-            quantity: 1
-        },
-        {
-            title: "Udon",
-            image: [eatProduct3, eatProduct2, eatProduct1],
-            price: 100.00,
-            shop: "Little Tokyo",
-            quantity: 1
-        }
-            // Add more products as needed
-        ];
-        const otherProducts = [{
-            title: "Takoyaki ",
-            image: [otherProduct4, eatProduct2, eatProduct1],
-            price: 100.00,
-            shop: "Little Tokyo",
-            quantity: 1
-        },
-        {
-            title: "Oyako",
-            image: [otherProduct5, eatProduct2, eatProduct1],
-            price: 100.00,
-            shop: "Little Tokyo",
-            quantity: 1
-        },
-        {
-            title: "Kinds Chirashi ",
-            image: [otherProduct6, eatProduct2, eatProduct1],
-            price: 100.00,
-            shop: "Little Tokyo",
-            quantity: 1
-        },
-        {
-            title: "San Ten Mori",
-            image: [otherProduct7, eatProduct2, eatProduct1],
-            price: 100.00,
-            shop: "Little Tokyo",
-            quantity: 1
-        },
-        {
-            title: "Makunouchi Bento",
-            image: [otherProduct8, eatProduct2, eatProduct1],
-            price: 100.00,
-            shop: "Little Tokyo",
-            quantity: 1
-        },
-        {
-            title: "Chasyu",
-            image: [otherProduct9, eatProduct2, eatProduct1],
-            price: 100.00,
-            shop: "Little Tokyo",
-            quantity: 1
-        },
-        ];
-        const categories = ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'];
-        const locations = ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'];
-        //*******************ALL CODE FOR CHECKING WHETHER PRODUCT IS COMING FROM EDEITCART ARRAY OR BUYNOW ARRAY***********//
-        const handleEditCart = () => {
-            if (!authStore.isAuthenticated) {
-                authStore.setIntendedRoute('/carteat');
-                showLoginModal.value = true;
-            } else {
-                router.push('/carteat');
-            }
-        };
-        const handleBuyNow = () => {
-            if (!authStore.isAuthenticated) {
-                authStore.setIntendedRoute('/checkouteat');
-                showLoginModal.value = true;
-            } else {
-                addToBuyNow(selectedProduct.value);
-                router.push('/checkouteat');
-            }
-        };
-        const addToCart = (item, isFromEditCart = false) => {
-            if (!authStore.isAuthenticated) {
-                authStore.setIntendedRoute(router.currentRoute.value.path);
+    }).catch((error) => {
+        console.log(error);
+    });
+};
 
-                showLoginModal.value = true;
-                return;
-            }
-            const cartArray = isFromEditCart ? editCartProducts : buyNowProducts;
-            cartStore.addToCart(item, isFromEditCart);
-            cartArray.value = cartStore.cart.slice();
-            showCartModal.value = false;
-            if (item !== null) {
-                item.quantity = 1;
-            }
-            showToastWithMessage("Item has been added to cart");
-            if (!isFromEditCart && showAddtoCart.value) {
-                addToBuyNow(item);
-            }
-        };
-
-
-
-
-        const addToBuyNowAndCheckCart = () => {
-            if (!authStore.isAuthenticated) {
-                authStore.setIntendedRoute('/checkouteat');
-                showLoginModal.value = true;
-            } else {
-                addToBuyNow(selectedProduct.value);
-            }
-        };
-        const addToBuyNow = (item) => {
-            buyNowProducts.value.push(item);
-        };
-        const totalItemsInCart = computed(() => {
-            return cartStore.cart.reduce((total, item) => total + item.quantity, 0);
-        });
-        watch(cartStore.cart, (newCart) => {
-            editCartProducts.value = [...newCart];
-        }, {
-            deep: true
-        });
-        //*******************END OF ALL CODE FOR CHECKING WHETHER PRODUCT IS COMING FROM EDEITCART ARRAY OR BUYNOW ARRAY***********//
-        // we need this to kknow which array will the carousel get the images from sa best seller ba or sa other product
-        watch(selectedProduct, (newValue) => {
-            console.log("Selected Product Changed:", newValue);
-            const isBestProduct = bestProducts.some(product => product.title === newValue.title);
-            selectedProductImages.value = newValue ?
-                (isBestProduct ?
-                    (console.log("Fetching image from bestProducts"), newValue.image) :
-                    (console.log("Fetching image from otherProducts"), newValue.image)) || [] : [];
-            selectedProductIsFromBestProducts.value = isBestProduct;
-        });
-        // Modify changeImage function to use selectedProductImages length
-        const changeImage = () => {
-            currentIndex.value = (currentIndex.value + 1) % selectedProductImages.value.length;
-        };
-        // Function to update the current image index
-        const updateCurrentImage = (image) => {
-            currentIndex.value = selectedProductImages.value.findIndex(img => img === image);
-            currentImage.value = image;
-        };
-        // Define computed property to get the current image based on the currentIndex
-        const currentImage = computed(() => {
-            return selectedProductImages.value[currentIndex.value] || ''; // Assuming the first product's image is used for the carousel
-        });
-        const clearCartAndNavigate = () => {
-            cartStore.clearCart();
-        };
-        const isCartEmpty = computed(() => {
-            return cartStore.cart.length === 0;
-        });
-        const paginatedItems = computed(() => {
-            return items.slice(0, 2 + numFeedbackShown.value);
-        });
-        const showSeeMoreButton = computed(() => {
-            return numFeedbackShown.value < items.length - 2;
-        });
-        const seeMore = () => {
-            numFeedbackShown.value += 2;
-            if (!showSeeMoreButton.value) {
-                showSeeLessButton.value = true;
-            }
-        };
-        const seeLess = () => {
-            numFeedbackShown.value = 0;
-            showSeeLessButton.value = false;
-        };
-        const increment = () => {
-            count.value++;
-        };
-        const decrement = () => {
-            if (count.value > 0) {
-                count.value--;
-            }
-        };
-        const toggleshowCart = (item) => {
-            selectedProduct.value = item;
-            console.log(selectedProduct.value);
-            showCart.value = true;
-        };
-        const openCartModal = () => {
-            console.log("Opening cart modal");
-            showCartModal.value = true;
-        };
-        const closeLoginModal = () => {
-            showLoginModal.value = false;
-        };
-        const closeCart = () => {
-            showCart.value = false;
-        };
-        const closeModal = () => {
-            showCartModal.value = false;
-        };
-        const toggleshowReviews = () => {
-            showReviews.value = true;
-            showCart.value = false;
-        };
-        const closeReviews = () => {
-            showReviews.value = false;
-            showCart.value = true;
-        };
-        const increaseQuantity = () => {
-            selectedProduct.value.quantity++;
-        };
-        const decreaseQuantity = () => {
-            if (selectedProduct.value.quantity > 1) {
-                selectedProduct.value.quantity--;
-            }
-        };
-        const showToastWithMessage = (message) => {
-            toastMessage.value = message;
-            showToast.value = true;
-            setTimeout(() => {
-                showToast.value = false;
-                toastMessage.value = "";
-            }, 3000);
-        };
-        const hideToast = () => {
-            showToast.value = false;
-            toastMessage.value = "";
-        };
-        return {
-            handleEditCart,
-            handleBuyNow,
-            addToBuyNowAndCheckCart,
-            editCartProducts,
-            selectedProduct,
-            selectedProductIsFromBestProducts,
-            selectedProductImages,
-            isCartEmpty,
-            totalItemsInCart,
-            clearCartAndNavigate,
-            useCartStoreEat,
-            cart,
-            showAddtoCart,
-            openCartModal,
-            // getTotalItemsInCart,
-            bestProducts,
-            otherProducts,
-            showToast,
-            toastMessage,
-            currentPage,
-            decreaseQuantity,
-            increaseQuantity,
-            hideToast,
-            addToCart,
-            showCart,
-            router,
-            authStore,
-            showLoginModal,
-            showCartModal,
-            showReviews,
-            items,
-            currentIndex,
-            count,
-            numFeedbackShown,
-            showSeeLessButton,
-            categories,
-            locations,
-            paginatedItems,
-            currentImage,
-            showSeeMoreButton,
-            closeLoginModal,
-            seeMore,
-            seeLess,
-            changeImage,
-            updateCurrentImage,
-            increment,
-            decrement,
-            toggleshowCart,
-            closeCart,
-            closeModal,
-            toggleshowReviews,
-            closeReviews,
-        };
+// Watch for changes in selectedProduct and update selectedProductImages accordingly
+watch(selectedProduct, (newSelectedProduct) => {
+    if (newSelectedProduct) {
+        selectedProductImages.value = newSelectedProduct.uploadedphotos.split('|');
+        updateCurrentImage(0); // Reset currentImageIndex when selectedProduct changes
     }
 });
+
+// Function to update the currentImage based on the clicked thumbnail
+const updateCurrentImage = (index) => {
+    currentImageIndex.value = index;
+    currentImage.value = getImageUrl(selectedProductImages.value[index]);
+};
+
+// Function to navigate to the next image
+const nextImage = () => {
+    currentImageIndex.value = (currentImageIndex.value + 1) % selectedProductImages.value.length;
+    currentImage.value = getImageUrl(selectedProductImages.value[currentImageIndex.value]);
+};
+
+
+watch(
+    () => route.params.id,
+    (newId) => {
+        if (newId) {
+            id.value = newId;
+            getId();
+        }
+    }, {
+    immediate: true
+}
+);
+const items = [
+    // ... (same items array as provided)
+];
+const bestProducts = [
+    // ... (same bestProducts array as provided)
+];
+const otherProducts = [
+    // ... (same otherProducts array as provided)
+];
+const categories = ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'];
+const locations = ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'];
+const handleEditCart = () => {
+    if (!authStore.isAuthenticated) {
+        authStore.setIntendedRoute('/carteat');
+        showLoginModal.value = true;
+    } else {
+        router.push('/carteat');
+    }
+};
+const handleBuyNow = () => {
+    if (!authStore.isAuthenticated) {
+        authStore.setIntendedRoute('/checkouteat');
+        showLoginModal.value = true;
+    } else {
+        addToBuyNow(selectedProduct.value);
+        router.push('/checkouteat');
+    }
+};
+const addToCart = (item, isFromEditCart = false) => {
+    if (!authStore.isAuthenticated) {
+        authStore.setIntendedRoute(router.currentRoute.value.path);
+        showLoginModal.value = true;
+        return;
+    }
+
+
+    const cartArray = isFromEditCart ? editCartProducts : buyNowProducts;
+
+
+    cartStore.addToCart(item, isFromEditCart);
+    cartArray.value = cartStore.cart.slice();
+    showCartModal.value = false;
+
+    showToastWithMessage("Item has been added to cart");
+
+    if (!isFromEditCart && showAddtoCart.value) {
+        addToBuyNow(item);
+    }
+};
+// Function to set the default quantity once the product is loaded
+const setDefaultQuantity = () => {
+    if (selectedProduct.value) {
+        selectedProduct.value.quantity = 1;
+    }
+};
+
+// Call setDefaultQuantity function when selectedProduct is loaded
+watch(selectedProduct, () => {
+    setDefaultQuantity();
+}, { immediate: true });
+
+// Function to increase quantity
+const increaseQuantity = () => {
+    if (selectedProduct.value && selectedProduct.value.quantity < selectedProduct.value.availability) {
+        selectedProduct.value.quantity++;
+    } else {
+        showToastWithMessage("Quantity exceeds availability");
+    }
+};
+
+// Function to decrease quantity
+const decreaseQuantity = () => {
+    if (selectedProduct.value && selectedProduct.value.quantity > 1) {
+        selectedProduct.value.quantity--;
+    } else {
+        showToastWithMessage("Minimum quantity reached");
+    }
+};
+
+
+const addToBuyNowAndCheckCart = () => {
+    if (!authStore.isAuthenticated) {
+        authStore.setIntendedRoute('/checkouteat');
+        showLoginModal.value = true;
+    } else {
+        addToBuyNow(selectedProduct.value);
+    }
+};
+const addToBuyNow = (item) => {
+    buyNowProducts.value.push(item);
+};
+const totalItemsInCart = computed(() => {
+    return cartStore.cart.reduce((total, item) => total + item.quantity, 0);
+});
+watch(cartStore.cart, (newCart) => {
+    editCartProducts.value = [...newCart];
+}, {
+    deep: true
+});
+
+
+const clearCartAndNavigate = () => {
+    cartStore.clearCart();
+};
+const isCartEmpty = computed(() => {
+    return cartStore.cart.length === 0;
+});
+const paginatedItems = computed(() => {
+    return items.slice(0, 2 + numFeedbackShown.value);
+});
+const showSeeMoreButton = computed(() => {
+    return numFeedbackShown.value < items.length - 2;
+});
+const seeMore = () => {
+    numFeedbackShown.value += 2;
+    if (!showSeeMoreButton.value) {
+        showSeeLessButton.value = true;
+    }
+};
+const seeLess = () => {
+    numFeedbackShown.value = 0;
+    showSeeLessButton.value = false;
+};
+const increment = () => {
+    count.value++;
+};
+const decrement = () => {
+    if (count.value > 0) {
+        count.value--;
+    }
+};
+const toggleshowCart = (item) => {
+    selectedProduct.value = item;
+    showCart.value = true;
+};
+const openCartModal = () => {
+    showCartModal.value = true;
+};
+const closeLoginModal = () => {
+    showLoginModal.value = false;
+};
+const closeCart = () => {
+    showCart.value = false;
+};
+const closeModal = () => {
+    showCartModal.value = false;
+};
+const toggleshowReviews = () => {
+    showReviews.value = true;
+    showCart.value = false;
+};
+const closeReviews = () => {
+    showReviews.value = false;
+    showCart.value = true;
+};
+
+const showToastWithMessage = (message) => {
+    toastMessage.value = message;
+    showToast.value = true;
+    setTimeout(() => {
+        showToast.value = false;
+        toastMessage.value = "";
+    }, 3000);
+};
+const hideToast = () => {
+    showToast.value = false;
+    toastMessage.value = "";
+};
 </script>

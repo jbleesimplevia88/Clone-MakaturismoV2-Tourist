@@ -6,7 +6,7 @@ export const useCartStore = defineStore('useCartStore',{
         cart: [],
         editCartProducts: [], 
         buyNowProducts: [], 
-        shopData:[],
+        shopImages:[],
     }),
 
     actions: {
@@ -39,7 +39,7 @@ export const useCartStore = defineStore('useCartStore',{
 
     getShopData(item){
 
-        this.shopData = item;
+        this.shopImages = item;
         console.log(this.shopData);
 
     },

@@ -168,12 +168,13 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
                 <div v-for="(item, index) in filteredItems" :key="index"
                     class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
-                    <div class="relative">
-                        <img class="w-full h-[250px] object-cover rounded-t" :src="item.image" alt="">
+                    <div class="relative" v-if="item.pictureimage">
+        <img  :src="getImageUrl(item.pictureimage)" class="w-full h-[250px] object-cover rounded-t">
+    
                         <div
                             class="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-[#102E61] to-transparent">
                         </div>
-                        <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{ item.name }}</p>
+                        <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{ item.storename }}</p>
                         <p class="absolute bottom-2 left-2 text-white text-xs">{{ Array.isArray(item.category) ?
                             item.category.join(', ') : item.category }}</p>
                     </div>
@@ -267,124 +268,28 @@
 </style>
 
 <script  setup>
-import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue';
+import { ref, computed, onMounted, onBeforeUnmount, watch, onBeforeMount, reactive } from 'vue';
 import { useRouter } from 'vue-router';
+import axios from 'axios';
 import item1 from '@/assets/images/CategoryView/ToEat/little.png';
 import item2 from '@/assets/images/CategoryView/ToEat/lanuova.jpeg';
-
 import item3 from '@/assets/images/CategoryView/ToEat/tapenade.jpeg';
 import item4 from '@/assets/images/CategoryView/ToEat/salon.jpeg';
 import item5 from '@/assets/images/CategoryView/ToEat/maple.jpeg';
 import item6 from '@/assets/images/CategoryView/ToEat/thebar.jpeg';
 import item7 from '@/assets/images/CategoryView/ToEat/oldmanila.jpeg';
 import item8 from '@/assets/images/CategoryView/ToEat/brera.jpeg';
+import { useCartStoreEat } from '@/stores/toEatCart';
 
 const router = useRouter();
+const useToEat = useCartStoreEat();
 
-const items = ref([
-    {
-        name: 'Little Tokyo',
-        description: "Savor the authentic flavors of Japan in the heart of Makati at Little Tokyo. This culinary enclave offers a delightful array of Japanese restaurants and eateries, serving up delicious sushi, ramen, tempura, and more. Whether you're a sushi aficionado or a ramen lover, Little Tokyo promises a delectable dining experience in a charming Japanese setting.",
-        category: 'Restaurant/Food District',
-        cuisine: 'Japanese',
-        location: 'Pio del Pilar',
-        image: item1,
-        link: "/category/eat/LittleTokyo",
-        mapLocation: "https://www.google.com/maps/dir//2277+Chino+Roces+Ave,+Pasong+Tamo+Corner+Amorsolo+Street,+Makati,+Legazpi+Village,+Makati,+Metro+Manila/@14.5533656,121.014666,20.18z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9127a40d8f3:0x167c252a58dad21c!2m2!1d121.0146986!2d14.5535301?entry=ttu"
-    },
-    {
-        name: 'La Nuova Pastelaria',
-        description: "Transport your taste buds to Italy at La Nouva Pastelaria. This charming Italian cafe and bakery offers a delectable selection of pastries, pasta, and pizza, all made with authentic Italian flair. Sip on freshly brewed coffee while savoring the delightful flavors of Italy at La Nouva Pastelaria.",
-        category: 'Restaurant/Bakery',
-        cuisine: 'Italian',
-        location: 'Forbes Park South',
-        image: item2,
-        link: "",
-        mapLocation: ""
-    },
-    {
-        name: 'Tapenade',
-        description: 'Embark on a culinary journey through Mediterranean flavors at Tapenade. This vibrant restaurant showcases a buffet of Mediterranean-inspired dishes, from fresh salads and seafood to succulent meats and delectable desserts. With a lively ambiance and an array of flavorful options, Tapenade is a favorite among food enthusiasts.',
-        category: 'Restaurant',
-        cuisine: 'Mediterranean',
-        location: 'Ayala-Paseo de Roxas',
-        image: item3,
-        link: "",
-        mapLocation: ""
-    },
-    {
-        name: 'Salon De Ning',
-        description: "Transport yourself to a bygone era of opulence and luxury at Salon De Ning. This glamorous restaurant pays homage to the elegance of the 1930s Shanghai, with a menu inspired by Asian and Western cuisines. Experience the nostalgia of a bygone era while enjoying a sumptuous meal at Salon De Ning.",
-        category: 'Restaurant',
-        cuisine: 'Asian',
-        location: 'Ayala-Paseo de Roxas',
-        image: item4,
-        link: "",
-        mapLocation: ""
-    },
-    {
-        name: 'Maple',
-        description: "Indulge in a delightful fusion of flavors at Maple. This contemporary restaurant boasts a menu inspired by global cuisines, featuring creative dishes made with locally sourced ingredients. From scrumptious breakfast options to savory mains and delectable desserts, Maple is the perfect spot for a memorable dining experience.",
-        category: 'Restaurant',
-        cuisine: 'American',
-        location: 'Dasmarinas Village North',
-        image: item5,
-        link: "",
-        mapLocation: ""
-    },
-    {
-        name: 'The Bar at The Peninsula Manila',
-        description: "Experience sophistication and elegance at The Bar. This upscale dining venue offers a refined menu of international and Filipino cuisines, complemented by an extensive selection of fine wines and spirits. Whether it's a romantic dinner or a celebratory meal, The Bar ensures a delightful culinary experience in a luxurious setting.",
-        category: 'Restaurant',
-        cuisine: ['Asian', 'Filipino', 'Chinese', 'Japanese', 'Italian'],
-        location: 'Ayala-Paseo de Roxas',
-        image: item6,
-        link: "",
-        mapLocation: ""
-    },
-    {
-        name: 'Old Manila at The Peninsula Manila',
-        description: "Elevate your dining experience at Old Manila, a culinary gem that celebrates modern European cuisine. With a focus on premium ingredients and artful presentation, each dish is a masterpiece that delights both the palate and the eye. Indulge in a gastronomic adventure at Old Manila and experience the art of fine dining.",
-        category: 'Restaurant',
-        cuisine: ['European', 'French'],
-        location: 'Ayala-Paseo de Roxas',
-        image: item7,
-        link: "",
-        mapLocation: ""
-    },
-    {
-        name: 'Brera Delicatessen',
-        description: "Satisfy your cravings for authentic Italian delicacies at Brera Delicatessen. This cozy trattoria serves up an array of traditional Italian dishes, from wood-fired pizzas to handcrafted pasta. With warm Italian hospitality and an inviting ambiance, Brera Delicatessen promises an unforgettable dining experience in Makati.",
-        category: 'Restaurant',
-        cuisine: 'Italian',
-        location: 'San Antonio Village',
-        image: item8,
-        link: "",
-        mapLocation: ""
-    },
-    {
-        name: 'Brera Delicatessen',
-        description: "Satisfy your cravings for authentic Italian delicacies at Brera Delicatessen. This cozy trattoria serves up an array of traditional Italian dishes, from wood-fired pizzas to handcrafted pasta. With warm Italian hospitality and an inviting ambiance, Brera Delicatessen promises an unforgettable dining experience in Makati.",
-        category: 'Restaurant',
-        cuisine: 'Italian',
-        location: 'San Antonio Village',
-        image: item8,
-        link: "",
-        mapLocation: ""
-    },
-    {
-        name: 'Brera Delicatessen',
-        description: "Satisfy your cravings for authentic Italian delicacies at Brera Delicatessen. This cozy trattoria serves up an array of traditional Italian dishes, from wood-fired pizzas to handcrafted pasta. With warm Italian hospitality and an inviting ambiance, Brera Delicatessen promises an unforgettable dining experience in Makati.",
-        category: 'Restaurant',
-        cuisine: 'Italian',
-        location: 'San Antonio Village',
-        image: item8,
-        link: "",
-        mapLocation: ""
-    },
-]);
+const model = reactive({
+    items: [],
+    imageList: '',
 
-const categories = ['American', 'Argentine', 'Asian', 'Australian', 'Chinese', 'European', 'Filipino', 'French', 'German', 'Halal', 'Indian', 'Irish', 'Italian','Japanese', 'Korean', 'Mediterranean', 'Mexican', 'Singapore', 'Spanish', 'Swiss', 'Thai', 'Vietnamese'];
+});
+const categories = ['American', 'Argentine', 'Asian', 'Australian', 'Chinese', 'European', 'Filipino', 'French', 'German', 'Halal', 'Indian', 'Irish', 'Italian', 'Japanese', 'Korean', 'Mediterranean', 'Mexican', 'Singapore', 'Spanish', 'Swiss', 'Thai', 'Vietnamese'];
 const locations = [
     'Bangkal',
     'Bel-air',
@@ -417,9 +322,11 @@ const showDropdown = ref(false);
 const selectedCategory = ref(null);
 const selectedLocation = ref(null);
 const applyButtonClicked = ref(false);
+const imageArray = ref();
+const toeatinfo = ref([]);
 
 const filteredItems = computed(() => {
-    let filteredItems = items.value.slice(); // Create a shallow copy of items
+    let filteredItems = model.items.slice(); // Create a shallow copy of items
     // Apply filters only if the Apply button is clicked
     if (applyButtonClicked.value) {
         // Filter by category
@@ -514,21 +421,28 @@ const handleGlobalClick = (event) => {
 };
 
 const seeMore = (item) => {
-    const { latitude, longitude } = extractLatLong(item.mapLocation);
+
+    useToEat.getShopData(item);
+    const { latitude, longitude } = extractLatLong(item.maplink);
     if (latitude !== null && longitude !== null) {
         // Pass the name parameter in the query object
         router.push({
             name: 'Little Tokyo',
+            params: { id: item.busid },
             query: {
                 latitude,
                 longitude,
-                name: item.name
+                item: item,
+                name: item.storename,
+                id: item.busid,
+                imageList: item.pictureimage,
             }
         });
     } else {
         console.error('Latitude or longitude not available');
     }
 };
+
 
 const extractLatLong = (mapLocation) => {
     const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
@@ -549,6 +463,47 @@ const extractLatLong = (mapLocation) => {
     // If no match is found, return null values
     return { latitude: null, longitude: null };
 };
+
+const getGetEat = async () => {
+    try {
+        const response = await axios.post("/getAlltoeat");
+        model.items = JSON.parse(response.data.message);
+        model.imageList = response.data.getimages;
+        toeatinfo.value = model.items; // Assign items to toeatinfo
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+
+
+// Call getGetEat function when component is mounted
+
+const fileNames = computed(() => model.imageList.split('|').filter(name => name !== ''));
+
+const getImageUrl = (pictureimage) => {
+    if (!pictureimage) return ''; // Return empty string if pictureimage is not defined
+
+    // Extract the filename of the first image
+    const images = pictureimage.split('|').filter(img => img.trim() !== ''); // Split by "|" and remove empty strings
+    const firstImage = images[0]; // Get the first image filename
+
+    // Construct the full URL
+    return `${import.meta.env.VITE_STORAGE_BASE_URL}/${firstImage}`;
+};
+
+
+
+onBeforeMount(async () => {
+    await getGetEat();
+    document.removeEventListener('click', handleGlobalClick);
+
+});
+
+watch(filteredItems, (newVal) => {
+    console.log(newVal);
+});
+
 </script>
 
 

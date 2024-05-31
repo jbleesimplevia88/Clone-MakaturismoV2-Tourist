@@ -560,20 +560,27 @@ const handleGlobalClick = (event) => {
 };
 
 const seeMore = (item) => {
-     useToShop.getShopData(item);
-    const { latitude, longitude } = extractLatLong(item.maplink);
-    if (latitude !== null && longitude !== null) {
+    useToShop.getShopData(item);
+    const { latitude = null, longitude = null } = extractLatLong(item.maplink);
+    const ItemId = item.busid;
+    
+    if (latitude && longitude && ItemId) {
+       
         router.push({
             name: 'makati',
             query: {
+                name: item.storename,
+                ItemId,
                 latitude,
-                longitude, 
+                longitude,
             }
         });
     } else {
+      
         console.error('Latitude or longitude not available');
     }
 };
+
 
 const extractLatLong = (mapLocation) => {
     const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;

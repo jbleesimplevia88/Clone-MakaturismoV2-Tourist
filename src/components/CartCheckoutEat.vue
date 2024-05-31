@@ -495,12 +495,12 @@ const showVoucher = ref(false);
 const navButtonText = ref('Request to Order');
 
 const selectedItems = computed(() => {
-    if (cartStore.editCartProducts.length > 0) {
-        return cartStore.editCartProducts.filter(item => item.selected);
-    } else if (cartStore.buyNowProducts.length > 0) {
-        return cartStore.buyNowProducts.filter(item => item.selected);
-    }
-    return cartStore.cart.filter(item => item.selected);
+  if (cartStore.buyNowProducts.length > 0) {
+    return cartStore.buyNowProducts;
+  } else if (cartStore.editCartProducts.length > 0) {
+    return cartStore.editCartProducts;
+  }
+  return cartStore.cart;
 });
 
 const calculateTotalPrice = (cartItem) => {

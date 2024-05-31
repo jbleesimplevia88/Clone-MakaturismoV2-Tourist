@@ -49,8 +49,7 @@
                     </div>
 
 
-
-                    <<div class="flex flex-col pl-8 lg:pl-8 lg:order-first">
+                    <div class="flex flex-col pl-8 lg:pl-8 lg:order-first">
                         <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">{{storedetails.storename}}</h1>
                         <p class="text-md text-white text-left pb-5"></p>
                     </div>
@@ -58,6 +57,8 @@
             </div>
         </div>
     </div>
+
+      
 
 
     <div class="relative mx-6 px-3 lg:px-32 pt-5">
@@ -89,10 +90,12 @@
 
             </div>
             <div class="flex flex-col pl-2.5">
-                <p class="text-lg md:text-black text-left pb-5">{{storedetails.storehours}}</p>
+                <p class="text-lg md:text-black text-left pb-5">{{storedetails.storehours}}|{{storedetails.storesched}}</p>
 
             </div>
         </div>
+
+
 
         <div class="flex flex-row">
             <div class="pt-0.25">
@@ -105,7 +108,6 @@
             </div>
             <p class="text-lg md:text-black text-left pl-2.5 pb-5">{{storedetails.storecontact}}</p>
         </div>
-
         <h1 class="font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SPOT IN HERE IN {{storedetails.storename}}</h1>
    
 
@@ -138,6 +140,22 @@
 
             </h1>
 
+            <div class="grid lg:grid-cols-2" v-for="(item, index) in storeratings"
+                :key="index">
+
+
+
+                    <div class="flex justify-evenly">
+                        <p class=" ext-lgmdext-black text-left pb-5">{{item.productid}}</p>
+                        <div class="my-2 mx-2 flex font-bold">
+                            <div class="h-2 w-[14rem] rounded-full bg-black">
+                                <div class="flex h-full rounded-md bg-brand-500" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        <p class=" ext-lgmdext-black text-left pb-5">{{item.averagerate}}</p>
+                    </div>
+
+                </div>
 
 
                     <!-- <div class="flex justify-evenly">
@@ -204,7 +222,7 @@
             </div>
         
 
-       <div class="grid lg:grid-cols-2 lg:gap-[2rem] relative mx-6 px-3 lg:px-32 pt-5">
+            <div class="grid lg:grid-cols-2 lg:gap-[2rem] relative mx-6 px-3 lg:px-32 pt-5">
             <!-- Feedback Content -->
 
              <div class="relative border-2 border-gray-200 rounded-md px-3 py-3"  v-for="(item, index) in storeratings"
@@ -231,34 +249,7 @@
                     <p class="text-justify text-black text-md leading-7"></p>
                 </div>
             </div>
-
-            <div class="relative border-2 border-gray-200 rounded-md px-3 py-3" v-for="(item, index) in paginatedItems"
-                :key="index">
-
-                <div class="flex flex-row">
-                    <div class="pt-[0.125rem]">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-12 h-12">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                        </svg>
-                    </div>
-                    <div class="flex flex-col">
-                        <p class="relative left-2 text-black text-lg xl:text-xl font-medium pb-3">
-                            {{ item.name }}
-                        </p>
-                        <p class="relative bottom-4 left-2 text-gray-600 text-lg">{{ item.date }}
-                        </p>
-                    </div>
-                </div>
-
-                <div class="p-2 w-full">
-                    <p class="text-justify text-black text-md leading-7">{{ item.description }}</p>
-                </div>
-            </div>
         </div>
-
-
 
         <div v-if="showSeeMoreButton || showSeeLessButton"
             class="flex items-center justify-center pr-[5rem] mt-5 mb-10">
@@ -298,38 +289,50 @@
 
 
 <script>
-import ContentCarousel from '@/components/ToSeeCarousel.vue';
+import landingPageImage1 from '@/assets/images/Banner/banner-1.png';
+import landingPageImage2 from '@/assets/images/Banner/banner-2.png';
+import landingPageImage3 from '@/assets/images/Banner/banner-3.png';
+import landingPageImage4 from '@/assets/images/Banner/banner-4.png';
+import landingPageImage5 from '@/assets/images/Banner/banner-5.png';
+
 import MapRenderer from "@/components/MapRenderer.vue";
+import Carousel from "@/components/ToDoCarousel.vue";
+import axios from 'axios';
+
 
 
 
 
 
 export default {
-  props: {
-    latitude: Number,
-    longitude: Number,
-    name: String
-  },
-  components: {
-    Carousel,
-    MapRenderer
-  },
-
-  mounted() {
+    props: {
+        latitude: Number,
+        longitude: Number,
+        name: String,
+        item: String,
+        imageList: String,
+    },
+    components: {
+        Carousel,
+        MapRenderer
+    },
+    mounted() {
         this.imageArray = this.imageList;
     console.log("list", this.imageArray);
-    this.shopId = this.$route.params.id;
-    console.log("id", this.shopId);
+    // this.shopId = this.$route.params.id;
+    this.id = this.$route.params.id;
+    console.log("id", this.id);
     this.imageUrls = this.imageArray.split('|');
     console.log(this.imageUrls);
+    console.log(this.name);
+    this.getId();
         //this.getId(this.$route.params.id);
  
     },
 
-
     data() {
         return {
+            imageUrls: [],
             items: [
                 // {
                 //     name: 'Juan Dela Cruz',
@@ -385,14 +388,16 @@ export default {
             showDropdown: false,
             categories: ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'],
             locations: ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'],
+            // New property to track number of feedback items shown
             numFeedbackShown: 0,
             showSeeLessButton: false,
             shopId: '',
-            glorietta:'',
+            omniverse:'',
             id: '',
             storedetails: '',
             storeratings: '',
             storereviews: '',
+
             imageArray: '',
             rateCustomerstatus: '',
             localimageUrl: `${import.meta.env.VITE_STORAGE_BASE_URL}/`,
@@ -405,14 +410,14 @@ export default {
                 landingPageImage5
               ],
               currentIndex: 0
-            
+
         };
     },
+
     created(){
         this.id = this.$route.params.id;
 
     },
-    
     computed: {
         paginatedItems() {
             // Return first 2 items initially and add additional items based on numFeedbackShown
@@ -424,6 +429,46 @@ export default {
         }
     },
     methods: {
+         prev() {
+            if (this.currentIndex > 0) {
+      this.currentIndex--; // Decrease currentIndex
+    }
+        
+        },
+        next() {
+            if (this.currentIndex < this.imageUrls.length - 1) {
+      this.currentIndex++; // Increase currentIndex
+    }
+        },
+      
+
+        getId(){
+            console.log(this.id);     
+            axios.get(`/getStore/${this.id}`).then((response) => {
+                console.log(response.data.overall);
+                console.log(response.data.ratestatus);
+                
+                const storeparse = JSON.parse(response.data.message);
+                const rateparse = JSON.parse(response.data.ratings);
+                const reviewparse = JSON.parse(response.data.overall);
+                this.storedetails = storeparse;
+                this.storeratings = rateparse;
+                this.storereviews = reviewparse;
+                console.log(this.storereviews);
+                console.log(this.storeratings);
+                console.log(this.storedetails.pictureimage);
+                const removeChar = String(this.storedetails.pictureimage).replace(/[|]/g,',');
+                console.log(removeChar);
+                const separator = ",";
+                const arrImage = removeChar.split(separator);
+                this.imageArray = arrImage.filter(elm => elm);
+                console.log(this.imageArray);
+
+            }).catch((error) => {
+                console.log(error);
+            });
+
+        },
         // Method to handle "See More" button click
         seeMore() {
             // Increment the number of feedback items to show
@@ -440,6 +485,7 @@ export default {
             // Hide See Less button
             this.showSeeLessButton = false;
         }
-    },
+
+    }
 };
 </script>

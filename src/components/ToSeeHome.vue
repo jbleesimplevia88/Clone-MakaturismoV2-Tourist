@@ -374,9 +374,10 @@ const displayToSee = async () => {
         const response = await axios.post("/getAlltosee");
         model.items = JSON.parse(response.data.message);
         model.imageList = response.data.getimages;
-        toseeinfo.value = model.items; // Assign items to toseeinfo
+        todosee.value = model.items; // Assign items to toseeinfo
     } catch (error) {
         console.error(error);
+    
     }
 };
 
@@ -393,8 +394,9 @@ const seeMore = (item) => {
                 latitude,
                 longitude,
                 item: item,
+                name: item.storename,
+                id: item.busid,
                 imageList: item.pictureimage,
-               
             }
         });
     } else {

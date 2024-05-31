@@ -1014,14 +1014,6 @@ const decreaseQuantity = () => {
 };
 
 
-const addToBuyNowAndCheckCart = () => {
-    if (!authStore.isAuthenticated) {
-        authStore.setIntendedRoute('/checkouteat');
-        showLoginModal.value = true;
-    } else {
-        addToBuyNow(selectedProduct.value);
-    }
-};
 const addToBuyNow = (item) => {
     buyNowProducts.value.push(item);
 };

@@ -10,21 +10,21 @@
                 </button>
             </div>
 
-            <div class="bg-white-200 mb-5 bg-white rounded-tl-lg rounded-tr-lg mt-10">
+            <div class="bg-white-200 mb-5 bg-white rounded-tl-lg rounded-tr-lg mt-10 lg:w-[80%] lg:ml-[10%]">
                 <div class="flex items-center gap-4 mb-2">
-                    <div class="text-xl font-semibold p-3 mb-3 border-b-2 w-full"><span class="">Shop Makati</span></div>
+                    <div class="text-xl font-semibold p-3 mb-3 border-b-2 w-full"><span class="">{{ shopData.storename }}</span></div>
                 </div>
                 <div class="flex items-center gap-4 mt-1">
-                    <div class="overflow-y-scroll h-[500px]">
+                    <div class="overflow-y-scroll lg:w-full h-[500px]">
                         <div v-if="editCartProducts.length === 0" class="p-3">Cart is empty.</div>
                         <div v-else>
-                            <div v-for="(cartItem, index) in editCartProducts" :key="index" class="flex justify-between mb-3">
+                            <div v-for="(cartItem, index) in editCartProducts" :key="index" class=" bg-gray-100 rounded-xl  m-5 flex lg:justify-normal justify-between mb-3">
                                 <div class="flex items-center justify-center">
                                     <input type="checkbox" v-model="cartItem.selected" @change="updateSelectAll" :id="'checkbox_' + index" class="ml-2 w-8 h-5 border">
                                 </div>
-                                <img :src="getImageUrl(cartItem.image)"  class="w-28 object-fit rounded-lg m-2">
-                                <div class="p-3 grid">
-                                    <span>{{ cartItem.title }} </span>
+                                <img :src="getImageUrl(cartItem.image)"  class=" lg:w-[10%] lg:h-[20%] w-28 object-fit rounded-lg m-2">
+                                <div class="p-3 grid lg:w-full lg:ml-11 ">
+                                    <span class="font-bold">{{ cartItem.title }} </span>
                                     <span>₱ {{ cartItem.price }} </span>
                                     <div class="flex items-center mt-2">
                                         <p class="mr-2">Quantity</p>
@@ -65,6 +65,7 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 const cartStore = useCartStoreEat();
 const editCartProducts = computed(() => cartStore.editCartProducts);
+const shopData = computed(() => cartStore.shopData);
 
 const selectAll = ref(false);
 

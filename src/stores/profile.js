@@ -28,6 +28,8 @@ export const useProfileStore = defineStore('profileStore', {
                         'Content-Type': 'multipart/form-data'                   }
                 });
                 if (response.data) {
+                    this.user = { ...this.user, ...formData }; // Update local user data
+
                     return true;
                 }
             }catch(error){

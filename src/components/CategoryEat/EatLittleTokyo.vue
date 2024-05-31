@@ -270,7 +270,7 @@
                 <!-- View Add to cart modal -->
                 <div v-if="showCart" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center "
                     @click.self="closeModal">
-                    <div class="bg-white lg:h-[760px]  lg:w-auto lg:rounded-3xl h-full w-full shadow-md " @click.stop>
+                    <div class="bg-white lg:h-[640px]  lg:w-auto lg:rounded-3xl h-full w-full shadow-md " @click.stop>
                         <div class="lg:w-[100%] p-4 rounded-lg h-full">
                             <div class="lg:block hidden relative  justify-end">
                                 <button class=" pr-4 pt-21 ml-[97%]">
@@ -289,14 +289,7 @@
                             </button>
 
                             <div v-if="selectedProduct" class="lg:flex lg:justify-between w-[100%]">
-                                <!-- Web gallery -->
-                                <!-- <div class="hidden lg:block lg:w-[40%]">
-                                    <div class="flex justify-center items-center">
-                                        <img v-for="(image, index) in selectedProduct.uploadedphotos.split('|')"
-                                            :key="index" :src="getImageUrl(image)" alt="Product Image"
-                                            class="max-w-[200px] max-h-[200px]">
-                                    </div>
-                                </div> -->
+                                
                                 <div class="hidden lg:block lg:w-[40%]">
                                     <div class="lg:flex justify-center items-center mb-3">
                                         <!-- Display the currentImage in a larger view -->
@@ -328,13 +321,15 @@
                                         <img :src="currentImage" class="h-60 w-full rounded-lg" />
                                     </div>
                                     <div class="grid-cols-1 ml-20">
-                                        <template v-for="(image, index) in selectedProductImages" :key="index">
-                                            <img :src="image" class="h-16 w-20 mb-2" @click="updateCurrentImage(image)" />
-                                        </template>
+                                    
+                                        <img v-for="(image, index) in selectedProductImages" :key="index"
+                                                :src="getImageUrl(image)" class="h-16 w-20 mb-2"
+                                                @click="updateCurrentImage(index)" />
+
 
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke-width="1.5" stroke="black" class="w-[60px] h-10 mt-2 ml-2 cursor-pointer"
-                                            @click="changeImage">
+                                            @click="nextImage" >
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                 d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                         </svg>
@@ -355,15 +350,16 @@
                                             style="line-height: 2;">
                                             <div class="text-2xl">₱{{ selectedProduct.productprice }}</div>
                                             <div class="flex items-center">
-    <p>Quantity</p>
-    <button @click="decreaseQuantity"
-            class="ml-4 px-4 py-1 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
+                                                <p>Quantity</p>
+                                                <button @click="decreaseQuantity"
+                                                    class="ml-4 px-4 py-1 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
 
-    <span class="px-4">{{ selectedProduct ? selectedProduct.quantity : 1 }}</span> <!-- Display the current quantity -->
+                                                <span class="px-4">{{ selectedProduct ? selectedProduct.quantity : 1
+                                                }}</span> <!-- Display the current quantity -->
 
-    <button @click="increaseQuantity"
-            class="px-4 py-1 bg-gray-200 text-gray-700 rounded-r-lg">+</button>
-</div>
+                                                <button @click="increaseQuantity"
+                                                    class="px-4 py-1 bg-gray-200 text-gray-700 rounded-r-lg">+</button>
+                                            </div>
 
                                         </div>
                                         <div class="border border-gray-200 lg:my-3 my-2"></div>
@@ -427,11 +423,16 @@
                                                         Add to Cart</button>
                                                 </div>
                                                 <div class="w-[100%] flex justify-end">
-                                                    <router-link to="/checkoutshop" class="w-full">
-                                                        <button class="text-white bg-blue-600 rounded-lg py-3 w-[95%]">
-                                                            Buy Now</button>
-                                                    </router-link>
+                                                <div v-if="!isCartEmpty" class="w-full">
+
+                                                    <!-- Update the click event handler to call handleBuyNow function -->
+                                                    <button @click="handleBuyNow"
+                                                        class="text-white bg-blue-600 rounded-lg py-3 w-[95%]">
+                                                        Buy Now
+                                                    </button>
                                                 </div>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -584,20 +585,23 @@
                 <div class="cart-bg my-4 lg:w-[30%] lg:h-[85rem] right-7 absolute top-[8rem] ">
                     <div class="cart-list lg:w-[75%] h-[40rem] border border-gray-300 p-4 rounded-lg shadow">
                         <!-- center this div -->
+                        <div class="grid grid-cols-2">
+                            <div>
                         <p class="text-center font-bold">Number of items</p>
                         <p class="text-center font-bold text-3xl">{{ totalItemsInCart }}</p>
-                        <div><template v-if="!isCartEmpty">
-                                    <div class="w-[120%]">
-                                        <!-- Update the click event handler to call handleEditCart function -->
-                                        <button @click="handleEditCart"
-                                            class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[70%]">
-                                            Edit Cart
-                                        </button>
-                                    </div>
-                                </template>
-                            </div>
-                       
-                       
+                    </div>
+                        <template v-if="!isCartEmpty">
+                                <div class="w-[120%]">
+                                    <!-- Update the click event handler to call handleEditCart function -->
+                                    <button @click="handleEditCart"
+                                        class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[70%]">
+                                        Edit Cart
+                                    </button>
+                                </div>
+                            </template>
+                        </div>
+
+
                         <div class="cart-list-scroll mb-5" style="height: 29rem; overflow-y: auto;">
                             <!-- Set specific height and add scrollbar -->
                             <p class="font-bold mb-5">List of items</p>
@@ -664,16 +668,16 @@
                                     Your cart is empty</p>
                             </template>
                         </div>
-                        <!-- Buy Now button -->
+                        <!-- AUTHHHHHH BUTTOONNNNNNNN -->
                         <div v-if="!isCartEmpty">
-                            <login-modal v-if="!authStore.isAuthenticated && showLoginModal"
-                                @close="showLoginModal = false"></login-modal>
+
                             <!-- Update the click event handler to call handleBuyNow function -->
                             <button @click="handleBuyNow"
-                                class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[90%] mt-[100%]">
+                                class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[90%]">
                                 Buy Now
                             </button>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -972,8 +976,6 @@ const addToCart = (item, isFromEditCart = false) => {
         return;
     }
     const cartArray = isFromEditCart ? editCartProducts : buyNowProducts;
-    // Ensure that the 'item' object includes the 'productid' property
-    const itemWithProductId = { ...item, productid: item.id };
     cartStore.addToCart(item, isFromEditCart);
     cartArray.value = cartStore.cart.slice();
     showCartModal.value = false;
@@ -982,14 +984,13 @@ const addToCart = (item, isFromEditCart = false) => {
         addToBuyNow(item);
     }
 };
-// Function to set the default quantity once the product is loaded
+
 const setDefaultQuantity = () => {
     if (selectedProduct.value) {
         selectedProduct.value.quantity = 1;
     }
 };
 
-// Call setDefaultQuantity function when selectedProduct is loaded
 watch(selectedProduct, () => {
     setDefaultQuantity();
 }, { immediate: true });
@@ -1022,8 +1023,7 @@ const addToBuyNowAndCheckCart = () => {
     }
 };
 const addToBuyNow = (item) => {
-    const itemWithProductId = { ...item, productid: item.id };
-    buyNowProducts.value.push(itemWithProductId);
+    buyNowProducts.value.push(item);
 };
 const totalItemsInCart = computed(() => {
     return cartStore.cart.reduce((total, item) => total + item.quantity, 0);

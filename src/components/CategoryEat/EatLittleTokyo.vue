@@ -912,7 +912,6 @@ const currentImageIndex = ref(0);
 const selectedProductImages = ref([]);
 const currentImage = ref('');
 
-// Function to get the image URL
 const getImageUrl = (fileName) => {
     return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
 };
@@ -920,13 +919,10 @@ const getImageUrl = (fileName) => {
 const getId = () => {
     console.log('Fetching product with ID:', id.value);
     console.log('Available products:', model.productsArray);
-
     axios.get(`/getStore/${id.value}`).then((response) => {
         const storeparse = JSON.parse(response.data.message);
         storedetails.value = storeparse;
         model.productsArray = JSON.parse(response.data.getProducts);
-
-
         console.log('Selected product:', selectedProduct.value);
 
     }).catch((error) => {
@@ -934,20 +930,12 @@ const getId = () => {
     });
 };
 
-// Watch for changes in selectedProduct and update selectedProductImages accordingly
-watch(selectedProduct, (newSelectedProduct) => {
-    if (newSelectedProduct) {
-        selectedProductImages.value = newSelectedProduct.uploadedphotos.split('|');
-        updateCurrentImage(0); // Reset currentImageIndex when selectedProduct changes
-    }
-});
 
 // Function to update the currentImage based on the clicked thumbnail
 const updateCurrentImage = (index) => {
     currentImageIndex.value = index;
     currentImage.value = getImageUrl(selectedProductImages.value[index]);
 };
-
 // Function to navigate to the next image
 const nextImage = () => {
     currentImageIndex.value = (currentImageIndex.value + 1) % selectedProductImages.value.length;
@@ -955,26 +943,9 @@ const nextImage = () => {
 };
 
 
-watch(
-    () => route.params.id,
-    (newId) => {
-        if (newId) {
-            id.value = newId;
-            getId();
-        }
-    }, {
-    immediate: true
-}
-);
-const items = [
-    // ... (same items array as provided)
-];
-const bestProducts = [
-    // ... (same bestProducts array as provided)
-];
-const otherProducts = [
-    // ... (same otherProducts array as provided)
-];
+const items = [];
+const bestProducts = [];
+const otherProducts = [];
 const categories = ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'];
 const locations = ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'];
 const handleEditCart = () => {
@@ -1000,17 +971,13 @@ const addToCart = (item, isFromEditCart = false) => {
         showLoginModal.value = true;
         return;
     }
-
-
     const cartArray = isFromEditCart ? editCartProducts : buyNowProducts;
-
-
+    // Ensure that the 'item' object includes the 'productid' property
+    const itemWithProductId = { ...item, productid: item.id };
     cartStore.addToCart(item, isFromEditCart);
     cartArray.value = cartStore.cart.slice();
     showCartModal.value = false;
-
     showToastWithMessage("Item has been added to cart");
-
     if (!isFromEditCart && showAddtoCart.value) {
         addToBuyNow(item);
     }
@@ -1055,15 +1022,11 @@ const addToBuyNowAndCheckCart = () => {
     }
 };
 const addToBuyNow = (item) => {
-    buyNowProducts.value.push(item);
+    const itemWithProductId = { ...item, productid: item.id };
+    buyNowProducts.value.push(itemWithProductId);
 };
 const totalItemsInCart = computed(() => {
     return cartStore.cart.reduce((total, item) => total + item.quantity, 0);
-});
-watch(cartStore.cart, (newCart) => {
-    editCartProducts.value = [...newCart];
-}, {
-    deep: true
 });
 
 
@@ -1134,4 +1097,28 @@ const hideToast = () => {
     showToast.value = false;
     toastMessage.value = "";
 };
+watch(cartStore.cart, (newCart) => {
+    editCartProducts.value = [...newCart];
+}, {
+    deep: true
+});
+watch(
+    () => route.params.id,
+    (newId) => {
+        if (newId) {
+            id.value = newId;
+            getId();
+        }
+    }, {
+    immediate: true
+}
+);
+
+// Watch for changes in selectedProduct and update selectedProductImages accordingly
+watch(selectedProduct, (newSelectedProduct) => {
+    if (newSelectedProduct) {
+        selectedProductImages.value = newSelectedProduct.uploadedphotos.split('|');
+        updateCurrentImage(0); // Reset currentImageIndex when selectedProduct changes
+    }
+});
 </script>

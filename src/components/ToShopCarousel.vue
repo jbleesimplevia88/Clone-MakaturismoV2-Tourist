@@ -19,7 +19,7 @@
   const currentIndex = ref(0);
   let intervalId = null;
   
-  const images = computed(() => cartStore.shopData);
+  const images = computed(() => cartStore.shopImages);
   const slicedImages = computed(() => {
     if (images.value && images.value.pictureimage) {
       return images.value.pictureimage.split('|').slice(0, 3); 

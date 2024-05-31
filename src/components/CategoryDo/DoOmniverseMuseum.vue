@@ -91,7 +91,7 @@
 
             </div>
             <div class="flex flex-col pl-2.5">
-                <p class="text-lg md:text-black text-left pb-5">{{storedetails.storehours}}</p>
+                <p class="text-lg md:text-black text-left pb-5">{{storedetails.storehours}}|{{storedetails.storesched }}</p>
 
             </div>
         </div>

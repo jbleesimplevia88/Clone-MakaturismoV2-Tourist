@@ -146,13 +146,13 @@ const router = createRouter({
           ]
         },
         {
-          
+
           path: 'eat',
           name: 'eat',
           component: () => import('../components/ToEat.vue'),
           children: [
             {
-              
+
               path: 'LittleTokyo/:id',
               name: 'Little Tokyo',
               component: () => import('../components/CategoryEat/EatLittleTokyo.vue'),
@@ -162,7 +162,7 @@ const router = createRouter({
                 name: route.query.name,
                 imageList: route.query.imageList,
 
-                
+
               })
             },
           ]
@@ -179,7 +179,8 @@ const router = createRouter({
               props: route => ({
                 latitude: parseFloat(route.query.latitude),
                 longitude: parseFloat(route.query.longitude),
-                name: route.query.name,
+                ItemId: route.query.ItemId,
+                name: route.query.name
 
               })
             },
@@ -197,7 +198,7 @@ const router = createRouter({
               component: () => import('../components/ToSeeHome.vue')
             },
             {
-              path: 'glorietta',
+              path: 'glorietta/:id',
               name: 'glorietta',
               component: () => import('../components/CategorySee/SeeGlorietta.vue'),
               props: route => ({
@@ -211,17 +212,17 @@ const router = createRouter({
         },
 
 
-      
 
 
-        
+
+
         {
           path: 'stay',
           name: 'stay',
           component: () => import('../components/ToStay.vue'),
           children: [
             {
-              path: 'xyz',
+              path: 'xyz/:id',
               name: 'xyz',
               component: () => import('../components/CategoryStay/StayXyz.vue'),
               props: route => ({
@@ -229,6 +230,7 @@ const router = createRouter({
                 longitude: parseFloat(route.query.longitude),
 
                 name: route.query.name,
+                imageList: route.query.imageList,
               })
             },
           ]

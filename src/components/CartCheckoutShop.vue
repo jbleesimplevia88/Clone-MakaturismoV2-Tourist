@@ -45,22 +45,25 @@
                         <!-- Information of user -->
                         <div class="relative hidden lg:block mx-6 px-3 lg:pl-32 mb-[30px] lg:mb-44">
                             <p class="mb-4 font-bold lg:text-3xl text-2xl">Your Information</p>
-                            <div v-for="(user, index) in userInfo" :key="index"
+                            <div 
                                 class="grid grid-cols-1 lg:grid-cols-2 lg:gap-4">
                                 <div class="flex lg:flex-col lg:items-start justify-start">
                                     <p class="mr-[110px] lg:mr-9 lg:mb-1 font-bold">Full Name</p>
-                                    <p class="font-normal mb-3 text-gray-600">{{ user.fullName }}</p>
+                                    <p class="font-normal mb-3 text-gray-600">{{ model.userInfo.firstname }} {{ model.userInfo.lastname }}</p>
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start">
                                     <p class="mr-[30px] w-10vw lg:pr-0 lg:mr-9 lg:mb-1 font-bold ">E-mail Address</p>
-                                    <p class="font-normal mb-2 text-base text-gray-600">{{ user.email }}
+                                    <p class="font-normal mb-2 text-base text-gray-600">{{ model.userInfo.email }} 
                                     </p>
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start justify-start">
                                     <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Phone Number</p>
-                                    <p class="font-normal mb-10 text-gray-600">{{ user.phoneNumber }}</p>
+                                    <p class="font-normal mb-10 text-gray-600">{{ model.userInfo.contact }}</p>
                                 </div>
-                               
+                                <div class="flex lg:flex-col lg:items-start justify-start">
+                                    <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Address<spam class="text-red-500">*</spam></p>
+                                    <input  v-model="address" class="font-normal mb-10 w-full text-gray-600 border p-2"></input>
+                                </div>
                                 
                             </div>
                             <div class="hidden lg:block">
@@ -88,28 +91,33 @@
                     <div class=" ml-4 bg-gray-400 h-0.5"></div>
                     <div class="ml-4 lg:hidden p-5 ">
                         <p class=" text-2xl font-bold pt-3">Your Information</p>
-                        <div v-for="(user, index) in userInfo" :key="index" className="grid grid-cols-2 grid-rows-3 pt-5 "
+                        <div  className="grid grid-cols-2 grid-rows-3 pt-5 "
                             style="word-wrap: break-word;">
                             <div>
                                 <p class="text-base font-bold">Full Name</p>
                             </div>
                             <div>
-                                <p class="font-normal mb-3  text-gray-600 text-base">{{ user.fullName }}</p>
+                                <p class="font-normal mb-3  text-gray-600 text-base">{{ model.userInfo.firstname }} {{ model.userInfo.lastname }}</p>
                             </div>
                             <div>
                                 <p class=" text-base font-bold">E-mail Address</p>
                             </div>
                             <div>
-                                <p class="font-normal mb-3 text-base text-gray-600 whitespace-nowrap">{{ user.email }}</p>
+                                <p class="font-normal mb-3 text-base text-gray-600 whitespace-nowrap">{{ model.userInfo.email }}</p>
                             </div>
                             <div>
                                 <p class=" text-base font-bold">Phone Number</p>
                             </div>
                             <div>
-                                <p class="font-normal mb-3 text-gray-600 text-base">{{ user.phoneNumber }}</p>
+                                <p class="font-normal mb-3 text-gray-600 text-base">{{ model.userInfo.contact }}</p>
                             </div>
                         
-                       
+                            <div>
+                                <p class=" text-base font-bold">Address<span class="text-red-500">*</span></p>
+                            </div>
+                            <div>
+                                <input v-model="address" class="font-normal mb-3 text-gray-600 text-base"></input>
+                            </div>
                           
                         </div>
                     </div class>
@@ -164,6 +172,11 @@
                                     <!-- Change "Your Total (Php)" to "Subtotal" if a voucher is applied -->
                                     <p class="font-poppins font-sans font-bold text-lg pt-4">{{ displayTotalLabel }}</p>
                                     <p class="font-poppins font-sans text-base font-bold pt-4">{{ totalAmount }}</p>
+                                </div>
+                                <div class="flex justify-between">
+                                    <!-- Change "Your Total (Php)" to "Subtotal" if a voucher is applied -->
+                                    <p class="font-poppins font-sans font-bold text-lg pt-4">Delivery Fee</p>
+                                    <p class="font-poppins font-sans text-base font-bold pt-4">50</p>
                                 </div>
                                 <!-- If the discountPrice has a value, show this line -->
                                 <div v-if="discountPrice !== 0" class="flex justify-between text-[#9bbf2f]">
@@ -468,191 +481,214 @@
     opacity: 0;
 }
 </style>
-<script>
-import {
-    computed
-} from 'vue';
-import {
-    useCartStore
-} from '@/stores/toShopCart';
-export default {
-    setup() {
-        const cartStore = useCartStore();
-        const selectedItems = computed(() => {
-            // If the user is editing the cart
-            if (cartStore.editCartProducts.length > 0) {
-                return cartStore.editCartProducts.filter(item => item.selected);
-            }
-            // If the user is buying now
-            else if (cartStore.buyNowProducts.length > 0) {
-                return cartStore.buyNowProducts.filter(item => item.selected);
-            }
-            return cartStore.cart.filter(item => item.selected);
-        });
-        const totalItemsInCart = computed(() => {
-            return selectedItems.value.reduce((total, item) => total + item.quantity, 0);
-        });
-        const totalAmount = computed(() => {
-            return selectedItems.value.reduce((total, item) => total + (item.quantity * item.price), 0);
-        });
-        return {
-            selectedItems,
-            totalItemsInCart,
-            totalAmount
-        };
+<script setup>
+import { ref, computed, onBeforeMount ,reactive } from 'vue';
+import { useCartStore } from '@/stores/toShopCart';
+import axios from 'axios';
+const cartStore = useCartStore();
+
+const selectedItems = computed(() => {
+    if (cartStore.editCartProducts.length > 0) {
+        return cartStore.editCartProducts.filter(item => item.selected);
+    } else if (cartStore.buyNowProducts.length > 0) {
+        return cartStore.buyNowProducts.filter(item => item.selected);
+    }
+    return cartStore.cart.filter(item => item.selected);
+});
+
+const totalItemsInCart = computed(() => {
+    return selectedItems.value.reduce((total, item) => total + item.quantity, 0);
+});
+
+const totalAmount = computed(() => {
+    return selectedItems.value.reduce((total, item) => total + (item.quantity * item.price), 0);
+});
+
+const model = reactive({
+    userInfo: []
+});
+
+const shops = [
+    {
+        image: "src/assets/images/CategoryView/ToShop/kultura.png",
+        name: "Shop Makati",
+        type: "Shop",
+        rating: "5.0",
+        reviews: "500",
+    }
+];
+
+const vouchers = [
+    {
+        code: 'DISCOUNT999',
+        amount: 999.00,
+        applied: false
     },
-    data() {
-        return {
-            userInfo: [{
-                fullName: "Juan Dela Cruz",
-                email: "Juandelacruz@gmail.com",
-                phoneNumber: "09123456789",
-            
-            }],
-            shops: [{
-                image: "src/assets/images/CategoryView/ToShop/kultura.png",
-                name: "Shop Makati",
-                type: "Shop",
-                rating: "5.0",
-                reviews: "500",
-            }],
-            vouchers: [{
-                code: 'DISCOUNT999',
-                amount: 999.00,
-                applied: false
-            },
-            {
-                code: 'DISCOUNT100',
-                amount: 100.00,
-                applied: false
-            },
-            {
-                code: 'DISCOUNT50',
-                amount: 50.00,
-                applied: false
-            },
-            {
-                code: 'DISCOUNT200',
-                amount: 200.00,
-                applied: false
-            }
-            ],
-            voucher: {
-                applied: false
-            },
-            displayTotalLabel: 'Your Total (Php)',
-            discountPrice: 0,
-            showConfirmation: false,
-            showComplete: false,
-            selectedPaymentMethod: null,
-            showSummary: true,
-            showPayment: true,
-            showVoucher: false,
-            navButtonText: 'Request to Order'
-        };
+    {
+        code: 'DISCOUNT100',
+        amount: 100.00,
+        applied: false
     },
-    computed: {
-        validVouchers() {
-            return this.vouchers.filter(voucher => voucher.amount < this.totalAmount);
-        },
-        invalidVouchers() {
-            return this.vouchers.filter(voucher => voucher.amount >= this.totalAmount);
-        },
-        finalPrice() {
-            return this.totalAmount - this.discountPrice;
-        }
+    {
+        code: 'DISCOUNT50',
+        amount: 50.00,
+        applied: false
     },
-    methods: {
-        toggleVoucher(voucher) {
-            this.toggleVoucherVisibility();
-            this.toggleVoucherApplied(voucher);
-            this.updateDiscountPrice();
-        },
-        toggleVoucherWeb(voucher) {
-            this.toggleSummaryVisibility();
-            this.toggleVoucherApplied(voucher);
-            this.updateDiscountPrice();
-        },
-        toggleBack() {
-            this.showSummary = true;
-        },
-        scrollToTop() {
-            window.scrollTo(0, 0);
-        },
-        toggleConfirmation() {
-            this.showConfirmation = true;
-            this.showInformation = false;
-        },
-        isPaymentMethodSelected(paymentMethod) {
-            return this.selectedPaymentMethod === paymentMethod;
-        },
-        toggleComplete() {
-            console.log("toggleComplete() method called.");
-            if (!this.selectedPaymentMethod) {
-                alert("Please select a payment method before confirming booking.");
-                return;
-            }
-            this.showConfirmation = false;
-            this.showComplete = !this.showComplete;
-        },
-        closeModal() {
-            this.showInformation = false;
-            this.showConfirmation = false;
-            this.showComplete = false;
-        },
-        togglePayment() {
-            this.showPayment = !this.showPayment;
-            this.navButtonText = this.showPayment ? 'Request to Order' : 'Payment';
-        },
-        navigateBack() {
-            if (!this.showPayment) {
-                // If currently in the payment section, switch to the booking section
-                this.showPayment = true;
-                this.navButtonText = 'Request to Order';
-            } else {
-                // this.$router.push('/category/eat');
-                // Go back to the previous page
-                this.$router.go(-1);
-            }
-        },
-        activateRadioButton(id) {
-            const radioBtn = document.getElementById(id);
-            if (radioBtn) {
-                radioBtn.checked = !radioBtn.checked;
-                this.updatePaymentMethod();
-            }
-        },
-        updateDiscountPrice() {
-            this.discountPrice = this.vouchers.reduce((total, v) => {
-                return v.applied ? total + v.amount : total;
-            }, 0);
-            this.displayTotalLabel = this.discountPrice ? 'Subtotal' : 'Your Total (Php)';
-        },
-        toggleVoucherVisibility() {
-            this.showVoucher = !this.showVoucher;
-        },
-        toggleSummaryVisibility() {
-            this.showSummary = !this.showSummary;
-        },
-        toggleVoucherApplied(voucher) {
-            voucher.applied = !voucher.applied;
-            console.log(`Voucher applied state: ${voucher.applied}`);
-        },
-        updatePaymentMethod() {
-            const selectedRadio = document.querySelector('input[name="payment_method"]:checked');
-            this.selectedPaymentMethod = selectedRadio ? selectedRadio.value : null;
-        }
-    },
-    watch: {
-        showPayment(newValue) {
-            if (!newValue) {
-                // If the condition is false (else block is rendered), scroll to the top of the page
-                this.scrollToTop();
-            }
-        },
-        totalAmount() {
-            this.updateInvalidVouchers();
-        }
-    },
+    {
+        code: 'DISCOUNT200',
+        amount: 200.00,
+        applied: false
+    }
+];
+
+let voucher = {
+    applied: false
 };
+const address = ref('');
+let displayTotalLabel = 'Your Total (Php)';
+let discountPrice = 0;
+let showConfirmation = false;
+let showComplete = false;
+let selectedPaymentMethod = null;
+let showSummary = true;
+let showPayment = true;
+let showVoucher = false;
+let navButtonText = 'Request to Order';
+
+const validVouchers = computed(() => {
+    return vouchers.filter(voucher => voucher.amount < totalAmount.value);
+});
+
+const invalidVouchers = computed(() => {
+    return vouchers.filter(voucher => voucher.amount >= totalAmount.value);
+});
+
+const finalPrice = computed(() => {
+    return 50 + totalAmount.value - discountPrice;
+});
+
+const user = (async() => {
+    const response = await axios.post('/userDetails');
+    model.userInfo = JSON.parse(response.data.userdetails);
+
+});
+
+const toggleVoucher = (voucher) => {
+    toggleVoucherVisibility();
+    toggleVoucherApplied(voucher);
+    updateDiscountPrice();
+};
+
+const toggleVoucherWeb = (voucher) => {
+    toggleSummaryVisibility();
+    toggleVoucherApplied(voucher);
+    updateDiscountPrice();
+};
+
+const toggleBack = () => {
+    showSummary = true;
+};
+
+const scrollToTop = () => {
+    window.scrollTo(0, 0);
+};
+
+const toggleConfirmation = async () => {
+    const products = selectedItems.value.map(selectedItems => ({
+        id:selectedItems.id,
+        busid:selectedItems.busid,
+        productName:selectedItems.title,
+        price:selectedItems.price,
+        quantity:selectedItems.quantity
+    }));
+
+    axios.post('/transactShop',{
+        products: products,
+        touristId:model.userInfo.id,
+        address:address.value,
+        total:100,
+        deliveryFee:50,
+        subtotal:150
+    }).then(res => {
+        console.log('succes');
+    }).catch(error => {
+        console.log(error);
+    });
+    
+};
+
+const isPaymentMethodSelected = (paymentMethod) => {
+    return selectedPaymentMethod === paymentMethod;
+};
+
+const toggleComplete = () => {
+    console.log("toggleComplete() method called.");
+    if (!selectedPaymentMethod) {
+        alert("Please select a payment method before confirming booking.");
+        return;
+    }
+    showConfirmation = false;
+    showComplete = !showComplete;
+};
+
+const closeModal = () => {
+    showInformation = false;
+    showConfirmation = false;
+    showComplete = false;
+};
+
+const togglePayment = () => {
+    showPayment = !showPayment;
+    navButtonText = showPayment ? 'Request to Order' : 'Payment';
+};
+
+const navigateBack = () => {
+    if (!showPayment) {
+        showPayment = true;
+        navButtonText = 'Request to Order';
+    } else {
+        history.back();
+    }
+};
+
+const activateRadioButton = (id) => {
+    const radioBtn = document.getElementById(id);
+    if (radioBtn) {
+        radioBtn.checked = !radioBtn.checked;
+        updatePaymentMethod();
+    }
+};
+
+const updateDiscountPrice = () => {
+    discountPrice = vouchers.reduce((total, v) => {
+        return v.applied ? total + v.amount : total;
+    }, 0);
+    displayTotalLabel = discountPrice ? 'Subtotal' : 'Your Total (Php)';
+};
+
+const toggleVoucherVisibility = () => {
+    showVoucher = !showVoucher;
+};
+
+const toggleSummaryVisibility = () => {
+    showSummary = !showSummary;
+};
+
+const toggleVoucherApplied = (voucher) => {
+    voucher.applied = !voucher.applied;
+    console.log(`Voucher applied state: ${voucher.applied}`);
+};
+
+const updatePaymentMethod = () => {
+    const selectedRadio = document.querySelector('input[name="payment_method"]:checked');
+    selectedPaymentMethod = selectedRadio ? selectedRadio.value : null;
+};
+
+const updateInvalidVouchers = () => {
+    // Not implemented as it requires the context of Vue component lifecycle hooks
+};
+
+onBeforeMount(async() => {
+    await user();
+});
 </script>

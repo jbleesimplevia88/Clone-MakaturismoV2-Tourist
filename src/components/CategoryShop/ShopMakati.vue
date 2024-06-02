@@ -18,7 +18,7 @@
                         </router-link>
                     </div>
                     <div class=" lg:pr-[7rem]">
-                        <ContentCarousel :items="items" class="mb-10" />
+                        <ContentCarousel :items="model.shopData.pictureimage" class="mb-10" />
                     </div>
                     <!-- Monile -->
                     <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 p-5 shadow-lg z-50">
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="flex flex-col pl-8 lg:pl-8 lg:order-first">
-                        <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">Makati Shop</h1>
+                        <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">{{ model.shopData.storename }}</h1>
                         <p class="text-md text-white text-left pb-5">Souvenirs/Gifts Shop</p>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                         </svg>
                     </div>
                     <div class="flex flex-col pl-2.5">
-                        <p class="text-lg md:text-black text-left pb-5">{{ model.shopData.storehours }}   {{ model.shopData.storesched }}</p>
+                        <p class="text-lg md:text-black text-left pb-5">{{ model.shopData.storehours }}|{{ model.shopData.storesched }}</p>
                     </div>
                 </div>
                 <div class="flex flex-row">
@@ -150,57 +150,30 @@
                         <div v-else class="flex-col lg:block hidden">
                             <p>No products found.</p>
                         </div>
-                        <!-- Second column -->
-                        <div class="flex-col lg:block hidden">
-                            <div v-for="(item, index) in otherProducts" :key="index" class="card-wrapper">
-                                <!-- Your card content goes here -->
-                                <div
-                                    class="card bg-blue-950 border-2 m-1 p-2 rounded-xl relative flex flex-col justify-between">
-                                    <div class="flex justify-between w-10/12">
-                                        <div class="w-auto">
-                                            <img class="rounded-md" :key="index" :src="item.image[0]">
-                                        </div>
-                                        <div class="w-[60%]">
-                                            <p class="grid grid-cols-1 text-xs text-white mb-4 ml-2"> {{ item.title }}
-                                            </p>
-                                            <p class="text-xs text-white p-2 w-[55%]">₱ {{ item.price }}</p>
-                                            <div class="flex justify-between items-center mt-4 mb-2">
-                                                <button @click="toggleshowCart(item)"
-                                                    class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-2 w-[40%] text-white">See
-                                                    More</button>
-                                                <button @click="addToCart(item)"
-                                                    class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%] text-white">Add
-                                                    to
-                                                    Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <!-- END WEB VERSION -->
                         <!-- MOBILE VERSION OTHER ITEMS -->
                         <div class="lg:hidden grid-flow-row">
                             <!-- First column -->
-                            <div class="flex flex-col">
-                                <div v-for="(item, index) in otherProducts" :key="index"
+                            <div v-if="model.otherProducts && model.otherProducts.length > 0" class="flex flex-col">
+                                <div v-for="(item, index) in model.otherProducts" :key="index"
+                                
                                     class="card-wrapper">
                                     <!-- Your card content goes here -->
                                     <div
-                                        class="card bg-blue-950 w-[100%] border-2 h-[170px] m-1 p-4 rounded-xl relative flex justify-between">
+                                        class="card bg-blue-950 w-[100%] border-2 h-[200px] m-1 p-4 rounded-xl relative flex justify-between">
                                         <div class="flex justify-between w-[100%]">
                                             <div class="w-[40%]">
-                                                <img class="rounded-md lg:h-full mb-1 w-24" :src="item.image[0]" alt="">
+                                                <img class="rounded-md lg:h-full mb-1 w-24" :src="getImageUrl(item.uploadedphotos.split('|')[0])" alt="">
                                                 <button @click="toggleshowCart(item)"
                                                     class=" text-white w-[98px] text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 -ml-[1px]">See
                                                     More</button>
                                             </div>
                                             <div class="w-[80%]">
                                                 <p class="grid grid-cols-1 text-sm font-medium text-white mb-2 ml-2"> {{
-                                                    item.title }}
+                                                    item.productname }}
                                                 </p>
                                                 <p class="text-sm font-medium text-white p-2 w-[55%] mb-[17px]">₱ {{
-                                                    item.price }}
+                                                    item.productprice }}
                                                 </p>
                                                 <button @click="addToCart(item)"
                                                     class="text-xs bg-blue-600 rounded-lg py-1 text-white px-3 w-full ml-2">Add
@@ -210,64 +183,11 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div v-else class="lg:hidden grid-flow-row">
+                            <p>No products found.</p>
                             </div>
                             <!-- Second column -->
-                            <div class="flex flex-col">
-                                <div v-for="(item, index) in otherProducts" :key="index"
-                                    class="card-wrapper">
-                                    <!-- Your card content goes here -->
-                                    <!-- WEB VERION -->
-                                    <div
-                                        class="hidden lg:block card bg-blue-950 w-[100%] border-2 h-[190px] m-1 p-4 rounded-xl relative justify-between">
-                                        <div class="flex justify-between w-[100%]">
-                                            <div class="w-[40%]">
-                                                <img class="rounded-md lg:h-full" :src="item.image[0]" alt=""
-                                                    width="90%">
-                                            </div>
-                                            <div class="w-[60%]">
-                                                <p class="grid grid-cols-1 text-xs text-white mb-4 ml-2"> {{ item.title
-                                                    }}
-                                                </p>
-                                                <p class="text-xs text-white p-2 w-[55%]">₱ {{ item.price }}</p>
-                                                <div class="flex justify-between items-center mt-3 mb-2">
-                                                    <button @click="toggleshowCart(item)"
-                                                        class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%]">See
-                                                        More</button>
-                                                    <button @click="addToCart(item)"
-                                                        class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%]">Add to
-                                                        Cart</button>
-                                                </div>
-                                            </div>desc
-                                        </div>
-                                    </div>
-                                    <!-- END WEB VERSION -->
-                                    <!-- MOBILE VERSION -->
-                                    <div
-                                        class="lg:hidden card bg-blue-950 w-[100%] border-2 h-[170px] m-1 p-4 rounded-xl relative flex justify-between">
-                                        <div class="flex justify-between w-[100%]">
-                                            <div class="w-[40%]">
-                                                <img class="rounded-md lg:h-full mb-1 w-24" :src="item.image[0]" alt="">
-                                                <button @click="toggleshowCart(item)"
-                                                    class=" text-white text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 -ml-[1px] w-full">See
-                                                    More</button>
-                                            </div>
-                                            <div class="w-[80%]">
-                                                <p class="grid grid-cols-1 text-sm font-medium text-white mb-2 ml-2"> {{
-                                                    item.title }}
-                                                </p>
-                                                <p class="text-sm font-medium text-white p-2 w-[55%] mb-[17px]">₱ {{
-                                                    item.price }}
-                                                </p>
-                                                <button @click="addToCart(item)"
-                                                    class="text-xs bg-blue-600 rounded-lg py-1 text-white px-3 w-full ml-2">Add
-                                                    to
-                                                    Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- END MOBILE VERISON -->
-                                </div>
-                            </div>
                         </div>
                         <!-- END OTHER ITEMS -->
                     </div>
@@ -276,7 +196,7 @@
                 <div v-if="showCart"
                     class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center "
                     @click.self="closeModal">
-                    <div class="bg-white lg:h-[760px]  lg:w-auto lg:rounded-3xl h-full w-full shadow-md " @click.stop>
+                    <div class="bg-white lg:h-[600px]  lg:w-auto lg:rounded-3xl h-full w-full shadow-md " @click.stop>
                         <div class="lg:w-[100%] p-4 rounded-lg h-full">
                             <div class="lg:block hidden relative  justify-end">
                                 <button class=" pr-4 pt-21 ml-[97%]">
@@ -297,18 +217,19 @@
                             </button>
 
                             <div v-if="selectedProduct" class="lg:flex lg:justify-between w-[100%]">
-                                {{ selectedProduct }}
                                 <!-- Web gallery -->
                                 <div class="hidden lg:block lg:w-[40%]">
                                     <div class="lg:flex justify-center items-center mb-3">
                                         <!-- Use currentImage to access the reactive value -->
-                                        <img :src="currentImage" class="h-[400px] object-fill rounded-lg w-full" />
+
+                                         <img v-if="model.CurrentImage" :src="getImageUrl(model.CurrentImage)" class="h-[400px] object-fill rounded-lg w-full" />
+                                         <img v-else :src="getImageUrl(selectedProduct.uploadedphotos.split('|')[0])" class="h-[400px] object-fill rounded-lg w-full" />
                                     </div>
                                     <div class="lg:flex lg:justify-between grid grid-cols-1 grid-rows-2">
                                         <div class="lg:flex lg:justify-center items-center gap-4">
                                             <!-- Loop through selectedProductImages and access image directly -->
-                                            <template v-for="(image, index) in selectedProductImages" :key="index">
-                                                <img :src="image" class="h-20 w-20 mb-2"
+                                            <template v-for="(image, index) in selectedProduct.uploadedphotos.split('|')" :key="index">
+                                                <img :src="getImageUrl(image)" class="h-20 w-20 mb-2 cursor-pointer"
                                                     @click="updateCurrentImage(image)" />
                                             </template>
                                         </div>
@@ -329,7 +250,7 @@
                                         <img :src="currentImage" class="h-60 w-full rounded-lg" />
                                     </div>
                                     <div class="grid-cols-1 ml-20">
-                                        <template v-for="(image, index) in selectedProductImages" :key="index">
+                                        <template v-for="(image, index) in selectedProduct.uploadedphotos.split('|')" :key="index">
                                             <img :src="image" class="h-16 w-20 mb-2"
                                                 @click="updateCurrentImage(image)" />
                                         </template>
@@ -351,10 +272,10 @@
                                         </p>
                                     </div>
                                     <div class=" flex flex-col text-black mb-3 mt-4">
-                                        <p class="font-bold text-xl">{{ selectedProduct.shop }}</p>
+                                        <p class="font-bold text-xl">{{ selectedProduct.productname }}</p>
                                         <div class="lg:inline-flex hidden items-center justify-between"
                                             style="line-height: 2;">
-                                            <div class="text-2xl">₱{{ selectedProduct.price }}</div>
+                                            <div class="text-2xl">₱{{ selectedProduct.productprice }}</div>
                                             <div class="flex items-center">
                                                 <p>Quantity</p>
                                                 <button @click="decreaseQuantity"
@@ -370,14 +291,7 @@
                                         <!-- description -->
                                         <div class=" lg:h-auto">
                                             <div class="justify-between mb-2 grid  gap-2 mt-5 lg:mt-0">
-                                                <p class="w-[100%]">• Made from canvas material</p>
-                                                <p class="w-[100%]">• Durable and lightweight bag</p>
-                                                <p class="w-[100%]">• Can be wash ed by hand or washing machine
-                                                </p>
-                                                <p class="w-[100%]">• Multi handle feature</p>
-                                                <p class="w-[100%]">• Can be used as a handbag or tote shoulder bag
-                                                </p>
-                                                <p class="w-[70%]">• Color: White</p>
+                                                <p class="w-[100%]">{{ selectedProduct.description }}</p>
                                             </div>
                                         </div>
 
@@ -421,6 +335,9 @@
                                                     class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
                                                 <span v-if="selectedProduct && selectedProduct.quantity" class="p-2"> {{
                                                     selectedProduct.quantity
+                                                    }}</span>
+                                                    <span v-else class="p-2"> {{
+                                                    selectedProduct.quantity = 1
                                                     }}</span>
                                                 <button @click="increaseQuantity"
                                                     class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">+</button>
@@ -598,20 +515,10 @@
                 <div class="cart-bg my-4 lg:w-[30%] lg:h-[85rem] right-7 absolute top-[8rem] ">
                     <div class="cart-list lg:w-[75%] h-[40rem] border border-gray-300 p-4 rounded-lg shadow">
 
-                        <div class="grid grid-cols-2 grid-rows-1 gap-1">
+                        <div class="grid grid-cols-1 grid-rows-1 gap-1">
                             <div>
                                 <p class="text-center font-bold">Number of items</p>
                                 <p class="text-center font-bold text-3xl">{{ totalItemsInCart }}</p>
-                            </div>
-                            <div><template v-if="!isCartEmpty">
-                                    <div class="w-[120%]">
-                                        <!-- Update the click event handler to call handleEditCart function -->
-                                        <button @click="handleEditCart"
-                                            class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[70%]">
-                                            Edit Cart
-                                        </button>
-                                    </div>
-                                </template>
                             </div>
                         </div>
 
@@ -620,9 +527,19 @@
                         <div class="cart-list-scroll mb-5" style="height: 29rem; overflow-y: auto;">
                             <!-- Set specific height and add scrollbar -->
                             <p class="font-bold mb-5">List of items</p>
-                            <div v-for="(cartItem, index) in cart" :key="index" class="flex justify-between mb-2 pr-4">
+                            <div v-for="(cartItem, index) in cartStore.cart" :key="index" class="flex justify-between mb-2 pr-4">
                                 <p class="w-[70%]">{{ cartItem.title }}</p>
-                                <p>x{{ cartItem.quantity }}</p>
+
+                                <button @click="decreaseCartQuantity(cartItem)"
+                                                    class="">-</button>
+                                                <span v-if="cartItem && cartItem.quantity" class="p-2 border border-3"> {{
+                                                    cartItem.quantity
+                                                    }}</span>
+                                                    <span v-else class="p-2"> {{
+                                                    cartItem.quantity = 1
+                                                    }}</span>
+                                                <button @click="increaseCartQuantity(cartItem)"
+                                                    class="">+</button>
                             </div>
                         </div>
                         <!-- AUTHHHHHH BUTTOONNNNNNNN -->
@@ -818,7 +735,8 @@ import { useAuthStore } from '@/stores/auth';
 import { useCartStore } from '@/stores/toShopCart';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
-
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
 const props = defineProps({
   ItemId: String,
@@ -829,14 +747,16 @@ const props = defineProps({
 
 const model = reactive({
     shopData: [],
-    otherProducts: []
+    otherProducts: [],
+    CurrentImage: ''
+    
+
 });
 
 const address = ref('');
 const cartStore = useCartStore();
 const router = useRouter();
 const authStore = useAuthStore();
-const cart = computed(() => cartStore.cart);
 const editCartProducts = ref([]);
 const buyNowProducts = ref([]);
 const selectedProduct = ref(null);
@@ -913,13 +833,9 @@ const getAddressFromCoordinates = async (lat, lng) => {
 const categories = ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'];
 const locations = ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'];
 
-const handleEditCart = () => {
-  if (!authStore.isAuthenticated) {
-    authStore.setIntendedRoute('/cart');
-    showLoginModal.value = true;
-  } else {
-    router.push('/cart');
-  }
+const handleEditCart = (cart) => {
+    cartStore.editCart(cart);
+    router.push('/Cart');
 };
 
 const handleBuyNow = () => {
@@ -938,18 +854,11 @@ const addToCart = (item, isFromEditCart = false) => {
     showLoginModal.value = true;
     return;
   }
-  const cartArray = isFromEditCart ? editCartProducts : buyNowProducts;
+
   cartStore.addToCart(item, isFromEditCart);
-  cartArray.value = cartStore.cart.slice();
-  showCartModal.value = false;
-  if (item !== null) {
-    item.quantity = 1;
-  }
-  showToastWithMessage("Item has been added to cart");
-  if (!isFromEditCart && showAddtoCart.value) {
-    addToBuyNow(item);
-  }
+  toast.success('Item has been added to cart!',{ position: 'top-right', size: 'small'});
 };
+
 
 const addToBuyNowAndCheckCart = () => {
   if (!authStore.isAuthenticated) {
@@ -978,13 +887,12 @@ watch(selectedProduct, (newValue) => {
   selectedProductIsFromBestProducts.value = isBestProduct;
 });
 
-const changeImage = () => {
-  currentIndex.value = (currentIndex.value + 1) % selectedProductImages.value.length;
-};
+// const changeImage = () => {
+//   currentIndex.value = (currentIndex.value + 1) % selectedProductImages.value.length;
+// };
 
 const updateCurrentImage = (image) => {
-  currentIndex.value = selectedProductImages.value.findIndex(img => img === image);
-  currentImage.value = image;
+    model.CurrentImage = image;
 };
 
 const currentImage = computed(() => {
@@ -1061,14 +969,28 @@ const closeReviews = () => {
 };
 
 const increaseQuantity = () => {
-  selectedProduct.value.quantity++;
+    if (selectedProduct.value.quantity < selectedProduct.value.availability) {
+        selectedProduct.value.quantity++;
+    }
 };
 
 const decreaseQuantity = () => {
-  if (selectedProduct.value.quantity > 1) {
-    selectedProduct.value.quantity--;
+    if (selectedProduct.value.quantity > 1) {
+        selectedProduct.value.quantity--;
+    }
+};
+const decreaseCartQuantity = (cartItem) => {
+  if (cartItem.quantity > 1) {
+    cartStore.updateCartItemQuantity(cartItem.id, cartItem.quantity - 1);
+  } else {
+    console.log("Minimum quantity reached");
   }
 };
+
+const increaseCartQuantity = (cartItem) => {
+  cartStore.updateCartItemQuantity(cartItem.id, cartItem.quantity + 1);
+};
+
 
 const showToastWithMessage = (message) => {
   toastMessage.value = message;

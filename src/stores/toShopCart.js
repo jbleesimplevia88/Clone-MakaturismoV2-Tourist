@@ -10,31 +10,33 @@ export const useCartStore = defineStore('useCartStore',{
     }),
 
     actions: {
-      addToCart(product) {
-        const existingProductIndex = this.cart.findIndex(item => item.title === product.title);
+        addToCart(product) {
+            const existingProductIndex = this.cart.findIndex(item => item.id === product.id); // Use 'id' instead of 'title'
         
-        if (existingProductIndex !== -1) {
-            // If the product already exists, update the quantity
-            this.cart[existingProductIndex].quantity += product.quantity;
-        } else {
-            // If it's a new product, add it to the cart
-            this.cart.unshift({
-                image: product.image,
-                title: product.title,
-                quantity: product.quantity,
-                price: product.price,
-                selected: true // Set the selected property
-            });
-        }
-
-        this.editCartProducts = [...this.cart];
-        this.buyNowProducts = [...this.cart];
-    },
+            if (existingProductIndex !== -1) {
+                this.cart[existingProductIndex].quantity += (product.quantity || 1);
+            } else {
+                this.cart.unshift({
+                    id: product.id, 
+                    image: product.uploadedphotos,
+                    title: product.productname,
+                    quantity: product.quantity || 1,
+                    price: product.productprice,
+                    busid: product.busid,
+                    selected: true
+                });
+            }
+        },
         clearCart() {
-            // Clear the entire cart, editCartProducts, and buyNowProducts
             this.cart = [];
             this.editCartProducts = [];
             this.buyNowProducts = [];
+        },
+        updateCartItemQuantity(itemId, newQuantity) {
+            const item = this.cart.find(item => item.id === itemId);
+            if (item) {
+              item.quantity = newQuantity;
+            }
         },
 
     getShopData(item){

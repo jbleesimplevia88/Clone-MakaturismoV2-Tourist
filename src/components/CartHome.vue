@@ -17,24 +17,27 @@
                     </div>
                 </div>
                 <div class=" lg:hidden flex items-center gap-4 mt-1">
-                    <div class="overflow-y-scroll h-[500px]">
-                        <div v-for="(cartItem, index) in editCartProducts" :key="index" class="flex justify-between mb-3">
-                            <div class="flex items-center justify-center">
-                                <input type="checkbox" v-model="cartItem.selected" @change="updateSelectAll" :id="'checkbox_' + index" class="ml-2 w-8 h-5 border">
-                            </div>
-                            <img :src="cartItem.image[0]" class="w-28 object-fit rounded-lg m-2">
-                            <div class="p-3 grid">
-                                <span>{{ cartItem.title }} </span>
-                                <span>₱ {{ cartItem.price }} </span>
-                                <div class="flex items-center mt-2">
-                                    <p class="mr-2">Quantity</p>
-                                    <div class="flex items-center justify-between border border-gray-200 rounded-md w-20 px-2">
-                                        <div class="flex items-center">
-                                            <span class="cursor-pointer" @click="updateQuantity(cartItem, 'decrease')">-</span>
-                                        </div>
-                                        <p class="mx-2">{{ cartItem.quantity }}</p>
-                                        <div class="flex items-center">
-                                            <span class="cursor-pointer" @click="updateQuantity(cartItem, 'increase')">+</span>
+                    <div class="overflow-y-scroll lg:w-full h-[500px]">
+                        <div v-if="editCartProducts.length === 0" class="p-3">Cart is empty.</div>
+                        <div v-else>
+                            <div v-for="(cartItem, index) in editCartProducts" :key="index" class=" bg-gray-100 rounded-xl  m-5 flex lg:justify-normal justify-between mb-3">
+                                <div class="flex items-center justify-center">
+                                    <input type="checkbox" v-model="cartItem.selected" @change="updateSelectAll" :id="'checkbox_' + index" class="ml-2 w-8 h-5 border">
+                                </div>
+                                <img :src="getImageUrl(cartItem.image)"  class=" lg:w-[10%] lg:h-[20%] w-28 object-fit rounded-lg m-2">
+                                <div class="p-3 grid lg:w-full lg:ml-11 ">
+                                    <span class="font-bold">{{ cartItem.title }} </span>
+                                    <span>₱ {{ cartItem.price }} </span>
+                                    <div class="flex items-center mt-2">
+                                        <p class="mr-2">Quantity</p>
+                                        <div class="flex items-center justify-between border border-gray-200 rounded-md w-20 px-2">
+                                            <div class="flex items-center">
+                                                <span class="cursor-pointer" @click="updateQuantity(cartItem, 'decrease')">-</span>
+                                            </div>
+                                            <p class="mx-2">{{ cartItem.quantity }}</p>
+                                            <div class="flex items-center">
+                                                <span class="cursor-pointer" @click="updateQuantity(cartItem, 'increase')">+</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -102,88 +105,84 @@
 </template>
 
 
-<script>
-    import {
-        useCartStore
-    } from '@/stores/toShopCart';
-    import {
-        computed,
-        ref,
-        watch
-    } from 'vue';
-    export default {
-        setup() {
-            const cartStore = useCartStore();
-            const editCartProducts = computed(() => cartStore.editCartProducts); // Fetch editCartProducts from the store
-            const selectAll = ref(false);
-            const updateQuantity = (item, action) => {
-                if (action === 'increase') {
-                    item.quantity++;
-                } else if (action === 'decrease' && item.quantity > 1) {
-                    item.quantity--;
-                }
-                // Update the cart in the store after changing the quantity
-                cartStore.editCartProducts = [...editCartProducts.value]; // Change cart to editCartProducts
-            };
-            const updateSelectAll = () => {
-                selectAll.value = editCartProducts.value.every(item => item.selected);
-            };
-            const selectAllItems = () => {
-                editCartProducts.value.forEach(item => (item.selected = selectAll.value));
-            };
-            const selectedItemsCount = computed(() => {
-                if (editCartProducts.value) {
-                    return editCartProducts.value.filter(item => item.selected).length;
-                } else {
-                    return 0; // Return 0 if editCartProducts is not defined yet
-                }
-            });
-            const totalAmount = computed(() => {
-                if (editCartProducts.value) {
-                    return editCartProducts.value.reduce((total, item) => {
-                        if (item.selected) {
-                            return total + item.quantity * item.price;
-                        }
-                        return total;
-                    }, 0);
-                } else {
-                    return 0; // Return 0 if editCartProducts is not defined yet
-                }
-            });
-            // Watch for the final selected product
-            const updateCart = () => {
-                cartStore.editCartProducts = editCartProducts.value;
-            };
-            // Watch for changes in the cart and update the store accordingly
-            watch(editCartProducts, (newCart, oldCart) => {
-                if (newCart.length !== oldCart.length) {
-                    updateCart();
-                } else {
-                    for (let i = 0; i < newCart.length; i++) {
-                        if (newCart[i].quantity !== oldCart[i].quantity) {
-                            updateCart();
-                            break;
-                        }
-                    }
-                }
-            }, {
-                deep: true
-            });
-            return {
-                editCartProducts,
-                selectAll,
-                updateQuantity,
-                updateSelectAll,
-                selectAllItems,
-                selectedItemsCount,
-                totalAmount
-            };
-        },
-        methods: {
-            goToPreviousPage() {
-                const router = this.$router;
-                router.go(-1); // Navigate to the most recent past page
+<script setup>
+import { computed, ref, watch } from 'vue';
+import { useCartStore } from '@/stores/toShopCart';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+const cartStore = useCartStore();
+const editCartProducts = computed(() => cartStore.editCartProducts);
+const shopData = computed(() => cartStore.shopData);
+
+const selectAll = ref(false);
+
+const updateQuantity = (item, action) => {
+    if (action === 'increase') {
+        item.quantity++;
+    } else if (action === 'decrease' && item.quantity > 1) {
+        item.quantity--;
+    }
+    // Update the cart in the store after changing the quantity
+    cartStore.editCartProducts = [...editCartProducts.value]; // Change cart to editCartProducts
+};
+
+const updateSelectAll = () => {
+    selectAll.value = editCartProducts.value.every(item => item.selected);
+};
+
+const selectAllItems = () => {
+    editCartProducts.value.forEach(item => (item.selected = selectAll.value));
+};
+const selectedItemsCount = computed(() => {
+    if (editCartProducts.value) {
+        return editCartProducts.value.filter(item => item.selected).length;
+    } else {
+        return 0; // Return 0 if editCartProducts is not defined yet
+    }
+});
+
+const totalAmount = computed(() => {
+    if (editCartProducts.value) {
+        return editCartProducts.value.reduce((total, item) => {
+            if (item.selected) {
+                return total + item.quantity * item.price;
+            }
+            return total;
+        }, 0);
+    } else {
+        return 0; // Return 0 if editCartProducts is not defined yet
+    }
+});
+
+// Watch for the final selected product
+const updateCart = () => {
+    cartStore.editCartProducts = editCartProducts.value;
+};
+const getImageUrl = (imageString) => {
+    if (imageString) {
+        const images = imageString.split('|');
+        return `${import.meta.env.VITE_STORAGE_BASE_URL}/${images[0]}`;
+    }
+    return ''; // Return empty string if imageString is not defined
+};
+// Watch for changes in the cart and update the store accordingly
+watch(editCartProducts, (newCart, oldCart) => {
+    if (newCart.length !== oldCart.length) {
+        updateCart();
+    } else {
+        for (let i = 0; i < newCart.length; i++) {
+            if (newCart[i].quantity !== oldCart[i].quantity) {
+                updateCart();
+                break;
             }
         }
-    };
+    }
+}, { deep: true });
+
+const goToPreviousPage = () => {
+    router.go(-1); // Navigate to the most recent past page
+};
+
+
 </script>

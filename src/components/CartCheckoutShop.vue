@@ -32,11 +32,12 @@
                                     <div v-else>
                                         <div v-for="(cartItem, index) in selectedItems" :key="index"
                                             class="flex justify-between mb-3">
+
                                             <div class="w-[50%]">{{ cartItem.title }}</div>
                                             <div class="w-[19%] flex justify-center">{{ cartItem.quantity }}</div>
                                             <div class="w-[12%] flex justify-center">{{ cartItem.price }}</div>
-                                            <div class="w-[10%] flex justify-center">{{ cartItem.quantity * cartItem.price
-                                            }}</div>
+                                            <div class="w-[10%] flex justify-center">₱ {{ calculateTotalPrice(cartItem) }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -62,7 +63,7 @@
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start justify-start">
                                     <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Address<spam class="text-red-500">*</spam></p>
-                                    <input  v-model="address" class="font-normal mb-10 w-full text-gray-600 border p-2"></input>
+                                    <input  v-model="address" class="font-normal mb-10 w-full text-gray-600 border p-2"/>
                                 </div>
                                 
                             </div>
@@ -86,6 +87,7 @@
 
                             </div>
                         </div>
+                    </div>
                     </div>
                     <!-- FOR MOBILE -->
                     <div class=" ml-4 bg-gray-400 h-0.5"></div>
@@ -116,27 +118,25 @@
                                 <p class=" text-base font-bold">Address<span class="text-red-500">*</span></p>
                             </div>
                             <div>
-                                <input v-model="address" class="font-normal mb-3 text-gray-600 text-base"></input>
+                                <input v-model="address" class="font-normal mb-3 text-gray-600 text-base" />
                             </div>
                           
-                        </div>
-                    </div class>
-              
-                
-            </div class="mb-30">
-                <div class="my-2 lg:w-[32%] lg:h-[100%] lg:right-10 lg:absolute relative lg:top-[13rem] w-screen">
-                    <div class="border border-gray-500 rounded-xl p-5 ml-5 w-[90%] h-fit mb-6">
+                    </div>
+                </div>
+                <!-- Start of Central Business District Tour -->
+                <div class="my-4 lg:w-[32%] lg:h-[30%] lg:right-10 lg:absolute relative lg:top-[13rem] w-screen">
+                    <div class="border border-gray-400 rounded-xl p-5 ml-5 w-[90%] h-fit">
                         <!-- summary -->
                         <div v-if="showSummary">
                             <div v-for="(shop, index) in shops" :key="index">
                                 <div class="lg:flex items-center mb-5">
-                                    <img :src="shop.image" class="w-[100%] lg:w-[40%] h-[6rem] rounded-lg">
+                                    <img :src="getImageUrl(firstImageUrl)" class="w-[100%] lg:w-[40%] h-[6rem] rounded-lg">
                                     <div class="ml-1 flex flex-col">
                                         <div>
-                                            <p class="font-bold">{{ shop.name }}</p>
+                                            <p class="font-bold">{{ shopData.storename }}</p>
                                         </div>
                                         <div>
-                                            <p class="mb-5 mt-2 text-gray-400">{{ shop.type }}</p>
+                                            <p class="mb-5 mt-2 text-gray-400">{{ shopData.category }}</p>
                                         </div>
                                         <div class="flex">
                                             <p class="font-semibold text-sm mt-0">{{ shop.rating }} Ratings</p>
@@ -151,8 +151,8 @@
                                 <div class="items-center ml-3 mb-5">
                                     <div v-for="(cartItem, index) in selectedItems" :key="index"
                                         class="flex justify-between mb-2 w-[100%]">
-                                        <p class="w-[70%]">{{ cartItem.title }} </p>
-                                        <p class="text-gray-400">₱ {{ cartItem.quantity * cartItem.price }}</p>
+                                        <p class="w-[70%]">{{ cartItem.title }}</p>
+                                        <p class="text-gray-400">₱ {{ calculateTotalPrice(cartItem) }}</p>
                                     </div>
                                     <p class="lg:font-poppins font-sans text-base font-bold text-right underline hidden">
                                         Price Breakdown
@@ -169,14 +169,14 @@
                                         @click="toggleVoucher">Use Voucher</button>
                                 </div>
                                 <div class="flex justify-between">
-                                    <!-- Change "Your Total (Php)" to "Subtotal" if a voucher is applied -->
-                                    <p class="font-poppins font-sans font-bold text-lg pt-4">{{ displayTotalLabel }}</p>
-                                    <p class="font-poppins font-sans text-base font-bold pt-4">{{ totalAmount }}</p>
+                                    <p class="font-poppins font-sans font-bold text-lg pt-4">Delivery Fee:</p>
+                                    <p class="font-poppins font-sans text-base font-bold pt-4">₱ {{ cartStore.deliveryFee }}
+                                    </p>
                                 </div>
                                 <div class="flex justify-between">
                                     <!-- Change "Your Total (Php)" to "Subtotal" if a voucher is applied -->
-                                    <p class="font-poppins font-sans font-bold text-lg pt-4">Delivery Fee</p>
-                                    <p class="font-poppins font-sans text-base font-bold pt-4">50</p>
+                                    <p class="font-poppins font-sans font-bold text-lg pt-4">{{ displayTotalLabel }}</p>
+                                    <p class="font-poppins font-sans text-base font-bold pt-4">₱ {{ subTotal }}</p>
                                 </div>
                                 <!-- If the discountPrice has a value, show this line -->
                                 <div v-if="discountPrice !== 0" class="flex justify-between text-[#9bbf2f]">
@@ -188,7 +188,7 @@
                                 <!-- Compute the final price -->
                                 <div class="flex justify-between ">
                                     <p class="font-poppins font-sans font-bold text-lg pt-4">Total (in PHP):</p>
-                                    <p class="font-poppins font-sans text-xl font-bold pt-4">{{ finalPrice }}</p>
+                                    <p class="font-poppins font-sans text-xl font-bold pt-4">₱ {{ finalPrice }}</p>
                                 </div>
                                 <p class="lg:font-poppins font-sans text-base font-bold text-right underline hidden">
                                     Price
@@ -200,16 +200,11 @@
                                         class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
                                         @click="togglePayment">Place Payment</button>
                                 </div>
-
-
-
-
-                                
                                 <!-- For Web -->
                                 <div class="justify-center lg:block hidden pt-6">
                                     <button
                                         class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
-                                        @click="toggleConfirmation">Proceed to Payment</button>
+                                        @click="toggleConfirmation ">Proceed to Payment</button>
                                 </div>
                                 <div v-if="showConfirmation"
                                     class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
@@ -321,7 +316,7 @@
                                         Ibayad</label>
                                 </div>
                             </div>
-                          
+
 
                         </div>
                         <div class="justify-center pt-3">
@@ -481,117 +476,221 @@
     opacity: 0;
 }
 </style>
-<script setup>
-import { ref, computed, onBeforeMount ,reactive } from 'vue';
-import { useCartStore } from '@/stores/toShopCart';
-import axios from 'axios';
-const cartStore = useCartStore();
 
+<script setup>
+import { computed, ref, watch,  onBeforeMount ,reactive  } from 'vue';
+// import { useCartStore } from '@/stores/toEatCart';
+import { useCartStore } from '@/stores/toShopCart';
+
+import { useRouter } from 'vue-router';
+import { useProfileStore } from '@/stores/profile';
+import axios from 'axios';
+
+const cartStore = useCartStore();
+const router = useRouter();
+const profileStore = useProfileStore();
+const userInfo = ref([]);
+const selectedPaymentMethod = ref(null);
+const showComplete = ref(false);
+const showSummary = ref(true);
+const shops = ref([{}]);
+const address = ref('');
+const voucher = ref({ applied: false });
+const showConfirmation = ref(false);
+const showPayment = ref(true);
+const showVoucher = ref(false);
+const navButtonText = ref('Request to Order');
+
+const model = reactive({
+    userInfo: []
+});
+const user = (async() => {
+    const response = await axios.post('/userDetails');
+    model.userInfo = JSON.parse(response.data.userdetails);
+
+});
 const selectedItems = computed(() => {
-    if (cartStore.editCartProducts.length > 0) {
-        return cartStore.editCartProducts.filter(item => item.selected);
-    } else if (cartStore.buyNowProducts.length > 0) {
-        return cartStore.buyNowProducts.filter(item => item.selected);
-    }
-    return cartStore.cart.filter(item => item.selected);
+  if (cartStore.buyNowProducts.length > 0) {
+    return cartStore.buyNowProducts;
+  } else if (cartStore.editCartProducts.length > 0) {
+    return cartStore.editCartProducts;
+  }
+  return cartStore.cart;
 });
 
-const totalItemsInCart = computed(() => {
-    return selectedItems.value.reduce((total, item) => total + item.quantity, 0);
+const calculateTotalPrice = (cartItem) => {
+    const quantity = parseInt(cartItem.quantity, 10); // Ensure quantity is a valid number
+    const price = parseFloat(cartItem.price); // Ensure price is a valid number
+    return (quantity * price).toFixed(2); // Return the total price with 2 decimal places
+};
+
+const subTotal = computed(() => {
+    if (!selectedItems.value) return 0;
+    const itemsTotal = selectedItems.value.reduce((total, item) => {
+        const totalPrice = calculateTotalPrice(item);
+        return total + parseFloat(totalPrice);
+    }, 0);
+    return (itemsTotal + cartStore.deliveryFee).toFixed(2);
+});
+
+const finalPrice = computed(() => {
+    return (parseFloat(subTotal.value) - discountPrice.value).toFixed(2);
 });
 
 const totalAmount = computed(() => {
     return selectedItems.value.reduce((total, item) => total + (item.quantity * item.price), 0);
 });
 
-const model = reactive({
-    userInfo: []
+const displayTotalLabel = computed(() => discountPrice.value > 0 ? 'Subtotal' : 'Your Total (Php)');
+
+const discountPrice = computed(() => {
+    return cartStore.vouchers.reduce((total, voucher) => {
+        return voucher.applied ? total + voucher.amount : total;
+    }, 0);
 });
 
-const shops = [
-    {
-        image: "src/assets/images/CategoryView/ToShop/kultura.png",
-        name: "Shop Makati",
-        type: "Shop",
-        rating: "5.0",
-        reviews: "500",
-    }
-];
 
-const vouchers = [
-    {
-        code: 'DISCOUNT999',
-        amount: 999.00,
-        applied: false
-    },
-    {
-        code: 'DISCOUNT100',
-        amount: 100.00,
-        applied: false
-    },
-    {
-        code: 'DISCOUNT50',
-        amount: 50.00,
-        applied: false
-    },
-    {
-        code: 'DISCOUNT200',
-        amount: 200.00,
-        applied: false
-    }
-];
 
-let voucher = {
-    applied: false
+const shopData = computed(() => cartStore.shopData);
+
+const fetchUserInfo = async () => {
+    const response = await profileStore.users();
+    if (response.status && response.data) {
+        userInfo.value = [response.data];
+        address.value = response.data.address || ''; // Initialize address
+    }
 };
-const address = ref('');
-let displayTotalLabel = 'Your Total (Php)';
-let discountPrice = 0;
-let showConfirmation = false;
-let showComplete = false;
-let selectedPaymentMethod = null;
-let showSummary = true;
-let showPayment = true;
-let showVoucher = false;
-let navButtonText = 'Request to Order';
+const updateAddress = async () => {
+    const user = { ...profileStore.user, address: address.value }; // Update user object with new address
+    await profileStore.updateUser(user);
+};
+
+
+fetchUserInfo();
+
+const getFirstImageUrl = (pictureimage) => {
+    if (!pictureimage) return '';
+    const images = pictureimage.split('|').filter(img => img.trim() !== '');
+    return images.length > 0 ? images[0] : '';
+};
+
+const firstImageUrl = computed(() => getFirstImageUrl(shopData.value.pictureimage));
+
+const getImageUrl = (fileName) => {
+    return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
+};
+
 
 const validVouchers = computed(() => {
-    return vouchers.filter(voucher => voucher.amount < totalAmount.value);
+    return cartStore.vouchers.filter(voucher => voucher.amount < totalAmount.value);
 });
 
 const invalidVouchers = computed(() => {
-    return vouchers.filter(voucher => voucher.amount >= totalAmount.value);
+    return cartStore.vouchers.filter(voucher => voucher.amount >= totalAmount.value);
 });
 
-const finalPrice = computed(() => {
-    return 50 + totalAmount.value - discountPrice;
-});
-
-const user = (async() => {
-    const response = await axios.post('/userDetails');
-    model.userInfo = JSON.parse(response.data.userdetails);
-
-});
-
-const toggleVoucher = (voucher) => {
+function toggleVoucher(voucher) {
     toggleVoucherVisibility();
     toggleVoucherApplied(voucher);
     updateDiscountPrice();
-};
+}
 
-const toggleVoucherWeb = (voucher) => {
+function toggleVoucherWeb(voucher) {
     toggleSummaryVisibility();
     toggleVoucherApplied(voucher);
     updateDiscountPrice();
-};
+}
 
-const toggleBack = () => {
-    showSummary = true;
-};
+function toggleBack() {
+    showSummary.value = true;
+}
 
-const scrollToTop = () => {
+function scrollToTop() {
     window.scrollTo(0, 0);
+}
+
+
+
+function isPaymentMethodSelected(paymentMethod) {
+    return selectedPaymentMethod.value === paymentMethod;
+}
+
+// function toggleComplete() {
+//     if (!selectedPaymentMethod.value) {
+//         alert("Please select a payment method before confirming booking.");
+//         return;
+//     }
+//     sendOrderData().then(() => {
+//         showConfirmation.value = false;
+//         showComplete.value = !showComplete.value;
+//     }).catch(error => {
+//         console.error('Error sending order:', error);
+//         alert('There was an error sending your order. Please try again.');
+//     });
+// }
+const toggleComplete = () => {
+    console.log("toggleComplete() method called.");
+    if (!selectedPaymentMethod) {
+        alert("Please select a payment method before confirming booking.");
+        return;
+    }
+    showConfirmation = false;
+    showComplete = !showComplete;
 };
+
+const closeModal = () => {
+    showInformation = false;
+    showConfirmation = false;
+    showComplete = false;
+};
+
+
+function togglePayment() {
+    showPayment.value = !showPayment.value;
+    navButtonText.value = showPayment.value ? 'Request to Order' : 'Payment';
+}
+
+function navigateBack() {
+    if (!showPayment.value) {
+        showPayment.value = true;
+        navButtonText.value = 'Request to Order';
+    } else {
+        router.go(-1);
+    }
+}
+
+function activateRadioButton(id) {
+    const radioBtn = document.getElementById(id);
+    if (radioBtn) {
+        radioBtn.checked = !radioBtn.checked;
+        updatePaymentMethod();
+    }
+}
+
+function updateDiscountPrice() {
+    cartStore.updatePrices(subTotal.value, finalPrice.value);
+}
+
+
+function toggleVoucherVisibility() {
+    showVoucher.value = !showVoucher.value;
+}
+
+function toggleSummaryVisibility() {
+    showSummary.value = !showSummary.value;
+}
+
+function toggleVoucherApplied(voucher) {
+    voucher.applied = !voucher.applied;
+}
+
+function updatePaymentMethod() {
+    const selectedRadio = document.querySelector('input[name="payment_method"]:checked');
+    selectedPaymentMethod.value = selectedRadio ? selectedRadio.value : null;
+}
+
+const totalItemsInCart = computed(() => cartStore.totalItemsInCart);
+const productIds = computed(() => selectedItems.value.map(item => item.productid));
 
 const toggleConfirmation = async () => {
     const products = selectedItems.value.map(selectedItems => ({
@@ -617,78 +716,74 @@ const toggleConfirmation = async () => {
     
 };
 
-const isPaymentMethodSelected = (paymentMethod) => {
-    return selectedPaymentMethod === paymentMethod;
-};
 
-const toggleComplete = () => {
-    console.log("toggleComplete() method called.");
-    if (!selectedPaymentMethod) {
-        alert("Please select a payment method before confirming booking.");
-        return;
+// const sendOrderData = async () => {
+//     if (!userInfo.value.length) {
+//         alert("User information is not loaded.");
+//         return;
+//     }
+
+//     const orderData = selectedItems.value.map((item, index) => ({
+//         busid: shopData.value.busid,
+//         productid: productIds.value[index], // Use the computed productids array
+//         productname: item.title,
+//         productprice: item.price,
+//         quantity: item.quantity,
+//         totalperproduct: calculateTotalPrice(item),
+//         subtotal: subTotal.value,
+//         finaltotal: finalPrice.value,
+//         deliveryFee: cartStore.deliveryFee,
+//         touristid: userInfo.value[0]?.id || 'N/A', // Ensure userInfo is an array and access the first item
+//         fullname: `${userInfo.value[0]?.firstname || ''} ${userInfo.value[0]?.lastname || ''}`, // Access first item
+//         mobile: userInfo.value[0]?.contact || 'N/A',
+//         email: userInfo.value[0]?.email || 'N/A',
+//         address: address.value || 'N/A',
+//         deliveryaddress: address.value || 'N/A',
+//         addaddress: address.value || 'N/A',
+//         paymentmethod: selectedPaymentMethod.value,
+       
+//     }));
+
+//     // Transpose orderData into the desired format
+//     const transposedData = orderData.reduce((acc, cur) => {
+//         for (const key in cur) {
+//             if (!acc[key]) {
+//                 acc[key] = [];
+//             }
+//             acc[key].push(cur[key]);
+//         }
+//         return acc;
+//     }, {});
+
+//     console.log('Sending order data:', transposedData); // Log the data being sent
+//     const response = await axios.post('http://localhost:8000/api/transactShop', transposedData);
+//     console.log('Order successfully sent(just tocheck data)', response.data); // Log the success response
+
+// };
+
+watch([subTotal, finalPrice], () => {
+    cartStore.updatePrices(subTotal.value, finalPrice.value);
+});
+
+
+// Watchers
+watch(showPayment, newValue => {
+    if (!newValue) {
+        scrollToTop();
     }
-    showConfirmation = false;
-    showComplete = !showComplete;
-};
-
-const closeModal = () => {
-    showInformation = false;
-    showConfirmation = false;
-    showComplete = false;
-};
-
-const togglePayment = () => {
-    showPayment = !showPayment;
-    navButtonText = showPayment ? 'Request to Order' : 'Payment';
-};
-
-const navigateBack = () => {
-    if (!showPayment) {
-        showPayment = true;
-        navButtonText = 'Request to Order';
-    } else {
-        history.back();
-    }
-};
-
-const activateRadioButton = (id) => {
-    const radioBtn = document.getElementById(id);
-    if (radioBtn) {
-        radioBtn.checked = !radioBtn.checked;
-        updatePaymentMethod();
-    }
-};
-
-const updateDiscountPrice = () => {
-    discountPrice = vouchers.reduce((total, v) => {
-        return v.applied ? total + v.amount : total;
-    }, 0);
-    displayTotalLabel = discountPrice ? 'Subtotal' : 'Your Total (Php)';
-};
-
-const toggleVoucherVisibility = () => {
-    showVoucher = !showVoucher;
-};
-
-const toggleSummaryVisibility = () => {
-    showSummary = !showSummary;
-};
-
-const toggleVoucherApplied = (voucher) => {
-    voucher.applied = !voucher.applied;
-    console.log(`Voucher applied state: ${voucher.applied}`);
-};
-
-const updatePaymentMethod = () => {
-    const selectedRadio = document.querySelector('input[name="payment_method"]:checked');
-    selectedPaymentMethod = selectedRadio ? selectedRadio.value : null;
-};
-
-const updateInvalidVouchers = () => {
-    // Not implemented as it requires the context of Vue component lifecycle hooks
-};
-
+});
 onBeforeMount(async() => {
     await user();
 });
+// watch(
+//     () => profileStore.user,
+//     (user) => {
+//         if (user) {
+//             userInfo.value = [user];
+//             address.value = user.address || ''; // Update address when user data changes
+//         }
+//     },
+//     { immediate: true }
+// );
 </script>
+

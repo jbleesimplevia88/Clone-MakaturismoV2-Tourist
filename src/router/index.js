@@ -139,8 +139,6 @@ const router = createRouter({
                 name: route.query.name,
                 imageList: route.query.imageList,
 
-
-
               })
             },
           ]
@@ -173,14 +171,14 @@ const router = createRouter({
           component: () => import('../components/ToShop.vue'),
           children: [
             {
-              path: 'makati',
+              path: 'makati/:id',
               name: 'makati',
               component: () => import('../components/CategoryShop/ShopMakati.vue'),
               props: route => ({
                 latitude: parseFloat(route.query.latitude),
                 longitude: parseFloat(route.query.longitude),
-                ItemId: route.query.ItemId,
-                name: route.query.name
+                name: route.query.name,
+                imageList: route.query.imageList,
 
               })
             },
@@ -210,11 +208,6 @@ const router = createRouter({
             },
           ]
         },
-
-
-
-
-
 
         {
           path: 'stay',

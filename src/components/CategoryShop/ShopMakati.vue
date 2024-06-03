@@ -6,7 +6,7 @@
             <div class=" z-[1]">
                 <div class="relative flex flex-col pl-0 lg:pl-16">
                     <div class="absolute lg:top-4 lg:left-3 top-4 z-[1]">
-                        <router-link to="/category/eat">
+                        <router-link to="/category/shop">
                             <a class=" flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
                                     style="filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));" stroke="currentColor"
@@ -27,7 +27,7 @@
                                 <p class="text-lg font-bold">Just a click away</p>
                             </div>
                             <div>
-                                <router-link to="/carteditbuyeat">
+                                <router-link to="/carteditbuyshop">
                                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg">
                                         Shop Now
                                     </button>
@@ -806,29 +806,35 @@
 </template>
 
 
-
 <style scoped>
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
+    /* Hide scrollbar for WebKit (Chrome, Safari) */
 }
 
 .cart-list-scroll::-webkit-scrollbar {
     width: 8px;
+    /* Set the width of the scrollbar */
 }
 
 .cart-list-scroll::-webkit-scrollbar-track {
     background: #f1f1f1;
+    /* Set the background color of the scrollbar track */
 }
 
 .cart-list-scroll::-webkit-scrollbar-thumb {
     background: #888;
+    /* Set the color of the scrollbar thumb/handle */
     border-radius: 5px;
+    /* Round the corners of the scrollbar thumb */
 }
 
 .cart-list-scroll::-webkit-scrollbar-thumb:hover {
     background: #555;
+    /* Change the color of the scrollbar thumb when hovering */
 }
 
+/* Your scoped styles here */
 .toast-container {
     position: fixed;
     bottom: 1rem;
@@ -843,47 +849,49 @@
 
 .toast-content {
     max-width: 20rem;
+    /* Adjust max-width as needed */
 }
 </style>
 
 
-
-
 <script setup>
-import ContentCarousel from '@/components/ToShopCarousel.vue';
-import MapRenderer from "@/components/MapRenderer.vue";
-import LoginModal from '@/components/LoginModal.vue';
-import { ref, computed, watch,watchEffect, onBeforeMount, defineProps ,reactive } from 'vue';
-import { useAuthStore } from '@/stores/auth';
-import { useCartStore } from '@/stores/toShopCart';
+import {
+    ref,
+    computed,
+    watch,
+    reactive,
+    defineProps
+} from 'vue';
 import axios from 'axios';
-import { toast } from 'vue3-toastify';
-import 'vue3-toastify/dist/index.css';
 import {
     useRoute, useRouter
 } from 'vue-router';
+import ContentCarousel from '@/components/ToEatCarousel.vue';
+import MapRenderer from "@/components/MapRenderer.vue";
+import LoginModal from '@/components/LoginModal.vue';
+import {
+    useAuthStore
+} from '@/stores/auth';
+import { useCartStore } from '@/stores/toShopCart';
 
 const props = defineProps({
-  ItemId: String,
-  latitude: Number,
-  longitude: Number,
-  name:String,
+    latitude: Number,
+    longitude: Number,
+    name: String,
+    id: Number,
+    item: String,
+    imageList: String,
 });
-
 const model = reactive({
-    shopData: [],
-    otherProducts: [],
-    CurrentImage: ''
-    
-
+    productsArray: [],
 });
-const cart = computed(() => cartStore.cart);
-
-const address = ref('');
 const cartStore = useCartStore();
+const authStore = useAuthStore();
 const route = useRoute();
 const router = useRouter(); // Initialize router
-const authStore = useAuthStore();
+
+const cart = computed(() => cartStore.cart);
+const shopData = computed(() => cartStore.shopData);
 const editCartProducts = ref([]);
 const buyNowProducts = ref([]);
 const selectedProduct = ref(null);
@@ -898,41 +906,14 @@ const showReviews = ref(false);
 const showAddtoCart = ref(false);
 const showLoginModal = ref(false);
 const showSeeLessButton = ref(false);
-const selectedProductImages = ref([]);
 const selectedProductIsFromBestProducts = ref(false);
 const numFeedbackShown = ref(0);
+const id = ref('');
+const storedetails = ref('');
+const imageArray = ref([]);
+const currentImageIndex = ref(0);
+const selectedProductImages = ref([]);
 const currentImage = ref('');
-
-
-
-const items = [];
-const bestProducts = [];
-const otherProducts = [];
-
-const extractLatLong = (mapLocation) => {
-    if (typeof mapLocation !== 'string') {
-        console.error('Invalid or undefined mapLocation:', mapLocation);
-        return { latitude: null, longitude: null };
-    }
-
-    const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
-    const match = mapLocation.match(regex);
-    if (match && match.length >= 3) {
-        const latitude = parseFloat(match[1]);
-        const longitude = parseFloat(match[2]);
-        return { latitude, longitude };
-    }
-    // Try another regex pattern for different URL formats
-    const altRegex = /!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/;
-    const altMatch = mapLocation.match(altRegex);
-    if (altMatch && altMatch.length >= 3) {
-        const latitude = parseFloat(altMatch[1]);
-        const longitude = parseFloat(altMatch[2]);
-        return { latitude, longitude };
-    }
-    // If no match is found, return null values
-    return { latitude: null, longitude: null };
-};
 
 const getImageUrl = (fileName) => {
     return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
@@ -953,23 +934,21 @@ const getId = () => {
 };
 
 
-// const getAddressFromCoordinates = async (lat, lng) => {
-//   try {
-//     const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`);
-//     const data = await response.json();
-//     if (data && data.address) {
-//       address.value = `${data.address.road}, ${data.address.city}, ${data.address.country}`;
-//     } else {
-//       address.value = 'Address not found';
-//     }
-//   } catch (error) {
-//     address.value = 'Failed to retrieve address';
-//     console.error("Error fetching address: ", error);
-//   }
-// };
+// Function to update the currentImage based on the clicked thumbnail
+const updateCurrentImage = (index) => {
+    currentImageIndex.value = index;
+    currentImage.value = getImageUrl(selectedProductImages.value[index]);
+};
+// Function to navigate to the next image
+const nextImage = () => {
+    currentImageIndex.value = (currentImageIndex.value + 1) % selectedProductImages.value.length;
+    currentImage.value = getImageUrl(selectedProductImages.value[currentImageIndex.value]);
+};
 
 
-
+const items = [];
+const bestProducts = [];
+const otherProducts = [];
 const categories = ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'];
 const locations = ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'];
 const handleEditCart = () => {
@@ -981,15 +960,14 @@ const handleEditCart = () => {
     }
 };
 const handleBuyNow = () => {
-  if (!authStore.isAuthenticated) {
-    authStore.setIntendedRoute('/checkoutshop');
-    showLoginModal.value = true;
-  } else {
-    addToBuyNow(selectedProduct.value);
-    router.push('/checkoutshop');
-  }
+    if (!authStore.isAuthenticated) {
+        authStore.setIntendedRoute('/checkoutshop');
+        showLoginModal.value = true;
+    } else {
+        addToBuyNow(selectedProduct.value);
+        router.push('/checkoutshop');
+    }
 };
-
 const addToCart = (item, isFromEditCart = false) => {
     if (!authStore.isAuthenticated) {
         authStore.setIntendedRoute(router.currentRoute.value.path);
@@ -1016,7 +994,6 @@ watch(selectedProduct, () => {
     setDefaultQuantity();
 }, { immediate: true });
 
-
 // Function to increase quantity
 const increaseQuantity = () => {
     if (selectedProduct.value && selectedProduct.value.quantity < selectedProduct.value.availability) {
@@ -1035,98 +1012,6 @@ const decreaseQuantity = () => {
     }
 };
 
-const addToBuyNowAndCheckCart = () => {
-  if (!authStore.isAuthenticated) {
-    authStore.setIntendedRoute('/checkoutshop');
-    showLoginModal.value = true;
-  } else {
-    addToBuyNow(selectedProduct.value);
-  }
-};
-
-
-const clearCartAndNavigate = () => {
-  cartStore.clearCart();
-};
-
-const isCartEmpty = computed(() => {
-  return cartStore.cart.length === 0;
-});
-
-const paginatedItems = computed(() => {
-  return items.slice(0, 2 + numFeedbackShown.value);
-});
-
-const showSeeMoreButton = computed(() => {
-  return numFeedbackShown.value < items.length - 2;
-});
-
-const seeMore = () => {
-  numFeedbackShown.value += 2;
-  if (!showSeeMoreButton.value) {
-    showSeeLessButton.value = true;
-  }
-};
-
-const seeLess = () => {
-  numFeedbackShown.value = 0;
-  showSeeLessButton.value = false;
-};
-
-const increment = () => {
-  count.value++;
-};
-
-const decrement = () => {
-  if (count.value > 0) {
-    count.value--;
-  }
-};
-
-const toggleshowCart = (item) => {
-  selectedProduct.value = item;
-  showCart.value = true;
-};
-
-const openCartModal = () => {
-  showCartModal.value = true;
-};
-
-const closeLoginModal = () => {
-  showLoginModal.value = false;
-};
-
-const closeCart = () => {
-  showCart.value = false;
-};
-
-const closeModal = () => {
-  showCartModal.value = false;
-};
-
-const toggleshowReviews = () => {
-  showReviews.value = true;
-  showCart.value = false;
-};
-
-const closeReviews = () => {
-  showReviews.value = false;
-  showCart.value = true;
-};
-
-
-const decreaseCartQuantity = (cartItem) => {
-  if (cartItem.quantity > 1) {
-    cartStore.updateCartItemQuantity(cartItem.id, cartItem.quantity - 1);
-  } else {
-    console.log("Minimum quantity reached");
-  }
-};
-
-const increaseCartQuantity = (cartItem) => {
-  cartStore.updateCartItemQuantity(cartItem.id, cartItem.quantity + 1);
-};
-
 
 const addToBuyNow = (item) => {
     buyNowProducts.value.push(item);
@@ -1136,41 +1021,73 @@ const totalItemsInCart = computed(() => {
 });
 
 
+const clearCartAndNavigate = () => {
+    cartStore.clearCart();
+};
+const isCartEmpty = computed(() => {
+    return cartStore.cart.length === 0;
+});
+const paginatedItems = computed(() => {
+    return items.slice(0, 2 + numFeedbackShown.value);
+});
+const showSeeMoreButton = computed(() => {
+    return numFeedbackShown.value < items.length - 2;
+});
+const seeMore = () => {
+    numFeedbackShown.value += 2;
+    if (!showSeeMoreButton.value) {
+        showSeeLessButton.value = true;
+    }
+};
+const seeLess = () => {
+    numFeedbackShown.value = 0;
+    showSeeLessButton.value = false;
+};
+const increment = () => {
+    count.value++;
+};
+const decrement = () => {
+    if (count.value > 0) {
+        count.value--;
+    }
+};
+const toggleshowCart = (item) => {
+    selectedProduct.value = item;
+    showCart.value = true;
+};
+const openCartModal = () => {
+    showCartModal.value = true;
+};
+const closeLoginModal = () => {
+    showLoginModal.value = false;
+};
+const closeCart = () => {
+    showCart.value = false;
+};
+const closeModal = () => {
+    showCartModal.value = false;
+};
+const toggleshowReviews = () => {
+    showReviews.value = true;
+    showCart.value = false;
+};
+const closeReviews = () => {
+    showReviews.value = false;
+    showCart.value = true;
+};
+
 const showToastWithMessage = (message) => {
-  toastMessage.value = message;
-  showToast.value = true;
-  setTimeout(() => {
+    toastMessage.value = message;
+    showToast.value = true;
+    setTimeout(() => {
+        showToast.value = false;
+        toastMessage.value = "";
+    }, 3000);
+};
+const hideToast = () => {
     showToast.value = false;
     toastMessage.value = "";
-  }, 3000);
 };
-
-const hideToast = () => {
-  showToast.value = false;
-  toastMessage.value = "";
-};
-const getProducts = async () =>{
-
-    await axios.get(`/getStore/${props.ItemId}`).then(response =>{
-        model.shopData = JSON.parse(response.data.message);
-        model.otherProducts = JSON.parse(response.data.getProducts);
-    }).catch(error =>{
-            console.log(error);
-    });
-   
-
-}; 
-// Function to update the currentImage based on the clicked thumbnail
-const updateCurrentImage = (index) => {
-    currentImageIndex.value = index;
-    currentImage.value = getImageUrl(selectedProductImages.value[index]);
-};
-// Function to navigate to the next image
-const nextImage = () => {
-    currentImageIndex.value = (currentImageIndex.value + 1) % selectedProductImages.value.length;
-    currentImage.value = getImageUrl(selectedProductImages.value[currentImageIndex.value]);
-};
-
 watch(cartStore.cart, (newCart) => {
     editCartProducts.value = [...newCart];
 }, {
@@ -1195,8 +1112,4 @@ watch(selectedProduct, (newSelectedProduct) => {
         updateCurrentImage(0); // Reset currentImageIndex when selectedProduct changes
     }
 });
-onBeforeMount(async () =>{
-await getProducts();
-});
 </script>
-

@@ -41,16 +41,16 @@
                             <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-4">
                                 <div class="flex lg:flex-col lg:items-start justify-start">
                                     <p class="mr-[110px] lg:mr-9 lg:mb-1 font-bold">Full Name</p>
-                                    <p class="font-normal mb-3 text-gray-600">Juan Dela Cruz</p>
+                                    <p class="font-normal mb-3 text-gray-600">{{ model.userInfo.firstname }} {{ model.userInfo.lastname }}</p>
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start">
                                     <p class="mr-[30px] w-10vw lg:pr-0 lg:mr-9 lg:mb-1 font-bold">E-mail Address</p>
-                                    <p class="font-normal mb-2 text-base text-gray-600 text-sm">Juandelacruz@gmail.co
+                                    <p class="font-normal mb-2 text-base text-gray-600 text-sm">{{ model.userInfo.email }} 
                                     </p>
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start justify-start">
                                     <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Phone Number</p>
-                                    <p class="font-normal mb-3 text-gray-600">09123456789</p>
+                                    <p class="font-normal mb-3 text-gray-600">{{ model.userInfo.contact }}</p>
                                 </div>
                               
                             </div>
@@ -87,13 +87,14 @@
                     <div class="my-4 lg:w-[32%] lg:h-[30%] lg:right-10 lg:absolute relative lg:top-[3rem] w-screen">
                         <div class="border border-gray-400 rounded-xl p-5 ml-5 w-[90%]  h-fit">
                             <div class="lg:flex items-center mb-5">
-                                <img :src="selectedTour.image" class="w-[100%] lg:w-[40%] h-[6rem] rounded-lg">
+                                <img :src="getImageUrl(firstImageUrl)" class="w-[100%] lg:w-[40%] h-[6rem] rounded-lg">
+
                                 <div class="ml-1 flex flex-col">
                                     <div>
-                                        <p class="font-bold">{{ selectedTour.name }}</p>
+                                        <p class="font-bold">{{ cartTour.shopData.activitytitle }}</p>
                                     </div>
                                     <div>
-                                        <p class="mb-5 mt-2 text-gray-400">{{ selectedTour.category }}</p>
+                                        <p class="mb-5 mt-2 text-gray-400"></p>
                                     </div>
                                     <div class="flex">
                                         <p class="font-semibold text-sm mt-0">5.0 Ratings</p>
@@ -223,47 +224,7 @@
             </template>
         </div>
     </template>
-    <template v-else>
-        <div class="lg:w-[100%] p-4 rounded-lg text-center flexflex-col items-center pt-20">
-            <!-- Voucher section -->
-            <div class="flex flex-col items-center">
-                <input type="text" id="" name="" value=""
-                    class="mb-2 h-[50px] w-[100%] border border-gray-200 pl-5 pr-3 rounded-md"
-                    placeholder="Enter Voucher Code">
-                <button
-                    class="mb-2 text-white bg-blue-500 rounded-xl w-full lg:w-full py-2 lg:py-3 px-4 lg:px-6 text-base lg:text-lg font-semibold"
-                    @click="toggleVoucher">Apply</button>
-                <div>
-                    <div data-v-392f50c8="" class="mt-0 bg-gray-400 h-0.5"></div>
-                </div>
-                <p class="mt-4 font-bold text-left">Select a Voucher</p>
-                <div v-for="(voucher, index) in vouchers" :key="index">
-                    <div class="absolute grid grid-rows-3 text-left ml-14 mt-1">
-                        <span class="font-semibold">{{ voucher.code }}</span>
-                        <span class="font-bold">P{{ voucher.amount }}</span>
-                        <button type="submit" class="text-sm font-bold ml-52 cursor-pointer" @click="toggleVoucher(index)">
-                            {{ voucher.applied ? 'Remove' : 'Apply' }}
-                        </button>
-                    </div>
-                    <img src="@/assets/images/CategoryView/ToEat/voucher.png" class="mb-6">
-                </div>
-                <div>
-                    <div data-v-392f50c8="" class="mt-5 mb-3 bg-gray-400 h-0.5"></div>
-                </div>
-                <p class="font-bold text-left">Not valid for this order</p>
-                <div v-for="(voucher, index) in invalidVouchers" :key="index">
-                    <div class="absolute grid grid-rows-3 text-left ml-14 mt-1">
-                        <span class="font-semibold">{{ voucher.code }}</span>
-                        <span class="font-bold">P{{ voucher.amount }}</span>
-                        <button type="submit" class="text-sm font-bold ml-52 cursor-pointer" disabled>
-                            Apply
-                        </button>
-                    </div>
-                    <img src="@/assets/images/CategoryView/ToEat/voucher.png" class="mb-6">
-                </div>
-            </div>
-        </div>
-    </template>
+
 </template>
 
 
@@ -291,181 +252,105 @@
 }
 </style>
 
-<script>
+
+<script setup>
+import { ref, computed, watch,reactive, onBeforeMount } from 'vue';
+import { useTourStore } from '@/stores/toTourCart';
 import {
-    useTourStore
-} from '@/stores/toTourCart';
-import {
-    defineComponent,
+     useRouter
+} from 'vue-router';
+import axios from 'axios';
 
-} from 'vue';
+const router = useRouter(); // Initialize router
+// Use store
+const cartTour = useTourStore();
+
+// Access reactive state from the store
+const shopData = computed(() => cartTour.shopData);
+const reservationDetails = cartTour.reservationDetails;
+
+// Component-specific reactive state
+const selectedPaymentMethod = ref(null);
+const showConfirmation = ref(false);
+const showComplete = ref(false);
+const showPayment = ref(true);
+const showVoucher = ref(false);
+const navButtonText = ref('Request to Book');
+
+const model = reactive({
+    userInfo: []
+});
 
 
-export default defineComponent({
-    setup() {
-        const cartTour = useTourStore();
-        return {
-            selectedTour: cartTour.selectedTour,
-            reservationDetails: cartTour.reservationDetails,
+const user = (async() => {
+    const response = await axios.post('/userDetails');
+    model.userInfo = JSON.parse(response.data.userdetails);
 
-        };
-    },
+});
 
-    data() {
-        return {
-            selectedPaymentMethod: null,
-            tours: [{
-                image: "src/assets/images/CategoryView/ToTour/tour.png",
-                name: "Central Business District Tour",
-                type: "Guided Tour",
-                rating: "5.0",
-                reviews: "500",
-                items: [{
-                    name: "1 hour Session",
-                    price: "₱30.00"
-                },
-                {
-                    name: "3 hours Session",
-                    price: "₱3007.00"
-                },
-                ]
-            }
-                // Add more shop objects as needed
-            ],
-            vouchers: [{
-                code: 'DISCOUNT999',
-                amount: 999.00,
-                applied: false
-            },
-            {
-                code: 'DISCOUNT100',
-                amount: 100.00,
-                applied: false
-            },
-            ],
-            invalidVouchers: [{
-                code: 'DISCOUNT50',
-                amount: 50.00,
-                applied: false
-            },
-            {
-                code: 'DISCOUNT200',
-                amount: 200.00,
-                applied: false
-            },
-            ],
-            voucher: {
-                applied: false
-            },
-            displayTotalLabel: 'Your Total (Php)',
-            discountPrice: 0,
-            showConfirmation: false,
-            showComplete: false,
-            showPayment: true,
-            showVoucher: false,
-            navButtonText: 'Request to Book'
-        };
-    },
-    watch: {
-        showPayment(newValue) {
-            if (!newValue) {
-                // If the condition is false (else block is rendered), scroll to the top of the page
-                this.scrollToTop();
-            }
-        }
-    },
-    computed: {
-        totalPrice() {
-            let total = 0;
-            for (let item of this.tours) {
-                for (let tour of item.items) {
-                    // pang kuha ng price remove sign
-                    total += parseFloat(tour.price.replace("₱", "").trim());
-                }
-            }
-            console.log("Total Price:", total.toFixed(2));
-            return "₱ " + total.toFixed(2); // Format ulit
-        },
-        anyVoucherApplied() {
-            // Check if true ung applied
-            return this.vouchers.some(voucher => voucher.applied);
-        },
-        // Compute final price
-        finalPrice() {
-            // Calculate and extract
-            const totalPriceNumeric = parseFloat(this.totalPrice.replace("₱", ""));
-            const discountPriceNumeric = parseFloat(this.discountPrice);
-            let finalPrice = (totalPriceNumeric - discountPriceNumeric).toFixed(2);
-            console.log("Subtraction operation: ", totalPriceNumeric, "-", discountPriceNumeric);
-            // Return the calculated finalPrice only if any voucher is applied
-            return this.anyVoucherApplied ? "₱ " + finalPrice : null;
-        }
-    },
-    methods: {
-        scrollToTop() {
-            window.scrollTo(0, 0);
-        },
-        toggleConfirmation() {
-            this.showConfirmation = true;
-            this.showInformation = false;
-        },
-        isPaymentMethodSelected(paymentMethod) {
-            return this.selectedPaymentMethod === paymentMethod;
-        },
-        toggleComplete() {
-          
-            this.showConfirmation = false;
-            this.showComplete = !this.showComplete;
-        },
-        closeModal() {
-            this.showInformation = false;
-            this.showConfirmation = false;
-            this.showComplete = false;
-        },
-        toggleVoucher(index) {
-            this.showVoucher = !this.showVoucher;
-            if (this.vouchers[index]) {
-                // Toggle the 'applied' property of the voucher
-                this.vouchers[index].applied = !this.vouchers[index].applied;
-                // Log and check if true or false
-                console.log(`Voucher applied state: ${this.vouchers[index].applied}`);
-                // Update discountPrice based on applied vouchers
-                this.discountPrice = this.vouchers.reduce((total, voucher) => {
-                    return voucher.applied ? total + voucher.amount : total;
-                }, 0);
-                // Update displayTotalLabel
-                this.displayTotalLabel = this.showVoucher ? 'Your Total (Php)' : ' Subtotal';
-            }
-        },
-        togglePayment() {
-            // Toggle the showPayment flag
-            this.showPayment = !this.showPayment;
-            // Update navButtonText based on showPayment flag
-            this.navButtonText = this.showPayment ? 'Request to Order' : 'Payment';
-        },
-        navigateBack() {
-            if (!this.showPayment) {
-                // If currently in the payment section, switch to the booking section
-                this.showPayment = true;
-                this.navButtonText = 'Request to Order';
-            } else {
-                this.$router.go(-1);
-            }
-        },
-        activateRadioButton(id) {
-            const radioBtn = document.getElementById(id);
-            if (radioBtn) {
-                if (radioBtn.checked) {
-                    radioBtn.checked = false; // If already checked, uncheck it
-                } else {
-                    // Uncheck all radio buttons
-                    document.querySelectorAll('input[type="radio"]').forEach(input => {
-                        input.checked = false;
-                    });
-                    radioBtn.checked = true; // Check the clicked radio button
-                }
-            }
-        }
-    },
+
+const scrollToTop = () => {
+  window.scrollTo(0, 0);
+};
+
+const toggleComplete = () => {
+  showConfirmation.value = false;
+  showComplete.value = !showComplete.value;
+};
+
+const closeModal = () => {
+  showInformation.value = false;
+  showConfirmation.value = false;
+  showComplete.value = false;
+};
+
+const navigateBack = () => {
+  if (!showPayment.value) {
+    // If currently in the payment section, switch to the booking section
+    showPayment.value = true;
+    navButtonText.value = 'Request to Order';
+  } else {
+    router.go(-1);
+  }
+};
+
+const activateRadioButton = (id) => {
+  const radioBtn = document.getElementById(id);
+  if (radioBtn) {
+    if (radioBtn.checked) {
+      radioBtn.checked = false; // If already checked, uncheck it
+    } else {
+      // Uncheck all radio buttons
+      document.querySelectorAll('input[type="radio"]').forEach(input => {
+        input.checked = false;
+      });
+      radioBtn.checked = true; // Check the clicked radio button
+    }
+  }
+};
+
+const getFirstImageUrl = (activityphoto) => {
+  if (!activityphoto) return '';
+  const images = activityphoto.split('|').filter(img => img.trim() !== '');
+  return images.length > 0 ? images[0] : '';
+};
+
+const firstImageUrl = computed(() => {
+  if (!shopData.value || !shopData.value.activityphoto) return '';
+  return getFirstImageUrl(shopData.value.activityphoto);
+});
+
+const getImageUrl = (fileName) => {
+  return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
+};
+
+watch(showPayment, (newValue) => {
+  if (!newValue) {
+    // If the condition is false (else block is rendered), scroll to the top of the page
+    scrollToTop();
+  }
+});
+onBeforeMount(async() => {
+    await user();
 });
 </script>

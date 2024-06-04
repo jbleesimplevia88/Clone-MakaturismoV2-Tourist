@@ -504,11 +504,13 @@ const navButtonText = ref('Request to Order');
 const model = reactive({
     userInfo: []
 });
+
 const user = (async() => {
     const response = await axios.post('/userDetails');
     model.userInfo = JSON.parse(response.data.userdetails);
 
 });
+
 const selectedItems = computed(() => {
   if (cartStore.buyNowProducts.length > 0) {
     return cartStore.buyNowProducts;
@@ -615,19 +617,6 @@ function isPaymentMethodSelected(paymentMethod) {
     return selectedPaymentMethod.value === paymentMethod;
 }
 
-// function toggleComplete() {
-//     if (!selectedPaymentMethod.value) {
-//         alert("Please select a payment method before confirming booking.");
-//         return;
-//     }
-//     sendOrderData().then(() => {
-//         showConfirmation.value = false;
-//         showComplete.value = !showComplete.value;
-//     }).catch(error => {
-//         console.error('Error sending order:', error);
-//         alert('There was an error sending your order. Please try again.');
-//     });
-// }
 const toggleComplete = () => {
     console.log("toggleComplete() method called.");
     if (!selectedPaymentMethod) {
@@ -690,7 +679,6 @@ function updatePaymentMethod() {
 }
 
 const totalItemsInCart = computed(() => cartStore.totalItemsInCart);
-const productIds = computed(() => selectedItems.value.map(item => item.productid));
 
 const toggleConfirmation = async () => {
     const products = selectedItems.value.map(selectedItems => ({
@@ -715,7 +703,21 @@ const toggleConfirmation = async () => {
     });
     
 };
+watch([subTotal, finalPrice], () => {
+    cartStore.updatePrices(subTotal.value, finalPrice.value);
+});
 
+
+// Watchers
+watch(showPayment, newValue => {
+    if (!newValue) {
+        scrollToTop();
+    }
+});
+onBeforeMount(async() => {
+    await user();
+});
+// const productIds = computed(() => selectedItems.value.map(item => item.productid));
 
 // const sendOrderData = async () => {
 //     if (!userInfo.value.length) {
@@ -761,20 +763,6 @@ const toggleConfirmation = async () => {
 
 // };
 
-watch([subTotal, finalPrice], () => {
-    cartStore.updatePrices(subTotal.value, finalPrice.value);
-});
-
-
-// Watchers
-watch(showPayment, newValue => {
-    if (!newValue) {
-        scrollToTop();
-    }
-});
-onBeforeMount(async() => {
-    await user();
-});
 // watch(
 //     () => profileStore.user,
 //     (user) => {
@@ -785,5 +773,22 @@ onBeforeMount(async() => {
 //     },
 //     { immediate: true }
 // );
+
+
+// function toggleComplete() {
+//     if (!selectedPaymentMethod.value) {
+//         alert("Please select a payment method before confirming booking.");
+//         return;
+//     }
+//     sendOrderData().then(() => {
+//         showConfirmation.value = false;
+//         showComplete.value = !showComplete.value;
+//     }).catch(error => {
+//         console.error('Error sending order:', error);
+//         alert('There was an error sending your order. Please try again.');
+//     });
+// }
+
+
 </script>
 

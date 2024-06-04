@@ -51,7 +51,7 @@
         <div class="p-3 flex gap-4">
             <span class="pt-3">Select All ({{ selectedItemsCount }})</span>
             <p>Total ({{ selectedItemsCount }} Items):<br><span class="text-lg font-semibold">₱ {{ totalAmount }}</span></p>
-            <router-link to="/checkouteat">
+            <router-link to="/checkoutshop">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg">Check Out</button>
             </router-link>
         </div>

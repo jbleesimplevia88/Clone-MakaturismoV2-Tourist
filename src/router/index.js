@@ -221,7 +221,6 @@ const router = createRouter({
               props: route => ({
                 latitude: parseFloat(route.query.latitude),
                 longitude: parseFloat(route.query.longitude),
-
                 name: route.query.name,
                 imageList: route.query.imageList,
               })
@@ -234,13 +233,14 @@ const router = createRouter({
           component: () => import('../components/ToTour.vue'),
           children: [
             {
-              path: 'central',
+              path: 'central/:id',
               name: 'central',
               component: () => import('../components/CategoryTour/TourCentralBusiness.vue'),
               props: route => ({
                 latitude: parseFloat(route.query.latitude),
                 longitude: parseFloat(route.query.longitude),
                 name: route.query.name,
+                imageList: route.query.imageList,
               })
             },
           ]

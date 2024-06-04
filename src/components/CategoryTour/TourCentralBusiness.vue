@@ -40,10 +40,9 @@
                         </div>
                     </div>
                     <div class="flex flex-col p-3 lg:pl-8 lg:order-first">
-                        <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">{{ storedetails.activitytitle
-                        }}
+                        <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">{{ cartTour.shopData.activitytitle }}
                         </h1>
-                        <p class="text-md text-white text-left pb-5">Guided Tour</p>
+                        <p class="text-md text-white text-left pb-5">Guided Tour: {{ cartTour.shopData.guidetour }}</p>
                     </div>
                 </div>
             </div>
@@ -312,7 +311,6 @@ const cartTour = useTourStore();
 
 // Reactive states
 const showLoginModal = ref(false);
-const id = ref('');
 const storedetails = ref({});
 const selectedDate = ref('');
 const numberOfPersons = ref(0);
@@ -356,56 +354,11 @@ const reserve = () => {
   router.push('/checkouttour');
 };
 
-
-
-const getShopData = () => {
-    axios.get(`/viewactivityperid/${id.value}`).then((response) => {
-        const storeparse = JSON.parse(response.data.message);
-        storedetails.value = storeparse;
-        model.productsArray = JSON.parse(response.data.getProducts);
-        console.log('Selected product:', selectedProduct.value);
-
-    }).catch((error) => {
-        console.log(error);
-    });
-};
-
-
-
-onMounted(() => {
-  getShopData();
-});
-
-const getImageUrl = (fileName) => {
-  return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
-};
-
 const closeLoginModal = () => {
   showLoginModal.value = false;
 };
 
-const reserveTour = () => {
-  if (!authStore.isAuthenticated) {
-    authStore.setIntendedRoute(router.currentRoute.value.path);
-    showLoginModal.value = true;
-    return;
-  }
-  if (!selectedDate.value || selectedDate.value.trim() === '') {
-    alert("Please select a date.");
-    return;
-  }
-  const numberOfPersonsValue = parseInt(numberOfPersons.value);
-  if (isNaN(numberOfPersonsValue) || numberOfPersonsValue <= 0) {
-    alert("Please enter a valid number of persons.");
-    return;
-  }
-  console.log("Reserving tour with date:", selectedDate.value, "and number of persons:", numberOfPersonsValue);
-  cartTour.reserveTour({
-    date: selectedDate.value,
-    numberOfPersons: numberOfPersonsValue,
-  });
-  router.push('/checkouttour');
-};
+
 
 const checkDate = () => {
   if (!isSelectableDate.value) {
@@ -413,4 +366,23 @@ const checkDate = () => {
     alert("Selected date is not selectable. Please choose another date.");
   }
 };
+
+
+// const getShopData = () => {
+//     axios.get(`/viewactivityperid/${id.value}`).then((response) => {
+//         const storeparse = JSON.parse(response.data.message);
+//         storedetails.value = storeparse;
+//         model.productsArray = JSON.parse(response.data.getProducts);
+//         console.log('Selected product:', selectedProduct.value);
+
+//     }).catch((error) => {
+//         console.log(error);
+//     });
+// };
+
+
+
+// onMounted(() => {
+//   getShopData();
+// });
 </script>

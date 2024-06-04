@@ -46,27 +46,26 @@
                         <!-- Information of user -->
                         <div class="relative hidden lg:block mx-6 px-3 lg:pl-32 mb-[30px] lg:mb-44">
                             <p class="mb-4 font-bold lg:text-3xl text-2xl">Your Information</p>
-                            <div v-for="(user, index) in userInfo" :key="index"
+                            <div 
                                 class="grid grid-cols-1 lg:grid-cols-2 lg:gap-4">
                                 <div class="flex lg:flex-col lg:items-start justify-start">
                                     <p class="mr-[110px] lg:mr-9 lg:mb-1 font-bold">Full Name</p>
-                                    <p class="font-normal mb-3 text-gray-600">{{ user.firstname }} {{ user.lastname }}</p>
+                                    <p class="font-normal mb-3 text-gray-600">{{ model.userInfo.firstname }} {{ model.userInfo.lastname }}</p>
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start">
-                                    <p class="mr-[30px] w-10vw lg:pr-0 lg:mr-9 lg:mb-1 font-bold">E-mail Address</p>
-                                    <p class="font-normal mb-2 text-base text-gray-600">{{ user.email }}</p>
+                                    <p class="mr-[30px] w-10vw lg:pr-0 lg:mr-9 lg:mb-1 font-bold ">E-mail Address</p>
+                                    <p class="font-normal mb-2 text-base text-gray-600">{{ model.userInfo.email }} 
+                                    </p>
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start justify-start">
                                     <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Phone Number</p>
-                                    <p class="font-normal mb-3 text-gray-600">{{ user.contact }}</p>
+                                    <p class="font-normal mb-10 text-gray-600">{{ model.userInfo.contact }}</p>
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start justify-start">
-                                    <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Address</p>
-                                    <input v-model="address" @input="updateAddress"
-                                        class="font-normal mb-3 text-gray-600 rounded-md border "
-                                        placeholder="Enter your address" />
-
+                                    <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Address<spam class="text-red-500">*</spam></p>
+                                    <input  v-model="address" class="font-normal mb-10 w-full text-gray-600 border p-2"/>
                                 </div>
+                                
                             </div>
                             <div class="hidden lg:block">
                                 <p class="font-bold text-3xl mb-4">Payment</p>
@@ -93,29 +92,35 @@
                     <div class=" ml-4 bg-gray-400 h-0.5"></div>
                     <div class="ml-4 lg:hidden p-5 ">
                         <p class=" text-2xl font-bold pt-3">Your Information</p>
-                        <div v-for="(user, index) in userInfo" :key="index" className="grid grid-cols-2 grid-rows-3 pt-5 "
+                        <div  className="grid grid-cols-2 grid-rows-3 pt-5 "
                             style="word-wrap: break-word;">
                             <div>
                                 <p class="text-base font-bold">Full Name</p>
                             </div>
                             <div>
-                                <p class="font-normal mb-2  text-gray-600 text-base">{{ user.fullName }}</p>
+                                <p class="font-normal mb-3  text-gray-600 text-base">{{ model.userInfo.firstname }} {{ model.userInfo.lastname }}</p>
                             </div>
                             <div>
                                 <p class=" text-base font-bold">E-mail Address</p>
                             </div>
                             <div>
-                                <p class="font-normal mb-2 text-base text-gray-600  whitespace-nowrap">{{ user.email }}</p>
+                                <p class="font-normal mb-3 text-base text-gray-600 whitespace-nowrap">{{ model.userInfo.email }}</p>
                             </div>
                             <div>
                                 <p class=" text-base font-bold">Phone Number</p>
                             </div>
                             <div>
-                                <p class="font-normal mb-2 text-gray-600 text-base">{{ user.phoneNumber }}</p>
+                                <p class="font-normal mb-3 text-gray-600 text-base">{{ model.userInfo.contact }}</p>
                             </div>
-
-
-                        </div>
+                        
+                            <div>
+                                <p class=" text-base font-bold">Address<span class="text-red-500">*</span></p>
+                            </div>
+                            <div>
+                                <input v-model="address" class="font-normal mb-3 text-gray-600 text-base" />
+                            </div>
+                          
+                    </div>
                     </div>
                 </div>
                 <!-- Start of Central Business District Tour -->
@@ -199,7 +204,7 @@
                                 <div class="justify-center lg:block hidden pt-6">
                                     <button
                                         class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
-                                        @click="toggleComplete">Proceed to Payment</button>
+                                        @click="toggleConfirmation ">Proceed to Payment</button>
                                 </div>
                                 <div v-if="showConfirmation"
                                     class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
@@ -316,7 +321,7 @@
                         </div>
                         <div class="justify-center pt-3">
                             <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
-                                @click="toggleComplete">Confirm Booking</button>
+                                @click="toggleConfirmation">Confirm Booking</button>
                             <div v-if="showComplete"
                                 class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
                                 @click.self="closeModal">
@@ -473,7 +478,7 @@
 </style>
 
 <script setup>
-import { computed, ref, watch } from 'vue';
+import { computed, ref, watch, reactive, onBeforeMount} from 'vue';
 import { useCartStoreEat } from '@/stores/toEatCart';
 import { useRouter } from 'vue-router';
 import { useProfileStore } from '@/stores/profile';
@@ -493,6 +498,16 @@ const showConfirmation = ref(false);
 const showPayment = ref(true);
 const showVoucher = ref(false);
 const navButtonText = ref('Request to Order');
+
+const model = reactive({
+    userInfo: []
+});
+
+const user = (async() => {
+    const response = await axios.post('/userDetails');
+    model.userInfo = JSON.parse(response.data.userdetails);
+
+});
 
 const selectedItems = computed(() => {
   if (cartStore.buyNowProducts.length > 0) {
@@ -545,10 +560,6 @@ const fetchUserInfo = async () => {
         address.value = response.data.address || ''; // Initialize address
     }
 };
-const updateAddress = async () => {
-    const user = { ...profileStore.user, address: address.value }; // Update user object with new address
-    await profileStore.updateUser(user);
-};
 
 
 fetchUserInfo();
@@ -594,28 +605,19 @@ function scrollToTop() {
     window.scrollTo(0, 0);
 }
 
-function toggleConfirmation() {
-    console.log(address.value)
-    //   showConfirmation.value = true;
-}
-
 function isPaymentMethodSelected(paymentMethod) {
     return selectedPaymentMethod.value === paymentMethod;
 }
 
-function toggleComplete() {
-    if (!selectedPaymentMethod.value) {
+const toggleComplete = () => {
+    console.log("toggleComplete() method called.");
+    if (!selectedPaymentMethod) {
         alert("Please select a payment method before confirming booking.");
         return;
     }
-    sendOrderData().then(() => {
-        showConfirmation.value = false;
-        showComplete.value = !showComplete.value;
-    }).catch(error => {
-        console.error('Error sending order:', error);
-        alert('There was an error sending your order. Please try again.');
-    });
-}
+    showConfirmation = false;
+    showComplete = !showComplete;
+};
 
 function closeModal() {
     showConfirmation.value = false;
@@ -667,49 +669,35 @@ function updatePaymentMethod() {
 }
 
 const totalItemsInCart = computed(() => cartStore.totalItemsInCart);
-const productIds = computed(() => selectedItems.value.map(item => item.productid));
 
-const sendOrderData = async () => {
-    if (!userInfo.value.length) {
-        alert("User information is not loaded.");
-        return;
-    }
-
-    const orderData = selectedItems.value.map((item, index) => ({
-        busid: shopData.value.busid,
-        productid: productIds.value[index], // Use the computed productids array
-        productname: item.title,
-        productprice: item.price,
-        quantity: item.quantity,
-        totalperproduct: calculateTotalPrice(item),
-        subtotal: subTotal.value,
-        finaltotal: finalPrice.value,
-        deliveryFee: cartStore.deliveryFee,
-        touristid: userInfo.value[0]?.id || 'N/A', // Ensure userInfo is an array and access the first item
-        fullname: `${userInfo.value[0]?.firstname || ''} ${userInfo.value[0]?.lastname || ''}`, // Access first item
-        mobile: userInfo.value[0]?.contact || 'N/A',
-        email: userInfo.value[0]?.email || 'N/A',
-        address: address.value || 'N/A',
-        deliveryaddress: address.value || 'N/A',
-        addaddress: address.value || 'N/A',
-        paymentmethod: selectedPaymentMethod.value,
-       
+const toggleConfirmation = async () => {
+    const products = selectedItems.value.map(selectedItems => ({
+        productId: selectedItems.productid,
+        busid: selectedItems.busid,
+        productName: selectedItems.title,
+        price: selectedItems.price,
+        quantity: selectedItems.quantity,
+        total: selectedItems.price * selectedItems.quantity
     }));
+    const businessId = selectedItems.value[0];
 
-    // Transpose orderData into the desired format
-    const transposedData = orderData.reduce((acc, cur) => {
-        for (const key in cur) {
-            if (!acc[key]) {
-                acc[key] = [];
-            }
-            acc[key].push(cur[key]);
-        }
-        return acc;
-    }, {});
+    await axios.post('/transactShop', {
 
-    console.log('Sending order data:', transposedData); // Log the data being sent
-    const response = await axios.post('http://localhost:8000/api/transactShop', transposedData);
-    console.log('Order successfully sent(just tocheck data)', response.data); // Log the success response
+        busid: businessId.busid,
+        touristId: model.userInfo.id,
+        address: address.value,
+        paymenMethod: selectedPaymentMethod.value,
+        voucher: 'sample',
+        deliveryFee: 50,
+        subtotal: subTotal.value,
+        finalTotal: finalPrice.value,
+        products: products,
+
+    }).then(res => {
+        console.log('succes');
+    }).catch(error => {
+        console.log(error);
+    });
 
 };
 
@@ -724,16 +712,9 @@ watch(showPayment, newValue => {
         scrollToTop();
     }
 });
+onBeforeMount(async() => {
+    await user();
+});
 
-watch(
-    () => profileStore.user,
-    (user) => {
-        if (user) {
-            userInfo.value = [user];
-            address.value = user.address || ''; // Update address when user data changes
-        }
-    },
-    { immediate: true }
-);
 </script>
 

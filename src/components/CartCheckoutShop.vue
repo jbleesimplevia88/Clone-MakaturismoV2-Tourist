@@ -479,9 +479,7 @@
 
 <script setup>
 import { computed, ref, watch,  onBeforeMount ,reactive  } from 'vue';
-// import { useCartStore } from '@/stores/toEatCart';
 import { useCartStore } from '@/stores/toShopCart';
-
 import { useRouter } from 'vue-router';
 import { useProfileStore } from '@/stores/profile';
 import axios from 'axios';
@@ -692,7 +690,6 @@ const toggleConfirmation = async () => {
     const businessId = selectedItems.value[0];
 
     await axios.post('/transactShop', {
-
         busid: businessId.busid,
         touristId: model.userInfo.id,
         address: address.value,
@@ -702,7 +699,6 @@ const toggleConfirmation = async () => {
         subtotal: subTotal.value,
         finalTotal: finalPrice.value,
         products: products,
-
     }).then(res => {
         console.log('succes');
     }).catch(error => {
@@ -725,77 +721,6 @@ watch(showPayment, newValue => {
 onBeforeMount(async() => {
     await user();
 });
-// const productIds = computed(() => selectedItems.value.map(item => item.productid));
-
-// const sendOrderData = async () => {
-//     if (!userInfo.value.length) {
-//         alert("User information is not loaded.");
-//         return;
-//     }
-
-//     const orderData = selectedItems.value.map((item, index) => ({
-//         busid: shopData.value.busid,
-//         productid: productIds.value[index], // Use the computed productids array
-//         productname: item.title,
-//         productprice: item.price,
-//         quantity: item.quantity,
-//         totalperproduct: calculateTotalPrice(item),
-//         subtotal: subTotal.value,
-//         finaltotal: finalPrice.value,
-//         deliveryFee: cartStore.deliveryFee,
-//         touristid: userInfo.value[0]?.id || 'N/A', // Ensure userInfo is an array and access the first item
-//         fullname: `${userInfo.value[0]?.firstname || ''} ${userInfo.value[0]?.lastname || ''}`, // Access first item
-//         mobile: userInfo.value[0]?.contact || 'N/A',
-//         email: userInfo.value[0]?.email || 'N/A',
-//         address: address.value || 'N/A',
-//         deliveryaddress: address.value || 'N/A',
-//         addaddress: address.value || 'N/A',
-//         paymentmethod: selectedPaymentMethod.value,
-       
-//     }));
-
-//     // Transpose orderData into the desired format
-//     const transposedData = orderData.reduce((acc, cur) => {
-//         for (const key in cur) {
-//             if (!acc[key]) {
-//                 acc[key] = [];
-//             }
-//             acc[key].push(cur[key]);
-//         }
-//         return acc;
-//     }, {});
-
-//     console.log('Sending order data:', transposedData); // Log the data being sent
-//     const response = await axios.post('http://localhost:8000/api/transactShop', transposedData);
-//     console.log('Order successfully sent(just tocheck data)', response.data); // Log the success response
-
-// };
-
-// watch(
-//     () => profileStore.user,
-//     (user) => {
-//         if (user) {
-//             userInfo.value = [user];
-//             address.value = user.address || ''; // Update address when user data changes
-//         }
-//     },
-//     { immediate: true }
-// );
-
-
-// function toggleComplete() {
-//     if (!selectedPaymentMethod.value) {
-//         alert("Please select a payment method before confirming booking.");
-//         return;
-//     }
-//     sendOrderData().then(() => {
-//         showConfirmation.value = false;
-//         showComplete.value = !showComplete.value;
-//     }).catch(error => {
-//         console.error('Error sending order:', error);
-//         alert('There was an error sending your order. Please try again.');
-//     });
-// }
 
 
 </script>

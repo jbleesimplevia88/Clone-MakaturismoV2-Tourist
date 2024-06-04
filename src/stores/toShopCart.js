@@ -26,6 +26,7 @@ export const useCartStore = defineStore({
             } else {
                 // If it's a new product, add it to the cart with a default quantity of 1
                 this.cart.unshift({
+                    busid: product.busid,
                     productid: product.productid, // Include the productid
                     image: product.uploadedphotos.split(',')[0],
                     title: product.productname,

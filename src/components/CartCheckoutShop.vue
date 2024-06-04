@@ -682,27 +682,35 @@ const totalItemsInCart = computed(() => cartStore.totalItemsInCart);
 
 const toggleConfirmation = async () => {
     const products = selectedItems.value.map(selectedItems => ({
-        id:selectedItems.id,
-        busid:selectedItems.busid,
-        productName:selectedItems.title,
-        price:selectedItems.price,
-        quantity:selectedItems.quantity
+        productId: selectedItems.productid,
+        busid: selectedItems.busid,
+        productName: selectedItems.title,
+        price: selectedItems.price,
+        quantity: selectedItems.quantity,
+        total: selectedItems.price * selectedItems.quantity
     }));
+    const businessId = selectedItems.value[0];
 
-    axios.post('/transactShop',{
+    await axios.post('/transactShop', {
+
+        busid: businessId.busid,
+        touristId: model.userInfo.id,
+        address: address.value,
+        paymenMethod: selectedPaymentMethod.value,
+        voucher: 'sample',
+        deliveryFee: 50,
+        subtotal: subTotal.value,
+        finalTotal: finalPrice.value,
         products: products,
-        touristId:model.userInfo.id,
-        address:address.value,
-        total:100,
-        deliveryFee:50,
-        subtotal:150
+
     }).then(res => {
         console.log('succes');
     }).catch(error => {
         console.log(error);
     });
-    
+
 };
+
 watch([subTotal, finalPrice], () => {
     cartStore.updatePrices(subTotal.value, finalPrice.value);
 });

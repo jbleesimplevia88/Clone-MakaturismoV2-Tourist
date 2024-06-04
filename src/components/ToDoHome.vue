@@ -172,7 +172,7 @@
                 <div v-for="(item, index) in filteredItems" :key="index"
                     class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
                     <div class="relative" v-if="item.pictureimage">
-        <img :src="getImageUrl(item.pictureimage.split('|')[0])" class="w-full h-[250px] object-cover rounded-t">
+                    <img :src="getImageUrl(item.pictureimage.split('|')[0])" class="w-full h-[250px] object-cover rounded-t">
     
                         <div
                             class="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-[#102E61] to-transparent">
@@ -268,15 +268,12 @@ const showDropdown = ref(false);
 const selectedCategory = ref(null);
 const selectedLocation = ref(null);
 const applyButtonClicked = ref(false);
-const imageArray = ref();
 const todoinfo = ref([]);
 
 const filteredItems = computed(() => {
     let filteredItems = model.items.slice(); // Create a shallow copy of items
     // Apply filters only if the Apply button is clicked
 
-
-  
     if (applyButtonClicked.value) {
         // Filter by category
         if (selectedCategory.value) {

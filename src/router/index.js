@@ -22,11 +22,7 @@ const router = createRouter({
       component: HomeView
 
     },
-    {
-      path: '/calendar',
-      name: 'calendar',
-      component: () => import('../views/CalendarView.vue')
-    },
+   
     {
       path: '/notification',
       name: 'notification',
@@ -66,10 +62,38 @@ const router = createRouter({
       component: () => import('../views/TransactionsView.vue'),
     },
     {
+      path: '/calendar',
+      name: 'calendar',
+      component: () => import('../views/CalendarView.vue'),
+      children: [
+        {
+          path: '/calendar',
+          name: 'calendar',
+          component: () => import('../components/CalendarHome.vue'),
+        
+        },
+        {
+          path: 'currentevents/:id',
+          name: 'currentevents',
+          component: () => import('../components/CalendarEvents/CurrentEvents.vue'),
+          props: route => ({
+            latitude: parseFloat(route.query.latitude),
+            longitude: parseFloat(route.query.longitude),
+            name: route.query.name,
+          })
+        },
+      ]
+    },
+    {
       path: '/cart',
       name: 'cart',
       component: () => import('../views/CartView.vue'),
       children: [
+        {
+          path: '/cartallproducts',
+          name: 'cartallproducts',
+          component: () => import('../components/CartAllProducts.vue')
+        },
         {
           path: '/cart',
           name: 'carthome',
@@ -90,16 +114,11 @@ const router = createRouter({
           name: 'carthomeeat',
           component: () => import('../components/CartHomeEat.vue')
         },
+
         {
-          path: '/checkoutshop',
-          name: 'cartcheckoutshop',
-          component: () => import('../components/CartCheckoutShop.vue'),
-          meta: { requiresAuth: true }
-        },
-        {
-          path: '/checkouteat',
-          name: 'cartcheckouteat',
-          component: () => import('../components/CartCheckoutEat.vue'),
+          path: '/checkout',
+          name: 'cartcheckout',
+          component: () => import('../components/CartCheckout.vue'),
           meta: { requiresAuth: true }
 
         },

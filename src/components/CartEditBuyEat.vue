@@ -31,6 +31,7 @@
                 <div v-for="(cartItem, index) in cart" :key="index" class="flex justify-between mb-2 pr-4">
                     <p class="w-[70%]">{{ cartItem.title }}</p>
                     <p>x{{ cartItem.quantity }}</p>
+                    
                 </div>
             </template>
             <template v-else>

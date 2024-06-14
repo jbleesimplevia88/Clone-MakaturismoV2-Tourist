@@ -1,105 +1,152 @@
-<script>
-import { ref, onBeforeUnmount } from 'vue';
+<script setup>
+import { ref, onMounted, reactive, onBeforeMount } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import axios from 'axios';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper/core';
-import card1 from '@/assets/images/Top 10/Card 1.png';
-import card2 from '@/assets/images/Top 10/Card 2.png';
-import card3 from '@/assets/images/Top 10/Card 3.png';
-import card4 from '@/assets/images/Top 10/Card 4.png';
-import card5 from '@/assets/images/Top 10/Card 5.png';
-import card6 from '@/assets/images/Top 10/Card 6.png';
-import card7 from '@/assets/images/Top 10/Card 7.png';
-import card8 from '@/assets/images/Top 10/Card 8.png';
-import card9 from '@/assets/images/Top 10/Card 9.png';
-import card10 from '@/assets/images/Top 10/Card 10.png';
+import { useCalendarEventsStore } from '@/stores/calendarEvents';
+import { useRouter } from 'vue-router';
 
-// Setup Swiper modules
+const store = useCalendarEventsStore();
+const router = useRouter();
+
+const model = reactive({
+  events: [],
+});
+
+const formatDate = (dateString) => {
+  const options = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+  };
+  const date = new Date(dateString);
+  return date.toLocaleString('en-US', options);
+};
+
+const getImageUrl = (fileName) => {
+  return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
+};
+
+const extractLatLong = (mapLocation) => {
+  const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
+  const match = mapLocation.match(regex);
+  if (match && match.length >= 3) {
+    const latitude = parseFloat(match[1]);
+    const longitude = parseFloat(match[2]);
+    return { latitude, longitude };
+  }
+  // Try another regex pattern for different URL formats
+  const altRegex = /!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/;
+  const altMatch = mapLocation.match(altRegex);
+  if (altMatch && altMatch.length >= 3) {
+    const latitude = parseFloat(altMatch[1]);
+    const longitude = parseFloat(altMatch[2]);
+    return { latitude, longitude };
+  }
+  // If no match is found, return null values
+  return { latitude: null, longitude: null };
+};
+
+const navigateToEvent = (event) => {
+  console.log('Navigating to Event:', event);
+  store.selectEvent(event);
+  const { latitude, longitude } = extractLatLong(event.maplink);
+  router.push({
+    name: 'currentevents',
+    params: { id: event.id },
+    query: {
+      latitude,
+      longitude,
+      event: event,
+      name: event.title,
+      id: event.id,
+    },
+  });
+};
+
+const getCalendar = async () => {
+  try {
+    const response = await axios.post('/viewallCalendar');
+    console.log('API Response:', response);
+    if (response.data && response.data.calendarevent) {
+      const parsedEvents = JSON.parse(response.data.calendarevent);
+      console.log('Parsed Events:', parsedEvents);
+      store.setEvents(parsedEvents);
+      model.events = parsedEvents;
+      console.log('Model Events after API call:', model.events);
+    } else {
+      model.events = [];
+      console.log('No events found in response');
+    }
+  } catch (error) {
+    console.error('API request error:', error);
+    model.events = [];
+  }
+};
+
+const getTruncatedDescription = (description) => {
+  if (!description) return '';
+  const words = description.split(' ');
+  if (words.length <= 30) return description;
+  return words.slice(0, 30).join(' ') + '...';
+};
+
+onBeforeMount(async () => {
+  await getCalendar();
+  console.log('Model Events after onBeforeMount:', model.events);
+});
+
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
-
-export const slides = [
-  { imgSrc: card1, name: "Glorietta", date: "01 April, '24", location: "Glorietta, Ayala Center, Makati City", link: "/category/see/glorietta" },
-  { imgSrc: card2, name: "Ayala Museum", date: "01 April, '24", location: "3rd flr,Circuit Lane, AP Reyes St., Makati, Metro Manila", link: "" },
-  { imgSrc: card3, name: "Greenbelt", date: "01 April, '24", location: "Esperanza St. corner Makati Ave., Ayala Center, Makati, Metro Manila", link: "" },
-  { imgSrc: card4, name: "Poblacion", date: "01 April, '24", location: "Poblacion 1210, Makati, Metro Manila", link: "" },
-  { imgSrc: card5, name: "Ayala Triangle", date: "01 April, '24", location: "Paseo De Roxas St Cor Makati Ave, Cor Ayala Ave, Makati, 1209 Metro Manila", link: "" },
-  { imgSrc: card6, name: "Guadalupe Church", date: "01 April, '24", location: "Guadalupe Commerical Complex, Makati, Metro Manila", link: "" },
-  { imgSrc: card7, name: "Salcedo Saturday Market", date: "01 April, '24", location: "Salcedo Village, Jaime C. Velasquez Park, Makati, Metro Manila", link: "" },
-  { imgSrc: card8, name: "Washington Sycip Park", date: "01 April, '24", location: "Legazpi Street, Legazpi Village, Makati, 1229 Metro Maynila", link: "" },
-  { imgSrc: card9, name: "New World Makati ", date: "01 April, '24", location: "Esperanza STreet corner Makati Avenue, Ayala Center, Makati, Metro Manila", link: "" },
-  { imgSrc: card10, name: "Makati Diamond Residences", date: "01 April, '24", location: "118 Legazpi Street, Legazpi Village, Makati, Metro Manila", link: "" },
-];
 
 const isMobile = ref(window.innerWidth <= 768);
 const updateIsMobile = () => {
   isMobile.value = window.innerWidth <= 768;
 };
 
-window.addEventListener('resize', updateIsMobile);
-
-onBeforeUnmount(() => {
-  window.removeEventListener('resize', updateIsMobile);
+onMounted(() => {
+  window.addEventListener('resize', updateIsMobile);
 });
-
-const modules = [Navigation, Pagination, Scrollbar, A11y];
-
-export default {
-  components: {
-    Swiper,
-    SwiperSlide
-  },
-  setup() {
-    return {
-      slides,
-      isMobile,
-      modules
-    };
-  }
-};
 </script>
 
 <template>
-  <swiper :modules="modules" :slides-per-view="isMobile ? 1 : 4" :slides-per-group="isMobile ? 1 : 2" :space-between="20"
-    navigation :pagination="{ clickable: true, dynamicBullets: true }" :scrollbar="{ draggable: false }" class="mx-5">
-    <template v-for="(slide, index) in slides" :key="index">
-      <swiper-slide>
-        <RouterLink :to="slide.link">
-          <div class="relative my-8 mb-[3rem] w-350 h-350">
-            <img :src="slide.imgSrc" alt="" class="object-cover w-full h-full">
-            <div class="absolute bottom-0 left-0 right-0 p-2 text-white"
-              style="background: linear-gradient(to bottom, transparent, #102E61 100%, #102E61 90%); height: 120px;">
-              <h1 class="absolute right-0 font-bold text-xl bottom-14 left-5 mb-5">{{ slide.name }}</h1>
-              <h1 class="flex-end absolute right-0 font-bold text-xl mb-5 pr-5 pt-3">{{ slide.date }}</h1>
-              <div class="flex items-center location-info">
-                <img class="absolute right-0 text-xl bottom-9 left-5" style="filter: invert(1); width:auto; height:20px;"
-                  src="@/assets/images/Carousel/pin.png" alt="">
-                <span class="absolute right-0 text-sm bottom-8 left-11">{{ slide.location }}</span>
+  <div v-if="model.events.length">
+    <swiper :modules="[Navigation, Pagination, Scrollbar, A11y]" :slides-per-view="isMobile ? 1 : 4" :slides-per-group="isMobile ? 1 : 2" :space-between="20" navigation :pagination="{ clickable: true, dynamicBullets: true }" :scrollbar="{ draggable: false }" class="mx-5">
+      <template v-for="event in model.events" :key="event.id">
+        <swiper-slide @click="() => navigateToEvent(event)">
+          <div class="relative my-8 mb-[3rem] w-[480px] h-[350px]">
+            <img :src="getImageUrl(event.coverphoto)" alt="Cover Photo" class="object-cover w-full h-full">
+            <div class="absolute bottom-0 left-0 right-0 p-2 text-white bg-gradient-to-b from-transparent to-[#102E61] h-[120px]">
+              <div class="flex justify-between">
+                <h1 class="font-bold text-xl">{{ event.title }}</h1>
+                <h1 class="font-bold text-xl">{{ formatDate(event.startat) }}</h1>
               </div>
+              <span class="text-sm block mt-3">{{ getTruncatedDescription(event.description) }}</span>
             </div>
           </div>
-        </RouterLink>
-      </swiper-slide>
-    </template>
-    <div class="swiper-pagination"></div>
-  </swiper>
+        </swiper-slide>
+      </template>
+      <div class="swiper-pagination"></div>
+    </swiper>
+  </div>
+  <div v-else>
+    <p>No events found</p>
+  </div>
 </template>
 
 <style scoped>
 .fixed-width-300 {
   width: 300px;
 }
-
 @media (max-width: 640px) {
-  .text-sm {
-    @apply text-xs;
-  }
-
   .md\:text-base {
     @apply text-sm;
   }
-
   .lg\:text-lg {
     @apply text-base;
   }

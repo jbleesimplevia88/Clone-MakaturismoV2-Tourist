@@ -7,7 +7,7 @@
             <div class="absolute top-0 left-0 h-[101%] w-[100%] md:"
                 style="background: linear-gradient(to bottom, transparent 75%, #102E61 87%, #102E61 40%);">
             </div>
-            <img class="w-full h-[200px] md:h-[700px]" src="@/assets/images/CategoryView/ToDo/ToDo.jpeg" alt="" />
+            <img v-if="toseeData" :src="getImageUrl(toseeData.backgroundphotophoto)" class="w-full h-[200px] md:h-[700px]" alt="To Do Image" />
             <div class="flex items-center justify-center absolute top-5 md:top-20 z-[1] bg-white pl-3 lg:pl-5 rounded-r-xl">
                 <p class="text-[#102E61] text-sm sm:text-4xl font-bold p-3 pr-4 md:p-5 md:pr-7 ">
                     WHAT TO DO
@@ -18,9 +18,8 @@
                 class="relative sm:absolute inset-0 sm:top-56 md:top-[23rem] flex text-center lg:text-left justify-center items-center z-[1]">
                 <p
                     class="pt-[6rem] text-[17px] sm:text-sm md:text-xl lg:text-[1.7rem] px-0 lg:px-[8rem] text-wrap leading lg:leading-10 text-white">
-                    Makati city is a walkable art gallery that showcases interesting sculptures, statues, architectures,
-                    murals and many other art forms. It is not just something that the visitor can feast his/her eyes
-                    on, but it also tells the story of the city beyond skyscrapers.
+                    {{ toseeData ? toseeData.description : 'Loading...' }}
+
                 </p>
             </div>
         </div>
@@ -268,9 +267,22 @@ const showDropdown = ref(false);
 const selectedCategory = ref(null);
 const selectedLocation = ref(null);
 const applyButtonClicked = ref(false);
-const imageArray = ref();
-const toseeinfo = ref([]);
+const toseeData = ref(null);
 
+const fetchToseeData = async () => {
+  try {
+    const response = await axios.get('/pillar-details');
+    toseeData.value = response.data.tosee[0]; // Assuming 'todo' returns an array with at least one item
+  } catch (error) {
+    console.error('Failed to fetch todo data:', error);
+  }
+};
+
+
+
+onBeforeMount(() => {
+    fetchToseeData();
+});
 const filteredItems = computed(() => {
     let filteredItems = model.items.slice(); // Create a shallow copy of items
     // Apply filters only if the Apply button is clicked

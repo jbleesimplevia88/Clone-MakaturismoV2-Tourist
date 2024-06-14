@@ -42,4 +42,4 @@ npm run test:unit
 ```sh
 npm run lint
 ```
->>>>>>> origin/main
+>>>>>>>>> Temporary merge branch 2

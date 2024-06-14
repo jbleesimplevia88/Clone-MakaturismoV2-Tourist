@@ -865,13 +865,13 @@
                             <p>Account for Approval</p>
                         </div>
                         <div class="flex flex-row text-lg font-medium text-gray-600 pb-12">
-                            <p>Thank you for registering with us using your email address! Kindly check your email address
-                                to verify your account</p>
+                            <p>Thank you for registering with us using your email address!
+                               Kindly check your email address to verify your account</p>
                         </div>
                     </div>
+
                     <div class="flex justify-center">
-                        <button class="p-3 w-[92%] text-white text-xl bg-[#2969D6] rounded-lg border border-gray-500"
-                            @click="closeApproval">
+                        <button class="p-3 w-[92%] text-white text-xl bg-[#2969D6] rounded-lg border border-gray-500" @click="closeApproval">
                             Okay
                         </button>
                     </div>
@@ -1128,8 +1128,8 @@ import {
 RouterLink
 } from 'vue-router';
 import {
-    // isMemoSame,
-    ref
+// isMemoSame,
+ref
 } from 'vue'
 import {
 useAuthStore
@@ -2066,8 +2066,9 @@ padding: 20px;
 }
 
 .sidebar.open {
-    right: 0;
-    /* Move sidebar into view */
+right: 0;
+/* Move sidebar into view */
+
 }
 
 .swiper-container {
@@ -2183,16 +2184,19 @@ background-color: black;
 }
 
 /* .slide-enter-active,
-    .slide-leave-active {
-      transition: transform 0.3s ease-in-out;
-    }
-    .slide-enter,
-    .slide-leave-to {
-      transform: translateX(100%);
-    }
-    .slide-enter-to {
-      transform: translateX(-10%);
-    } */
+.slide-leave-active {
+transition: transform 0.3s ease-in-out;
+}
+
+.slide-enter,
+.slide-leave-to {
+transform: translateX(100%);
+}
+
+.slide-enter-to {
+transform: translateX(-10%);
+} */
+
 /*  */
 .slide-enter-active,
 .slide-leave-active {
@@ -2206,6 +2210,6 @@ transform: translateX(100%);
 
 .slide-enter-to,
 .slide-leave {
-    transform: translateX(0);
-}
-</style>
+transform: translateX(0);
+
+}</style>

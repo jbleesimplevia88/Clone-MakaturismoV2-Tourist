@@ -136,18 +136,22 @@
                                             <div class="grid gap-4 ml-4 p-2">
                                                 <div v-for="(category, index) in categories" :key="'category-' + index">
                                                     <label :for="'categoryRadio-' + index" class="flex items-center">
-                                                        <input type="radio" :id="'categoryRadio-' + index" :value="category"
-                                                            v-model="selectedCategory" name="category">
-                                                        <span class="ml-2 m-0 p-0 uppercase font-bold">{{ category }}</span>
+                                                        <input type="radio" :id="'categoryRadio-' + index"
+                                                            :value="category" v-model="selectedCategory"
+                                                            name="category">
+                                                        <span class="ml-2 m-0 p-0 uppercase font-bold">{{ category
+                                                            }}</span>
                                                     </label>
                                                 </div>
                                                 <hr data-v-add5c92e="" class="mt-6 mb-6 border-gray-300">
                                                 <h2 class="ml-5 font-bold mb-2">Explore by Area</h2>
                                                 <div v-for="(location, index) in locations" :key="'location-' + index">
                                                     <label :for="'locationRadio-' + index" class="flex items-center">
-                                                        <input type="radio" :id="'locationRadio-' + index" :value="location"
-                                                            v-model="selectedLocation" name="location">
-                                                        <span class="ml-2 m-0 p-0 uppercase font-bold">{{ location }}</span>
+                                                        <input type="radio" :id="'locationRadio-' + index"
+                                                            :value="location" v-model="selectedLocation"
+                                                            name="location">
+                                                        <span class="ml-2 m-0 p-0 uppercase font-bold">{{ location
+                                                            }}</span>
                                                     </label>
                                                 </div>
                                             </div>
@@ -206,7 +210,8 @@
                 <div class="flex justify-start items-center">
                     <p class="text-center text-white">
                         Showing
-                        <span class="text-[#29BFD6]">{{ paginationStartIndex }} - {{ paginationEndIndex }}</span> results
+                        <span class="text-[#29BFD6]">{{ paginationStartIndex }} - {{ paginationEndIndex }}</span>
+                        results
                         from
                         <span class="text-[#29BFD6]">{{ totalRecords }}</span> records
                     </p>

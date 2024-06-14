@@ -10,19 +10,11 @@
                 <p class="text-white text-lg font-black p-3 pr-4 lg:text-3xl">SHOP</p>
             </button>
         </div>
-        <div class="flex justify-between mb-2 mt-4">
+        <div class="flex justify-center  justify-items-center mb-2 mt-4">
             <div class="w-[50%] p-5">
-                <p class="font-bold">Number of items</p>
-                <p class="font-bold text-3xl">{{ totalItemsInCart }}</p>
+                <p class="font-bold text-center">Number of items</p>
+                <p class="font-bold text-center text-3xl">{{ totalItemsInCart }}</p>
             </div>
-            <template v-if="!isCartEmpty">
-                <div class="w-[120%] mt-4 m-2">
-                    <button @click="handleEditCart"
-                        class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">
-                        Edit Cart
-                    </button>
-                </div>
-            </template>
         </div>
 
         <div class="mb-5 p-5">

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const useProfileStore = defineStore('profileStore', {
     state: () => ({
-        user: null,
+        user: null, // Initialize user as null
     }),
 
     actions: {
@@ -25,12 +25,15 @@ export const useProfileStore = defineStore('profileStore', {
             try{
                 const response = await axios.post('/updateTourist', formData, {
                     headers: {
-                        'Content-Type': 'multipart/form-data'                   }
+                        'Content-Type': 'multipart/form-data'
+                    }
                 });
                 if (response.data) {
+                    this.user = { ...this.user, ...formData }; // Update local user data
+
                     return true;
                 }
-            }catch(error){
+            } catch(error){
                 return false;
             }
         },

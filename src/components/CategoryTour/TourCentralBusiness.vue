@@ -1,10 +1,10 @@
 <template>
     <div class="flex relative pt-[57px] md:pt-[80px] justify-center">
-        <div class="relative">
-            <div class="bg-[#102E61] h-[101%] lg:h-[105%]" style="position: absolute; top: 0; left: 0; width: 100%; ">
+        <div class="relative  lg:w-full">
+            <div class="bg-[#102E61] h-[101%] lg:h-[105%] " style="position: absolute; top: 0; left: 0; width: 100%; ">
             </div>
-            <div class="relative inset-0 sm:top-56 md:top-2 pl-0 md:pl-16 flex items-center">
-                <div class="relative flex flex-col pl-0 lg:pl-10">
+            <div class="relative inset-0 sm:top-56 md:top-2 pl-0 md:pl-16 flex items-center ">
+                <div class="relative flex flex-col pl-0 lg:pl-10 ">
                     <div class="absolute lg:top-4 lg:left-3 top-4 z-[1]">
                         <router-link to="/category/tour">
                             <a class=" flex items-center">
@@ -20,8 +20,8 @@
                             </a>
                         </router-link>
                     </div>
-                    <div class="relative flex flex-col items-center">
-                        <div class=" lg:pr-[7rem]">
+                    <div class="relative flex flex-col items-center ">
+                        <div class=" lg:pr-[7rem] lg:w-full">
                             <ContentCarousel :items="items" class="mb-10" />
                         </div>
                     </div>
@@ -39,10 +39,10 @@
                             </router-link>
                         </div>
                     </div>
-                    <div class="flex flex-col pl-8 lg:pl-8 lg:order-first">
-                        <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">Central Business District Tour
+                    <div class="flex flex-col p-3 lg:pl-8 lg:order-first">
+                        <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">{{ cartTour.shopData.activitytitle }}
                         </h1>
-                        <p class="text-md text-white text-left pb-5">Guided Tour</p>
+                        <p class="text-md text-white text-left pb-5">Guided Tour: {{ cartTour.shopData.guidetour }}</p>
                     </div>
                 </div>
             </div>
@@ -52,8 +52,7 @@
         <div class="my-4 lg:p-0 lg:w-[75%]">
             <div class="relative mx-6 px-3 lg:px-32 pt-5">
                 <p class="font-bold text-lg text-black text-left pb-5 pt-3 lg:pt-[5rem]">About this place</p>
-                <p class="text-lg text-justify text-black pb-5">Stay and relax in the amazing rooms of U Hotels Makati. Find
-                    your peace and enjoy the services this place can offer.</p>
+                <p class="text-lg text-justify text-black pb-5">{{ cartTour.shopData.description }}</p>
                 <div class="hidden border border-gray-400 lg:w-[]">
                     <p class="text-center font-bold">Number of items</p>
                 </div>
@@ -67,8 +66,7 @@
                                 d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                         </svg>
                     </div>
-                    <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">986 Dr Jose P. Rizal Ave, Makati, 1210
-                        Metro Manila
+                    <p class=" text-lg md:text-black text-left pl-2.5 pb-5 pt-3">{{ cartTour.shopData.address }}
                     </p>
                 </div>
                 <div class="flex flex-row">
@@ -80,8 +78,9 @@
                         </svg>
                     </div>
                     <div class="flex flex-col pl-2.5">
-                        <p class="text-lg md:text-black text-left">Wednesday to Sunday</p>
-                        <p class="text-lg md:text-black text-left">11:00 AM to 7:30 PM</p>
+                        <p class="text-lg md:text-black text-left">{{ cartTour.shopData.startsat }} to {{ cartTour.shopData.endsat }}
+                        </p>
+                        <p class="text-lg md:text-black text-left">{{ cartTour.shopData.actsched }}</p>
                     </div>
                 </div>
                 <div class="flex flex-row">
@@ -92,7 +91,7 @@
                                 d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
                         </svg>
                     </div>
-                    <p class="text-lg md:text-black text-left pl-2.5 pb-5">(632) 8870-1000</p>
+                    <p class="text-lg md:text-black text-left pl-2.5 pb-5">{{ cartTour.shopData.contactno }}</p>
                 </div>
                 <div class="my-4 lg:w-[100%] relative">
                     <div>
@@ -100,7 +99,7 @@
                         <MapRenderer :latitude="latitude" :longitude="longitude" :name="name" />
                     </div>
                     <!-- 
-                        Form in Mobile -->
+                            Form in Mobile -->
                     <div class="lg:hidden">
                         <div class="lg:w-[75%] border border-gray-300 p-4 rounded-lg shadow mt-4">
                             <div class="mb-5">
@@ -119,7 +118,6 @@
                                     <!-- Set id attribute for easy access in JavaScript -->
                                     <span>10:00 AM - 11:00 AM</span>
                                 </div>
-
                                 <div class="flex flex-col m-2">
                                     <label for="" class=" mb-2 font-bold">Services</label>
                                     <span>Tour</span>
@@ -146,15 +144,13 @@
                         </div>
                         <div class="flex flex-col m-2">
                             <label for="" class=" mb-2 font-bold">Number of Person</label>
-                            <input type="number" v-model="numberOfPersons" class="border-2 border-black rounded-md p-2.5">
+                            <input type="number" v-model="numberOfPersons" class="border-2 border-black rounded-md p-2.5" min="1" max="15">
                         </div>
-
                         <div class="flex flex-col m-2">
                             <label for="tourTimeInput" class="mb-2 font-bold">Time of Tour</label>
                             <!-- Set id attribute for easy access in JavaScript -->
                             <span>10:00 AM - 11:00 AM</span>
                         </div>
-
                         <div class="flex flex-col m-2">
                             <label for="" class=" mb-2 font-bold">Services</label>
                             <span>Tour</span>
@@ -287,176 +283,88 @@
 <style scoped></style>
 
 
-<script>
+<script setup>
+import { ref, computed, onMounted, defineProps } from 'vue';
+import axios from 'axios';
+import { useRoute, useRouter } from 'vue-router';
+import { useTourStore } from '@/stores/toTourCart';
+import { useAuthStore } from '@/stores/auth';
 import ContentCarousel from '@/components/TourCarousel.vue';
 import MapRenderer from "@/components/MapRenderer.vue";
 import LoginModal from '@/components/LoginModal.vue';
 
-import {
-    useTourStore
-} from '@/stores/toTourCart';
-import {
-    defineComponent, ref
-
-} from 'vue';
-import {
-    useAuthStore
-} from '@/stores/auth';
-import {
-    useRouter
-} from 'vue-router';
-
-
-export default defineComponent({
-    props: {
-        latitude: Number,
-        longitude: Number,
-        name: String
-    },
-    components: {
-        ContentCarousel,
-        MapRenderer,
-        LoginModal
-    },
-    setup() {
-        const cartTour = useTourStore();
-        const router = useRouter();
-        const authStore = useAuthStore();
-        const selectedDate = ref('');
-        const numberOfPersons = ref(0);
-        const showLoginModal = ref(false);
-        const closeLoginModal = () => {
-            showLoginModal.value = false;
-        };
-        const reserve = () => {
-            if (!authStore.isAuthenticated) {
-                authStore.setIntendedRoute(router.currentRoute.value.path);
-                showLoginModal.value = true;
-                return;
-            }
-
-            // Check if the selectedDate is valid
-            if (!selectedDate.value || selectedDate.value.trim() === '') {
-                alert("Please select a date.");
-                return;
-            }
-
-            // Check if numberOfPersons is valid
-            const numberOfPersonsValue = parseInt(numberOfPersons.value);
-            if (isNaN(numberOfPersonsValue) || numberOfPersonsValue <= 0) {
-                alert("Please enter a valid number of persons.");
-                return;
-            }
-            // cartTour.selectTour(){}
-            // Update reservation details individually
-            cartTour.reserveTour({
-                date: selectedDate.value,
-                numberOfPersons: numberOfPersonsValue,
-            });
-
-            // Proceed to checkout
-            router.push('/checkouttour');
-        };
-
-
-
-        return {
-            showLoginModal,
-            closeLoginModal,
-            cartTour,
-            router,
-            authStore,
-            selectedDate,
-            numberOfPersons,
-            reserve,
-
-        }
-    },
-    data() {
-        return {
-            items: [{
-                name: 'Juan Dela Cruz',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                date: 'December 2023',
-            },
-            {
-                name: 'Luis Paolo',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                date: 'December 2023',
-            },
-            {
-                name: 'Luis Paolo',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                date: 'December 2023',
-            },
-            {
-                name: 'Juan Dela Cruz',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                date: 'December 2023',
-            },
-            {
-                name: 'Juan Dela Cruz',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                date: 'December 2023',
-            },
-            {
-                name: 'Luis Paolo',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                date: 'December 2023',
-            },
-            {
-                name: 'Luis Paolo',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. ",
-                date: 'December 2023',
-            },
-            {
-                name: 'Juan Dela Cruz',
-                description: "Immerse yourself in the vibrant atmosphere of Makati's Central Business District with a guided tour. Get a glimpse of the city's iconic skyscrapers, bustling streets, and impressive landmarks. Learn about the city's rich history and economic significance as you explore the heart of Makati's urban landscape.",
-                date: 'December 2023',
-            },
-            ],
-            selectedDate: null,
-            minDate: '2024-01-01',
-            currentPage: 0,
-            pageSize: 8,
-            showDropdown: false,
-            numFeedbackShown: 0,
-            showSeeLessButton: false,
-            categories: ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'],
-            locations: ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'],
-        };
-    },
-    computed: {
-        paginatedItems() {
-            // Return first 2 items initially and add additional items based on numFeedbackShown
-            return this.items.slice(0, 2 + this.numFeedbackShown);
-        },
-        // Check if there are more feedback items to show
-        showSeeMoreButton() {
-            return this.numFeedbackShown < this.items.length - 2;
-        },
-        isSelectableDate() {
-            const selectedDay = new Date(this.selectedDate).getDay();
-            return selectedDay === 3 || selectedDay === 5; // Wednesday (3) and Friday (5) are selectable
-        }
-    },
-    methods: {
-        checkDate() {
-            if (!this.isSelectableDate) {
-                this.selectedDate = null; // Reset the selected date
-                alert("Please select either Wednesday or Friday.");
-            }
-        },
-        seeMore() {
-            this.numFeedbackShown += 2; // Change this value as per your requirement
-            if (!this.showSeeMoreButton) {
-                this.showSeeLessButton = true;
-            }
-        },
-        seeLess() {
-            this.numFeedbackShown = 0;
-            this.showSeeLessButton = false;
-        }
-    }
+// Define component props
+const props = defineProps({
+  latitude: Number,
+  longitude: Number,
+  name: String,
+  id: Number,
+  item: String,
+  imageList: String,
 });
+
+// Router and store hooks
+const router = useRouter();
+const route = useRoute();
+const authStore = useAuthStore();
+const cartTour = useTourStore();
+
+// Reactive states
+const showLoginModal = ref(false);
+const storedetails = ref({});
+const selectedDate = ref('');
+const numberOfPersons = ref(0);
+
+// Constants for demo purposes
+const categories = ref(['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming']);
+const locations = ref(['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros']);
+
+// Computed properties to determine if a date is selectable
+const isSelectableDate = computed(() => {
+  const selectedDay = new Date(selectedDate.value).getDay();
+  return selectedDay === 3 || selectedDay === 5; // Only Wednesday and Friday are selectable
+});
+
+const reserve = () => {
+  if (!authStore.isAuthenticated) {
+    authStore.setIntendedRoute(router.currentRoute.value.path);
+    showLoginModal.value = true;
+    return;
+  }
+
+  // Check if the selectedDate is valid
+  if (!selectedDate.value || selectedDate.value.trim() === '') {
+    alert("Please select a date.");
+    return;
+  }
+
+  // Check if numberOfPersons is valid
+  const numberOfPersonsValue = parseInt(numberOfPersons.value);
+  if (isNaN(numberOfPersonsValue) || numberOfPersonsValue <= 0) {
+    alert("Please enter a valid number of persons.");
+    return;
+  }
+
+  cartTour.reserveTour({
+    date: selectedDate.value,
+    numberOfPersons: numberOfPersonsValue,
+  });
+
+  router.push('/checkouttour');
+};
+
+const closeLoginModal = () => {
+  showLoginModal.value = false;
+};
+
+
+
+const checkDate = () => {
+  if (!isSelectableDate.value) {
+    selectedDate.value = '';
+    alert("Only Wednesday and Friday dates are selectable for tour.");
+  }
+};
+
+
 </script>

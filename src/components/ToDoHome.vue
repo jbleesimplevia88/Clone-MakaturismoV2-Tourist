@@ -1,30 +1,28 @@
 <template>
-    <div class="relative pt-[57px] md:pt-[80px]">
-        <div class="relative">
-            <div class="absolute top-100 left-0 h-[101%] w-[100%]"
-                style="background: linear-gradient(to left, transparent, #102E61 96%, #102E61 70%);">
-            </div>
-            <div class="absolute top-0 left-0 h-[101%] w-[100%] md:"
-                style="background: linear-gradient(to bottom, transparent 75%, #102E61 87%, #102E61 40%);">
-            </div>
-            <img class="w-full h-[200px] md:h-[700px]" src="@/assets/images/CategoryView/ToDo/ToDo.jpeg" alt="" />
-            <div class="flex items-center justify-center absolute top-5 md:top-20 z-[1] bg-white pl-3 lg:pl-5 rounded-r-xl">
-                <p class="text-[#102E61] text-sm sm:text-4xl font-bold p-3 pr-4 md:p-5 md:pr-7 ">
-                    WHAT TO DO
-                   
-                </p>
-            </div>
-            <div
-                class="relative sm:absolute inset-0 sm:top-56 md:top-[23rem] flex text-center lg:text-left justify-center items-center z-[1]">
-                <p
-                    class="pt-[6rem] text-[17px] sm:text-sm md:text-xl md:pt-[2rem] lg:text-[1.7rem] text-wrap leading lg:leading-10 text-white">
-                    Makati is a cosmopolitan city that offers a variety of activities that people of all ages can enjoy.
-                    <br />Whether you love to stay indoors or outdoors, day or night, the city surely has something to
-                    offer.
-                </p>
-            </div>
-        </div>
+   <div class="relative pt-[57px] md:pt-[80px]">
+    <div class="relative">
+      <div class="absolute top-100 left-0 h-[101%] w-[100%]"
+           style="background: linear-gradient(to left, transparent, #102E61 96%, #102E61 70%);">
+      </div>
+      <div class="absolute top-0 left-0 h-[101%] w-[100%]"
+           style="background: linear-gradient(to bottom, transparent 75%, #102E61 87%, #102E61 40%);">
+      </div>
+      <img v-if="todoData" :src="getImageUrl(todoData.backgroundphotophoto)" class="w-full h-[200px] md:h-[700px]" alt="To Do Image" />
+      <div v-else class="w-full h-[200px] md:h-[700px] bg-gray-200"></div>
+      <div class="flex items-center justify-center absolute top-5 md:top-20 z-[1] bg-white pl-3 lg:pl-5 rounded-r-xl">
+        <p class="text-[#102E61] text-sm sm:text-4xl font-bold p-3 pr-4 md:p-5 md:pr-7">
+          WHAT TO DO
+        </p>
+      </div>
+      <div
+        class="relative sm:absolute inset-0 sm:top-56 md:top-[23rem] flex text-center lg:text-left justify-center items-center z-[1]">
+        <p
+          class="pt-[6rem] text-[17px] sm:text-sm md:text-xl md:pt-[2rem] lg:text-[1.7rem] text-wrap leading lg:leading-10 text-white">
+          {{ todoData ? todoData.description : 'Loading...' }}
+        </p>
+      </div>
     </div>
+  </div>
     <div class="mx-auto px-3 lg:px-32 pb-5" style="background-color: #102E61;">
         <div>
             <!-- Filter dropdown WEB-->
@@ -172,7 +170,7 @@
                 <div v-for="(item, index) in filteredItems" :key="index"
                     class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
                     <div class="relative" v-if="item.pictureimage">
-        <img :src="getImageUrl(item.pictureimage.split('|')[0])" class="w-full h-[250px] object-cover rounded-t">
+                    <img :src="getImageUrl(item.pictureimage.split('|')[0])" class="w-full h-[250px] object-cover rounded-t">
     
                         <div
                             class="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-[#102E61] to-transparent">
@@ -268,15 +266,21 @@ const showDropdown = ref(false);
 const selectedCategory = ref(null);
 const selectedLocation = ref(null);
 const applyButtonClicked = ref(false);
-const imageArray = ref();
 const todoinfo = ref([]);
+const todoData = ref(null);
 
+const fetchTodoData = async () => {
+  try {
+    const response = await axios.get('/pillar-details');
+    todoData.value = response.data.todo[0]; // Assuming 'todo' returns an array with at least one item
+  } catch (error) {
+    console.error('Failed to fetch todo data:', error);
+  }
+};
 const filteredItems = computed(() => {
     let filteredItems = model.items.slice(); // Create a shallow copy of items
     // Apply filters only if the Apply button is clicked
 
-
-  
     if (applyButtonClicked.value) {
         // Filter by category
         if (selectedCategory.value) {
@@ -400,6 +404,7 @@ const seeMore = (item) => {
     }
 };
 
+
 const extractLatLong = (mapLocation) => {
     const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
     const match = mapLocation.match(regex);
@@ -419,8 +424,12 @@ const extractLatLong = (mapLocation) => {
     // If no match is found, return null values
     return { latitude: null, longitude: null };
 };
+onBeforeMount(() => {
+    fetchTodoData();
+});
 
 onBeforeMount(async () => {
+
     await displayTodo();
     document.removeEventListener('click', handleGlobalClick);
 });

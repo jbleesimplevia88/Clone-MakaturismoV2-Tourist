@@ -1,10 +1,8 @@
 <template>
   <div class="relative min-h-screen">
-
-    <LandingBannerCarousel class="h-screen z-neg-1" />
+    <LandingBannerCarousel v-if="images.length" class="h-screen z-neg-1" :images="images" />
 
     <!-- Slogan -->
-    <!-- top gradient div -->
     <div
       style="position: absolute; top: 0; left: 0; height: 60%; width: 100%; background: linear-gradient(to top, transparent, #102E61 90%, #102E61 70%);">
     </div>
@@ -14,14 +12,14 @@
       style="position: absolute; bottom: 0; left: 0; height: 60%; width: 100%; background: linear-gradient(to bottom, transparent, #102E61 70%, #102E61 100%);">
     </div>
 
-
     <div class="absolute inset-0 flex flex-col justify-center px-10 pb-40 text-white top-40 lg:top-0 lg:ml-[120px]">
-      <p class="text-2xl text-yellow-500 poppins">Come visit</p>
-      <h1 class="mt-10 lg:mt-0 mb-2 text-6xl font-bold">My City,</h1>
-      <h1 class="mb-4 text-6xl font-bold">My Makati</h1>
-      <p class="mb-4 text-md">Whoever you are, wherever you are from,<br>there is a little bit of Makati in you!</p>
-      <p class="mb-4 text-md">Come and experience my Makati, our <a href="https://www.makati.gov.ph" target="_blank"
-          class="text-blue-400 text-decoration-none">Makati</a></p>
+      <p v-if="content" class="text-2xl text-yellow-500 poppins">{{ content.subtitle }}</p>
+      <h1 v-if="content" class="mb-4 text-6xl font-bold">{{ content.title }}</h1>
+      <p v-if="content" class="mb-4 text-md" v-html="content.description"></p>
+      <p v-if="content && content.socialmedia.length" class="mb-4 text-md">
+        Come and experience my Makati, our 
+        <a :href="`https://${content.socialmedia[0]}`" target="_blank" class="text-blue-400 text-decoration-none">{{ content.title }}</a>
+      </p>
     </div>
 
     <!-- Explore the City -->
@@ -34,48 +32,36 @@
     <!-- Main nav -->
     <CategoryContent />
     <!-- Main nav -->
-
   </div>
-
-
 </template>
 
-
-<script>
+<script setup>
+import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { useHomepageStore } from '@/stores/homepage';
 import LandingBannerCarousel from './LandingBannerCarousel.vue';
 import CategoryContent from './CategoryContent.vue';
 
-// Import Swiper core and required modules
+const homepageStore = useHomepageStore();
 
-export default {
-  data() {
-    return {
+const content = computed(() => homepageStore.content);
+const images = computed(() => homepageStore.images);
 
-      isMobile: window.innerWidth <= 768, // Adjust the breakpoint as needed
-    };
-  },
-  components: {
-    LandingBannerCarousel,
-    CategoryContent
-  },
-  mounted() {
-    // Update isMobile on window resize
-    window.addEventListener('resize', this.updateIsMobile);
-  },
-  beforeUnmount() {
-    // Remove event listener on component destroy
-    window.removeEventListener('resize', this.updateIsMobile);
-  },
-  methods: {
-    updateIsMobile() {
-      this.isMobile = window.innerWidth <= 768; // Adjust the breakpoint as needed
-    },
-  },
+onMounted(() => {
+  homepageStore.fetchContent();
+});
+
+const isMobile = ref(window.innerWidth <= 768);
+
+const updateIsMobile = () => {
+  isMobile.value = window.innerWidth <= 768;
 };
 
+window.addEventListener('resize', updateIsMobile);
+
+onUnmounted(() => {
+  window.removeEventListener('resize', updateIsMobile);
+});
 </script>
-
-
 
 <style scoped>
 .swiper-container {
@@ -95,7 +81,6 @@ export default {
 
 .location-card:hover {
   background-color: #008EE4;
-  /* Set your desired background color on hover */
   transition: filter 0.3s ease;
 }
 
@@ -109,15 +94,12 @@ export default {
   font-weight: bold;
   font-size: 14px;
   color: black;
-  /* Set your desired text color */
 }
 
 .location-card:hover h6 {
   color: white;
-  /* Set your desired text color on hover */
   transition: filter 0.3s ease;
 }
-
 
 .m-location-card {
   width: auto;
@@ -133,7 +115,6 @@ export default {
 
 .m-location-card:hover {
   background-color: #008EE4;
-  /* Set your desired background color on hover */
   transition: filter 0.3s ease;
 }
 
@@ -145,18 +126,14 @@ export default {
 .m-location-card h6 {
   font-size: 12px;
   color: black;
-  /* Set your desired text color */
 }
 
 .m-location-card:hover h6 {
   color: white;
-  /* Set your desired text color on hover */
   transition: filter 0.3s ease;
 }
 
 .z-neg-1 {
   z-index: -1;
 }
-
-/* Add any additional styles if needed */
 </style>

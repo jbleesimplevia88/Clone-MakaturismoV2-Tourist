@@ -61,7 +61,6 @@
 <script setup>
 import { ref, computed, nextTick, onMounted, onBeforeUnmount } from 'vue';
 import { useSearchStore } from '@/stores/search';
-import { slides } from '@/components/CalendarMonthCarousel.vue'; // Correct import
 import { toShopItem } from '@/components/ToShopHome.vue';
 import { toDoItem } from '@/components/ToDoHome.vue';
 import { toSeeItem } from '@/components/ToSeeHome.vue';

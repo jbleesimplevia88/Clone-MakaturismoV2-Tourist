@@ -41,20 +41,21 @@
                             <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-4">
                                 <div class="flex lg:flex-col lg:items-start justify-start">
                                     <p class="mr-[110px] lg:mr-9 lg:mb-1 font-bold">Full Name</p>
-                                    <p class="font-normal mb-3 text-gray-600">{{ model.userInfo.firstname }} {{ model.userInfo.lastname }}</p>
+                                    <p class="font-normal mb-3 text-gray-600">{{ model.userInfo.firstname }} {{
+                                        model.userInfo.lastname }}</p>
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start">
                                     <p class="mr-[30px] w-10vw lg:pr-0 lg:mr-9 lg:mb-1 font-bold">E-mail Address</p>
-                                    <p class="font-normal mb-2 text-base text-gray-600 text-sm">{{ model.userInfo.email }} 
+                                    <p class="font-normal mb-2 text-base text-gray-600 text-sm">{{ model.userInfo.email }}
                                     </p>
                                 </div>
                                 <div class="flex lg:flex-col lg:items-start justify-start">
                                     <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Phone Number</p>
                                     <p class="font-normal mb-3 text-gray-600">{{ model.userInfo.contact }}</p>
                                 </div>
-                              
+
                             </div>
-                           
+
                         </div>
                     </div>
                     <!-- FOR MOBILE -->
@@ -80,7 +81,7 @@
                             <div>
                                 <p class="font-normal mb-2 text-gray-600 text-base">09123456789</p>
                             </div>
-                            
+
                         </div>
                     </div>
                     <!-- Start of Central Business District Tour -->
@@ -105,8 +106,7 @@
                             <div class="bg-gray-400 h-0.5"></div>
                             <p class="lg:mr-9 lg:mt-2  lg:font-sans  lg:text-3xl font-bold  text-lg pt-4">Your Total</p>
                             <div class="items-center my-5">
-                                <div 
-                                    class="flex justify-between mb-2 w-[100%]">
+                                <div class="flex justify-between mb-2 w-[100%]">
                                     <p class="w-[70%]">1 Tour Session</p>
                                     <p class="text-gray-400">Free</p>
                                 </div>
@@ -116,8 +116,8 @@
                                 </p>
                             </div>
                             <div class="bg-gray-400 h-0.5 w-[100%]"></div>
-                         
-                          
+
+
                             <p class="lg:font-poppins font-sans text-base font-bold text-right underline hidden">Price
                                 Breakdown
                             </p>
@@ -125,20 +125,20 @@
                             <div class="flex justify-center lg:hidden pt-6">
                                 <button v-if="showPayment"
                                     class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
-                                    @click="toggleComplete">Place Payment</button>
+                                    @click="handleConfirmBooking">Place Payment</button>
                             </div>
                             <!-- For Web -->
                             <div class="justify-center lg:block hidden pt-6">
                                 <button
                                     class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
-                                    @click="toggleComplete">Confirm Booking</button>
+                                    @click="handleConfirmBooking">Confirm Booking</button>
                             </div>
                             <div v-if="showConfirmation"
                                 class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
                                 @click.self="closeModal">
                                 <div class="bg-white rounded-lg shadow-md p-2 lg:max-w-2xl h-2p-[20px]" @click.stop>
                                     <div class="lg:w-[100%] p-4 rounded-lg text-center flex flex-col items-center">
-                                      
+
                                         <button class="text-white bg-blue-500 rounded-xl w-[100%] py-5"
                                             @click="toggleComplete">Okay</button>
                                     </div>
@@ -151,9 +151,10 @@
                                     <div class="lg:w-[100%] p-4 rounded-lg text-center flex flex-col items-center">
                                         <img src="@/assets/images/CategoryView/ToShop/check.png" class="mb-6">
                                         <p class="font-bold text-2xl mb-6">Transaction Complete</p>
-                                        <router-link to="/category/eat"><button
-                                                class="text-white h-16 w-60 bg-blue-500 rounded-xl py-5"
-                                                @click="closeModal">Okay</button></router-link>
+                                        <router-link to="/category/tour">
+                                            <button class="text-white h-16 w-60 bg-blue-500 rounded-xl py-5"
+                                                @click="closeModal">Okay</button>
+                                        </router-link>
                                     </div>
                                 </div>
                             </div>
@@ -204,7 +205,7 @@
                         </div>
                         <div class="justify-center pt-3">
                             <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
-                                @click="toggleComplete">Confirm Booking</button>
+                                @click="handleConfirmBooking">Confirm Booking</button>
                             <div v-if="showComplete"
                                 class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
                                 @click.self="closeModal">
@@ -212,7 +213,7 @@
                                     <div class="lg:w-[100%] p-4 rounded-lg text-center flex flex-col items-center">
                                         <img src="@/assets/images/CategoryView/ToShop/check.png" class="mb-6">
                                         <p class="font-bold text-2xl mb-6">Transaction Complete</p>
-                                        <router-link to="/category/eat"><button
+                                        <router-link to="/category/tour"><button
                                                 class="text-white h-16 w-60 bg-blue-500 rounded-xl py-5"
                                                 @click="closeModal">Okay</button></router-link>
                                     </div>
@@ -224,7 +225,6 @@
             </template>
         </div>
     </template>
-
 </template>
 
 
@@ -254,22 +254,17 @@
 
 
 <script setup>
-import { ref, computed, watch,reactive, onBeforeMount } from 'vue';
+import { ref, computed, watch, reactive, onBeforeMount } from 'vue';
 import { useTourStore } from '@/stores/toTourCart';
-import {
-     useRouter
-} from 'vue-router';
+import { useRouter } from 'vue-router';
 import axios from 'axios';
 
 const router = useRouter(); // Initialize router
-// Use store
-const cartTour = useTourStore();
+const cartTour = useTourStore(); // Use store
 
-// Access reactive state from the store
 const shopData = computed(() => cartTour.shopData);
 const reservationDetails = cartTour.reservationDetails;
 
-// Component-specific reactive state
 const selectedPaymentMethod = ref(null);
 const showConfirmation = ref(false);
 const showComplete = ref(false);
@@ -278,16 +273,13 @@ const showVoucher = ref(false);
 const navButtonText = ref('Request to Book');
 
 const model = reactive({
-    userInfo: []
+  userInfo: []
 });
 
-
-const user = (async() => {
-    const response = await axios.post('/userDetails');
-    model.userInfo = JSON.parse(response.data.userdetails);
-
+const user = (async () => {
+  const response = await axios.post('/userDetails');
+  model.userInfo = JSON.parse(response.data.userdetails);
 });
-
 
 const scrollToTop = () => {
   window.scrollTo(0, 0);
@@ -299,33 +291,16 @@ const toggleComplete = () => {
 };
 
 const closeModal = () => {
-  showInformation.value = false;
   showConfirmation.value = false;
   showComplete.value = false;
 };
 
 const navigateBack = () => {
   if (!showPayment.value) {
-    // If currently in the payment section, switch to the booking section
     showPayment.value = true;
     navButtonText.value = 'Request to Order';
   } else {
     router.go(-1);
-  }
-};
-
-const activateRadioButton = (id) => {
-  const radioBtn = document.getElementById(id);
-  if (radioBtn) {
-    if (radioBtn.checked) {
-      radioBtn.checked = false; // If already checked, uncheck it
-    } else {
-      // Uncheck all radio buttons
-      document.querySelectorAll('input[type="radio"]').forEach(input => {
-        input.checked = false;
-      });
-      radioBtn.checked = true; // Check the clicked radio button
-    }
   }
 };
 
@@ -344,13 +319,31 @@ const getImageUrl = (fileName) => {
   return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
 };
 
+const handleConfirmBooking = async () => {
+  try {
+    const bookingResponse = await cartTour.confirmBooking(model.userInfo);
+    console.log('Booking response:', bookingResponse);
+
+    if (bookingResponse) {
+      toggleComplete();
+    }
+  } catch (error) {
+    console.error('Booking failed:', error);
+    if (error.response && error.response.status === 400 && error.response.data.error) {
+      alert(`Booking failed: ${error.response.data.error}`);
+    } else {
+      alert('Booking failed: ' + error.message);
+    }
+  }
+};
+
 watch(showPayment, (newValue) => {
   if (!newValue) {
-    // If the condition is false (else block is rendered), scroll to the top of the page
     scrollToTop();
   }
 });
-onBeforeMount(async() => {
-    await user();
+
+onBeforeMount(async () => {
+  await user();
 });
 </script>

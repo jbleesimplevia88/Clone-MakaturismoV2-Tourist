@@ -6,15 +6,15 @@
       </div>
       <div style="position: absolute; top: 0; left: 0; height: 101%; width: 100%; background: linear-gradient(to bottom, transparent 75%, #102E61 87%, #102E61 40%);">
       </div>
-      <img class="w-full h-[300px] md:h-[700px]" src="@/assets/images/CategoryView/ToTour/banner.jpeg" alt="" />
-      <div class="flex items-center justify-center absolute top-5 md:top-20 z-[1] bg-white pl-3 lg:pl-5 rounded-r-xl">
+      <img v-if="totourData" :src="getImageUrl(totourData.backgroundphotophoto)" class="w-full h-[200px] md:h-[700px]"
+                alt="To Do Image" />      <div class="flex items-center justify-center absolute top-5 md:top-20 z-[1] bg-white pl-3 lg:pl-5 rounded-r-xl">
         <p class="text-[#102E61] text-sm sm:text-4xl font-bold p-3 pr-4 md:p-5 md:pr-7 ">
           MAKATURISMO
         </p>
       </div>
       <div class="relative sm:absolute inset-0 sm:top-56 md:top-[23rem] flex text-center lg:text-left justify-center items-center z-[1] ">
         <p class="pt-[6rem] text-[17px] sm:text-sm md:text-xl lg:text-[1.7rem]  px-0 lg:px-[8rem] text-wrap leading lg:leading-10 text-white">
-          Join the Makati Free Walking Tours and marvel around the art pieces splattered across the city. It’s one of the best ways to explore the city as it beats the infamous traffic while giving your body a little exercise.
+          {{ totourData ? totourData.description : 'Loading...' }}
         </p>
       </div>
     </div>
@@ -151,6 +151,23 @@ const cartTour = useTourStore();
   const selectedCategory = ref(null);
   const selectedLocation = ref(null);
   const applyButtonClicked = ref(false);
+  const totourData = ref(null);
+
+const fetchTotourData = async () => {
+  try {
+    const response = await axios.get('/pillar-details');
+    totourData.value = response.data.makaturismo[0]; // Assuming 'todo' returns an array with at least one item
+  } catch (error) {
+    console.error('Failed to fetch todo data:', error);
+  }
+};
+
+
+
+onBeforeMount(() => {
+  fetchTotourData();
+});
+
   const filteredItems = computed(() => {
     let filteredItems = model.items.slice();
     if (applyButtonClicked.value) {

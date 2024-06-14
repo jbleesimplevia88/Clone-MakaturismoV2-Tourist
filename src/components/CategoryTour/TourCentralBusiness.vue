@@ -144,7 +144,7 @@
                         </div>
                         <div class="flex flex-col m-2">
                             <label for="" class=" mb-2 font-bold">Number of Person</label>
-                            <input type="number" v-model="numberOfPersons" class="border-2 border-black rounded-md p-2.5">
+                            <input type="number" v-model="numberOfPersons" class="border-2 border-black rounded-md p-2.5" min="1" max="15">
                         </div>
                         <div class="flex flex-col m-2">
                             <label for="tourTimeInput" class="mb-2 font-bold">Time of Tour</label>
@@ -350,7 +350,6 @@ const reserve = () => {
     numberOfPersons: numberOfPersonsValue,
   });
 
-  // Proceed to checkout
   router.push('/checkouttour');
 };
 
@@ -363,26 +362,9 @@ const closeLoginModal = () => {
 const checkDate = () => {
   if (!isSelectableDate.value) {
     selectedDate.value = '';
-    alert("Selected date is not selectable. Please choose another date.");
+    alert("Only Wednesday and Friday dates are selectable for tour.");
   }
 };
 
 
-// const getShopData = () => {
-//     axios.get(`/viewactivityperid/${id.value}`).then((response) => {
-//         const storeparse = JSON.parse(response.data.message);
-//         storedetails.value = storeparse;
-//         model.productsArray = JSON.parse(response.data.getProducts);
-//         console.log('Selected product:', selectedProduct.value);
-
-//     }).catch((error) => {
-//         console.log(error);
-//     });
-// };
-
-
-
-// onMounted(() => {
-//   getShopData();
-// });
 </script>

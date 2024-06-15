@@ -150,19 +150,75 @@
                                                 <h2 class="ml-5 font-bold mb-2">Explore by Area</h2>
                                                 <div v-for="(location, index) in locations" :key="'location-' + index">
                                                     <label :for="'locationRadio-' + index" class="flex items-center">
-                                                        <input type="radio" :id="'locationRadio-' + index"
-                                                            :value="location" v-model="selectedLocation"
-                                                            name="location">
-                                                        <span class="ml-2 m-0 p-0 uppercase font-bold">{{ location
-                                                            }}</span>
-                                                    </label>
+                <input type="radio" :id="'locationRadio-' + index" :value="location" v-model="selectedLocation" name="location">
+                <span class="ml-2 m-0 p-0 uppercase font-bold">{{ location }}</span>
+              </label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="text-center justify-center border-t-2 ml-5 mr-5 mt-5">
-                                        <button @click="handleApplyFilter"
-                                            class="m-4 p-1 text-white bg-[#102E61] w-72 rounded-xl">Apply</button>
+                                        <button @click="handleApplyFilter" class="m-4 p-1 text-white bg-[#102E61] w-72 rounded-xl">Apply</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </transition>
+                </div>
+                <!-- End of Filter dropdown -->
+            </div>
+            <div class="pb-10 lg:hidden" ref="mobileDropdown">
+                <!-- Filter dropdown MOBILE-->
+                <div class="relative text-left ">
+                    <button class="flex bg-white rounded-md font-bold p-1 pl-3 pr-3 justify-center items-center focus:outline-none" @click="toggleDropdown">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                    stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+                                </svg>
+                            </span>
+                            <span class="text-sm pl-2">Filters</span>
+                        </button>
+                    <!-- Dropdown menu MOBILE -->
+                    <transition name="dropdown">
+                        <div v-if="showDropdown" class="fixed inset-0 z-50 flex items-center justify-center">
+                            <div class="relative z-50 overflow-hidden rounded-2xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                <div role="menu" aria-orientation="horizontal" aria-labelledby="options-menu">
+                                    <div class="grid grid-cols-2 border-b-2 p-3 font-bold ml-5 mr-5">
+                                        <div>
+                                            <h2 class="ml-5">Category</h2>
+                                        </div>
+                                        <div class="flex justify-end">
+                                            <svg @click="toggleDropdown()" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M6 18 18 6M6 6l12 12" />
+                                                </svg>
+                                        </div>
+                                    </div>
+                                    <div class="overflow-y-auto max-h-[350px] ml-5 mr-5 mt-5 custom-scrollbar">
+                                        <div class="relative px-2">
+                                            <div class="grid gap-4 ml-4 p-2">
+                                                <div v-for="(category, index) in categories" :key="'category-' + index">
+                                                    <label :for="'categoryRadio-' + index" class="flex items-center">
+                                                            <input type="radio" :id="'categoryRadio-' + index" :value="category"
+                                                                v-model="selectedCategory" name="category">
+                                                            <span class="ml-2 m-0 p-0 uppercase font-bold">{{ category }}</span>
+                                                        </label>
+                                                </div>
+                                                <hr data-v-add5c92e="" class="mt-6 mb-6 border-gray-300">
+                                                <h2 class="ml-5 font-bold mb-2">Explore by Area</h2>
+                                                <div v-for="(location, index) in locations" :key="'location-' + index">
+                                                    <label :for="'locationRadio-' + index" class="flex items-center">
+                <input type="radio" :id="'locationRadio-' + index" :value="location" v-model="selectedLocation" name="location">
+                <span class="ml-2 m-0 p-0 uppercase font-bold">{{ location }}</span>
+              </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center justify-center border-t-2 ml-5 mr-5 mt-5">
+                                        <button @click="handleApplyFilter" class="m-4 p-1 text-white bg-[#102E61] w-72 rounded-xl">Apply</button>
                                     </div>
                                 </div>
                             </div>
@@ -172,67 +228,54 @@
                 <!-- End of Filter dropdown -->
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div v-for="(item, index) in filteredItems" :key="index"
-                    class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
+                <div v-for="(item, index) in filteredItems" :key="index" class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
                     <div class="relative" v-if="item.pictureimage">
-        <img  :src="getImageUrl(item.pictureimage)" class="w-full h-[250px] object-cover rounded-t">
-    
-                        <div
-                            class="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-[#102E61] to-transparent">
-                        </div>
+                        <img :src="getImageUrl(item.pictureimage.split('|')[0])" class="w-full h-[250px] object-cover rounded-t">
+                        <div class="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-[#102E61] to-transparent"></div>
                         <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{ item.storename }}</p>
-                        <p class="absolute bottom-2 left-2 text-white text-xs">{{ Array.isArray(item.category) ?
-                            item.category.join(', ') : item.category }}</p>
+                        <p class="absolute bottom-2 left-2 text-white text-xs">{{ Array.isArray(item.category) ? item.category.join(', ') : item.category }}</p>
                     </div>
                     <div class="p-2 w-full">
                         <p class="text-white text-xs line-clamp-3">{{ item.description }}</p>
                     </div>
                     <div class="p-1 flex justify-end items-center">
-                        <button @click="seeMore(item)"
-                            class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
-                            <span>Read More</span>
-                            <span class="ml-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
-                                    stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                                </svg>
-                            </span>
-                        </button>
+                        <button @click="seeMore(item)" class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
+              <span>Read More</span>
+              <span class="ml-1">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+                </svg>
+              </span>
+            </button>
                     </div>
                 </div>
             </div>
             <div v-if="filteredItems.length === 0" class="text-white text-center font p-14">
-                <p>We're sorry, but we couldn't find any activity that matches your selected filter. Try adjusting your
-                    filter or explore other options.</p>
+                <p>We're sorry, but we couldn't find any activity that matches your selected filter. Try adjusting your filter or explore other options.</p>
             </div>
             <!-- Pagination controls -->
             <div class="grid grid-cols-2">
                 <div class="flex justify-start items-center">
                     <p class="text-center text-white">
                         Showing
-                        <span class="text-[#29BFD6]">{{ paginationStartIndex }} - {{ paginationEndIndex }}</span>
-                        results
-                        from
+                        <span class="text-[#29BFD6]">{{ paginationStartIndex }} - {{ paginationEndIndex }}</span> results from
                         <span class="text-[#29BFD6]">{{ totalRecords }}</span> records
                     </p>
                 </div>
                 <div class="flex justify-end items-center mt-4">
                     <button @click="prevPage" :disabled="currentPage === 0" class="text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-                        </svg>
-                    </button>
-                    <button v-for="pageNumber in pageCount" :key="pageNumber" @click="goToPage(pageNumber - 1)"
-                        :class="{ 'px-3 py-1 border border-white m-1 rounded-md transition-colors duration-300 bg-white text-[#132540]': currentPage === pageNumber - 1, 'text-white': currentPage !== pageNumber - 1 }">
-                        {{ pageNumber }}
-                    </button>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"></path>
+            </svg>
+          </button>
+                    <button v-for="pageNumber in pageCount" :key="pageNumber" @click="goToPage(pageNumber - 1)" :class="{ 'px-3 py-1 border border-white m-1 rounded-md transition-colors duration-300 bg-white text-[#132540]': currentPage === pageNumber - 1, 'text-white': currentPage !== pageNumber - 1 }">
+            {{ pageNumber }}
+          </button>
                     <button @click="nextPage" :disabled="currentPage === pageCount - 1" class="text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                        </svg>
-                    </button>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+            </svg>
+          </button>
                 </div>
             </div>
         </div>
@@ -297,31 +340,6 @@ const model = reactive({
 
 });
 const categories = ['American', 'Argentine', 'Asian', 'Australian', 'Chinese', 'European', 'Filipino', 'French', 'German', 'Halal', 'Indian', 'Irish', 'Italian', 'Japanese', 'Korean', 'Mediterranean', 'Mexican', 'Singapore', 'Spanish', 'Swiss', 'Thai', 'Vietnamese'];
-const locations = [
-    'Bangkal',
-    'Bel-air',
-    'Carmona',
-    'Cembo',
-    'Dasmarinas',
-    'Forbes Park',
-    'Guadalupe Nuevo',
-    'Kasilawan',
-    'La Paz',
-    'Magallanes',
-    'Olympia',
-    'Palanan',
-    'Pinagkaisahan',
-    'Pio del Pilar',
-    'Poblacion',
-    'San Antonio',
-    'San Isidro',
-    'San Lorenzo ',
-    'Sta. Cruz',
-    'Singkamas',
-    'Tejeros',
-    'Urdaneta',
-    'Valenzuela'
-];
 
 const currentPage = ref(0);
 const pageSize = ref(8);
@@ -332,6 +350,7 @@ const applyButtonClicked = ref(false);
 const imageArray = ref();
 const toeatinfo = ref([]);
 const toshopData = ref(null);
+const locations = ref([]);
 
 const fetchToshopData = async () => {
   try {
@@ -341,51 +360,61 @@ const fetchToshopData = async () => {
     console.error('Failed to fetch todo data:', error);
   }
 };
-
-
-
-onBeforeMount(() => {
-    fetchToshopData();
-});
-const filteredItems = computed(() => {
-    let filteredItems = model.items.slice(); // Create a shallow copy of items
-    // Apply filters only if the Apply button is clicked
-    if (applyButtonClicked.value) {
-        // Filter by category
-        if (selectedCategory.value) {
-            filteredItems = filteredItems.filter(item => {
-                if (Array.isArray(item.category)) {
-                    return item.category.includes(selectedCategory.value);
-                } else {
-                    return item.category === selectedCategory.value;
-                }
-            });
+const fetchManualFilters = async() => {
+        try {
+            const response = await axios.get('/manualfilter');
+            locations.value = response.data; // Assuming backend returns an array of locations
+        } catch (error) {
+            console.error('Failed to fetch manual filters:', error);
         }
-        // Filter by location
-        if (selectedLocation.value) {
-            filteredItems = filteredItems.filter(item => {
-                return item.location === selectedLocation.value;
+    };
+    const filteredItems = computed(() => {
+        let filteredItems = model.items.slice(); // Create a shallow copy of items
+        // Apply filters only if the Apply button is clicked
+        if (applyButtonClicked.value) {
+            console.log("Filtering items with:", {
+                selectedCategory: selectedCategory.value,
+                selectedLocation: selectedLocation.value
             });
+            // Filter by category
+            if (selectedCategory.value) {
+                filteredItems = filteredItems.filter(item => {
+                    if (Array.isArray(item.category)) {
+                        return item.category.includes(selectedCategory.value);
+                    } else {
+                        return item.category === selectedCategory.value;
+                    }
+                });
+            }
+            // Filter by location
+            if (selectedLocation.value) {
+                filteredItems = filteredItems.filter(item => {
+                    console.log("Comparing item barangay:", item.barangay, "with selected location:", selectedLocation.value);
+                    return item.barangay === selectedLocation.value;
+                });
+            }
         }
-    }
-    // Paginate the filtered items
-    const startIndex = currentPage.value * pageSize.value;
-    const endIndex = startIndex + pageSize.value;
-    return filteredItems.slice(startIndex, endIndex);
-});
+        // Paginate the filtered items
+        const startIndex = currentPage.value * pageSize.value;
+        const endIndex = startIndex + pageSize.value;
+        return filteredItems.slice(startIndex, endIndex);
+    });
+    const pageCount = computed(() => Math.ceil(totalRecords.value / pageSize.value));
+    const paginationStartIndex = computed(() => {
+        if (filteredItems.value.length === 0) {
+            return 0; // or any other appropriate value if you want to indicate that no items are displayed
+        } else {
+            return 1;
+        }
+    });
+    onBeforeMount(() => {
+        fetchToshopData();
+        fetchManualFilters(); // Fetch area filters on mount
+    });
 
-const pageCount = computed(() => Math.ceil(totalRecords.value / pageSize.value));
-const paginationStartIndex = computed(() => {
-    if (filteredItems.value.length === 0) {
-        return 0; // or any other appropriate value if you want to indicate that no items are displayed
-    } else {
-        return 1;
-    }
-});
-const paginationEndIndex = computed(() => {
-    const end = Math.min((currentPage.value + 1) * pageSize.value, filteredItems.value.length);
-    return end;
-});
+    const paginationEndIndex = computed(() => Math.min((currentPage.value + 1) * pageSize.value, filteredItems.value.length));
+
+
 const totalRecords = computed(() => items.value.length);
 
 watch(selectedCategory, (newValue, oldValue) => {

@@ -7,7 +7,7 @@ import './assets/index.css'
 import axios from 'axios'
 
 
-axios.defaults.baseURL = `${import.meta.env.VITE_TOURIST_API_URL}`;
+axios.defaults.baseURL = `${import.meta.env.VITE_LOCAL_BASE_URL}`;
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 
 const token = localStorage.getItem('token');

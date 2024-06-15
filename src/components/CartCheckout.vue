@@ -372,10 +372,12 @@ const subTotal = computed(() => {
   return itemsTotal.toFixed(2);
 });
 
+const deliveryFee = ref(50); // Assuming the delivery fee is 50
+
 const finalPrice = computed(() => {
   const appliedVouchers = cartFinalStore.vouchers.filter(voucher => voucher.applied);
   const discount = appliedVouchers.reduce((total, voucher) => total + voucher.amount, 0);
-  return (parseFloat(subTotal.value) + cartFinalStore.deliveryFee - discount).toFixed(2);
+  return (parseFloat(subTotal.value) + parseFloat(deliveryFee.value) - discount).toFixed(2);
 });
 
 const vouchersForShop = computed(() => cartFinalStore.vouchers.filter(voucher => voucher.shopname === currentShopName.value && voucher.validity >= new Date().toISOString().split('T')[0]));
@@ -483,7 +485,7 @@ const sendOrderData = async () => {
     totalperproduct: calculateTotalPrice(item),
     subtotal: subTotal.value,
     finaltotal: finalPrice.value,
-    deliveryFee: 50,
+    deliveryFee: deliveryFee.value,
     touristid: userInfo.value[0]?.id || 'N/A',
     address: address.value || 'N/A',
     deliveryaddress: address.value || 'N/A',
@@ -506,7 +508,7 @@ const sendOrderData = async () => {
     newaddress: address.value,
     newpaymentMethod: selectedPaymentMethod.value,
     newvoucher: 'sample',
-    newdeliveryFee: 50,
+    newdeliveryFee: deliveryFee.value,
     newsubtotal: subTotal.value,
     newfinalTotal: finalPrice.value,
   };
@@ -535,3 +537,4 @@ onMounted(() => {
   fetchUserInfo();
 });
 </script>
+

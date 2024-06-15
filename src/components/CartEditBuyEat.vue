@@ -54,7 +54,6 @@
 
 
 <script>
-import ContentCarousel from '@/components/ToShopCarousel.vue';
 import MapRenderer from "@/components/MapRenderer.vue";
 import LoginModal from '@/components/LoginModal.vue';
 import {
@@ -81,7 +80,7 @@ export default defineComponent({
     components: {
         MapRenderer,
         LoginModal,
-        ContentCarousel
+        
     },
     setup() {
         const cartStore = useCartStoreEat();

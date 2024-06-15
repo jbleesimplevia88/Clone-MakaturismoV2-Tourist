@@ -45,7 +45,6 @@
 
 
 <script>
-import ContentCarousel from '@/components/ToShopCarousel.vue';
 import MapRenderer from "@/components/MapRenderer.vue";
 import LoginModal from '@/components/LoginModal.vue';
 import {
@@ -58,7 +57,7 @@ import {
     useAuthStore
 } from '@/stores/auth';
 import {
-    useCartStore
+    useCartStoreShop
 } from '@/stores/toShopCart';
 import {
     useRouter
@@ -72,10 +71,10 @@ export default defineComponent({
     components: {
         MapRenderer,
         LoginModal,
-        ContentCarousel
+        
     },
     setup() {
-        const cartStore = useCartStore();
+        const cartStore = useCartStoreShop();
         const router = useRouter();
         const authStore = useAuthStore();
         const cart = computed(() => cartStore.cart);

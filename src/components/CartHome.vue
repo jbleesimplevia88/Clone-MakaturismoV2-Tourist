@@ -59,11 +59,11 @@
 </template>
 <script setup>
 import { computed, ref, watch } from 'vue';
-import { useCartStore } from '@/stores/toShopCart';
+import { useCartStoreShop } from '@/stores/toShopCart';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
-const cartStore = useCartStore();
+const cartStore = useCartStoreShop();
 const editCartProducts = computed(() => cartStore.editCartProducts);
 const shopData = computed(() => cartStore.shopData);
 

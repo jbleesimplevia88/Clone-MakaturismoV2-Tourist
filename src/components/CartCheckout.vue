@@ -2,8 +2,10 @@
   <div>
     <div v-if="showPayment">
       <!-- Order Section -->
-      <nav class="h-28 pt-16 pl-5 bg-[#132540] text-white text-xl font-semibold flex items-center cursor-pointer lg:px-[100px] lg:h-20 lg:mt-[80px] lg:text-4xl lg:pt-0">
-        <svg @click="navigateBack" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="white" class="h-5 pr-2 lg:mr-7 lg:w-10 lg:h-14">
+      <nav
+        class="h-28 pt-16 pl-5 bg-[#132540] text-white text-xl font-semibold flex items-center cursor-pointer lg:px-[100px] lg:h-20 lg:mt-[80px] lg:text-4xl lg:pt-0">
+        <svg @click="navigateBack" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+          stroke="white" class="h-5 pr-2 lg:mr-7 lg:w-10 lg:h-14">
           <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0 7.5-7.5M3 12h18"></path>
         </svg>
         {{ navButtonText }}
@@ -58,15 +60,19 @@
                 <p class="font-normal mb-3 text-gray-600">{{ user.contact }}</p>
               </div>
               <div class="flex lg:flex-col lg:items-start justify-start">
-                <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Address<spam class="text-red-500">*</spam></p>
-                <input v-model="address" placeholder="Enter your address" class="font-normal mb-10 w-full text-gray-600 border p-2" />
+                <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Address<span class="text-red-500">*</span></p>
+                <input v-model="address" placeholder="Enter your address"
+                  class="font-normal mb-10 w-full text-gray-600 border p-2" />
               </div>
             </div>
             <div class="hidden lg:block">
               <p class="font-bold text-3xl mb-4">Payment</p>
               <div class="flex border rounded p-8 h-24" :class="{ 'bg-blue-100': selectedPaymentMethod === 'ibayad' }">
                 <div class="flex items-center pr-3">
-                  <input id="payment_ibayad" aria-describedby="helper-radio-text" type="radio" value="ibayad" @click="toggleIbayad" class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" v-model="selectedPaymentMethod">
+                  <input id="payment_ibayad" aria-describedby="helper-radio-text" type="radio" value="ibayad"
+                    @click="toggleIbayad"
+                    class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                    v-model="selectedPaymentMethod">
                 </div>
                 <div class="ms-2 text-sm">
                   <label for="payment_ibayad" class="font-semibold text-xl text-gray-700">Ibayad</label>
@@ -78,7 +84,8 @@
         <!-- FOR MOBILE -->
         <div class="ml-4 lg:hidden p-5">
           <p class="text-2xl font-bold pt-3">Your Information</p>
-          <div v-for="(user, index) in userInfo" :key="index" className="grid grid-cols-2 grid-rows-3 pt-5" style="word-wrap: break-word;">
+          <div v-for="(user, index) in userInfo" :key="index" className="grid grid-cols-2 grid-rows-3 pt-5"
+            style="word-wrap: break-word;">
             <div>
               <p class="text-base font-bold">Full Name</p>
             </div>
@@ -98,9 +105,11 @@
               <p class="font-normal mb-2 text-gray-600 text-base">{{ user.contact }}</p>
             </div>
             <div class="flex lg:flex-col lg:items-start justify-start">
-                <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Address<spam class="text-red-500">*</spam></p>
-              </div>
-              <input v-model="address" placeholder="Enter your address" class="font-normal w-full text-gray-600 border p-2" />
+              <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Address<spam class="text-red-500">*</spam>
+              </p>
+            </div>
+            <input v-model="address" placeholder="Enter your address"
+              class="font-normal w-full text-gray-600 border p-2" />
 
           </div>
         </div>
@@ -111,7 +120,8 @@
               <div v-for="(shop, index) in groupedSelectedItems" :key="index" class="mb-5 mt-5">
                 <div class="flex items-center mb-5">
                   <div class="lg:w-36 lg:h-32 w-24 h-24 rounded-lg m-2 overflow-hidden">
-                    <img :src="getImageUrl(shop.items[0].product_details.uploadedphotos)" class="w-full h-full object-cover">
+                    <img :src="getImageUrl(shop.items[0].product_details.uploadedphotos)"
+                      class="w-full h-full object-cover">
                   </div>
                   <div class="ml-1 flex flex-col w-full">
                     <div class="-mt-8 mb-2">
@@ -119,7 +129,8 @@
                     </div>
                     <p class="font-bold">Your Total</p>
                     <div class="items-center ml-3 mb-5 overflow-y-auto h-20">
-                      <div v-for="(cartItem, index) in shop.items" :key="index" class="flex justify-between mb-2 w-[100%]">
+                      <div v-for="(cartItem, index) in shop.items" :key="index"
+                        class="flex justify-between mb-2 w-[100%]">
                         <p class="w-[70%]">{{ cartItem.product_details.productname }}</p>
                         <p class="text-gray-400">₱ {{ calculateTotalPrice(cartItem) }}</p>
                       </div>
@@ -129,8 +140,10 @@
                 <div class="bg-gray-400 h-0.5 w-[100%]"></div>
                 <div class="flex items-center my-7">
                   <img src="@/assets/images/CategoryView/ToShop/voucher.png" class="lg:w-8 h-8 mr-2">
-                  <button class="hidden lg:block text-white bg-blue-500 rounded-xl px-3 py-2 text-xs font-semibold" @click="toggleVoucherVisibility(shop.shopName)">Use Voucher</button>
-                  <button class="lg:hidden text-white bg-blue-500 rounded-xl px-3 py-2 text-xs font-semibold" @click="toggleVoucherVisibility(shop.shopName)">Use Voucher</button>
+                  <button class="hidden lg:block text-white bg-blue-500 rounded-xl px-3 py-2 text-xs font-semibold"
+                    @click="toggleVoucherVisibility(shop.shopName)">Use Voucher</button>
+                  <button class="lg:hidden text-white bg-blue-500 rounded-xl px-3 py-2 text-xs font-semibold"
+                    @click="toggleVoucherVisibility(shop.shopName)">Use Voucher</button>
                 </div>
               </div>
               <div class="bg-gray-400 h-0.5 w-[100%]"></div>
@@ -154,20 +167,29 @@
                 </div>
               </div>
               <div class="justify-center pt-6">
-                <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold lg:block hidden" @click="toggleComplete">Proceed to Payment</button>
-                <button v-if="showPayment" class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold lg:hidden" @click="togglePayment">Proceed to Payment</button>
+                <button
+                  class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold lg:block hidden"
+                  @click="toggleComplete">Proceed to Payment</button>
+                <button v-if="showPayment"
+                  class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold lg:hidden"
+                  @click="togglePayment">Proceed to Payment</button>
               </div>
-              <div v-if="showConfirmation" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center" @click.self="closeModal">
+              <div v-if="showConfirmation"
+                class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
+                @click.self="closeModal">
                 <div class="bg-white rounded-lg shadow-md p-2 lg:max-w-2xl h-2p-[20px]" @click.stop>
                   <div class="lg:w-[100%] p-4 rounded-lg text-center flex flex-col items-center">
                     <img src="@/assets/images/CategoryView/ToShop/check.png" class="mb-6">
                     <p class="font-bold text-2xl mb-6">Redirecting you...</p>
-                    <p class="font-normal text-2xl mb-6">Your booking transaction is being processed. Please wait for the confirmation in your notification</p>
+                    <p class="font-normal text-2xl mb-6">Your booking transaction is being processed. Please wait for the
+                      confirmation in your notification</p>
                     <button class="text-white bg-blue-500 rounded-xl w-[100%] py-5" @click="toggleComplete">Okay</button>
                   </div>
                 </div>
               </div>
-              <div v-if="showComplete" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center" @click.self="closeModal">
+              <div v-if="showComplete"
+                class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
+                @click.self="closeModal">
                 <div class="bg-white rounded-lg shadow-md p-2 lg:max-w-2xl h-2p-[20px]" @click.stop>
                   <div class="lg:w-[100%] p-4 rounded-lg text-center flex flex-col items-center">
                     <img src="@/assets/images/CategoryView/ToShop/check.png" class="mb-6">
@@ -182,38 +204,48 @@
             <!-- Voucher section -->
             <div v-if="showVoucher">
               <div class="lg:w-[100%] rounded-lg">
-                <svg @click="toggleVoucherVisibility(currentShopName)" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="black" class="lg:mr-5 lg:w-5 lg:h-10 w-8 h-8">
+                <svg @click="toggleVoucherVisibility(currentShopName)" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 24 24" stroke-width="3" stroke="black" class="lg:mr-5 lg:w-5 lg:h-10 w-8 h-8">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0 7.5-7.5M3 12h18"></path>
                 </svg>
                 <div class="flex flex-col items-center">
-                  <input type="text" class="mb-2 h-[50px] w-[100%] border border-gray-200 pl-5 pr-3 rounded-md" placeholder="Enter Voucher Code">
-                  <button class="mb-2 text-white bg-blue-500 rounded-xl w-full lg:w-full py-2 lg:py-3 px-4 lg:px-6 text-base lg:text-lg font-semibold" @click="applyVoucherCode">Apply</button>
+                  <input type="text" class="mb-2 h-[50px] w-[100%] border border-gray-200 pl-5 pr-3 rounded-md"
+                    placeholder="Enter Voucher Code">
+                  <button
+                    class="mb-2 text-white bg-blue-500 rounded-xl w-full lg:w-full py-2 lg:py-3 px-4 lg:px-6 text-base lg:text-lg font-semibold"
+                    @click="applyVoucherCode">Apply</button>
                   <div>
                     <div data-v-392f50c8="" class="mt-0 bg-gray-400 h-0.5"></div>
                   </div>
                   <p class="mt-4 font-bold text-left">Select a Voucher</p>
                   <div class="overflow-y-auto h-[270px] custom-scrollbar">
                     <div v-for="(voucher, index) in vouchersForShop" :key="index" class="relative mb-6">
-                      <div class="items-center bg-no-repeat bg-cover bg-center rounded-lg lg:block hidden" :style="{ backgroundImage: `url(${voucherBg})`, width: '350px', height: '113px' }">
-                        <img :src="getImageUrl(voucher.voucherImage)" class="w-20 h-20 object-cover absolute left-7 top-1/2 transform -translate-y-1/2 rounded-lg">
+                      <div class="items-center bg-no-repeat bg-cover bg-center rounded-lg lg:block hidden"
+                        :style="{ backgroundImage: `url(${voucherBg})`, width: '350px', height: '113px' }">
+                        <img :src="getImageUrl(voucher.voucherImage)"
+                          class="w-20 h-20 object-cover absolute left-7 top-1/2 transform -translate-y-1/2 rounded-lg">
                         <div class="flex flex-col p-4 ml-28">
                           <span class="font-semibold ml-4">₱{{ voucher.amount }} OFF</span>
                           <span class="font-bold ml-4">{{ voucher.shopname }}</span>
                           <span class="text-sm text-gray-500 ml-4 font-medium">Valid until {{ voucher.validity }}</span>
-                          <button type="submit" class="text-sm font-bold text-blue-500 cursor-pointer" @click="toggleVoucherWeb(voucher)">
+                          <button type="submit" class="text-sm font-bold text-blue-500 cursor-pointer"
+                            @click="toggleVoucherWeb(voucher)">
                             {{ voucher.applied ? 'Remove' : 'Apply' }}
                           </button>
                         </div>
                       </div>
                     </div>
                     <div v-for="(voucher, index) in vouchersForShop" :key="index" class="relative mb-6">
-                      <div class="items-center bg-no-repeat bg-contain bg-center rounded-lg lg:hidden" :style="{ backgroundImage: `url(${voucherBg})`, width: '300px', height: '94px' }">
-                        <img :src="getImageUrl(voucher.voucherImage)" class="w-20 h-20 object-cover absolute left-7 top-1/2 transform -translate-y-1/2 rounded-lg">
+                      <div class="items-center bg-no-repeat bg-contain bg-center rounded-lg lg:hidden"
+                        :style="{ backgroundImage: `url(${voucherBg})`, width: '300px', height: '94px' }">
+                        <img :src="getImageUrl(voucher.voucherImage)"
+                          class="w-20 h-20 object-cover absolute left-7 top-1/2 transform -translate-y-1/2 rounded-lg">
                         <div class="flex flex-col p-3 ml-[85px]">
                           <span class="font-semibold text-sm ml-4">₱{{ voucher.amount }} OFF</span>
                           <span class="font-bold text-xs ml-4">{{ voucher.shopname }}</span>
                           <span class="text-xs text-gray-500 ml-4 font-medium">Valid until {{ voucher.validity }}</span>
-                          <button type="submit" class="text-sm font-bold text-blue-500 cursor-pointer" @click="toggleVoucherWeb(voucher)">
+                          <button type="submit" class="text-sm font-bold text-blue-500 cursor-pointer"
+                            @click="toggleVoucherWeb(voucher)">
                             {{ voucher.applied ? 'Remove' : 'Apply' }}
                           </button>
                         </div>
@@ -225,25 +257,32 @@
                   </div>
                   <p class="font-bold text-left">Not valid for this order</p>
                   <div class="overflow-y-auto h-[270px] custom-scrollbar">
-                    <div v-for="voucher in invalidVouchersForShop" :key="voucher.code" class="relative lg:block hidden mb-6">
-                      <div class="flex items-center bg-no-repeat bg-cover bg-center rounded-lg" :style="{ backgroundImage: `url(${voucherBg})`, width: '350px', height: '113px' }">
-                        <img :src="getImageUrl(voucher.voucherImage)" class="w-20 h-20 object-cover absolute left-7 top-1/2 transform -translate-y-1/2 rounded-lg">
+                    <div v-for="voucher in invalidVouchersForShop" :key="voucher.code"
+                      class="relative lg:block hidden mb-6">
+                      <div class="flex items-center bg-no-repeat bg-cover bg-center rounded-lg"
+                        :style="{ backgroundImage: `url(${voucherBg})`, width: '350px', height: '113px' }">
+                        <img :src="getImageUrl(voucher.voucherImage)"
+                          class="w-20 h-20 object-cover absolute left-7 top-1/2 transform -translate-y-1/2 rounded-lg">
                         <div class="flex flex-col p-4 ml-28">
                           <span class="font-semibold ml-4">₱{{ voucher.amount }} OFF</span>
                           <span class="font-bold ml-4">{{ voucher.shopname }}</span>
                           <span class="text-sm text-gray-300 font-medium ml-4">Valid until {{ voucher.validity }}</span>
-                          <button type="submit" class="text-sm font-bold text-gray-400 cursor-not-allowed mt-2" disabled>Apply</button>
+                          <button type="submit" class="text-sm font-bold text-gray-400 cursor-not-allowed mt-2"
+                            disabled>Apply</button>
                         </div>
                       </div>
                     </div>
                     <div v-for="voucher in invalidVouchersForShop" :key="voucher.code" class="relative mb-6">
-                      <div class="items-center bg-no-repeat bg-contain bg-center rounded-lg lg:hidden" :style="{ backgroundImage: `url(${voucherBg})`, width: '300px', height: '94px' }">
-                        <img :src="getImageUrl(voucher.voucherImage)" class="w-20 h-20 object-cover absolute left-7 top-1/2 transform -translate-y-1/2 rounded-lg">
+                      <div class="items-center bg-no-repeat bg-contain bg-center rounded-lg lg:hidden"
+                        :style="{ backgroundImage: `url(${voucherBg})`, width: '300px', height: '94px' }">
+                        <img :src="getImageUrl(voucher.voucherImage)"
+                          class="w-20 h-20 object-cover absolute left-7 top-1/2 transform -translate-y-1/2 rounded-lg">
                         <div class="flex flex-col p-3 ml-[85px]">
                           <span class="font-semibold text-sm ml-4">₱{{ voucher.amount }} OFF</span>
                           <span class="font-bold text-xs ml-4">{{ voucher.shopname }}</span>
                           <span class="text-xs text-gray-500 ml-4 font-medium">Valid until {{ voucher.validity }}</span>
-                          <button type="submit" class="text-sm font-bold text-gray-400 cursor-not-allowed" disabled>Apply</button>
+                          <button type="submit" class="text-sm font-bold text-gray-400 cursor-not-allowed"
+                            disabled>Apply</button>
                         </div>
                       </div>
                     </div>
@@ -258,8 +297,10 @@
     <!-- Payment Section for Mobile -->
     <div v-else>
       <div class="lg:hidden">
-        <nav class="h-28 pt-16 pl-5 bg-[#132540] text-white text-xl font-semibold flex items-center cursor-pointer lg:px-[100px] lg:h-20 lg:mt-[80px] lg:text-4xl lg:pt-0">
-          <svg @click="navigateBack" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="white" class="h-5 pr-2 lg:mr-7 lg:w-10 lg:h-14">
+        <nav
+          class="h-28 pt-16 pl-5 bg-[#132540] text-white text-xl font-semibold flex items-center cursor-pointer lg:px-[100px] lg:h-20 lg:mt-[80px] lg:text-4xl lg:pt-0">
+          <svg @click="navigateBack" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+            stroke="white" class="h-5 pr-2 lg:mr-7 lg:w-10 lg:h-14">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0 7.5-7.5M3 12h18"></path>
           </svg>
           {{ navButtonText }}
@@ -269,7 +310,10 @@
             <p class="font-bold text-3xl mb-4">Payment</p>
             <div class="flex border rounded p-8 h-24" :class="{ 'bg-blue-100': selectedPaymentMethod === 'ibayad' }">
               <div class="flex items-center pr-3">
-                <input id="payment_ibayad" aria-describedby="helper-radio-text" type="radio" value="ibayad" @click="toggleIbayad" class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" v-model="selectedPaymentMethod">
+                <input id="payment_ibayad" aria-describedby="helper-radio-text" type="radio" value="ibayad"
+                  @click="toggleIbayad"
+                  class="w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  v-model="selectedPaymentMethod">
               </div>
               <div class="ms-2 text-sm">
                 <label for="payment_ibayad" class="font-semibold text-xl text-gray-700">Ibayad</label>
@@ -277,8 +321,10 @@
             </div>
           </div>
           <div class="justify-center pt-3">
-            <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold" @click="toggleComplete">Confirm Booking</button>
-            <div v-if="showComplete" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center" @click.self="closeModal">
+            <button class="text-white bg-blue-500 rounded-xl w-full lg:w-[100%] py-5 text-lg font-semibold"
+              @click="toggleComplete">Confirm Booking</button>
+            <div v-if="showComplete" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center"
+              @click.self="closeModal">
               <div class="bg-white rounded-lg shadow-md p-2 lg:max-w-2xl h-2p-[20px]" @click.stop>
                 <div class="lg:w-[100%] p-4 rounded-lg text-center flex flex-col items-center">
                   <img src="@/assets/images/CategoryView/ToShop/check.png" class="mb-6">
@@ -302,17 +348,17 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
   border-radius: 5px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
   border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
 </style>
 
@@ -372,10 +418,12 @@ const subTotal = computed(() => {
   return itemsTotal.toFixed(2);
 });
 
+const deliveryFee = ref(50); // Assuming the delivery fee is 50
+
 const finalPrice = computed(() => {
   const appliedVouchers = cartFinalStore.vouchers.filter(voucher => voucher.applied);
   const discount = appliedVouchers.reduce((total, voucher) => total + voucher.amount, 0);
-  return (parseFloat(subTotal.value) + cartFinalStore.deliveryFee - discount).toFixed(2);
+  return (parseFloat(subTotal.value) + parseFloat(deliveryFee.value) - discount).toFixed(2);
 });
 
 const vouchersForShop = computed(() => cartFinalStore.vouchers.filter(voucher => voucher.shopname === currentShopName.value && voucher.validity >= new Date().toISOString().split('T')[0]));
@@ -483,7 +531,7 @@ const sendOrderData = async () => {
     totalperproduct: calculateTotalPrice(item),
     subtotal: subTotal.value,
     finaltotal: finalPrice.value,
-    deliveryFee: 50,
+    deliveryFee: deliveryFee.value,
     touristid: userInfo.value[0]?.id || 'N/A',
     address: address.value || 'N/A',
     deliveryaddress: address.value || 'N/A',
@@ -506,7 +554,7 @@ const sendOrderData = async () => {
     newaddress: address.value,
     newpaymentMethod: selectedPaymentMethod.value,
     newvoucher: 'sample',
-    newdeliveryFee: 50,
+    newdeliveryFee: deliveryFee.value,
     newsubtotal: subTotal.value,
     newfinalTotal: finalPrice.value,
   };
@@ -535,3 +583,4 @@ onMounted(() => {
   fetchUserInfo();
 });
 </script>
+

@@ -335,7 +335,7 @@
         const end = Math.min((currentPage.value + 1) * pageSize.value, filteredItems.value.length);
         return end;
     });
-    const totalRecords = computed(() => items.value.length);
+    const totalRecords = computed(() => model.items.length);
     watch(selectedCategory, (newValue, oldValue) => {
         // Update applyButtonClicked when category changes
         if (newValue !== oldValue) {

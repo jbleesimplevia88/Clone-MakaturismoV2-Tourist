@@ -105,7 +105,7 @@
               <p class="font-normal mb-2 text-gray-600 text-base">{{ user.contact }}</p>
             </div>
             <div class="flex lg:flex-col lg:items-start justify-start">
-              <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Address<spam class="text-red-500">*</spam>
+              <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Address<span class="text-red-500">*</span>
               </p>
             </div>
             <input v-model="address" placeholder="Enter your address"

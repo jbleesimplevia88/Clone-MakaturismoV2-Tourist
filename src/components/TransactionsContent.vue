@@ -37,8 +37,9 @@
                                 class="mt-[2.7rem] px-4 py-2.5 p-2 bg-[#2969D6] font-bold text-white rounded-md text-center">Order
                                 Received</button>
                             <button v-else-if="item.paymentstatus === 'Completed'" @click="openParcelDetails(item)"
-                                class="mt-[2.7rem] px-4 py-2.5 p-2 bg-[#2969D6] font-bold text-white rounded-md text-center">See Details
-                                </button>
+                                class="mt-[2.7rem] px-4 py-2.5 p-2 bg-[#2969D6] font-bold text-white rounded-md text-center">See
+                                Details
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -64,26 +65,27 @@
                     <div v-for="(item, index) in filteredItems" :key="index"
                         class="flex justify-between mt-5 mx-auto w-[90%] h-[154px] bg-[#E7EAEF] space-y-2 relative">
                         <div class="flex flex-row lg:gap-[5rem]">
-                            <img :src="getImageUrl(getFirstImageUrl(item?.preproduct?.[0]?.uploadedphotos))" alt="Product Image"
-                                class="w-8 h-auto lg:w-[100%] lg:h-[100%] hidden lg:block">
+                            <img :src="getImageUrl(getFirstImageUrl(item?.preproduct?.[0]?.uploadedphotos))"
+                                alt="Product Image" class="w-8 h-auto lg:w-[100%] lg:h-[100%] hidden lg:block">
                             <div class="lg:hidden block">
-                                <img :src="getImageUrl(getFirstImageUrl(item?.preproduct?.[0]?.uploadedphotos))" alt="Product Image"
-                                    class="w-[76px] h-[76px]">
-                                <p class="lg:mt-10 text-sm text-gray-500">{{ formatDate(item.created_at) }}</p>
+                                <img :src="getImageUrl(getFirstImageUrl(item?.preproduct?.[0]?.uploadedphotos))"
+                                    alt="Product Image" class="w-[90px] h-[90px]">
+                                <p class="lg:mt-10 text-sm w-[90px] text-gray-500">{{ formatDate(item.created_at) }}</p>
 
                                 <p class="mt-2 [5rem] text-xs text-gray-500">{{ item.paymentstatus }}</p>
                             </div>
                             <div class="w-[15rem]">
-                                <p class="lg:hidden mt-2 text-md">{{ item.productname }}</p>
-                                <div class="float-end absolute bottom-0 right-0 mb-4 mr-4">
+                                <p class="lg:hidden mt-6 text-md font-medium ml-4">{{ item.productname }}</p>
+                                <div class="float-end absolute bottom-0 right-2 mb-4 mr-4">
                                     <p class="mt-4">{{ item.quantity }}x ₱ {{ item.productprice }}</p>
                                     <button v-if="item.paymentstatus === 'Shipped'" @click="cancelOrder(item)"
                                         class="mt-[2.7rem] px-4 py-2.5 p-2 bg-[#2969D6] font-bold text-white rounded-md text-center">Cancel</button>
                                     <button v-else-if="item.paymentstatus === 'Delivered'" @click="orderReceived(item)"
-                                        class="mt-[2.7rem] px-4 py-2.5 p-2 bg-[#2969D6] font-bold text-white rounded-md text-center">Order
+                                        class="mt-[2.7rem] py-3 px-2 bg-[#2969D6] font-bold text-white rounded-md text-center">Order
                                         Received</button>
                                     <button v-else-if="item.paymentstatus === 'Completed'" @click="openParcelDetails(item)"
-                                        class="mt-[2.7rem] px-4 py-2.5 p-2 bg-[#2969D6] font-bold text-white rounded-md text-center">See Details</button>
+                                        class="mt-[2.7rem] px-4 py-2.5 p-2 bg-[#2969D6] font-bold text-white rounded-md text-center">See
+                                        Details</button>
                                 </div>
                             </div>
                         </div>
@@ -92,69 +94,71 @@
             </div>
         </div>
 
-<!-- Buy Again Modal -->
-<div v-if="showParcelDetails"
-    class="fixed inset-0 mt-[4.5rem] flex items-center justify-center bg-gray-800 bg-opacity-75">
-    <div class="relative p-7 bg-white w-[90%] lg:w-[855px] lg:h-[610px] rounded-lg">
-        <!-- Modal Content -->
-        <div class="flex justify-between">
-            <div>
-                <p class="font-bold text-3xl">Order Completed</p>
-                <p class="text-xs">Thank you for shopping with us!</p>
-            </div>
-            <div class="relative flex justify-end">
-                <button class="absolute ">
-                    <svg @click="closeParcelDetails" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke-width="5" stroke="black" class="w-auto h-5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <div class="mt-5 flex justify-between">
-            <p class="text-md">Shipping Information</p>
-            <p class="text-xs text-[#008EE4]">Parcel has been delivered</p>
-        </div>
-     
-        <div class="flex justify-between mt-[1.5rem] w-auto h-[154px] bg-[#E7EAEF] space-y-2 relative">
-            <!-- Add relative positioning -->
-            <div class="flex flex-row ">
-                <img  :src="getImageUrl(getFirstImageUrl(selectedItem?.preproduct?.[0]?.uploadedphotos))" class="h-auto w-[154px] lg:h-[154px]">
-                <div class="w-full">
-                    <div class="grid grid-cols-2">
-                        <p class="h-[2rem] mt-3 text-md lg:text-lg">{{
-                        selectedItem?.productname }}</p>
-                        
-                        <p class="mt-4 text-md absolute right-0 mr-10"> {{ selectedItem?.quantity }}x</p>
+        <!-- Buy Again Modal -->
+        <div v-if="showParcelDetails"
+            class="fixed inset-0 mt-[4.5rem] flex items-center justify-center bg-gray-800 bg-opacity-75">
+            <div class="relative p-7 bg-white w-[90%] lg:w-[855px] lg:h-[590px] rounded-lg">
+                <!-- Modal Content -->
+                <div class="flex justify-between">
+                    <div>
+                        <p class="font-bold text-3xl">Order Completed</p>
+                        <p class="text-xs">Thank you for shopping with us!</p>
                     </div>
-                    <div class="absolute bottom-0 right-0 mb-4 mr-10">
-                        <!-- Positioning to bottom right corner -->
-                        <p class="text-md ">₱ {{ selectedItem?.productprice }}</p>
+                    <div class="relative flex justify-end">
+                        <button class="absolute ">
+                            <svg @click="closeParcelDetails" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke-width="5" stroke="black" class="w-auto h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                            </svg>
+                        </button>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="flex justify-between mt-3 w-auto h-[150px] bg-[#E7EAEF] space-y-2">
-            <div class="flex flex-row gap-[5rem]">
-                <div class="ml-4 flex flex-col ">
-                    <p class="mt-1 text-md text-[#747474]">Merchandise Subtotal</p>
-                    <p class=" mt-3 text-md text-[#747474]">Shipping Fee</p>
-                    <p class=" mt-3 pb-3 text-lg ">Order Total</p>
+                <div class="mt-5 flex justify-between">
+                    <p class="text-md">Shipping Information</p>
+                    <p class="text-xs text-[#008EE4] mt-1">Parcel has been delivered</p>
                 </div>
-            </div>
-            <div class="flex flex-col items-center mr-10">
-                <p class="mt-1 text-md text-[#747474] text-right">₱  {{ selectedItem?.details[0]?.subtotal }}</p>
-                <p class="mt-3 text-md text-[#747474] text-right">₱ {{ selectedItem?.details[0]?.deliveryfee }}</p>
-                <p class="mt-3 text-md">₱ {{ selectedItem?.details[0]?.finaltotal }}</p>
-            </div>
 
+                <div class="flex justify-between mt-[1.5rem] w-auto lg:h-[154px] h-[120px] bg-[#E7EAEF] space-y-2 relative">
+                    <!-- Add relative positioning -->
+                    <div class="flex flex-row ">
+                        <img :src="getImageUrl(getFirstImageUrl(selectedItem?.preproduct?.[0]?.uploadedphotos))"
+                            class="h-auto w-[154px] lg:h-[154px]">
+                        <div class="w-full">
+                            <div class="grid grid-cols-2">
+                                <p class="h-[2rem] mt-3 text-md lg:text-lg">{{
+                                    selectedItem?.productname }}</p>
+
+                                <p class="mt-4 text-md absolute right-0 mr-10"> {{ selectedItem?.quantity }}x</p>
+                            </div>
+                            <div class="absolute bottom-0 right-0 mb-4 mr-10">
+                                <!-- Positioning to bottom right corner -->
+                                <p class="text-md ">₱ {{ selectedItem?.productprice }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-between mt-3 w-auto lg:h-[150px] bg-[#E7EAEF] space-y-2">
+                    <div class="flex flex-row gap-[5rem]">
+                        <div class="ml-4 flex flex-col ">
+                            <p class="mt-1 text-md text-[#747474]">Merchandise Subtotal</p>
+                            <p class=" mt-3 text-md text-[#747474]">Shipping Fee</p>
+                            <p class=" mt-3 pb-3 text-lg ">Order Total</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center mr-10">
+                        <p class="mt-1 text-md text-[#747474] text-right">₱ {{ selectedItem?.details[0]?.subtotal }}</p>
+                        <p class="mt-3 text-md text-[#747474] text-right">₱ {{ selectedItem?.details[0]?.deliveryfee }}</p>
+                        <p class="mt-3 text-md">₱ {{ selectedItem?.details[0]?.finaltotal }}</p>
+                    </div>
+
+                </div>
+                <div class=" justify-end flex mt-6">
+                    <button @click="closeParcelDetails"
+                        class=" px-4 py-2.5 p-2 bg-[#2969D6] font-bold text-white rounded-md text-center  ">Buy
+                        Again</button>
+                </div>
+            </div>
         </div>
-        <!-- <button @click="buyAgain(selectedItem)"
-                    class="absolute bottom-4 right-4 px-4 py-2 bg-[#2969D6] text-white rounded-md">Buy Again</button> -->
-        <button @click="closeParcelDetails"
-                                        class="mt-[2.7rem] px-4 py-2.5 p-2 bg-[#2969D6] font-bold text-white rounded-md text-center right-0 absolute mr-10">Buy Again</button>
-    </div>
-</div>
 
         <div v-if="showCancelOrder" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
             <div class="relative p-7 bg-white w-[90%] lg:w-[50%] rounded-lg">
@@ -199,7 +203,6 @@
             </div>
         </div>
     </div>
-    
 </template>
 
 <script setup>

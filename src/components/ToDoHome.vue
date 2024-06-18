@@ -183,8 +183,8 @@
             <div v-if="filteredItems.length === 0" class="text-white text-center font p-14">
                 <p>We're sorry, but we couldn't find any activity that matches your selected filter. Try adjusting your filter or explore other options.</p>
             </div>
-            <!-- Pagination controls -->
-            <div class="grid grid-cols-2">
+          <!-- Pagination controls -->
+          <div class="grid grid-cols-2">
                 <div class="flex justify-start items-center">
                     <p class="text-center text-white">
                         Showing
@@ -211,7 +211,6 @@
         </div>
     </div>
 </template>
-
 <script setup>
     import {
         ref,
@@ -304,7 +303,6 @@
             return 1;
         }
     });
-    
     const paginationEndIndex = computed(() => Math.min((currentPage.value + 1) * pageSize.value, filteredItems.value.length));
     const totalRecords = computed(() => model.items.length);
     watch(selectedCategory, (newValue, oldValue) => {
@@ -318,6 +316,9 @@
         if (newValue !== oldValue) {
             applyButtonClicked.value = false;
         }
+    });
+    watch(filteredItems, (newVal) => {
+        console.log(newVal);
     });
     onMounted(() => {
         document.addEventListener('click', handleGlobalClick);

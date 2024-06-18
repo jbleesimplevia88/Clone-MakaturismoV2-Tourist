@@ -94,26 +94,7 @@ const router = createRouter({
           name: 'cartallproducts',
           component: () => import('../components/CartAllProducts.vue')
         },
-        {
-          path: '/cart',
-          name: 'carthome',
-          component: () => import('../components/CartHome.vue')
-        },
-        {
-          path: '/carteditbuyshop',
-          name: 'carteditbuyshop',
-          component: () => import('../components/CartEditBuyShop.vue')
-        },
-        {
-          path: '/carteditbuyeat',
-          name: 'carteditbuyeat',
-          component: () => import('../components/CartEditBuyEat.vue')
-        },
-        {
-          path: '/carteat',
-          name: 'carthomeeat',
-          component: () => import('../components/CartHomeEat.vue')
-        },
+    
 
         {
           path: '/checkout',

@@ -7,8 +7,12 @@
             <div class="absolute top-0 left-0 h-[101%] w-[100%] md:"
                 style="background: linear-gradient(to bottom, transparent 75%, #102E61 87%, #102E61 40%);">
             </div>
-            <img v-if="toseeData" :src="getImageUrl(toseeData.backgroundphotophoto)" class="w-full h-[200px] md:h-[700px]"
-                alt="To Do Image" />
+
+            <div>
+                <img v-if="toseeData && toseeData.backgroundphotophoto" :src="getImageUrl(toseeData.backgroundphotophoto)"
+                    class="w-full h-[300px] md:h-[700px]" alt="To Do Image" />
+                <img v-else :src="defaultImage" class="w-full h-[300px] md:h-[700px]" alt="Default To Do Image" />
+            </div>
             <div class="flex items-center justify-center absolute top-5 md:top-20 z-[1] bg-white pl-3 lg:pl-5 rounded-r-xl">
                 <p class="text-[#102E61] text-sm sm:text-4xl font-bold p-3 pr-4 md:p-5 md:pr-7 ">
                     WHAT TO DO
@@ -19,7 +23,7 @@
                 class="relative sm:absolute inset-0 sm:top-56 md:top-[23rem] flex text-center lg:text-left justify-center items-center z-[1]">
                 <p
                     class="pt-[6rem] text-[17px] sm:text-sm md:text-xl lg:text-[1.7rem] px-0 lg:px-[8rem] text-wrap leading lg:leading-10 text-white">
-                    {{ toseeData ? toseeData.description : 'Loading...' }}
+                    {{ toseeData ? toseeData.description : '' }}
 
                 </p>
             </div>
@@ -147,15 +151,17 @@
                                                 <h2 class="ml-5 font-bold mb-2">Explore by Area</h2>
                                                 <div v-for="(location, index) in locations" :key="'location-' + index">
                                                     <label :for="'locationRadio-' + index" class="flex items-center">
-                <input type="radio" :id="'locationRadio-' + index" :value="location" v-model="selectedLocation" name="location">
-                <span class="ml-2 m-0 p-0 uppercase font-bold">{{ location }}</span>
-              </label>
+                                                        <input type="radio" :id="'locationRadio-' + index" :value="location"
+                                                            v-model="selectedLocation" name="location">
+                                                        <span class="ml-2 m-0 p-0 uppercase font-bold">{{ location }}</span>
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="text-center justify-center border-t-2 ml-5 mr-5 mt-5">
-                                        <button @click="handleApplyFilter" class="m-4 p-1 text-white bg-[#102E61] w-72 rounded-xl">Apply</button>
+                                        <button @click="handleApplyFilter"
+                                            class="m-4 p-1 text-white bg-[#102E61] w-72 rounded-xl">Apply</button>
                                     </div>
                                 </div>
                             </div>
@@ -165,54 +171,68 @@
                 <!-- End of Filter dropdown -->
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div v-for="(item, index) in filteredItems" :key="index" class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
+                <div v-for="(item, index) in filteredItems" :key="index"
+                    class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
                     <div class="relative" v-if="item.pictureimage">
-                        <img :src="getImageUrl(item.pictureimage.split('|')[0])" class="w-full h-[250px] object-cover rounded-t">
-                        <div class="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-[#102E61] to-transparent"></div>
-                        <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{ item.storename }}</p>
-                        <p class="absolute bottom-2 left-2 text-white text-xs">{{ Array.isArray(item.category) ? item.category.join(', ') : item.category }}</p>
+                        <img :src="getImageUrl(item.pictureimage.split('|')[0])"
+                            class="w-full h-[250px] object-cover rounded-t">
+                        <div
+                            class="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-[#102E61] to-transparent">
+                        </div>
+                        <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{ item.storename }}
+                        </p>
+                        <p class="absolute bottom-2 left-2 text-white text-xs">{{ Array.isArray(item.category) ?
+                            item.category.join(', ') : item.category }}</p>
                     </div>
                     <div class="p-2 w-full">
                         <p class="text-white text-xs line-clamp-3">{{ item.description }}</p>
                     </div>
                     <div class="p-1 flex justify-end items-center">
-                        <button @click="seeMore(item)" class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
-              <span>Read More</span>
-              <span class="ml-1">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
-                </svg>
-              </span>
-            </button>
+                        <button @click="seeMore(item)"
+                            class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
+                            <span>Read More</span>
+                            <span class="ml-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                                    stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5">
+                                    </path>
+                                </svg>
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>
             <div v-if="filteredItems.length === 0" class="text-white text-center font p-14">
-                <p>We're sorry, but we couldn't find any activity that matches your selected filter. Try adjusting your filter or explore other options.</p>
+                <p>We're sorry, but we couldn't find any activity that matches your selected filter. Try adjusting your
+                    filter or explore other options.</p>
             </div>
             <!-- Pagination controls -->
             <div class="grid grid-cols-2">
                 <div class="flex justify-start items-center">
                     <p class="text-center text-white">
                         Showing
-                        <span class="text-[#29BFD6]">{{ paginationStartIndex }} - {{ paginationEndIndex }}</span> results from
+                        <span class="text-[#29BFD6]">{{ paginationStartIndex }} - {{ paginationEndIndex }}</span> results
+                        from
                         <span class="text-[#29BFD6]">{{ totalRecords }}</span> records
                     </p>
                 </div>
                 <div class="flex justify-end items-center mt-4">
                     <button @click="prevPage" :disabled="currentPage === 0" class="text-white">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"></path>
-            </svg>
-          </button>
-                    <button v-for="pageNumber in pageCount" :key="pageNumber" @click="goToPage(pageNumber - 1)" :class="{ 'px-3 py-1 border border-white m-1 rounded-md transition-colors duration-300 bg-white text-[#132540]': currentPage === pageNumber - 1, 'text-white': currentPage !== pageNumber - 1 }">
-            {{ pageNumber }}
-          </button>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"></path>
+                        </svg>
+                    </button>
+                    <button v-for="pageNumber in pageCount" :key="pageNumber" @click="goToPage(pageNumber - 1)"
+                        :class="{ 'px-3 py-1 border border-white m-1 rounded-md transition-colors duration-300 bg-white text-[#132540]': currentPage === pageNumber - 1, 'text-white': currentPage !== pageNumber - 1 }">
+                        {{ pageNumber }}
+                    </button>
                     <button @click="nextPage" :disabled="currentPage === pageCount - 1" class="text-white">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
-            </svg>
-          </button>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -231,6 +251,7 @@ import item5 from '@/assets/images/CategoryView/ToSee/happy.jpeg';
 import item6 from '@/assets/images/CategoryView/ToSee/heritage.jpeg';
 import item7 from '@/assets/images/CategoryView/ToSee/eskinita.png';
 import item8 from '@/assets/images/CategoryView/ToSee/alto.png';
+import defaultImage from '@/assets/images/CategoryView/ToSee/banner.jpeg'; // Default image
 
 const router = useRouter();
 
@@ -263,59 +284,59 @@ const fetchToseeData = async () => {
 
 
 
-const fetchManualFilters = async() => {
-        try {
-            const response = await axios.get('/manualfilter');
-            locations.value = response.data; // Assuming backend returns an array of locations
-        } catch (error) {
-            console.error('Failed to fetch manual filters:', error);
-        }
-    };
-    const filteredItems = computed(() => {
-        let filteredItems = model.items.slice(); // Create a shallow copy of items
-        // Apply filters only if the Apply button is clicked
-        if (applyButtonClicked.value) {
-            console.log("Filtering items with:", {
-                selectedCategory: selectedCategory.value,
-                selectedLocation: selectedLocation.value
+const fetchManualFilters = async () => {
+    try {
+        const response = await axios.get('/manualfilter');
+        locations.value = response.data; // Assuming backend returns an array of locations
+    } catch (error) {
+        console.error('Failed to fetch manual filters:', error);
+    }
+};
+const filteredItems = computed(() => {
+    let filteredItems = model.items.slice(); // Create a shallow copy of items
+    // Apply filters only if the Apply button is clicked
+    if (applyButtonClicked.value) {
+        console.log("Filtering items with:", {
+            selectedCategory: selectedCategory.value,
+            selectedLocation: selectedLocation.value
+        });
+        // Filter by category
+        if (selectedCategory.value) {
+            filteredItems = filteredItems.filter(item => {
+                if (Array.isArray(item.category)) {
+                    return item.category.includes(selectedCategory.value);
+                } else {
+                    return item.category === selectedCategory.value;
+                }
             });
-            // Filter by category
-            if (selectedCategory.value) {
-                filteredItems = filteredItems.filter(item => {
-                    if (Array.isArray(item.category)) {
-                        return item.category.includes(selectedCategory.value);
-                    } else {
-                        return item.category === selectedCategory.value;
-                    }
-                });
-            }
-            // Filter by location
-            if (selectedLocation.value) {
-                filteredItems = filteredItems.filter(item => {
-                    console.log("Comparing item barangay:", item.barangay, "with selected location:", selectedLocation.value);
-                    return item.barangay === selectedLocation.value;
-                });
-            }
         }
-        // Paginate the filtered items
-        const startIndex = currentPage.value * pageSize.value;
-        const endIndex = startIndex + pageSize.value;
-        return filteredItems.slice(startIndex, endIndex);
-    });
-    const pageCount = computed(() => Math.ceil(totalRecords.value / pageSize.value));
-    const paginationStartIndex = computed(() => {
-        if (filteredItems.value.length === 0) {
-            return 0; // or any other appropriate value if you want to indicate that no items are displayed
-        } else {
-            return 1;
+        // Filter by location
+        if (selectedLocation.value) {
+            filteredItems = filteredItems.filter(item => {
+                console.log("Comparing item barangay:", item.barangay, "with selected location:", selectedLocation.value);
+                return item.barangay === selectedLocation.value;
+            });
         }
-    });
-    onBeforeMount(() => {
-        fetchToseeData();
-        fetchManualFilters(); // Fetch area filters on mount
-    });
+    }
+    // Paginate the filtered items
+    const startIndex = currentPage.value * pageSize.value;
+    const endIndex = startIndex + pageSize.value;
+    return filteredItems.slice(startIndex, endIndex);
+});
+const pageCount = computed(() => Math.ceil(totalRecords.value / pageSize.value));
+const paginationStartIndex = computed(() => {
+    if (filteredItems.value.length === 0) {
+        return 0; // or any other appropriate value if you want to indicate that no items are displayed
+    } else {
+        return 1;
+    }
+});
+onBeforeMount(() => {
+    fetchToseeData();
+    fetchManualFilters(); // Fetch area filters on mount
+});
 
-    const paginationEndIndex = computed(() => Math.min((currentPage.value + 1) * pageSize.value, filteredItems.value.length));
+const paginationEndIndex = computed(() => Math.min((currentPage.value + 1) * pageSize.value, filteredItems.value.length));
 
 
 const totalRecords = computed(() => model.items.length);

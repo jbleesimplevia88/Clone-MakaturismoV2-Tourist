@@ -18,7 +18,7 @@
       <div class="flex items-center justify-center absolute top-5 md:top-20 z-[1] bg-white pl-3 lg:pl-5 rounded-r-xl">
 
         <p class="text-[#102E61] text-sm sm:text-4xl font-bold p-3 pr-4 md:p-5 md:pr-7 ">
-          MAKATURISMO
+          MAKATurismo
         </p>
       </div>
       <div

@@ -57,8 +57,8 @@ export default {
 
       slides: [
         {
-          imgSrc: card1, name: "Glorietta", location: "Glorietta, Ayala Center, Makati City", link: "/category/see/glorietta",
-          mapLocation: "https://www.google.com/maps/dir//Glorietta,+Palm+Drive,+Makati,+Metro+Manila/@14.5529213,121.0184921,16z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397c9f912a3727f:0xc4541051d1e0072!2m2!1d121.0246671!2d14.5508815?entry=ttu"
+          imgSrc: card1, name: "Glorietta", location: "Glorietta, Ayala Center, Makati City", link: "",
+          mapLocation: ""
         },
         { imgSrc: card2, name: "Ayala Museum", location: "3rd flr,Circuit Lane, AP Reyes St., Makati, Metro Manila", link: "" },
         { imgSrc: card3, name: "Greenbelt", location: "Esperanza St. corner Makati Ave., Ayala Center, Makati, Metro Manila", link: "" },

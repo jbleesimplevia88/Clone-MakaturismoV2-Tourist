@@ -162,12 +162,7 @@ const model = reactive({
   items: [],
   imageList: ''
 });
-const categories = ['District Tour', 'Church Tour', 'Museum Tour', 'City Tour', 'Market Tour'];
-const locations = [
-  'Bangkal', 'Bel-air', 'Carmona', 'Cembo', 'Dasmarinas', 'Forbes Park', 'Guadalupe Nuevo', 'Kasilawan', 'La Paz', 'Magallanes',
-  'Olympia', 'Palanan', 'Pinagkaisahan', 'Pio del Pilar', 'Poblacion', 'San Antonio', 'San Isidro', 'San Lorenzo ', 'Sta. Cruz',
-  'Singkamas', 'Tejeros', 'Urdaneta', 'Valenzuela'
-];
+
 const currentPage = ref(0);
 const pageSize = ref(8);
 const showDropdown = ref(false);
@@ -184,8 +179,32 @@ const fetchTotourData = async () => {
     console.error('Failed to fetch todo data:', error);
   }
 };
+const pageCount = computed(() => Math.ceil(totalRecords.value / pageSize.value));
+const paginationStartIndex = computed(() => {
+  if (filteredItems.value.length === 0) {
+    return 0; // or any other appropriate value if you want to indicate that no items are displayed
+  } else {
+    return 1;
+  }
+});
 
 
+const paginationEndIndex = computed(() => {
+  const end = Math.min((currentPage.value + 1) * pageSize.value, filteredItems.value.length);
+  return end;
+});
+const totalRecords = computed(() => model.items.length);
+const nextPage = () => {
+  if (currentPage.value < pageCount.value - 1) {
+    currentPage.value++;
+  }
+};
+const prevPage = () => {
+  currentPage.value--;
+};
+const goToPage = (pageNumber) => {
+  currentPage.value = pageNumber;
+};
 
 onBeforeMount(() => {
   fetchTotourData();
@@ -205,7 +224,6 @@ const filteredItems = computed(() => {
   const endIndex = startIndex + pageSize.value;
   return filteredItems.slice(startIndex, endIndex);
 });
-const pageCount = computed(() => Math.ceil(model.items.length / pageSize.value));
 watch(selectedCategory, (newValue, oldValue) => {
   if (newValue !== oldValue) applyButtonClicked.value = false;
 });
@@ -223,18 +241,7 @@ const handleApplyFilter = () => {
   currentPage.value = 0;
   showDropdown.value = false;
 };
-const nextPage = () => {
-  if (currentPage.value < pageCount.value - 1) currentPage.value++;
-};
-const prevPage = () => {
-  if (currentPage.value > 0) currentPage.value--;
-};
-const goToPage = (pageNumber) => {
-  currentPage.value = pageNumber;
-};
-const toggleDropdown = () => {
-  showDropdown.value = !showDropdown.value;
-};
+
 const handleGlobalClick = (event) => {
   const mobileDropdown = document.getElementById('mobileDropdown');
   if (!mobileDropdown || !mobileDropdown.contains(event.target)) {

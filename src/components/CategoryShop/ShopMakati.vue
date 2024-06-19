@@ -140,7 +140,7 @@
 
                 <!-- mobile verrrrrrrrrrrrrrrrr -->
                 <!-- View Add to cart modal -->
-                <div v-if="showCart" class="fixed inset-0 bg-gray-500 bg-opacity-75 -z-[0.01] flex items-center justify-center " @click.self="closeModal">
+                <div v-if="showCart" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-[1] flex items-center justify-center " @click.self="closeModal">
                     <div class="bg-white lg:h-[640px]  lg:w-auto lg:rounded-3xl h-full w-full shadow-md " @click.stop>
                         <div class="lg:w-[100%] p-4 rounded-lg h-full">
                             <div class="lg:block hidden relative  justify-end">
@@ -398,7 +398,7 @@
             </div>
         </div>
         <!-- Cart -->
-        <div v-if="showCartModal && totalItemsInCart > 0" class="lg:block hidden -z-[2]">
+        <div v-if="showCartModal && totalItemsInCart > 0" class="lg:block hidden ">
             <div class="cart-bg my-4 lg:w-[30%] lg:h-[85rem] right-7 absolute top-[8rem]">
                 <div class="cart-list lg:w-[75%] h-[40rem] border border-gray-300 p-4 rounded-lg shadow">
                     <div class="grid grid-rows-2 gap-0">

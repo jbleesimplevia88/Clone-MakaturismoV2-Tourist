@@ -400,7 +400,6 @@ const displayToSee = async () => {
         const response = await axios.post("/getAlltosee");
         model.items = JSON.parse(response.data.message);
         model.imageList = response.data.getimages;
-        todosee.value = model.items; // Assign items to toseeinfo
     } catch (error) {
         console.error(error);
 

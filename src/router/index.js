@@ -82,6 +82,16 @@ const router = createRouter({
             name: route.query.name,
           })
         },
+        {
+          path: '/viewAllEvents',
+          name: 'viewAllEvents',
+          component: () => import('../components/CalendarEvents/AllEvents.vue'),
+          props: route => ({
+            latitude: parseFloat(route.query.latitude),
+            longitude: parseFloat(route.query.longitude),
+            name: route.query.name,
+          })
+        },
       ]
     },
     {

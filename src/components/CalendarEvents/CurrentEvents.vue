@@ -16,11 +16,6 @@ const route = useRoute();
 
 const event = ref(null);
 
-const formatDate = (dateString) => {
-  const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
-  const date = new Date(dateString);
-  return date.toLocaleString('en-US', options);
-};
 
 const getImageUrl = (fileName) => {
   return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
@@ -76,8 +71,6 @@ onBeforeUnmount(() => {
 });
 </script>
 
-
-
 <template>
   <div v-if="event" class="pt-[57px] md:pt-[80px]">
     <div class="relative">
@@ -96,8 +89,20 @@ onBeforeUnmount(() => {
             </router-link>
           </div>
           <div class="overflow-hidden w-full">
-            <img :src="getImageUrl(event.coverphoto)" alt="Cover Photo"
-              class="lg:w-full h-[15rem] lg:h-[30rem] rounded-xl bg-white " />
+            <div class="relative">
+              <div class="flex transition-transform duration-300" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
+                <div v-for="(imageUrl, index) in imageUrls" :key="index" class="w-full flex-shrink-0">
+                  <img :src="`${localimageUrl}${imageUrl}`" alt="carousel image"
+                    class="w-full h-[15rem] lg:h-[30rem] rounded-xl" />
+                </div>
+              </div>
+              <button @click="prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full">
+                &lt;
+              </button>
+              <button @click="next" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full">
+                &gt;
+              </button>
+            </div>
           </div>
           <div class="flex flex-col pl-8 lg:pl-8 lg:order-first">
             <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">{{ event.title }}</h1>
@@ -110,15 +115,16 @@ onBeforeUnmount(() => {
       <p class="font-bold text-lg text-black text-left pb-5 pt-3 lg:pt-[5rem]">About this place</p>
       <p class="text-lg text-justify text-black pb-5">{{ event.description }}</p>
       <div class="flex flex-col">
-        <p class="text-lg md:text-black text-left pt-3"><strong>Start:</strong> {{ formatDate(event.startat) }}</p>
-        <p class="text-lg md:text-black text-left pb-5 pt-3"><strong>End:</strong> {{ formatDate(event.endsat) }}</p>
+        <p class="text-lg md:text-black text-left pt-3"><strong>Start:</strong> {{ event.startat }}</p>
+        <p class="text-lg md:text-black text-left pb-5 pt-3"><strong>End:</strong> {{ event.endsat }}</p>
       </div>
       <div class="flex flex-row">
         <div class="pt-1">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-            class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-          </svg>
+          <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12 6V12" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.24 16.24L12 12" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
         </div>
         <div class="flex flex-col pl-2.5">
           <p class="text-lg md:text-black text-left pb-5">{{ event.schedule }}</p>
@@ -134,13 +140,7 @@ onBeforeUnmount(() => {
         </div>
         <p class="text-lg md:text-black text-left pl-2.5 pb-5">{{ event.contact }}</p>
       </div>
-      <h1 class="font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SPOT IN HERE IN {{ event.title }}</h1>
-      <div class="flex transition-transform duration-300" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
-        <div v-for="(imageUrl, index) in imageUrls" :key="index" class="w-full flex-shrink-0">
-          <img :src="`${localimageUrl}${imageUrl}`" alt="carousel image"
-            class="w-full h-[15rem] lg:h-[30rem] rounded-xl" />
-        </div>
-      </div>
+    
     </div>
     <div class="relative flex flex-col">
       <div class="relative mx-6 px-3 lg:px-32 pb-5 pt-5">

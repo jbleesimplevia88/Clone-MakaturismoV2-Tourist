@@ -137,9 +137,10 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- mobile verrrrrrrrrrrrrrrrr -->
                 <!-- View Add to cart modal -->
-                <div v-if="showCart" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 flex items-center justify-center " @click.self="closeModal">
+                <div v-if="showCart" class="fixed inset-0 bg-gray-500 bg-opacity-75 -z-[0.01] flex items-center justify-center " @click.self="closeModal">
                     <div class="bg-white lg:h-[640px]  lg:w-auto lg:rounded-3xl h-full w-full shadow-md " @click.stop>
                         <div class="lg:w-[100%] p-4 rounded-lg h-full">
                             <div class="lg:block hidden relative  justify-end">
@@ -397,7 +398,7 @@
             </div>
         </div>
         <!-- Cart -->
-        <div v-if="showCartModal && totalItemsInCart > 0" class="lg:block hidden">
+        <div v-if="showCartModal && totalItemsInCart > 0" class="lg:block hidden -z-[2]">
             <div class="cart-bg my-4 lg:w-[30%] lg:h-[85rem] right-7 absolute top-[8rem]">
                 <div class="cart-list lg:w-[75%] h-[40rem] border border-gray-300 p-4 rounded-lg shadow">
                     <div class="grid grid-rows-2 gap-0">
@@ -475,8 +476,8 @@
   <!--  -->
   <div class="relative flex flex-col">
       <!-- Map -->
-      <div class="relative mx-6 px-3 lg:px-32 pb-5 pt-5">
-          <div>
+      <div class="relative mx-6 px-3 lg:px-32 pb-5 pt-5 -z-[5]">
+          <div class="">
               <h1 class="font-bold text-lg text-black text-left lg:pb-4">Where you'll be</h1>
               <MapRenderer :latitude="latitude" :longitude="longitude" :name="name" />
           </div>
@@ -590,9 +591,9 @@
           </div>
       </div>
   </div>
-  <login-modal v-if="!authStore.isAuthenticated && showLoginModal" @close="showLoginModal = false"></login-modal>
 
-  
+  <login-modal v-if="showLoginModal" @close="handleCloseLoginModal" :showModal="showLoginModal" />
+
 </template>
 
 <style scoped>
@@ -677,6 +678,7 @@ const props = defineProps({
 const model = reactive({
     productsArray: [],
 });
+
 const cartFinalStore = useCartFinalStore();
 const cartStore = useCartStoreShop();
 const authStore = useAuthStore();
@@ -726,10 +728,14 @@ watch(totalItemsInCart, (newTotal) => {
     console.log("totalItemsInCart:", newTotal);
     console.log("totalItemsCount:", totalItemsInCart.value); // Log the totalItemsInCart value
 });
+
 const addToCart = async (product) => {
+    console.log("addToCart method called with product:", product);
     if (!authStore.isAuthenticated) {
+        console.log("User not authenticated");
         authStore.setIntendedRoute(router.currentRoute.value.path);
         showLoginModal.value = true;
+        console.log("showLoginModal set to true:", showLoginModal.value);
         return;
     }
     product.quantity = product.quantity || 1; // Ensure quantity is initialized
@@ -744,6 +750,16 @@ const addToCart = async (product) => {
         showToastWithMessage("Error adding item to cart");
     }
 };
+const handleCloseLoginModal = () => {
+    showLoginModal.value = false;
+};
+watch(() => authStore.isAuthenticated, (isAuthenticated) => {
+    if (isAuthenticated) {
+        showLoginModal.value = false; // Close login modal
+        const intendedRoute = authStore.intendedRoute || '/';
+        router.push(intendedRoute); // Navigate to the intended route
+    }
+});
 const getId = () => {
     axios.get(`/getStore/${id.value}`).then((response) => {
         const storeparse = JSON.parse(response.data.message);
@@ -763,14 +779,8 @@ const nextImage = () => {
     currentImageIndex.value = (currentImageIndex.value + 1) % selectedProductImages.value.length;
     currentImage.value = getImageUrl(selectedProductImages.value[currentImageIndex.value]);
 };
-const handleEditCart = () => {
-    if (!authStore.isAuthenticated) {
-        authStore.setIntendedRoute('/cartallproducts');
-        showLoginModal.value = true;
-    } else {
-        router.push('/cartallproducts');
-    }
-};
+
+
 const handleBuyNow = () => {
     if (!authStore.isAuthenticated) {
         authStore.setIntendedRoute('/cartallproducts');

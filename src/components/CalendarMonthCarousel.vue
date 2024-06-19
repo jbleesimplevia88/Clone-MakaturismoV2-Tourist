@@ -124,7 +124,7 @@ onMounted(() => {
             <div class="absolute bottom-0 left-0 right-0 p-2 text-white bg-gradient-to-b from-transparent to-[#102E61] h-[120px]">
               <div class="flex justify-between">
                 <h1 class="font-bold text-xl">{{ event.title }}</h1>
-                <h1 class="font-bold text-xl">{{ formatDate(event.startat) }}</h1>
+                <h1 class="font-bold text-xl">{{ event.startat }} </h1>
               </div>
               <span class="text-sm block mt-3">{{ getTruncatedDescription(event.description) }}</span>
             </div>

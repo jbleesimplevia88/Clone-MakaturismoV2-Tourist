@@ -68,8 +68,8 @@ export const useTourStore = defineStore({
         }
 
         const payload = {
-          lguact_id: this.shopData.id, // Corrected key from activityid to id
-          tourist_id: userInfo.id, // Ensure this is the correct user ID
+          lguact_id: this.shopData.id, 
+          tourist_id: userInfo.id,
           date: this.reservationDetails.date,
           number_of_person: this.reservationDetails.numberOfPersons,
         };

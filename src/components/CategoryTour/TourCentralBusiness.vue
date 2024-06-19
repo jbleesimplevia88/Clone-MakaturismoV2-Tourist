@@ -276,7 +276,7 @@
             </div>
         </div>
     </div>
-    <login-modal v-if="!authStore.isAuthenticated && showLoginModal" @close="showLoginModal = false"></login-modal>
+    <login-modal v-if="showLoginModal" @close="handleCloseLoginModal" :showModal="showLoginModal" />
 </template>
 
 
@@ -284,7 +284,7 @@
 
 
 <script setup>
-import { ref, computed, onMounted, defineProps } from 'vue';
+import { ref, computed, watch, defineProps } from 'vue';
 import axios from 'axios';
 import { useRoute, useRouter } from 'vue-router';
 import { useTourStore } from '@/stores/toTourCart';
@@ -353,10 +353,17 @@ const reserve = () => {
   router.push('/checkouttour');
 };
 
-const closeLoginModal = () => {
-  showLoginModal.value = false;
+const handleCloseLoginModal = () => {
+    showLoginModal.value = false;
 };
-
+// Watch for authentication changes
+watch(() => authStore.isAuthenticated, (isAuthenticated) => {
+    if (isAuthenticated) {
+        showLoginModal.value = false; // Close login modal
+        const intendedRoute = authStore.intendedRoute || '/';
+        router.push(intendedRoute); // Navigate to the intended route
+    }
+});
 
 
 const checkDate = () => {

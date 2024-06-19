@@ -105,7 +105,7 @@
               <p class="font-normal mb-2 text-gray-600 text-base">{{ user.contact }}</p>
             </div>
             <div class="flex lg:flex-col lg:items-start justify-start">
-              <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Address<spam class="text-red-500">*</spam>
+              <p class="mr-[70px] lg:mr-9 lg:mb-1 font-bold">Address<span class="text-red-500">*</span>
               </p>
             </div>
             <input v-model="address" placeholder="Enter your address"
@@ -194,7 +194,7 @@
                   <div class="lg:w-[100%] p-4 rounded-lg text-center flex flex-col items-center">
                     <img src="@/assets/images/CategoryView/ToShop/check.png" class="mb-6">
                     <p class="font-bold text-2xl mb-6">Transaction Complete</p>
-                    <router-link to="/category/eat">
+                    <router-link to="/">
                       <button class="text-white h-16 w-60 bg-blue-500 rounded-xl py-5" @click="closeModal">Okay</button>
                     </router-link>
                   </div>
@@ -329,7 +329,7 @@
                 <div class="lg:w-[100%] p-4 rounded-lg text-center flex flex-col items-center">
                   <img src="@/assets/images/CategoryView/ToShop/check.png" class="mb-6">
                   <p class="font-bold text-2xl mb-6">Transaction Complete</p>
-                  <router-link to="/category/eat">
+                  <router-link to="/">
                     <button class="text-white h-16 w-60 bg-blue-500 rounded-xl py-5" @click="closeModal">Okay</button>
                   </router-link>
                 </div>

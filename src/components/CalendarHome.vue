@@ -1,7 +1,6 @@
 <script setup>
 import NavBar from '@/components/NavBar.vue';
 import CalendarContent from '@/components/CalendarContent.vue';
-import FooterPage from '@/components/FooterPage.vue';
 
 </script>
 
@@ -24,7 +23,6 @@ import FooterPage from '@/components/FooterPage.vue';
     </div>
 
     <CalendarContent />
-    <FooterPage />
 </template>
 
 <script scoped>

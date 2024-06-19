@@ -103,7 +103,7 @@
     </div>
   </footer>
   <!-- Mobile footer -->
-  <footer class="mt-auto fit-content text-white bg-primary block lg:hidden w-full">
+  <footer class="mt-auto fit-content text-white bg-primary lg:hidden w-full">
     <div class="py-2 bg-secondary">
       <p class="p-2 m-0 text-sm md:text-base">Official Tourism site of Makati City - Philippines</p>
     </div>
@@ -187,7 +187,6 @@
       <hr class="my-4 border-white section-divider">
       <div class="flex justify-between items-center mx-0">
         <p class="w-40 text-sm sm:text-left md:text-base lg:text-lg">Copyright &copy; Makati City, Philippines</p>
-        <p v-if="content.location" class="text-sm sm:text-left md:text-base lg:text-lg">{{ content.location }}</p>
         <div class="flex items-center">
           <img src="@/assets/images/Footer/facebook.png" alt="facebook" class="inline-block soc-logo mr-1 w-16 md:w-20 lg:w-24 xl:w-32">
           <img src="@/assets/images/Footer/instagram.png" alt="instagram" class="inline-block mr-1 soc-logo w-16:w-20 lg:w-24 xl:w-32">

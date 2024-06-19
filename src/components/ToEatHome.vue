@@ -6,7 +6,11 @@
             </div>
             <div style="position: absolute; top: 0; left: 0; height: 101%; width: 100%; background: linear-gradient(to bottom, transparent 75%, #102E61 87%, #102E61 40%);">
             </div>
-            <img v-if="toeatData" :src="getImageUrl(toeatData.backgroundphotophoto)" class="w-full h-[200px] md:h-[700px]" alt="To Do Image" />
+            <div>
+                <img v-if="toeatData && toeatData.backgroundphotophoto" :src="getImageUrl(toeatData.backgroundphotophoto)"
+                    class="w-full h-[300px] md:h-[700px]" alt="To Do Image" />
+                <img v-else :src="defaultImage" class="w-full h-[300px] md:h-[700px]" alt="Default To Do Image" />
+            </div>
             <div class="flex items-center justify-center absolute top-5 md:top-20 z-[1] bg-white pl-3 lg:pl-5 rounded-r-xl">
                 <p class="text-[#102E61] text-sm sm:text-4xl font-bold p-3 pr-4 md:p-5 md:pr-7 ">
                     WHAT TO DO
@@ -14,7 +18,7 @@
             </div>
             <div class="relative sm:absolute inset-0 sm:top-56 md:top-[23rem] flex text-center lg:text-left justify-center items-center z-[1]">
                 <p class="pt-[6rem] text-[17px] sm:text-sm md:text-xl lg:text-[1.7rem] px-0 lg:px-[8rem] text-wrap leading lg:leading-10 text-white">
-                    {{ toeatData ? toeatData.description : 'Loading...' }}
+                    {{ toeatData ? toeatData.description : '' }}
                 </p>
             </div>
         </div>
@@ -253,6 +257,8 @@
     import item6 from '@/assets/images/CategoryView/ToEat/thebar.jpeg';
     import item7 from '@/assets/images/CategoryView/ToEat/oldmanila.jpeg';
     import item8 from '@/assets/images/CategoryView/ToEat/brera.jpeg';
+    import defaultImage from '@/assets/images/CategoryView/ToEat/banner.jpeg'; // Default image
+
     import {
         useCartStoreEat
     } from '@/stores/toEatCart';

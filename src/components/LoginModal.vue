@@ -1,8 +1,6 @@
 <template>
-    <div class="z-[999]">
-        <div v-if="showModal" class="z-50"> <!-- Login Modal -->
-            <!-- Login Modal -->
-            <div class=" fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+    <div v-if="showModal" class="fixed inset-0 flex items-center justify-center z-[99999] bg-gray-800 bg-opacity-75">
+     
                 <div class="relative bg-white lg:w-[65vw] w-[90vw] h-fit rounded-3xl">
                     <img src="@/assets/images/Modal/Intersect.png" alt="" class="w-full lg:h-full absolute rounded-t-xl">
                     <!-- Modal Content -->
@@ -697,8 +695,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+    
 </template>
 
 

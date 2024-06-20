@@ -1,5 +1,6 @@
 <template>
-    <div v-if="showModal" class="fixed inset-0 flex items-center justify-center z-[99999] bg-gray-800 bg-opacity-75">
+    <div class="on-top">
+    <div v-if="showModal" class="fixed inset-0 flex items-center justify-center  bg-gray-800 bg-opacity-75">
      
                 <div class="relative bg-white lg:w-[65vw] w-[90vw] h-fit rounded-3xl">
                     <img src="@/assets/images/Modal/Intersect.png" alt="" class="w-full lg:h-full absolute rounded-t-xl">
@@ -695,7 +696,7 @@
                     </div>
                 </div>
             </div>
-    
+        </div>
 </template>
 
 
@@ -713,6 +714,17 @@
 .custom-scrollbar::-webkit-scrollbar-thumb {
     background-color: #102E61;
     border-radius: 10px;
+}
+
+.on-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100; /* still recommended to use a reasonably high z-index */
 }
 </style>
 

@@ -120,7 +120,7 @@
                     <div class="flex justify-between items-center mb-2 space-x-5">
                         <!-- WEB VERSION OTHER ITEMS -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div v-for="(product, index) in model.productsArray" :key="index" class="card-wrapper">
+                            <div v-for="(product, index) in activeProductsArray" :key="index" class="card-wrapper">
                                 <div
                                     class="card bg-blue-950 w-full border-2 m-1 p-2 rounded-xl relative flex flex-col justify-between">
                                     <div class="flex justify-between w-full">
@@ -131,7 +131,7 @@
                                         <div class="w-[60%]">
                                             <p class="text-xs text-white p-2 w-[75%]">{{ product.productname }}</p>
                                             <p class="text-xs text-white p-2 w-[55%]">₱ {{ product.productprice }}</p>
-                                            <div class=" justify-between items-center mt-4 mb-2 lg:block hidden">
+                                            <div class="justify-between items-center mt-4 mb-2 lg:block hidden">
                                                 <button @click="toggleshowCart(product)"
                                                     class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%] text-white mt-12">See
                                                     More</button>
@@ -139,7 +139,7 @@
                                                     class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%] text-white mt-12">Add
                                                     to Cart</button>
                                             </div>
-                                            <div class="grid grid-rows-2 items-center  lg:hidden mt-8 ">
+                                            <div class="grid grid-rows-2 items-center lg:hidden mt-8">
                                                 <button @click="toggleshowCart(product)"
                                                     class="text-xs bg-blue-900 rounded-lg m-1 py-2 px-3 w-[100%] text-white mt-5">See
                                                     More</button>
@@ -151,6 +151,7 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -649,8 +650,9 @@
             </div>
         </div>
     </div>
-<div class="z-[999]">
-    <login-modal v-if="showLoginModal" @close="handleCloseLoginModal" :showModal="showLoginModal" /></div>
+    <div class="z-[999]">
+        <login-modal v-if="showLoginModal" @close="handleCloseLoginModal" :showModal="showLoginModal" />
+    </div>
 </template>
 
 
@@ -801,6 +803,10 @@ const addToCart = async (product) => {
         showToastWithMessage("Error adding item to cart");
     }
 };
+const activeProductsArray = computed(() => {
+    return model.productsArray.filter(product => product.status === 'Active');
+});
+
 const handleCloseLoginModal = () => {
     showLoginModal.value = false;
 };
@@ -816,6 +822,7 @@ const getId = () => {
         const storeparse = JSON.parse(response.data.message);
         storedetails.value = storeparse;
         model.productsArray = JSON.parse(response.data.getProducts);
+
     }).catch((error) => {
         console.log(error);
     });

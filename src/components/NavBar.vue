@@ -192,7 +192,6 @@
                 <div v-else>
                     <div class="hidden lg:flex items-center space-x-4">
                         <button @click="openModal" class="text-blue-600">Login</button>
-                        <LoginModal :showModal="showLoginModal" @close="closeModal" />
                         <a class="hidden lg:block lg:bg-blue-500 lg:hover:bg-blue-700 lg:text-white lg:font-bold lg:py-2 lg:px-4 lg:border lg:border-blue-700 lg:rounded-lg"
                             href="http://bizmakati.simplevia.com/" target="_blank">
                             Become a partner
@@ -309,7 +308,6 @@
                                                 <div class="flex justify-center">
                                                     <button @click="openModal"
                                                         class="text-left text-blue-600 py-2 bottom-3">Login</button>
-                                                        <LoginModal :showModal="showLoginModal" @close="closeModal" />
 
                                                 </div>
                                                 <a class="bg-blue-500 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg text-center "
@@ -419,6 +417,8 @@
             </div>
             <!-- Repeat the above structure for each location, changing the indices accordingly -->
         </div>
+        <LoginModal :showModal="showLoginModal" @close="closeModal" />
+
     </nav>
 </template>
 

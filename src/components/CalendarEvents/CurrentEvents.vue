@@ -156,7 +156,6 @@ import { useCalendarEventsStore } from '@/stores/calendarEvents';
 import { useRoute } from 'vue-router';
 import { computed, watch, ref, onMounted, onBeforeUnmount,reactive  } from 'vue';
 import MapRenderer from "@/components/MapRenderer.vue";
-import axios from 'axios';
 
 const id = ref('');
 const store = useCalendarEventsStore();
@@ -169,25 +168,17 @@ const props = defineProps({
     item: String,
     imageList: String,
 });
-const model = reactive({
-    productsArray: [],
-});
 
 
-const getId = () => {
-    axios.post(`/viewpercalendar/${id.value}`).then((response) => {
-        const storeparse = JSON.parse(response.data.message);
-        storedetails.value = storeparse;
-        model.productsArray = JSON.parse(response.data.getProducts);
-    }).catch((error) => {
-        console.log(error);
-    });
+const getId = async () => {
+  try {
+    await store.fetchEventById(id.value);
+  } catch (error) {
+    console.error("Failed to fetch event by ID:", error);
+  }
 };
+
 const event = computed(() => store.selectedEvent);
-
-const getImageUrl = (fileName) => {
-  return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
-};
 const imageUrls = computed(() => event.value ? event.value.headerphotos.split('|') : []);
 const localimageUrl = `${import.meta.env.VITE_STORAGE_BASE_URL}/`;
 
@@ -219,6 +210,7 @@ watch(
     immediate: true
 }
 );
+
 onMounted(() => {
   // Start the automatic carousel change on component mount
   startCarousel();

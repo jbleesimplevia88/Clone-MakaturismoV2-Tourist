@@ -1,76 +1,3 @@
-<script setup>
-import { useCalendarEventsStore } from '@/stores/calendarEvents';
-import { useRoute } from 'vue-router';
-import { computed, watch, ref, onMounted, onBeforeUnmount } from 'vue';
-import MapRenderer from "@/components/MapRenderer.vue";
-import axios from 'axios';
-
-const props = defineProps({
-    latitude: Number,
-    longitude: Number,
-    name: String,
-    id: Number,
-});
-const store = useCalendarEventsStore();
-const route = useRoute();
-
-const event = ref(null);
-
-
-const getImageUrl = (fileName) => {
-  return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
-};
-
-const imageUrls = computed(() => event.value ? event.value.headerphotos.split('|') : []);
-const localimageUrl = `${import.meta.env.VITE_STORAGE_BASE_URL}/`;
-
-const currentIndex = ref(0);
-let intervalId = null;
-
-const startCarousel = () => {
-  intervalId = setInterval(() => {
-    next();
-  }, 3000); // Change image every 3 seconds
-};
-
-const prev = () => {
-  currentIndex.value = (currentIndex.value - 1 + imageUrls.value.length) % imageUrls.value.length;
-};
-
-const next = () => {
-  currentIndex.value = (currentIndex.value + 1) % imageUrls.value.length;
-};
-
-const fetchEventDetails = async (id) => {
-  try {
-    const response = await axios.post(`/viewpercalendar/${id}`);
-    event.value = JSON.parse(response.data.getcalendardata); // Parse the JSON string here
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-watch(
-  () => route.params.id,
-  (newId) => {
-    if (newId) {
-      fetchEventDetails(newId);
-    }
-  },
-  { immediate: true }
-);
-
-onMounted(() => {
-  // Start the automatic carousel change on component mount
-  startCarousel();
-});
-
-onBeforeUnmount(() => {
-  // Stop the carousel interval when the component is destroyed
-  clearInterval(intervalId);
-});
-</script>
-
 <template>
   <div v-if="event" class="pt-[57px] md:pt-[80px]">
     <div class="relative">
@@ -121,10 +48,10 @@ onBeforeUnmount(() => {
       <div class="flex flex-row">
         <div class="pt-1">
           <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M12 6V12" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M16.24 16.24L12 12" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 6V12" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16.24 16.24L12 12" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
         <div class="flex flex-col pl-2.5">
           <p class="text-lg md:text-black text-left pb-5">{{ event.schedule }}</p>
@@ -223,3 +150,99 @@ onBeforeUnmount(() => {
     <p>No event selected</p>
   </div>
 </template>
+
+<script setup>
+import { useCalendarEventsStore } from '@/stores/calendarEvents';
+import { useRoute } from 'vue-router';
+import { computed, watch, ref, onMounted, onBeforeUnmount,reactive  } from 'vue';
+import MapRenderer from "@/components/MapRenderer.vue";
+import axios from 'axios';
+
+const id = ref('');
+const store = useCalendarEventsStore();
+const route = useRoute();
+const props = defineProps({
+    latitude: Number,
+    longitude: Number,
+    name: String,
+    id: Number,
+    item: String,
+    imageList: String,
+});
+const model = reactive({
+    productsArray: [],
+});
+
+
+const getId = () => {
+    axios.post(`/viewpercalendar/${id.value}`).then((response) => {
+        const storeparse = JSON.parse(response.data.message);
+        storedetails.value = storeparse;
+        model.productsArray = JSON.parse(response.data.getProducts);
+    }).catch((error) => {
+        console.log(error);
+    });
+};
+const event = computed(() => store.selectedEvent);
+
+const getImageUrl = (fileName) => {
+  return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
+};
+const imageUrls = computed(() => event.value ? event.value.headerphotos.split('|') : []);
+const localimageUrl = `${import.meta.env.VITE_STORAGE_BASE_URL}/`;
+
+const currentIndex = ref(0);
+let intervalId = null;
+
+const startCarousel = () => {
+  intervalId = setInterval(() => {
+    next();
+  }, 3000); // Change image every 3 seconds
+};
+
+const prev = () => {
+  currentIndex.value = (currentIndex.value - 1 + imageUrls.value.length) % imageUrls.value.length;
+};
+
+const next = () => {
+  currentIndex.value = (currentIndex.value + 1) % imageUrls.value.length;
+};
+
+watch(
+    () => route.params.id,
+    (newId) => {
+        if (newId) {
+            id.value = newId;
+            getId();
+        }
+    }, {
+    immediate: true
+}
+);
+onMounted(() => {
+  // Start the automatic carousel change on component mount
+  startCarousel();
+});
+
+onBeforeUnmount(() => {
+  // Stop the carousel interval when the component is destroyed
+  clearInterval(intervalId);
+});
+
+onMounted(getId);
+
+</script>
+
+<style scoped>
+.fixed-width-300 {
+  width: 300px;
+}
+@media (max-width: 640px) {
+  .md\:text-base {
+    @apply text-sm;
+  }
+  .lg\:text-lg {
+    @apply text-base;
+  }
+}
+</style>

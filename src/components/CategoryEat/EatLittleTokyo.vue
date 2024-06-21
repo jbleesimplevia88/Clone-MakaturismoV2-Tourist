@@ -728,6 +728,7 @@ import {
     useCartStoreEat
 } from '@/stores/toEatCart';
 import LoginModal from '@/components/LoginModal.vue';
+
 const props = defineProps({
     latitude: Number,
     longitude: Number,

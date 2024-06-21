@@ -30,7 +30,7 @@
 
   <div
     :class="{ 'flex items-center justify-center m-3 pb-5': isMobile, 'flex items-center justify-center m-3 mb-8': !isMobile }">
-    <router-link to="/viewAllEvents">
+    <router-link to="/viewAllPastEvents">
       <button
         class="flex items-center justify-center px-5 py-2  text-white bg-[#2969D6] rounded-lg shadow-lg shadow-gray-500/50">View
         All</button>

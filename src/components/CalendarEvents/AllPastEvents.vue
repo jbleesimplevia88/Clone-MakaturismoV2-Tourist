@@ -7,16 +7,16 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
           </svg>
         </router-link>
-        <button class="flex pl-[3rem] pr-[1.5rem] py-1.5 text-3xl font-bold text-blue-900 bg-white shadow" style="border-top-right-radius: 7px; border-bottom-right-radius: 7px;">ALL EVENTS IN MAKATI</button>
+        <button class="flex pl-[3rem] pr-[1.5rem] py-1.5 text-3xl font-bold text-blue-900 bg-white shadow" style="border-top-right-radius: 7px; border-bottom-right-radius: 7px;">ALL PAST EVENTS IN MAKATI</button>
       </div>
     </div>
     <div class="inline-block mt-10 ml-0 text-white bg-[#2969D6] min-w-min" style="border-top-right-radius: 7px; border-bottom-right-radius: 7px;">
-      <h1 :class="{ 'p-2 mx-5 ml-10 text-base font-bold': isMobile, 'p-2 mx-6 ml-5 text-lg font-bold': !isMobile }">Events</h1>
+      <h1 :class="{ 'p-2 mx-5 ml-10 text-base font-bold': isMobile, 'p-2 mx-6 ml-5 text-lg font-bold': !isMobile }">Past Events</h1>
     </div>
     <div class="px-3 lg:px-[5rem] pb-5 pt-5">
       <div>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-5">
-          <div v-for="(item, index) in store.allEvents" :key="index" class="relative bg-[#102E61] from [#102E61] rounded-[0.5rem]">
+          <div v-for="(item, index) in store.allPastEvents" :key="index" class="relative bg-[#102E61] from [#102E61] rounded-[0.5rem]">
             <div class="relative">
               <img class="w-full h-[250px] object-cover rounded-t" :src="store.getImageUrl(item.coverphoto)" alt="">
               <div class="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-[#102E61] to-transparent"></div>
@@ -62,7 +62,7 @@
   
   onMounted(() => {
     window.addEventListener('resize', updateIsMobile);
-    store.fetchAllEvents();
+    store.fetchAllPastEvents();
   });
   </script>
   

@@ -6,6 +6,8 @@ export const useCalendarEventsStore = defineStore('calendarEvents', {
     events: [],
     selectedEvent: null,
     nearestEvents: [],
+    pastEvents: [],
+    allEvents: []
   }),
   actions: {
     selectEvent(event) {
@@ -27,19 +29,44 @@ export const useCalendarEventsStore = defineStore('calendarEvents', {
         this.nearestEvents = [];
       }
     },
-    async fetchEventById(id) {
+    async fetchPastEvents() {
       try {
-        const response = await axios.post(`/viewpercalendar/${id}`);
-        const event = JSON.parse(response.data.getcalendardata);
-        if (event.maplink) {
-          const { latitude, longitude } = this.extractLatLong(event.maplink);
-          event.latitude = latitude;
-          event.longitude = longitude;
+        const response = await axios.get('/calendar-events');
+        if (response.data && response.data.pastEvents) {
+          this.pastEvents = response.data.pastEvents.slice(0, 8);
+        } else {
+          this.pastEvents = [];
         }
-        this.selectedEvent = event;
       } catch (error) {
         console.error('API request error:', error);
-        this.selectedEvent = null;
+        this.pastEvents = [];
+      }
+    },
+    async fetchAllPastEvents() {
+      try {
+        const response = await axios.get('/calendar-events');
+        if (response.data && response.data.pastEvents) {
+          this.allPastEvents = response.data.pastEvents;
+        } else {
+          this.allPastEvents = [];
+        }
+      } catch (error) {
+        console.error('API request error:', error);
+        this.allPastEvents = [];
+      }
+    },
+    async fetchAllEvents() {
+      try {
+        const response = await axios.get('/calendar-events');
+        if (response.data && response.data.allEvents) {
+          const currentDate = new Date();
+          this.allEvents = response.data.allEvents.filter(event => new Date(event.date) >= currentDate);
+        } else {
+          this.allEvents = [];
+        }
+      } catch (error) {
+        console.error('API request error:', error);
+        this.allEvents = [];
       }
     },
     getImageUrl(fileName) {

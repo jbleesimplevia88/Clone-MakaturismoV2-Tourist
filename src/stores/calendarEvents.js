@@ -6,7 +6,8 @@ export const useCalendarEventsStore = defineStore('calendarEvents', {
     events: [],
     selectedEvent: null,
     nearestEvents: [],
-    allEvents: [],
+    pastEvents: [],
+    allEvents: []
   }),
   actions: {
     selectEvent(event) {
@@ -28,11 +29,38 @@ export const useCalendarEventsStore = defineStore('calendarEvents', {
         this.nearestEvents = [];
       }
     },
+    async fetchPastEvents() {
+      try {
+        const response = await axios.get('/calendar-events');
+        if (response.data && response.data.pastEvents) {
+          this.pastEvents = response.data.pastEvents.slice(0, 8);
+        } else {
+          this.pastEvents = [];
+        }
+      } catch (error) {
+        console.error('API request error:', error);
+        this.pastEvents = [];
+      }
+    },
+    async fetchAllPastEvents() {
+      try {
+        const response = await axios.get('/calendar-events');
+        if (response.data && response.data.pastEvents) {
+          this.allPastEvents = response.data.pastEvents;
+        } else {
+          this.allPastEvents = [];
+        }
+      } catch (error) {
+        console.error('API request error:', error);
+        this.allPastEvents = [];
+      }
+    },
     async fetchAllEvents() {
       try {
-        const response = await axios.get('/calendar-events'); // Same endpoint, fetching allEvents
+        const response = await axios.get('/calendar-events');
         if (response.data && response.data.allEvents) {
-          this.allEvents = response.data.allEvents;
+          const currentDate = new Date();
+          this.allEvents = response.data.allEvents.filter(event => new Date(event.date) >= currentDate);
         } else {
           this.allEvents = [];
         }

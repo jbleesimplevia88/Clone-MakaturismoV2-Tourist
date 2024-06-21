@@ -91,7 +91,7 @@
 
 
         <div v-if="showPrivacyModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-            <div class="relative p-7 bg-white  lg:w-[65vw] w-[90vw] lg:h-[53%] rounded-xl">
+            <div class="relative p-7 bg-white  lg:w-[65vw] w-[90vw] lg:h-[60%] rounded-xl">
                 <!-- Modal Content -->
                 <div class="relative flex justify-end">
                     <button class="absolute ">

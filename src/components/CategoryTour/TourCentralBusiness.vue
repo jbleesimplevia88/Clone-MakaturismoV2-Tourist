@@ -315,9 +315,6 @@ const storedetails = ref({});
 const selectedDate = ref('');
 const numberOfPersons = ref(0);
 
-// Constants for demo purposes
-const categories = ref(['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming']);
-const locations = ref(['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros']);
 
 // Computed properties to determine if a date is selectable
 const isSelectableDate = computed(() => {
@@ -364,7 +361,14 @@ watch(() => authStore.isAuthenticated, (isAuthenticated) => {
         router.push(intendedRoute); // Navigate to the intended route
     }
 });
-
+// Fetch the activity details when the component is mounted or the route parameters change
+watch(
+  () => route.params.id,
+  (newId) => {
+    cartTour.fetchCoverPhoto(newId);
+  },
+  { immediate: true }
+);
 
 const checkDate = () => {
   if (!isSelectableDate.value) {

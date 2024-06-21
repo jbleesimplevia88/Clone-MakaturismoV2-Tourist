@@ -192,7 +192,6 @@
                 <div v-else>
                     <div class="hidden lg:flex items-center space-x-4">
                         <button @click="openModal" class="text-blue-600">Login</button>
-                        <LoginModal :showModal="showLoginModal" @close="closeModal" />
                         <a class="hidden lg:block lg:bg-blue-500 lg:hover:bg-blue-700 lg:text-white lg:font-bold lg:py-2 lg:px-4 lg:border lg:border-blue-700 lg:rounded-lg"
                             href="http://bizmakati.simplevia.com/" target="_blank">
                             Become a partner
@@ -309,7 +308,6 @@
                                                 <div class="flex justify-center">
                                                     <button @click="openModal"
                                                         class="text-left text-blue-600 py-2 bottom-3">Login</button>
-                                                        <LoginModal :showModal="showLoginModal" @close="closeModal" />
 
                                                 </div>
                                                 <a class="bg-blue-500 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg text-center "
@@ -419,6 +417,8 @@
             </div>
             <!-- Repeat the above structure for each location, changing the indices accordingly -->
         </div>
+        <LoginModal :showModal="showLoginModal" @close="closeModal" />
+
     </nav>
 </template>
 
@@ -556,12 +556,7 @@ export default {
         );
     },
     methods: {
-        openModal() {
-            this.showLoginModal = true;
-        },
-        closeModal() {
-            this.showLoginModal = false;
-        },
+
         openNotifModal(notification) {
             switch (notification) {
                 case "Booking Confirmation":
@@ -625,11 +620,13 @@ export default {
         const isSidebarOpen = ref(false);
         let loginPasswordError = ref(false); // Declare loginPasswordError as a ref
         const loginErrorMessage = ref(''); // Declare loginErrorMessage as a ref
+
         const openModal = () => {
-            showLoginModal.value = true;
+            showLoginModal.value = true; // Access the reactive variable with .value
         };
+
         const closeModal = () => {
-            showLoginModal.value = false;
+            showLoginModal.value = false; // Access the reactive variable with .value
         };
         const login = async () => {
             loginPasswordError.value = false;
@@ -642,9 +639,15 @@ export default {
                 console.log(response);
                 loginErrorMessage.value = response.message;
             } else {
-                closeModal();
+                showLoginSuccess.value = true;
+                loginSuccessMessage.value = 'Login successful!';
+                setTimeout(() => {
+                    showLoginSuccess.value = false;
+                    emit('close'); // Emit close event after showing success message
+                }, 3000); // Hide the success message after 3 seconds
             }
         };
+
         const logout = () => {
             authStore.logout(); // Call the logout action from the store
             // Additional logout logic, such as redirecting to the login page, can be added here
@@ -657,6 +660,7 @@ export default {
             lpassword,
             showLoginModal,
             openModal,
+            closeModal,
             login,
             logout,
             authStore,

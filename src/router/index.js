@@ -80,6 +80,7 @@ const router = createRouter({
             latitude: parseFloat(route.query.latitude),
             longitude: parseFloat(route.query.longitude),
             name: route.query.name,
+            imageList: route.query.imageList,
           })
         },
         {

@@ -27,6 +27,21 @@ export const useCalendarEventsStore = defineStore('calendarEvents', {
         this.nearestEvents = [];
       }
     },
+    async fetchEventById(id) {
+      try {
+        const response = await axios.post(`/viewpercalendar/${id}`);
+        const event = JSON.parse(response.data.getcalendardata);
+        if (event.maplink) {
+          const { latitude, longitude } = this.extractLatLong(event.maplink);
+          event.latitude = latitude;
+          event.longitude = longitude;
+        }
+        this.selectedEvent = event;
+      } catch (error) {
+        console.error('API request error:', error);
+        this.selectedEvent = null;
+      }
+    },
     getImageUrl(fileName) {
       return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
     },

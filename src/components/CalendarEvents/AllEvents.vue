@@ -1,4 +1,3 @@
-
 <template>
     <NavBar />
     <div class="bg-[#102E61] w-[100%] h-50">
@@ -43,45 +42,43 @@
     </div>
   </template>
   
-
-<style scoped></style>
-
-<script setup>
-import NavBar from '@/components/NavBar.vue';
-import { ref, onMounted } from 'vue';
-import { useCalendarEventsStore } from '@/stores/calendarEvents';
-import { useRouter } from 'vue-router';
-
-const store = useCalendarEventsStore();
-const router = useRouter();
-
-const isMobile = ref(window.innerWidth <= 768);
-const updateIsMobile = () => {
-  isMobile.value = window.innerWidth <= 768;
-};
-
-const navigateToEvent = (event) => {
-  store.navigateToEvent(event, router);
-};
-
-onMounted(() => {
-  window.addEventListener('resize', updateIsMobile);
-  store.fetchAllEvents();
-});
-</script>
-
-<style scoped>
-.fixed-width-300 {
-  width: 300px;
-}
-
-@media (max-width: 640px) {
-  .md\:text-base {
-    @apply text-sm;
+  <script setup>
+  import NavBar from '@/components/NavBar.vue';
+  import { ref, onMounted } from 'vue';
+  import { useCalendarEventsStore } from '@/stores/calendarEvents';
+  import { useRouter } from 'vue-router';
+  
+  const store = useCalendarEventsStore();
+  const router = useRouter();
+  
+  const isMobile = ref(window.innerWidth <= 768);
+  const updateIsMobile = () => {
+    isMobile.value = window.innerWidth <= 768;
+  };
+  
+  const navigateToEvent = (event) => {
+    store.navigateToEvent(event, router);
+  };
+  
+  onMounted(() => {
+    window.addEventListener('resize', updateIsMobile);
+    store.fetchAllEvents();
+  });
+  </script>
+  
+  <style scoped>
+  .fixed-width-300 {
+    width: 300px;
   }
-
-  .lg\:text-lg {
-    @apply text-base;
+  
+  @media (max-width: 640px) {
+    .md\:text-base {
+      @apply text-sm;
+    }
+  
+    .lg\:text-lg {
+      @apply text-base;
+    }
   }
-}
-</style>
+  </style>
+  

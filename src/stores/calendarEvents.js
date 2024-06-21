@@ -6,6 +6,7 @@ export const useCalendarEventsStore = defineStore('calendarEvents', {
     events: [],
     selectedEvent: null,
     nearestEvents: [],
+    allEvents: [],
   }),
   actions: {
     selectEvent(event) {
@@ -27,19 +28,17 @@ export const useCalendarEventsStore = defineStore('calendarEvents', {
         this.nearestEvents = [];
       }
     },
-    async fetchEventById(id) {
+    async fetchAllEvents() {
       try {
-        const response = await axios.post(`/viewpercalendar/${id}`);
-        const event = JSON.parse(response.data.getcalendardata);
-        if (event.maplink) {
-          const { latitude, longitude } = this.extractLatLong(event.maplink);
-          event.latitude = latitude;
-          event.longitude = longitude;
+        const response = await axios.get('/calendar-events'); // Same endpoint, fetching allEvents
+        if (response.data && response.data.allEvents) {
+          this.allEvents = response.data.allEvents;
+        } else {
+          this.allEvents = [];
         }
-        this.selectedEvent = event;
       } catch (error) {
         console.error('API request error:', error);
-        this.selectedEvent = null;
+        this.allEvents = [];
       }
     },
     getImageUrl(fileName) {

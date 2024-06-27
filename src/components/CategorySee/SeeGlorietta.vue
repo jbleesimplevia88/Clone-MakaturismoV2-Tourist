@@ -1,10 +1,10 @@
 <template>
-    <div class="flex relative pt-[57px] md:pt-[80px] justify-center ">
-        <div class="relative ">
-            <div class="bg-[#102E61] h-[101%] lg:h-[110%]" style="position: absolute; top: 0; left: 0px; width: 100%; ">
+    <div class="flex relative pt-[57px] md:pt-[80px] justify-center w-full">
+        <div class="relative w-full">
+            <div class="bg-[#102E61] h-[100%] lg:h-[100%]" style="position: absolute; top: 0px; left: 0; width: 100%; ">
             </div>
-            <div class="relative inset-0 sm:top-56 md:top-2 pl-0 md:pl-16 flex items-center z-[1]">
-                <div class="relative flex flex-col pl-0 lg:pl-10">
+            <div class="relative flex flex-col pl-0 lg:pl-16">
+                <div class="relative flex flex-col pl-0 lg:pl-14">
                     <div class="absolute lg:top-4 lg:left-3 top-4 z-[1]">
                         <router-link to="/category/see">
                             <a class=" flex items-center">
@@ -19,11 +19,9 @@
                             </a>
                         </router-link>
                     </div>
-                    <div class="relative flex flex-col items-center">
-                        <div class=" lg:pr-[7rem]">
-                            <Carousel :imageUrls="imageUrls" />
+                    <div class=" lg:pr-[7rem]  justify-center flex w-full">
+                        <Carousel :imageUrls="imageUrls" class="mb-10 w-full lg:ml-9" />
                         </div>
-                    </div>
                     <div class="flex flex-col pl-8 lg:pl-8 lg:order-first">
                         <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">{{storedetails.storename}}</h1>
                         <p class="text-md text-white text-left pb-5"></p>
@@ -75,7 +73,7 @@
              
             </div>
             <hr style="border-top: 1px solid black">
-            <div>
+            <!-- <div>
                 <h1 class="font-bold text-lg text-black text-left pt-10 pb-4" v-for="(item, index) in storereviews" :key="index">{{item.overall}} Ratings ({{item.countreview}} reviews)
                     <div v-if="item.countreview === 0">
                         No reviews yet
@@ -92,7 +90,7 @@
                         <p class=" ext-lgmdext-black text-left pb-5">{{item.averagerate}}</p>
                     </div>
                 </div>
-                <!-- <div class="flex justify-evenly">
+                 <div class="flex justify-evenly">
                             <p class=" ext-lgmdext-black text-left pb-5">Factor 1</p>
                             <div class="my-2 mx-2 flex font-bold">
                                 <div class="h-2 w-[14rem] rounded-full bg-black">
@@ -144,9 +142,9 @@
                                     <div class="flex h-full rounded-md bg-brand-500" style="width: 30%"></div>
                                 </div>
                             </div>
-                            <p class=" ext-lgmdext-black text-left pb-5">5.0</p> -->
-                <!-- </div> -->
-            </div>
+                            <p class=" ext-lgmdext-black text-left pb-5">5.0</p> 
+                        </div>
+            </div> -->
         </div>
         <div class="grid lg:grid-cols-2 lg:gap-[2rem] relative mx-6 px-3 lg:px-32 pt-5">
             <!-- Feedback Content -->

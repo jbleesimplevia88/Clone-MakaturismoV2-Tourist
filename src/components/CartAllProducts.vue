@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-cover bg-center w-screen h-[750px]" style="background-image: url('src/assets/images/CategoryView/ToShop/bgoverlay.png');">
+  <div class="bg-cover bg-center w-screen h-[750px] background" >
     <div class="px-5 overflow-y-auto h-[690px]">
       <div class="flex bg-white pl-3 lg:pl-5 rounded-r-xl w-36 lg:mt-28 mt-[20%] lg:w-56 -ml-6">
         <button @click="goToPreviousPage" class="flex cursor-pointer">
@@ -76,8 +76,15 @@
     </div>
   </div>
 </template>
-
+<style scoped>
+.background {
+  background-image: url('@/assets/images/CategoryView/ToShop/bgoverlay.png');
+}
+</style>
 <script setup>
+import bgoverlay from '@/assets/images/CategoryView/ToShop/bgoverlay.png';
+
+
   import {
     ref,
     computed,

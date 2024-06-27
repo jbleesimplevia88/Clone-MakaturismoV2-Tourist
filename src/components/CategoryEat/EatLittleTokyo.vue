@@ -162,7 +162,7 @@
                 <div v-if="showCart"
                     class="fixed inset-0 bg-gray-500 bg-opacity-75  z-[1] flex items-center justify-center "
                     @click.self="closeModal">
-                    <div class="bg-white lg:h-[640px]  lg:w-auto lg:rounded-3xl h-full w-full shadow-md " @click.stop>
+                    <div class="bg-white lg:h-[640px]  lg:w-[60%] lg:rounded-3xl h-full w-full shadow-md " @click.stop>
                         <div class="lg:w-[100%] p-4 rounded-lg h-full">
                             <div class="lg:block hidden relative  justify-end">
                                 <button class=" pr-4 pt-21 ml-[97%]">
@@ -542,7 +542,7 @@
                 <MapRenderer :latitude="latitude" :longitude="longitude" :name="name" />
             </div>
             <hr style="border-top: 1px solid black">
-            <div>
+            <!-- <div>
                 <h1 class="font-bold text-lg text-black text-left pt-10 pb-4">5.0 Ratings (500 Reviews)</h1>
                 <div class="grid lg:grid-cols-2">
                     <div class="flex justify-evenly">
@@ -600,7 +600,7 @@
                         <p class=" ext-lgmdext-black text-left pb-5">5.0</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <!-- Feedback Content -->
         <div class="grid lg:grid-cols-2 lg:gap-[2rem] relative mx-6 px-3 lg:px-32 pt-5">

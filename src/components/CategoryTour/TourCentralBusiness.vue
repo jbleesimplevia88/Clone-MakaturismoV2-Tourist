@@ -167,7 +167,7 @@
     <div class="relative flex flex-col">
         <div class="relative mx-6 px-3 lg:px-32 pb-5 pt-5">
             <hr style="border-top: 1px solid black">
-            <div>
+            <!-- <div>
                 <h1 class="font-bold text-lg text-black text-left pt-10 pb-4">5.0 Ratings (500 Reviews)</h1>
                 <div class="grid lg:grid-cols-2">
                     <div class="flex justify-evenly">
@@ -225,7 +225,7 @@
                         <p class=" ext-lgmdext-black text-left pb-5">5.0</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="grid lg:grid-cols-2 lg:gap-[2rem] relative mx-6 px-3 lg:px-32 pt-5">
             <!-- Feedback Content -->

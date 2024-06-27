@@ -709,6 +709,7 @@ import { useAuthStore } from '@/stores/auth';
 import { useCartStoreShop } from '@/stores/toShopCart';
 import LoginModal from '@/components/LoginModal.vue';
 import MapRenderer from "@/components/MapRenderer.vue";
+import ContentCarousel from '@/components/Carousel.vue';
 
 const props = defineProps({
   latitude: Number,

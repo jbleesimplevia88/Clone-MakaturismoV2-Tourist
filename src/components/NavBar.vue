@@ -53,21 +53,23 @@
         </div>
 
         <!-- Order Details Modal -->
-        <div v-if="showOrderDetailsModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div class="bg-white p-4 rounded-lg">
-            <div class="flex items-center justify-between mb-1">
-              <h2 class="text-xl font-semibold">{{ selectedNotification.productname }}</h2>
-              <button @click="closeOrderDetailsModal">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.9" stroke="currentColor" class="w-6 h-6">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
-                </svg>
-              </button>
-            </div>
-            <img :src="selectedNotification.imageurl.split('|')[0]" alt="Product Image">
-
-            <p>{{ selectedNotification.message }}</p>
-          </div>
-        </div>
+     <!-- Order Details Modal -->
+<div v-if="showOrderDetailsModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+  <div class="bg-white p-4 rounded-lg max-w-md w-full">
+    <div class="flex items-center justify-between mb-1">
+      <h2 class="text-xl font-semibold">{{ selectedNotification.productname }}</h2>
+      <button @click="closeOrderDetailsModal">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.9" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="grid grid-cols-[1fr_2fr] gap-4">
+      <img :src="getImageUrl(getFirstImageUrl(selectedNotification.imageurl))" alt="Product Image" class="w-full object-contain rounded-lg">
+      <p class="text-lg">{{ selectedNotification.message }}</p>
+    </div>
+  </div>
+</div>
 
         <!-- Booking Complete Modal -->
         <div v-if="showBookingCompleteModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
@@ -91,7 +93,6 @@
       <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
     </svg>
   </div>
-
                     <!-- PFP Modal -->
                     <div v-if="showPFPModal"
                         class="absolute top-[6.5rem] right-[1.2rem] bg-gray-100 shadow text-black rounded-lg w-[325px]">
@@ -554,6 +555,15 @@ const openNotifModal = (notification) => {
   }
 };
 
+const getFirstImageUrl = (pictureimage) => {
+    if (!pictureimage) return '';
+    const images = pictureimage.split('|').filter(img => img.trim() !== '');
+    return images.length > 0 ? images[0].replace('/storage/uploadedphotos/', '') : '';
+};
+
+const getImageUrl = (fileName) => {
+    return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
+};
 
 const closeOrderDetailsModal = () => {
   showOrderDetailsModal.value = false;

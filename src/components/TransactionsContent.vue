@@ -35,7 +35,7 @@
                </div>
                <div class="w-1/3 flex flex-col justify-center text-right">
                  <div class="text-md">{{ item.quantity }}x</div>
-                 <div class="text-md">₱ {{ item.productprice }}</div>
+                 <div class="text-md">₱ {{ group.finaltotal}}</div>
                </div>
              </div>
              <!-- Action Button -->
@@ -85,7 +85,7 @@
                </div>
                <div class="w-1/3 flex flex-col justify-center text-right">
                  <div class="text-md">{{ item.quantity }}x</div>
-                 <div class="text-md">₱ {{ item.productprice }}</div>
+                 <div class="text-md">₱ {{ group.finaltotal }}</div>
                </div>
              </div>
              <!-- Action Button -->

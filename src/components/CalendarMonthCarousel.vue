@@ -11,7 +11,7 @@ import { useRouter } from 'vue-router';
 const store = useCalendarEventsStore();
 const router = useRouter();
 
-const getTruncatedDescription = (description, wordLimit = 40) => {
+const getTruncatedDescription = (description, wordLimit =25) => {
   if (!description) return '';
   const words = description.split(' ');
   if (words.length <= wordLimit) return description;
@@ -50,15 +50,15 @@ onMounted(() => {
             <!-- Name -->
             <div class="flex justify-between items-center">
               <div class="flex items-center space-x-2">
-                <h1 class="font-bold text-xl">{{ event.title }}</h1>
+                <h1 class="font-bold text-xl ">{{ event.title }}</h1>
                 <img class="text-xl" style="filter: invert(1); width:auto; height:20px;"
                   src="@/assets/images/Carousel/pin.png" alt="">
               </div>
-              <h1 class="font-bold text-xl">{{ event.date }}</h1>
+              <h1 class="font-bold text-xl ">{{ event.date }}</h1>
             </div>
             <!-- Description -->
-            <div class="flex items-center location-info">
-              <span class="absolute right-0 text-sm bottom-8 left-11 mr-4">{{ getTruncatedDescription(event.description)
+            <div class="flex items-center location-info ">
+              <span class="absolute right-0 text-sm bottom-8 left-11 mr-4 ">{{ getTruncatedDescription(event.description)
               }}</span>
             </div>
           </div>

@@ -88,73 +88,75 @@
                     </div>
                     <p class="text-lg md:text-black text-left pl-2.5 pb-5">{{ storedetails.storecontact }}</p>
                 </div>
-                <!-- BEst seller -->
-                <div class="my-4 lg:w-[100%]">
-                    <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SELLERS</h1>
-                    <!-- <div class="lg:flex justify-start text-white lg:w-[100%]"> -->
-                    <div class="grid grid-cols-2 md:grid-cols-3 justify-start text-white lg:w-[70%]">
-                        <!-- Cards in Best seller -->
-                        <div v-for="(item, index) in bestProducts" :key="index"
-                            class=" lg:w-auto lg:flex-auto bg-blue-950 lg:h-[15rem] h-[190px] m-1 p-2 lg:p-3 rounded-xl relative flex flex-col justify-between">
-                            <p class="rounded-lg lg:text-sm text-xs lg:px-2 pt-2 absolute top-2.5 left-3 right-3 text-white p-2 w-71"
-                                style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
-                                {{ item.title }}
-                            </p>
-                            <img class="rounded-md h-[80%]" :key="index" :src="item.image[0]" alt="" width="100%">
-                            <button @click="toggleshowCart(item)"
-                                class="text-xs absolute lg:bottom-4 bottom-2 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">
-                                See More</button>
-                            <div class="flex justify-end absolute lg:bottom-[65px] bottom-[50px] right-[18px]">
-                                <div class="flex justify-between">
-                                    <div class="flex bg-blue-950 border-1 rounded-lg border-white">
-                                        <p class="text-xs border rounded-lg border-white p-1">₱{{ item.price }}</p>
-                                    </div>
-                                </div>
+ <!-- Best Seller -->
+<div class="my-4 lg:w-[100%]">
+    <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SELLERS</h1>
+    <div class="grid grid-cols-2 md:grid-cols-3 justify-start text-white lg:w-[70%]">
+        <!-- Cards in Best Seller -->
+        <div v-for="(product, index) in bestProducts" :key="index"
+             class="lg:w-auto lg:flex-auto bg-blue-950 lg:h-[15rem] h-[190px] m-1 p-2 lg:p-3 rounded-xl relative flex flex-col justify-between">
+            <p class="rounded-lg lg:text-sm text-xs lg:px-2 pt-2 absolute top-2.5 left-3 right-3 text-white p-2 w-71"
+               style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
+                {{ product.productname }}
+            </p>
+            <img class="rounded-md h-[80%]" :src="getImageUrl(product.uploadedphotos.split('|')[0])" alt="" width="100%">
+            <button @click="toggleshowCart(product)"
+                    class="text-xs absolute lg:bottom-4 bottom-2 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">
+                See More
+            </button>
+            <div class="flex justify-end absolute lg:bottom-[65px] bottom-[50px] right-[18px]">
+                <div class="flex justify-between">
+                    <div class="flex bg-blue-950 border-1 rounded-lg border-white">
+                        <p class="text-xs border rounded-lg border-white p-1">₱{{ product.productprice }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Other Items -->
+<h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">OTHER ITEMS</h1>
+<div class="flex w-[100%]">
+    <div class="flex justify-between items-center mb-2 space-x-5">
+        <!-- WEB VERSION OTHER ITEMS -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div v-for="(product, index) in otherProducts" :key="index" class="card-wrapper">
+                <div class="card bg-blue-950 w-full border-2 m-1 p-2 rounded-xl relative flex flex-col justify-between">
+                    <div class="flex justify-between w-full">
+                        <div class="w-[200px] h-[200px] overflow-hidden">
+                            <img class="w-full h-full object-cover"
+                                 :src="getImageUrl(product.uploadedphotos.split('|')[0])" alt=""/>
+                        </div>
+                        <div class="w-[60%]">
+                            <p class="text-xs text-white p-2 w-[75%]">{{ product.productname }}</p>
+                            <p class="text-xs text-white p-2 w-[55%]">₱ {{ product.productprice }}</p>
+                            <div class="justify-between items-center mt-4 mb-2 lg:block hidden">
+                                <button @click="toggleshowCart(product)"
+                                        class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%] text-white mt-12">See
+                                    More
+                                </button>
+                                <button @click="addToCart(product)"
+                                        class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%] text-white mt-12">Add
+                                    to Cart
+                                </button>
+                            </div>
+                            <div class="grid grid-rows-2 items-center lg:hidden mt-8">
+                                <button @click="toggleshowCart(product)"
+                                        class="text-xs bg-blue-900 rounded-lg m-1 py-2 px-3 w-[100%] text-white mt-5">See
+                                    More
+                                </button>
+                                <button @click="addToCart(product)"
+                                        class="text-xs bg-blue-600 rounded-lg py-2 m-1 px-3 w-[100%] text-white">Add
+                                    to Cart
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Other Items -->
-                <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">OTHER ITEMS</h1>
-                <div class="flex w-[100%]">
-                    <div class="flex justify-between items-center mb-2 space-x-5">
-                        <!-- WEB VERSION OTHER ITEMS -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div v-for="(product, index) in activeProductsArray" :key="index" class="card-wrapper">
-                                <div
-                                    class="card bg-blue-950 w-full border-2 m-1 p-2 rounded-xl relative flex flex-col justify-between">
-                                    <div class="flex justify-between w-full">
-                                        <div class="w-[200px] h-[200px] overflow-hidden">
-                                            <img class="w-full h-full object-cover"
-                                                :src="getImageUrl(product.uploadedphotos.split('|')[0])" alt="" />
-                                        </div>
-                                        <div class="w-[60%]">
-                                            <p class="text-xs text-white p-2 w-[75%]">{{ product.productname }}</p>
-                                            <p class="text-xs text-white p-2 w-[55%]">₱ {{ product.productprice }}</p>
-                                            <div class="justify-between items-center mt-4 mb-2 lg:block hidden">
-                                                <button @click="toggleshowCart(product)"
-                                                    class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%] text-white mt-12">See
-                                                    More</button>
-                                                <button @click="addToCart(product)"
-                                                    class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%] text-white mt-12">Add
-                                                    to Cart</button>
-                                            </div>
-                                            <div class="grid grid-rows-2 items-center lg:hidden mt-8">
-                                                <button @click="toggleshowCart(product)"
-                                                    class="text-xs bg-blue-900 rounded-lg m-1 py-2 px-3 w-[100%] text-white mt-5">See
-                                                    More</button>
-                                                <button @click="addToCart(product)"
-                                                    class="text-xs bg-blue-600 rounded-lg py-2 m-1 px-3 w-[100%] text-white">Add
-                                                    to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
                 <!-- mobile verrrrrrrrrrrrrrrrr -->
                 <!-- View Add to cart modal -->
@@ -649,7 +651,7 @@
             </div>
         </div>
     </div>
-
+{{ model.productsArray }}
     <login-modal v-if="showLoginModal" @close="handleCloseLoginModal" :showModal="showLoginModal" />
 </template>
 
@@ -700,47 +702,33 @@
 }
 </style>
 <script setup>
-import {
-    ref,
-    computed,
-    watch,
-    reactive,
-    onMounted
-} from 'vue';
+import { ref, computed, watch, reactive, onMounted } from 'vue';
 import axios from 'axios';
-import {
-    useRoute,
-    useRouter
-} from 'vue-router';
-import {
-    useCartFinalStore
-} from '@/stores/finalCart';
-import ContentCarousel from '@/components/Carousel.vue';
-import MapRenderer from "@/components/MapRenderer.vue";
-import {
-    useAuthStore
-} from '@/stores/auth';
-import {
-    useCartStoreShop
-} from '@/stores/toShopCart';
+import { useRoute, useRouter } from 'vue-router';
+import { useCartFinalStore } from '@/stores/finalCart';
+import { useAuthStore } from '@/stores/auth';
+import { useCartStoreShop } from '@/stores/toShopCart';
 import LoginModal from '@/components/LoginModal.vue';
+
 const props = defineProps({
-    latitude: Number,
-    longitude: Number,
-    name: String,
-    id: Number,
-    item: String,
-    imageList: String,
+  latitude: Number,
+  longitude: Number,
+  name: String,
+  id: Number,
+  item: String,
+  imageList: String,
 });
+
 const model = reactive({
-    productsArray: [],
+  productsArray: [],
 });
 
 const cartFinalStore = useCartFinalStore();
 const cartStore = useCartStoreShop();
 const authStore = useAuthStore();
 const route = useRoute();
-const router = useRouter(); // Initialize router
+const router = useRouter();
+
 const cart = computed(() => cartFinalStore.cartItems);
 const buyNowProducts = ref([]);
 const selectedProduct = ref(null);
@@ -750,7 +738,7 @@ const currentIndex = ref(0);
 const currentPage = ref(0);
 const count = ref(0);
 const showCart = ref(false);
-const showCartModal = ref(false); // Ensure it's reactive
+const showCartModal = ref(false);
 const showReviews = ref(false);
 const showAddtoCart = ref(false);
 const showLoginModal = ref(false);
@@ -761,220 +749,229 @@ const storedetails = ref('');
 const currentImageIndex = ref(0);
 const selectedProductImages = ref([]);
 const currentImage = ref('');
-const items = [];
-const bestProducts = [];
-const otherProducts = [];
+const items = ref([]);
+const bestProducts = ref([]);
+const otherProducts = ref([]);
 const categories = ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'];
 const locations = ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'];
-const getImageUrl = (fileName) => {
-    return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
-};
+
+const getImageUrl = (fileName) => `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
+
 const totalItemsInCart = computed(() => {
-    const quantitiesByProductId = cartFinalStore.cartItems.flatMap(group => group.items).reduce((acc, item) => {
-        const productId = item.product_id;
-        const quantity = parseInt(item.quantity, 10); // Ensure quantity is treated as a number
-        if (!acc[productId]) {
-            acc[productId] = 0;
-        }
-        acc[productId] += quantity;
-        return acc;
-    }, {});
-    return Object.values(quantitiesByProductId).reduce((total, qty) => total + qty, 0);
+  const quantitiesByProductId = cartFinalStore.cartItems.flatMap(group => group.items).reduce((acc, item) => {
+    const productId = item.product_id;
+    const quantity = parseInt(item.quantity, 10); // Ensure quantity is treated as a number
+    if (!acc[productId]) {
+      acc[productId] = 0;
+    }
+    acc[productId] += quantity;
+    return acc;
+  }, {});
+  return Object.values(quantitiesByProductId).reduce((total, qty) => total + qty, 0);
 });
+
 watch(totalItemsInCart, (newTotal) => {
-    console.log("totalItemsInCart:", newTotal);
-    console.log("totalItemsCount:", totalItemsInCart.value); // Log the totalItemsInCart value
+  console.log("totalItemsInCart:", newTotal);
+  console.log("totalItemsCount:", totalItemsInCart.value); // Log the totalItemsInCart value
 });
 
 const addToCart = async (product) => {
-    console.log("addToCart method called with product:", product);
-    if (!authStore.isAuthenticated) {
-        console.log("User not authenticated");
-        authStore.setIntendedRoute(router.currentRoute.value.path);
-        showLoginModal.value = true;
-        console.log("showLoginModal set to true:", showLoginModal.value);
-        return;
-    }
-    product.quantity = product.quantity || 1; // Ensure quantity is initialized
-    try {
-        await cartFinalStore.addOrUpdateCart(product);
-        console.log("Product added or updated in database:", product);
-        showToastWithMessage("Item has been added to cart");
-        showCartModal.value = true; // Show the cart modal after adding an item
-        console.log("showCartModal:", showCartModal.value);
-    } catch (error) {
-        console.error("Error adding or updating item in cart:", error);
-        showToastWithMessage("Error adding item to cart");
-    }
+  console.log("addToCart method called with product:", product);
+  if (!authStore.isAuthenticated) {
+    console.log("User not authenticated");
+    authStore.setIntendedRoute(router.currentRoute.value.path);
+    showLoginModal.value = true;
+    console.log("showLoginModal set to true:", showLoginModal.value);
+    return;
+  }
+  product.quantity = product.quantity || 1; // Ensure quantity is initialized
+  try {
+    await cartFinalStore.addOrUpdateCart(product);
+    console.log("Product added or updated in database:", product);
+    showToastWithMessage("Item has been added to cart");
+    showCartModal.value = true; // Show the cart modal after adding an item
+    console.log("showCartModal:", showCartModal.value);
+  } catch (error) {
+    console.error("Error adding or updating item in cart:", error);
+    showToastWithMessage("Error adding item to cart");
+  }
 };
+
 const handleCloseLoginModal = () => {
-    showLoginModal.value = false;
+  showLoginModal.value = false;
 };
+
 watch(() => authStore.isAuthenticated, (isAuthenticated) => {
-    if (isAuthenticated) {
-        showLoginModal.value = false; // Close login modal
-        const intendedRoute = authStore.intendedRoute || '/';
-        router.push(intendedRoute); // Navigate to the intended route
-    }
+  if (isAuthenticated) {
+    showLoginModal.value = false; // Close login modal
+    const intendedRoute = authStore.intendedRoute || '/';
+    router.push(intendedRoute); // Navigate to the intended route
+  }
 });
+
 const getId = () => {
-    axios.get(`/getStore/${id.value}`).then((response) => {
-        const storeparse = JSON.parse(response.data.message);
-        storedetails.value = storeparse;
-        model.productsArray = JSON.parse(response.data.getProducts);
-    }).catch((error) => {
-        console.log(error);
-    });
+  axios.get(`/getStore/${id.value}`).then((response) => {
+    const storeparse = JSON.parse(response.data.message);
+    storedetails.value = storeparse;
+    model.productsArray = JSON.parse(response.data.getProducts);
+    categorizeProducts(model.productsArray); // Categorize products
+  }).catch((error) => {
+    console.log(error);
+  });
 };
+
+const categorizeProducts = (products) => {
+  bestProducts.value = products.filter(product => product.featured === "true");
+  otherProducts.value = products.filter(product => product.featured !== "true");
+};
+
 const activeProductsArray = computed(() => {
-    return model.productsArray.filter(product => product.status === 'Active');
+  return model.productsArray.filter(product => product.status === 'Active');
 });
 
 // Function to update the currentImage based on the clicked thumbnail
 const updateCurrentImage = (index) => {
-    currentImageIndex.value = index;
-    currentImage.value = getImageUrl(selectedProductImages.value[index]);
+  currentImageIndex.value = index;
+  currentImage.value = getImageUrl(selectedProductImages.value[index]);
 };
 // Function to navigate to the next image
 const nextImage = () => {
-    currentImageIndex.value = (currentImageIndex.value + 1) % selectedProductImages.value.length;
-    currentImage.value = getImageUrl(selectedProductImages.value[currentImageIndex.value]);
+  currentImageIndex.value = (currentImageIndex.value + 1) % selectedProductImages.value.length;
+  currentImage.value = getImageUrl(selectedProductImages.value[currentImageIndex.value]);
 };
-
 
 const handleBuyNow = () => {
-    if (!authStore.isAuthenticated) {
-        authStore.setIntendedRoute('/cartallproducts');
-        showLoginModal.value = true;
-    } else {
-        addToBuyNow(selectedProduct.value);
-        router.push('/cartallproducts');
-    }
+  if (!authStore.isAuthenticated) {
+    authStore.setIntendedRoute('/cartallproducts');
+    showLoginModal.value = true;
+  } else {
+    addToBuyNow(selectedProduct.value);
+    router.push('/cartallproducts');
+  }
 };
+
 const setDefaultQuantity = () => {
-    if (selectedProduct.value) {
-        selectedProduct.value.quantity = 1;
-    }
+  if (selectedProduct.value) {
+    selectedProduct.value.quantity = 1;
+  }
 };
+
 watch(selectedProduct, () => {
-    setDefaultQuantity();
+  setDefaultQuantity();
 }, {
-    immediate: true
+  immediate: true
 });
+
 // Function to increase quantity
 const increaseQuantity = () => {
-    if (selectedProduct.value && selectedProduct.value.quantity < selectedProduct.value.availability) {
-        selectedProduct.value.quantity++;
-    } else {
-        showToastWithMessage("Quantity exceeds availability");
-    }
+  if (selectedProduct.value && selectedProduct.value.quantity < selectedProduct.value.availability) {
+    selectedProduct.value.quantity++;
+  } else {
+    showToastWithMessage("Quantity exceeds availability");
+  }
 };
+
 // Function to decrease quantity
 const decreaseQuantity = () => {
-    if (selectedProduct.value && selectedProduct.value.quantity > 1) {
-        selectedProduct.value.quantity--;
-    } else {
-        showToastWithMessage("Minimum quantity reached");
-    }
+  if (selectedProduct.value && selectedProduct.value.quantity > 1) {
+    selectedProduct.value.quantity--;
+  } else {
+    showToastWithMessage("Minimum quantity reached");
+  }
 };
+
 const addToBuyNow = (item) => {
-    buyNowProducts.value.push(item);
+  buyNowProducts.value.push(item);
 };
-// const totalItemsInCart = computed(() => {
-//   const quantitiesByProductId = cartFinalStore.cartItems.flatMap(group => group.items).reduce((acc, item) => {
-//     const productId = item.id;
-//     const quantity = parseInt(item.quantity, 10); // Ensure quantity is treated as a number
-//     if (!acc[productId]) {
-//       acc[productId] = 0;
-//     }
-//     acc[productId] += quantity;
-//     return acc;
-//   }, {});
-//   return Object.values(quantitiesByProductId).reduce((total, qty) => total + qty, 0);
-// });
-// watch(totalItemsInCart, (newTotal) => {
-//   console.log("totalItemsInCart:", newTotal);
-//   console.log("totalItemsCount:", totalItemsInCart.value); // Log the totalItemsInCart value
-// });
+
 const clearCartAndNavigate = () => {
-    cartStore.clearCart();
+  cartStore.clearCart();
 };
+
 const isCartEmpty = computed(() => {
-    return cart.value.length === 0;
+  return cart.value.length === 0;
 });
-watch(cartFinalStore.cartItems, (newCart) => {
-    editCartProducts.value = [...newCart];
-}, {
-    deep: true
-});
+
+
+
 const paginatedItems = computed(() => {
-    return items.slice(0, 2 + numFeedbackShown.value);
+  return items.value.slice(0, 2 + numFeedbackShown.value);
 });
+
 const showSeeMoreButton = computed(() => {
-    return numFeedbackShown.value < items.length - 2;
+  return numFeedbackShown.value < items.value.length - 2;
 });
+
 const seeMore = () => {
-    numFeedbackShown.value += 2;
-    if (!showSeeMoreButton.value) {
-        showSeeLessButton.value = true;
-    }
+  numFeedbackShown.value += 2;
+  if (!showSeeMoreButton.value) {
+    showSeeLessButton.value = true;
+  }
 };
+
 const seeLess = () => {
-    numFeedbackShown.value = 0;
-    showSeeLessButton.value = false;
+  numFeedbackShown.value = 0;
+  showSeeLessButton.value = false;
 };
+
 const toggleshowCart = (item) => {
-    selectedProduct.value = item;
-    showCart.value = true;
+  selectedProduct.value = item;
+  showCart.value = true;
 };
+
 const closeCart = () => {
-    showCart.value = false;
+  showCart.value = false;
 };
+
 const closeModal = () => {
-    showCartModal.value = false;
+  showCartModal.value = false;
 };
+
 const toggleshowReviews = () => {
-    showReviews.value = true;
-    showCart.value = false;
+  showReviews.value = true;
+  showCart.value = false;
 };
+
 const closeReviews = () => {
-    showReviews.value = false;
-    showCart.value = true;
+  showReviews.value = false;
+  showCart.value = true;
 };
+
 const showToastWithMessage = (message) => {
-    toastMessage.value = message;
-    showToast.value = true;
-    setTimeout(() => {
-        showToast.value = false;
-        toastMessage.value = "";
-    }, 3000);
-};
-const hideToast = () => {
+  toastMessage.value = message;
+  showToast.value = true;
+  setTimeout(() => {
     showToast.value = false;
     toastMessage.value = "";
+  }, 3000);
 };
-watch(cartStore.cart, (newCart) => {
-    editCartProducts.value = [...newCart];
-}, {
-    deep: true
-});
+
+const hideToast = () => {
+  showToast.value = false;
+  toastMessage.value = "";
+};
+
+
 watch(
-    () => route.params.id,
-    (newId) => {
-        if (newId) {
-            id.value = newId;
-            getId();
-        }
-    }, {
+  () => route.params.id,
+  (newId) => {
+    if (newId) {
+      id.value = newId;
+      getId();
+    }
+  }, {
     immediate: true
-}
+  }
 );
+
 // Watch for changes in selectedProduct and update selectedProductImages accordingly
 watch(selectedProduct, (newSelectedProduct) => {
-    if (newSelectedProduct) {
-        selectedProductImages.value = newSelectedProduct.uploadedphotos.split('|');
-        updateCurrentImage(0); // Reset currentImageIndex when selectedProduct changes
-    }
+  if (newSelectedProduct) {
+    selectedProductImages.value = newSelectedProduct.uploadedphotos.split('|');
+    updateCurrentImage(0); // Reset currentImageIndex when selectedProduct changes
+  }
 });
+
 onMounted(getId);
 </script>
+

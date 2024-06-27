@@ -1,7 +1,6 @@
 // src/stores/searchStore.js
 import { defineStore } from 'pinia';
 import axios from 'axios';
-import { useTourStore } from './toTourCart'; // Import the tour store
 
 export const useSearchStore = defineStore('search', {
   state: () => ({
@@ -21,6 +20,13 @@ export const useSearchStore = defineStore('search', {
           this.results = response.data;
         } catch (error) {
           console.error('Error fetching search results:', error);
+          // Optionally reset results in case of error
+          this.results = {
+            businesses: [],
+            products: [],
+            activities: [],
+            events: []
+          };
         }
       } else {
         this.results = {
@@ -57,17 +63,19 @@ export const useSearchStore = defineStore('search', {
       };
 
       const generateLink = (category, id, latitude, longitude, name, imageList) => {
+        const encodedName = encodeURIComponent(name);
+        const encodedImageList = encodeURIComponent(imageList);
         switch (category) {
           case 'Game':
-            return `/category/do/omniverse/${id}?latitude=${latitude}&longitude=${longitude}&item=${encodeURIComponent(name)}&name=${encodeURIComponent(name)}&id=${id}&imageList=${encodeURIComponent(imageList)}`;
+            return `/category/do/omniverse/${id}?latitude=${latitude}&longitude=${longitude}&item=${encodedName}&name=${encodedName}&id=${id}&imageList=${encodedImageList}`;
           case 'Shop':
-            return `/category/shop/makati/${id}?latitude=${latitude}&longitude=${longitude}&item=${encodeURIComponent(name)}&name=${encodeURIComponent(name)}&id=${id}&imageList=${encodeURIComponent(imageList)}`;
+            return `/category/shop/makati/${id}?latitude=${latitude}&longitude=${longitude}&item=${encodedName}&name=${encodedName}&id=${id}&imageList=${encodedImageList}`;
           case 'Gallery':
-            return `/category/see/glorietta/${id}?latitude=${latitude}&longitude=${longitude}&item=${encodeURIComponent(name)}&name=${encodeURIComponent(name)}&id=${id}&imageList=${encodeURIComponent(imageList)}`;
+            return `/category/see/glorietta/${id}?latitude=${latitude}&longitude=${longitude}&item=${encodedName}&name=${encodedName}&id=${id}&imageList=${encodedImageList}`;
           case 'Restaurant':
-            return `/category/eat/LittleTokyo/${id}?latitude=${latitude}&longitude=${longitude}&item=${encodeURIComponent(name)}&name=${encodeURIComponent(name)}&id=${id}&imageList=${encodeURIComponent(imageList)}`;
+            return `/category/eat/LittleTokyo/${id}?latitude=${latitude}&longitude=${longitude}&item=${encodedName}&name=${encodedName}&id=${id}&imageList=${encodedImageList}`;
           case 'Hotel':
-            return `/category/stay/xyz/${id}?latitude=${latitude}&longitude=${longitude}&name=${encodeURIComponent(name)}&id=${id}&imageList=${encodeURIComponent(imageList)}`;
+            return `/category/stay/xyz/${id}?latitude=${latitude}&longitude=${longitude}&name=${encodedName}&id=${id}&imageList=${encodedImageList}`;
           default:
             return '#';
         }
@@ -109,7 +117,7 @@ export const useSearchStore = defineStore('search', {
             id: event.id,
             name: event.title,
             location: '',
-            link: latitude !== null && longitude !== null ? `/calendar/currentevents/${event.id}?latitude=${latitude}&longitude=${longitude}&event=${encodeURIComponent(event.title)}&name=${encodeURIComponent(event.title)}&id=${event.id}` : '#'
+            link: latitude !== null && longitude !== null ? `/calendar` : '#'
           };
         })
       ];

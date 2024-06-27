@@ -14,69 +14,76 @@
 
         <!-- /Profile router -->
         <!-- MOBILE-->
-        <div class="pt-36 justify-center flex lg:hidden">
-    <img src="@/assets/images/MainNav/card.svg" alt="" class="w-40" style="box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.868);">
-</div>
-<div class="p-6 mt-7 bg-white lg:hidden">
-    <div class="grid place-items-center">
-        <div>
-            <span>Add Profile Picture</span>
-            <div class="border rounded-lg border-black bg-white w-[120px] my-3">
-                <input type="file" class="hidden" id="imageInput" accept="image/*" @change="handleImageChange">
-                <label for="imageInput" class="cursor-pointer">
-                    <img v-if="previewImage" :src="previewImage" alt="Profile Picture" class="w-full h-full object-cover">
-                    <img v-else src="@/assets/images/MainNav/profilepic.svg" alt="Profile Picture" class="w-full h-full object-cover">
-                </label>
+        <div class="pt-36 lg:hidden">
+            <p class="font-semibold text-sm absolute ml-[75px] mt-44">{{ firstName }} {{ lastName }}</p>
+            <div class="justify-center flex ">
+                <img src="@/assets/images/MainNav/card.png" alt="" class="w-[80%] ">
             </div>
         </div>
-    </div>
-    <form @submit.prevent="submitForm" class="mb-10">
-        <div class="mb-3">
-            <label for="firstName" class="block font-bold mb-1">First Name<span style="color: red;">*</span></label>
-            <input required type="text" id="firstName" v-model="firstName" :placeholder="firstName || 'Juan'" class="w-full px-3 py-2 border rounded-lg">
+        <div class="p-6 mt-7 bg-white lg:hidden">
+            <div class="grid place-items-center">
+                <div class="border rounded-lg border-black bg-white w-[190px] my-3">
+                    <input type="file" class="hidden" id="imageInput" accept="image/*" @change="handleImageChange">
+                    <label for="imageInput" class="cursor-pointer">
+                        <img :src="imageSrc" alt="Profile Picture" class="w-full h-full object-cover">
+                    </label>
+                </div>
+            </div>
+            <form @submit.prevent="submitForm" class="mb-10">
+                <div class="mb-3">
+                    <label for="firstName" class="block font-bold mb-1">First Name<span style="color: red;">*</span></label>
+                    <input required type="text" id="firstName" v-model="firstName" :placeholder="firstName || 'Juan'"
+                        class="w-full px-3 py-2 border rounded-lg">
+                </div>
+                <div class="mb-3">
+                    <label for="lastName" class="block font-bold mb-1">Last Name<span style="color: red;">*</span></label>
+                    <input required type="text" id="lastName" v-model="lastName" :placeholder="lastName || 'Dela Cruz'"
+                        class="w-full px-3 py-2 border rounded-lg">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="block font-bold mb-1">Email Address<span style="color: red;">*</span></label>
+                    <input required type="email" id="email" v-model="email" :placeholder="email || 'juandelacruz@email.com'"
+                        autocomplete="email" class="w-full px-3 py-2 border rounded-lg">
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="block font-bold mb-1">Phone Number</label>
+                    <input type="tel" id="phone" v-model="phone" :placeholder="phone || '09876543212'"
+                        class="w-full px-3 py-2 border rounded-lg">
+                    <span v-if="phoneError" class="text-red-500">{{ phoneError }}</span>
+                </div>
+                <div class="mb-3">
+                    <label for="gender" class="block font-bold mb-1">Gender</label>
+                    <select id="gender" v-model="gender" class="w-full px-3 py-2 border rounded-lg">
+                        <option value="">Select Gender</option>
+                        <option value="female">Female</option>
+                        <option value="male">Male</option>
+                        <option value="preferNotToSay">Prefer not to say</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="nationality" class="block font-bold mb-1">Nationality</label>
+                    <input type="text" id="nationality" v-model="nationality" :placeholder="nationality || 'Filipino'"
+                        class="w-full px-3 py-2 border rounded-lg">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="block font-bold mb-1">Password</label>
+                    <input type="password" id="password" v-model="password" :placeholder="password || '1234567890'"
+                        autocomplete="new-password" class="w-full px-3 py-2 border rounded-lg">
+                    <span v-if="passwordError" class="text-red-500">{{ passwordError }}</span>
+                </div>
+                <div class="mb-3">
+                    <label for="confirmPassword" class="block font-bold mb-1">Confirm Password</label>
+                    <input type="password" id="confirmPassword" v-model="confirmPassword"
+                        :placeholder="confirmPassword || '1234567890'" autocomplete="new-password"
+                        class="w-full px-3 py-2 border rounded-lg">
+                    <span v-if="confirmPasswordError" class="text-red-500">{{ confirmPasswordError }}</span>
+                </div>
+                <div class="flex justify-center">
+                    <button type="button" class="text-black px-4 py-2 rounded" @click="cancelForm">Cancel</button>
+                    <button type="submit" class="bg-blue-500 text-white font-semibold px-4 py-2 rounded ml-4">Save</button>
+                </div>
+            </form>
         </div>
-        <div class="mb-3">
-            <label for="lastName" class="block font-bold mb-1">Last Name<span style="color: red;">*</span></label>
-            <input required type="text" id="lastName" v-model="lastName" :placeholder="lastName || 'Dela Cruz'" class="w-full px-3 py-2 border rounded-lg">
-        </div>
-        <div class="mb-3">
-            <label for="email" class="block font-bold mb-1">Email Address<span style="color: red;">*</span></label>
-            <input required type="email" id="email" v-model="email" :placeholder="email || 'juandelacruz@email.com'" autocomplete="email" class="w-full px-3 py-2 border rounded-lg">
-        </div>
-        <div class="mb-3">
-            <label for="phone" class="block font-bold mb-1">Phone Number</label>
-            <input type="tel" id="phone" v-model="phone" :placeholder="phone || '09876543212'" class="w-full px-3 py-2 border rounded-lg">
-            <span v-if="phoneError" class="text-red-500">{{ phoneError }}</span>
-        </div>
-        <div class="mb-3">
-            <label for="gender" class="block font-bold mb-1">Gender</label>
-            <select id="gender" v-model="gender" class="w-full px-3 py-2 border rounded-lg">
-                <option value="">Select Gender</option>
-                <option value="female">Female</option>
-                <option value="male">Male</option>
-                <option value="preferNotToSay">Prefer not to say</option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="nationality" class="block font-bold mb-1">Nationality</label>
-            <input type="text" id="nationality" v-model="nationality" :placeholder="nationality || 'Filipino'" class="w-full px-3 py-2 border rounded-lg">
-        </div>
-        <div class="mb-3">
-            <label for="password" class="block font-bold mb-1">Password</label>
-            <input type="password" id="password" v-model="password" :placeholder="password || '1234567890'" autocomplete="new-password" class="w-full px-3 py-2 border rounded-lg">
-            <span v-if="passwordError" class="text-red-500">{{ passwordError }}</span>
-        </div>
-        <div class="mb-3">
-            <label for="confirmPassword" class="block font-bold mb-1">Confirm Password</label>
-            <input type="password" id="confirmPassword" v-model="confirmPassword" :placeholder="confirmPassword || '1234567890'" autocomplete="new-password" class="w-full px-3 py-2 border rounded-lg">
-            <span v-if="confirmPasswordError" class="text-red-500">{{ confirmPasswordError }}</span>
-        </div>
-        <div class="flex justify-center">
-            <button type="button" class="text-black px-4 py-2 rounded" @click="cancelForm">Cancel</button>
-            <button type="submit" class="bg-blue-500 text-white font-semibold px-4 py-2 rounded ml-4">Save</button>
-        </div>
-    </form>
-</div>
         <!-- /MOBILE-->
 
 
@@ -84,19 +91,18 @@
         <div class=" p-10 hidden lg:block mt-44">
             <!-- Add Profile Picture -->
             <div class="grid place-items-center grid-cols-2  bg-white rounded-t-xl ">
-                <div class="mt-10 text-center ml-40">
-                    <div class="border rounded-lg border-black bg-white w-[165px] my-5 relative">
+                <div class="mt-10 text-center">
+                    <div class="border rounded-lg border-black bg-white w-[165px] my-5 relative w-[40%] ml-[30%]">
                         <input type="file" class="hidden" id="imageInput" accept="image/*" @change="handleImageChange">
                         <label for="imageInput" class="cursor-pointer">
-                            <img v-if="previewImage" :src="previewImage" alt="Profile Picture" class="w-full h-full object-cover">
-                            <img v-else src="@/assets/images/MainNav/profilepic.svg" alt="Profile Picture" class="w-full h-full object-cover">
+                            <img :src="imageSrc" alt="Profile Picture" class="w-full h-full object-cover ">
                         </label>
                     </div>
                     <span class="font-semibold">Add Profile Picture</span>
                 </div>
-                <div class="mr-40 mt-10">
-                    <img src="@/assets/images/MainNav/card.svg" alt="" class="w-full rounded-xl"
-                        style="box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.868);">
+                <div class="mr-40 mt-10 ">
+                    <p class="font-semibold absolute ml-[45px] mt-64">{{ firstName }} {{ lastName }}</p>
+                    <img src="@/assets/images/MainNav/card.png" alt="" class="w-full rounded-xl">
                 </div>
 
             </div>
@@ -134,9 +140,8 @@
                         </div>
                         <div class="mb-4">
                             <label for="password" class="block font-bold mb-1">Password</label>
-                            <input type="password" id="password" v-model="password"
-                                :placeholder="password || '1234567890'" autocomplete="new-password"
-                                class="w-full px-3 py-2 border rounded-lg">
+                            <input type="password" id="password" v-model="password" :placeholder="password || '1234567890'"
+                                autocomplete="new-password" class="w-full px-3 py-2 border rounded-lg">
                             <span v-if="passwordError" class="text-red-500">{{ passwordError }}</span>
                         </div>
                     </div>
@@ -182,20 +187,20 @@
 
 
 
-
 <style scope>
 /* Hide scrollbar */
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
 }
-
-/* Optional: Show scrollbar on hover */
 </style>
+
+
 <script setup>
-import { ref, onBeforeMount } from 'vue';
+import { ref, onBeforeMount, computed, } from 'vue';
 import { useProfileStore } from '@/stores/profile';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
+import defaultProfilePic from '@/assets/images/MainNav/profilepic.svg'; // Import the default profile picture
 
 const id = ref(0);
 const firstName = ref('');
@@ -213,10 +218,9 @@ const previewImage = ref('');
 const confirmPasswordError = ref('');
 const profileStore = useProfileStore();
 
-
 const fetchUser = async () => {
     try {
-        const user =  await profileStore.users();
+        const user = await profileStore.users();
         if (user.data) {
             id.value = user.data.id;
             firstName.value = user.data.firstname;
@@ -234,10 +238,8 @@ const fetchUser = async () => {
     }
 };
 
-
 const handleImageChange = (event) => {
     const file = event.target.files[0];
-    console.log
     if (file) {
         const reader = new FileReader();
         reader.onload = (e) => {
@@ -247,7 +249,6 @@ const handleImageChange = (event) => {
         profilephoto.value = file;
     }
 };
-
 const submitForm = async () => {
     phoneError.value = '';
     passwordError.value = '';
@@ -278,7 +279,7 @@ const submitForm = async () => {
     formData.append('contact', phone.value);
     formData.append('password', password.value);
 
-    if (profilephoto.value) {
+    if (profilephoto.value instanceof File) {
         formData.append('profilephoto', profilephoto.value);
     }
 
@@ -286,23 +287,33 @@ const submitForm = async () => {
         const updateRes = await profileStore.updateUser(formData);
         console.log(updateRes);
 
-      toast.success('Update successfully!');
- await fetchUser
+        toast.success('Update successfully!');
+        await fetchUser();
     } catch (error) {
         console.error('Error updating user profile:', error);
         toast.error('Update failed!');
     }
 };
 
-
 const cancelForm = () => {
-
     console.log('Form cancelled!');
 };
 
-onBeforeMount( async () => {
-   await fetchUser();
+onBeforeMount(async () => {
+    await fetchUser();
 });
 
+const getImageUrl = (fileName) => {
+    return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
+};
 
+const imageSrc = computed(() => {
+    if (previewImage.value) {
+        return previewImage.value;
+    } else if (profilephoto.value && typeof profilephoto.value === 'string' && profilephoto.value !== 'none') {
+        return getImageUrl(profilephoto.value);
+    } else {
+        return defaultProfilePic;
+    }
+});
 </script>

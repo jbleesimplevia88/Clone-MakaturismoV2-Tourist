@@ -32,104 +32,66 @@
                 <!-- WHEN USER IS LOGGED IN-->
                 <div v-if="authStore.isAuthenticated">
                     <div class="hidden lg:flex items-center space-x-6">
-                        <!-- Notification Icon -->
-                        <svg @click="toggleNotif" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                            class="w-6 h-6">
-                            <path fill-rule="evenodd"
-                                d="M5.25 9a6.75 6.75 0 0 1 13.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 0 1-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 1 1-7.48 0 24.585 24.585 0 0 1-4.831-1.244.75.75 0 0 1-.298-1.205A8.217 8.217 0 0 0 5.25 9.75V9Zm4.502 8.9a2.25 2.25 0 1 0 4.496 0 25.057 25.057 0 0 1-4.496 0Z"
-                                clip-rule="evenodd" />
-                        </svg>
-                        <!-- Notification Modal -->
-                        <div v-if="showNotifModal"
-                            class="absolute top-[6.5rem] right-[1.2rem] bg-gray-100 shadow text-black rounded-lg w-[325px]">
-                            <div class="p-4" role="none">
-                                <p class="pb-3 text-xl font-bold">Notifications</p>
-                                <!-- Notification Tray -->
-                                <div class="w-full pt-30 bg-[#F2F2F2]">
-                                    <div v-for="(notification, index) in bookingItems" :key="index"
-                                        class="rounded-2xl p-1 flex bg-white hover:bg-blue-600 cursor-pointer w-100 mb-4"
-                                        @click="openNotifModal(notification)">
-                                        <!-- SVG Icon -->
-                                        <svg data-v-c3ceb15a="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                            fill="currentColor" class="w-6 h-6 mr-2">
-                                            <path data-v-c3ceb15a="" fill-rule="evenodd"
-                                                d="M5.25 9a6.75 6.75 0 0 1 13.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 0 1-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 1 1-7.48 0 24.585 24.585 0 0 1-4.831-1.244.75.75 0 0 1-.298-1.205A8.217 8.217 0 0 0 5.25 9.75V9Zm4.502 8.9a2.25 2.25 0 1 0 4.496 0 25.057 25.057 0 0 1-4.496 0Z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        <!-- Notification Content -->
-                                        <span class="text-lg">{{ notification }}</span>
-                                    </div>
-                                </div>
-                                <!-- Booking Confirmation Modal -->
-                                <div v-if="showBookingConfirmationModal"
-                                    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                                    <div class="bg-white p-4 rounded-lg">
-                                        <div class="flex items-center justify-between mb-1">
-                                            <h2 class="text-xl font-semibold">Booking Confirmed</h2>
-                                            <button @click="closeBookingConfirmationModal">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.9" stroke="currentColor" class="w-6 h-6">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M6 18 18 6M6 6l12 12"></path>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        <p>Thank you for booking with iBayad. </p>
-                                        <br><br>
-                                        <p>Your booking reference is: </p>
-                                        <p>An email sent to: <span class="font-bold">Juandelacruz@gmail.com</span></p>
-                                    </div>
-                                </div>
-                                <!-- Order Complete Modal -->
-                                <div v-if="showOrderCompleteModal"
-                                    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                                    <div class="bg-white p-4 rounded-lg">
-                                        <div class="flex items-center justify-between mb-1">
-                                            <h2 class="text-xl font-semibold">Order Completed</h2>
-                                            <button @click="closeOrderCompleteModal">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.9" stroke="currentColor" class="w-6 h-6">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M6 18 18 6M6 6l12 12"></path>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        <p>Thank you for booking with iBayad. </p>
-                                        <br><br>
-                                        <p>Your booking reference is: </p>
-                                        <p>An email sent to: <span class="font-bold">Juandelacruz@gmail.com</span></p>
-                                    </div>
-                                </div>
-                                <!-- Booking Complete Modal -->
-                                <div v-if="showBookingCompleteModal"
-                                    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                                    <div class="bg-white p-4 rounded-lg">
-                                        <div class="flex items-center justify-between mb-1">
-                                            <h2 class="text-xl font-semibold">Booking Complete Modal</h2>
-                                            <button @click="closeBookingCompleteModal">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.9" stroke="currentColor" class="w-6 h-6">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M6 18 18 6M6 6l12 12"></path>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        <p>Thank you for booking with iBayad. </p>
-                                        <br><br>
-                                        <p>Your booking reference is: </p>
-                                        <p>An email sent to: <span class="font-bold">Juandelacruz@gmail.com</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Person Icon -->
-                        <svg @click=togglepfp xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                            class="w-6 h-6">
-                            <path fill-rule="evenodd"
-                                d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
-                                clip-rule="evenodd" />
-                        </svg>
-                    </div>
+    <!-- Notification Icon -->
+    <svg @click="toggleNotif" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+      <path fill-rule="evenodd" d="M5.25 9a6.75 6.75 0 0 1 13.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 0 1-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 1 1-7.48 0 24.585 24.585 0 0 1-4.831-1.244.75.75 0 0 1-.298-1.205A8.217 8.217 0 0 0 5.25 9.75V9Zm4.502 8.9a2.25 2.25 0 1 0 4.496 0 25.057 25.057 0 0 1-4.496 0Z" clip-rule="evenodd" />
+    </svg>
+    <!-- Notification Modal -->
+    <div v-if="showNotifModal" class="absolute top-[6.5rem] right-[1.2rem] bg-gray-100 shadow text-black rounded-lg w-[325px]">
+      <div class="p-4" role="none">
+        <p class="pb-3 text-xl font-bold">Notifications</p>
+        <!-- Notification Tray -->
+        <div class="w-full pt-30 bg-[#F2F2F2]">
+          <div v-for="(notification, index) in notifications" :key="index" class="rounded-2xl p-1 flex bg-white hover:bg-blue-600 cursor-pointer w-100 mb-4" @click="openNotifModal(notification)">
+            <!-- SVG Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 mr-2">
+              <path fill-rule="evenodd" d="M5.25 9a6.75 6.75 0 0 1 13.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 0 1-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 1 1-7.48 0 24.585 24.585 0 0 1-4.831-1.244.75.75 0 0 1-.298-1.205A8.217 8.217 0 0 0 5.25 9.75V9Zm4.502 8.9a2.25 2.25 0 1 0 4.496 0 25.057 25.057 0 0 1-4.496 0Z" clip-rule="evenodd"></path>
+            </svg>
+            <!-- Notification Content -->
+            <span class="text-lg">{{ notification.message }}</span>
+          </div>
+        </div>
+
+        <!-- Order Details Modal -->
+        <div v-if="showOrderDetailsModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div class="bg-white p-4 rounded-lg">
+            <div class="flex items-center justify-between mb-1">
+              <h2 class="text-xl font-semibold">{{ selectedNotification.productname }}</h2>
+              <button @click="closeOrderDetailsModal">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.9" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+            </div>
+            <img :src="selectedNotification.imageurl.split('|')[0]" alt="Product Image">
+
+            <p>{{ selectedNotification.message }}</p>
+          </div>
+        </div>
+
+        <!-- Booking Complete Modal -->
+        <div v-if="showBookingCompleteModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div class="bg-white p-4 rounded-lg">
+            <div class="flex items-center justify-between mb-1">
+              <h2 class="text-xl font-semibold">Booking Complete</h2>
+              <button @click="closeBookingCompleteModal">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.9" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+            </div>
+            <p>Thank you for booking with iBayad.</p>
+            <p>An email has been sent to: <span class="font-bold">Juandelacruz@gmail.com</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Person Icon -->
+    <svg @click="togglepfp" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+      <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
+    </svg>
+  </div>
+
                     <!-- PFP Modal -->
                     <div v-if="showPFPModal"
                         class="absolute top-[6.5rem] right-[1.2rem] bg-gray-100 shadow text-black rounded-lg w-[325px]">
@@ -308,7 +270,6 @@
                                                 <div class="flex justify-center">
                                                     <button @click="openModal"
                                                         class="text-left text-blue-600 py-2 bottom-3">Login</button>
-
                                                 </div>
                                                 <a class="bg-blue-500 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg text-center "
                                                     href="#">Become a Partner</a>
@@ -322,8 +283,6 @@
                 </div>
             </div>
         </div>
-
-
         <div v-if="isCategoryPath($route.path)"
             class="hidden lg:inset-x-0 lg:bottom-0 lg:grid lg:grid-cols-6 lg:pl-20 lg:pr-20 lg:pt-2 lg:pb-2 lg:justify-center lg:text-black lg:bg-white lg:border-t  max-w-full">
             <!-- Location 1 -->
@@ -418,7 +377,6 @@
             <!-- Repeat the above structure for each location, changing the indices accordingly -->
         </div>
         <LoginModal :showModal="showLoginModal" @close="closeModal" />
-
     </nav>
 </template>
 
@@ -434,16 +392,10 @@
 }
 </style>
 
-<script>
-import {
-    RouterLink
-} from 'vue-router';
-import {
-    ref
-} from 'vue'
-import {
-    useAuthStore
-} from '@/stores/auth'
+<script setup>
+import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/auth';
 import axios from 'axios';
 import imageUrl from '@/assets/images/Modal/Intersect.png';
 import imageUrl2 from '@/assets/images/Modal/bg2.png';
@@ -453,229 +405,174 @@ import house from '@/assets/images/MainNav/house.png';
 import food from '@/assets/images/MainNav/food.png';
 import grocery from '@/assets/images/MainNav/grocery-store.png';
 import locationImg from '@/assets/images/MainNav/location.png';
-import LoginModal from '@/components/LoginModal.vue'; // Adjust the path as necessary
-
-
+import LoginModal from '@/components/LoginModal.vue';
 import SearchFilter from '@/views/SearchFilter.vue';
-export default {
-    name: 'NavBar',
-    components: {
-        RouterLink,
-        SearchFilter,
-        LoginModal
-    },
-    data() {
-        return {
-            bookingItems: [
-                "Booking Confirmation",
-                "Order Complete",
-                "Order Complete",
-                "Booking Complete",
-                "Order Complete",
-                "Booking Complete"
-            ],
-            showLoginModal: false,
-            showApproval: false,
-            showBookingConfirmationModal: false,
-            showOrderCompleteModal: false,
-            showBookingCompleteModal: false,
-            isSidebarOpen: false,
-            showInput: false,
-            showNotifModal: false,
-            showPFPModal: false,
 
-            showLoginModal: false,
-            imageUrl: imageUrl,
-            imageUrl2: imageUrl2,
+const authStore = useAuthStore();
+const router = useRouter();
 
-            locations: [{
-                imgSrc: run,
-                alt: 'location1',
-                attrib: 'hover:rounded-l-lg active:rounded-l-lg',
-                title: 'What to DO',
-                mobile: 'Do',
-                link: '/category/do'
-            },
-            {
-                imgSrc: grocery,
-                alt: 'location2',
-                attrib: '',
-                title: 'Where to SHOP',
-                mobile: 'Shop',
-                link: '/category/shop'
-            },
-            {
-                imgSrc: binoculars,
-                alt: 'location3',
-                attrib: '',
-                title: 'What to SEE',
-                mobile: 'See',
-                link: '/category/see'
-            },
-            {
-                imgSrc: food,
-                alt: 'location4',
-                attrib: '',
-                title: 'Where to EAT',
-                mobile: 'Eat',
-                link: '/category/eat'
-            },
-            {
-                imgSrc: house,
-                alt: 'location5',
-                attrib: '',
-                title: 'Where to STAY',
-                mobile: 'Stay',
-                link: '/category/stay'
-            },
-            {
-                imgSrc: locationImg,
-                alt: 'location6',
-                attrib: 'hover:rounded-r-lg active:rounded-r-lg',
-                title: 'Make TOUR',
-                mobile: 'Tour',
-                link: '/category/tour'
-            }
-                // Add more locations as needed
-            ],
-            currentRoute: ''
-        };
-    },
+const username = ref('');
+const lpassword = ref('');
+const showLoginModal = ref(false);
+const showPFPModal = ref(false);
+const showNotif = ref(false);
+const isSidebarOpen = ref(false);
+const loginPasswordError = ref(false);
+const loginErrorMessage = ref('');
+const notifications = ref([]);
+const showNotifModal = ref(false);
+const showOrderCompleteModal = ref(false);
+const showBookingConfirmationModal = ref(false);
+const showOrderDetailsModal = ref(false);
+const showBookingCompleteModal = ref(false);
+const selectedNotification = ref(null);
+const imageUrlRef = ref(imageUrl);
+const imageUrl2Ref = ref(imageUrl2);
+const currentRoute = ref('');
 
-    created() {
-        // Watch for route changes
-        this.$watch(
-            () => this.$route.path,
-            newPath => {
-                // Check if the new path starts with '/category/' and has exactly two segments
-                if (newPath.startsWith('/category/') && newPath.split('/').length === 3) {
-                    console.log('active');
-                    this.currentRoute = newPath;
-                }
-            }
-        );
-    },
-    methods: {
+const locations = ref([
+  {
+    imgSrc: run,
+    alt: 'location1',
+    attrib: 'hover:rounded-l-lg active:rounded-l-lg',
+    title: 'What to DO',
+    mobile: 'Do',
+    link: '/category/do'
+  },
+  {
+    imgSrc: grocery,
+    alt: 'location2',
+    attrib: '',
+    title: 'Where to SHOP',
+    mobile: 'Shop',
+    link: '/category/shop'
+  },
+  {
+    imgSrc: binoculars,
+    alt: 'location3',
+    attrib: '',
+    title: 'What to SEE',
+    mobile: 'See',
+    link: '/category/see'
+  },
+  {
+    imgSrc: food,
+    alt: 'location4',
+    attrib: '',
+    title: 'Where to EAT',
+    mobile: 'Eat',
+    link: '/category/eat'
+  },
+  {
+    imgSrc: house,
+    alt: 'location5',
+    attrib: '',
+    title: 'Where to STAY',
+    mobile: 'Stay',
+    link: '/category/stay'
+  },
+  {
+    imgSrc: locationImg,
+    alt: 'location6',
+    attrib: 'hover:rounded-r-lg active:rounded-r-lg',
+    title: 'Make TOUR',
+    mobile: 'Tour',
+    link: '/category/tour'
+  }
+  // Add more locations as needed
+]);
 
-        openNotifModal(notification) {
-            switch (notification) {
-                case "Booking Confirmation":
-                    this.showBookingConfirmationModal = true;
-                    break;
-                case "Order Complete":
-                    this.showOrderCompleteModal = true;
-                    break;
-                case "Booking Complete":
-                    this.showBookingCompleteModal = true;
-                    break;
-                // Add cases for other types of notifications if needed
-            }
-        },
-        closeBookingConfirmationModal() {
-            this.showBookingConfirmationModal = false;
-        },
-        closeOrderCompleteModal() {
-            this.showOrderCompleteModal = false;
-        },
-        closeBookingCompleteModal() {
-            this.showBookingCompleteModal = false;
-        },
-        togglepfp() {
-            this.showPFPModal = !this.showPFPModal;
-            // Close notification modal if open
-            if (this.showPFPModal && this.showNotifModal) {
-                this.showNotifModal = false;
-            }
-        },
-        toggleBookingConfirmationModal() {
-            this.showBookingConfirmationModal = true;
-        },
-        toggleNotif() {
-            this.showNotifModal = !this.showNotifModal;
-            // Close profile modal if open
-            if (this.showNotifModal && this.showPFPModal) {
-                this.showPFPModal = false;
-            }
-        },
-        toggleSidebar() {
-            this.isSidebarOpen = !this.isSidebarOpen;
-        },
-
-        isCategoryPath(path) {
-            return path.startsWith('/category/') && path.split('/').length === 3;
-        },
-        isActive(link) {
-            // Check if the current route contains the provided link
-            return this.currentRoute.includes(link);
-        },
-
-    },
-    setup() {
-        const authStore = useAuthStore();
-        const username = ref('');
-        const lpassword = ref('');
-        const showLoginModal = ref(false);
-        const showPFPModal = ref(false);
-        const showNotif = ref(false);
-        const isSidebarOpen = ref(false);
-        let loginPasswordError = ref(false); // Declare loginPasswordError as a ref
-        const loginErrorMessage = ref(''); // Declare loginErrorMessage as a ref
-
-        const openModal = () => {
-            showLoginModal.value = true; // Access the reactive variable with .value
-        };
-
-        const closeModal = () => {
-            showLoginModal.value = false; // Access the reactive variable with .value
-        };
-        const login = async () => {
-            loginPasswordError.value = false;
-            const credentials = {
-                username: username.value,
-                password: lpassword.value
-            };
-            const response = await authStore.login(credentials);
-            if (response.status === false) {
-                console.log(response);
-                loginErrorMessage.value = response.message;
-            } else {
-                showLoginSuccess.value = true;
-                loginSuccessMessage.value = 'Login successful!';
-                setTimeout(() => {
-                    showLoginSuccess.value = false;
-                    emit('close'); // Emit close event after showing success message
-                }, 3000); // Hide the success message after 3 seconds
-            }
-        };
-
-        const logout = () => {
-            authStore.logout(); // Call the logout action from the store
-            // Additional logout logic, such as redirecting to the login page, can be added here
-            showPFPModal.value = false; // Close the modal in web
-            showNotif.value = false;
-            isSidebarOpen.value = false; // Close the modal in mobile
-        };
-        return {
-            username,
-            lpassword,
-            showLoginModal,
-            openModal,
-            closeModal,
-            login,
-            logout,
-            authStore,
-            loginErrorMessage
-        };
-        confirm
-    },
-    mounted() {
-        document.addEventListener('click', this.closeInputField);
-    },
-    beforeUnmount() {
-        document.removeEventListener('click', this.closeInputField);
-    },
+const openModal = () => {
+  showLoginModal.value = true;
 };
+const closeModal = () => {
+  showLoginModal.value = false;
+};
+const login = async () => {
+  loginPasswordError.value = false;
+  const credentials = {
+    username: username.value,
+    password: lpassword.value
+  };
+  const response = await authStore.login(credentials);
+  if (response.status === false) {
+    console.log(response);
+    loginErrorMessage.value = response.message;
+  } else {
+    showLoginModal.value = false;
+    // Handle successful login logic
+  }
+};
+const logout = () => {
+  authStore.logout();
+  showPFPModal.value = false;
+  showNotif.value = false;
+  isSidebarOpen.value = false;
+};
+const togglepfp = () => {
+  showPFPModal.value = !showPFPModal.value;
+  if (showPFPModal.value && showNotifModal.value) {
+    showNotifModal.value = false;
+  }
+};
+const toggleNotif = () => {
+  showNotifModal.value = !showNotifModal.value;
+  if (showNotifModal.value && showPFPModal.value) {
+    showPFPModal.value = false;
+  }
+};
+const toggleSidebar = () => {
+  isSidebarOpen.value = !isSidebarOpen.value;
+};
+const isCategoryPath = (path) => {
+  return path.startsWith('/category/') && path.split('/').length === 3;
+};
+const isActive = (link) => {
+  return currentRoute.value.includes(link);
+};
+
+const fetchNotifications = async () => {
+  try {
+    const response = await axios.get('/orderNotification');
+    notifications.value = response.data.notifications;
+  } catch (error) {
+    console.error('Error fetching notifications:', error);
+  }
+};
+
+
+const openNotifModal = (notification) => {
+  console.log('Notification clicked:', notification);
+  selectedNotification.value = notification;
+  if (
+    notification.message === 'Your order is being picked up by the rider.' ||
+    notification.message === 'Your order has been delivered and is complete.' ||
+    notification.message === 'Your order is on the way and being delivered.'
+  ) {
+    console.log('Showing order details modal');
+    showOrderDetailsModal.value = true;
+  }
+};
+
+
+const closeOrderDetailsModal = () => {
+  showOrderDetailsModal.value = false;
+};
+onMounted(() => {
+  fetchNotifications();
+});
+
+watch(
+  () => router.currentRoute.value.path,
+  (newPath) => {
+    if (newPath.startsWith('/category/') && newPath.split('/').length === 3) {
+      console.log('active');
+      currentRoute.value = newPath;
+    }
+  }
+);
 </script>
+
 
 <style scoped>
 .bg-img {
@@ -819,16 +716,16 @@ export default {
 }
 
 /* .slide-enter-active,
-    .slide-leave-active {
-    transition: transform 0.3s ease-in-out;
-    }
-    .slide-enter,
-    .slide-leave-to {
-    transform: translateX(100%);
-    }
-    .slide-enter-to {
-    transform: translateX(-10%);
-    } */
+        .slide-leave-active {
+        transition: transform 0.3s ease-in-out;
+        }
+        .slide-enter,
+        .slide-leave-to {
+        transform: translateX(100%);
+        }
+        .slide-enter-to {
+        transform: translateX(-10%);
+        } */
 /*  */
 .slide-enter-active,
 .slide-leave-active {
@@ -843,5 +740,4 @@ export default {
 .slide-enter-to,
 .slide-leave {
     transform: translateX(0);
-}
-</style>
+}</style>

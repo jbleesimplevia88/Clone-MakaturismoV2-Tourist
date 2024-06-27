@@ -16,6 +16,14 @@ export const useCalendarEventsStore = defineStore('calendarEvents', {
     setEvents(events) {
       this.events = events;
     },
+    async fetchEventById(id) {
+      try {
+        const response = await axios.post(`/viewpercalendar/${id}`);
+        this.selectedEvent = JSON.parse(response.data.getcalendardata);
+      } catch (error) {
+        console.error('API request error:', error);
+        this.selectedEvent = null;
+      }},
     async fetchNearestEvents() {
       try {
         const response = await axios.get('/calendar-events');

@@ -10,40 +10,32 @@ export const useTransactionStore = defineStore('transactionContent', {
     async fetchTransactions() {
       try {
         const response = await axios.post('/displayTrans');
-        this.transactions = response.data.data;
+        this.transactions = response.data;
       } catch (error) {
         console.error('Error fetching transactions:', error);
       }
     },
-    async confirmOrderReceived(productid, orderid) {
+    async confirmOrderReceived(orderId) {  // Removed productId
       try {
-        const response = await axios.post('/update-order-status', {
-          productid,
-          orderid,
-          status: 'Completed'
-        });
-        if (response.status === 200) {
-          const transaction = this.transactions.find(item => item.productid === productid);
-          if (transaction) {
-            transaction.paymentstatus = 'Completed';
-          }
-          const allCompleted = this.transactions
-            .filter(item => item.orderid === orderid)
-            .every(item => item.paymentstatus === 'Completed');
-          if (allCompleted) {
-            const details = this.transactions.find(item => item.orderid === orderid);
-            if (details) {
-              details.Details[0].paymentstatus = 'Completed';
-            }
-          }
+        const response = await axios.post('/confirmOrderReceived', { orderid: orderId });
+        if (response.data.success) {
+          this.updatePaymentStatus(orderId, 'Completed');
           return true;
-        } else {
-          return false;
         }
       } catch (error) {
-        console.error('Error confirming order:', error);
-        return false;
+        console.error('Error confirming order received:', error);
       }
+      return false;
+    },
+    updatePaymentStatus(orderId, status) {
+      this.transactions.forEach(transaction => {
+        if (transaction.orderid === orderId) {
+          transaction.paymentstatus = status;
+          transaction.products.forEach(product => {
+            product.paymentstatus = status;
+          });
+        }
+      });
     },
     extractLatLong(maplink) {
       const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;

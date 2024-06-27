@@ -362,7 +362,7 @@ const model = reactive({
     items: [],
     imageList: '',
 });
-const categories = ['American', 'Argentine', 'Asian', 'Australian', 'Chinese', 'European', 'Filipino', 'French', 'German', 'Halal', 'Indian', 'Irish', 'Italian', 'Japanese', 'Korean', 'Mediterranean', 'Mexican', 'Singapore', 'Spanish', 'Swiss', 'Thai', 'Vietnamese'];
+const categories = ['American', 'Argentine', 'Asian', 'Australian', 'Chinese', 'European', 'Filipino', 'French', 'Singapore', 'Spanish', 'Swiss', 'Thai', 'Vietnamese'];
 const currentPage = ref(0);
 const pageSize = ref(8);
 const showDropdown = ref(false);

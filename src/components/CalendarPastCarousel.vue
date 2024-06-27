@@ -11,7 +11,7 @@ import { useRouter } from 'vue-router';
 const store = useCalendarEventsStore();
 const router = useRouter();
 
-const getTruncatedDescription = (description, wordLimit = 40) => {
+const getTruncatedDescription = (description, wordLimit = 25) => {
   if (!description) return '';
   const words = description.split(' ');
   if (words.length <= wordLimit) return description;

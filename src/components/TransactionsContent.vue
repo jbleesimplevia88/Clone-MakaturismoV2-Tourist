@@ -27,7 +27,7 @@
              <div v-for="item in group.products" :key="item.id" class="flex justify-between mb-2">
                <div class="w-1/3 lg:w-[15%] lg:h-[50%]">
                  <img :src="getImageUrl(getFirstImageUrl(item?.preproduct?.[0]?.uploadedphotos))"
-                   :alt="item.productname" class="lg:w-[70%] lg:h-[40%] w-20 h-20 object-cover mb-2 rounded-lg">
+                   :alt="item.productname" class="lg:w-[50%] lg:h-[30%] w-20 h-20 object-cover mb-2 rounded-lg">
                  <div class="text-sm text-gray-500">{{ formatDate(item.created_at) }}</div>
                </div>
                <div class="lg:w-1/3  flex flex-col justify-center">
@@ -35,7 +35,7 @@
                </div>
                <div class="w-1/3 flex flex-col justify-center text-right">
                  <div class="text-md">{{ item.quantity }}x</div>
-                 <div class="text-md">₱ {{ item.productprice }}</div>
+                 <div class="text-md">₱ {{ group.finaltotal}}</div>
                </div>
              </div>
              <!-- Action Button -->
@@ -77,7 +77,7 @@
              <div v-for="item in group.products" :key="item.id" class="flex justify-between mb-2">
                <div class="w-1/3">
                  <img :src="getImageUrl(getFirstImageUrl(item?.preproduct?.[0]?.uploadedphotos))"
-                   :alt="item.productname" class="w-20 h-20 object-cover mb-2">
+                 :alt="item.productname" class="lg:w-[50%] lg:h-[30%] w-20 h-20 object-cover mb-2 rounded-lg">
                  <div class="text-sm text-gray-500">{{ formatDate(item.created_at) }}</div>
                </div>
                <div class="w-1/3 flex flex-col justify-center">
@@ -85,7 +85,7 @@
                </div>
                <div class="w-1/3 flex flex-col justify-center text-right">
                  <div class="text-md">{{ item.quantity }}x</div>
-                 <div class="text-md">₱ {{ item.productprice }}</div>
+                 <div class="text-md">₱ {{ group.finaltotal }}</div>
                </div>
              </div>
              <!-- Action Button -->
@@ -126,7 +126,9 @@
     <div v-for="(product, index) in selectedItem.products" :key="index" class="flex flex-col justify-between mt-[1.5rem] w-auto lg:h-[154px] h-[120px] bg-[#E7EAEF] space-y-2 relative">
       <!-- Add relative positioning -->
       <div class="flex flex-row">
-        <img :src="getImageUrl(getFirstImageUrl(product?.preproduct?.[0]?.uploadedphotos))" class="h-auto w-[154px] lg:h-[154px]">
+        <div class="w-[50%]">
+        <img :src="getImageUrl(getFirstImageUrl(product?.preproduct?.[0]?.uploadedphotos))" class="h-[120px] w-[154px] lg:h-[154px] ">
+      </div>
         <div class="w-full">
           <div class="grid grid-cols-2">
             <p class="h-[2rem] mt-3 text-md lg:text-lg">{{ product?.productname }}</p>

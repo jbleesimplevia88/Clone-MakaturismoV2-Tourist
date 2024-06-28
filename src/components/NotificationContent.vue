@@ -13,7 +13,7 @@
         <!-- Notification Tray -->
         <div class="w-full pt-40 bg-[#F2F2F2]">
             <div v-for="(notification, index) in notifications" :key="index"
-                class="rectangle-2xl p-4 flex bg-white hover:bg-blue-600 cursor-pointer w-100 mb-4"
+                class="rectangle-2xl p-2 flex bg-white hover:bg-blue-600 cursor-pointer w-100 mb-4"
                 @click="openModal(notification)">
                 <!-- SVG Icon -->
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 mr-2">
@@ -21,12 +21,11 @@
                 </svg>
                 <!-- Notification Content -->
                 <div class="flex items-center">
-                    <img :src="notification.imageurl" alt="Product Image" class="w-12 h-12 mr-4" />
+                    <img :src="getImageUrl(getFirstImageUrl(notification.imageurl))" alt="Product Image" class="w-20 h-16 mr-4 rounded-lg" />
                     <div>
                         <span class="text-lg">{{ notification.message }}</span>
                         <div class="text-sm text-gray-500">
                             <p>Product: {{ notification.productname }}</p>
-                    
                         </div>
                     </div>
                 </div>
@@ -52,7 +51,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import axios from 'axios';
 
 const notifications = ref([]);
@@ -61,10 +60,21 @@ const showOrderCompleteModal = ref(false);
 const fetchNotifications = async () => {
     try {
         const response = await axios.get('/orderNotification');
+        console.log('Fetched notifications:', response.data.notifications); // Log the notifications
         notifications.value = response.data.notifications;
     } catch (error) {
         console.error('Error fetching notifications:', error);
     }
+};
+
+const getFirstImageUrl = (pictureimage) => {
+    if (!pictureimage) return '';
+    const images = pictureimage.split('|').filter(img => img.trim() !== '');
+    return images.length > 0 ? images[0].replace('/storage/uploadedphotos/', '') : '';
+};
+
+const getImageUrl = (fileName) => {
+    return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
 };
 
 const openModal = (notification) => {

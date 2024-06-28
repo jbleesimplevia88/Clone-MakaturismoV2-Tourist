@@ -4,28 +4,49 @@ import axios from 'axios';
 export const useTourStore = defineStore({
   id: 'cartTour',
   state: () => ({
-    shopData: {},  // Initialize as an empty object
+    shopData: {},
     reservationDetails: {
       date: '',
       numberOfPersons: 0,
     },
+    availableDays: [],
   }),
   actions: {
     selectTour(tourDetails) {
       this.selectedTour = tourDetails;
-      console.log(this.selectedTour);
+      console.log('Selected tour:', this.selectedTour);
     },
     reserveTour(reservationDetails) {
       this.reservationDetails = reservationDetails;
+      console.log('Reserved tour:', this.reservationDetails);
+    },
+    updateReservationDetails(details) {
+      this.reservationDetails = { ...this.reservationDetails, ...details };
+      console.log('Updated reservation details:', this.reservationDetails);
     },
     getShopData(item) {
       this.shopData = item;
+      console.log('Shop data:', this.shopData);
     },
     clearReservation() {
       this.reservationDetails = {
         date: '',
         numberOfPersons: 0,
       };
+      console.log('Reservation cleared');
+    },
+    parseAvailableDays(actsched) {
+      const daysOfWeekMap = {
+        Sun: 0,
+        Mon: 1,
+        Tues: 2,
+        Wed: 3,
+        Thurs: 4,
+        Fri: 5,
+        Sat: 6,
+      };
+      this.availableDays = actsched.split(',').map((day) => daysOfWeekMap[day]);
+      console.log('Parsed available days:', this.availableDays);
     },
     async fetchCoverPhoto(id) {
       try {
@@ -35,8 +56,9 @@ export const useTourStore = defineStore({
         this.shopData = {
           ...activityDetails,
           coverPhotoUrl,
-        }; // Combine activityDetails with the coverPhotoUrl
-        console.log('Cover photo URL fetched:', coverPhotoUrl); // Log the fetched cover photo URL
+        };
+        console.log('Cover photo URL fetched:', coverPhotoUrl);
+        this.parseAvailableDays(activityDetails.actsched);
       } catch (error) {
         console.error('Failed to fetch cover photo:', error);
       }
@@ -46,6 +68,7 @@ export const useTourStore = defineStore({
         const response = await axios.post('/book-tour-list', { date });
         const tours = response.data.data;
         const totalPersons = tours.reduce((sum, tour) => sum + tour.number_of_person, 0);
+        console.log(`Total persons for ${date}: ${totalPersons}`);
         return totalPersons;
       } catch (error) {
         console.error('Failed to check availability:', error);
@@ -68,13 +91,13 @@ export const useTourStore = defineStore({
         }
 
         const payload = {
-          lguact_id: this.shopData.id, 
+          lguact_id: this.shopData.id,
           tourist_id: userInfo.id,
           date: this.reservationDetails.date,
           number_of_person: this.reservationDetails.numberOfPersons,
         };
 
-        console.log('Sending booking payload:', payload); // Log the payload for debugging
+        console.log('Sending booking payload:', payload);
 
         const response = await axios.post('/book-tour', payload);
 

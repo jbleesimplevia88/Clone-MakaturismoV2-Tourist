@@ -1,10 +1,10 @@
 <template>
-    <div class="flex relative pt-[57px] md:pt-[80px] justify-center">
+    <div class="flex relative pt-[57px] md:pt-[80px] justify-center w-full">
         <div class="relative  lg:w-full">
-            <div class="bg-[#102E61] h-[101%] lg:h-[105%] " style="position: absolute; top: 0; left: 0; width: 100%; ">
+            <div class="bg-[#102E61] h-[100%] lg:h-[100%]" style="position: absolute; top: 0px; left: 0; width: 100%; ">
             </div>
-            <div class="relative inset-0 sm:top-56 md:top-2 pl-0 md:pl-16 flex items-center ">
-                <div class="relative flex flex-col pl-0 lg:pl-10 ">
+            <div class="relative flex flex-col pl-0 lg:pl-16">
+                <div class="relative flex flex-col pl-0 lg:pl-14">
                     <div class="absolute lg:top-4 lg:left-3 top-4 z-[1]">
                         <router-link to="/category/tour">
                             <a class=" flex items-center">
@@ -20,11 +20,9 @@
                             </a>
                         </router-link>
                     </div>
-                    <div class="relative flex flex-col items-center ">
-                        <div class=" lg:pr-[7rem] lg:w-full">
-                            <ContentCarousel :items="items" class="mb-10" />
+                    <div class=" lg:pr-[7rem]  justify-center flex w-full">
+                            <ContentCarousel :items="items" class="mb-10 lg:ml-9  w-full " />
                         </div>
-                    </div>
                     <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 lg:p-5 px-5 py-3 shadow-lg z-[10]">
                         <div class="flex justify-between">
                             <div>
@@ -48,7 +46,7 @@
             </div>
         </div>
     </div>
-    <div class="flex flex-wrap justify-between items-center mb-2 relative">
+    <div class="lg:flex lg:flex-wrap lg:justify-between lg:items-center lg:mb-2 lg:relative">
         <div class="my-4 lg:p-0 lg:w-[75%]">
             <div class="relative mx-6 px-3 lg:px-32 pt-5">
                 <p class="font-bold text-lg text-black text-left pb-5 pt-3 lg:pt-[5rem]">About this place</p>
@@ -105,13 +103,21 @@
                             <div class="mb-5">
                                 <div class="flex flex-col m-2">
                                     <label for="Date" class="mb-2 font-bold">Date of Tour</label>
-                                    <input type="date" v-model="selectedDate" class="border-2 border-black rounded-md p-2.5"
-                                        :min="minDate" @change="checkDate">
+                                    <div class="w-34">   
+                                        <CustomCalendar :availableDays="availableDays" v-model:selectedDate="reservationDetails.date" />
+                                    </div>
+
                                 </div>
                                 <div class="flex flex-col m-2">
                                     <label for="" class=" mb-2 font-bold">Number of Person</label>
-                                    <input type="number" v-model="numberOfPersons"
-                                        class="border-2 border-black rounded-md p-2.5">
+                                    <input
+              type="number"
+              v-model="reservationDetails.numberOfPersons"
+              class="border-2 border-black rounded-md p-2.5"
+              min="1"
+              max="15"
+              @input="updateNumberOfPersons"
+            />
                                 </div>
                                 <div class="flex flex-col m-2">
                                     <label for="tourTimeInput" class="mb-2 font-bold">Time of Tour</label>
@@ -133,36 +139,38 @@
             </div>
         </div>
         <div class="hidden lg:block">
-            <div class="my-4 lg:w-[30%] lg:h-[30%] right-10 absolute top-[8rem]">
-                <div class="lg:w-[75%] border border-gray-300 p-4 rounded-lg shadow">
-                    <!-- center this div -->
-                    <div class="mb-5">
-                        <div class="flex flex-col m-2">
-                            <label for="Date" class="mb-2 font-bold">Date of Tour</label>
-                            <input type="date" v-model="selectedDate" class="border-2 border-black rounded-md p-2.5"
-                                :min="minDate" @change="checkDate">
-                        </div>
-                        <div class="flex flex-col m-2">
-                            <label for="" class=" mb-2 font-bold">Number of Person</label>
-                            <input type="number" v-model="numberOfPersons" class="border-2 border-black rounded-md p-2.5" min="1" max="15">
-                        </div>
-                        <div class="flex flex-col m-2">
-                            <label for="tourTimeInput" class="mb-2 font-bold">Time of Tour</label>
-                            <!-- Set id attribute for easy access in JavaScript -->
-                            <span>10:00 AM - 11:00 AM</span>
-                        </div>
-                        <div class="flex flex-col m-2">
-                            <label for="" class=" mb-2 font-bold">Services</label>
-                            <span>Tour</span>
-                        </div>
-                    </div>
-                    <div class="w-[100%]">
-                        <button @click="reserve"
-                            class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Reserve</button>
-                    </div>
-                </div>
-            </div>
+    <div class="my-4 lg:w-[30%] lg:h-[30%] right-2 absolute top-[8rem]">
+      <div class="lg:w-[75%] border border-gray-300 p-4 rounded-lg shadow">
+        <div class="mb-5">
+            <label for="date" class="mb-2 font-bold">Select Day of Tour</label>
+
+          <CustomCalendar :availableDays="availableDays" v-model:selectedDate="reservationDetails.date" />
+          <div class="flex flex-col m-2">
+            <label for="" class="mb-2 font-bold">Number of Person</label>
+            <input
+              type="number"
+              v-model="reservationDetails.numberOfPersons"
+              class="border-2 border-black rounded-md p-2.5"
+              min="1"
+              max="15"
+              @input="updateNumberOfPersons"
+            />
+          </div>
+          <div class="flex flex-col m-2">
+            <label for="tourTimeInput" class="mb-2 font-bold">Time of Tour</label>
+            <span>10:00 AM - 11:00 AM</span>
+          </div>
+          <div class="flex flex-col m-2">
+            <label for="" class="mb-2 font-bold">Services</label>
+            <span>Tour</span>
+          </div>
         </div>
+        <div class="w-[100%]">
+          <button @click="reserve" class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[100%]">Reserve</button>
+        </div>
+      </div>
+    </div>
+  </div>
     </div>
     <div class="relative flex flex-col">
         <div class="relative mx-6 px-3 lg:px-32 pb-5 pt-5">
@@ -282,16 +290,15 @@
 
 <style scoped></style>
 
-
 <script setup>
-import { ref, computed, watch, defineProps } from 'vue';
-import axios from 'axios';
+import { ref, computed, watch, defineProps, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useTourStore } from '@/stores/toTourCart';
 import { useAuthStore } from '@/stores/auth';
 import ContentCarousel from '@/components/TourCarousel.vue';
 import MapRenderer from "@/components/MapRenderer.vue";
 import LoginModal from '@/components/LoginModal.vue';
+import CustomCalendar from '@/components/CustomCalendar.vue';
 
 // Define component props
 const props = defineProps({
@@ -312,14 +319,22 @@ const cartTour = useTourStore();
 // Reactive states
 const showLoginModal = ref(false);
 const storedetails = ref({});
-const selectedDate = ref('');
-const numberOfPersons = ref(0);
+const reservationDetails = computed(() => cartTour.reservationDetails);
+const availableDays = computed(() => cartTour.availableDays);
 
+const minDate = ref(new Date().toISOString().split('T')[0]);
 
-// Computed properties to determine if a date is selectable
-const isSelectableDate = computed(() => {
-  const selectedDay = new Date(selectedDate.value).getDay();
-  return selectedDay === 3 || selectedDay === 5; // Only Wednesday and Friday are selectable
+const fetchActivityDetails = async (id) => {
+  await cartTour.fetchCoverPhoto(id);
+  storedetails.value = cartTour.shopData;
+};
+
+const isDateSelectable = computed(() => {
+  return (date) => {
+    if (!date) return false;
+    const day = new Date(date).getDay();
+    return cartTour.availableDays.includes(day);
+  };
 });
 
 const reserve = () => {
@@ -329,53 +344,50 @@ const reserve = () => {
     return;
   }
 
-  // Check if the selectedDate is valid
-  if (!selectedDate.value || selectedDate.value.trim() === '') {
-    alert("Please select a date.");
+  if (!reservationDetails.value.date || !isDateSelectable.value(reservationDetails.value.date)) {
+    alert("Please select a valid date.");
     return;
   }
 
-  // Check if numberOfPersons is valid
-  const numberOfPersonsValue = parseInt(numberOfPersons.value);
+  const numberOfPersonsValue = parseInt(reservationDetails.value.numberOfPersons);
   if (isNaN(numberOfPersonsValue) || numberOfPersonsValue <= 0) {
     alert("Please enter a valid number of persons.");
     return;
   }
 
   cartTour.reserveTour({
-    date: selectedDate.value,
+    date: reservationDetails.value.date,
     numberOfPersons: numberOfPersonsValue,
   });
 
   router.push('/checkouttour');
 };
 
-const handleCloseLoginModal = () => {
-    showLoginModal.value = false;
+const updateNumberOfPersons = (event) => {
+  cartTour.updateReservationDetails({ numberOfPersons: event.target.value });
+  console.log('Updated Number of Persons:', event.target.value);
 };
-// Watch for authentication changes
-watch(() => authStore.isAuthenticated, (isAuthenticated) => {
-    if (isAuthenticated) {
-        showLoginModal.value = false; // Close login modal
-        const intendedRoute = authStore.intendedRoute || '/';
-        router.push(intendedRoute); // Navigate to the intended route
-    }
-});
-// Fetch the activity details when the component is mounted or the route parameters change
-watch(
-  () => route.params.id,
-  (newId) => {
-    cartTour.fetchCoverPhoto(newId);
-  },
-  { immediate: true }
-);
+
+const handleCloseLoginModal = () => {
+  showLoginModal.value = false;
+};
+
+watch(() => route.params.id, (newId) => {
+  fetchActivityDetails(newId);
+}, { immediate: true });
 
 const checkDate = () => {
-  if (!isSelectableDate.value) {
-    selectedDate.value = '';
-    alert("Only Wednesday and Friday dates are selectable for tour.");
+  if (!isDateSelectable.value(reservationDetails.value.date)) {
+    cartTour.updateReservationDetails({ date: '' });
+    alert("Selected date is not available for tour.");
   }
 };
 
-
+onMounted(() => {
+  fetchActivityDetails(route.params.id);
+  watch(reservationDetails, (newVal) => {
+    console.log('Reservation details updated:', newVal);
+  });
+});
 </script>
+

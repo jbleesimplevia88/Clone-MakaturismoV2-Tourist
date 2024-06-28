@@ -63,7 +63,7 @@
             </div>
             <p class="text-lg md:text-black text-left pl-2.5 pb-5">{{storedetails.storecontact}}</p>
         </div>
-        <h1 class="font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SPOT IN HERE IN {{storedetails.storename}}</h1>
+        <!-- <h1 class="font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SPOT IN HERE IN {{storedetails.storename}}</h1> -->
     </div>
     <div class="relative flex flex-col">
         <div class="relative mx-6 px-3 lg:px-32 pb-5 pt-5">

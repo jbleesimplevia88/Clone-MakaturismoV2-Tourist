@@ -59,7 +59,7 @@
             </div>
             <p class="text-lg md:text-black text-left pl-2.5 pb-5">{{storedetails.storecontact}}</p>
         </div>
-        <h1 class="font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SPOT IN HERE IN {{storedetails.storename}}</h1>
+        <!-- <h1 class="font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SPOT IN HERE IN {{storedetails.storename}}</h1> -->
         <!--   <ContentCarousel class="mb-10" /> -->
         <!--      start carousel -->
         <!--     end of carousel -->

@@ -22,6 +22,7 @@
         <li v-for="item in searchStore.filteredItems" :key="item.id" class="hover:bg-gray-200 rounded-lg">
           <div @click="handleLinkClick(item.link)" class="search-result-item">
             {{ item.name }} - {{ item.location }}
+
           </div>
         </li>
       </ul>

@@ -98,13 +98,21 @@
         <div>
             <div class="mt-8 pb-10">
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div v-if="filteredItems.length === 0" class="text-center text-red-500">No data found.</div>
-                <div v-for="(item, index) in filteredItems" :key="index" class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
-                    <div class="relative">
-                        <img class="w-full h-[250px] object-cover rounded-t" :src="getImageUrl(item.pictureimage)" alt="">
-                        <div class="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-[#102E61] to-transparent"></div>
+       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
+    <div v-if="filteredItems.length === 0" class="text-center text-red-500">No data found.</div>
+    <div v-for="(item, index) in filteredItems" :key="index" class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
+      <div class="relative" v-if="item.pictureimage">
+        <img :src="getImageUrl(item.pictureimage.split('|')[0])"
+                            class="w-full h-[250px] object-cover rounded-t">
+                        <div
+                            class="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-[#102E61] to-transparent">
+                        </div>
+                        <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{ item.storename }}
+                        </p>
+                        <p class="absolute bottom-2 left-2 text-white text-xs">{{ Array.isArray(item.category) ?
+                            item.category.join(', ') : item.category }}</p>
                     </div>
+                    
                     <div class="p-2 w-full">
                         <p class="text-white text-xs line-clamp-3">{{ item.description }}</p>
                     </div>
@@ -157,12 +165,17 @@
 import axios from 'axios';
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
-import { ref, onBeforeMount, computed, onMounted } from 'vue';
+import { ref, onBeforeMount, computed, onMounted, reactive } from 'vue';
 import { useStayStore } from '@/stores/toStayCart';
 import { useAuthStore } from '@/stores/auth';
 import { useRouter } from 'vue-router';
 import defaultImage from '@/assets/images/CategoryView/ToStay/banner.jpeg'; // Default image
 
+const model = reactive({
+    items: [],
+    imageList: '',
+    busitems: []
+});
 const cartStay = useStayStore();
 const router = useRouter();
 const authStore = useAuthStore();
@@ -171,73 +184,6 @@ const guests = ref([
   { name: 'Adult', quantity: 0, description: 'Ages 18 and above' },
   { name: 'Children', quantity: 0, description: 'Ages 0-17' },
 ]);
-const addToCart = (selectedHotel) => {
-  cartStay.selectHotel(selectedHotel);
-};
-const tostayData = ref(null);
-const loading = ref(true);
-const error = ref(null);
-const fetchTostayData = async () => {
-  try {
-    loading.value = true;
-    const response = await axios.get('/pillar-details');
-    tostayData.value = response.data.tostay[0];
-    loading.value = false;
-  } catch (err) {
-    loading.value = false;
-    error.value = 'Failed to fetch tostay data. Please try again later.';
-    console.error('Failed to fetch tostay data:', err);
-  }
-};
-onBeforeMount(() => {
-  fetchTostayData();
-});
-const getImageUrl = (fileName) => {
-  return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
-};
-const seeMore = (item) => {
-  console.log(item.storename);
-  const roomsQuantity = guests.value.find(guest => guest.name === 'Room').quantity;
-  const adultsQuantity = guests.value.find(guest => guest.name === 'Adult').quantity;
-  const childrenQuantity = guests.value.find(guest => guest.name === 'Children').quantity;
-  cartStay.setSelectedHotelQuantities(roomsQuantity, adultsQuantity, childrenQuantity);
-  cartStay.selectHotel(item);
-  const { latitude, longitude } = extractLatLong(item.maplink);
-  if (latitude !== null && longitude !== null) {
-    router.push({
-      name: 'xyz',
-      params: { id: item.busid },
-      query: { latitude, longitude, name: item.storename, id: item.busid },
-    });
-  } else {
-    console.error('Latitude or longitude not available');
-  }
-};
-const extractLatLong = (mapLocation) => {
-  const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
-  const match = mapLocation.match(regex);
-  if (match && match.length >= 3) {
-    const latitude = parseFloat(match[1]);
-    const longitude = parseFloat(match[2]);
-    return { latitude, longitude };
-  }
-  const altRegex = /!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/;
-  const altMatch = mapLocation.match(altRegex);
-  if (altMatch && altMatch.length >= 3) {
-    const latitude = parseFloat(altMatch[1]);
-    const longitude = parseFloat(altMatch[2]);
-    return { latitude, longitude };
-  }
-  return { latitude: null, longitude: null };
-};
-const fetchManualFilters = async () => {
-  try {
-    const response = await axios.get('/manualfilter');
-    locations.value = response.data; // Assuming backend returns an array of locations
-  } catch (error) {
-    console.error('Failed to fetch manual filters:', error);
-  }
-};
 const todayDate = ref(new Date().toISOString().split('T')[0]);
 const barangay = ref('');
 const dateFrom = ref('');
@@ -259,17 +205,110 @@ const categories = ref([
   'Serviced Residences',
   'Tourist Inn',
 ]);
-const model = ref({
-  items: []
+const tostayData = ref([]); // Ensure tostayData is an array
+const loading = ref(true);
+const error = ref(null);
+
+const displaytoStay = async () => {
+  try {
+    const response = await axios.post("/getAlltostay");
+    model.items = JSON.parse(response.data.message);
+    console.log("Fetched items:", model.items); // Debugging line
+    model.imageList = response.data.getimages;
+    tostayData.value = model.items; // Assign items to tostayData
+  } catch (error) {
+    console.error('Failed to fetch tostay data:', error);
+  }
+};
+const fetchTostayData = async () => {
+  try {
+    loading.value = true;
+    const response = await axios.get('/pillar-details');
+    tostayData.value = response.data.tostay[0];
+    loading.value = false;
+  } catch (err) {
+    loading.value = false;
+    error.value = 'Failed to fetch tostay data. Please try again later.';
+    console.error('Failed to fetch tostay data:', err);
+  }
+};
+
+const fetchManualFilters = async () => {
+  try {
+    const response = await axios.get('/manualfilter');
+    locations.value = response.data; // Assuming backend returns an array of locations
+  } catch (error) {
+    console.error('Failed to fetch manual filters:', error);
+  }
+};
+
+onBeforeMount(() => {
+  fetchTostayData();
+  fetchManualFilters();
 });
-const pageCount = computed(() => Math.ceil(model.value.items.length / pageSize.value));
+onBeforeMount(async () => {
+    await displaytoStay();
+    document.removeEventListener('click', handleGlobalClick);
+});
+
+
+const getImageUrl = (pictureimage) => {
+  if (!pictureimage) return ''; // Return empty string if pictureimage is not defined
+  // Extract the filename of the first image
+  const images = pictureimage.split('|').filter(img => img.trim() !== ''); // Split by "|" and remove empty strings
+  const firstImage = images[0]; // Get the first image filename
+  // Construct the full URL
+  return `${import.meta.env.VITE_STORAGE_BASE_URL}/${firstImage}`;
+};
+
+const seeMore = (item) => {
+  console.log(item.storename);
+  const roomsQuantity = guests.value.find(guest => guest.name === 'Room').quantity;
+  const adultsQuantity = guests.value.find(guest => guest.name === 'Adult').quantity;
+  const childrenQuantity = guests.value.find(guest => guest.name === 'Children').quantity;
+  cartStay.setSelectedHotelQuantities(roomsQuantity, adultsQuantity, childrenQuantity);
+  cartStay.selectHotel(item);
+  const { latitude, longitude } = extractLatLong(item.maplink);
+  if (latitude !== null && longitude !== null) {
+    router.push({
+      name: 'xyz',
+      params: { id: item.busid },
+      query: { latitude, longitude, name: item.storename, id: item.busid, imageList: item.pictureimage },
+    });
+  } else {
+    console.error('Latitude or longitude not available');
+  }
+};
+
+const extractLatLong = (mapLocation) => {
+  const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
+  const match = mapLocation.match(regex);
+  if (match && match.length >= 3) {
+    const latitude = parseFloat(match[1]);
+    const longitude = parseFloat(match[2]);
+    return { latitude, longitude };
+  }
+  const altRegex = /!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/;
+  const altMatch = mapLocation.match(altRegex);
+  if (altMatch && altMatch.length >= 3) {
+    const latitude = parseFloat(altMatch[1]);
+    const longitude = parseFloat(altMatch[2]);
+    return { latitude, longitude };
+  }
+  return { latitude: null, longitude: null };
+};
+
+const pageCount = computed(() => Math.ceil(totalRecords.value / pageSize.value));
 const paginationStartIndex = computed(() => {
-  return currentPage.value * pageSize.value + 1;
+    if (filteredItems.value.length === 0) {
+        return 0; // or any other appropriate value if you want to indicate that no items are displayed
+    } else {
+        return 1;
+    }
 });
-const paginationEndIndex = computed(() => {
-  return Math.min((currentPage.value + 1) * pageSize.value, model.value.items.length);
-});
-const totalRecords = computed(() => model.value.items.length);
+const paginationEndIndex = computed(() => Math.min((currentPage.value + 1) * pageSize.value, filteredItems.value.length));
+const totalRecords = computed(() => model.items.length);
+
 const nextPage = () => {
   if (currentPage.value < pageCount.value - 1) {
     currentPage.value++;
@@ -283,10 +322,11 @@ const prevPage = () => {
 const goToPage = (pageNumber) => {
   currentPage.value = pageNumber;
 };
+
 // Filtered items based on barangay and search query
 const filteredItems = computed(() => {
-  let filtered = todostay.value
-    ? todostay.value.filter(item => {
+  let filtered = tostayData.value
+    ? tostayData.value.filter(item => {
         const matchesSearch = item.storename.toLowerCase().includes(searchQuery.value.toLowerCase());
         const matchesBarangay = !barangay.value || barangay.value === 'All' || item.barangay === barangay.value;
         return matchesSearch && matchesBarangay;
@@ -297,10 +337,7 @@ const filteredItems = computed(() => {
   filtered = filtered.slice(startIndex, endIndex);
   return filtered;
 });
-onMounted(() => {
-  displaytoStay();
-  fetchManualFilters();
-});
+
 const toggleDropdown = () => {
   showDropdown.value = !showDropdown.value;
 };
@@ -322,19 +359,8 @@ const handleDateInput = () => {
   console.log('Selected date (From):', dateFrom.value);
   console.log('Selected date (To):', dateTo.value);
 };
-const displaytoStay = () => {
-  axios
-    .post('/getAlltostay')
-    .then(response => {
-      const todoparse = JSON.parse(response.data.message);
-      todostay.value = todoparse;
-      model.value.items = todoparse;
-    })
-    .catch(error => {
-      console.error(error);
-    });
-};
 </script>
+
 
 
 

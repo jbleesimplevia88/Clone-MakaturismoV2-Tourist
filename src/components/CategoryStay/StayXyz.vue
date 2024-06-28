@@ -316,7 +316,7 @@
             <hr style="border-top: 1px solid black">
 
 
-            <h1 class="font-bold text-lg text-black text-left pt-10 pb-4" v-for="(item, index) in storereviews"
+            <!-- <h1 class="font-bold text-lg text-black text-left pt-10 pb-4" v-for="(item, index) in storereviews"
                 :key="index">{{item.overall}} Ratings ({{item.countreview}} reviews)
                 <div v-if="item.countreview === 0">
                     No reviews yet
@@ -324,9 +324,9 @@
 
             </h1>
 
+                 -->
                 
-                
-                <div class="grid lg:grid-cols-2" v-for="(item, index) in storeratings"
+                <!-- <div class="grid lg:grid-cols-2" v-for="(item, index) in storeratings"
                 :key="index">
 
 
@@ -340,7 +340,7 @@
                         </div>
                         <p class=" ext-lgmdext-black text-left pb-5">{{item.averagerate}}</p>
                     </div>
-                    </div>
+                    </div> -->
             <!-- <div>
                 <h1 class="font-bold text-lg text-black text-left pt-10 pb-4">5.0 Ratings (500 Reviews)</h1>
                 <div class="grid lg:grid-cols-2">

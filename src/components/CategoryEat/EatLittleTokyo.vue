@@ -6,7 +6,7 @@
             <div class=" z-[1]">
                 <div class="relative flex flex-col pl-0 lg:pl-16">
                     <div class="absolute lg:top-4 lg:left-3 top-4 z-[1]">
-                        <router-link to="/category/shop">
+                        <router-link to="/category/eat">
                             <a class=" flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
                                     style="filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));" stroke="currentColor"
@@ -23,18 +23,24 @@
                     <div class="lg:hidden fixed bottom-0 w-full bg-gray-100 p-5 shadow-lg z-50">
                         <div class="flex justify-between">
                             <div>
-                                <p class="text-md">Ordering made easy</p>
-                                <p class="text-lg font-bold">Just a click away</p>
+                                <p class="text-md" v-if="!hasWebsiteLink">Ordering made easy</p>
+                                <p class="text-md text-[17px]" v-else>To see more of what the website offers, click the button below</p>
+                                <p class="text-lg font-bold" v-if="!hasWebsiteLink">Just a click away</p>
                             </div>
                             <div>
-                                <router-link to="/cartallproducts">
+                                <router-link v-if="!hasWebsiteLink" to="/cartallproducts">
                                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg">
                                         Shop Now
                                     </button>
                                 </router-link>
+                                <button v-else @click="visitWebsite"
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-12 rounded-lg">
+                                    Visit Website
+                                </button>
                             </div>
                         </div>
                     </div>
+
                     <div class="flex flex-col pl-8 lg:pl-8 lg:order-first">
                         <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">{{ storedetails.storename }}
                         </h1>
@@ -45,10 +51,12 @@
         </div>
     </div>
     <div class="flex flex-wrap justify-between items-center mb-2 relative">
-        <div class="my-4 lg:p-0 lg:w-[75%]">
-            <div class="relative mx-6 px-3 lg:px-32 pt-5">
+        <div class="my-4 lg:p-0 lg:w-[75%] flex flex-col ">
+            <div class="relative mx-6 px-3 lg:px-32 pt-5 ">
                 <p class="font-bold text-lg text-black text-left pb-5 pt-3 lg:pt-[5rem]">About this place</p>
-                <p class="text-lg text-justify text-black pb-5">{{ storedetails.description }}</p>
+                <p
+                    class="text-lg lg:text-justify text-black pb-5 break-words overflow-wrap break-word word-break break-all">
+                    {{ storedetails.description }}</p>
                 <div class="hidden border border-gray-400 lg:w-[]">
                     <p class="text-center font-bold">Number of items</p>
                 </div>
@@ -88,75 +96,85 @@
                     </div>
                     <p class="text-lg md:text-black text-left pl-2.5 pb-5">{{ storedetails.storecontact }}</p>
                 </div>
-                 <!-- Best Seller -->
-                 <div class="my-4 lg:w-[100%]">
-    <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SELLERS</h1>
-    <div class="grid grid-cols-2 md:grid-cols-3 justify-start text-white lg:w-[70%]">
-        <!-- Cards in Best Seller -->
-        <div v-for="(product, index) in bestProducts" :key="index"
-             class="lg:w-auto lg:flex-auto bg-blue-950 lg:h-[15rem] h-[190px] m-1 p-2 lg:p-3 rounded-xl relative flex flex-col justify-between">
-            <p class="rounded-lg lg:text-sm text-xs lg:px-2 pt-2 absolute top-2.5 left-3 right-3 text-white p-2 w-71"
-               style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
-                {{ product.productname }}
-            </p>
-            <img class="rounded-md h-[80%]" :src="getImageUrl(product.uploadedphotos.split('|')[0])" alt="" width="100%">
-            <button @click="toggleshowCart(product)"
-                    class="text-xs absolute lg:bottom-4 bottom-2 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">
-                See More
-            </button>
-            <div class="flex justify-end absolute lg:bottom-[65px] bottom-[50px] right-[18px]">
-                <div class="flex justify-between">
-                    <div class="flex bg-blue-950 border-1 rounded-lg border-white">
-                        <p class="text-xs border rounded-lg border-white p-1">₱{{ product.productprice }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Other Items -->
-<h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">OTHER ITEMS</h1>
-<div class="flex w-[100%]">
-    <div class="flex justify-between items-center mb-2 space-x-5">
-        <!-- WEB VERSION OTHER ITEMS -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div v-for="(product, index) in otherProducts" :key="index" class="card-wrapper">
-                <div class="card bg-blue-950 w-full border-2 m-1 p-2 rounded-xl relative flex flex-col justify-between">
-                    <div class="flex justify-between w-full">
-                        <div class="w-[200px] h-[200px] overflow-hidden">
-                            <img class="w-full h-full object-cover"
-                                 :src="getImageUrl(product.uploadedphotos.split('|')[0])" alt=""/>
-                        </div>
-                        <div class="w-[60%]">
-                            <p class="text-xs text-white p-2 w-[75%]">{{ product.productname }}</p>
-                            <p class="text-xs text-white p-2 w-[55%]">₱ {{ product.productprice }}</p>
-                            <div class="justify-between items-center mt-4 mb-2 lg:block hidden">
-                                <button @click="toggleshowCart(product)"
-                                        class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 w-[40%] text-white mt-12">See
-                                    More
-                                </button>
-                                <button @click="addToCart(product)"
-                                        class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%] text-white mt-12">Add
-                                    to Cart
-                                </button>
-                            </div>
-                            <div class="grid grid-rows-2 items-center lg:hidden mt-8">
-                                <button @click="toggleshowCart(product)"
-                                        class="text-xs bg-blue-900 rounded-lg m-1 py-2 px-3 w-[100%] text-white mt-5">See
-                                    More
-                                </button>
-                                <button @click="addToCart(product)"
-                                        class="text-xs bg-blue-600 rounded-lg py-2 m-1 px-3 w-[100%] text-white">Add
-                                    to Cart
-                                </button>
+                <!-- Best Seller -->
+                <div class="my-4 lg:w-[100%]">
+                    <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SELLERS</h1>
+                    <div class="grid grid-cols-2 md:grid-cols-3 justify-start text-white lg:w-[70%]">
+                        <!-- Cards in Best Seller -->
+                        <div v-for="(product, index) in bestProducts" :key="index"
+                            class="lg:w-auto lg:flex-auto bg-blue-950 lg:h-[15rem] h-[190px] m-1 p-2 lg:p-3 rounded-xl relative flex flex-col justify-between">
+                            <p class="rounded-lg lg:text-sm text-xs lg:px-2 pt-2 absolute top-2.5 left-3 right-3 text-white p-2 w-71"
+                                style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(255,255,255,0) 100%);">
+                                {{ product.productname }}
+                            </p>
+                            <img class="rounded-md h-[80%]" :src="getImageUrl(product.uploadedphotos.split('|')[0])" alt=""
+                                width="100%">
+                            <button @click="toggleshowCart(product)"
+                                class="text-xs absolute lg:bottom-4 bottom-2 left-0 right-0 mx-auto bg-blue-600 rounded-md py-1 px-3 w-[90%]">
+                                See More
+                            </button>
+                            <div class="flex justify-end absolute lg:bottom-[65px] bottom-[50px] right-[18px]">
+                                <div class="flex justify-between">
+                                    <div class="flex bg-blue-950 border-1 rounded-lg border-white">
+                                        <p class="text-xs border rounded-lg border-white p-1">₱{{ product.productprice }}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+                <!-- Other Items -->
+                <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">OTHER ITEMS</h1>
+                <div class="flex w-[100%]">
+                    <div class="flex justify-between items-center mb-2 space-x-5">
+                        <!-- WEB VERSION OTHER ITEMS -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div v-for="(product, index) in otherProducts" :key="index" class="card-wrapper">
+                                <div
+                                    class="card bg-blue-950 w-full border-2 m-1 p-2 rounded-xl relative flex flex-col justify-between">
+                                    <div class="flex justify-between w-full">
+                                        <div class="w-[200px]  overflow-hidden">
+                                            <img class="w-full h-full object-cover"
+                                                :src="getImageUrl(product.uploadedphotos.split('|')[0])" alt="" />
+                                        </div>
+                                        <div class="w-[60%]">
+                                            <p class="text-xs text-white p-2 w-[75%]">{{ product.productname }}</p>
+                                            <p class="text-xs text-white p-2 w-[55%]">₱ {{ product.productprice }}</p>
+                                            <div class="justify-between items-center mt-4 mb-2 lg:block hidden">
+                                                <button @click="toggleshowCart(product)"
+                                                    :class="{ 'w-[100%] mt-[80px]': hasWebsiteLink, 'w-[40%]': !hasWebsiteLink }"
+                                                    class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 text-white mt-12">
+                                                    See More
+                                                </button>
+                                                <button v-if="!hasWebsiteLink" @click="addToCart(product)"
+                                                    class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%] text-white mt-12">
+                                                    Add to Cart
+                                                </button>
+                                            </div>
+                                            <div
+                                                :class="{ ' items-center lg:hidden mt-8': hasWebsiteLink, 'grid grid-rows-2 items-center lg:hidden mt-8': !hasWebsiteLink }">
+                                                
+                                                <button @click="toggleshowCart(product)"
+                                                    :class="{ 'w-[100%]': hasWebsiteLink, 'w-[100%]': !hasWebsiteLink }"
+                                                    class="text-xs bg-blue-900 rounded-lg m-1 py-2 px-3 w-[100%] text-white mt-5">
+                                                    See More
+                                                </button>
+                                                <button v-if="!hasWebsiteLink" @click="addToCart(product)"
+                                                    class="text-xs bg-blue-600 rounded-lg py-2 m-1 px-3 w-[100%] text-white">
+                                                    Add to Cart
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
                 <!-- mobile verrrrrrrrrrrrrrrrr -->
                 <!-- View Add to cart modal -->
                 <div v-if="showCart"
@@ -172,7 +190,7 @@
                                     </svg>
                                 </button>
                             </div>
-                            <button @click="closeCart" class=" lg:hidden pt-21 ml-2">
+                            <button @click="closeCart" class=" lg:hidden pt-21 ml-2 mt-20">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
@@ -291,7 +309,6 @@
                                                 <button @click="decreaseQuantity"
                                                     class="ml-4 px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
                                                 <span class="p-2">{{ selectedProduct ? selectedProduct.quantity : 1
-
                                                 }}</span>
                                                 <button @click="increaseQuantity"
                                                     class="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg">+</button>
@@ -299,7 +316,7 @@
                                             <!-- buttons -->
                                             <div class="flex justify-between">
                                                 <div class="w-[100%] flex justify-start ">
-                                                    <button @click="addToCart(selectedProduct)"
+                                                    <button v-if="!hasWebsiteLink" @click="addToCart(selectedProduct)"
                                                         class="text-blue-600 border-blue-500 border-2 rounded-lg py-2 w-[90%]">
                                                         Add to Cart</button>
                                                 </div>
@@ -455,63 +472,77 @@
                 </div>
             </div>
         </div>
-        <!-- Cart -->
-        <div v-if="showCartModal && totalItemsInCart > 0" class="lg:block hidden ">
-            <div class="cart-bg my-4 lg:w-[30%] lg:h-[85rem] right-7 absolute top-[8rem]">
-                <div class="cart-list lg:w-[75%] h-[40rem] border border-gray-300 p-4 rounded-lg shadow">
-                    <div class="grid grid-rows-2 gap-0">
-                        <div>
-                            <p class="text-center font-bold">Number of items</p>
+        <!-- Cart Modal Section -->
+        <div v-if="showCartModal && totalItemsInCart > 0">
+            <div class="lg:block hidden">
+                <div class="cart-bg my-4 lg:w-[30%] lg:h-[85rem] right-7 absolute top-[8rem]">
+                    <div class="cart-list lg:w-[75%] h-[40rem] border border-gray-300 p-4 rounded-lg shadow">
+                        <div class="grid grid-rows-2 gap-0">
+                            <div>
+                                <p class="text-center font-bold">Number of items</p>
+                            </div>
+                            <div class="-mt-3">
+                                <p class="text-center font-bold text-3xl">{{ totalItemsInCart }}</p>
+                            </div>
                         </div>
-                        <div class="-mt-3">
-                            <p class="text-center font-bold text-3xl">{{ totalItemsInCart }}</p>
+                        <div class="cart-list-scroll mb-5" style="height: 29rem; overflow-y: auto;">
+                            <p class="font-bold mb-5">List of items</p>
+                            <div v-for="(cartItem, index) in cartFinalStore.cartItems.flatMap(group => group.items)"
+                                :key="index" class="flex justify-between mb-2 pr-4">
+                                <p class="w-[70%]">{{ cartItem.product_details.productname || 'No name available' }}</p>
+                                <p>x{{ cartItem.quantity }}</p>
+                            </div>
+                        </div>
+                        <div v-if="!isCartEmpty">
+                            <button @click="handleBuyNow"
+                                class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[90%] ">
+                                Buy Now
+                            </button>
                         </div>
                     </div>
-                    <div class="cart-list-scroll mb-5" style="height: 29rem; overflow-y: auto;">
-                        <p class="font-bold mb-5">List of items</p>
-                        <div v-for="(cartItem, index) in cartFinalStore.cartItems.flatMap(group => group.items)"
-                            :key="index" class="flex justify-between mb-2 pr-4">
-                            <p class="w-[70%]">{{ cartItem.product_details.productname || 'No name available' }}</p>
-                            <p>x{{ cartItem.quantity }}</p>
-                        </div>
-                    </div>
-                    <div v-if="!isCartEmpty">
-                        <button @click="handleBuyNow"
-                            class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[90%] ">
-                            Buy Now
-                        </button>
-                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cart-bg my-4 lg:w-[30%] lg:h-[50rem] right-7 absolute top-[8rem] lg:block hidden">
+            <div class="cart-list lg:w-[75%] h-[11rem] border border-gray-300 p-4 rounded-lg shadow lg:hidden">
+                <div v-if="hasWebsiteLink">
+                    <p class="text-center text-lg font-semibold">To see more of what the website <br>offers, click the
+                        button below</p>
+                    <button v-if="hasWebsiteLink" @click="visitWebsite"
+                        class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[90%] mt-5 font-semibold">
+                        Visit website
+                    </button>
                 </div>
             </div>
         </div>
         <!-- Mobile- cart -->
         <!-- <template v-if="showCartModal && totalItemsInCart>
-         0">
-        <div class="lg:hidden fixed inset-0 h-full w-full z-50 flex items-center justify-center" @click.self="closeModal">
-            <div class="bg-white rounded-lg shadow-md h-full w-full p-2 " @click.stop>
-                <div class="lg:w-[100%] p-4 rounded-lg">
-                    <button @click="closeModal" class="absolute top-0 left-0 m-4 text-gray-600 hover:text-gray-800">
-                                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                          xmlns="http://www.w3.org/2000/svg">
-                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                              d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                                      </svg>
-                                  </button>
-                    <div class=" flex mb-2 mt-12 border-b-2 justify-center">
-                        <div class="w-[50%]">
-                            <p class="text-center font-bold">Number of items</p>
-                            <p class="text-center font-bold text-3xl">{{ totalItemsInCart }}</p>
+                         0">
+                        <div class="lg:hidden fixed inset-0 h-full w-full z-50 flex items-center justify-center" @click.self="closeModal">
+                            <div class="bg-white rounded-lg shadow-md h-full w-full p-2 " @click.stop>
+                                <div class="lg:w-[100%] p-4 rounded-lg">
+                                    <button @click="closeModal" class="absolute top-0 left-0 m-4 text-gray-600 hover:text-gray-800">
+                                                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                                          xmlns="http://www.w3.org/2000/svg">
+                                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                              d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                                                      </svg>
+                                                  </button>
+                                    <div class=" flex mb-2 mt-12 border-b-2 justify-center">
+                                        <div class="w-[50%]">
+                                            <p class="text-center font-bold">Number of items</p>
+                                            <p class="text-center font-bold text-3xl">{{ totalItemsInCart }}</p>
+                                        </div>
+                               
+                                              
+                                          </div>
+                                          <div class="cart-list mb-5 p-4 border border-gray-200 rounded-lg shadow-sm">
+                      <h2 class="text-lg font-semibold mb-4">List of Items</h2>
+                      <template v-if="!isCartEmpty">
+                        <div v-for="(cartItem, index) in cartFinalStore.cartItems.flatMap(group => group.items)" :key="index" class="flex justify-between items-center mb-3 p-2 bg-white border-b border-gray-200 rounded-md shadow-sm">
+                          <p class="w-3/4 text-gray-700">{{ cartItem.product_details.productname || 'No name available' }}</p>
+                          <p class="text-gray-500">x{{ cartItem.quantity }}</p>
                         </div>
-               
-                              
-                          </div>
-                          <div class="cart-list mb-5 p-4 border border-gray-200 rounded-lg shadow-sm">
-      <h2 class="text-lg font-semibold mb-4">List of Items</h2>
-      <template v-if="!isCartEmpty">
-        <div v-for="(cartItem, index) in cartFinalStore.cartItems.flatMap(group => group.items)" :key="index" class="flex justify-between items-center mb-3 p-2 bg-white border-b border-gray-200 rounded-md shadow-sm">
-          <p class="w-3/4 text-gray-700">{{ cartItem.product_details.productname || 'No name available' }}</p>
-          <p class="text-gray-500">x{{ cartItem.quantity }}</p>
-        </div>
 </template>
 <template v-else>
     <p class="text-center text-gray-500">
@@ -729,7 +760,6 @@ import {
     useCartStoreEat
 } from '@/stores/toEatCart';
 import LoginModal from '@/components/LoginModal.vue';
-
 const props = defineProps({
     latitude: Number,
     longitude: Number,
@@ -751,7 +781,6 @@ const buyNowProducts = ref([]);
 const selectedProduct = ref(null);
 const showToast = ref(false);
 const toastMessage = ref("");
-
 const showCart = ref(false);
 const showCartModal = ref(false); // Ensure it's reactive
 const showReviews = ref(false);
@@ -759,7 +788,7 @@ const showLoginModal = ref(false);
 const showSeeLessButton = ref(false);
 const numFeedbackShown = ref(0);
 const id = ref('');
-const storedetails = ref('');
+const storedetails = reactive({});
 const currentImageIndex = ref(0);
 const selectedProductImages = ref([]);
 const currentImage = ref('');
@@ -767,6 +796,8 @@ const items = [];
 const bestProducts = ref([]);
 const otherProducts = ref([]);
 const categories = ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'];
+const hasWebsiteLink = computed(() => !!storedetails.websitelink && !!storedetails.websitelink.redirectweb);
+
 const getImageUrl = (fileName) => {
     return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
 };
@@ -809,7 +840,6 @@ const addToCart = async (product) => {
 const activeProductsArray = computed(() => {
     return model.productsArray.filter(product => product.status === 'Active');
 });
-
 const handleCloseLoginModal = () => {
     showLoginModal.value = false;
 };
@@ -820,21 +850,29 @@ watch(() => authStore.isAuthenticated, (isAuthenticated) => {
         router.push(intendedRoute); // Navigate to the intended route
     }
 });
-
 const getId = () => {
-  axios.get(`/getStore/${id.value}`).then((response) => {
-    const storeparse = JSON.parse(response.data.message);
-    storedetails.value = storeparse;
-    model.productsArray = JSON.parse(response.data.getProducts);
-    categorizeProducts(model.productsArray); // Categorize products
-  }).catch((error) => {
-    console.log(error);
-  });
+    axios.get(`/getStore/${id.value}`).then((response) => {
+        const storeparse = JSON.parse(response.data.message);
+        Object.assign(storedetails, storeparse);
+        storedetails.websitelink = JSON.parse(response.data.websitelink); // Ensure websitelink is parsed and assigned
+
+        const allProducts = JSON.parse(response.data.getProducts);
+        const activeProducts = allProducts.filter(product => product.status === 'Active');
+        model.productsArray = activeProducts; // Update model.productsArray to contain only active products
+        categorizeProducts(activeProducts); // Categorize only active products
+    }).catch((error) => {
+        console.log(error);
+    });
+};
+const visitWebsite = () => {
+    if (hasWebsiteLink.value) {
+        window.location.href = storedetails.websitelink.redirectweb;
+    }
 };
 
 const categorizeProducts = (products) => {
-  bestProducts.value = products.filter(product => product.featured === "true");
-  otherProducts.value = products.filter(product => product.featured !== "true");
+    bestProducts.value = products.filter(product => product.featured === "true");
+    otherProducts.value = products.filter(product => product.featured !== "true");
 };
 // Function to update the currentImage based on the clicked thumbnail
 const updateCurrentImage = (index) => {
@@ -846,7 +884,6 @@ const nextImage = () => {
     currentImageIndex.value = (currentImageIndex.value + 1) % selectedProductImages.value.length;
     currentImage.value = getImageUrl(selectedProductImages.value[currentImageIndex.value]);
 };
-
 const handleBuyNow = () => {
     if (!authStore.isAuthenticated) {
         authStore.setIntendedRoute('/cartallproducts');
@@ -885,11 +922,9 @@ const decreaseQuantity = () => {
 const addToBuyNow = (item) => {
     buyNowProducts.value.push(item);
 };
-
 const isCartEmpty = computed(() => {
     return cart.value.length === 0;
 });
-
 const paginatedItems = computed(() => {
     return items.slice(0, 2 + numFeedbackShown.value);
 });
@@ -936,7 +971,6 @@ const hideToast = () => {
     showToast.value = false;
     toastMessage.value = "";
 };
-
 watch(
     () => route.params.id,
     (newId) => {

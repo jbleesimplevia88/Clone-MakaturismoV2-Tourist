@@ -34,8 +34,8 @@
     <div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5">
         <div v-for="(item, index) in filteredItems" :key="index" class="relative bg-[#FFFFFF1A] from-[#FFFFFF1A] rounded">
-          <div class="relative" v-if="item.activityphoto">
-            <img :src="getImageUrl(item.activityphoto)" class="w-full h-[250px] object-cover rounded-t">
+          <div class="relative" v-if="item.activitycoverphoto">
+            <img :src="getImageUrl(item.activitycoverphoto)" class="w-full h-[250px] object-cover rounded-t">
             <div class="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-[#102E61] to-transparent"></div>
             <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{ item.activitytitle }}</p>
             <p class="absolute bottom-2 left-2 text-white text-xs">{{ item.address }}</p>

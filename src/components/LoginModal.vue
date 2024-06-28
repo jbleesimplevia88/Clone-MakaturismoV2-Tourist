@@ -1354,7 +1354,7 @@
                     loginSuccessMessage.value = 'Login successful!';
                     setTimeout(() => {
                         closeLoginSuccessModal(); // Call the method to close both modals
-                    }, 3000); // Hide the success message after 3 seconds
+                    }, 1100); // Hide the success message after 3 seconds
                 }
             };
             const logout = () => {

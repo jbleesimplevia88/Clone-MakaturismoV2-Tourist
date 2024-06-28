@@ -457,7 +457,8 @@ const updateDiscountPrice = () => {
 };
 
 const getImageUrl = (fileName) => {
-  return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
+  const firstFileName = fileName.split('|')[0];
+  return `${import.meta.env.VITE_STORAGE_BASE_URL}/${firstFileName}`;
 };
 
 const toggleVoucherVisibility = (shopName) => {

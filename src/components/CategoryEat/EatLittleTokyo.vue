@@ -24,7 +24,8 @@
                         <div class="flex justify-between">
                             <div>
                                 <p class="text-md" v-if="!hasWebsiteLink">Ordering made easy</p>
-                                <p class="text-md text-[17px]" v-else>To see more of what the website offers, click the button below</p>
+                                <p class="text-md text-[17px]" v-else>To see more of what the website offers, click the
+                                    button below</p>
                                 <p class="text-lg font-bold" v-if="!hasWebsiteLink">Just a click away</p>
                             </div>
                             <div>
@@ -40,7 +41,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="flex flex-col pl-8 lg:pl-8 lg:order-first">
                         <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">{{ storedetails.storename }}
                         </h1>
@@ -124,7 +124,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Other Items -->
                 <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">OTHER ITEMS</h1>
                 <div class="flex w-[100%]">
@@ -155,9 +154,8 @@
                                             </div>
                                             <div
                                                 :class="{ ' items-center lg:hidden mt-8': hasWebsiteLink, 'grid grid-rows-2 items-center lg:hidden mt-8': !hasWebsiteLink }">
-                                                
                                                 <button @click="toggleshowCart(product)"
-                                                    :class="{ 'w-[100%]': hasWebsiteLink, 'w-[100%]': !hasWebsiteLink }"
+                                                    :class="{ 'w-[100%]': hasWebsiteLink, 'w-[100%]': hasWebsiteLink }"
                                                     class="text-xs bg-blue-900 rounded-lg m-1 py-2 px-3 w-[100%] text-white mt-5">
                                                     See More
                                                 </button>
@@ -173,8 +171,6 @@
                         </div>
                     </div>
                 </div>
-
-
                 <!-- mobile verrrrrrrrrrrrrrrrr -->
                 <!-- View Add to cart modal -->
                 <div v-if="showCart"
@@ -252,7 +248,7 @@
                                         <div class="lg:inline-flex hidden items-center justify-between"
                                             style="line-height: 2;">
                                             <div class="text-2xl">₱{{ selectedProduct.productprice }}</div>
-                                            <div class="flex items-center">
+                                            <div v-if="!hasWebsiteLink" class="flex items-center">
                                                 <p>Quantity</p>
                                                 <button @click="decreaseQuantity"
                                                     class="ml-4 px-4 py-1 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
@@ -303,7 +299,7 @@
                                             </div>
                                         </button>
                                         <!-- Mobile - Quantity counter -->
-                                        <div class="p-2 mt-3">
+                                        <div v-if="!hasWebsiteLink" class="p-2 mt-3">
                                             <div class="lg:hidden flex items-center text-black my-6">
                                                 Quantity
                                                 <button @click="decreaseQuantity"
@@ -505,7 +501,7 @@
         </div>
         <div v-if="hasWebsiteLink" class="cart-bg my-4 lg:w-[30%] lg:h-[50rem] right-7 absolute top-[8rem] lg:block hidden">
             <div class="cart-list lg:w-[75%] h-[11rem] border border-gray-300 p-4 rounded-lg shadow">
-                <div >
+                <div>
                     <p class="text-center text-lg font-semibold">To see more of what the website <br>offers, click the
                         button below</p>
                     <button v-if="hasWebsiteLink" @click="visitWebsite"
@@ -517,32 +513,32 @@
         </div>
         <!-- Mobile- cart -->
         <!-- <template v-if="showCartModal && totalItemsInCart>
-                         0">
-                        <div class="lg:hidden fixed inset-0 h-full w-full z-50 flex items-center justify-center" @click.self="closeModal">
-                            <div class="bg-white rounded-lg shadow-md h-full w-full p-2 " @click.stop>
-                                <div class="lg:w-[100%] p-4 rounded-lg">
-                                    <button @click="closeModal" class="absolute top-0 left-0 m-4 text-gray-600 hover:text-gray-800">
-                                                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                                          xmlns="http://www.w3.org/2000/svg">
-                                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                              d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                                                      </svg>
-                                                  </button>
-                                    <div class=" flex mb-2 mt-12 border-b-2 justify-center">
-                                        <div class="w-[50%]">
-                                            <p class="text-center font-bold">Number of items</p>
-                                            <p class="text-center font-bold text-3xl">{{ totalItemsInCart }}</p>
-                                        </div>
-                               
-                                              
-                                          </div>
-                                          <div class="cart-list mb-5 p-4 border border-gray-200 rounded-lg shadow-sm">
-                      <h2 class="text-lg font-semibold mb-4">List of Items</h2>
-                      <template v-if="!isCartEmpty">
-                        <div v-for="(cartItem, index) in cartFinalStore.cartItems.flatMap(group => group.items)" :key="index" class="flex justify-between items-center mb-3 p-2 bg-white border-b border-gray-200 rounded-md shadow-sm">
-                          <p class="w-3/4 text-gray-700">{{ cartItem.product_details.productname || 'No name available' }}</p>
-                          <p class="text-gray-500">x{{ cartItem.quantity }}</p>
-                        </div>
+                             0">
+                            <div class="lg:hidden fixed inset-0 h-full w-full z-50 flex items-center justify-center" @click.self="closeModal">
+                                <div class="bg-white rounded-lg shadow-md h-full w-full p-2 " @click.stop>
+                                    <div class="lg:w-[100%] p-4 rounded-lg">
+                                        <button @click="closeModal" class="absolute top-0 left-0 m-4 text-gray-600 hover:text-gray-800">
+                                                          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                                              xmlns="http://www.w3.org/2000/svg">
+                                                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                                  d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                                                          </svg>
+                                                      </button>
+                                        <div class=" flex mb-2 mt-12 border-b-2 justify-center">
+                                            <div class="w-[50%]">
+                                                <p class="text-center font-bold">Number of items</p>
+                                                <p class="text-center font-bold text-3xl">{{ totalItemsInCart }}</p>
+                                            </div>
+                                   
+                                                  
+                                              </div>
+                                              <div class="cart-list mb-5 p-4 border border-gray-200 rounded-lg shadow-sm">
+                          <h2 class="text-lg font-semibold mb-4">List of Items</h2>
+                          <template v-if="!isCartEmpty">
+                            <div v-for="(cartItem, index) in cartFinalStore.cartItems.flatMap(group => group.items)" :key="index" class="flex justify-between items-center mb-3 p-2 bg-white border-b border-gray-200 rounded-md shadow-sm">
+                              <p class="w-3/4 text-gray-700">{{ cartItem.product_details.productname || 'No name available' }}</p>
+                              <p class="text-gray-500">x{{ cartItem.quantity }}</p>
+                            </div>
 </template>
 <template v-else>
     <p class="text-center text-gray-500">
@@ -796,8 +792,13 @@ const items = [];
 const bestProducts = ref([]);
 const otherProducts = ref([]);
 const categories = ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'];
-const hasWebsiteLink = computed(() => !!storedetails.websitelink && !!storedetails.websitelink.redirectweb);
-
+const hasWebsiteLink = computed(() => {
+    if (storedetails.websitelink) {
+        const websitelink = JSON.parse(storedetails.websitelink);
+        return websitelink.redirectweb_status === "true";
+    }
+    return false;
+});
 const getImageUrl = (fileName) => {
     return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
 };
@@ -845,17 +846,17 @@ const handleCloseLoginModal = () => {
 };
 watch(() => authStore.isAuthenticated, (isAuthenticated) => {
     if (isAuthenticated) {
-        showLoginModal.value = false; // Close login modal
+        showLoginModal.value = false;
         const intendedRoute = authStore.intendedRoute || '/';
-        router.push(intendedRoute); // Navigate to the intended route
+        router.push(intendedRoute);
     }
 });
 const getId = () => {
     axios.get(`/getStore/${id.value}`).then((response) => {
         const storeparse = JSON.parse(response.data.message);
         Object.assign(storedetails, storeparse);
-        storedetails.websitelink = JSON.parse(response.data.websitelink); // Ensure websitelink is parsed and assigned
-
+        // Assuming response.data.websitelink is already an object
+        storedetails.websitelink = response.data.websitelink;
         const allProducts = JSON.parse(response.data.getProducts);
         const activeProducts = allProducts.filter(product => product.status === 'Active');
         model.productsArray = activeProducts; // Update model.productsArray to contain only active products
@@ -866,10 +867,10 @@ const getId = () => {
 };
 const visitWebsite = () => {
     if (hasWebsiteLink.value) {
-        window.location.href = storedetails.websitelink.redirectweb;
+        const websitelink = JSON.parse(storedetails.websitelink);
+        window.location.href = websitelink.redirectweb;
     }
 };
-
 const categorizeProducts = (products) => {
     bestProducts.value = products.filter(product => product.featured === "true");
     otherProducts.value = products.filter(product => product.featured !== "true");

@@ -151,7 +151,7 @@
                         </div>
                         <div class="flex flex-col m-2">
                             <label for="tourTimeInput" class="mb-2 font-bold">Time of Tour</label>
-                            <span>10:00 AM - 11:00 AM</span>
+                            <span>{{ cartTour.shopData.startsat }} to {{ cartTour.shopData.endsat }}</span>
                         </div>
                         <div class="flex flex-col m-2">
                             <label for="" class="mb-2 font-bold">Services</label>

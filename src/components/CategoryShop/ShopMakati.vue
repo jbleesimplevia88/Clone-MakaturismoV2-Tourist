@@ -24,7 +24,8 @@
                         <div class="flex justify-between">
                             <div>
                                 <p class="text-md" v-if="!hasWebsiteLink">Ordering made easy</p>
-                                <p class="text-md text-[17px]" v-else>To see more of what the website offers, click the button below</p>
+                                <p class="text-md text-[17px]" v-else>To see more of what the website offers, click the
+                                    button below</p>
                                 <p class="text-lg font-bold" v-if="!hasWebsiteLink">Just a click away</p>
                             </div>
                             <div>
@@ -95,8 +96,8 @@
                     </div>
                     <p class="text-lg md:text-black text-left pl-2.5 pb-5">{{ storedetails.storecontact }}</p>
                 </div>
-      <!-- Best Seller -->
-      <div class="my-4 lg:w-[100%]">
+         <!-- Best Seller -->
+         <div class="my-4 lg:w-[100%]">
                     <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SELLERS</h1>
                     <div class="grid grid-cols-2 md:grid-cols-3 justify-start text-white lg:w-[70%]">
                         <!-- Cards in Best Seller -->
@@ -123,7 +124,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Other Items -->
                 <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">OTHER ITEMS</h1>
                 <div class="flex w-[100%]">
@@ -154,9 +154,8 @@
                                             </div>
                                             <div
                                                 :class="{ ' items-center lg:hidden mt-8': hasWebsiteLink, 'grid grid-rows-2 items-center lg:hidden mt-8': !hasWebsiteLink }">
-                                                
                                                 <button @click="toggleshowCart(product)"
-                                                    :class="{ 'w-[100%]': hasWebsiteLink, 'w-[100%]': !hasWebsiteLink }"
+                                                    :class="{ 'w-[100%]': hasWebsiteLink, 'w-[100%]': hasWebsiteLink }"
                                                     class="text-xs bg-blue-900 rounded-lg m-1 py-2 px-3 w-[100%] text-white mt-5">
                                                     See More
                                                 </button>
@@ -172,7 +171,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- mobile verrrrrrrrrrrrrrrrr -->
                 <!-- View Add to cart modal -->
                 <div v-if="showCart"
@@ -250,7 +248,7 @@
                                         <div class="lg:inline-flex hidden items-center justify-between"
                                             style="line-height: 2;">
                                             <div class="text-2xl">₱{{ selectedProduct.productprice }}</div>
-                                            <div class="flex items-center">
+                                            <div v-if="!hasWebsiteLink" class="flex items-center">
                                                 <p>Quantity</p>
                                                 <button @click="decreaseQuantity"
                                                     class="ml-4 px-4 py-1 bg-gray-200 text-gray-700 rounded-l-lg">-</button>
@@ -301,7 +299,7 @@
                                             </div>
                                         </button>
                                         <!-- Mobile - Quantity counter -->
-                                        <div class="p-2 mt-3">
+                                        <div v-if="!hasWebsiteLink" class="p-2 mt-3">
                                             <div class="lg:hidden flex items-center text-black my-6">
                                                 Quantity
                                                 <button @click="decreaseQuantity"
@@ -470,8 +468,8 @@
                 </div>
             </div>
         </div>
-       <!-- Cart Modal Section -->
-       <div v-if="showCartModal && totalItemsInCart > 0" class="z-[1]">
+         <!-- Cart Modal Section -->
+         <div v-if="showCartModal && totalItemsInCart > 0" class="z-[1]">
             <div class="lg:block hidden">
                 <div class="cart-bg my-4 lg:w-[30%] lg:h-[85rem] right-7 absolute top-[8rem]">
                     <div class="cart-list lg:w-[75%] h-[40rem] border border-gray-300 p-4 rounded-lg shadow">
@@ -501,10 +499,9 @@
                 </div>
             </div>
         </div>
-       
         <div v-if="hasWebsiteLink" class="cart-bg my-4 lg:w-[30%] lg:h-[50rem] right-7 absolute top-[8rem] lg:block hidden">
-            <div class="cart-list lg:w-[75%] h-[11rem] border border-gray-300 p-4 rounded-lg shadow ">
-                <div >
+            <div class="cart-list lg:w-[75%] h-[11rem] border border-gray-300 p-4 rounded-lg shadow">
+                <div>
                     <p class="text-center text-lg font-semibold">To see more of what the website <br>offers, click the
                         button below</p>
                     <button v-if="hasWebsiteLink" @click="visitWebsite"
@@ -785,8 +782,13 @@ const bestProducts = ref([]);
 const otherProducts = ref([]);
 const categories = ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'];
 const locations = ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'];
-const hasWebsiteLink = computed(() => !!storedetails.websitelink && !!storedetails.websitelink.redirectweb);
-
+const hasWebsiteLink = computed(() => {
+    if (storedetails.websitelink) {
+        const websitelink = JSON.parse(storedetails.websitelink);
+        return websitelink.redirectweb_status === "true";
+    }
+    return false;
+});
 const getImageUrl = (fileName) => `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
 
 const totalItemsInCart = computed(() => {
@@ -846,8 +848,8 @@ const getId = () => {
     axios.get(`/getStore/${id.value}`).then((response) => {
         const storeparse = JSON.parse(response.data.message);
         Object.assign(storedetails, storeparse);
-        storedetails.websitelink = JSON.parse(response.data.websitelink); // Ensure websitelink is parsed and assigned
-
+        // Assuming response.data.websitelink is already an object
+        storedetails.websitelink = response.data.websitelink;
         const allProducts = JSON.parse(response.data.getProducts);
         const activeProducts = allProducts.filter(product => product.status === 'Active');
         model.productsArray = activeProducts; // Update model.productsArray to contain only active products
@@ -858,10 +860,10 @@ const getId = () => {
 };
 const visitWebsite = () => {
     if (hasWebsiteLink.value) {
-        window.location.href = storedetails.websitelink.redirectweb;
+        const websitelink = JSON.parse(storedetails.websitelink);
+        window.location.href = websitelink.redirectweb;
     }
 };
-
 const categorizeProducts = (products) => {
   bestProducts.value = products.filter(product => product.featured === "true");
   otherProducts.value = products.filter(product => product.featured !== "true");

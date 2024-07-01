@@ -20,7 +20,7 @@
                     </div>
                     <div class="flex flex-col pl-8 lg:pl-8 lg:order-first">
                         <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">{{storedetails.storename}}</h1>
-                        <p class="text-md text-white text-left pb-5"></p>
+                        <p class="text-md text-white text-left pb-5">Game</p>
                     </div>
                 </div>
             </div>

@@ -367,7 +367,7 @@
                 <RouterLink :to="locations[5].link">
                     <!-- Adjust height as needed -->
                     <div class="flex items-center justify-center h-10">
-                        <img :src="locations[5].imgSrc" :alt="locations[5].alt" class="p-[26px] max-w-full max-h-[210px]">
+                        <img :src="locations[5].imgSrc" :alt="locations[5].alt" class="p-[26px] max-w-full max-h-[155px]">
                         <!-- Adjust height as needed -->
                         <span class="text-center lg:my-3 lg:font-bold lg:text-1xl lg:hidden" style="margin: 0;">{{
                             locations[5].mobile }}</span>
@@ -477,7 +477,7 @@ const locations = ref([
     alt: 'location6',
     attrib: 'hover:rounded-r-lg active:rounded-r-lg',
     title: 'Make TOUR',
-    mobile: 'Tour',
+    mobile: 'MAKATurismo',
     link: '/category/tour'
   }
   // Add more locations as needed

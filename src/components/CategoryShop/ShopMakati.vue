@@ -44,7 +44,7 @@
                     <div class="flex flex-col pl-8 lg:pl-8 lg:order-first">
                         <h1 class="font-bold text-2xl lg:text-3xl pt-4 text-white text-left">{{ storedetails.storename }}
                         </h1>
-                        <p class="text-md text-white text-left pb-5">Restaurant/Food District</p>
+                        <p class="text-md text-white text-left pb-5">Shop</p>
                     </div>
                 </div>
             </div>
@@ -471,7 +471,7 @@
             </div>
         </div>
        <!-- Cart Modal Section -->
-       <div v-if="showCartModal && totalItemsInCart > 0">
+       <div v-if="showCartModal && totalItemsInCart > 0" class="z-[1]">
             <div class="lg:block hidden">
                 <div class="cart-bg my-4 lg:w-[30%] lg:h-[85rem] right-7 absolute top-[8rem]">
                     <div class="cart-list lg:w-[75%] h-[40rem] border border-gray-300 p-4 rounded-lg shadow">
@@ -501,21 +501,10 @@
                 </div>
             </div>
         </div>
-        <div class="cart-bg my-4 lg:w-[30%] lg:h-[50rem] right-7 absolute top-[8rem] lg:block hidden">
-            <div class="cart-list lg:w-[75%] h-[11rem] border border-gray-300 p-4 rounded-lg shadow lg:hidden">
-                <div v-if="hasWebsiteLink">
-                    <p class="text-center text-lg font-semibold">To see more of what the website <br>offers, click the
-                        button below</p>
-                    <button v-if="hasWebsiteLink" @click="visitWebsite"
-                        class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[90%] mt-5 font-semibold">
-                        Visit website
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="cart-bg my-4 lg:w-[30%] lg:h-[50rem] right-7 absolute top-[8rem] lg:block hidden">
-            <div class="cart-list lg:w-[75%] h-[11rem] border border-gray-300 p-4 rounded-lg shadow lg:hidden">
-                <div v-if="hasWebsiteLink">
+       
+        <div v-if="hasWebsiteLink" class="cart-bg my-4 lg:w-[30%] lg:h-[50rem] right-7 absolute top-[8rem] lg:block hidden">
+            <div class="cart-list lg:w-[75%] h-[11rem] border border-gray-300 p-4 rounded-lg shadow ">
+                <div >
                     <p class="text-center text-lg font-semibold">To see more of what the website <br>offers, click the
                         button below</p>
                     <button v-if="hasWebsiteLink" @click="visitWebsite"

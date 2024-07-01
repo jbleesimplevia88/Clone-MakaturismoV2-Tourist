@@ -12,7 +12,7 @@
           <div class="flex items-center mb-2">
             <img src="@/assets/images/Footer/makati_logo.png" alt="makati logo"
               class="inline w-6 h-auto mr-2 align-middle">
-            <h6 class="text-sm md:text-base">Makaturismo</h6>
+            <h6 class="text-sm md:text-base">MAKATurismo</h6>
           </div>
 
           <router-link to="/" class="mb-2 text-sm md:text-base">
@@ -40,7 +40,7 @@
             </router-link>
           </div>
           <router-link to="/category/tour" class="mb-2 text-sm md:text-base">
-            <button class="text-white-500 hover:underline">MakatiTour</button>
+            <button class="text-white-500 hover:underline">MAKATurismo</button>
           </router-link>
         </div>
 

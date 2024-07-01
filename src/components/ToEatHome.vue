@@ -157,7 +157,7 @@
                         <img :src="getImageUrl(item.pictureimage.split('|')[0])" class="w-full h-[250px] object-cover rounded-t">
                         <div class="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-[#102E61] to-transparent"></div>
                         <p class="absolute bottom-5 left-2 text-white text-lg xl:text-xl font-semibold">{{ item.storename }}</p>
-                        <p class="absolute bottom-2 left-2 text-white text-xs">{{ Array.isArray(item.category) ? item.category.join(', ') : item.category }}</p>
+                        <p class="absolute bottom-2 left-2 text-white text-xs">{{ item.address }}</p>
                     </div>
                     <div class="p-2 w-full">
                         <p class="text-white text-xs line-clamp-3">{{ item.description }}</p>

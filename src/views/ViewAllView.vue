@@ -44,7 +44,7 @@ import NavBar from '@/components/NavBar.vue';
                     <div class="p-2 w-full">
                         <p class="text-white text-xs line-clamp-3">{{ item.description }}</p>
                     </div>
-                    <div class="p-1 flex justify-end items-center">
+                    <!-- <div class="p-1 flex justify-end items-center">
                         <button @click="seeMore(item)"
                             class="flex items-center px-3 py-1 border border-white text-white m-1 rounded-md hover:bg-white hover:text-[#132540] transition-colors duration-300 text-nowrap text-sm">
                             <span>Read More</span>
@@ -56,7 +56,7 @@ import NavBar from '@/components/NavBar.vue';
                                 </svg>
                             </span>
                         </button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 

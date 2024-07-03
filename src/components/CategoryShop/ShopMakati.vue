@@ -129,40 +129,33 @@
                 <div class="flex w-[100%]">
                     <div class="flex justify-between items-center mb-2 space-x-5">
                         <!-- WEB VERSION OTHER ITEMS -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:w-full w-[343px]">
                             <div v-for="(product, index) in otherProducts" :key="index" class="card-wrapper">
-                                <div
-                                    class="card bg-blue-950 w-full border-2 m-1 p-2 rounded-xl relative flex flex-col justify-between">
-                                    <div class="flex justify-between w-full">
-                                        <div class="w-[200px]  overflow-hidden">
-                                            <img class="w-full h-full object-cover"
-                                                :src="getImageUrl(product.uploadedphotos.split('|')[0])" alt="" />
+                                <div class="card bg-blue-950 w-full border-2 m-1 p-2 rounded-xl relative flex flex-col justify-between h-full">
+                                    <div class="flex justify-between w-full h-full">
+                                        <div class="w-[180px] overflow-hidden">
+                                            <img class="w-full h-full object-cover" :src="getImageUrl(product.uploadedphotos.split('|')[0])" alt="" />
                                         </div>
-                                        <div class="w-[60%]">
-                                            <p class="text-xs text-white p-2 w-[75%]">{{ product.productname }}</p>
-                                            <p class="text-xs text-white p-2 w-[55%]">₱ {{ product.productprice }}</p>
-                                            <div class="justify-between items-center mt-4 mb-2 lg:block hidden">
-                                                <button @click="toggleshowCart(product)"
-                                                    :class="{ 'w-[100%] mt-[80px]': hasWebsiteLink, 'w-[40%]': !hasWebsiteLink }"
-                                                    class="text-xs bg-blue-900 rounded-lg m-1 py-1 px-3 text-white mt-12">
-                                                    See More
-                                                </button>
-                                                <button v-if="!hasWebsiteLink" @click="addToCart(product)"
-                                                    class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[55%] text-white mt-12">
-                                                    Add to Cart
-                                                </button>
+                                        <div class="w-[calc(100%-200px)] flex flex-col justify-between">
+                                            <div class="flex-grow">
+                                                <p class="text-xs text-white p-2">{{ product.productname }}</p>
+                                                <p class="text-xs text-white p-2">₱ {{ product.productprice }}</p>
                                             </div>
-                                            <div
-                                                :class="{ ' items-center lg:hidden mt-8': hasWebsiteLink, 'grid grid-rows-2 items-center lg:hidden mt-8': !hasWebsiteLink }">
-                                                <button @click="toggleshowCart(product)"
-                                                    :class="{ 'w-[100%]': hasWebsiteLink, 'w-[100%]': hasWebsiteLink }"
-                                                    class="text-xs bg-blue-900 rounded-lg m-1 py-2 px-3 w-[100%] text-white mt-5">
-                                                    See More
-                                                </button>
-                                                <button v-if="!hasWebsiteLink" @click="addToCart(product)"
-                                                    class="text-xs bg-blue-600 rounded-lg py-2 m-1 px-3 w-[100%] text-white">
-                                                    Add to Cart
-                                                </button>
+                                            <div class="mt-auto lg:flex lg:justify-between lg:items-center hidden">
+                                                <button @click="toggleshowCart(product)" :class="{ 'w-[100%] mt-[80px]': hasWebsiteLink, 'w-[45%]': !hasWebsiteLink }" class="text-xs bg-blue-900 rounded-lg m-1  py-1  px-3 text-white">
+                            See More
+                        </button>
+                                                <button v-if="!hasWebsiteLink" @click="addToCart(product)" class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[45%] text-white m-1">
+                            Add to Cart
+                        </button>
+                                            </div>
+                                            <div :class="{ 'items-center lg:hidden mt-8': hasWebsiteLink, 'grid grid-rows-2 items-center lg:hidden mt-8': !hasWebsiteLink }">
+                                                <button @click="toggleshowCart(product)" :class="{ 'w-[100%]': hasWebsiteLink, 'w-[100%]': hasWebsiteLink }" class="text-xs bg-blue-900 rounded-lg py-2 px-3 w-[100%] text-white mt-5">
+                            See More
+                        </button>
+                                                <button v-if="!hasWebsiteLink" @click="addToCart(product)" class="text-xs bg-blue-600 rounded-lg py-2 px-3 w-[100%] text-white">
+                            Add to Cart
+                        </button>
                                             </div>
                                         </div>
                                     </div>
@@ -174,7 +167,7 @@
                 <!-- mobile verrrrrrrrrrrrrrrrr -->
                 <!-- View Add to cart modal -->
                 <div v-if="showCart"
-                    class="fixed inset-0 bg-gray-500 bg-opacity-75  z-[1] flex items-center justify-center "
+                    class="fixed inset-0 bg-gray-500 bg-opacity-75  z-[10] flex items-center justify-center "
                     @click.self="closeModal">
                     <div class="bg-white lg:h-[640px]  lg:w-[60%] lg:rounded-3xl h-full w-full shadow-md " @click.stop>
                         <div class="lg:w-[100%] p-4 rounded-lg h-full">

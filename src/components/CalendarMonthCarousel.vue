@@ -32,8 +32,10 @@ onBeforeMount(async () => {
 
 onMounted(() => {
   window.addEventListener('resize', updateIsMobile);
+  console.log('Store state onMounted:', store.nearestEvents); // Added log to check store state on mount
 });
 </script>
+
 
 <template>
   <swiper 
@@ -73,6 +75,7 @@ onMounted(() => {
     <div class="swiper-pagination"></div>
   </swiper>
 </template>
+
 
 <style scoped>
 .fixed-width-300 {

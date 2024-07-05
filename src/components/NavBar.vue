@@ -28,13 +28,14 @@
                 <!-- WHEN USER IS LOGGED IN-->
                 <div v-if="authStore.isAuthenticated">
                     <div class="hidden lg:flex items-center space-x-6">
-                    <!-- Notification Icon -->
-                    <div class="relative inline-block">
+          <!-- Notification Icon -->
+<div class="relative inline-block">
   <svg @click="toggleNotif" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
     <path fill-rule="evenodd" d="M5.25 9a6.75 6.75 0 0 1 13.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 0 1-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 1 1-7.48 0 24.585 24.585 0 0 1-4.831-1.244.75.75 0 0 1-.298-1.205A8.217 8.217 0 0 0 5.25 9.75V9Zm4.502 8.9a2.25 2.25 0 1 0 4.496 0 25.057 25.057 0 0 1-4.496 0Z" clip-rule="evenodd" />
   </svg>
-  <span v-if="notificationCount > 0" class="absolute -top-0.5 -right-1 inline-flex items-center justify-center px-1 py-0.5 text-[9px] font-bold leading-none text-red-100 bg-red-600 rounded-full">{{ notificationCount }}</span>
+  <span v-if="unreadNotificationCount > 0" class="absolute -top-0.5 -right-1 inline-flex items-center justify-center px-1 py-0.5 text-[9px] font-bold leading-none text-red-100 bg-red-600 rounded-full">{{ unreadNotificationCount }}</span>
 </div>
+
 <!-- Notification Modal -->
 <div v-if="showNotifModal" class="absolute top-[6.5rem] right-[1.2rem] bg-gray-100 shadow text-black rounded-lg w-[325px]">
   <div class="p-4" role="none">
@@ -43,7 +44,7 @@
     <div class="w-full pt-30 bg-[#F2F2F2]">
       <p v-if="notifications.length === 0" class="text-center text-gray-500">No notifications available</p>
       <div v-else>
-        <div v-for="(notification, index) in notifications" :key="index" class="rounded-2xl p-1 flex bg-white hover:bg-blue-600 cursor-pointer w-100 mb-4" @click="openNotifModal(notification)">
+        <div v-for="(notification, index) in notifications" :key="index" class="rounded-2xl p-1 flex bg-white hover:bg-blue-600 cursor-pointer w-100 mb-4" @click="openNotifModal(notification, index)">
           <!-- SVG Icon -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 mr-2">
             <path fill-rule="evenodd" d="M5.25 9a6.75 6.75 0 0 1 13.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 0 1-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 1 1-7.48 0 24.585 24.585 0 0 1-4.831-1.244.75.75 0 0 1-.298-1.205A8.217 8.217 0 0 0 5.25 9.75V9Zm4.502 8.9a2.25 2.25 0 1 0 4.496 0 25.057 25.057 0 0 1-4.496 0Z" clip-rule="evenodd"></path>
@@ -87,6 +88,7 @@
     </div>
   </div>
 </div>
+
 
                         <!-- Person Icon -->
                         <svg @click="togglepfp" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
@@ -510,17 +512,21 @@
 const fetchNotifications = async () => {
   try {
     const response = await axios.get('/orderNotification');
-    notifications.value = response.data.notifications;
+    notifications.value = response.data.notifications.map(notification => ({
+      ...notification,
+      read: false
+    }));
   } catch (error) {
     console.error('Error fetching notifications:', error);
   }
 };
 
-const notificationCount = computed(() => notifications.value.length);
+const unreadNotificationCount = computed(() => notifications.value.filter(notification => !notification.read).length);
 
-const openNotifModal = (notification) => {
+const openNotifModal = (notification, index) => {
   console.log('Notification clicked:', notification);
   selectedNotification.value = notification;
+  notifications.value[index].read = true;
   if (
     notification.message === 'Your order is being picked up by the rider.' ||
     notification.message === 'Your order has been delivered and is complete.' ||

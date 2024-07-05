@@ -368,154 +368,140 @@
         }
     }
 </style>
-
 <script setup>
-    import {
-        ref,
-        onMounted,
-        onBeforeUnmount,
-        watch,
-        computed
-    } from 'vue';
-    import {
-        useRouter
-    } from 'vue-router';
-    import {
-        useAuthStore
-    } from '@/stores/auth';
-    import axios from 'axios';
-    import imageUrl from '@/assets/images/Modal/Intersect.png';
-    import imageUrl2 from '@/assets/images/Modal/bg2.png';
-    import run from '@/assets/images/MainNav/run.png';
-    import binoculars from '@/assets/images/MainNav/binoculars.png';
-    import house from '@/assets/images/MainNav/house.png';
-    import food from '@/assets/images/MainNav/food.png';
-    import grocery from '@/assets/images/MainNav/grocery-store.png';
-    import locationImg from '@/assets/images/MainNav/location.png';
-    import LoginModal from '@/components/LoginModal.vue';
-    import SearchFilter from '@/views/SearchFilter.vue';
-    const authStore = useAuthStore();
-    const router = useRouter();
-    const username = ref('');
-    const lpassword = ref('');
-    const showLoginModal = ref(false);
-    const showPFPModal = ref(false);
-    const showNotif = ref(false);
-    const isSidebarOpen = ref(false);
-    const loginPasswordError = ref(false);
-    const loginErrorMessage = ref('');
-    const notifications = ref([]);
-    const showNotifModal = ref(false);
-    const showOrderDetailsModal = ref(false);
-    const showBookingCompleteModal = ref(false);
-    const selectedNotification = ref(null);
-    const currentRoute = ref('');
-    const locations = ref([{
-            imgSrc: run,
-            alt: 'location1',
-            attrib: 'hover:rounded-l-lg active:rounded-l-lg',
-            title: 'What to DO',
-            mobile: 'Do',
-            link: '/category/do'
-        },
-        {
-            imgSrc: grocery,
-            alt: 'location2',
-            attrib: '',
-            title: 'Where to SHOP',
-            mobile: 'Shop',
-            link: '/category/shop'
-        },
-        {
-            imgSrc: binoculars,
-            alt: 'location3',
-            attrib: '',
-            title: 'What to SEE',
-            mobile: 'See',
-            link: '/category/see'
-        },
-        {
-            imgSrc: food,
-            alt: 'location4',
-            attrib: '',
-            title: 'Where to EAT',
-            mobile: 'Eat',
-            link: '/category/eat'
-        },
-        {
-            imgSrc: house,
-            alt: 'location5',
-            attrib: '',
-            title: 'Where to STAY',
-            mobile: 'Stay',
-            link: '/category/stay'
-        },
-        {
-            imgSrc: locationImg,
-            alt: 'location6',
-            attrib: 'hover:rounded-r-lg active:rounded-r-lg',
-            title: 'Make TOUR',
-            mobile: 'MAKATurismo',
-            link: '/category/tour'
-        }
-        // Add more locations as needed
-    ]);
-    const openModal = () => {
-        showLoginModal.value = true;
-    };
-    const closeModal = () => {
-        showLoginModal.value = false;
-    };
-    const login = async() => {
-        loginPasswordError.value = false;
-        const credentials = {
-            username: username.value,
-            password: lpassword.value
-        };
-        const response = await authStore.login(credentials);
-        if (response.status === false) {
-            console.log(response);
-            loginErrorMessage.value = response.message;
-        } else {
-            showLoginModal.value = false;
-            // Handle successful login logic
-        }
-    };
-    const logout = () => {
-        authStore.logout();
-        showPFPModal.value = false;
-        showNotif.value = false;
-        isSidebarOpen.value = false;
-    };
-    const togglepfp = () => {
-        showPFPModal.value = !showPFPModal.value;
-        if (showPFPModal.value && showNotifModal.value) {
-            showNotifModal.value = false;
-        }
-    };
-    const toggleNotif = () => {
-        showNotifModal.value = !showNotifModal.value;
-        if (showNotifModal.value && showPFPModal.value) {
-            showPFPModal.value = false;
-        }
-    };
-    const toggleSidebar = () => {
-        isSidebarOpen.value = !isSidebarOpen.value;
-    };
-    const isCategoryPath = (path) => {
-        return path.startsWith('/category/') && path.split('/').length === 3;
-    };
-    const isActive = (link) => {
-        return currentRoute.value.includes(link);
-    };
-    
+import { ref, onMounted, watch, computed } from 'vue';
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/auth';
+import axios from 'axios';
+import run from '@/assets/images/MainNav/run.png';
+import binoculars from '@/assets/images/MainNav/binoculars.png';
+import house from '@/assets/images/MainNav/house.png';
+import food from '@/assets/images/MainNav/food.png';
+import grocery from '@/assets/images/MainNav/grocery-store.png';
+import locationImg from '@/assets/images/MainNav/location.png';
+
+const authStore = useAuthStore();
+const router = useRouter();
+
+const username = ref('');
+const lpassword = ref('');
+const showLoginModal = ref(false);
+const showPFPModal = ref(false);
+const showNotif = ref(false);
+const isSidebarOpen = ref(false);
+const loginPasswordError = ref(false);
+const loginErrorMessage = ref('');
+const notifications = ref([]);
+const showNotifModal = ref(false);
+const showOrderDetailsModal = ref(false);
+const selectedNotification = ref(null);
+const currentRoute = ref('');
+
+const locations = ref([
+  {
+    imgSrc: run,
+    alt: 'location1',
+    attrib: 'hover:rounded-l-lg active:rounded-l-lg',
+    title: 'What to DO',
+    mobile: 'Do',
+    link: '/category/do'
+  },
+  {
+    imgSrc: grocery,
+    alt: 'location2',
+    attrib: '',
+    title: 'Where to SHOP',
+    mobile: 'Shop',
+    link: '/category/shop'
+  },
+  {
+    imgSrc: binoculars,
+    alt: 'location3',
+    attrib: '',
+    title: 'What to SEE',
+    mobile: 'See',
+    link: '/category/see'
+  },
+  {
+    imgSrc: food,
+    alt: 'location4',
+    attrib: '',
+    title: 'Where to EAT',
+    mobile: 'Eat',
+    link: '/category/eat'
+  },
+  {
+    imgSrc: house,
+    alt: 'location5',
+    attrib: '',
+    title: 'Where to STAY',
+    mobile: 'Stay',
+    link: '/category/stay'
+  },
+  {
+    imgSrc: locationImg,
+    alt: 'location6',
+    attrib: 'hover:rounded-r-lg active:rounded-r-lg',
+    title: 'Make TOUR',
+    mobile: 'MAKATurismo',
+    link: '/category/tour'
+  }
+  // Add more locations as needed
+]);
+
+const openModal = () => {
+  showLoginModal.value = true;
+};
+const closeModal = () => {
+  showLoginModal.value = false;
+};
+const login = async () => {
+  loginPasswordError.value = false;
+  const credentials = {
+    username: username.value,
+    password: lpassword.value
+  };
+  const response = await authStore.login(credentials);
+  if (response.status === false) {
+    console.log(response);
+    loginErrorMessage.value = response.message;
+  } else {
+    showLoginModal.value = false;
+    // Handle successful login logic
+  }
+};
+const logout = () => {
+  authStore.logout();
+  showPFPModal.value = false;
+  showNotif.value = false;
+  isSidebarOpen.value = false;
+};
+const togglepfp = () => {
+  showPFPModal.value = !showPFPModal.value;
+  if (showPFPModal.value && showNotifModal.value) {
+    showNotifModal.value = false;
+  }
+};
+const toggleNotif = () => {
+  showNotifModal.value = !showNotifModal.value;
+  if (showNotifModal.value && showPFPModal.value) {
+    showPFPModal.value = false;
+  }
+};
+const toggleSidebar = () => {
+  isSidebarOpen.value = !isSidebarOpen.value;
+};
+const isCategoryPath = (path) => {
+  return path.startsWith('/category/') && path.split('/').length === 3;
+};
+const isActive = (link) => {
+  return currentRoute.value.includes(link);
+};
+
 const fetchNotifications = async () => {
   try {
     const response = await axios.get('/orderNotification');
-    notifications.value = response.data.notifications.map(notification => ({
-      ...notification,
-      read: false
-    }));
+    notifications.value = response.data.notifications;
   } catch (error) {
     console.error('Error fetching notifications:', error);
   }
@@ -523,10 +509,21 @@ const fetchNotifications = async () => {
 
 const unreadNotificationCount = computed(() => notifications.value.filter(notification => !notification.read).length);
 
-const openNotifModal = (notification, index) => {
+const markAsRead = async (notificationId) => {
+  try {
+    await axios.post('/markNotificationAsRead', { id: notificationId });
+  } catch (error) {
+    console.error('Error marking notification as read:', error);
+  }
+};
+
+const openNotifModal = async (notification, index) => {
   console.log('Notification clicked:', notification);
   selectedNotification.value = notification;
-  notifications.value[index].read = true;
+  if (!notifications.value[index].read) {
+    notifications.value[index].read = true;
+    await markAsRead(notification.id); // Mark as read when fetching notifications
+  }
   if (
     notification.message === 'Your order is being picked up by the rider.' ||
     notification.message === 'Your order has been delivered and is complete.' ||
@@ -536,29 +533,34 @@ const openNotifModal = (notification, index) => {
     showOrderDetailsModal.value = true;
   }
 };
-    const getFirstImageUrl = (pictureimage) => {
-        if (!pictureimage) return '';
-        const images = pictureimage.split('|').filter(img => img.trim() !== '');
-        return images.length > 0 ? images[0].replace('/storage/uploadedphotos/', '') : '';
-    };
-    const getImageUrl = (fileName) => {
-        return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
-    };
-    const closeOrderDetailsModal = () => {
-        showOrderDetailsModal.value = false;
-    };
-    onMounted(() => {
-        fetchNotifications();
-    });
-    watch(
-        () => router.currentRoute.value.path,
-        (newPath) => {
-            if (newPath.startsWith('/category/') && newPath.split('/').length === 3) {
-                console.log('active');
-                currentRoute.value = newPath;
-            }
-        }
-    );
+
+const getFirstImageUrl = (pictureimage) => {
+  if (!pictureimage) return '';
+  const images = pictureimage.split('|').filter(img => img.trim() !== '');
+  return images.length > 0 ? images[0].replace('/storage/uploadedphotos/', '') : '';
+};
+
+const getImageUrl = (fileName) => {
+  return `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
+};
+
+const closeOrderDetailsModal = () => {
+  showOrderDetailsModal.value = false;
+};
+
+onMounted(() => {
+  fetchNotifications();
+});
+
+watch(
+  () => router.currentRoute.value.path,
+  (newPath) => {
+    if (newPath.startsWith('/category/') && newPath.split('/').length === 3) {
+      console.log('active');
+      currentRoute.value = newPath;
+    }
+  }
+);
 </script>
 
 

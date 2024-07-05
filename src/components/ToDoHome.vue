@@ -383,7 +383,6 @@ const handleGlobalClick = (event) => {
         showDropdown.value = false;
     }
 };
-const fileNames = computed(() => model.imageList.split('|').filter(name => name !== ''));
 const getImageUrl = (fileName) => `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
 const displayTodo = async () => {
     try {
@@ -458,7 +457,6 @@ onBeforeMount(() => {
 });
 onBeforeMount(async () => {
     await displayTodo();
-    await fetchBusData();
     document.removeEventListener('click', handleGlobalClick);
 });
 </script>

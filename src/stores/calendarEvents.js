@@ -24,19 +24,19 @@ export const useCalendarEventsStore = defineStore('calendarEvents', {
         console.error('API request error:', error);
         this.selectedEvent = null;
       }},
-    async fetchNearestEvents() {
-      try {
-        const response = await axios.get('/calendar-events');
-        if (response.data && response.data.nearestEvent) {
-          this.nearestEvents = response.data.nearestEvent;
-        } else {
+      async fetchNearestEvents() {
+        try {
+          const response = await axios.get('/calendar-events');
+          if (response.data && response.data.nearestEvent) {
+            this.nearestEvents = response.data.nearestEvent;
+          } else {
+            this.nearestEvents = [];
+          }
+        } catch (error) {
+          console.error('API request error:', error);
           this.nearestEvents = [];
         }
-      } catch (error) {
-        console.error('API request error:', error);
-        this.nearestEvents = [];
-      }
-    },
+      },
     async fetchPastEvents() {
       try {
         const response = await axios.get('/calendar-events');

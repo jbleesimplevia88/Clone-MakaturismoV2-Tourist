@@ -55,8 +55,9 @@
         <div class="my-4 lg:p-0 lg:w-[75%]">
             <div class="relative mx-6 px-3 lg:px-32 pt-5">
                 <p class="font-bold text-lg text-black text-left pb-5 pt-3 lg:pt-[5rem]">About this place</p>
-                <p class="text-lg lg:text-justify text-black pb-5 break-words overflow-wrap break-word word-break break-all">
-{{ storedetails.description }}</p>
+                <p
+                    class="text-lg lg:text-justify text-black pb-5 break-words overflow-wrap break-word word-break break-all">
+                    {{ storedetails.description }}</p>
                 <div class="hidden border border-gray-400 lg:w-[]">
                     <p class="text-center font-bold">Number of items</p>
                 </div>
@@ -96,8 +97,8 @@
                     </div>
                     <p class="text-lg md:text-black text-left pl-2.5 pb-5">{{ storedetails.storecontact }}</p>
                 </div>
-         <!-- Best Seller -->
-         <div class="my-4 lg:w-[100%]">
+                <!-- Best Seller -->
+                <div class="my-4 lg:w-[100%]">
                     <h1 class="mb-5 font-bold text-lg text-black text-left pb-2 lg:pt-5">BEST SELLERS</h1>
                     <div class="grid grid-cols-2 md:grid-cols-3 justify-start text-white lg:w-[70%]">
                         <!-- Cards in Best Seller -->
@@ -131,10 +132,12 @@
                         <!-- WEB VERSION OTHER ITEMS -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:w-full w-[343px]">
                             <div v-for="(product, index) in otherProducts" :key="index" class="card-wrapper">
-                                <div class="card bg-blue-950 w-full border-2 m-1 p-2 rounded-xl relative flex flex-col justify-between h-full">
+                                <div
+                                    class="card bg-blue-950 w-full border-2 m-1 p-2 rounded-xl relative flex flex-col justify-between h-full">
                                     <div class="flex justify-between w-full h-full">
                                         <div class="w-[180px] overflow-hidden">
-                                            <img class="w-full h-full object-cover" :src="getImageUrl(product.uploadedphotos.split('|')[0])" alt="" />
+                                            <img class="w-full h-full object-cover"
+                                                :src="getImageUrl(product.uploadedphotos.split('|')[0])" alt="" />
                                         </div>
                                         <div class="w-[calc(100%-200px)] flex flex-col justify-between">
                                             <div class="flex-grow">
@@ -142,20 +145,27 @@
                                                 <p class="text-xs text-white p-2">₱ {{ product.productprice }}</p>
                                             </div>
                                             <div class="mt-auto lg:flex lg:justify-between lg:items-center hidden">
-                                                <button @click="toggleshowCart(product)" :class="{ 'w-[100%] mt-[80px]': hasWebsiteLink, 'w-[45%]': !hasWebsiteLink }" class="text-xs bg-blue-900 rounded-lg m-1  py-1  px-3 text-white">
-                            See More
-                        </button>
-                                                <button v-if="!hasWebsiteLink" @click="addToCart(product)" class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[45%] text-white m-1">
-                            Add to Cart
-                        </button>
+                                                <button @click="toggleshowCart(product)"
+                                                    :class="{ 'w-[100%] mt-[80px]': hasWebsiteLink, 'w-[45%]': !hasWebsiteLink }"
+                                                    class="text-xs bg-blue-900 rounded-lg m-1  py-1  px-3 text-white">
+                                                    See More
+                                                </button>
+                                                <button v-if="!hasWebsiteLink" @click="addToCart(product)"
+                                                    class="text-xs bg-blue-600 rounded-lg py-1 px-3 w-[45%] text-white m-1">
+                                                    Add to Cart
+                                                </button>
                                             </div>
-                                            <div :class="{ 'items-center lg:hidden mt-8': hasWebsiteLink, 'grid grid-rows-2 items-center lg:hidden mt-8': !hasWebsiteLink }">
-                                                <button @click="toggleshowCart(product)" :class="{ 'w-[100%]': hasWebsiteLink, 'w-[100%]': hasWebsiteLink }" class="text-xs bg-blue-900 rounded-lg py-2 px-3 w-[100%] text-white mt-5">
-                            See More
-                        </button>
-                                                <button v-if="!hasWebsiteLink" @click="addToCart(product)" class="text-xs bg-blue-600 rounded-lg py-2 px-3 w-[100%] text-white">
-                            Add to Cart
-                        </button>
+                                            <div
+                                                :class="{ 'items-center lg:hidden mt-8': hasWebsiteLink, 'grid grid-rows-2 items-center lg:hidden mt-8': !hasWebsiteLink }">
+                                                <button @click="toggleshowCart(product)"
+                                                    :class="{ 'w-[100%]': hasWebsiteLink, 'w-[100%]': hasWebsiteLink }"
+                                                    class="text-xs bg-blue-900 rounded-lg py-2 px-3 w-[100%] text-white mt-5">
+                                                    See More
+                                                </button>
+                                                <button v-if="!hasWebsiteLink" @click="addToCart(product)"
+                                                    class="text-xs bg-blue-600 rounded-lg py-2 px-3 w-[100%] text-white">
+                                                    Add to Cart
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -461,8 +471,8 @@
                 </div>
             </div>
         </div>
-         <!-- Cart Modal Section -->
-         <div v-if="showCartModal && totalItemsInCart > 0" class="z-[1]">
+        <!-- Cart Modal Section -->
+        <div v-if="showCartModal && totalItemsInCart > 0" class="z-[1]">
             <div class="lg:block hidden">
                 <div class="cart-bg my-4 lg:w-[30%] lg:h-[85rem] right-7 absolute top-[8rem]">
                     <div class="cart-list lg:w-[75%] h-[40rem] border border-gray-300 p-4 rounded-lg shadow">
@@ -476,12 +486,13 @@
                         </div>
                         <div class="cart-list-scroll mb-5" style="height: 29rem; overflow-y: auto;">
                             <p class="font-bold mb-5">List of items</p>
-                            <div v-for="(cartItem, index) in cartFinalStore.cartItems.flatMap(group => group.items)"
-                                :key="index" class="flex justify-between mb-2 pr-4">
+                            <div v-for="(cartItem, index) in tempCartItems" :key="index"
+                                class="flex justify-between mb-2 pr-4">
                                 <p class="w-[70%]">{{ cartItem.product_details.productname || 'No name available' }}</p>
                                 <p>x{{ cartItem.quantity }}</p>
                             </div>
                         </div>
+
                         <div v-if="!isCartEmpty">
                             <button @click="handleBuyNow"
                                 class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[90%] ">
@@ -504,53 +515,6 @@
                 </div>
             </div>
         </div>
-        <!-- Mobile- cart -->
-        <!-- <template v-if="showCartModal && totalItemsInCart>
-                         0">
-                        <div class="lg:hidden fixed inset-0 h-full w-full z-50 flex items-center justify-center" @click.self="closeModal">
-                            <div class="bg-white rounded-lg shadow-md h-full w-full p-2 " @click.stop>
-                                <div class="lg:w-[100%] p-4 rounded-lg">
-                                    <button @click="closeModal" class="absolute top-0 left-0 m-4 text-gray-600 hover:text-gray-800">
-                                                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                                          xmlns="http://www.w3.org/2000/svg">
-                                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                              d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                                                      </svg>
-                                                  </button>
-                                    <div class=" flex mb-2 mt-12 border-b-2 justify-center">
-                                        <div class="w-[50%]">
-                                            <p class="text-center font-bold">Number of items</p>
-                                            <p class="text-center font-bold text-3xl">{{ totalItemsInCart }}</p>
-                                        </div>
-                               
-                                              
-                                          </div>
-                                          <div class="cart-list mb-5 p-4 border border-gray-200 rounded-lg shadow-sm">
-                      <h2 class="text-lg font-semibold mb-4">List of Items</h2>
-                      <template v-if="!isCartEmpty">
-                        <div v-for="(cartItem, index) in cartFinalStore.cartItems.flatMap(group => group.items)" :key="index" class="flex justify-between items-center mb-3 p-2 bg-white border-b border-gray-200 rounded-md shadow-sm">
-                          <p class="w-3/4 text-gray-700">{{ cartItem.product_details.productname || 'No name available' }}</p>
-                          <p class="text-gray-500">x{{ cartItem.quantity }}</p>
-                        </div>
-</template>
-<template v-else>
-    <p class="text-center text-gray-500">
-        Your cart is empty</p>
-</template>
-</div>
-
-                      <div v-if="!isCartEmpty">
-
-                          <button @click="handleBuyNow"
-                              class="text-white flex justify-center mx-auto bg-blue-600 rounded-lg py-4 w-[90%]">
-                              Buy Now
-                          </button>
-                      </div>
-
-                  </div>
-              </div>
-          </div>
-      </template> -->
 
     </div>
     <!--  -->
@@ -732,36 +696,30 @@ import MapRenderer from "@/components/MapRenderer.vue";
 import ContentCarousel from '@/components/Carousel.vue';
 
 const props = defineProps({
-  latitude: Number,
-  longitude: Number,
-  name: String,
-  id: Number,
-  item: String,
-  imageList: String,
+    latitude: Number,
+    longitude: Number,
+    name: String,
+    id: Number,
+    item: String,
+    imageList: String,
 });
 
 const model = reactive({
-  productsArray: [],
+    productsArray: [],
 });
 
 const cartFinalStore = useCartFinalStore();
-const cartStore = useCartStoreShop();
 const authStore = useAuthStore();
 const route = useRoute();
 const router = useRouter();
-
 const cart = computed(() => cartFinalStore.cartItems);
 const buyNowProducts = ref([]);
 const selectedProduct = ref(null);
 const showToast = ref(false);
 const toastMessage = ref("");
-const currentIndex = ref(0);
-const currentPage = ref(0);
-const count = ref(0);
 const showCart = ref(false);
 const showCartModal = ref(false);
 const showReviews = ref(false);
-const showAddtoCart = ref(false);
 const showLoginModal = ref(false);
 const showSeeLessButton = ref(false);
 const numFeedbackShown = ref(0);
@@ -774,7 +732,6 @@ const items = ref([]);
 const bestProducts = ref([]);
 const otherProducts = ref([]);
 const categories = ['Museum', 'Sightseeing Tour', 'Spa and Wellness', 'Entertainment', 'Gaming'];
-const locations = ['Makati', 'Manila', 'Quezon City', 'Taguig', 'Pasig', 'Mandaluyong', 'San Juan', 'Pasay', 'Paranaque', 'Las Pinas', 'Muntinlupa', 'Malabon', 'Navotas', 'Valenzuela', 'Caloocan', 'Marikina', 'Pateros'];
 const hasWebsiteLink = computed(() => {
     if (storedetails.websitelink) {
         const websitelink = JSON.parse(storedetails.websitelink);
@@ -784,64 +741,69 @@ const hasWebsiteLink = computed(() => {
 });
 const getImageUrl = (fileName) => `${import.meta.env.VITE_STORAGE_BASE_URL}/${fileName}`;
 
-const totalItemsInCart = computed(() => {
-  const quantitiesByProductId = cartFinalStore.cartItems.flatMap(group => group.items).reduce((acc, item) => {
-    const productId = item.product_id;
-    const quantity = parseInt(item.quantity, 10); // Ensure quantity is treated as a number
-    if (!acc[productId]) {
-      acc[productId] = 0;
-    }
-    acc[productId] += quantity;
-    return acc;
-  }, {});
-  return Object.values(quantitiesByProductId).reduce((total, qty) => total + qty, 0);
-});
+const tempCartItems = ref([]);
 
-watch(totalItemsInCart, (newTotal) => {
-  console.log("totalItemsInCart:", newTotal);
-  console.log("totalItemsCount:", totalItemsInCart.value); // Log the totalItemsInCart value
-});
-
-const addToCart = async (product) => {
-  console.log("addToCart method called with product:", product);
-  if (!authStore.isAuthenticated) {
-    console.log("User not authenticated");
-    authStore.setIntendedRoute(router.currentRoute.value.path);
-    showLoginModal.value = true;
-    console.log("showLoginModal set to true:", showLoginModal.value);
-    return;
-  }
-  product.quantity = product.quantity || 1; // Ensure quantity is initialized
-  try {
-    await cartFinalStore.addOrUpdateCart(product);
-    console.log("Product added or updated in database:", product);
-    showToastWithMessage("Item has been added to cart");
-    showCartModal.value = true; // Show the cart modal after adding an item
-    console.log("showCartModal:", showCartModal.value);
-  } catch (error) {
-    console.error("Error adding or updating item in cart:", error);
-    showToastWithMessage("Error adding item to cart");
-  }
+const updateCartItems = () => {
+    tempCartItems.value = cartFinalStore.cartItems.flatMap(group => group.items);
 };
+
+const delayedUpdateCartItems = () => {
+    setTimeout(() => {
+        updateCartItems();
+    }, 500); // Delay of 500ms
+};
+const totalItemsInCart = ref(0);
+const updateTotalItemsInCart = () => {
+    const quantitiesByProductId = cartFinalStore.cartItems.flatMap(group => group.items).reduce((acc, item) => {
+        const productId = item.product_id;
+        const quantity = parseInt(item.quantity, 10); // Ensure quantity is treated as a number
+        if (!acc[productId]) {
+            acc[productId] = 0;
+        }
+        acc[productId] += quantity;
+        return acc;
+    }, {});
+    totalItemsInCart.value = Object.values(quantitiesByProductId).reduce((total, qty) => total + qty, 0);
+};
+const delayedUpdateTotalItemsInCart = () => {
+    setTimeout(() => {
+        updateTotalItemsInCart();
+    }, 400); // Delay of 500ms
+};
+const addToCart = async (product) => {
+    console.log("addToCart method called with product:", product);
+    if (!authStore.isAuthenticated) {
+        console.log("User not authenticated");
+        authStore.setIntendedRoute(router.currentRoute.value.path);
+        showLoginModal.value = true;
+        console.log("showLoginModal set to true:", showLoginModal.value);
+        return;
+    }
+    product.quantity = product.quantity || 1; // Ensure quantity is initialized
+    try {
+        await cartFinalStore.addOrUpdateCart(product);
+        console.log("Product added or updated in database:", product);
+        showToastWithMessage("Item has been added to cart");
+        showCartModal.value = true; // Show the cart modal after adding an item
+        console.log("showCartModal:", showCartModal.value);
+        delayedUpdateTotalItemsInCart();
+        delayedUpdateCartItems();
+    } catch (error) {
+        console.error("Error adding or updating item in cart:", error);
+        showToastWithMessage("Error adding item to cart");
+    }
+};
+
 
 const handleCloseLoginModal = () => {
-  showLoginModal.value = false;
+    showLoginModal.value = false;
 };
-
-watch(() => authStore.isAuthenticated, (isAuthenticated) => {
-  if (isAuthenticated) {
-    showLoginModal.value = false; // Close login modal
-    const intendedRoute = authStore.intendedRoute || '/';
-    router.push(intendedRoute); // Navigate to the intended route
-  }
-});
 
 
 const getId = () => {
     axios.get(`/getStore/${id.value}`).then((response) => {
         const storeparse = JSON.parse(response.data.message);
         Object.assign(storedetails, storeparse);
-        // Assuming response.data.websitelink is already an object
         storedetails.websitelink = response.data.websitelink;
         const allProducts = JSON.parse(response.data.getProducts);
         const activeProducts = allProducts.filter(product => product.status === 'Active');
@@ -858,151 +820,159 @@ const visitWebsite = () => {
     }
 };
 const categorizeProducts = (products) => {
-  bestProducts.value = products.filter(product => product.featured === "true");
-  otherProducts.value = products.filter(product => product.featured !== "true");
+    bestProducts.value = products.filter(product => product.featured === "true");
+    otherProducts.value = products.filter(product => product.featured !== "true");
 };
 
-const activeProductsArray = computed(() => {
-  return model.productsArray.filter(product => product.status === 'Active');
-});
-
-// Function to update the currentImage based on the clicked thumbnail
 const updateCurrentImage = (index) => {
-  currentImageIndex.value = index;
-  currentImage.value = getImageUrl(selectedProductImages.value[index]);
+    currentImageIndex.value = index;
+    currentImage.value = getImageUrl(selectedProductImages.value[index]);
 };
-// Function to navigate to the next image
 const nextImage = () => {
-  currentImageIndex.value = (currentImageIndex.value + 1) % selectedProductImages.value.length;
-  currentImage.value = getImageUrl(selectedProductImages.value[currentImageIndex.value]);
+    currentImageIndex.value = (currentImageIndex.value + 1) % selectedProductImages.value.length;
+    currentImage.value = getImageUrl(selectedProductImages.value[currentImageIndex.value]);
 };
 
 const handleBuyNow = () => {
-  if (!authStore.isAuthenticated) {
-    authStore.setIntendedRoute('/cartallproducts');
-    showLoginModal.value = true;
-  } else {
-    addToBuyNow(selectedProduct.value);
-    router.push('/cartallproducts');
-  }
+    if (!authStore.isAuthenticated) {
+        authStore.setIntendedRoute('/cartallproducts');
+        showLoginModal.value = true;
+    } else {
+        addToBuyNow(selectedProduct.value);
+        router.push('/cartallproducts');
+    }
 };
 
 const setDefaultQuantity = () => {
-  if (selectedProduct.value) {
-    selectedProduct.value.quantity = 1;
-  }
+    if (selectedProduct.value) {
+        selectedProduct.value.quantity = 1;
+    }
 };
 
 watch(selectedProduct, () => {
-  setDefaultQuantity();
+    setDefaultQuantity();
 }, {
-  immediate: true
+    immediate: true
 });
 
-// Function to increase quantity
 const increaseQuantity = () => {
-  if (selectedProduct.value && selectedProduct.value.quantity < selectedProduct.value.availability) {
-    selectedProduct.value.quantity++;
-  } else {
-    showToastWithMessage("Quantity exceeds availability");
-  }
+    if (selectedProduct.value && selectedProduct.value.quantity < selectedProduct.value.availability) {
+        selectedProduct.value.quantity++;
+    } else {
+        showToastWithMessage("Quantity exceeds availability");
+    }
 };
 
-// Function to decrease quantity
 const decreaseQuantity = () => {
-  if (selectedProduct.value && selectedProduct.value.quantity > 1) {
-    selectedProduct.value.quantity--;
-  } else {
-    showToastWithMessage("Minimum quantity reached");
-  }
+    if (selectedProduct.value && selectedProduct.value.quantity > 1) {
+        selectedProduct.value.quantity--;
+    } else {
+        showToastWithMessage("Minimum quantity reached");
+    }
 };
 
 const addToBuyNow = (item) => {
-  buyNowProducts.value.push(item);
+    buyNowProducts.value.push(item);
 };
 
 const isCartEmpty = computed(() => {
-  return cart.value.length === 0;
+    return cart.value.length === 0;
 });
 
 const paginatedItems = computed(() => {
-  return items.value.slice(0, 2 + numFeedbackShown.value);
+    return items.value.slice(0, 2 + numFeedbackShown.value);
 });
 
 const showSeeMoreButton = computed(() => {
-  return numFeedbackShown.value < items.value.length - 2;
+    return numFeedbackShown.value < items.value.length - 2;
 });
 
 const seeMore = () => {
-  numFeedbackShown.value += 2;
-  if (!showSeeMoreButton.value) {
-    showSeeLessButton.value = true;
-  }
+    numFeedbackShown.value += 2;
+    if (!showSeeMoreButton.value) {
+        showSeeLessButton.value = true;
+    }
 };
 
 const seeLess = () => {
-  numFeedbackShown.value = 0;
-  showSeeLessButton.value = false;
+    numFeedbackShown.value = 0;
+    showSeeLessButton.value = false;
 };
 
 const toggleshowCart = (item) => {
-  selectedProduct.value = item;
-  showCart.value = true;
+    selectedProduct.value = item;
+    showCart.value = true;
 };
 
 const closeCart = () => {
-  showCart.value = false;
+    showCart.value = false;
 };
 
 const closeModal = () => {
-  showCartModal.value = false;
+    showCartModal.value = false;
 };
 
 const toggleshowReviews = () => {
-  showReviews.value = true;
-  showCart.value = false;
+    showReviews.value = true;
+    showCart.value = false;
 };
 
 const closeReviews = () => {
-  showReviews.value = false;
-  showCart.value = true;
+    showReviews.value = false;
+    showCart.value = true;
 };
 
 const showToastWithMessage = (message) => {
-  toastMessage.value = message;
-  showToast.value = true;
-  setTimeout(() => {
-    showToast.value = false;
-    toastMessage.value = "";
-  }, 3000);
+    toastMessage.value = message;
+    showToast.value = true;
+    setTimeout(() => {
+        showToast.value = false;
+        toastMessage.value = "";
+    }, 3000);
 };
 
 const hideToast = () => {
-  showToast.value = false;
-  toastMessage.value = "";
+    showToast.value = false;
+    toastMessage.value = "";
 };
 
 
-watch(
-  () => route.params.id,
-  (newId) => {
-    if (newId) {
-      id.value = newId;
-      getId();
-    }
-  }, {
-    immediate: true
-  }
-);
-
-// Watch for changes in selectedProduct and update selectedProductImages accordingly
-watch(selectedProduct, (newSelectedProduct) => {
-  if (newSelectedProduct) {
-    selectedProductImages.value = newSelectedProduct.uploadedphotos.split('|');
-    updateCurrentImage(0); // Reset currentImageIndex when selectedProduct changes
-  }
+watch(cartFinalStore.cartItems, () => {
+    delayedUpdateCartItems();
 });
 
+watch(totalItemsInCart, (newTotal) => {
+    console.log("totalItemsInCart:", newTotal);
+    console.log("totalItemsCount:", totalItemsInCart.value); // Log the totalItemsInCart value
+});
+
+watch(() => authStore.isAuthenticated, (isAuthenticated) => {
+    if (isAuthenticated) {
+        showLoginModal.value = false; // Close login modal
+        const intendedRoute = authStore.intendedRoute || '/';
+        router.push(intendedRoute); // Navigate to the intended route
+    }
+});
+watch(
+    () => route.params.id,
+    (newId) => {
+        if (newId) {
+            id.value = newId;
+            getId();
+        }
+    }, {
+    immediate: true
+}
+);
+watch(selectedProduct, (newSelectedProduct) => {
+    if (newSelectedProduct) {
+        selectedProductImages.value = newSelectedProduct.uploadedphotos.split('|');
+        updateCurrentImage(0); // Reset currentImageIndex when selectedProduct changes
+    }
+});
+onMounted(() => {
+    updateCartItems();
+});
 onMounted(getId);
 </script>
 

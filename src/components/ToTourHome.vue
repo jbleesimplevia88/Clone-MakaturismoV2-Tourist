@@ -236,11 +236,6 @@ onMounted(() => {
 onBeforeUnmount(() => {
   document.removeEventListener('click', handleGlobalClick);
 });
-const handleApplyFilter = () => {
-  applyButtonClicked.value = true;
-  currentPage.value = 0;
-  showDropdown.value = false;
-};
 
 const handleGlobalClick = (event) => {
   const mobileDropdown = document.getElementById('mobileDropdown');
@@ -253,7 +248,6 @@ const totourinfo = ref([]);
 const displayToTour = async () => {
   try {
     const response = await axios.post("/viewallActivities");
-    console.log('API Response:', response.data);
     if (response.data && response.data.viewactivities) {
       const activities = JSON.parse(response.data.viewactivities);
       model.items = activities;

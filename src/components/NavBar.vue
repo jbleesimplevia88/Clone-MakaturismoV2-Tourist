@@ -379,6 +379,8 @@ import house from '@/assets/images/MainNav/house.png';
 import food from '@/assets/images/MainNav/food.png';
 import grocery from '@/assets/images/MainNav/grocery-store.png';
 import locationImg from '@/assets/images/MainNav/location.png';
+import LoginModal from '@/components/LoginModal.vue';
+import SearchFilter from '@/views/SearchFilter.vue';
 
 const authStore = useAuthStore();
 const router = useRouter();

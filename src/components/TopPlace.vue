@@ -3,7 +3,7 @@
     style="border-top-right-radius: 15px; border-bottom-right-radius: 15px;">
     <!-- Apply 'text-5xl' for small screens and 'text-3xl' for medium screens and above -->
     <h1 :class="{ 'p-2 mx-5 ml-10 text-1xl font-bold': isMobile, 'p-2 mx-10 ml-10 text-2xl font-bold': !isMobile }">
-      Top 10 Places in Makati!
+      Top Places in Makati!
     </h1>
   </div>
 

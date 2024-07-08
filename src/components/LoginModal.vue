@@ -49,56 +49,40 @@
                             </div>
                         </div>
                         <div class="hidden lg:flex items-center justify-between mb-4">
-                            <p class="text-xs">Don't have an account? <button @click="openPrivacyModal"
-                                    class="text-xs font-bold text-blue-600">Sign Up</button></p>
-                            <button @click="openForgotModal" class="text-xs text-blue-600 font-bold">Forgot
-                                Password?</button>
-                        </div>
-                        <span v-if="loginErrorMessage" class="font-semibold text-red-500 text-xs">{{ loginErrorMessage
-                        }}</span>
-                        <div class="hidden lg:block lg:mt-10 text-center">
-                            <button type="submit"
-                                class="lg:w-[8rem] w-full lg:px-4 py-2 text-white disabled:bg-blue-400 bg-blue-600 rounded-md"
-                                :disabled="!isLoginFormValid" @click="login">Login</button>
-                        </div>
-                        <div class="lg:hidden lg:mt-10 text-center">
-                            <button type="button" :disabled="!isLoginFormValid || isLoginLoading" @click="login"
-                                class="lg:w-[8rem] w-full lg:px-4 py-2 lg:mb-10 text-white disabled:bg-blue-400 bg-blue-600 rounded-md">
-                                <span v-if="!isLoginLoading">Login</span>
-                                <span v-else class="flex justify-center">
-                                    <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24">
-                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
-                                            stroke-width="4"></circle>
-                                        <path class="opacity-75" fill="currentColor"
-                                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
-                                        </path>
-                                    </svg>
-                                </span>
-                            </button>
-                            <button @click="openForgotModal" class="text-xs text-blue-600 mt-1">Forgot Password?</button>
-                            <button @click="openPrivacyModal"
-                                class="w-full mt-8 py-2 border border-blue-400 text-blue-600 bg-white rounded-md">Sign
-                                Up</button>
-                        </div>
+                    <p class="text-xs">Don't have an account? <button @click="openPrivacyModal" class="text-xs font-bold text-blue-600">Sign Up</button></p>
+                    <button @click="openForgotModal" class="text-xs text-blue-600 font-bold">Forgot Password?</button>
+                </div>
+                <span v-if="loginErrorMessage" class="font-semibold text-red-500 text-xs">{{ loginErrorMessage }}</span>
+                <div class="hidden lg:block lg:mt-10 text-center">
+                    <button type="submit" class="lg:w-[8rem] w-full lg:px-4 py-2 text-white disabled:bg-blue-400 bg-blue-600 rounded-md" :disabled="!isLoginFormValid || isLoginLoading" @click="login">
+                        <span v-if="!isLoginLoading">Login</span>
+                        <span v-else class="flex justify-center">
+                            <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <div class="lg:hidden lg:mt-10 text-center">
+                    <button type="button" :disabled="!isLoginFormValid || isLoginLoading" @click="login" class="lg:w-[8rem] w-full lg:px-4 py-2 lg:mb-10 text-white disabled:bg-blue-400 bg-blue-600 rounded-md">
+                        <span v-if="!isLoginLoading">Login</span>
+                        <span v-else class="flex justify-center">
+                            <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                        </span>
+                    </button>
+                    <button @click="openForgotModal" class="text-xs text-blue-600 mt-1">Forgot Password?</button>
+                    <button @click="openPrivacyModal" class="w-full mt-8 py-2 border border-blue-400 text-blue-600 bg-white rounded-md">Sign Up</button>
+                </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div v-if="showLoginSuccess" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-            <div class="relative p-7 bg-white w-[90%] lg:w-[50%] rounded-lg">
-                <div class="flex justify-between mb-4">
-                    <p class="font-bold text-xl">Success</p>
-                    <button @click="closeLoginSuccessModal" class="text-gray-500 hover:text-gray-700">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
-                            </path>
-                        </svg>
-                    </button>
-                </div>
-                <p>{{ loginSuccessMessage }}</p>
-            </div>
+        <div v-if="showLoginSuccess">
+        
         </div>
         <div v-if="showPrivacyModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
             <div class="relative p-7 bg-white  lg:w-[65vw] w-[90vw] lg:h-[60%] rounded-xl">
@@ -1514,7 +1498,7 @@ export default {
                 loginSuccessMessage.value = 'Login successful!';
                 setTimeout(() => {
                     closeLoginSuccessModal(); // Call the method to close both modals
-                }, 1100); // Hide the success message after 3 seconds
+                }, 900); 
             }
             isLoginLoading.value = false; // Stop loading
 

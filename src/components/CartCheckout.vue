@@ -504,10 +504,16 @@ const updatePaymentMethod = () => {
 };
 
 const toggleComplete = () => {
+  if (!address.value) {
+    alert("Please enter your address before confirming booking.");
+    return;
+  }
+
   if (!selectedPaymentMethod.value) {
     alert("Please select a payment method before confirming booking.");
     return;
   }
+
   sendOrderData().then(() => {
     showConfirmation.value = false;
     showComplete.value = !showComplete.value;
@@ -516,6 +522,7 @@ const toggleComplete = () => {
     alert('There was an error sending your order. Please try again.');
   });
 };
+
 
 const sendOrderData = async () => {
   if (!userInfo.value.length) {

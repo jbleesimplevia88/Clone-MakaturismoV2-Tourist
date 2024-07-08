@@ -203,7 +203,7 @@
                                         class="text-red-500 text-md">*</span></label>
                                 <div class="w-full flex flex-col items-start justify-center">
                                     <input id="fname" type="text" v-model="fname" placeholder="Enter First Name"
-                                        class="border border-gray-500 rounded-xl w-full py-3 px-3"
+                                        class="border border-gray-500 rounded-xl w-full py-3 px-3  lg:ml-2"
                                         @input="validateFirstname">
                                     <span v-if="fnameError" class="text-red-500 text-xs">{{ fnameError }}</span>
                                 </div>
@@ -221,7 +221,7 @@
                                     class="text-red-500 text-md">*</span></label>
                             <div class="w-full flex flex-col items-start justify-center">
                                 <input id="lastname" type="text" v-model="lastname" placeholder="Enter Last Name"
-                                    class="border border-gray-500 rounded-xl w-full py-3 px-3" @input="validateLastname">
+                                    class="border border-gray-500 rounded-xl w-full py-3 px-3  lg:ml-" @input="validateLastname">
                                 <span v-if="lastnameError" class="text-red-500 text-xs">{{ lastnameError }}</span>
                             </div>
                         </div>
@@ -232,7 +232,7 @@
                                         class="text-red-500 text-md">*</span></label>
                                 <div class="w-full flex flex-col items-start justify-center">
                                     <input id="email" type="text" v-model="email" placeholder="Enter Email Address"
-                                        class="border border-gray-500 rounded-xl w-full py-3 px-3" @input="validateEmail">
+                                        class="border border-gray-500 rounded-xl w-full py-3 px-3  lg:ml-1" @input="validateEmail">
                                     <span v-if="emailError" class="text-red-500 text-xs">{{ emailError }}</span>
                                 </div>
                             </div>
@@ -240,13 +240,13 @@
                             <div class="lg:flex items-center mb-3">
                                 <label for="pnum" class="w-[8rem] mb-2 lg:ml-3 ">Phone No.: <span
                                         class="text-red-500 text-md">*</span></label>
-                                <div class="flex flex-col w-full items-start justify-between ml-4">
+                                <div class="flex flex-col w-full items-start justify-between lg:ml-4">
                                     <div class="flex w-full">
                                         <!-- Text box for dialing code -->
                                         <input type="text" v-model="dialingCode" readonly
                                             class="border border-gray-500 rounded-l-xl w-[3.5rem] py-3 px-3" value="+63">
                                         <input id="pnum" type="tel" v-model="pnum" placeholder="Enter Phone Number"
-                                            class="border border-gray-500 rounded-r-xl lg:w-full  py-3 px-3" maxlength="10"
+                                            class="border border-gray-500 rounded-r-xl w-full  py-3 px-3" maxlength="10"
                                             @input="validatePhoneNumber">
                                     </div>
                                     <span v-if="pnumError" class="text-red-500 text-xs">{{ pnumError }}</span>
@@ -261,7 +261,7 @@
                                 <div class="w-full flex flex-col items-start justify-center">
                                     <div class="relative w-full">
                                         <select id="nationality" v-model="nationality"
-                                            class="border border-gray-500 rounded-xl w-full py-3 px-3 appearance-none cursor-pointer">
+                                            class="border border-gray-500 rounded-xl w-full py-3 px-3 appearance-none cursor-pointer lg:ml-1">
                                             <option v-for="(nation, index) in nationalityOptions" :key="index"
                                                 :value="nation">{{ nation }}
                                             </option>

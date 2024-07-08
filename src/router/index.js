@@ -34,6 +34,11 @@ const router = createRouter({
       component: () => import('../components/LoginModal.vue')
 
     },
+    // {
+    //   path: 'touristdetails',
+    //   name: 'touristdetails',
+    //   component: () => import('../components/TouristDetails.vue'),
+    // },
     {
       path: '/profile',
       name: 'profile',
@@ -51,6 +56,19 @@ const router = createRouter({
       name: 'topPlace',
       component: TopPlace
     },
+      
+    {
+      path: '/topPlaceDetail/:id',
+      name: 'topPlaceDetail',
+      component: () => import('../components/TopPlaceHome.vue'),
+      props: route => ({
+        latitude: parseFloat(route.query.latitude),
+        longitude: parseFloat(route.query.longitude),
+        name: route.query.name,
+        imageList: route.query.imageList,
+      })
+    },
+    
     {
       path: '/viewAll',
       name: 'viewAll',

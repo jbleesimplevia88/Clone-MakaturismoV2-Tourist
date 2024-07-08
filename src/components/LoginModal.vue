@@ -107,10 +107,11 @@
                     </button>
                 </div>
                 <div class="relative z-10 flex flex-col items-center h-full">
-                    <form @submit.prevent="signup" class="w-[90%] lg:px-10 px-2 lg:mt-0 mt-5">
+                    <form @submit.prevent="signup" class="w-[90%] lg:px-8 px-2 lg:mt-0 mt-5">
                         <!-- <div class="mb-5">
                           </div> -->
                         <!-- make it scrollable -->
+                        <div class="  border border-gray-800 p-5 rounded">
                         <div class="flex justify-between overflow-y-auto custom-scrollbar h-[300px] w-[100%]  p-5 mb-0">
                             <div class="flex flex-col">
                                 <p class="font-bold text-center text-2xl lg:text-3xl mb-5">Privacy Policy</p>
@@ -151,15 +152,19 @@
                                 <p class="mb-5 text-sm text-justify">We reserve the right to update or modify this Privacy
                                     Policy at any time. Any changes will be effective immediately upon posting the updated
                                     Privacy Policy on our website.</p>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex items-center mt-4 ">
+                                    <div class="flex items-center mt-4 ">
                                 <input type="checkbox" id="myCheckbox" class="form-checkbox h-5 w-5 text-blue-600 mr-2"
                                     v-model="checkboxChecked">
                                 <label for="myCheckbox" class="">I have read and agreed to the above Privacy Policy
                                     Agreement</label>
                             </div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                        <div>
+                           
                             <div class="text-center mt-8">
                                 <button type="submit"
                                     class="disabled:bg-blue-400 lg:w-[50%] w-full px-4 py-4 text-white bg-blue-600 rounded-md"
@@ -384,7 +389,7 @@
         </div>
         <!-- Terms and Condition Modal -->
         <div v-if="showTermsModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-            <div class="relative p-7 bg-white  lg:w-[65vw] w-[90vw] lg:h-[55%] rounded-xl">
+            <div class="relative p-7 bg-white  lg:w-[65vw] w-[90vw] lg:h-[71%] rounded-xl">
                 <!-- Modal Content -->
                 <div class="relative flex justify-end">
                     <button class="absolute ">
@@ -405,11 +410,14 @@
                             class="h-4 lg:h-5 w-auto ml-4 lg:ml-8 mr-2">
                     </button>
                 </div>
-                <div class="relative z-10 flex flex-col items-center h-full">
-                    <form @submit.prevent="signup" class="w-[85%] lg:px-10 px-2 lg:mt-0 mt-5">
+                
+                <div class="relative z-10 flex flex-col items-center h-full ">
+                    <form @submit.prevent="signup" class="w-[85%] lg:px-5 px-2 lg:mt-0 mt-5">
                         <!-- make it scrollable -->
                         <p class="font-bold text-center text-2xl lg:text-3xl ">Terms and Conditions</p>
-                        <div class="flex justify-between overflow-y-auto h-[280px] w-[100%] custom-scrollbar p-10">
+                        <div class=" lg:mt-4 border border-gray-800 p-5 rounded">
+
+                        <div class="flex justify-between overflow-y-auto h-[325px] w-[100%] custom-scrollbar lg:p-10 p-2">
                             <div class="flex flex-col">
                                 <p class="mb-5">Welcome to <span class="font-bold">MAKATURISMO</span>, a local tourism
                                     website that connects users, businesses, advertisers, and showcases various products and
@@ -481,13 +489,18 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="text-center mt-16">
-                            <button type="submit" class="lg:w-[50%] w-full px-4 py-4 text-white bg-blue-600 rounded-md"
+                        </div>
+                      
+                    </form>
+                    <div class="text-center mt-6">
+                            <button type="submit" class=" w-full px-28 py-4 text-white bg-blue-600 rounded-md"
                                 @click="closeTC">Continue</button>
                         </div>
-                    </form>
                 </div>
+            
+                
             </div>
+            
         </div>
         <!-- Forgot Modal -->
         <div v-if="showForgotModal" class=" fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
